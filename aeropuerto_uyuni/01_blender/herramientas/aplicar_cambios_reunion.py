@@ -159,6 +159,8 @@ quitar = ["BOLARDOS", "CIELO_PLENUM", "CIELO_LUXALON_LAMAS", "LUMINARIAS_ALERO",
 for n in quitar:
     if borrar_objeto(P + n):
         informe.append(f"quitado {P + n}")
+camaras_previas = {sc.name: sc.camera.name for sc in bpy.data.scenes                  # escenas que ya las usaban
+                   if sc.camera and sc.camera.name in ("CAM_07_PROPUESTAS", "CAM_07B_CAPTURA_CLIENTE")}
 for n in ("CAM_07_PROPUESTAS", "CAM_07B_CAPTURA_CLIENTE"):
     borrar_objeto(n)
 mat_bolardo = bpy.data.materials.get(P + "BOLARDO_ACERO_GRAFITO")
@@ -178,6 +180,8 @@ G["cielo_alero"](C, M)
 G["retenedor_nieve"](C, M)
 G["letrero"](C, M)
 cams = G["camaras_propuestas"](C["08_CAMERAS_LIGHTS"])
+for nombre_escena, nombre_camara in camaras_previas.items():
+    bpy.data.scenes[nombre_escena].camera = cams[nombre_camara]
 col_nieve = bpy.data.collections.get("09_NIEVE_CREPUSCULO")
 if col_nieve:
     G["nieve_crepusculo"](col_nieve, M)
@@ -191,6 +195,8 @@ if escena("UYUNI_DIA") and not escena("UYUNI_DIA_P2_SALAR_LITIO"):
         if hija.name not in sc3.collection.children:
             sc3.collection.children.link(hija)
     informe.append("escena UYUNI_DIA_P2_SALAR_LITIO creada")
+elif escena("UYUNI_DIA_P2_SALAR_LITIO") and escena("UYUNI_DIA_P2_SALAR_LITIO").camera is None:
+    escena("UYUNI_DIA_P2_SALAR_LITIO").camera = cams["CAM_07_PROPUESTAS"]
 for sc in bpy.data.scenes:
     G["propiedades_escena"](sc)
     G["geometria_letrero"](sc, "A")
