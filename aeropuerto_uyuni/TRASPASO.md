@@ -335,6 +335,8 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 
 **Antes de los renders finales:** aplicar las mejoras de fotorrealismo de `02_postproduccion/FOTORREALISMO_BLENDER.md`. Son, sobre todo, exposición medida con False Color (la escena estaba ≈ 0,7 EV sobreexpuesta) y verticales rectas con *shift*. Se probaron en CAM_01.
 
+**Después, los materiales:** `02_postproduccion/MATERIALES_INTELIGENTES.md`. Máscaras procedurales (aristas, cavidades y gravedad) para el polvo fino del altiplano y la pátina del corten, metálico binario, variación pieza por pieza y receta para cada material, con el vidrio de control solar con capa fina. Se probaron en CAM_06, CAM_05 y CAM_01.
+
 **Configuración** (hoy: 4K al 50 %, 256 muestras, GPU, OIDN, AgX Medium High Contrast):
 1. Resolución de 3840 × 2160 al **100 %**.
 2. Cycles en GPU, con OptiX o CUDA activado en *Preferences > System*.
