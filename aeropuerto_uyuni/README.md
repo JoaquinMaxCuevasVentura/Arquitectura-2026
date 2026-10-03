@@ -1,9 +1,14 @@
 # Aeropuerto de Uyuni: visualización de la Terminal de Pasajeros
 
+> **¿Vas a continuar el proyecto?** Empieza por [`TRASPASO.md`](TRASPASO.md), que reúne el estado, las coordenadas, las decisiones del cliente, los puntos abiertos y los pendientes. Para pasárselo a otra IA hay una instrucción lista en [`PROMPT_CONTINUACION.md`](PROMPT_CONTINUACION.md).
+
 | Carpeta | Contenido |
 |---|---|
 | `00_auditoria/` | Auditoría técnica del DXF y los IFC (Fases 0 y 0.5): `AUDITORIA.md`, informes JSON, 16 vistas aisladas (PNG + DXF limpio), decisiones confirmadas y el script de auditoría. |
-| `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v2.blend` (ya generado) y renders de prueba en `previews/`. |
+| `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v2.blend` (ya generado) e `inventario_escena.json` (qué hay en la escena y dónde). |
+| `01_blender/previews/` | Vistas previas de las cámaras CAM_01 a CAM_06. |
+| `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): 4 alzados y 2 cortes. |
+| `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas, verificar contra el CAD e inventariar la escena. |
 
 ## Cómo usarlo en Blender 5.2
 
@@ -40,6 +45,7 @@ Todos están al inicio de `uyuni_modelo.py`:
 - `H_VANO = 5.51`
 - `Z_ANTEPECHO = (6.612, 9.012)`
 - `Y_ANTEPECHO_EXT = -1.632` (volado de 2,0 m)
+- `CUMBRERA_Z = 13.02` (las fachadas NE/SO marcan +13,43; sin confirmar)
 - `NERVIO_PASO = 0.30`
 - `RETENEDOR_DIST_BORDE = 0.40`
 - `CELOSIAS` (posición y variante de cada celosía)
@@ -88,6 +94,12 @@ Ubicación:
 
 ## Pendiente
 
-- **Vehículos 4x4, minibús y turistas:** hoy son cajas de ubicación en `07_ASSETS/PROXIES_COLOCACION`, visibles solo en el visor. Hay que reemplazarlas por modelos reales (Sketchfab o BlenderKit).
-- **Lado Aire e interiores:** están simplificados, según el brief.
+El detalle está en `TRASPASO.md`: los puntos por revisar contra el DXF, en la sección 6, y los pendientes con su especificación, en la sección 8. En resumen:
+- **Vehículos 4x4, minibús y turistas:** hoy son cajas de ubicación en `07_ASSETS/PROXIES_COLOCACION`, visibles solo en el visor. Hay que reemplazarlas por modelos reales.
+- **Contexto:** paisaje de altiplano, vegetación y variante de cielo nublado.
+- **Contra el DXF:**
+  - puertas y vanos del testero del eje 20 (FACHADA ESTE);
+  - volumen saliente y elemento vertical de la esquina del eje 1 / Lado Aire;
+  - carpinterías del Lado Aire.
 - **Cumbrera:** se usó +13,02 (alzados laterales); las fachadas NE y SO marcan +13,43.
+- **Renders finales y video del dron:** se renderizan en la PC con GPU.

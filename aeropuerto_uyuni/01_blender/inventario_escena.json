@@ -1,0 +1,7687 @@
+{
+ "archivo": "uyuni_v2.blend",
+ "blender": "5.2.2 LTS",
+ "unidades": "metros",
+ "sistema_coordenadas": "X = ejes 1->20 (eje 1 en 0); Y = ejes A->R (Lado Tierra hacia -Y); Z = m sobre NPT ±0,00",
+ "escenas": {
+  "UYUNI_CREPUSCULO": {
+   "camara_activa": "CAM_03_CREPUSCULAR_NIEVE",
+   "mundo": "UY_CIELO_HORA_AZUL",
+   "motor": "CYCLES",
+   "resolucion": [
+    3840,
+    2160,
+    50
+   ],
+   "muestras": 256,
+   "dispositivo": "GPU",
+   "cuadros": [
+    1,
+    250
+   ],
+   "fps": 24,
+   "color": {
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "exposure": 0.6
+   },
+   "colecciones_enlazadas": [
+    "_REF_CAD",
+    "01_ESTRUCTURA",
+    "02_ENVOLVENTE",
+    "03_CARPINTERIAS_M1",
+    "04_CUBIERTA_INDUSTRIAL",
+    "05_CELOSIAS_CORTEN",
+    "06_ENTORNO_SITE",
+    "07_ASSETS",
+    "08_CAMERAS_LIGHTS",
+    "08_LUZ_CREPUSCULO",
+    "09_NIEVE_CREPUSCULO"
+   ],
+   "propiedades": {
+    "humedad": 1.0,
+    "nieve": 0.6,
+    "luz_interior": 7.0,
+    "luz_alero": 1.0,
+    "luz_letrero": 2.5,
+    "UTM_EPSG": 32719.0,
+    "UTM_E_origen": 724956.439,
+    "UTM_N_origen": 7737860.959,
+    "cota_NPT_msnm": 3666.593,
+    "rotacion_X_local_deg_CCW_desde_Este": 148.2058,
+    "norte_verdadero_local_deg_CCW_desde_X": 301.043
+   }
+  },
+  "UYUNI_DIA": {
+   "camara_activa": "CAM_01_HERO_LADO_TIERRA",
+   "mundo": "UY_CIELO_MANANA",
+   "motor": "CYCLES",
+   "resolucion": [
+    3840,
+    2160,
+    50
+   ],
+   "muestras": 256,
+   "dispositivo": "GPU",
+   "cuadros": [
+    1,
+    600
+   ],
+   "fps": 24,
+   "color": {
+    "view_transform": "AgX",
+    "look": "AgX - Medium High Contrast",
+    "exposure": 0.0
+   },
+   "colecciones_enlazadas": [
+    "_REF_CAD",
+    "01_ESTRUCTURA",
+    "02_ENVOLVENTE",
+    "03_CARPINTERIAS_M1",
+    "04_CUBIERTA_INDUSTRIAL",
+    "05_CELOSIAS_CORTEN",
+    "06_ENTORNO_SITE",
+    "07_ASSETS",
+    "08_CAMERAS_LIGHTS",
+    "08_LUZ_DIA"
+   ],
+   "propiedades": {
+    "humedad": 0.0,
+    "nieve": 0.0,
+    "luz_interior": 0.6,
+    "luz_alero": 0.0,
+    "luz_letrero": 0.0,
+    "UTM_EPSG": 32719.0,
+    "UTM_E_origen": 724956.439,
+    "UTM_N_origen": 7737860.959,
+    "cota_NPT_msnm": 3666.593,
+    "rotacion_X_local_deg_CCW_desde_Este": 148.2058,
+    "norte_verdadero_local_deg_CCW_desde_X": 301.043
+   }
+  }
+ },
+ "colecciones": {
+  "01_ESTRUCTURA": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 2,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "02_ENVOLVENTE": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 37,
+   "oculta_en_render": false,
+   "hijas": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ]
+  },
+  "LETRERO_HORIZONTE_UYUNI": {
+   "padre": "02_ENVOLVENTE",
+   "objetos": 6,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "03_CARPINTERIAS_M1": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 29,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "04_CUBIERTA_INDUSTRIAL": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 7,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "05_CELOSIAS_CORTEN": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 12,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "06_ENTORNO_SITE": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 9,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "07_ASSETS": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 0,
+   "oculta_en_render": false,
+   "hijas": [
+    "PROXIES_COLOCACION"
+   ]
+  },
+  "PROXIES_COLOCACION": {
+   "padre": "07_ASSETS",
+   "objetos": 27,
+   "oculta_en_render": true,
+   "hijas": []
+  },
+  "08_CAMERAS_LIGHTS": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 10,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "08_LUZ_CREPUSCULO": {
+   "padre": "UYUNI_CREPUSCULO",
+   "objetos": 21,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "08_LUZ_DIA": {
+   "padre": "UYUNI_DIA",
+   "objetos": 1,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "09_NIEVE_CREPUSCULO": {
+   "padre": "UYUNI_CREPUSCULO",
+   "objetos": 1,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "_REF_CAD": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA",
+   "objetos": 0,
+   "oculta_en_render": true,
+   "hijas": [
+    "REF_CAD_PLANTA_GENERAL",
+    "REF_CAD_ALZADO_LADO_TIERRA",
+    "REF_CAD_DETALLES_M1",
+    "REF_CAD_DETALLES_CUBIERTA",
+    "REF_CAD_DETALLES_CELOSIA",
+    "REF_CAD_ANTES",
+    "REF_CAD_ALZADO_LADO_AIRE",
+    "REF_CAD_ALZADOS_LATERALES"
+   ]
+  },
+  "REF_CAD_PLANTA_GENERAL": {
+   "padre": "_REF_CAD",
+   "objetos": 0,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_ALZADO_LADO_TIERRA": {
+   "padre": "_REF_CAD",
+   "objetos": 1,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_DETALLES_M1": {
+   "padre": "_REF_CAD",
+   "objetos": 6,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_DETALLES_CUBIERTA": {
+   "padre": "_REF_CAD",
+   "objetos": 2,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_DETALLES_CELOSIA": {
+   "padre": "_REF_CAD",
+   "objetos": 2,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_ANTES": {
+   "padre": "_REF_CAD",
+   "objetos": 2,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_ALZADO_LADO_AIRE": {
+   "padre": "_REF_CAD",
+   "objetos": 1,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "REF_CAD_ALZADOS_LATERALES": {
+   "padre": "_REF_CAD",
+   "objetos": 2,
+   "oculta_en_render": false,
+   "hijas": []
+  }
+ },
+ "objetos": [
+  {
+   "nombre": "CAM_01_HERO_LADO_TIERRA",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    91.0,
+    -17.0,
+    1.65
+   ],
+   "rotacion_deg": [
+    94.46,
+    0.0,
+    64.11
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_02B_DETALLE_CIELO",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    11.0,
+    -3.6,
+    1.62
+   ],
+   "rotacion_deg": [
+    116.76,
+    -0.0,
+    -69.37
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_02_DETALLE_ALERO",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    -2.8,
+    -5.6,
+    10.1
+   ],
+   "rotacion_deg": [
+    80.59,
+    -0.0,
+    -59.47
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_03_CREPUSCULAR_NIEVE",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    50.5,
+    -36.0,
+    1.7
+   ],
+   "rotacion_deg": [
+    95.24,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_04_AEREA_GENERAL",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    -22.0,
+    -58.0,
+    48.0
+   ],
+   "rotacion_deg": [
+    62.72,
+    -0.0,
+    -42.27
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_05_LETRERO_HORIZONTE",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    54.0,
+    -19.0,
+    4.2
+   ],
+   "rotacion_deg": [
+    101.44,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_06_DETALLE_CELOSIA",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    62.5,
+    -9.5,
+    2.0
+   ],
+   "rotacion_deg": [
+    95.39,
+    0.0,
+    -45.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_DRON",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    -40.0,
+    -120.0,
+    55.0
+   ],
+   "rotacion_deg": [
+    71.63,
+    -0.0,
+    -30.31
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "DRON_OBJETIVO",
+   "tipo": "EMPTY",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    36.0,
+    10.0,
+    5.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "NORTE_VERDADERO",
+   "tipo": "EMPTY",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    -12.0,
+    -12.0,
+    0.2
+   ],
+   "rotacion_deg": [
+    -90.0,
+    0.0,
+    211.04
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_4x4_01_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    8.0,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     5.55,
+     -8.17,
+     0.3
+    ],
+    "max": [
+     10.45,
+     -6.23,
+     2.35
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_01_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    8.0,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.0,
+     -8.16,
+     -0.15
+    ],
+    "max": [
+     10.0,
+     -6.24,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_01_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    8.0,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.5,
+     -8.12,
+     1.1
+    ],
+    "max": [
+     10.3,
+     -6.28,
+     1.84
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_02_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    24.5,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     22.05,
+     -8.17,
+     0.3
+    ],
+    "max": [
+     26.95,
+     -6.23,
+     2.35
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_02_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    24.5,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     22.5,
+     -8.16,
+     -0.15
+    ],
+    "max": [
+     26.5,
+     -6.24,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_02_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    24.5,
+    -7.2,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     23.0,
+     -8.12,
+     1.1
+    ],
+    "max": [
+     26.8,
+     -6.28,
+     1.84
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_03_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    47.0,
+    -11.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    180.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     44.55,
+     -12.37,
+     0.3
+    ],
+    "max": [
+     49.45,
+     -10.43,
+     2.35
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_03_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    47.0,
+    -11.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    180.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     45.0,
+     -12.36,
+     -0.15
+    ],
+    "max": [
+     49.0,
+     -10.44,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_03_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    47.0,
+    -11.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    180.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     44.7,
+     -12.32,
+     1.1
+    ],
+    "max": [
+     48.5,
+     -10.48,
+     1.84
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_04_ESTAC_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    31.3,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     30.33,
+     -34.95,
+     0.3
+    ],
+    "max": [
+     32.27,
+     -30.05,
+     2.35
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_04_ESTAC_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    31.3,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     30.34,
+     -34.5,
+     -0.15
+    ],
+    "max": [
+     32.26,
+     -30.5,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_04_ESTAC_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    31.3,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     30.38,
+     -34.0,
+     1.1
+    ],
+    "max": [
+     32.22,
+     -30.2,
+     1.84
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_05_ESTAC_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    36.5,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     35.53,
+     -34.95,
+     0.3
+    ],
+    "max": [
+     37.47,
+     -30.05,
+     2.35
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_05_ESTAC_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    36.5,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     35.54,
+     -34.5,
+     -0.15
+    ],
+    "max": [
+     37.46,
+     -30.5,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_4x4_05_ESTAC_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    36.5,
+    -32.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    90.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     35.58,
+     -34.0,
+     1.1
+    ],
+    "max": [
+     37.42,
+     -30.2,
+     1.84
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ACERA_HORMIGON",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -60.0,
+     -4.308,
+     -0.2
+    ],
+    "max": [
+     145.0,
+     0.391,
+     0.0
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ANEXO_MURO_LADO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.81,
+     44.39,
+     -0.0
+    ],
+    "max": [
+     82.71,
+     44.54,
+     6.3
+    ]
+   },
+   "vertices": 48,
+   "caras": 40,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ANTEPECHO_2_40_CHAPA",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.23,
+     -1.632,
+     6.612
+    ],
+    "max": [
+     72.56,
+     0.392,
+     9.422
+    ]
+   },
+   "vertices": 24,
+   "caras": 18,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ANTEPECHO_NERVIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.13,
+     -1.672,
+     6.612
+    ],
+    "max": [
+     72.495,
+     -1.632,
+     9.012
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.30"
+   ]
+  },
+  {
+   "nombre": "UY_BOLARDOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     2.33,
+     -3.978,
+     0.0
+    ],
+    "max": [
+     80.155,
+     -3.838,
+     0.9
+    ]
+   },
+   "vertices": 408,
+   "caras": 238,
+   "materiales": [
+    "UY_BOLARDO_ACERO_GRAFITO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BORDILLO",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -60.0,
+     -4.458,
+     -0.2
+    ],
+    "max": [
+     145.0,
+     -4.308,
+     0.0
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CALZADA_ASFALTO",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -260.0,
+     -36.0,
+     -0.25
+    ],
+    "max": [
+     345.0,
+     -4.308,
+     -0.15
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_ASFALTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIAS_BASTIDOR",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.489,
+     -0.599,
+     0.18
+    ],
+    "max": [
+     82.96,
+     44.65,
+     6.22
+    ]
+   },
+   "vertices": 1144,
+   "caras": 858,
+   "materiales": [
+    "UY_BASTIDOR_ACERO_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE1_PT1_07",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.351,
+     -0.579,
+     0.2
+    ],
+    "max": [
+     -0.349,
+     4.421,
+     6.2
+    ]
+   },
+   "vertices": 2748,
+   "caras": 1973,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE1_PT1_08",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.351,
+     4.421,
+     0.2
+    ],
+    "max": [
+     -0.349,
+     9.421,
+     6.2
+    ]
+   },
+   "vertices": 2748,
+   "caras": 1973,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE20_PT2A_09",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.829,
+     -0.388,
+     0.2
+    ],
+    "max": [
+     82.831,
+     4.612,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE20_PT2B_10",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.829,
+     4.612,
+     0.2
+    ],
+    "max": [
+     82.831,
+     9.612,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_NE_PT2A_01",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     4.531,
+     -0.428,
+     0.2
+    ],
+    "max": [
+     9.531,
+     -0.427,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_NE_PT2A_04",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.932,
+     -0.428,
+     0.2
+    ],
+    "max": [
+     82.932,
+     -0.427,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_NE_PT2B_00",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.469,
+     -0.428,
+     0.2
+    ],
+    "max": [
+     4.531,
+     -0.427,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_NE_PT2B_03",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.932,
+     -0.428,
+     0.2
+    ],
+    "max": [
+     77.932,
+     -0.427,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_NE_PT2R_02",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     67.932,
+     -0.428,
+     0.2
+    ],
+    "max": [
+     72.932,
+     -0.427,
+     6.198
+    ]
+   },
+   "vertices": 2000,
+   "caras": 1404,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_SO_PT2A_06",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.94,
+     44.66,
+     0.2
+    ],
+    "max": [
+     82.94,
+     44.66,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_SO_PT2B_05",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.94,
+     44.66,
+     0.2
+    ],
+    "max": [
+     77.94,
+     44.66,
+     6.2
+    ]
+   },
+   "vertices": 2404,
+   "caras": 1715,
+   "materiales": [
+    "UY_CORTEN_OXIDADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CIELO_LUXALON_LAMAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.08,
+     -1.462,
+     6.635
+    ],
+    "max": [
+     72.41,
+     0.322,
+     6.651
+    ]
+   },
+   "vertices": 144,
+   "caras": 108,
+   "materiales": [
+    "UY_LUXALON_ALUMINIO_CHAMPAGNE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CIELO_PLENUM",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.08,
+     -1.482,
+     6.695
+    ],
+    "max": [
+     72.41,
+     0.392,
+     6.705
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_PLENUM_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_COLUMNAS_EJE_A",
+   "tipo": "MESH",
+   "colecciones": [
+    "01_ESTRUCTURA"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.2,
+     -0.308,
+     0.0
+    ],
+    "max": [
+     82.7,
+     0.692,
+     7.6
+    ]
+   },
+   "vertices": 160,
+   "caras": 120,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CUBIERTA_ANEXO",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.56,
+     -0.358,
+     6.3
+    ],
+    "max": [
+     82.76,
+     44.59,
+     6.55
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CUBIERTA_CHAPA",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.23,
+     -1.672,
+     7.88
+    ],
+    "max": [
+     72.56,
+     48.68,
+     13.02
+    ]
+   },
+   "vertices": 44,
+   "caras": 26,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CUBIERTA_NERVIOS_0",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.13,
+     -1.672,
+     7.98
+    ],
+    "max": [
+     48.195,
+     48.68,
+     13.065
+    ]
+   },
+   "vertices": 24,
+   "caras": 14,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.30"
+   ]
+  },
+  {
+   "nombre": "UY_CUBIERTA_NERVIOS_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     48.47,
+     -1.672,
+     8.359
+    ],
+    "max": [
+     72.495,
+     44.84,
+     13.065
+    ]
+   },
+   "vertices": 20,
+   "caras": 12,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.30"
+   ]
+  },
+  {
+   "nombre": "UY_DESCANSO_ESCALONES_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.3,
+     48.47,
+     0.0
+    ],
+    "max": [
+     3.4,
+     49.77,
+     0.45
+    ]
+   },
+   "vertices": 24,
+   "caras": 18,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_FACHADA_AIRE_-00.2",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.23,
+     48.32,
+     -0.0
+    ],
+    "max": [
+     48.25,
+     48.47,
+     7.87
+    ]
+   },
+   "vertices": 96,
+   "caras": 88,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_FACHADA_AIRE_048.2",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     48.25,
+     44.39,
+     -0.0
+    ],
+    "max": [
+     72.56,
+     44.54,
+     8.358
+    ]
+   },
+   "vertices": 80,
+   "caras": 72,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_FRANJA_ESTE_CHAPA",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.71,
+     -0.308,
+     4.41
+    ],
+    "max": [
+     82.73,
+     43.474,
+     6.21
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_FRANJA_ESTE_NERVIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.73,
+     -0.208,
+     4.41
+    ],
+    "max": [
+     82.77,
+     43.317,
+     6.21
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.30"
+   ]
+  },
+  {
+   "nombre": "UY_GOTERON_BORDE",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.24,
+     -1.684,
+     8.942
+    ],
+    "max": [
+     72.57,
+     -1.422,
+     9.187
+    ]
+   },
+   "vertices": 12,
+   "caras": 8,
+   "materiales": [
+    "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_INTERIOR_LUZ",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.03,
+     0.742,
+     0.0
+    ],
+    "max": [
+     72.36,
+     9.0,
+     7.05
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_INTERIOR_LUZ_CALIDA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_INTERIOR_PISO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.03,
+     0.742,
+     -0.05
+    ],
+    "max": [
+     72.36,
+     9.0,
+     0.0
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_PISO_INTERIOR_GRES"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_LETRAS_UYUNI",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     52.323,
+     -1.802,
+     7.764
+    ],
+    "max": [
+     57.899,
+     -1.702,
+     9.264
+    ]
+   },
+   "vertices": 552,
+   "caras": 398,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_LINEA_HORIZONTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     40.976,
+     -1.742,
+     7.752
+    ],
+    "max": [
+     72.252,
+     -1.702,
+     7.777
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_MONTICULOS_PERFORADOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.422,
+     -1.714,
+     7.764
+    ],
+    "max": [
+     65.851,
+     -1.702,
+     8.759
+    ]
+   },
+   "vertices": 15504,
+   "caras": 12860,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_REFLEJO_MONTICULOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.422,
+     -1.742,
+     6.764
+    ],
+    "max": [
+     65.851,
+     -1.702,
+     7.764
+    ]
+   },
+   "vertices": 216,
+   "caras": 186,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_REFLEJO_UYUNI",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     52.323,
+     -1.762,
+     6.264
+    ],
+    "max": [
+     57.899,
+     -1.702,
+     7.764
+    ]
+   },
+   "vertices": 1104,
+   "caras": 828,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LETRERO_SEPARADORES",
+   "tipo": "MESH",
+   "colecciones": [
+    "LETRERO_HORIZONTE_UYUNI"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.9,
+     -1.702,
+     7.991
+    ],
+    "max": [
+     65.373,
+     -1.672,
+     8.534
+    ]
+   },
+   "vertices": 128,
+   "caras": 96,
+   "materiales": [
+    "UY_BASTIDOR_ACERO_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LUMINARIAS_ALERO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     2.31,
+     -0.635,
+     6.631
+    ],
+    "max": [
+     70.085,
+     -0.455,
+     6.637
+    ]
+   },
+   "vertices": 120,
+   "caras": 90,
+   "materiales": [
+    "UY_LUMINARIA_ALERO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_LUNA_RELLENO",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    55.0,
+    -0.0,
+    -52.98
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_MAMPARA_M1_FRAMES",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     10.925,
+     0.367,
+     0.0
+    ],
+    "max": [
+     61.505,
+     0.692,
+     5.51
+    ]
+   },
+   "vertices": 592,
+   "caras": 444,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MAMPARA_M1_GLASS",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     10.927,
+     0.379,
+     0.002
+    ],
+    "max": [
+     61.503,
+     0.506,
+     5.508
+    ]
+   },
+   "vertices": 352,
+   "caras": 264,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MAMPARA_M1_SELLOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     10.925,
+     0.479,
+     0.0
+    ],
+    "max": [
+     61.505,
+     0.506,
+     5.51
+    ]
+   },
+   "vertices": 176,
+   "caras": 132,
+   "materiales": [
+    "UY_SELLO_ESTRUCTURAL_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MASTIL_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.5,
+     48.27,
+     7.98
+    ],
+    "max": [
+     0.7,
+     48.47,
+     10.38
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_0_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.22,
+     40.471,
+     1.011
+    ],
+    "max": [
+     -0.12,
+     42.169,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_0_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.213,
+     40.528,
+     1.068
+    ],
+    "max": [
+     -0.186,
+     42.112,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_1_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.22,
+     35.961,
+     1.011
+    ],
+    "max": [
+     -0.12,
+     37.659,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_1_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.213,
+     36.018,
+     1.068
+    ],
+    "max": [
+     -0.186,
+     37.602,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_2_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.22,
+     5.991,
+     1.011
+    ],
+    "max": [
+     -0.12,
+     7.689,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_2_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.213,
+     6.048,
+     1.068
+    ],
+    "max": [
+     -0.186,
+     7.632,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_3_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.22,
+     1.191,
+     1.011
+    ],
+    "max": [
+     -0.12,
+     2.889,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE1_3_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.214,
+     1.248,
+     1.068
+    ],
+    "max": [
+     -0.186,
+     2.832,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE20_0_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.6,
+     32.431,
+     1.011
+    ],
+    "max": [
+     82.7,
+     34.129,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE20_0_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.667,
+     32.488,
+     1.068
+    ],
+    "max": [
+     82.694,
+     34.072,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE20_1_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.6,
+     38.311,
+     1.011
+    ],
+    "max": [
+     82.7,
+     40.009,
+     2.709
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_EJE20_1_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.667,
+     38.368,
+     1.068
+    ],
+    "max": [
+     82.694,
+     39.952,
+     2.652
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_0_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     1.181,
+     0.412,
+     1.219
+    ],
+    "max": [
+     2.879,
+     0.512,
+     2.917
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_0_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     1.238,
+     0.466,
+     1.276
+    ],
+    "max": [
+     2.822,
+     0.493,
+     2.86
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_1_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.181,
+     0.412,
+     1.219
+    ],
+    "max": [
+     7.879,
+     0.512,
+     2.917
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_1_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.238,
+     0.466,
+     1.276
+    ],
+    "max": [
+     7.822,
+     0.493,
+     2.86
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_2_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     64.581,
+     0.412,
+     1.429
+    ],
+    "max": [
+     66.279,
+     0.512,
+     3.127
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_2_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     64.638,
+     0.466,
+     1.486
+    ],
+    "max": [
+     66.222,
+     0.493,
+     3.07
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_3_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     69.581,
+     0.412,
+     1.429
+    ],
+    "max": [
+     71.279,
+     0.512,
+     3.127
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_NE_3_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     69.638,
+     0.466,
+     1.486
+    ],
+    "max": [
+     71.222,
+     0.493,
+     3.07
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_SO_0_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     74.586,
+     44.43,
+     1.013
+    ],
+    "max": [
+     76.284,
+     44.53,
+     2.711
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_SO_0_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     74.643,
+     44.496,
+     1.07
+    ],
+    "max": [
+     76.227,
+     44.523,
+     2.654
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_SO_1_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     79.586,
+     44.43,
+     1.013
+    ],
+    "max": [
+     81.284,
+     44.53,
+     2.711
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ALUMINIO_ANODIZADO_NEGRO_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME3_SO_1_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     79.643,
+     44.496,
+     1.07
+    ],
+    "max": [
+     81.227,
+     44.523,
+     2.654
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MINIBUS_TRANSFER_CARROCERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    63.0,
+    -7.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     59.8,
+     -8.425,
+     0.3
+    ],
+    "max": [
+     66.2,
+     -6.375,
+     2.4
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_PINTURA_VEHICULO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MINIBUS_TRANSFER_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    63.0,
+    -7.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     60.25,
+     -8.415,
+     -0.15
+    ],
+    "max": [
+     65.75,
+     -6.385,
+     0.65
+    ]
+   },
+   "vertices": 160,
+   "caras": 88,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MINIBUS_TRANSFER_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    63.0,
+    -7.4,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     60.75,
+     -8.375,
+     1.1
+    ],
+    "max": [
+     66.05,
+     -6.425,
+     2.34
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_VIDRIO_VEHICULO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_00.00",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.2,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     4.6,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_04.80",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     5.0,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     9.4,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_09.60",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     9.8,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     14.2,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_14.40",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     14.6,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     19.0,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_19.20",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     19.4,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     23.8,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_28.80",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     29.0,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     33.4,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_33.60",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     33.8,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     38.2,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_38.40",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     38.6,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     43.0,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_48.50",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     48.7,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     53.03,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_53.23",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     53.43,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     57.83,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_58.03",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     58.23,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     62.63,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_62.83",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     63.03,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     67.43,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_67.63",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     67.83,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     72.16,
+     0.522,
+     5.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_CIEGO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     24.2,
+     0.392,
+     0.0
+    ],
+    "max": [
+     82.31,
+     0.522,
+     6.3
+    ]
+   },
+   "vertices": 48,
+   "caras": 36,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_SOBRE_DINTEL",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.22,
+     0.392,
+     6.01
+    ],
+    "max": [
+     72.55,
+     0.522,
+     9.342
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_NIEVE_BORDE_CUBIERTA",
+   "tipo": "MESH",
+   "colecciones": [
+    "09_NIEVE_CREPUSCULO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.18,
+     -1.652,
+     9.15
+    ],
+    "max": [
+     72.51,
+     -1.232,
+     9.364
+    ]
+   },
+   "vertices": 10,
+   "caras": 7,
+   "materiales": [
+    "UY_NIEVE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PLATAFORMA_LADO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -10.0,
+     49.0,
+     -0.25
+    ],
+    "max": [
+     95.0,
+     120.0,
+     -0.15
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_CORTE_ACTUAL_MURO_CIEGO",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_CUBIERTA"
+   ],
+   "ubicacion": [
+    -140.0,
+    -160.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -140.0,
+     -160.0,
+     0.0
+    ],
+    "max": [
+     -114.5,
+     -160.0,
+     26.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_CORTE_ACTUAL_MURO_CIEGO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_CORTE_ACTUAL_POR_M1",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_CUBIERTA"
+   ],
+   "ubicacion": [
+    -30.0,
+    8.853,
+    -6.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    -90.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -30.0,
+     -12.647,
+     -6.0
+    ],
+    "max": [
+     -30.0,
+     8.853,
+     20.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_CORTE_ACTUAL_POR_M1"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_CORTE_ORIGINAL_B-K-A",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ANTES"
+   ],
+   "ubicacion": [
+    -20.0,
+    -160.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -20.0,
+     -160.0,
+     0.0
+    ],
+    "max": [
+     27.0,
+     -160.0,
+     26.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_CORTE_ORIGINAL_B-K-A"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_FACHADA_ESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ALZADOS_LATERALES"
+   ],
+   "ubicacion": [
+    -20.0,
+    -200.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -20.0,
+     -200.0,
+     0.0
+    ],
+    "max": [
+     47.0,
+     -200.0,
+     28.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_FACHADA_ESTE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_FACHADA_NORESTE_ACTUAL",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ALZADO_LADO_TIERRA"
+   ],
+   "ubicacion": [
+    -3.0,
+    60.0,
+    -6.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -3.0,
+     60.0,
+     -6.0
+    ],
+    "max": [
+     92.0,
+     60.0,
+     20.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_FACHADA_NORESTE_ACTUAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_FACHADA_NORESTE_ORIGINAL",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ANTES"
+   ],
+   "ubicacion": [
+    -260.0,
+    -200.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -260.0,
+     -200.0,
+     0.0
+    ],
+    "max": [
+     -165.0,
+     -200.0,
+     26.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_FACHADA_NORESTE_ORIGINAL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_FACHADA_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ALZADOS_LATERALES"
+   ],
+   "ubicacion": [
+    100.0,
+    -200.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     100.0,
+     -200.0,
+     0.0
+    ],
+    "max": [
+     180.0,
+     -200.0,
+     28.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_FACHADA_OESTE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_FACHADA_SUROESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_ALZADO_LADO_AIRE"
+   ],
+   "ubicacion": [
+    -140.0,
+    -200.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -140.0,
+     -200.0,
+     0.0
+    ],
+    "max": [
+     -30.0,
+     -200.0,
+     26.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_FACHADA_SUROESTE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME1",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    -260.0,
+    -240.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -260.0,
+     -240.0,
+     0.0
+    ],
+    "max": [
+     -244.0,
+     -240.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME1"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME2",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    -140.0,
+    -240.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -140.0,
+     -240.0,
+     0.0
+    ],
+    "max": [
+     -120.0,
+     -240.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME2"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME3",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    100.0,
+    -240.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     100.0,
+     -240.0,
+     0.0
+    ],
+    "max": [
+     120.0,
+     -240.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME3"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME4",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    -260.0,
+    -280.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -260.0,
+     -280.0,
+     0.0
+    ],
+    "max": [
+     -240.0,
+     -280.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME4"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME5",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    -140.0,
+    -280.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -140.0,
+     -280.0,
+     0.0
+    ],
+    "max": [
+     -118.0,
+     -280.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME5"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_ME6",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_M1"
+   ],
+   "ubicacion": [
+    -20.0,
+    -240.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -20.0,
+     -240.0,
+     0.0
+    ],
+    "max": [
+     -2.0,
+     -240.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_ME6"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_PANELES_LETRAS_PIRAMIDES",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_CELOSIA"
+   ],
+   "ubicacion": [
+    100.0,
+    -280.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     100.0,
+     -280.0,
+     0.0
+    ],
+    "max": [
+     151.0,
+     -280.0,
+     32.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_PANELES_LETRAS_PIRAMIDES"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_REF_PT1_PT2",
+   "tipo": "MESH",
+   "colecciones": [
+    "REF_CAD_DETALLES_CELOSIA"
+   ],
+   "ubicacion": [
+    -20.0,
+    -280.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    90.0,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -20.0,
+     -280.0,
+     0.0
+    ],
+    "max": [
+     8.0,
+     -280.0,
+     21.0
+    ]
+   },
+   "vertices": 4,
+   "caras": 1,
+   "materiales": [
+    "UY_REF_PT1_PT2"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_RETENEDOR_ABRAZADERAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.138,
+     -1.302,
+     9.234
+    ],
+    "max": [
+     72.503,
+     -1.242,
+     9.374
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.30"
+   ]
+  },
+  {
+   "nombre": "UY_RETENEDOR_BARRAS_TUBULARES",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.18,
+     -1.289,
+     9.292
+    ],
+    "max": [
+     72.51,
+     -1.255,
+     9.386
+    ]
+   },
+   "vertices": 64,
+   "caras": 36,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_RETORNO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     48.175,
+     44.54,
+     0.0
+    ],
+    "max": [
+     48.325,
+     48.47,
+     8.368
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ROMBO_OESTE_CHAPA_PERFORADA",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.271,
+     35.885,
+     4.72
+    ],
+    "max": [
+     -0.268,
+     37.745,
+     6.58
+    ]
+   },
+   "vertices": 7256,
+   "caras": 6162,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ROMBO_OESTE_FONDO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.236,
+     35.84,
+     4.675
+    ],
+    "max": [
+     -0.23,
+     37.79,
+     6.625
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_PLENUM_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ROMBO_OESTE_MARCO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.29,
+     35.426,
+     4.261
+    ],
+    "max": [
+     -0.23,
+     38.204,
+     7.039
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_LETRERO_BLANCO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_SENALIZACION_VIAL",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -260.0,
+     -35.0,
+     -0.15
+    ],
+    "max": [
+     345.0,
+     -9.248,
+     -0.148
+    ]
+   },
+   "vertices": 288,
+   "caras": 216,
+   "materiales": [
+    "UY_PINTURA_VIAL_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_SOL_MANANA",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_DIA"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    43.54,
+    -0.0,
+    -42.53
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_002.4",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    2.4,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_007.2",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    7.2,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_012.0",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    12.0,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_016.8",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    16.8,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_021.6",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    21.6,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_026.4",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    26.4,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_031.2",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    31.2,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_036.0",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    36.0,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_040.8",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    40.8,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_045.6",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    45.6,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_050.9",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    50.865,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_055.6",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    55.63,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_060.4",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    60.43,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_065.2",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    65.23,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_070.0",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    69.995,
+    -0.545,
+    6.625
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_SUELO_ALTIPLANO",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -2000.0,
+     -2000.0,
+     -0.6
+    ],
+    "max": [
+     2000.0,
+     2000.0,
+     -0.23
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_SUELO_ALTIPLANO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TESTERO_EJE_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.23,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     -0.08,
+     48.47,
+     12.91
+    ]
+   },
+   "vertices": 96,
+   "caras": 84,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TESTERO_EJE_17",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.41,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     72.56,
+     44.54,
+     12.91
+    ]
+   },
+   "vertices": 28,
+   "caras": 17,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TESTERO_EJE_20",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     82.56,
+     0.392,
+     -0.0
+    ],
+    "max": [
+     82.71,
+     44.54,
+     6.3
+    ]
+   },
+   "vertices": 48,
+   "caras": 40,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_00",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    16.0,
+    -2.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     15.76,
+     -2.15,
+     0.0
+    ],
+    "max": [
+     16.68,
+     -1.64,
+     1.62
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_ROPA_0"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_01",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    17.6,
+    -2.6,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     17.36,
+     -2.75,
+     0.0
+    ],
+    "max": [
+     17.84,
+     -2.24,
+     1.68
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_1"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_02",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    18.2,
+    -1.4,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     17.96,
+     -1.55,
+     0.0
+    ],
+    "max": [
+     18.44,
+     -1.04,
+     1.74
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_2"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_03",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    54.8,
+    -2.2,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     54.56,
+     -2.35,
+     0.0
+    ],
+    "max": [
+     55.48,
+     -1.84,
+     1.65
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_ROPA_3"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_04",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    56.4,
+    -3.1,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     56.16,
+     -3.25,
+     0.0
+    ],
+    "max": [
+     56.64,
+     -2.74,
+     1.71
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_4"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_05",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    57.1,
+    -1.8,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     56.86,
+     -1.95,
+     0.0
+    ],
+    "max": [
+     57.34,
+     -1.44,
+     1.62
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_0"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_06",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    36.0,
+    -3.3,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     35.76,
+     -3.45,
+     0.0
+    ],
+    "max": [
+     36.68,
+     -2.94,
+     1.68
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_ROPA_1"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_07",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    9.5,
+    -6.5,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     9.26,
+     -6.65,
+     -0.15
+    ],
+    "max": [
+     9.74,
+     -6.14,
+     1.59
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_2"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_TURISTA_08",
+   "tipo": "MESH",
+   "colecciones": [
+    "PROXIES_COLOCACION"
+   ],
+   "ubicacion": [
+    25.4,
+    -6.6,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     25.16,
+     -6.75,
+     -0.15
+    ],
+    "max": [
+     25.64,
+     -6.24,
+     1.5
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_ROPA_3"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_-00.5",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    2.031,
+    -1.328,
+    0.05
+   ],
+   "rotacion_deg": [
+    162.26,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_004.5",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    7.031,
+    -1.328,
+    0.05
+   ],
+   "rotacion_deg": [
+    162.26,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_067.9",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    70.432,
+    -1.328,
+    0.05
+   ],
+   "rotacion_deg": [
+    162.26,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_072.9",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    75.432,
+    -1.328,
+    0.05
+   ],
+   "rotacion_deg": [
+    162.26,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_077.9",
+   "tipo": "LIGHT",
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "ubicacion": [
+    80.432,
+    -1.328,
+    0.05
+   ],
+   "rotacion_deg": [
+    162.26,
+    -0.0,
+    0.0
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "UY_VIDRIOS_AIRE_-00.2",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     9.8,
+     48.37,
+     0.001
+    ],
+    "max": [
+     42.94,
+     48.397,
+     6.51
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VIDRIOS_AIRE_048.2",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     53.43,
+     44.44,
+     4.82
+    ],
+    "max": [
+     70.33,
+     44.467,
+     6.51
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VIGAS_DINTEL_300x500",
+   "tipo": "MESH",
+   "colecciones": [
+    "01_ESTRUCTURA"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.2,
+     0.392,
+     5.51
+    ],
+    "max": [
+     72.53,
+     0.692,
+     7.6
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VOLUMEN_SALIENTE_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.3,
+     48.47,
+     3.45
+    ],
+    "max": [
+     2.8,
+     50.51,
+     6.15
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_DURALIT_FIBROCEMENTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ZANJA_DRENAJE",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -60.0,
+     -1.965,
+     -0.3
+    ],
+    "max": [
+     145.0,
+     -1.465,
+     -0.2
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ZANJA_REJILLA",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -60.0,
+     -1.945,
+     -0.035
+    ],
+    "max": [
+     145.0,
+     -1.485,
+     -0.005
+    ]
+   },
+   "vertices": 112,
+   "caras": 84,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  }
+ ],
+ "camaras": {
+  "CAM_01_HERO_LADO_TIERRA": {
+   "ubicacion": [
+    91.0,
+    -17.0,
+    1.65
+   ],
+   "direccion": [
+    -0.897,
+    0.435,
+    0.078
+   ],
+   "focal_mm": 32.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_02B_DETALLE_CIELO": {
+   "ubicacion": [
+    11.0,
+    -3.6,
+    1.62
+   ],
+   "direccion": [
+    0.836,
+    0.315,
+    0.45
+   ],
+   "focal_mm": 22.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_02_DETALLE_ALERO": {
+   "ubicacion": [
+    -2.8,
+    -5.6,
+    10.1
+   ],
+   "direccion": [
+    0.85,
+    0.501,
+    -0.163
+   ],
+   "focal_mm": 35.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_03_CREPUSCULAR_NIEVE": {
+   "ubicacion": [
+    50.5,
+    -36.0,
+    1.7
+   ],
+   "direccion": [
+    0.0,
+    0.996,
+    0.091
+   ],
+   "focal_mm": 24.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_04_AEREA_GENERAL": {
+   "ubicacion": [
+    -22.0,
+    -58.0,
+    48.0
+   ],
+   "direccion": [
+    0.598,
+    0.658,
+    -0.458
+   ],
+   "focal_mm": 35.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_05_LETRERO_HORIZONTE": {
+   "ubicacion": [
+    54.0,
+    -19.0,
+    4.2
+   ],
+   "direccion": [
+    0.0,
+    0.98,
+    0.198
+   ],
+   "focal_mm": 40.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_06_DETALLE_CELOSIA": {
+   "ubicacion": [
+    62.5,
+    -9.5,
+    2.0
+   ],
+   "direccion": [
+    0.704,
+    0.704,
+    0.094
+   ],
+   "focal_mm": 28.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_DRON": {
+   "ubicacion": [
+    -40.0,
+    -120.0,
+    55.0
+   ],
+   "direccion": [
+    0.479,
+    0.819,
+    -0.315
+   ],
+   "focal_mm": 24.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": true,
+   "restricciones": [
+    "TRACK_TO->DRON_OBJETIVO"
+   ]
+  }
+ },
+ "luces": [
+  {
+   "nombre": "UY_LUNA_RELLENO",
+   "tipo": "SUN",
+   "energia": 0.03,
+   "temperatura_K": 7500.0,
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SOL_MANANA",
+   "tipo": "SUN",
+   "energia": 4.5,
+   "temperatura_K": 5800.0,
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "colecciones": [
+    "08_LUZ_DIA"
+   ],
+   "direccion": [
+    0.466,
+    0.508,
+    -0.725
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_002.4",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    2.4,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_007.2",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    7.2,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_012.0",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    12.0,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_016.8",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    16.8,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_021.6",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    21.6,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_026.4",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    26.4,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_031.2",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    31.2,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_036.0",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    36.0,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_040.8",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    40.8,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_045.6",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    45.6,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_050.9",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    50.865,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_055.6",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    55.63,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_060.4",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    60.43,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_065.2",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    65.23,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_SPOT_ALERO_070.0",
+   "tipo": "SPOT",
+   "energia": 120.0,
+   "temperatura_K": 3000.0,
+   "ubicacion": [
+    69.995,
+    -0.545,
+    6.625
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_-00.5",
+   "tipo": "SPOT",
+   "energia": 220.0,
+   "temperatura_K": 2700.0,
+   "ubicacion": [
+    2.031,
+    -1.328,
+    0.05
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_004.5",
+   "tipo": "SPOT",
+   "energia": 220.0,
+   "temperatura_K": 2700.0,
+   "ubicacion": [
+    7.031,
+    -1.328,
+    0.05
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_067.9",
+   "tipo": "SPOT",
+   "energia": 220.0,
+   "temperatura_K": 2700.0,
+   "ubicacion": [
+    70.432,
+    -1.328,
+    0.05
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_072.9",
+   "tipo": "SPOT",
+   "energia": 220.0,
+   "temperatura_K": 2700.0,
+   "ubicacion": [
+    75.432,
+    -1.328,
+    0.05
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  },
+  {
+   "nombre": "UY_UPLIGHT_CELOSIA_077.9",
+   "tipo": "SPOT",
+   "energia": 220.0,
+   "temperatura_K": 2700.0,
+   "ubicacion": [
+    80.432,
+    -1.328,
+    0.05
+   ],
+   "colecciones": [
+    "08_LUZ_CREPUSCULO"
+   ],
+   "direccion": [
+    0.0,
+    0.0,
+    -1.0
+   ]
+  }
+ ],
+ "materiales": [
+  {
+   "nombre": "UY_ACERO_GALVANIZADO",
+   "usuarios": 4,
+   "color_visor": [
+    0.337,
+    0.356,
+    0.376,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ALUMINIO_ANODIZADO_NEGRO_MATE",
+   "usuarios": 13,
+   "color_visor": [
+    0.01,
+    0.01,
+    0.01,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ASFALTO",
+   "usuarios": 1,
+   "color_visor": [
+    0.033,
+    0.033,
+    0.032,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "humedad"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
+   "nombre": "UY_BASTIDOR_ACERO_NEGRO",
+   "usuarios": 2,
+   "color_visor": [
+    0.014,
+    0.014,
+    0.014,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_BOLARDO_ACERO_GRAFITO",
+   "usuarios": 1,
+   "color_visor": [
+    0.023,
+    0.024,
+    0.026,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_CHAPA_CAFE_CHOCOLATE_ACERGAL",
+   "usuarios": 9,
+   "color_visor": [
+    0.047,
+    0.021,
+    0.012,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_CORTEN_OXIDADO",
+   "usuarios": 11,
+   "color_visor": [
+    0.195,
+    0.04,
+    0.014,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBump",
+    "ShaderNodeMath",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise",
+    "ShaderNodeValToRGB"
+   ]
+  },
+  {
+   "nombre": "UY_DURALIT_FIBROCEMENTO",
+   "usuarios": 23,
+   "color_visor": [
+    0.597,
+    0.552,
+    0.468,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBump",
+    "ShaderNodeCombineXYZ",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeNewGeometry",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise",
+    "ShaderNodeVectorMath"
+   ]
+  },
+  {
+   "nombre": "UY_HORMIGON_FRATASADO",
+   "usuarios": 2,
+   "color_visor": [
+    0.434,
+    0.418,
+    0.381,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "humedad"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
+   "nombre": "UY_HORMIGON_VISTO",
+   "usuarios": 5,
+   "color_visor": [
+    0.296,
+    0.292,
+    0.275,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
+   "nombre": "UY_INTERIOR_LUZ_CALIDA",
+   "usuarios": 1,
+   "color_visor": [
+    1.0,
+    0.456,
+    0.147,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "luz_interior"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_LETRERO_BLANCO",
+   "usuarios": 7,
+   "color_visor": [
+    0.896,
+    0.896,
+    0.863,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "luz_letrero"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_LUMINARIA_ALERO",
+   "usuarios": 1,
+   "color_visor": [
+    1.0,
+    0.539,
+    0.195,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "luz_alero"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_LUXALON_ALUMINIO_CHAMPAGNE",
+   "usuarios": 1,
+   "color_visor": [
+    0.624,
+    0.591,
+    0.527,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_NEUMATICO",
+   "usuarios": 6,
+   "color_visor": [
+    0.006,
+    0.006,
+    0.006,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_NIEVE",
+   "usuarios": 1,
+   "color_visor": [
+    0.905,
+    0.922,
+    0.956,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_PINTURA_VEHICULO_BLANCO",
+   "usuarios": 6,
+   "color_visor": [
+    0.815,
+    0.815,
+    0.776,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_PINTURA_VIAL_BLANCA",
+   "usuarios": 1,
+   "color_visor": [
+    0.807,
+    0.807,
+    0.761,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_PISO_INTERIOR_GRES",
+   "usuarios": 1,
+   "color_visor": [
+    0.275,
+    0.254,
+    0.223,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_PLENUM_NEGRO",
+   "usuarios": 2,
+   "color_visor": [
+    0.002,
+    0.002,
+    0.002,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_REF_CORTE_ACTUAL_MURO_CIEGO",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_CORTE_ACTUAL_POR_M1",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_CORTE_ORIGINAL_B-K-A",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_FACHADA_ESTE",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_FACHADA_NORESTE_ACTUAL",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_FACHADA_NORESTE_ORIGINAL",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_FACHADA_OESTE",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_FACHADA_SUROESTE",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME1",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME2",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME3",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME4",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME5",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_ME6",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_PANELES_LETRAS_PIRAMIDES",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_REF_PT1_PT2",
+   "usuarios": 1,
+   "color_visor": [
+    0.8,
+    0.8,
+    0.8,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexImage"
+   ]
+  },
+  {
+   "nombre": "UY_ROPA_0",
+   "usuarios": 2,
+   "color_visor": [
+    0.445,
+    0.042,
+    0.027,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ROPA_1",
+   "usuarios": 2,
+   "color_visor": [
+    0.028,
+    0.078,
+    0.212,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ROPA_2",
+   "usuarios": 2,
+   "color_visor": [
+    0.694,
+    0.223,
+    0.024,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ROPA_3",
+   "usuarios": 2,
+   "color_visor": [
+    0.045,
+    0.102,
+    0.045,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_ROPA_4",
+   "usuarios": 1,
+   "color_visor": [
+    0.105,
+    0.105,
+    0.105,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_SELLO_ESTRUCTURAL_NEGRO",
+   "usuarios": 1,
+   "color_visor": [
+    0.003,
+    0.003,
+    0.003,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_SUELO_ALTIPLANO",
+   "usuarios": 1,
+   "color_visor": [
+    0.479,
+    0.392,
+    0.242,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "nieve"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBump",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
+   "nombre": "UY_VIDRIO_CONTROL_SOLAR",
+   "usuarios": 15,
+   "color_visor": [
+    0.55,
+    0.65,
+    0.72,
+    0.6
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_VIDRIO_VEHICULO",
+   "usuarios": 6,
+   "color_visor": [
+    0.005,
+    0.007,
+    0.009,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  }
+ ],
+ "proxies_a_reemplazar": [
+  {
+   "proxy": "UY_4x4_01",
+   "tipo": "vagoneta_4x4",
+   "partes": [
+    "UY_4x4_01_CARROCERIA",
+    "UY_4x4_01_RUEDAS",
+    "UY_4x4_01_VIDRIOS"
+   ],
+   "centro_base": [
+    8.0,
+    -7.2,
+    -0.15
+   ],
+   "tamano": [
+    4.9,
+    1.94,
+    2.5
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_4x4_02",
+   "tipo": "vagoneta_4x4",
+   "partes": [
+    "UY_4x4_02_CARROCERIA",
+    "UY_4x4_02_RUEDAS",
+    "UY_4x4_02_VIDRIOS"
+   ],
+   "centro_base": [
+    24.5,
+    -7.2,
+    -0.15
+   ],
+   "tamano": [
+    4.9,
+    1.94,
+    2.5
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_4x4_03",
+   "tipo": "vagoneta_4x4",
+   "partes": [
+    "UY_4x4_03_CARROCERIA",
+    "UY_4x4_03_RUEDAS",
+    "UY_4x4_03_VIDRIOS"
+   ],
+   "centro_base": [
+    47.0,
+    -11.4,
+    -0.15
+   ],
+   "tamano": [
+    4.9,
+    1.94,
+    2.5
+   ],
+   "rotacion_z_deg": 180.0
+  },
+  {
+   "proxy": "UY_4x4_04_ESTAC",
+   "tipo": "vagoneta_4x4",
+   "partes": [
+    "UY_4x4_04_ESTAC_CARROCERIA",
+    "UY_4x4_04_ESTAC_RUEDAS",
+    "UY_4x4_04_ESTAC_VIDRIOS"
+   ],
+   "centro_base": [
+    31.3,
+    -32.5,
+    -0.15
+   ],
+   "tamano": [
+    1.94,
+    4.9,
+    2.5
+   ],
+   "rotacion_z_deg": 90.0
+  },
+  {
+   "proxy": "UY_4x4_05_ESTAC",
+   "tipo": "vagoneta_4x4",
+   "partes": [
+    "UY_4x4_05_ESTAC_CARROCERIA",
+    "UY_4x4_05_ESTAC_RUEDAS",
+    "UY_4x4_05_ESTAC_VIDRIOS"
+   ],
+   "centro_base": [
+    36.5,
+    -32.5,
+    -0.15
+   ],
+   "tamano": [
+    1.94,
+    4.9,
+    2.5
+   ],
+   "rotacion_z_deg": 90.0
+  },
+  {
+   "proxy": "UY_MINIBUS_TRANSFER",
+   "tipo": "minibus",
+   "partes": [
+    "UY_MINIBUS_TRANSFER_CARROCERIA",
+    "UY_MINIBUS_TRANSFER_RUEDAS",
+    "UY_MINIBUS_TRANSFER_VIDRIOS"
+   ],
+   "centro_base": [
+    63.0,
+    -7.4,
+    -0.15
+   ],
+   "tamano": [
+    6.4,
+    2.05,
+    2.55
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_00",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_00"
+   ],
+   "centro_base": [
+    16.22,
+    -1.895,
+    0.0
+   ],
+   "tamano": [
+    0.92,
+    0.51,
+    1.62
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_01",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_01"
+   ],
+   "centro_base": [
+    17.6,
+    -2.495,
+    0.0
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.68
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_02",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_02"
+   ],
+   "centro_base": [
+    18.2,
+    -1.295,
+    0.0
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.74
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_03",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_03"
+   ],
+   "centro_base": [
+    55.02,
+    -2.095,
+    0.0
+   ],
+   "tamano": [
+    0.92,
+    0.51,
+    1.65
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_04",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_04"
+   ],
+   "centro_base": [
+    56.4,
+    -2.995,
+    0.0
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.71
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_05",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_05"
+   ],
+   "centro_base": [
+    57.1,
+    -1.695,
+    0.0
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.62
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_06",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_06"
+   ],
+   "centro_base": [
+    36.22,
+    -3.195,
+    0.0
+   ],
+   "tamano": [
+    0.92,
+    0.51,
+    1.68
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_07",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_07"
+   ],
+   "centro_base": [
+    9.5,
+    -6.395,
+    -0.15
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.74
+   ],
+   "rotacion_z_deg": 0.0
+  },
+  {
+   "proxy": "UY_TURISTA_08",
+   "tipo": "persona",
+   "partes": [
+    "UY_TURISTA_08"
+   ],
+   "centro_base": [
+    25.4,
+    -6.495,
+    -0.15
+   ],
+   "tamano": [
+    0.48,
+    0.51,
+    1.65
+   ],
+   "rotacion_z_deg": 0.0
+  }
+ ]
+}

@@ -5,8 +5,10 @@ No calca el DXF: toda la geometría sale de las cotas.
 
 Cómo ejecutarlo:
   A) Blender > Scripting > Open > uyuni_modelo.py > Run Script
-  B) Vía MCP (Claude Code local con el MCP de Blender), con execute_blender_code:
-       exec(open(r"C:/ruta/al/repo/aeropuerto_uyuni/01_blender/uyuni_modelo.py", encoding="utf-8").read())
+  B) Vía MCP (sesión local con el MCP de Blender), con execute_blender_code:
+       p = r"C:/ruta/al/repo/aeropuerto_uyuni/01_blender/uyuni_modelo.py"
+       exec(open(p, encoding="utf-8").read(), {"__file__": p, "__name__": "__main__"})
+  C) Sin interfaz: herramientas/construir_blend.py (ver TRASPASO.md)
   Se puede volver a ejecutar: borra y regenera solo las colecciones que crea.
 
 Sistema de coordenadas (el mismo del IFC, en coordenadas locales del edificio):
@@ -17,7 +19,7 @@ Georreferencia: UTM 19S (EPSG:32719), origen E 724956,439 / N 7737860,959, X loc
 Norte verdadero en coordenadas locales: 301,043° (antihorario desde +X). El Lado Tierra mira al NNE (azimut 31°).
 
 Escenas:
-  UYUNI_DIA         luz de mañana (sol calculado para Uyuni) - CAM_01, CAM_02, CAM_02B, CAM_04, CAM_DRON
+  UYUNI_DIA         luz de mañana (sol calculado para Uyuni) - CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_DRON
   UYUNI_CREPUSCULO  hora azul: interior y alero encendidos, piso mojado, nieve - CAM_03
 """
 import json
@@ -65,8 +67,8 @@ LETRERO_SEP = 0.03                # separación entre el letrero y los nervios d
 LETRERO_FONDO = dict(letras=0.10, reflejo=0.06, rombos=0.012, marcos=0.04, horizonte=0.04)
 
 # Perfil de cubierta (Y, Z cara superior): corte del DXF + alzados laterales; cumbrera sobre los ejes F/G
-PERFIL_CUBIERTA = [(-1.672, 9.14), (16.30, 11.77), (28.28, 13.02), (37.73, 10.96), (45.875, 7.98), (48.68, 7.98)]
-CUMBRERA_Z = 13.02                # parámetro: las fachadas NE/SO marcan +13,43 y las laterales +13,02
+CUMBRERA_Z = 13.02                # las laterales marcan +13,02 y las fachadas NE/SO +13,43 (sin confirmar)
+PERFIL_CUBIERTA = [(-1.672, 9.14), (16.30, 11.77), (28.28, CUMBRERA_Z), (37.73, 10.96), (45.875, 7.98), (48.68, 7.98)]
 E_CUBIERTA = 0.10
 NERVIO_PASO = 0.30                # chapa engrapada con nervios cada 0,30 m
 NERVIO_SECCION = (0.025, 0.045)
@@ -105,14 +107,14 @@ ME2 = [(14.660, 18.940), (53.490, 57.770)]
 ME3_NE = [(2.03, 2.068), (7.03, 2.068), (65.43, 2.278), (70.43, 2.278)]     # (X centro, Z centro); rombo de 1,20
 ME3_EJE1 = [(41.32, 1.86), (36.81, 1.86), (6.84, 1.86), (2.04, 1.86)]        # (Y centro, Z centro)
 ME3_EJE20 = [(33.28, 1.86), (39.16, 1.86)]
-ME3_SO = [(75.435, 1.862), (80.435, 1.862)]
+ME3_SO = [(75.435, 1.862), (80.435, 1.862)]                                 # (X centro, Z centro) detrás de las PT2 del Lado Aire
 # Fachada OESTE (testero del eje 1): rombo perforado sobre el ME-3 (lado 1,96; interior 1,36), bloque bajo con mástil
 ROMBO_OESTE = dict(y=36.815, z=5.65, semi_ext=1.389, semi_int=0.965, semi_placa=0.93)
 MASTIL_OESTE = dict(x=0.6, y=48.37, z_base=7.98, z_cambio=8.88, z_tope=10.38)
 CAJA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 50.51), z=(3.45, 6.15))      # volumen saliente hacia la pista
 PLATAFORMA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 49.77), z=0.45)        # descanso de 0,45 m con 3 escalones
 # Fachada ESTE (testero del eje 20): franja de chapa café chocolate nervada, en todo el ancho
-FRANJA_ESTE = dict(y=(-0.308, 43.474), z=(4.41, 6.21))                              # (X centro, Z centro) detrás de las PT2 del Lado Aire
+FRANJA_ESTE = dict(y=(-0.308, 43.474), z=(4.41, 6.21))
 VENTANAS_AIRE = [  # (X0, X1, Z0, Z1) Lado Aire: ME-4, ME-5 y ME-6 aproximadas desde el alzado SO
     (67.83, 70.33, 4.82, 6.51), (63.04, 65.53, 4.82, 6.51), (58.23, 60.73, 4.82, 6.51), (53.43, 55.93, 4.82, 6.51),
     (38.60, 42.94, 3.76, 6.51), (38.63, 42.91, 0.0, 2.36), (33.80, 38.14, 0.0, 2.66), (33.80, 38.14, 3.76, 6.51),
@@ -605,8 +607,12 @@ def crear_materiales():
 def estructura(C, M):
     col = C["01_ESTRUCTURA"]
     m = Malla()
-    for x in EJES_X.values():   # columnas del eje A (Lado Tierra)
-        m.caja(x - COL_ANCHO / 2, x + COL_ANCHO / 2, Y_COL_EXT, Y_COL_INT, 0.0, Z_COL_TOPE)
+    for x in EJES_X.values():   # columnas del eje A (Lado Tierra); en el anexo (ejes 18-20) no pasan de su cubierta
+        anexo = x >= ANEXO["x"][0]
+        z1 = ANEXO["z"] if anexo else Z_COL_TOPE
+        # la cara extrema queda 1 cm detrás del testero o del antepecho: compartir plano da manchas negras en Cycles
+        x1 = min(x + COL_ANCHO / 2, (ANEXO["x"][1] if anexo else X_ALERO[1]) - 0.01)
+        m.caja(x - COL_ANCHO / 2, x1, Y_COL_EXT, Y_COL_INT, 0.0, z1)
     m.crear("COLUMNAS_EJE_A", M["hormigon"], col)
     v = Malla()
     for z0, z1 in (VIGA_1, VIGA_2):   # vigas 300 x 500 (dintel recto a +5,51)
@@ -642,10 +648,12 @@ def muro_landside(C, M):
             (u0, v0), (u1, _), _, (_, v1) = c
             m.caja(u0, u1, Y_MURO_EXT, Y_MURO_EXT + E_MURO, v0, v1)
         m.crear("MURO_NE_CIEGO", M["duralit"], col)
-    # franja de muro entre vigas (+6,01 a +7,10) y sobre la viga superior, hasta la cubierta
+    # franja de muro entre vigas (+6,01 a +7,10) y sobre la viga superior, hasta la cubierta; sus extremos
+    # quedan 1 cm dentro de los testeros para no compartir plano con su cara exterior
     f = Malla()
-    f.caja(X_ALERO[0], X_ALERO[1], Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_1[1], VIGA_2[0])
-    f.caja(X_ALERO[0], X_ALERO[1], Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_2[1], z_cubierta(Y_MURO_EXT) - E_CUBIERTA)
+    xa, xb = X_ALERO[0] + 0.01, X_ALERO[1] - 0.01
+    f.caja(xa, xb, Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_1[1], VIGA_2[0])
+    f.caja(xa, xb, Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_2[1], z_cubierta(Y_MURO_EXT) - E_CUBIERTA)
     f.crear("MURO_NE_SOBRE_DINTEL", M["duralit"], col)
 
 

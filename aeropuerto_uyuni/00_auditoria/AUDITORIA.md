@@ -1,7 +1,7 @@
 # Auditoría técnica: Terminal de Pasajeros, Aeropuerto de Uyuni (Fases 0 y 0.5)
 
 **Fecha:** 3 de octubre de 2026
-**Estado:** auditoría terminada. Todavía **no se generó geometría en Blender**: queda a la espera de tu confirmación.
+**Estado:** auditoría terminada y confirmada (sección 7). El modelo de Blender ya se generó a partir de ella: ver `../01_blender/` y la guía de traspaso `../TRASPASO.md`.
 **Archivos que acompañan este resumen:**
 - `dxf_audit_report.json`: criterio de aceptación de la Tarea 0.1.
 - `ifc_audit_report.json`.
@@ -76,9 +76,10 @@ La planta general no está en el DXF. Las columnas y los ejes salen del IFC (sec
 - **Orientación** (azimut verdadero de la normal de cada fachada):
   - Lado Tierra (eje A, "FACHADA NORESTE"): **31,0° (NNE)**.
   - Lado Aire (eje R): 211,0°.
-  - Lateral del eje 1 ("ESTE"): 121,0°.
-  - Lateral del eje 20 ("OESTE"): 301,0°.
+  - Lateral del eje 1: 121,0° (ESE).
+  - Lateral del eje 20: 301,0° (ONO).
   - Norte verdadero en coordenadas locales del edificio: **301,04°** antihorario desde +X.
+  - ⚠️ **Nombres de los laterales (actualizado):** por su contenido, el alzado que el DXF llama **FACHADA ESTE** es el testero del **eje 20** (2 PT2, 2 ME-3 y franja nervada) y **FACHADA OESTE** es el del **eje 1** (4 ME-3, rombo perforado y mástil). Por la georreferencia es al revés: el eje 20 mira al ONO y el eje 1 al ESE. El modelo usa los nombres del DXF, pero el sol sigue la orientación real.
 - **Niveles:** el **NPT ±0,00 del DXF corresponde al nivel IFC "0P" = 3666,593 m s.n.m.** Lo confirma que los +7,100 y +7,600 del DXF coinciden con 2P y 3P.
 
   | Nivel | C | 0P | 1P | 2P | 3P | 4P | 5P |
@@ -95,7 +96,11 @@ La planta general no está en el DXF. Las columnas y los ejes salen del IFC (sec
 - **Correspondencia DXF ↔ IFC** (ver `vistas_index.json`):
   - Fachada NE: `X_ifc = x_dxf`. Las líneas de eje del DXF están en 0,0 / 4,8 / 9,6…, igual que en el IFC.
   - Corte por M1: `Y_ifc = −41,147 − x_dxf`.
-  - Corte original: `Y_ifc = −15,193 − x_dxf`.
+  - Corte por muro ciego: `Y_ifc = −24,125 − x_dxf`.
+  - Corte original: `Y_ifc = −15,193 − x_dxf` (y `z = y_dxf − 42,914`).
+  - Fachada SO (Lado Aire, vista desde +Y): `X_ifc = 187,84 − x_dxf`.
+  - "FACHADA ESTE" del DXF (testero del eje 20, vista desde +X): `Y_ifc = −0,308 + (x_dxf − 249,787)`.
+  - "FACHADA OESTE" del DXF (testero del eje 1, vista desde −X): `Y_ifc = −0,308 + (384,834 − x_dxf)`.
   - Las alturas del DXF están en metros sobre NPT.
   - Hay dos diferencias menores entre el CAD y Revit:
     - Eje "12" del DXF en 48,52 contra el eje 11′ del IFC en 48,50.
@@ -109,7 +114,7 @@ La planta general no está en el DXF. Las columnas y los ejes salen del IFC (sec
 | Canaletas perimetrales colgadas | Solo en el CORTE ORIGINAL (+7,05 a +9,53) | El actual va sin canaleta. No se modela. |
 | Planos inclinados sobre ventanales | Original (cielo inclinado entre K y A) | El actual tiene el dintel horizontal a +5,51. |
 | Pirámides de vidrio sobre la cubierta y "alas de avión" | **No están ni en el DXF ni en los IFC**: el IFC arquitectónico real no se exportó | No se modelan. |
-| "Falsa isóptica" / UYUNI anamórfico | La FACHADA NE ACTUAL todavía muestra **UYUNI con una copia espejada y 5 rombos** sobre el antepecho (x ≈ 30–62) | ❓ Ver pregunta 1. |
+| "Falsa isóptica" / UYUNI anamórfico | La FACHADA NE ACTUAL todavía muestra **UYUNI con una copia espejada y 5 rombos** sobre el antepecho (x ≈ 30–62) | Resuelto (decisión 1): ese letrero es el concepto "línea de horizonte" y **se mantiene**. |
 
 Como todo se modela desde cero con bpy, "suprimir" equivale simplemente a no modelar esos elementos.
 

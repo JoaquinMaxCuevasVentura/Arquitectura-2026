@@ -98,7 +98,7 @@
   "estado": "ACTUAL",
   "coleccion": "REF_CAD_ALZADO_LADO_AIRE",
   "npt_y": 0.0,
-  "a_ifc": "vista desde +Y (lado aire); X_ifc decrece hacia la derecha",
+  "a_ifc": "vista desde +Y (lado aire): X_ifc = 187.84 - x_dxf ; z_NPT = y_dxf",
   "nota": "Lado Aire (eje R). Presentación FACHADA vp2 (1:300)."
  },
  "FACHADA_ESTE": {
@@ -115,8 +115,8 @@
   "estado": "ACTUAL",
   "coleccion": "REF_CAD_ALZADOS_LATERALES",
   "npt_y": 0.0,
-  "a_ifc": "lateral eje 1 (normal -X local)",
-  "nota": "2 PT2 + 2 ME-3."
+  "a_ifc": "testero del eje 20, vista desde +X: Y_ifc = -0.308 + (x_dxf - 249.787) ; z_NPT = y_dxf",
+  "nota": "2 PT2 + 2 ME-3 + franja nervada de +4.41 a +6.21."
  },
  "FACHADA_OESTE": {
   "png": "FACHADA_OESTE.png",
@@ -132,8 +132,8 @@
   "estado": "ACTUAL",
   "coleccion": "REF_CAD_ALZADOS_LATERALES",
   "npt_y": 0.0,
-  "a_ifc": "lateral eje 20 (normal +X local)",
-  "nota": "4 ME-3; PT1 del cuadro (11 u.) NO dibujadas."
+  "a_ifc": "testero del eje 1, vista desde -X: Y_ifc = -0.308 + (384.834 - x_dxf) ; z_NPT = y_dxf",
+  "nota": "4 ME-3, rombo perforado, bloque bajo con mástil; las PT1 (11 u. en el cuadro) no están dibujadas."
  },
  "ME1": {
   "png": "ME1.png",
