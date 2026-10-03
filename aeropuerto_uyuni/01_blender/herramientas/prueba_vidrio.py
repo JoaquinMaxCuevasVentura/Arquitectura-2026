@@ -7,9 +7,11 @@
                       ondas de templado por paño (roller wave) y polvo fino en el perímetro de cada paño (AO -> rugosidad)
   V4_BACKFACING       la receta "unidireccional": Mix Shader con Geometry > Backfacing; por fuera, metálico 0,9 sobre
                       #0D151D sin transmisión; por dentro, vidrio transparente
+  V5_FISICO_OSCURO    V3 con un tinte de transmisión oscuro (#6E808E): el aspecto de "vidrio espejo" gris azulado de
+                      las fachadas corporativas, sin perder la transparencia física (la hora azul sigue funcionando)
 
 Uso: python prueba_vidrio.py -- archivo.blend carpeta [camara] [ancho] [muestras] [variantes]
-     variantes: lista separada por comas (por defecto V1_HOY,V2_CAPA_FINA,V3_FISICO_COMPLETO,V4_BACKFACING);
+     variantes: lista separada por comas (por defecto, las cinco);
      las que ya tienen su JPG en la carpeta no se repiten.
 """
 import math
@@ -25,7 +27,8 @@ blend, salida = args[0], args[1]
 camara = args[2] if len(args) > 2 else "CAM_01_HERO_LADO_TIERRA"
 ancho = int(args[3]) if len(args) > 3 else 1280
 muestras = int(args[4]) if len(args) > 4 else 64
-variantes = args[5].split(",") if len(args) > 5 else ["V1_HOY", "V2_CAPA_FINA", "V3_FISICO_COMPLETO", "V4_BACKFACING"]
+variantes = args[5].split(",") if len(args) > 5 else ["V1_HOY", "V2_CAPA_FINA", "V3_FISICO_COMPLETO", "V4_BACKFACING",
+                                                     "V5_FISICO_OSCURO"]
 os.makedirs(salida, exist_ok=True)
 
 
@@ -158,8 +161,8 @@ for v in variantes:
     sc, mat, nt, b = preparar()
     if v == "V2_CAPA_FINA":
         capa_fina(b, 57.0)
-    elif v == "V3_FISICO_COMPLETO":
-        capa_fina(b, 50.0, tinte="#A9BCCB")
+    elif v in ("V3_FISICO_COMPLETO", "V5_FISICO_OSCURO"):
+        capa_fina(b, 50.0, tinte="#A9BCCB" if v == "V3_FISICO_COMPLETO" else "#6E808E")
         nt.links.new(ondas_de_templado(nt, b), b.inputs["Normal"])
         polvo_perimetral(nt, b)
     elif v == "V4_BACKFACING":
