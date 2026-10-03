@@ -261,8 +261,9 @@ def metalico_binario(mat, valor_p1):
 
 
 def capa_polvo(mat, w_cav=0.5, w_arr=0.6, w_pie=0.0, opacidad=0.5, radio=0.01, dist_ao=0.30, alto_pie=0.30,
-               rug_polvo=0.92, solo_horizontal_cav=True):
-    """Polvo del altiplano sobre el material: mezcla color, rugosidad, metálico y relieve con las máscaras."""
+               rug_polvo=0.92, solo_horizontal_cav=True, pelicula=0.0):
+    """Polvo del altiplano sobre el material: mezcla color, rugosidad, metálico y relieve con las máscaras.
+    pelicula: velo de polvo en toda la superficie (en lo oscuro se nota: nada queda negro puro en un lugar polvoriento)."""
     nt = mat.node_tree
     g = G(nt)
     b = bsdf(mat)
@@ -272,8 +273,10 @@ def capa_polvo(mat, w_cav=0.5, w_arr=0.6, w_pie=0.0, opacidad=0.5, radio=0.01, d
     cav = M["Cavidad"]
     if solo_horizontal_cav:
         cav = g.m("MULTIPLY", cav, g.m("ADD", 0.35, g.m("MULTIPLY", M["Arriba"], 0.65)))
-    polvo = g.m("MAXIMUM", g.m("MULTIPLY", cav, w_cav), g.m("MULTIPLY", M["Arriba"], w_arr))
-    polvo = g.m("MULTIPLY", g.m("MULTIPLY", polvo, M["Ruptura"]), g.m("MULTIPLY", k, opacidad), clamp=True)
+    polvo = g.m("MULTIPLY", g.m("MAXIMUM", g.m("MULTIPLY", cav, w_cav), g.m("MULTIPLY", M["Arriba"], w_arr)), M["Ruptura"])
+    if pelicula:
+        polvo = g.m("MAXIMUM", polvo, g.m("MULTIPLY", g.m("ADD", 0.4, g.m("MULTIPLY", M["Ruptura"], 0.6)), pelicula))
+    polvo = g.m("MULTIPLY", polvo, g.m("MULTIPLY", k, opacidad), clamp=True)
     pie = g.m("MULTIPLY", g.m("MULTIPLY", M["Pie"], w_pie), g.m("MULTIPLY", k, g.m("ADD", 0.45, g.m("MULTIPLY", M["Ruptura"], 0.55))), clamp=True)
     total = g.m("MAXIMUM", polvo, pie)
     color = g.mezcla(polvo, fuente(g, b.inputs["Base Color"]), srgb(POLVO))
@@ -304,9 +307,10 @@ def ruido_rugosidad(mat, amplitud, escala):
     g.L.new(g.m("ADD", fuente(g, b.inputs["Roughness"]), var, clamp=True), b.inputs["Roughness"])
 
 
-def corten_inteligente(mat, fac_corten):
+def corten_inteligente(mat, fac_corten, variacion=0.30):
     """Pátina que responde a la geometría. fac_corten: socket 0..1 que dice dónde el material es corten
-    (la rama P1 de la celosía o la propiedad letras_corten del letrero)."""
+    (la rama P1 de la celosía o la propiedad letras_corten del letrero). variacion: diferencia de valor entre piezas
+    (0,30 = ±15 % en las planchas; en las letras, menos, para que no parezca un defecto)."""
     nt = mat.node_tree
     g = G(nt)
     b = bsdf(mat)
@@ -315,12 +319,12 @@ def corten_inteligente(mat, fac_corten):
     # 1. variación por plancha (cada plancha de 1 x 2 m es una isla), como lotes distintos de acero:
     #    ±15 % de valor y, en parte de las planchas, un tono más pardo
     isla = geo.outputs["Random Per Island"]
-    lote = g.m("ADD", 0.85, g.m("MULTIPLY", isla, 0.30))
+    lote = g.m("ADD", 1.0 - variacion / 2, g.m("MULTIPLY", isla, variacion))
     base = fuente(g, b.inputs["Base Color"])
     vm = g.n("ShaderNodeVectorMath", operation="SCALE")
     g.L.new(base, vm.inputs[0])
     g.con(g.mezcla(fac_corten, 1.0, lote, "FLOAT"), vm.inputs["Scale"])
-    pardo = g.m("MULTIPLY", g.rango(g.m("FRACT", g.m("MULTIPLY", isla, 7.31)), 0.55, 1.0, 0.0, 0.45), fac_corten)
+    pardo = g.m("MULTIPLY", g.rango(g.m("FRACT", g.m("MULTIPLY", isla, 7.31)), 0.55, 1.0, 0.0, 1.5 * variacion), fac_corten)
     color = g.mezcla(pardo, vm.outputs["Vector"], srgb(CORTEN_LOTE))
     # 2. caras superiores (retienen humedad y depósitos) y cantos: pátina más densa y oscura
     denso = g.m("MAXIMUM", g.m("MULTIPLY", M["Arriba"], 0.65), g.m("MULTIPLY", M["Arista"], 0.40))
@@ -420,7 +424,8 @@ if let.is_linked and let.links[0].from_node.type == "MIX":
 corten_inteligente(mat("CELOSIA_CORTEN_O_BLANCA"), p1_de(mat("CELOSIA_CORTEN_O_BLANCA")))
 gl = G(mat("LETRERO_BLANCO_O_CORTEN").node_tree)
 corten_inteligente(mat("LETRERO_BLANCO_O_CORTEN"),
-                   gl.n("ShaderNodeAttribute", attribute_type="VIEW_LAYER", attribute_name="letras_corten").outputs["Fac"])
+                   gl.n("ShaderNodeAttribute", attribute_type="VIEW_LAYER", attribute_name="letras_corten").outputs["Fac"],
+                   variacion=0.10)
 # 3. polvo del altiplano
 for nombre in ("REVOQUE_CONTINUO", "REVOQUE_FACHADA_BUNAS"):
     revoque_llana(mat(nombre))
@@ -428,11 +433,11 @@ for nombre in ("REVOQUE_CONTINUO", "REVOQUE_FACHADA_BUNAS"):
     capa_polvo(mat(nombre), w_cav=0.45, w_arr=0.6, w_pie=0.85, opacidad=0.55)
 for nombre in ("CHAPA_ANTEPECHO_REMATES", "CHAPA_CUBIERTA"):
     ruido_rugosidad(mat(nombre), 0.06, 2.5)
-    capa_polvo(mat(nombre), w_cav=0.6, w_arr=0.55, opacidad=0.40, dist_ao=0.06)
-capa_polvo(mat("ALUMINIO_ANTRACITA_MATE"), w_cav=0.5, w_arr=0.7, w_pie=0.6, opacidad=0.45, dist_ao=0.10)
-capa_polvo(mat("BASTIDOR_CELOSIAS"), w_cav=0.4, w_arr=0.6, opacidad=0.35, dist_ao=0.10)
+    capa_polvo(mat(nombre), w_cav=0.6, w_arr=0.55, opacidad=0.60, dist_ao=0.06, pelicula=0.12)
+capa_polvo(mat("ALUMINIO_ANTRACITA_MATE"), w_cav=0.5, w_arr=0.7, w_pie=0.6, opacidad=0.60, dist_ao=0.10, pelicula=0.08)
+capa_polvo(mat("BASTIDOR_CELOSIAS"), w_cav=0.4, w_arr=0.6, opacidad=0.50, dist_ao=0.10, pelicula=0.08)
 galvanizado_spangle(mat("ACERO_GALVANIZADO"))
-capa_polvo(mat("ACERO_GALVANIZADO"), w_cav=0.3, w_arr=0.7, opacidad=0.45, dist_ao=0.05)
+capa_polvo(mat("ACERO_GALVANIZADO"), w_cav=0.3, w_arr=0.7, opacidad=0.55, dist_ao=0.05, pelicula=0.10)
 capa_polvo(mat("CELOSIA_CORTEN_O_BLANCA"), w_cav=0.0, w_arr=0.0, w_pie=0.7, opacidad=0.4)
 capa_polvo(mat("HORMIGON_FRATASADO"), w_cav=0.9, w_arr=0.0, opacidad=0.6, dist_ao=0.35, solo_horizontal_cav=False)
 rugosidad_difusa(mat("HORMIGON_FRATASADO"), 0.7)
