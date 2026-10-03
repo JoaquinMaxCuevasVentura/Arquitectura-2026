@@ -1,0 +1,6600 @@
+{
+ "archivo": "tp-arq-x-cad-FachadaEste-01.dxf",
+ "tamano_bytes": 30385693,
+ "version": "AC1032",
+ "guardado_por": "Joaco",
+ "unidades": {
+  "INSUNITS": 6,
+  "INSUNITS_texto": "m",
+  "MEASUREMENT": 1,
+  "DIMLFAC": 1000.0,
+  "conclusion": "Model space en metros a escala real 1:1; las cotas muestran mm (DIMLFAC=1000)."
+ },
+ "extents": {
+  "min": [
+   -47.66232711212706,
+   -71.5846833230853
+  ],
+  "max": [
+   456.5268283805985,
+   170.6384802535056
+  ]
+ },
+ "conteo_model_space": {
+  "total": 23922,
+  "por_tipo": {
+   "LINE": 20562,
+   "CIRCLE": 993,
+   "LWPOLYLINE": 734,
+   "HATCH": 448,
+   "ARC": 384,
+   "DIMENSION": 306,
+   "MTEXT": 290,
+   "REGION": 116,
+   "INSERT": 78,
+   "TEXT": 11
+  }
+ },
+ "capas": {
+  "definidas": 109,
+  "con_entidades": {
+   "0": 21279,
+   "0-VENTANAS": 625,
+   "A-WALL": 442,
+   "0-LOUVRE": 303,
+   "0-COTAS": 241,
+   "0-TEXTO": 228,
+   ".": 194,
+   "0-TEXTO DETALLE": 168,
+   "0-EJES": 151,
+   "0-cortes": 58,
+   "0-COTAS DETALLES": 56,
+   "0-COD VENTANA": 50,
+   "0-COTAS REF": 41,
+   "0-COD LOU": 30,
+   "A-ROOF": 15,
+   "A-GLAZ-CWMG": 14,
+   "A-DOOR": 6,
+   "A-FLOR": 5,
+   "ProfileEdges": 5,
+   "A-ROOF-PATT": 4,
+   "A-FLOR-LEVL": 4,
+   "附件层": 2,
+   "A-CLNG": 1
+  },
+  "porcentaje_en_capa_0": 89.0,
+  "apagadas_o_congeladas": [],
+  "capas_de_anotacion": [
+   "0-COTAS",
+   "0-COD VENTANA",
+   "0-COTAS REF",
+   "0-TEXTO",
+   "0-TEXTO DETALLE",
+   "0-COTAS DETALLES",
+   "0-COD LOU",
+   "0-EJES"
+  ]
+ },
+ "bloques": {
+  "total": 796,
+  "anonimos_de_cotas_*D": 381,
+  "con_nombre": 412,
+  "xrefs": [],
+  "inserciones_en_msp": {
+   "tornillo": 17,
+   "LOU2": 9,
+   "13x7毛条": 8,
+   "ZGJTL0022": 8,
+   "Rectangular Mullion - M_80x40-1333681-Frontal_Prop": 8,
+   "*U98": 3,
+   "PERFIL": 3,
+   "PUERTA-CORTINA - PR-11 - 1_5-V1-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1018274-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1018275-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1167897-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1345393-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1345395-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1167901-Posterior_SinPantalla": 2,
+   "Rectangular Mullion - M_80x40-1313536-Posterior_SinPantalla": 2,
+   "PUERTA-BATIENTE - P-01 - 1_00-1078009-Posterior_SinPantalla": 1,
+   "PUERTA-CORTINA - PR-11 - 1_5-1080166-Posterior_SinPantalla": 1,
+   "PUERTA-CORTINA - PR-11 - 1_5-1080505-Posterior_SinPantalla": 1,
+   "PUERTA-CORTINA - PR-10 - 1_15-1156210-Posterior_SinPantalla": 1,
+   "LOU 1": 1,
+   "LOU 3": 1
+  },
+  "relevantes": [
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1090009-Frontal_Prop",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1090209-Frontal_Prop",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1090015-Frontal_Prop",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V1-Frontal_Prop",
+    "entidades": 4,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V2-Frontal_Prop",
+    "entidades": 4,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V3-Frontal_Prop",
+    "entidades": 4,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1333680-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1333681-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 8
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332720-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332722-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332715-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1330561-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332721-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332723-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1330563-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1330516-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332716-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1333682-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "System Panel - VT_10_A_10_VT_6-1332718-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "System Panel - VT_10_A_10_VT_6-V4-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1328314-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1328388-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V5-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V6-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V7-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V8-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V9-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V10-Frontal_Prop",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1328380-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V11-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V12-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1330534-Frontal_Prop",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V13-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332411-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332483-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332484-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332414-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-V14-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1332481-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336535-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336536-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336532-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336538-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336539-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_160x65-1336533-Frontal_Prop",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "PERFIL",
+    "entidades": 2,
+    "inserciones_msp": 3
+   },
+   {
+    "nombre": "PUERTA-BATIENTE - P-01 - 1_00-1078009-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 1
+   },
+   {
+    "nombre": "PUERTA-CORTINA - PR-11 - 1_5-1080166-Posterior_SinPantalla",
+    "entidades": 6,
+    "inserciones_msp": 1
+   },
+   {
+    "nombre": "PUERTA-CORTINA - PR-11 - 1_5-1080505-Posterior_SinPantalla",
+    "entidades": 5,
+    "inserciones_msp": 1
+   },
+   {
+    "nombre": "PUERTA-CORTINA - PR-11 - 1_5-V1-Posterior_SinPantalla",
+    "entidades": 6,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "PUERTA-CORTINA - PR-10 - 1_15-1156210-Posterior_SinPantalla",
+    "entidades": 5,
+    "inserciones_msp": 1
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1160162-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1162062-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1162063-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1160164-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V2-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1161197-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1161198-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313407-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313408-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1158324-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1158325-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1162060-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1161195-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1158566-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313410-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313411-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313412-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313413-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V3-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V4-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V5-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V6-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V7-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1018274-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1018275-Posterior_SinPantalla",
+    "entidades": 3,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1167897-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1345393-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1345395-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1167901-Posterior_SinPantalla",
+    "entidades": 1,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-1313536-Posterior_SinPantalla",
+    "entidades": 4,
+    "inserciones_msp": 2
+   },
+   {
+    "nombre": "Rectangular Mullion - M_80x40-V8-Posterior_SinPantalla",
+    "entidades": 2,
+    "inserciones_msp": 0
+   },
+   {
+    "nombre": "LOU 1",
+    "entidades": 153,
+    "inserciones_msp": 1
+   },
+   {
+    "nombre": "LOU2",
+    "entidades": 153,
+    "inserciones_msp": 9
+   },
+   {
+    "nombre": "tornillo",
+    "entidades": 21,
+    "inserciones_msp": 17
+   },
+   {
+    "nombre": "LOU 3",
+    "entidades": 166,
+    "inserciones_msp": 1
+   }
+  ],
+  "nota": "Bloques Revit 'Rectangular Mullion - M_160x65' y 'System Panel - VT_10_A_10_VT_6' quedaron del modelo previo; el texto vigente de las fichas ME indica 170x65 y DVH 4+4/12/3+3."
+ },
+ "presentaciones": [
+  {
+   "presentacion": "CORTE",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      79.259,
+      25.598
+     ],
+     "bbox_modelo": [
+      71.278,
+      87.24,
+      14.803,
+      36.393
+     ],
+     "escala_aprox": "1:84",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "VACIO (apunta a zona sin dibujo: presentación desactualizada)"
+    },
+    {
+     "centro_modelo": [
+      97.828,
+      26.305
+     ],
+     "bbox_modelo": [
+      89.17,
+      106.486,
+      14.594,
+      38.016
+     ],
+     "escala_aprox": "1:91",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "VACIO (apunta a zona sin dibujo: presentación desactualizada)"
+    }
+   ],
+   "textos": []
+  },
+  {
+   "presentacion": "FACHADA",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      40.232,
+      5.942
+     ],
+     "bbox_modelo": [
+      -16.784,
+      97.248,
+      -13.338,
+      25.223
+     ],
+     "escala_aprox": "1:300",
+     "capas_congeladas": [],
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "centro_modelo": [
+      145.982,
+      4.961
+     ],
+     "bbox_modelo": [
+      88.965,
+      202.998,
+      -14.319,
+      24.242
+     ],
+     "escala_aprox": "1:300",
+     "capas_congeladas": [],
+     "vista": "FACHADA_SUROESTE"
+    }
+   ],
+   "textos": []
+  },
+  {
+   "presentacion": "FACHADA (2)",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      274.064,
+      5.836
+     ],
+     "bbox_modelo": [
+      236.226,
+      311.903,
+      -6.959,
+      18.632
+     ],
+     "escala_aprox": "1:199",
+     "capas_congeladas": [],
+     "vista": "FACHADA_ESTE"
+    },
+    {
+     "centro_modelo": [
+      361.016,
+      6.655
+     ],
+     "bbox_modelo": [
+      324.678,
+      397.355,
+      -5.634,
+      18.943
+     ],
+     "escala_aprox": "1:191",
+     "capas_congeladas": [
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "FACHADA_OESTE"
+    }
+   ],
+   "textos": []
+  },
+  {
+   "presentacion": "ME1",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      15.263,
+      -21.596
+     ],
+     "bbox_modelo": [
+      11.556,
+      18.97,
+      -25.295,
+      -17.897
+     ],
+     "escala_aprox": "1:31",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME1"
+    },
+    {
+     "centro_modelo": [
+      17.436,
+      -21.994
+     ],
+     "bbox_modelo": [
+      17.219,
+      17.653,
+      -22.175,
+      -21.814
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME1"
+    },
+    {
+     "centro_modelo": [
+      14.077,
+      -24.883
+     ],
+     "bbox_modelo": [
+      13.852,
+      14.302,
+      -25.07,
+      -24.696
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME1"
+    }
+   ],
+   "textos": [
+    "ME1",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "7",
+    "-",
+    "-",
+    "-",
+    "7",
+    "HALL PRINCIPAL (7)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 170X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1",
+    "D2"
+   ]
+  },
+  {
+   "presentacion": "ME2",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      33.154,
+      -22.313
+     ],
+     "bbox_modelo": [
+      27.164,
+      39.143,
+      -28.29,
+      -16.336
+     ],
+     "escala_aprox": "1:50",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME2"
+    },
+    {
+     "centro_modelo": [
+      36.426,
+      -21.953
+     ],
+     "bbox_modelo": [
+      36.202,
+      36.649,
+      -22.139,
+      -21.767
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME2"
+    },
+    {
+     "centro_modelo": [
+      31.284,
+      -25.306
+     ],
+     "bbox_modelo": [
+      31.042,
+      31.525,
+      -25.507,
+      -25.105
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME2"
+    }
+   ],
+   "textos": [
+    "ME2",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "2",
+    "-",
+    "-",
+    "-",
+    "2",
+    "HALL PRINCIPAL (2)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 170X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1",
+    "D2",
+    "- PUERTA CORREDIZA CON SENSOR DE MOVIMIENTO"
+   ]
+  },
+  {
+   "presentacion": "ME3",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      72.858,
+      -22.979
+     ],
+     "bbox_modelo": [
+      69.026,
+      76.691,
+      -26.804,
+      -19.155
+     ],
+     "escala_aprox": "1:32",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME3"
+    },
+    {
+     "centro_modelo": [
+      73.557,
+      -25.732
+     ],
+     "bbox_modelo": [
+      73.395,
+      73.719,
+      -25.867,
+      -25.598
+     ],
+     "escala_aprox": "1:2",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "0-COTAS",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME3"
+    },
+    {
+     "centro_modelo": [
+      76.947,
+      -26.837
+     ],
+     "bbox_modelo": [
+      74.187,
+      79.706,
+      -29.132,
+      -24.542
+     ],
+     "escala_aprox": "1:39",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME3"
+    }
+   ],
+   "textos": [
+    "ME3",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "4",
+    "2",
+    "2",
+    "4",
+    "12",
+    "HALL PRINCIPAL (2)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1",
+    "OFICINAS (2)"
+   ]
+  },
+  {
+   "presentacion": "ME4",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      92.919,
+      -23.577
+     ],
+     "bbox_modelo": [
+      89.015,
+      96.823,
+      -27.472,
+      -19.681
+     ],
+     "escala_aprox": "1:33",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME4"
+    },
+    {
+     "centro_modelo": [
+      95.409,
+      -23.417
+     ],
+     "bbox_modelo": [
+      95.239,
+      95.579,
+      -23.559,
+      -23.276
+     ],
+     "escala_aprox": "1:2",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "0-COTAS",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME4"
+    },
+    {
+     "centro_modelo": [
+      93.615,
+      -25.741
+     ],
+     "bbox_modelo": [
+      93.44,
+      93.789,
+      -25.886,
+      -25.596
+     ],
+     "escala_aprox": "1:2",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "0-COTAS",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME4"
+    }
+   ],
+   "textos": [
+    "ME4",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "-",
+    "-",
+    "4",
+    "-",
+    "4",
+    "OFICINAS PB (4)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1"
+   ]
+  },
+  {
+   "presentacion": "ME5",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      113.188,
+      -23.127
+     ],
+     "bbox_modelo": [
+      106.853,
+      119.523,
+      -29.449,
+      -16.806
+     ],
+     "escala_aprox": "1:53",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME5"
+    },
+    {
+     "centro_modelo": [
+      116.464,
+      -24.315
+     ],
+     "bbox_modelo": [
+      116.18,
+      116.749,
+      -24.551,
+      -24.078
+     ],
+     "escala_aprox": "1:4",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "0-COTAS",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME5"
+    },
+    {
+     "centro_modelo": [
+      111.65,
+      -25.506
+     ],
+     "bbox_modelo": [
+      111.466,
+      111.835,
+      -25.659,
+      -25.353
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "0-COTAS",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME5"
+    }
+   ],
+   "textos": [
+    "ME5",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "-",
+    "-",
+    "4",
+    "-",
+    "4",
+    "OFICINAS PA (3)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1"
+   ]
+  },
+  {
+   "presentacion": "ME6",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      52.544,
+      -23.45
+     ],
+     "bbox_modelo": [
+      46.488,
+      58.599,
+      -29.493,
+      -17.408
+     ],
+     "escala_aprox": "1:51",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "ME6"
+    },
+    {
+     "centro_modelo": [
+      55.692,
+      -22.114
+     ],
+     "bbox_modelo": [
+      55.453,
+      55.931,
+      -22.312,
+      -21.915
+     ],
+     "escala_aprox": "1:3",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME6"
+    },
+    {
+     "centro_modelo": [
+      50.731,
+      -25.743
+     ],
+     "bbox_modelo": [
+      50.477,
+      50.984,
+      -25.954,
+      -25.532
+     ],
+     "escala_aprox": "1:4",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "ME6"
+    }
+   ],
+   "textos": [
+    "ME6",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "-",
+    "-",
+    "4",
+    "-",
+    "4",
+    "ESCLUSA PRE EMBARQUE (6)",
+    "MATERIAL:",
+    "- PERFIL DE ALUMINIO 170X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- PERFIL DE ALUMINIO 65X65MM ESPESOR VARIABLE COLOR NEGRO MATE",
+    "- INTERIOR: VIDRIO FLOTADO INCOLORO 3MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO INCOLORO 3MM",
+    "- EXTERIOR: VIDRIO FLOTADO INCOLORO 4MM + 0.38MM PVB INCOLORO + VIDRIO FLOTADO CONTROL SOLAR 4MM",
+    "SISTEMA ABATIMIENTO:",
+    "- MAMPARA FIJA",
+    "D1",
+    "D2",
+    "- PUERTA CORREDIZA CON SENSOR DE MOVIMIENTO"
+   ]
+  },
+  {
+   "presentacion": "PANEL PERF",
+   "papel_mm": [
+    420.0,
+    297.0
+   ],
+   "viewports": [
+    {
+     "centro_modelo": [
+      131.7,
+      -22.876
+     ],
+     "bbox_modelo": [
+      126.788,
+      136.611,
+      -29.002,
+      -16.75
+     ],
+     "escala_aprox": "1:52",
+     "capas_congeladas": [
+      "0-COTAS REF",
+      "0-COTAS DETALLES",
+      "0-TEXTO DETALLE"
+     ],
+     "vista": "PT1_PT2"
+    },
+    {
+     "centro_modelo": [
+      143.911,
+      -22.895
+     ],
+     "bbox_modelo": [
+      138.54,
+      149.281,
+      -29.594,
+      -16.195
+     ],
+     "escala_aprox": "1:57",
+     "capas_congeladas": [
+      "0-TEXTO",
+      "Detalles",
+      "Detalle Carpint."
+     ],
+     "vista": "PT1_PT2"
+    }
+   ],
+   "textos": [
+    "PT1",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "-",
+    "-",
+    "-",
+    "11",
+    "11",
+    "PT2",
+    "CANTIDADES",
+    "NORTE",
+    "ESTE",
+    "SUR",
+    "OESTE",
+    "TOTAL",
+    "5",
+    "2",
+    "2",
+    "-",
+    "9"
+   ]
+  }
+ ],
+ "textos_clave": {
+  "M1": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "ME-1": {
+   "n": 15,
+   "ocurrencias": [
+    {
+     "x": 11.369,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 20.969,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 35.369,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 30.569,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 40.169,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 50.234,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 59.799,
+     "y": 6.516,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 14.443,
+     "y": -15.291,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "ME1"
+    },
+    {
+     "x": 11.369,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 20.969,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 35.369,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 30.569,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 40.169,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 50.234,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 59.799,
+     "y": 49.43,
+     "capa": "0-COD VENTANA",
+     "texto": "ME-1",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    }
+   ]
+  },
+  "ME1": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "CORTE": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "DETALLE": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "ALERO": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "PARAPETO": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "ANTEPECHO": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "5.51": {
+   "n": 2,
+   "ocurrencias": [
+    {
+     "x": -1.137,
+     "y": 48.232,
+     "capa": "0",
+     "texto": "5.51",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": -18.154,
+     "y": 48.26,
+     "capa": "0",
+     "texto": "5.51",
+     "vista": "CORTE_ORIGINAL_B-K-A"
+    }
+   ]
+  },
+  "5510": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "170": {
+   "n": 25,
+   "ocurrencias": [
+    {
+     "x": 15.319,
+     "y": -20.428,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 15.319,
+     "y": -19.017,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 15.319,
+     "y": -23.707,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 17.682,
+     "y": -20.428,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 17.682,
+     "y": -23.572,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 15.319,
+     "y": -24.48,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 17.466,
+     "y": -21.826,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 14.144,
+     "y": -24.733,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME1"
+    },
+    {
+     "x": 34.605,
+     "y": -20.428,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME2"
+    },
+    {
+     "x": 34.605,
+     "y": -19.017,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME2"
+    },
+    {
+     "x": 34.605,
+     "y": -24.911,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME2"
+    },
+    {
+     "x": 31.296,
+     "y": -25.234,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME2"
+    },
+    {
+     "x": 36.587,
+     "y": -20.428,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME2"
+    },
+    {
+     "x": 54.074,
+     "y": -25.351,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME6"
+    },
+    {
+     "x": 50.764,
+     "y": -25.674,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME6"
+    },
+    {
+     "x": 54.383,
+     "y": -23.697,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME6"
+    },
+    {
+     "x": 93.788,
+     "y": -22.746,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME4"
+    },
+    {
+     "x": 74.322,
+     "y": -22.267,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME3"
+    },
+    {
+     "x": 95.448,
+     "y": -23.282,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME4"
+    },
+    {
+     "x": 114.635,
+     "y": -23.188,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    },
+    {
+     "x": 114.635,
+     "y": -21.777,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    },
+    {
+     "x": 116.663,
+     "y": -23.211,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    },
+    {
+     "x": 116.542,
+     "y": -24.378,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    },
+    {
+     "x": 114.635,
+     "y": -25.076,
+     "capa": "0-TEXTO",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    },
+    {
+     "x": 111.664,
+     "y": -25.396,
+     "capa": "0-TEXTO DETALLE",
+     "texto": "perfil aluminio 170 x 65mm color negro mate",
+     "vista": "ME5"
+    }
+   ]
+  },
+  "PT1": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "PT2": {
+   "n": 14,
+   "ocurrencias": [
+    {
+     "x": 1.613,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 6.613,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 75.014,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 80.014,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 69.662,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 106.986,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_SUROESTE"
+    },
+    {
+     "x": 111.986,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_SUROESTE"
+    },
+    {
+     "x": 251.789,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_ESTE"
+    },
+    {
+     "x": 256.967,
+     "y": 6.89,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_ESTE"
+    },
+    {
+     "x": 1.613,
+     "y": 49.805,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 6.613,
+     "y": 49.805,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 75.014,
+     "y": 49.805,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 80.014,
+     "y": 49.805,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    },
+    {
+     "x": 69.662,
+     "y": 49.805,
+     "capa": "0-COD LOU",
+     "texto": "PT2",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    }
+   ]
+  },
+  "UYUNI": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "NPT": {
+   "n": 16,
+   "ocurrencias": [
+    {
+     "x": 15.635,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME1"
+    },
+    {
+     "x": 17.968,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME1"
+    },
+    {
+     "x": 34.921,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME2"
+    },
+    {
+     "x": 36.939,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME2"
+    },
+    {
+     "x": 54.699,
+     "y": -24.039,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME6"
+    },
+    {
+     "x": 56.183,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME6"
+    },
+    {
+     "x": 74.683,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME3"
+    },
+    {
+     "x": 74.683,
+     "y": -22.618,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME3"
+    },
+    {
+     "x": 74.683,
+     "y": -20.921,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME3"
+    },
+    {
+     "x": 94.46,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME4"
+    },
+    {
+     "x": 94.46,
+     "y": -23.147,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME4"
+    },
+    {
+     "x": 94.46,
+     "y": -21.45,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME4"
+    },
+    {
+     "x": 114.856,
+     "y": -24.047,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "ME5"
+    },
+    {
+     "x": -14.111,
+     "y": 43.288,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "CORTE_ORIGINAL_B-K-A"
+    },
+    {
+     "x": -41.167,
+     "y": 0.373,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "CORTE_ACTUAL_POR_M1"
+    },
+    {
+     "x": -27.428,
+     "y": 0.373,
+     "capa": "0",
+     "texto": "NPT",
+     "vista": "CORTE_ACTUAL_MURO_CIEGO"
+    }
+   ]
+  },
+  "FACHADA": {
+   "n": 5,
+   "ocurrencias": [
+    {
+     "x": -0.061,
+     "y": -2.709,
+     "capa": "0",
+     "texto": "FACHADA NORESTE",
+     "vista": "FACHADA_NORESTE_ACTUAL"
+    },
+    {
+     "x": 115.144,
+     "y": -0.901,
+     "capa": "0",
+     "texto": "FACHADA SUROESTE",
+     "vista": "FACHADA_SUROESTE"
+    },
+    {
+     "x": 250.272,
+     "y": -0.901,
+     "capa": "0",
+     "texto": "FACHADA ESTE",
+     "vista": "FACHADA_ESTE"
+    },
+    {
+     "x": 336.54,
+     "y": -0.901,
+     "capa": "0",
+     "texto": "FACHADA OESTE",
+     "vista": "FACHADA_OESTE"
+    },
+    {
+     "x": 1.628,
+     "y": 40.964,
+     "capa": "0",
+     "texto": "FACHADA NORESTE",
+     "vista": "FACHADA_NORESTE_ORIGINAL"
+    }
+   ]
+  },
+  "CANALETA": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "PANTALLA": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "PIRAMIDE": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "DURALIT": {
+   "n": 0,
+   "ocurrencias": []
+  },
+  "CORTEN": {
+   "n": 0,
+   "ocurrencias": []
+  }
+ },
+ "escala_de_detalles": {
+  "DIMLFAC_por_cota": {
+   "1000.0": 306
+  },
+  "conclusion": "Todas las cotas usan DIMLFAC=1000: ningún detalle está ampliado; todo el dibujo está a 1:1 en metros (las escalas 1:3 a 1:300 son solo de los viewports)."
+ },
+ "cotas_por_vista": {
+  "FACHADA_NORESTE_ACTUAL": {
+   "n": 27,
+   "valores_mm": {
+    "5510": 8,
+    "849": 8,
+    "2150": 7,
+    "4280": 2,
+    "2400": 1,
+    "6612": 1
+   },
+   "detalle": [
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      10.9,
+      5.51
+     ],
+     "p2": [
+      10.9,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      14.762,
+      5.51
+     ],
+     "p2": [
+      14.762,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      20.5,
+      5.51
+     ],
+     "p2": [
+      20.5,
+      -0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      10.925,
+      5.51
+     ],
+     "p2": [
+      13.075,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      14.66,
+      5.51
+     ],
+     "p2": [
+      18.94,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      20.525,
+      5.51
+     ],
+     "p2": [
+      22.675,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      34.9,
+      5.51
+     ],
+     "p2": [
+      34.9,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      34.925,
+      5.51
+     ],
+     "p2": [
+      37.075,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      30.1,
+      5.51
+     ],
+     "p2": [
+      30.1,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      30.125,
+      5.51
+     ],
+     "p2": [
+      32.275,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      39.7,
+      5.51
+     ],
+     "p2": [
+      39.7,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      39.725,
+      5.51
+     ],
+     "p2": [
+      41.875,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      49.79,
+      5.51
+     ],
+     "p2": [
+      51.94,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      59.355,
+      5.51
+     ],
+     "p2": [
+      61.505,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      53.498,
+      5.51
+     ],
+     "p2": [
+      57.778,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      49.765,
+      5.51
+     ],
+     "p2": [
+      49.765,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      59.33,
+      5.51
+     ],
+     "p2": [
+      59.33,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      6.183,
+      2.067
+     ],
+     "p2": [
+      7.031,
+      2.916
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      7.031,
+      2.916
+     ],
+     "p2": [
+      7.88,
+      2.067
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      1.183,
+      2.067
+     ],
+     "p2": [
+      2.031,
+      2.916
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      2.031,
+      2.916
+     ],
+     "p2": [
+      2.88,
+      2.067
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      69.584,
+      2.278
+     ],
+     "p2": [
+      70.432,
+      3.126
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      70.432,
+      3.126
+     ],
+     "p2": [
+      71.281,
+      2.278
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      64.584,
+      2.278
+     ],
+     "p2": [
+      65.432,
+      3.126
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      65.432,
+      3.126
+     ],
+     "p2": [
+      66.281,
+      2.278
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2400,
+     "medida_dxf_m": 2.4,
+     "p1": [
+      -0.23,
+      6.612
+     ],
+     "p2": [
+      -0.23,
+      9.012
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 6612,
+     "medida_dxf_m": 6.6118,
+     "p1": [
+      -0.23,
+      6.612
+     ],
+     "p2": [
+      -0.23,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "ME1": {
+   "n": 29,
+   "valores_mm": {
+    "65": 9,
+    "977": 2,
+    "1075": 2,
+    "8": 2,
+    "12": 2,
+    "6": 2,
+    "2150": 1,
+    "2335": 1,
+    "2980": 1,
+    "5510": 1,
+    "2432": 1,
+    "3078": 1,
+    "26": 1,
+    "170": 1,
+    "17": 1,
+    "213": 1
+   },
+   "detalle": [
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      12.992,
+      -18.911
+     ],
+     "p2": [
+      13.057,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 977,
+     "medida_dxf_m": 0.9775,
+     "p1": [
+      13.057,
+      -18.911
+     ],
+     "p2": [
+      14.034,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      14.034,
+      -18.911
+     ],
+     "p2": [
+      14.099,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 977,
+     "medida_dxf_m": 0.9775,
+     "p1": [
+      14.099,
+      -18.911
+     ],
+     "p2": [
+      15.077,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      15.077,
+      -18.911
+     ],
+     "p2": [
+      15.142,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      12.992,
+      -18.711
+     ],
+     "p2": [
+      15.142,
+      -18.711
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      13.032,
+      -24.421
+     ],
+     "p2": [
+      13.032,
+      -24.356
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2335,
+     "medida_dxf_m": 2.335,
+     "p1": [
+      13.032,
+      -24.356
+     ],
+     "p2": [
+      13.032,
+      -22.021
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      13.057,
+      -22.021
+     ],
+     "p2": [
+      13.057,
+      -21.956
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2980,
+     "medida_dxf_m": 2.98,
+     "p1": [
+      13.057,
+      -21.956
+     ],
+     "p2": [
+      13.057,
+      -18.976
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      13.057,
+      -18.976
+     ],
+     "p2": [
+      13.032,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      12.767,
+      -24.421
+     ],
+     "p2": [
+      12.767,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2432,
+     "medida_dxf_m": 2.4325,
+     "p1": [
+      12.992,
+      -24.421
+     ],
+     "p2": [
+      12.992,
+      -21.988
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 3078,
+     "medida_dxf_m": 3.0775,
+     "p1": [
+      12.992,
+      -21.988
+     ],
+     "p2": [
+      12.992,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1075,
+     "medida_dxf_m": 1.075,
+     "p1": [
+      12.992,
+      -18.511
+     ],
+     "p2": [
+      14.067,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1075,
+     "medida_dxf_m": 1.075,
+     "p1": [
+      14.067,
+      -18.911
+     ],
+     "p2": [
+      15.142,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      17.371,
+      -21.957
+     ],
+     "p2": [
+      17.436,
+      -21.957
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      17.435,
+      -22.02
+     ],
+     "p2": [
+      17.435,
+      -21.955
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 26,
+     "medida_dxf_m": 0.026,
+     "p1": [
+      17.327,
+      -21.923
+     ],
+     "p2": [
+      17.353,
+      -21.923
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      17.327,
+      -21.938
+     ],
+     "p2": [
+      17.335,
+      -21.938
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      17.335,
+      -21.938
+     ],
+     "p2": [
+      17.347,
+      -21.938
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      17.347,
+      -21.938
+     ],
+     "p2": [
+      17.353,
+      -21.938
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 170,
+     "medida_dxf_m": 0.17,
+     "p1": [
+      14.035,
+      -24.947
+     ],
+     "p2": [
+      14.035,
+      -24.777
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      14.034,
+      -24.778
+     ],
+     "p2": [
+      14.099,
+      -24.778
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      14.035,
+      -24.947
+     ],
+     "p2": [
+      14.018,
+      -24.965
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      14.018,
+      -24.965
+     ],
+     "p2": [
+      14.018,
+      -24.971
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      14.018,
+      -24.971
+     ],
+     "p2": [
+      14.018,
+      -24.983
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      14.018,
+      -24.983
+     ],
+     "p2": [
+      14.015,
+      -24.991
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 213,
+     "medida_dxf_m": 0.2132,
+     "p1": [
+      14.037,
+      -24.777
+     ],
+     "p2": [
+      14.037,
+      -24.991
+     ],
+     "capa": "0-COTAS DETALLES"
+    }
+   ]
+  },
+  "ME2": {
+   "n": 27,
+   "valores_mm": {
+    "65": 8,
+    "1070": 4,
+    "1005": 2,
+    "973": 1,
+    "4280": 1,
+    "2335": 1,
+    "2980": 1,
+    "5510": 1,
+    "972": 1,
+    "2432": 1,
+    "3078": 1,
+    "170": 1,
+    "17": 1,
+    "6": 1,
+    "12": 1,
+    "8": 1
+   },
+   "detalle": [
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      30.148,
+      -18.911
+     ],
+     "p2": [
+      30.213,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 973,
+     "medida_dxf_m": 0.9725,
+     "p1": [
+      30.213,
+      -18.911
+     ],
+     "p2": [
+      31.186,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      30.148,
+      -18.711
+     ],
+     "p2": [
+      34.428,
+      -18.711
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2335,
+     "medida_dxf_m": 2.335,
+     "p1": [
+      30.188,
+      -24.356
+     ],
+     "p2": [
+      30.188,
+      -22.021
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      30.213,
+      -22.021
+     ],
+     "p2": [
+      30.213,
+      -21.956
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2980,
+     "medida_dxf_m": 2.98,
+     "p1": [
+      30.213,
+      -21.956
+     ],
+     "p2": [
+      30.213,
+      -18.976
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      30.213,
+      -18.976
+     ],
+     "p2": [
+      30.188,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      29.923,
+      -24.421
+     ],
+     "p2": [
+      29.923,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      31.186,
+      -18.911
+     ],
+     "p2": [
+      31.251,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1005,
+     "medida_dxf_m": 1.005,
+     "p1": [
+      31.251,
+      -18.911
+     ],
+     "p2": [
+      32.256,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      33.326,
+      -18.911
+     ],
+     "p2": [
+      33.391,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 972,
+     "medida_dxf_m": 0.9725,
+     "p1": [
+      33.391,
+      -18.911
+     ],
+     "p2": [
+      34.363,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      34.363,
+      -18.911
+     ],
+     "p2": [
+      34.428,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1070,
+     "medida_dxf_m": 1.07,
+     "p1": [
+      30.148,
+      -18.911
+     ],
+     "p2": [
+      31.218,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1070,
+     "medida_dxf_m": 1.07,
+     "p1": [
+      31.218,
+      -18.911
+     ],
+     "p2": [
+      32.288,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1070,
+     "medida_dxf_m": 1.07,
+     "p1": [
+      32.288,
+      -18.911
+     ],
+     "p2": [
+      33.358,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1070,
+     "medida_dxf_m": 1.07,
+     "p1": [
+      33.358,
+      -18.911
+     ],
+     "p2": [
+      34.428,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2432,
+     "medida_dxf_m": 2.4325,
+     "p1": [
+      30.148,
+      -24.421
+     ],
+     "p2": [
+      30.148,
+      -21.988
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 3078,
+     "medida_dxf_m": 3.0775,
+     "p1": [
+      30.148,
+      -21.988
+     ],
+     "p2": [
+      30.148,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      32.256,
+      -18.911
+     ],
+     "p2": [
+      32.321,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1005,
+     "medida_dxf_m": 1.005,
+     "p1": [
+      32.321,
+      -18.911
+     ],
+     "p2": [
+      33.326,
+      -18.911
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      31.186,
+      -25.271
+     ],
+     "p2": [
+      31.251,
+      -25.271
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 170,
+     "medida_dxf_m": 0.17,
+     "p1": [
+      31.187,
+      -25.401
+     ],
+     "p2": [
+      31.187,
+      -25.231
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      31.187,
+      -25.401
+     ],
+     "p2": [
+      31.169,
+      -25.419
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      31.169,
+      -25.419
+     ],
+     "p2": [
+      31.169,
+      -25.425
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      31.169,
+      -25.425
+     ],
+     "p2": [
+      31.169,
+      -25.437
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      31.169,
+      -25.437
+     ],
+     "p2": [
+      31.166,
+      -25.445
+     ],
+     "capa": "0-COTAS DETALLES"
+    }
+   ]
+  },
+  "FACHADA_SUROESTE": {
+   "n": 18,
+   "valores_mm": {
+    "849": 4,
+    "1690": 4,
+    "2527": 4,
+    "4340": 4,
+    "2750": 2
+   },
+   "detalle": [
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      106.556,
+      1.861
+     ],
+     "p2": [
+      107.404,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      107.404,
+      2.71
+     ],
+     "p2": [
+      108.253,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      111.556,
+      1.861
+     ],
+     "p2": [
+      112.404,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      112.404,
+      2.71
+     ],
+     "p2": [
+      113.253,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1690,
+     "medida_dxf_m": 1.69,
+     "p1": [
+      117.551,
+      4.82
+     ],
+     "p2": [
+      117.551,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2527,
+     "medida_dxf_m": 2.5268,
+     "p1": [
+      117.511,
+      6.51
+     ],
+     "p2": [
+      120.038,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1690,
+     "medida_dxf_m": 1.69,
+     "p1": [
+      122.348,
+      4.82
+     ],
+     "p2": [
+      122.348,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2527,
+     "medida_dxf_m": 2.5268,
+     "p1": [
+      122.309,
+      6.51
+     ],
+     "p2": [
+      124.836,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1690,
+     "medida_dxf_m": 1.69,
+     "p1": [
+      131.951,
+      4.82
+     ],
+     "p2": [
+      131.951,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2527,
+     "medida_dxf_m": 2.5268,
+     "p1": [
+      131.911,
+      6.51
+     ],
+     "p2": [
+      134.438,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1690,
+     "medida_dxf_m": 1.69,
+     "p1": [
+      127.151,
+      4.82
+     ],
+     "p2": [
+      127.151,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2527,
+     "medida_dxf_m": 2.5268,
+     "p1": [
+      127.111,
+      6.51
+     ],
+     "p2": [
+      129.638,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2750,
+     "medida_dxf_m": 2.75,
+     "p1": [
+      144.936,
+      3.76
+     ],
+     "p2": [
+      144.896,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4340,
+     "medida_dxf_m": 4.34,
+     "p1": [
+      144.896,
+      6.51
+     ],
+     "p2": [
+      149.236,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4340,
+     "medida_dxf_m": 4.34,
+     "p1": [
+      149.696,
+      6.51
+     ],
+     "p2": [
+      154.036,
+      6.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2750,
+     "medida_dxf_m": 2.75,
+     "p1": [
+      173.736,
+      -0.09
+     ],
+     "p2": [
+      173.696,
+      2.66
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4340,
+     "medida_dxf_m": 4.34,
+     "p1": [
+      173.696,
+      2.66
+     ],
+     "p2": [
+      178.036,
+      2.66
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4340,
+     "medida_dxf_m": 4.34,
+     "p1": [
+      149.696,
+      2.66
+     ],
+     "p2": [
+      154.036,
+      2.66
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "ME6": {
+   "n": 24,
+   "valores_mm": {
+    "65": 6,
+    "2452": 2,
+    "988": 2,
+    "4280": 1,
+    "2322": 1,
+    "1103": 1,
+    "1037": 1,
+    "1038": 1,
+    "1102": 1,
+    "100": 1,
+    "973": 1,
+    "972": 1,
+    "170": 1,
+    "17": 1,
+    "6": 1,
+    "12": 1,
+    "8": 1
+   },
+   "detalle": [
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      49.925,
+      -21.704
+     ],
+     "p2": [
+      54.205,
+      -21.704
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2322,
+     "medida_dxf_m": 2.322,
+     "p1": [
+      49.965,
+      -24.356
+     ],
+     "p2": [
+      49.99,
+      -22.034
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      49.99,
+      -22.034
+     ],
+     "p2": [
+      49.99,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      53.103,
+      -21.904
+     ],
+     "p2": [
+      53.168,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1103,
+     "medida_dxf_m": 1.1025,
+     "p1": [
+      49.925,
+      -21.904
+     ],
+     "p2": [
+      51.028,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1037,
+     "medida_dxf_m": 1.0375,
+     "p1": [
+      51.028,
+      -21.969
+     ],
+     "p2": [
+      52.065,
+      -21.904
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1038,
+     "medida_dxf_m": 1.0375,
+     "p1": [
+      52.065,
+      -21.904
+     ],
+     "p2": [
+      53.103,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1102,
+     "medida_dxf_m": 1.1025,
+     "p1": [
+      53.103,
+      -21.969
+     ],
+     "p2": [
+      54.205,
+      -21.904
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2452,
+     "medida_dxf_m": 2.452,
+     "p1": [
+      49.925,
+      -24.421
+     ],
+     "p2": [
+      49.925,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 100,
+     "medida_dxf_m": 0.0999,
+     "p1": [
+      52.015,
+      -21.969
+     ],
+     "p2": [
+      52.115,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 988,
+     "medida_dxf_m": 0.9875,
+     "p1": [
+      52.115,
+      -21.969
+     ],
+     "p2": [
+      53.103,
+      -21.904
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2452,
+     "medida_dxf_m": 2.452,
+     "p1": [
+      49.7,
+      -24.421
+     ],
+     "p2": [
+      49.925,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 973,
+     "medida_dxf_m": 0.9725,
+     "p1": [
+      53.168,
+      -21.969
+     ],
+     "p2": [
+      54.14,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      54.14,
+      -21.969
+     ],
+     "p2": [
+      54.205,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      49.925,
+      -21.969
+     ],
+     "p2": [
+      49.99,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 972,
+     "medida_dxf_m": 0.9725,
+     "p1": [
+      49.99,
+      -21.969
+     ],
+     "p2": [
+      50.963,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      50.963,
+      -21.969
+     ],
+     "p2": [
+      51.028,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 988,
+     "medida_dxf_m": 0.9875,
+     "p1": [
+      51.028,
+      -21.969
+     ],
+     "p2": [
+      52.015,
+      -21.969
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      50.655,
+      -25.711
+     ],
+     "p2": [
+      50.72,
+      -25.711
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 170,
+     "medida_dxf_m": 0.17,
+     "p1": [
+      50.656,
+      -25.841
+     ],
+     "p2": [
+      50.656,
+      -25.671
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      50.656,
+      -25.841
+     ],
+     "p2": [
+      50.638,
+      -25.859
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      50.638,
+      -25.859
+     ],
+     "p2": [
+      50.638,
+      -25.865
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      50.638,
+      -25.865
+     ],
+     "p2": [
+      50.638,
+      -25.877
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      50.638,
+      -25.877
+     ],
+     "p2": [
+      50.635,
+      -25.885
+     ],
+     "capa": "0-COTAS DETALLES"
+    }
+   ]
+  },
+  "ME3": {
+   "n": 15,
+   "valores_mm": {
+    "65": 6,
+    "757": 2,
+    "849": 2,
+    "26": 1,
+    "8": 1,
+    "12": 1,
+    "6": 1,
+    "1200": 1
+   },
+   "detalle": [
+    {
+     "mm": 757,
+     "medida_dxf_m": 0.7566,
+     "p1": [
+      72.175,
+      -22.143
+     ],
+     "p2": [
+      72.931,
+      -21.386
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      72.931,
+      -21.386
+     ],
+     "p2": [
+      72.931,
+      -21.295
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      72.175,
+      -22.143
+     ],
+     "p2": [
+      72.083,
+      -22.143
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      72.083,
+      -22.143
+     ],
+     "p2": [
+      72.931,
+      -21.295
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      72.931,
+      -21.295
+     ],
+     "p2": [
+      73.78,
+      -22.143
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 757,
+     "medida_dxf_m": 0.7566,
+     "p1": [
+      72.931,
+      -21.386
+     ],
+     "p2": [
+      73.688,
+      -22.143
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      73.688,
+      -22.143
+     ],
+     "p2": [
+      73.78,
+      -22.143
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      72.931,
+      -21.386
+     ],
+     "p2": [
+      72.931,
+      -21.295
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      73.486,
+      -25.726
+     ],
+     "p2": [
+      73.486,
+      -25.661
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      73.549,
+      -25.665
+     ],
+     "p2": [
+      73.484,
+      -25.666
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 26,
+     "medida_dxf_m": 0.026,
+     "p1": [
+      73.452,
+      -25.769
+     ],
+     "p2": [
+      73.452,
+      -25.743
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      73.467,
+      -25.769
+     ],
+     "p2": [
+      73.467,
+      -25.761
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      73.467,
+      -25.761
+     ],
+     "p2": [
+      73.467,
+      -25.749
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      73.467,
+      -25.749
+     ],
+     "p2": [
+      73.467,
+      -25.743
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 1200,
+     "medida_dxf_m": 1.2001,
+     "p1": [
+      72.349,
+      -25.769
+     ],
+     "p2": [
+      73.549,
+      -25.769
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "ME4": {
+   "n": 27,
+   "valores_mm": {
+    "65": 9,
+    "8": 2,
+    "12": 2,
+    "6": 2,
+    "2495": 2,
+    "1150": 2,
+    "26": 1,
+    "1560": 1,
+    "1690": 1,
+    "900": 1,
+    "1247": 1,
+    "1248": 1,
+    "17": 1,
+    "108": 1
+   },
+   "detalle": [
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      93.548,
+      -25.726
+     ],
+     "p2": [
+      93.548,
+      -25.661
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      93.611,
+      -25.665
+     ],
+     "p2": [
+      93.546,
+      -25.666
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 26,
+     "medida_dxf_m": 0.026,
+     "p1": [
+      93.514,
+      -25.769
+     ],
+     "p2": [
+      93.514,
+      -25.743
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      93.529,
+      -25.769
+     ],
+     "p2": [
+      93.529,
+      -25.761
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      93.529,
+      -25.761
+     ],
+     "p2": [
+      93.529,
+      -25.749
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      93.529,
+      -25.749
+     ],
+     "p2": [
+      93.529,
+      -25.743
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 2495,
+     "medida_dxf_m": 2.4951,
+     "p1": [
+      91.116,
+      -25.769
+     ],
+     "p2": [
+      93.611,
+      -25.769
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1560,
+     "medida_dxf_m": 1.56,
+     "p1": [
+      91.181,
+      -23.456
+     ],
+     "p2": [
+      91.181,
+      -21.896
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      91.181,
+      -21.896
+     ],
+     "p2": [
+      91.181,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1690,
+     "medida_dxf_m": 1.69,
+     "p1": [
+      91.116,
+      -23.521
+     ],
+     "p2": [
+      91.116,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      91.181,
+      -23.456
+     ],
+     "p2": [
+      91.116,
+      -23.521
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 900,
+     "medida_dxf_m": 0.9,
+     "p1": [
+      91.116,
+      -23.521
+     ],
+     "p2": [
+      90.688,
+      -24.421
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      91.116,
+      -21.831
+     ],
+     "p2": [
+      91.181,
+      -21.896
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1150,
+     "medida_dxf_m": 1.15,
+     "p1": [
+      91.181,
+      -21.896
+     ],
+     "p2": [
+      92.331,
+      -21.896
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      92.331,
+      -21.896
+     ],
+     "p2": [
+      92.396,
+      -21.896
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1150,
+     "medida_dxf_m": 1.15,
+     "p1": [
+      92.396,
+      -21.896
+     ],
+     "p2": [
+      93.546,
+      -21.896
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      93.546,
+      -21.896
+     ],
+     "p2": [
+      93.611,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1247,
+     "medida_dxf_m": 1.2475,
+     "p1": [
+      91.116,
+      -21.831
+     ],
+     "p2": [
+      92.364,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1248,
+     "medida_dxf_m": 1.2475,
+     "p1": [
+      92.364,
+      -21.831
+     ],
+     "p2": [
+      93.611,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2495,
+     "medida_dxf_m": 2.495,
+     "p1": [
+      91.116,
+      -21.831
+     ],
+     "p2": [
+      93.611,
+      -21.831
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      95.422,
+      -23.453
+     ],
+     "p2": [
+      95.357,
+      -23.453
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      95.422,
+      -23.521
+     ],
+     "p2": [
+      95.422,
+      -23.456
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      95.357,
+      -23.453
+     ],
+     "p2": [
+      95.339,
+      -23.444
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      95.339,
+      -23.444
+     ],
+     "p2": [
+      95.333,
+      -23.444
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      95.333,
+      -23.444
+     ],
+     "p2": [
+      95.321,
+      -23.444
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      95.321,
+      -23.444
+     ],
+     "p2": [
+      95.313,
+      -23.444
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 108,
+     "medida_dxf_m": 0.1082,
+     "p1": [
+      95.422,
+      -23.456
+     ],
+     "p2": [
+      95.313,
+      -23.456
+     ],
+     "capa": "0-COTAS DETALLES"
+    }
+   ]
+  },
+  "ME5": {
+   "n": 27,
+   "valores_mm": {
+    "65": 8,
+    "1371": 2,
+    "1468": 2,
+    "170": 2,
+    "17": 2,
+    "6": 2,
+    "12": 2,
+    "8": 2,
+    "2620": 1,
+    "2750": 1,
+    "1338": 1,
+    "1403": 1,
+    "4340": 1
+   },
+   "detalle": [
+    {
+     "mm": 2620,
+     "medida_dxf_m": 2.62,
+     "p1": [
+      110.183,
+      -24.356
+     ],
+     "p2": [
+      110.183,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      110.183,
+      -21.736
+     ],
+     "p2": [
+      110.183,
+      -21.671
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2750,
+     "medida_dxf_m": 2.75,
+     "p1": [
+      110.118,
+      -24.421
+     ],
+     "p2": [
+      110.118,
+      -21.671
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      110.183,
+      -24.356
+     ],
+     "p2": [
+      110.118,
+      -24.421
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      110.118,
+      -21.671
+     ],
+     "p2": [
+      110.183,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1371,
+     "medida_dxf_m": 1.3708,
+     "p1": [
+      110.183,
+      -21.736
+     ],
+     "p2": [
+      111.554,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      111.554,
+      -21.736
+     ],
+     "p2": [
+      111.619,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1338,
+     "medida_dxf_m": 1.3383,
+     "p1": [
+      111.619,
+      -21.736
+     ],
+     "p2": [
+      112.957,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1468,
+     "medida_dxf_m": 1.4683,
+     "p1": [
+      110.118,
+      -21.671
+     ],
+     "p2": [
+      111.587,
+      -21.671
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1403,
+     "medida_dxf_m": 1.4033,
+     "p1": [
+      111.587,
+      -21.671
+     ],
+     "p2": [
+      112.99,
+      -21.671
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4340,
+     "medida_dxf_m": 4.34,
+     "p1": [
+      110.118,
+      -21.671
+     ],
+     "p2": [
+      114.458,
+      -21.671
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      112.957,
+      -21.736
+     ],
+     "p2": [
+      113.022,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      114.393,
+      -21.736
+     ],
+     "p2": [
+      114.458,
+      -21.736
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1371,
+     "medida_dxf_m": 1.3708,
+     "p1": [
+      113.022,
+      -21.736
+     ],
+     "p2": [
+      114.393,
+      -21.406
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1468,
+     "medida_dxf_m": 1.4683,
+     "p1": [
+      112.99,
+      -21.671
+     ],
+     "p2": [
+      114.458,
+      -21.206
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 170,
+     "medida_dxf_m": 0.17,
+     "p1": [
+      116.352,
+      -24.369
+     ],
+     "p2": [
+      116.522,
+      -24.369
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      116.352,
+      -24.369
+     ],
+     "p2": [
+      116.334,
+      -24.338
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      116.334,
+      -24.338
+     ],
+     "p2": [
+      116.328,
+      -24.338
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      116.328,
+      -24.338
+     ],
+     "p2": [
+      116.316,
+      -24.338
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      116.316,
+      -24.338
+     ],
+     "p2": [
+      116.308,
+      -24.338
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      116.521,
+      -24.356
+     ],
+     "p2": [
+      116.52,
+      -24.421
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 170,
+     "medida_dxf_m": 0.17,
+     "p1": [
+      111.555,
+      -25.544
+     ],
+     "p2": [
+      111.555,
+      -25.374
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 65,
+     "medida_dxf_m": 0.065,
+     "p1": [
+      111.554,
+      -25.375
+     ],
+     "p2": [
+      111.619,
+      -25.375
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 17,
+     "medida_dxf_m": 0.0172,
+     "p1": [
+      111.555,
+      -25.544
+     ],
+     "p2": [
+      111.331,
+      -25.561
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 6,
+     "medida_dxf_m": 0.006,
+     "p1": [
+      111.538,
+      -25.561
+     ],
+     "p2": [
+      111.537,
+      -25.567
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 12,
+     "medida_dxf_m": 0.012,
+     "p1": [
+      111.537,
+      -25.567
+     ],
+     "p2": [
+      111.537,
+      -25.579
+     ],
+     "capa": "0-COTAS DETALLES"
+    },
+    {
+     "mm": 8,
+     "medida_dxf_m": 0.008,
+     "p1": [
+      111.537,
+      -25.579
+     ],
+     "p2": [
+      111.535,
+      -25.587
+     ],
+     "capa": "0-COTAS DETALLES"
+    }
+   ]
+  },
+  "FACHADA_ESTE": {
+   "n": 4,
+   "valores_mm": {
+    "849": 4
+   },
+   "detalle": [
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      282.521,
+      1.861
+     ],
+     "p2": [
+      283.369,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      283.369,
+      2.71
+     ],
+     "p2": [
+      284.218,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      288.401,
+      1.861
+     ],
+     "p2": [
+      289.249,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      289.249,
+      2.71
+     ],
+     "p2": [
+      290.098,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "FACHADA_OESTE": {
+   "n": 8,
+   "valores_mm": {
+    "849": 8
+   },
+   "detalle": [
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      342.363,
+      1.861
+     ],
+     "p2": [
+      343.211,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      343.211,
+      2.71
+     ],
+     "p2": [
+      344.06,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      346.863,
+      1.861
+     ],
+     "p2": [
+      347.711,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      347.711,
+      2.71
+     ],
+     "p2": [
+      348.56,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      376.838,
+      1.861
+     ],
+     "p2": [
+      377.686,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      377.686,
+      2.71
+     ],
+     "p2": [
+      378.535,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      381.638,
+      1.861
+     ],
+     "p2": [
+      382.486,
+      2.71
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 849,
+     "medida_dxf_m": 0.8485,
+     "p1": [
+      382.486,
+      2.71
+     ],
+     "p2": [
+      383.335,
+      1.861
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "PT1_PT2": {
+   "n": 20,
+   "valores_mm": {
+    "1000": 10,
+    "2000": 6,
+    "6000": 2,
+    "5000": 2
+   },
+   "detalle": [
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      129.352,
+      -25.394
+     ],
+     "p2": [
+      129.577,
+      -23.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      129.577,
+      -23.394
+     ],
+     "p2": [
+      129.577,
+      -21.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      129.577,
+      -21.394
+     ],
+     "p2": [
+      129.352,
+      -19.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 6000,
+     "medida_dxf_m": 6.0,
+     "p1": [
+      129.352,
+      -25.394
+     ],
+     "p2": [
+      129.352,
+      -19.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      129.577,
+      -19.194
+     ],
+     "p2": [
+      130.577,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      130.577,
+      -19.194
+     ],
+     "p2": [
+      131.577,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      131.577,
+      -19.194
+     ],
+     "p2": [
+      132.577,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      132.577,
+      -19.194
+     ],
+     "p2": [
+      133.577,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      133.577,
+      -19.194
+     ],
+     "p2": [
+      134.577,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5000,
+     "medida_dxf_m": 5.0,
+     "p1": [
+      129.577,
+      -18.994
+     ],
+     "p2": [
+      134.577,
+      -18.994
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      141.414,
+      -25.394
+     ],
+     "p2": [
+      141.639,
+      -23.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      141.639,
+      -23.394
+     ],
+     "p2": [
+      141.639,
+      -21.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      141.639,
+      -21.394
+     ],
+     "p2": [
+      141.414,
+      -19.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 6000,
+     "medida_dxf_m": 6.0,
+     "p1": [
+      141.414,
+      -25.394
+     ],
+     "p2": [
+      141.414,
+      -19.394
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      141.639,
+      -19.194
+     ],
+     "p2": [
+      142.639,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      142.639,
+      -19.194
+     ],
+     "p2": [
+      143.639,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      143.639,
+      -19.194
+     ],
+     "p2": [
+      144.639,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      144.639,
+      -19.194
+     ],
+     "p2": [
+      145.639,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      145.639,
+      -19.194
+     ],
+     "p2": [
+      146.639,
+      -19.194
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5000,
+     "medida_dxf_m": 5.0,
+     "p1": [
+      141.639,
+      -18.994
+     ],
+     "p2": [
+      146.639,
+      -18.994
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "FACHADA_NORESTE_ORIGINAL": {
+   "n": 53,
+   "valores_mm": {
+    "200": 16,
+    "1225": 11,
+    "4600": 6,
+    "2150": 6,
+    "160": 2,
+    "4280": 2,
+    "5510": 1,
+    "4161": 1,
+    "2175": 1,
+    "1200": 1,
+    "320": 1,
+    "1170": 1,
+    "1190": 1,
+    "168": 1,
+    "152": 1,
+    "230": 1
+   },
+   "detalle": [
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      4.7,
+      42.914
+     ],
+     "p2": [
+      4.7,
+      48.424
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      4.7,
+      48.424
+     ],
+     "p2": [
+      4.8,
+      48.624
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4161,
+     "medida_dxf_m": 4.1615,
+     "p1": [
+      5.396,
+      48.624
+     ],
+     "p2": [
+      4.255,
+      52.786
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      0.1,
+      42.914
+     ],
+     "p2": [
+      4.7,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      4.7,
+      42.914
+     ],
+     "p2": [
+      4.9,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      4.9,
+      42.914
+     ],
+     "p2": [
+      9.5,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      9.5,
+      42.914
+     ],
+     "p2": [
+      9.7,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      9.7,
+      42.914
+     ],
+     "p2": [
+      10.925,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      10.925,
+      42.914
+     ],
+     "p2": [
+      13.075,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      13.075,
+      42.914
+     ],
+     "p2": [
+      14.3,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      14.3,
+      42.914
+     ],
+     "p2": [
+      14.5,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 160,
+     "medida_dxf_m": 0.16,
+     "p1": [
+      14.5,
+      42.914
+     ],
+     "p2": [
+      14.66,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      14.66,
+      42.914
+     ],
+     "p2": [
+      18.94,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 160,
+     "medida_dxf_m": 0.16,
+     "p1": [
+      18.94,
+      42.914
+     ],
+     "p2": [
+      19.1,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      19.1,
+      42.914
+     ],
+     "p2": [
+      19.3,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      19.3,
+      42.914
+     ],
+     "p2": [
+      20.525,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2175,
+     "medida_dxf_m": 2.175,
+     "p1": [
+      20.525,
+      42.914
+     ],
+     "p2": [
+      22.7,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1200,
+     "medida_dxf_m": 1.2,
+     "p1": [
+      22.7,
+      42.914
+     ],
+     "p2": [
+      23.9,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      23.9,
+      42.914
+     ],
+     "p2": [
+      24.1,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      24.1,
+      42.914
+     ],
+     "p2": [
+      28.7,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      28.7,
+      42.914
+     ],
+     "p2": [
+      28.9,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      28.9,
+      42.914
+     ],
+     "p2": [
+      30.125,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      30.125,
+      42.914
+     ],
+     "p2": [
+      32.275,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      32.275,
+      42.914
+     ],
+     "p2": [
+      33.5,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      33.5,
+      42.914
+     ],
+     "p2": [
+      33.7,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      33.7,
+      42.914
+     ],
+     "p2": [
+      34.925,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      34.925,
+      42.914
+     ],
+     "p2": [
+      37.075,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      37.075,
+      42.914
+     ],
+     "p2": [
+      38.3,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      38.3,
+      42.914
+     ],
+     "p2": [
+      38.5,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      38.5,
+      42.914
+     ],
+     "p2": [
+      39.725,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      39.725,
+      42.914
+     ],
+     "p2": [
+      41.875,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      41.875,
+      42.914
+     ],
+     "p2": [
+      43.1,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      43.1,
+      42.914
+     ],
+     "p2": [
+      43.3,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      43.3,
+      42.914
+     ],
+     "p2": [
+      47.9,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      47.9,
+      42.914
+     ],
+     "p2": [
+      48.1,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 320,
+     "medida_dxf_m": 0.32,
+     "p1": [
+      48.1,
+      42.914
+     ],
+     "p2": [
+      48.42,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      48.42,
+      42.914
+     ],
+     "p2": [
+      48.62,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1170,
+     "medida_dxf_m": 1.1699,
+     "p1": [
+      48.62,
+      42.914
+     ],
+     "p2": [
+      49.79,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      49.79,
+      42.914
+     ],
+     "p2": [
+      51.94,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1190,
+     "medida_dxf_m": 1.1901,
+     "p1": [
+      51.94,
+      42.914
+     ],
+     "p2": [
+      53.13,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      53.13,
+      42.914
+     ],
+     "p2": [
+      53.33,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 168,
+     "medida_dxf_m": 0.1675,
+     "p1": [
+      53.33,
+      42.914
+     ],
+     "p2": [
+      53.498,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4280,
+     "medida_dxf_m": 4.28,
+     "p1": [
+      53.498,
+      42.914
+     ],
+     "p2": [
+      57.778,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 152,
+     "medida_dxf_m": 0.1525,
+     "p1": [
+      57.778,
+      42.914
+     ],
+     "p2": [
+      57.93,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      57.93,
+      42.914
+     ],
+     "p2": [
+      58.13,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      58.13,
+      42.914
+     ],
+     "p2": [
+      59.355,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2150,
+     "medida_dxf_m": 2.15,
+     "p1": [
+      59.355,
+      42.914
+     ],
+     "p2": [
+      61.505,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1225,
+     "medida_dxf_m": 1.225,
+     "p1": [
+      61.505,
+      42.914
+     ],
+     "p2": [
+      62.73,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      62.73,
+      42.914
+     ],
+     "p2": [
+      62.93,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      62.93,
+      42.914
+     ],
+     "p2": [
+      67.53,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 200,
+     "medida_dxf_m": 0.2,
+     "p1": [
+      67.53,
+      42.914
+     ],
+     "p2": [
+      67.73,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4600,
+     "medida_dxf_m": 4.6,
+     "p1": [
+      67.73,
+      42.914
+     ],
+     "p2": [
+      72.33,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 230,
+     "medida_dxf_m": 0.23,
+     "p1": [
+      72.33,
+      42.914
+     ],
+     "p2": [
+      72.56,
+      42.914
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "CORTE_ACTUAL_POR_M1": {
+   "n": 9,
+   "valores_mm": {
+    "500": 2,
+    "4220": 1,
+    "4000": 1,
+    "5510": 1,
+    "1090": 1,
+    "1539": 1,
+    "2400": 1,
+    "6612": 1
+   },
+   "detalle": [
+    {
+     "mm": 4220,
+     "medida_dxf_m": 4.22,
+     "p1": [
+      -45.059,
+      0.0
+     ],
+     "p2": [
+      -40.839,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4000,
+     "medida_dxf_m": 4.0,
+     "p1": [
+      -40.839,
+      0.0
+     ],
+     "p2": [
+      -36.839,
+      -0.15
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 5510,
+     "medida_dxf_m": 5.51,
+     "p1": [
+      -41.754,
+      0.0
+     ],
+     "p2": [
+      -41.754,
+      5.51
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      -41.754,
+      5.51
+     ],
+     "p2": [
+      -41.839,
+      6.01
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1090,
+     "medida_dxf_m": 1.09,
+     "p1": [
+      -41.839,
+      6.01
+     ],
+     "p2": [
+      -41.839,
+      7.1
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      -41.839,
+      7.1
+     ],
+     "p2": [
+      -41.839,
+      7.6
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1539,
+     "medida_dxf_m": 1.5392,
+     "p1": [
+      -41.839,
+      7.6
+     ],
+     "p2": [
+      -41.669,
+      9.139
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2400,
+     "medida_dxf_m": 2.4,
+     "p1": [
+      -38.968,
+      9.012
+     ],
+     "p2": [
+      -38.968,
+      6.612
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 6612,
+     "medida_dxf_m": 6.6118,
+     "p1": [
+      -38.968,
+      6.612
+     ],
+     "p2": [
+      -38.968,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  },
+  "PANELES_LETRAS_PIRAMIDES": {
+   "n": 9,
+   "valores_mm": {
+    "1000": 3,
+    "500": 2,
+    "2000": 2,
+    "1180": 1,
+    "1500": 1
+   },
+   "detalle": [
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      39.395,
+      -51.353
+     ],
+     "p2": [
+      40.395,
+      -51.353
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      39.489,
+      -55.269
+     ],
+     "p2": [
+      39.989,
+      -55.269
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      40.395,
+      -51.353
+     ],
+     "p2": [
+      41.395,
+      -51.353
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      39.989,
+      -55.269
+     ],
+     "p2": [
+      40.489,
+      -55.269
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 1000,
+     "medida_dxf_m": 1.0,
+     "p1": [
+      39.489,
+      -55.269
+     ],
+     "p2": [
+      40.489,
+      -55.269
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      39.395,
+      -51.353
+     ],
+     "p2": [
+      41.395,
+      -51.353
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 1180,
+     "medida_dxf_m": 1.1802,
+     "p1": [
+      27.288,
+      -67.885
+     ],
+     "p2": [
+      28.468,
+      -67.885
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 1500,
+     "medida_dxf_m": 1.5,
+     "p1": [
+      27.288,
+      -67.885
+     ],
+     "p2": [
+      27.288,
+      -69.385
+     ],
+     "capa": "0"
+    },
+    {
+     "mm": 2000,
+     "medida_dxf_m": 2.0,
+     "p1": [
+      39.395,
+      -51.353
+     ],
+     "p2": [
+      39.395,
+      -53.353
+     ],
+     "capa": "0"
+    }
+   ]
+  },
+  "CORTE_ACTUAL_MURO_CIEGO": {
+   "n": 9,
+   "valores_mm": {
+    "500": 2,
+    "4220": 1,
+    "4000": 1,
+    "2400": 1,
+    "6612": 1,
+    "3245": 1,
+    "3355": 1,
+    "1418": 1
+   },
+   "detalle": [
+    {
+     "mm": 4220,
+     "medida_dxf_m": 4.22,
+     "p1": [
+      -28.037,
+      0.0
+     ],
+     "p2": [
+      -23.817,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 4000,
+     "medida_dxf_m": 4.0,
+     "p1": [
+      -23.817,
+      0.0
+     ],
+     "p2": [
+      -19.817,
+      -0.15
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 2400,
+     "medida_dxf_m": 2.4,
+     "p1": [
+      -21.946,
+      9.012
+     ],
+     "p2": [
+      -21.946,
+      6.612
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 6612,
+     "medida_dxf_m": 6.6118,
+     "p1": [
+      -21.946,
+      6.612
+     ],
+     "p2": [
+      -21.946,
+      0.0
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 3245,
+     "medida_dxf_m": 3.245,
+     "p1": [
+      -23.947,
+      0.0
+     ],
+     "p2": [
+      -23.947,
+      3.245
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      -23.947,
+      3.245
+     ],
+     "p2": [
+      -24.117,
+      3.745
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 3355,
+     "medida_dxf_m": 3.355,
+     "p1": [
+      -24.117,
+      3.745
+     ],
+     "p2": [
+      -24.117,
+      7.1
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 500,
+     "medida_dxf_m": 0.5,
+     "p1": [
+      -24.117,
+      7.1
+     ],
+     "p2": [
+      -24.117,
+      7.6
+     ],
+     "capa": "0-COTAS"
+    },
+    {
+     "mm": 1418,
+     "medida_dxf_m": 1.4184,
+     "p1": [
+      -24.117,
+      7.6
+     ],
+     "p2": [
+      -23.947,
+      9.018
+     ],
+     "capa": "0-COTAS"
+    }
+   ]
+  }
+ },
+ "vistas": {
+  "CORTE_ACTUAL_POR_M1": {
+   "bbox": [
+    -50,
+    -28.5,
+    -6,
+    20
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+   "npt_y": 0.0,
+   "a_ifc": "Y_ifc = -41.147 - x_dxf ; z_NPT = y_dxf",
+   "nota": "Corte por mampara ME-1 (eje A): vidrio, dintel, antepecho 2.40, alero, zanja."
+  },
+  "CORTE_ACTUAL_MURO_CIEGO": {
+   "bbox": [
+    -28.5,
+    -3,
+    -6,
+    20
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+   "npt_y": 0.0,
+   "a_ifc": "Y_ifc = -24.125 - x_dxf ; z_NPT = y_dxf",
+   "nota": "Corte por paño ciego (panel M2 e=130 mm) con viga intermedia +3.245/+3.745."
+  },
+  "CORTE_ORIGINAL_B-K-A": {
+   "bbox": [
+    -50,
+    -3,
+    36,
+    62
+   ],
+   "estado": "ORIGINAL",
+   "coleccion": "REF_CAD_ANTES",
+   "npt_y": 42.914,
+   "a_ifc": "Y_ifc = -15.193 - x_dxf ; z_NPT = y_dxf - 42.914",
+   "nota": "Diseño previo: vidrio en eje K, doble pantalla ciega en eje A hasta +7.60, canaleta, cubierta a +9.87."
+  },
+  "FACHADA_NORESTE_ACTUAL": {
+   "bbox": [
+    -3,
+    92,
+    -6,
+    20
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADO_LADO_TIERRA",
+   "npt_y": 0.0,
+   "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf",
+   "nota": "Lado Tierra (eje A). Presentación FACHADA vp1 (1:300)."
+  },
+  "FACHADA_NORESTE_ORIGINAL": {
+   "bbox": [
+    -3,
+    92,
+    36,
+    62
+   ],
+   "estado": "ORIGINAL",
+   "coleccion": "REF_CAD_ANTES",
+   "npt_y": 42.914,
+   "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf - 42.914",
+   "nota": "Lado Tierra en versión previa (acotada en detalle, sin antepecho 2.40)."
+  },
+  "FACHADA_SUROESTE": {
+   "bbox": [
+    95,
+    205,
+    -6,
+    20
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADO_LADO_AIRE",
+   "npt_y": 0.0,
+   "a_ifc": "vista desde +Y (lado aire); X_ifc decrece hacia la derecha",
+   "nota": "Lado Aire (eje R). Presentación FACHADA vp2 (1:300)."
+  },
+  "FACHADA_ESTE": {
+   "bbox": [
+    238,
+    305,
+    -6,
+    22
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADOS_LATERALES",
+   "npt_y": 0.0,
+   "a_ifc": "lateral eje 1 (normal -X local)",
+   "nota": "2 PT2 + 2 ME-3."
+  },
+  "FACHADA_OESTE": {
+   "bbox": [
+    322,
+    402,
+    -6,
+    22
+   ],
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADOS_LATERALES",
+   "npt_y": 0.0,
+   "a_ifc": "lateral eje 20 (normal +X local)",
+   "nota": "4 ME-3; PT1 del cuadro (11 u.) NO dibujadas."
+  },
+  "ME1": {
+   "bbox": [
+    8,
+    24,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Mampara Hall Principal (7 u.)"
+  },
+  "ME2": {
+   "bbox": [
+    24,
+    44,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Acceso, puerta corrediza con sensor (2 u.)"
+  },
+  "ME6": {
+   "bbox": [
+    44,
+    62,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Esclusa pre-embarque (4 u., lado aire)"
+  },
+  "ME3": {
+   "bbox": [
+    62,
+    82,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Ventana rombo 1.20x1.20 (12 u.)"
+  },
+  "ME4": {
+   "bbox": [
+    82,
+    102,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Oficinas PB (4 u.)"
+  },
+  "ME5": {
+   "bbox": [
+    102,
+    124,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Oficinas PA (4 u.)"
+  },
+  "PT1_PT2": {
+   "bbox": [
+    124,
+    152,
+    -33,
+    -12
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_CELOSIA",
+   "nota": "Paneles perforados 5.00x6.00 m en placas 1.00x2.00 m. PT1 rectangular, PT2 con remate en zigzag."
+  },
+  "PANELES_LETRAS_PIRAMIDES": {
+   "bbox": [
+    -6,
+    45,
+    -76,
+    -44
+   ],
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_CELOSIA",
+   "nota": "Variantes de panel, letras UYUNI 1.18x1.50 m, rombos 2x2 y 1x1 m."
+  }
+ },
+ "vistas_exportadas": {
+  "CORTE_ACTUAL_POR_M1": {
+   "png": "CORTE_ACTUAL_POR_M1.png",
+   "dxf": "CORTE_ACTUAL_POR_M1.dxf",
+   "entidades_dxf_limpio": 414,
+   "bbox_dxf": {
+    "xmin": -50,
+    "xmax": -28.5,
+    "ymin": -6,
+    "ymax": 20
+   },
+   "png_px_por_m": 93.023,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+   "npt_y": 0.0,
+   "a_ifc": "Y_ifc = -41.147 - x_dxf ; z_NPT = y_dxf",
+   "nota": "Corte por mampara ME-1 (eje A): vidrio, dintel, antepecho 2.40, alero, zanja."
+  },
+  "CORTE_ACTUAL_MURO_CIEGO": {
+   "png": "CORTE_ACTUAL_MURO_CIEGO.png",
+   "dxf": "CORTE_ACTUAL_MURO_CIEGO.dxf",
+   "entidades_dxf_limpio": 261,
+   "bbox_dxf": {
+    "xmin": -28.5,
+    "xmax": -3,
+    "ymin": -6,
+    "ymax": 20
+   },
+   "png_px_por_m": 78.431,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+   "npt_y": 0.0,
+   "a_ifc": "Y_ifc = -24.125 - x_dxf ; z_NPT = y_dxf",
+   "nota": "Corte por paño ciego (panel M2 e=130 mm) con viga intermedia +3.245/+3.745."
+  },
+  "CORTE_ORIGINAL_B-K-A": {
+   "png": "CORTE_ORIGINAL_B-K-A.png",
+   "dxf": "CORTE_ORIGINAL_B-K-A.dxf",
+   "entidades_dxf_limpio": 358,
+   "bbox_dxf": {
+    "xmin": -50,
+    "xmax": -3,
+    "ymin": 36,
+    "ymax": 62
+   },
+   "png_px_por_m": 63.83,
+   "estado": "ORIGINAL",
+   "coleccion": "REF_CAD_ANTES",
+   "npt_y": 42.914,
+   "a_ifc": "Y_ifc = -15.193 - x_dxf ; z_NPT = y_dxf - 42.914",
+   "nota": "Diseño previo: vidrio en eje K, doble pantalla ciega en eje A hasta +7.60, canaleta, cubierta a +9.87."
+  },
+  "FACHADA_NORESTE_ACTUAL": {
+   "png": "FACHADA_NORESTE_ACTUAL.png",
+   "dxf": "FACHADA_NORESTE_ACTUAL.dxf",
+   "entidades_dxf_limpio": 1479,
+   "bbox_dxf": {
+    "xmin": -3,
+    "xmax": 92,
+    "ymin": -6,
+    "ymax": 20
+   },
+   "png_px_por_m": 31.579,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADO_LADO_TIERRA",
+   "npt_y": 0.0,
+   "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf",
+   "nota": "Lado Tierra (eje A). Presentación FACHADA vp1 (1:300)."
+  },
+  "FACHADA_NORESTE_ORIGINAL": {
+   "png": "FACHADA_NORESTE_ORIGINAL.png",
+   "dxf": "FACHADA_NORESTE_ORIGINAL.dxf",
+   "entidades_dxf_limpio": 974,
+   "bbox_dxf": {
+    "xmin": -3,
+    "xmax": 92,
+    "ymin": 36,
+    "ymax": 62
+   },
+   "png_px_por_m": 31.579,
+   "estado": "ORIGINAL",
+   "coleccion": "REF_CAD_ANTES",
+   "npt_y": 42.914,
+   "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf - 42.914",
+   "nota": "Lado Tierra en versión previa (acotada en detalle, sin antepecho 2.40)."
+  },
+  "FACHADA_SUROESTE": {
+   "png": "FACHADA_SUROESTE.png",
+   "dxf": "FACHADA_SUROESTE.dxf",
+   "entidades_dxf_limpio": 950,
+   "bbox_dxf": {
+    "xmin": 95,
+    "xmax": 205,
+    "ymin": -6,
+    "ymax": 20
+   },
+   "png_px_por_m": 27.273,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADO_LADO_AIRE",
+   "npt_y": 0.0,
+   "a_ifc": "vista desde +Y (lado aire); X_ifc decrece hacia la derecha",
+   "nota": "Lado Aire (eje R). Presentación FACHADA vp2 (1:300)."
+  },
+  "FACHADA_ESTE": {
+   "png": "FACHADA_ESTE.png",
+   "dxf": "FACHADA_ESTE.dxf",
+   "entidades_dxf_limpio": 955,
+   "bbox_dxf": {
+    "xmin": 238,
+    "xmax": 305,
+    "ymin": -6,
+    "ymax": 22
+   },
+   "png_px_por_m": 44.776,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADOS_LATERALES",
+   "npt_y": 0.0,
+   "a_ifc": "lateral eje 1 (normal -X local)",
+   "nota": "2 PT2 + 2 ME-3."
+  },
+  "FACHADA_OESTE": {
+   "png": "FACHADA_OESTE.png",
+   "dxf": "FACHADA_OESTE.dxf",
+   "entidades_dxf_limpio": 15505,
+   "bbox_dxf": {
+    "xmin": 322,
+    "xmax": 402,
+    "ymin": -6,
+    "ymax": 22
+   },
+   "png_px_por_m": 37.5,
+   "estado": "ACTUAL",
+   "coleccion": "REF_CAD_ALZADOS_LATERALES",
+   "npt_y": 0.0,
+   "a_ifc": "lateral eje 20 (normal +X local)",
+   "nota": "4 ME-3; PT1 del cuadro (11 u.) NO dibujadas."
+  },
+  "ME1": {
+   "png": "ME1.png",
+   "dxf": "ME1.dxf",
+   "entidades_dxf_limpio": 361,
+   "bbox_dxf": {
+    "xmin": 8,
+    "xmax": 24,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 125.0,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Mampara Hall Principal (7 u.)"
+  },
+  "ME2": {
+   "png": "ME2.png",
+   "dxf": "ME2.dxf",
+   "entidades_dxf_limpio": 928,
+   "bbox_dxf": {
+    "xmin": 24,
+    "xmax": 44,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 100.0,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Acceso, puerta corrediza con sensor (2 u.)"
+  },
+  "ME6": {
+   "png": "ME6.png",
+   "dxf": "ME6.dxf",
+   "entidades_dxf_limpio": 833,
+   "bbox_dxf": {
+    "xmin": 44,
+    "xmax": 62,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 111.111,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Esclusa pre-embarque (4 u., lado aire)"
+  },
+  "ME3": {
+   "png": "ME3.png",
+   "dxf": "ME3.dxf",
+   "entidades_dxf_limpio": 152,
+   "bbox_dxf": {
+    "xmin": 62,
+    "xmax": 82,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 100.0,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Ventana rombo 1.20x1.20 (12 u.)"
+  },
+  "ME4": {
+   "png": "ME4.png",
+   "dxf": "ME4.dxf",
+   "entidades_dxf_limpio": 366,
+   "bbox_dxf": {
+    "xmin": 82,
+    "xmax": 102,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 100.0,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Oficinas PB (4 u.)"
+  },
+  "ME5": {
+   "png": "ME5.png",
+   "dxf": "ME5.dxf",
+   "entidades_dxf_limpio": 367,
+   "bbox_dxf": {
+    "xmin": 102,
+    "xmax": 124,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 90.909,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_M1",
+   "nota": "Oficinas PA (4 u.)"
+  },
+  "PT1_PT2": {
+   "png": "PT1_PT2.png",
+   "dxf": "PT1_PT2.dxf",
+   "entidades_dxf_limpio": 322,
+   "bbox_dxf": {
+    "xmin": 124,
+    "xmax": 152,
+    "ymin": -33,
+    "ymax": -12
+   },
+   "png_px_por_m": 71.429,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_CELOSIA",
+   "nota": "Paneles perforados 5.00x6.00 m en placas 1.00x2.00 m. PT1 rectangular, PT2 con remate en zigzag."
+  },
+  "PANELES_LETRAS_PIRAMIDES": {
+   "png": "PANELES_LETRAS_PIRAMIDES.png",
+   "dxf": "PANELES_LETRAS_PIRAMIDES.dxf",
+   "entidades_dxf_limpio": 843,
+   "bbox_dxf": {
+    "xmin": -6,
+    "xmax": 45,
+    "ymin": -76,
+    "ymax": -44
+   },
+   "png_px_por_m": 58.824,
+   "estado": "DETALLE",
+   "coleccion": "REF_CAD_DETALLES_CELOSIA",
+   "nota": "Variantes de panel, letras UYUNI 1.18x1.50 m, rombos 2x2 y 1x1 m."
+  }
+ }
+}

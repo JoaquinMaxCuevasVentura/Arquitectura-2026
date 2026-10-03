@@ -1,0 +1,283 @@
+{
+ "archivos": [
+  {
+   "archivo": "AU-SUP-EST-TP-ZZ-MO-TerminalPasajeros.ifc",
+   "tamano_bytes": 12792549,
+   "schema": "IFC4",
+   "descripcion": [
+    "ViewDefinition [ReferenceView_V1.2]",
+    "RevitIdentifiers [ContentGUID: 3b11f709-2763-4b1b-a5a4-3dd1d863601f, VersionGUID: ead084f8-e5af-4610-8e4f-178f63b11daf, NumberOfSaves: 1]",
+    "CoordinateReference [CoordinateBase: Shared Coordinates]",
+    "ExchangeRequirement [Structural]"
+   ],
+   "origen": "Autodesk - Revit 27.3.0.28 (ENU) - 27.3.0.28",
+   "elementos_por_clase": {
+    "IfcBuildingElementPart": 6249,
+    "IfcBeam": 1759,
+    "IfcColumn": 502,
+    "IfcSlab": 199,
+    "IfcElementAssembly": 130,
+    "IfcWall": 20,
+    "IfcStairFlight": 10,
+    "IfcStair": 4
+   },
+   "clases_arquitectonicas_presentes": {
+    "IfcCurtainWall": 0,
+    "IfcWindow": 0,
+    "IfcDoor": 0,
+    "IfcRoof": 0,
+    "IfcCovering": 0,
+    "IfcPlate": 0,
+    "IfcMember": 0,
+    "IfcRailing": 0
+   },
+   "tipos_mas_frecuentes": [
+    "1104x IfcBeam: Hormigón-Viga rectangular:V10x25",
+    "619x IfcBeam: Hormigón-Viga rectangular:V30x50",
+    "301x IfcColumn: Hormigón-Rectangular-Pilar:C40X100",
+    "197x IfcColumn: Hormigón-Rectangular-Pilar:C30x30",
+    "130x IfcElementAssembly: Structural Beam System:Sistema de armazón estructural",
+    "66x IfcSlab: Floor:L2D 5cm H-30",
+    "23x IfcSlab: Zapata Rectangular Cara Inferior:Z180x180x40",
+    "20x IfcWall: Basic Wall:M20cm H-30",
+    "15x IfcSlab: Zapata Rectangular Cara Inferior:Z170x170x35",
+    "15x IfcSlab: Zapata Rectangular Cara Inferior:Z280x300x40"
+   ]
+  },
+  {
+   "archivo": "AU-CBI-ARQ-TP-ZZ-MO-TerminalPasajeros_detached.ifc",
+   "tamano_bytes": 11478284,
+   "schema": "IFC4",
+   "descripcion": [
+    "ViewDefinition [ReferenceView_V1.2]",
+    "RevitIdentifiers [ContentGUID: 3b11f709-2763-4b1b-a5a4-3dd1d863601f, VersionGUID: 91e727e1-99e3-4ffc-a8e1-1725147cf779, NumberOfSaves: 1]",
+    "CoordinateReference [CoordinateBase: Shared Coordinates, ProjectSite: Internal]",
+    "ExchangeRequirement [Architecture]"
+   ],
+   "origen": "Autodesk - Revit 27.3.0.28 (ENU) - 27.3.0.28",
+   "elementos_por_clase": {
+    "IfcBeam": 1759,
+    "IfcColumn": 502,
+    "IfcSlab": 199,
+    "IfcElementAssembly": 130,
+    "IfcWall": 20,
+    "IfcStairFlight": 10,
+    "IfcStair": 4
+   },
+   "clases_arquitectonicas_presentes": {
+    "IfcCurtainWall": 0,
+    "IfcWindow": 0,
+    "IfcDoor": 0,
+    "IfcRoof": 0,
+    "IfcCovering": 0,
+    "IfcPlate": 0,
+    "IfcMember": 0,
+    "IfcRailing": 0
+   },
+   "tipos_mas_frecuentes": [
+    "1754x IfcBeam: Structural Framing : Hormigón-Viga rectangular",
+    "502x IfcColumn: Structural Columns : Hormigón-Rectangular-Pilar",
+    "130x IfcElementAssembly: Structural Beam Systems : Structural Beam System",
+    "127x IfcSlab: Structural Foundations : Zapata Rectangular Cara Inferior",
+    "66x IfcSlab: Floors : Floor",
+    "20x IfcWall: Walls : Basic Wall",
+    "10x IfcStairFlight: Stairs : Cast-In-Place Stair",
+    "6x IfcSlab: Stairs : Cast-In-Place Stair",
+    "5x IfcBeam: Structural Framing : Viga rectangular Variable",
+    "4x IfcStair: Stairs : Cast-In-Place Stair"
+   ]
+  }
+ ],
+ "archivo_usado_para_geometria": "AU-CBI-ARQ-TP-ZZ-MO-TerminalPasajeros_detached.ifc",
+ "geo": {
+  "crs": "EPSG:32719",
+  "crs_descripcion": "UTM-WGS 1984 datum, Zone 19 South, Meter; Cent. Meridian 69d W",
+  "map_conversion": {
+   "E": 0.0,
+   "N": 0.0,
+   "H": 0.0
+  },
+  "nota_map_conversion": "IfcMapConversion es identidad; las coordenadas UTM reales están en el placement del IfcSite/IfcBuilding.",
+  "origen_edificio_utm": {
+   "E": 724956.439,
+   "N": 7737860.959,
+   "cota_msnm": 3666.743
+  },
+  "rotacion_eje_X_local_deg_CCW_desde_Este": 148.2058,
+  "lat_lon_IfcSite": [
+   -20.4461546,
+   -66.8497209
+  ],
+  "convergencia_meridiana_deg": -0.751,
+  "norte_verdadero_en_local_deg_CCW_desde_X": 301.043,
+  "azimut_normal_fachadas": {
+   "LADO_TIERRA_eje_A (normal -Y local) = FACHADA NORESTE": {
+    "cuadricula": 31.79,
+    "verdadero": 31.04
+   },
+   "LADO_AIRE_eje_R (normal +Y local) = FACHADA SUROESTE": {
+    "cuadricula": 211.79,
+    "verdadero": 211.04
+   },
+   "LATERAL_eje_1 (normal -X local) = FACHADA ESTE": {
+    "cuadricula": 121.79,
+    "verdadero": 121.04
+   },
+   "LATERAL_eje_20 (normal +X local) = FACHADA OESTE": {
+    "cuadricula": 301.79,
+    "verdadero": 301.04
+   }
+  }
+ },
+ "niveles": [
+  {
+   "nombre": "C",
+   "elevacion_rel_edificio": -1.65,
+   "sobre_NPT_DXF": -1.5,
+   "cota_msnm": 3665.093
+  },
+  {
+   "nombre": "0P",
+   "elevacion_rel_edificio": -0.15,
+   "sobre_NPT_DXF": 0.0,
+   "cota_msnm": 3666.593
+  },
+  {
+   "nombre": "1P",
+   "elevacion_rel_edificio": 3.7,
+   "sobre_NPT_DXF": 3.85,
+   "cota_msnm": 3670.443
+  },
+  {
+   "nombre": "2P",
+   "elevacion_rel_edificio": 6.95,
+   "sobre_NPT_DXF": 7.1,
+   "cota_msnm": 3673.693
+  },
+  {
+   "nombre": "3P",
+   "elevacion_rel_edificio": 7.45,
+   "sobre_NPT_DXF": 7.6,
+   "cota_msnm": 3674.193
+  },
+  {
+   "nombre": "4P",
+   "elevacion_rel_edificio": 8.85,
+   "sobre_NPT_DXF": 9.0,
+   "cota_msnm": 3675.593
+  },
+  {
+   "nombre": "5P",
+   "elevacion_rel_edificio": 11.35,
+   "sobre_NPT_DXF": 11.5,
+   "cota_msnm": 3678.093
+  }
+ ],
+ "correspondencia_DXF_IFC": {
+  "NPT_0.00_DXF": "nivel IFC '0P' (elev. -0.14999999999972277) = 3666.593 m s.n.m.",
+  "verificacion": "DXF +7.100 y +7.600 coinciden con IFC 2P (6.95) y 3P (7.45) + 0.15",
+  "fachada_NE_actual": "X_ifc = x_dxf ; z_NPT = y_dxf",
+  "corte_M1": "Y_ifc = -41.147 - x_dxf ; z_NPT = y_dxf",
+  "corte_original": "Y_ifc = -15.193 - x_dxf ; z_NPT = y_dxf - 42.914"
+ },
+ "ejes_locales_m": {
+  "numerados_X": {
+   "1": 0.0,
+   "2": 4.8,
+   "3": 9.6,
+   "4": 14.4,
+   "5": 19.2,
+   "6": 24.0,
+   "7": 28.8,
+   "8": 33.6,
+   "9": 38.4,
+   "10": 43.2,
+   "11": 48.0,
+   "13": 53.23,
+   "14": 58.03,
+   "15": 62.83,
+   "16": 67.63,
+   "17": 72.36,
+   "18": 72.81,
+   "19": 77.66,
+   "20": 82.51,
+   "11'": 48.5
+  },
+  "letras_Y": {
+   "A": 0.192,
+   "B": 9.282,
+   "C": 15.192,
+   "E": 22.571,
+   "F": 27.742,
+   "G": 28.862,
+   "P": 34.492,
+   "I": 44.042,
+   "R": 48.321,
+   "Q": 39.142,
+   "O": 31.967,
+   "M": 19.147,
+   "K": 4.213,
+   "H": 35.892
+  }
+ },
+ "estructura": {
+  "bbox_local_m": {
+   "min": [
+    -1.4,
+    -1.808,
+    -1.95
+   ],
+   "max": [
+    83.36,
+    48.821,
+    11.35
+   ],
+   "tamano": [
+    84.76,
+    50.629,
+    13.3
+   ]
+  },
+  "columnas_eje_A": {
+   "n_tramos": 58,
+   "seccion_m": [
+    0.4,
+    1.0
+   ],
+   "cara_exterior_Y": -0.308,
+   "cara_interior_Y": 0.692,
+   "x_centros": [
+    0.0,
+    4.8,
+    9.6,
+    14.4,
+    19.2,
+    24.0,
+    28.8,
+    33.6,
+    38.4,
+    43.2,
+    48.0,
+    48.5,
+    53.23,
+    58.03,
+    62.83,
+    67.63,
+    72.36,
+    72.81,
+    77.66,
+    82.51
+   ]
+  },
+  "elementos_que_vuelan_mas_alla_de_columnas_lado_tierra": [],
+  "sobre_cota_7_5": {
+   "IfcColumn": 57,
+   "IfcBeam": 50
+  },
+  "cerchas_de_acero_y_cubierta": "NO modeladas en el IFC (vigas/columnas de hormigón, zapatas, losas, muros, escaleras)."
+ },
+ "hallazgo_arq_es_estructura": {
+  "iguales_salvo_parts": true,
+  "conclusion": "El IFC 'AU-CBI-ARQ..._detached-AU-SUP-EST...' es el vínculo ESTRUCTURAL exportado desde el modelo ARQ: mismas clases/cantidades que el EST (sin IfcBuildingElementPart). No contiene muros cortina, ventanas, puertas, cubierta ni revestimientos."
+ }
+}

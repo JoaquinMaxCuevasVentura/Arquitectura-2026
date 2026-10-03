@@ -1,0 +1,258 @@
+{
+ "CORTE_ACTUAL_POR_M1": {
+  "png": "CORTE_ACTUAL_POR_M1.png",
+  "dxf": "CORTE_ACTUAL_POR_M1.dxf",
+  "entidades_dxf_limpio": 414,
+  "bbox_dxf": {
+   "xmin": -50,
+   "xmax": -28.5,
+   "ymin": -6,
+   "ymax": 20
+  },
+  "png_px_por_m": 93.023,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+  "npt_y": 0.0,
+  "a_ifc": "Y_ifc = -41.147 - x_dxf ; z_NPT = y_dxf",
+  "nota": "Corte por mampara ME-1 (eje A): vidrio, dintel, antepecho 2.40, alero, zanja."
+ },
+ "CORTE_ACTUAL_MURO_CIEGO": {
+  "png": "CORTE_ACTUAL_MURO_CIEGO.png",
+  "dxf": "CORTE_ACTUAL_MURO_CIEGO.dxf",
+  "entidades_dxf_limpio": 261,
+  "bbox_dxf": {
+   "xmin": -28.5,
+   "xmax": -3,
+   "ymin": -6,
+   "ymax": 20
+  },
+  "png_px_por_m": 78.431,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_DETALLES_CUBIERTA",
+  "npt_y": 0.0,
+  "a_ifc": "Y_ifc = -24.125 - x_dxf ; z_NPT = y_dxf",
+  "nota": "Corte por paño ciego (panel M2 e=130 mm) con viga intermedia +3.245/+3.745."
+ },
+ "CORTE_ORIGINAL_B-K-A": {
+  "png": "CORTE_ORIGINAL_B-K-A.png",
+  "dxf": "CORTE_ORIGINAL_B-K-A.dxf",
+  "entidades_dxf_limpio": 358,
+  "bbox_dxf": {
+   "xmin": -50,
+   "xmax": -3,
+   "ymin": 36,
+   "ymax": 62
+  },
+  "png_px_por_m": 63.83,
+  "estado": "ORIGINAL",
+  "coleccion": "REF_CAD_ANTES",
+  "npt_y": 42.914,
+  "a_ifc": "Y_ifc = -15.193 - x_dxf ; z_NPT = y_dxf - 42.914",
+  "nota": "Diseño previo: vidrio en eje K, doble pantalla ciega en eje A hasta +7.60, canaleta, cubierta a +9.87."
+ },
+ "FACHADA_NORESTE_ACTUAL": {
+  "png": "FACHADA_NORESTE_ACTUAL.png",
+  "dxf": "FACHADA_NORESTE_ACTUAL.dxf",
+  "entidades_dxf_limpio": 1479,
+  "bbox_dxf": {
+   "xmin": -3,
+   "xmax": 92,
+   "ymin": -6,
+   "ymax": 20
+  },
+  "png_px_por_m": 31.579,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_ALZADO_LADO_TIERRA",
+  "npt_y": 0.0,
+  "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf",
+  "nota": "Lado Tierra (eje A). Presentación FACHADA vp1 (1:300)."
+ },
+ "FACHADA_NORESTE_ORIGINAL": {
+  "png": "FACHADA_NORESTE_ORIGINAL.png",
+  "dxf": "FACHADA_NORESTE_ORIGINAL.dxf",
+  "entidades_dxf_limpio": 974,
+  "bbox_dxf": {
+   "xmin": -3,
+   "xmax": 92,
+   "ymin": 36,
+   "ymax": 62
+  },
+  "png_px_por_m": 31.579,
+  "estado": "ORIGINAL",
+  "coleccion": "REF_CAD_ANTES",
+  "npt_y": 42.914,
+  "a_ifc": "X_ifc = x_dxf ; z_NPT = y_dxf - 42.914",
+  "nota": "Lado Tierra en versión previa (acotada en detalle, sin antepecho 2.40)."
+ },
+ "FACHADA_SUROESTE": {
+  "png": "FACHADA_SUROESTE.png",
+  "dxf": "FACHADA_SUROESTE.dxf",
+  "entidades_dxf_limpio": 950,
+  "bbox_dxf": {
+   "xmin": 95,
+   "xmax": 205,
+   "ymin": -6,
+   "ymax": 20
+  },
+  "png_px_por_m": 27.273,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_ALZADO_LADO_AIRE",
+  "npt_y": 0.0,
+  "a_ifc": "vista desde +Y (lado aire); X_ifc decrece hacia la derecha",
+  "nota": "Lado Aire (eje R). Presentación FACHADA vp2 (1:300)."
+ },
+ "FACHADA_ESTE": {
+  "png": "FACHADA_ESTE.png",
+  "dxf": "FACHADA_ESTE.dxf",
+  "entidades_dxf_limpio": 955,
+  "bbox_dxf": {
+   "xmin": 238,
+   "xmax": 305,
+   "ymin": -6,
+   "ymax": 22
+  },
+  "png_px_por_m": 44.776,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_ALZADOS_LATERALES",
+  "npt_y": 0.0,
+  "a_ifc": "lateral eje 1 (normal -X local)",
+  "nota": "2 PT2 + 2 ME-3."
+ },
+ "FACHADA_OESTE": {
+  "png": "FACHADA_OESTE.png",
+  "dxf": "FACHADA_OESTE.dxf",
+  "entidades_dxf_limpio": 15505,
+  "bbox_dxf": {
+   "xmin": 322,
+   "xmax": 402,
+   "ymin": -6,
+   "ymax": 22
+  },
+  "png_px_por_m": 37.5,
+  "estado": "ACTUAL",
+  "coleccion": "REF_CAD_ALZADOS_LATERALES",
+  "npt_y": 0.0,
+  "a_ifc": "lateral eje 20 (normal +X local)",
+  "nota": "4 ME-3; PT1 del cuadro (11 u.) NO dibujadas."
+ },
+ "ME1": {
+  "png": "ME1.png",
+  "dxf": "ME1.dxf",
+  "entidades_dxf_limpio": 361,
+  "bbox_dxf": {
+   "xmin": 8,
+   "xmax": 24,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 125.0,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Mampara Hall Principal (7 u.)"
+ },
+ "ME2": {
+  "png": "ME2.png",
+  "dxf": "ME2.dxf",
+  "entidades_dxf_limpio": 928,
+  "bbox_dxf": {
+   "xmin": 24,
+   "xmax": 44,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 100.0,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Acceso, puerta corrediza con sensor (2 u.)"
+ },
+ "ME6": {
+  "png": "ME6.png",
+  "dxf": "ME6.dxf",
+  "entidades_dxf_limpio": 833,
+  "bbox_dxf": {
+   "xmin": 44,
+   "xmax": 62,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 111.111,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Esclusa pre-embarque (4 u., lado aire)"
+ },
+ "ME3": {
+  "png": "ME3.png",
+  "dxf": "ME3.dxf",
+  "entidades_dxf_limpio": 152,
+  "bbox_dxf": {
+   "xmin": 62,
+   "xmax": 82,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 100.0,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Ventana rombo 1.20x1.20 (12 u.)"
+ },
+ "ME4": {
+  "png": "ME4.png",
+  "dxf": "ME4.dxf",
+  "entidades_dxf_limpio": 366,
+  "bbox_dxf": {
+   "xmin": 82,
+   "xmax": 102,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 100.0,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Oficinas PB (4 u.)"
+ },
+ "ME5": {
+  "png": "ME5.png",
+  "dxf": "ME5.dxf",
+  "entidades_dxf_limpio": 367,
+  "bbox_dxf": {
+   "xmin": 102,
+   "xmax": 124,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 90.909,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_M1",
+  "nota": "Oficinas PA (4 u.)"
+ },
+ "PT1_PT2": {
+  "png": "PT1_PT2.png",
+  "dxf": "PT1_PT2.dxf",
+  "entidades_dxf_limpio": 322,
+  "bbox_dxf": {
+   "xmin": 124,
+   "xmax": 152,
+   "ymin": -33,
+   "ymax": -12
+  },
+  "png_px_por_m": 71.429,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_CELOSIA",
+  "nota": "Paneles perforados 5.00x6.00 m en placas 1.00x2.00 m. PT1 rectangular, PT2 con remate en zigzag."
+ },
+ "PANELES_LETRAS_PIRAMIDES": {
+  "png": "PANELES_LETRAS_PIRAMIDES.png",
+  "dxf": "PANELES_LETRAS_PIRAMIDES.dxf",
+  "entidades_dxf_limpio": 843,
+  "bbox_dxf": {
+   "xmin": -6,
+   "xmax": 45,
+   "ymin": -76,
+   "ymax": -44
+  },
+  "png_px_por_m": 58.824,
+  "estado": "DETALLE",
+  "coleccion": "REF_CAD_DETALLES_CELOSIA",
+  "nota": "Variantes de panel, letras UYUNI 1.18x1.50 m, rombos 2x2 y 1x1 m."
+ }
+}
