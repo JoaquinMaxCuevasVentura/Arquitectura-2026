@@ -75,8 +75,8 @@ Ubicación:
 | Fachada | Módulos |
 |---|---|
 | Lado Tierra | 2 en el extremo izquierdo (desde X −0,469) y 3 en el derecho (desde X 67,932, 15,0 m en total) |
-| Lado Aire | 2 |
-| Cada lateral | 2 |
+| Lado Aire | 2, en el extremo del anexo, con rombos ME-3 detrás |
+| Cada lateral | 2: PT1 en la OESTE (testero del eje 1) y PT2 en la ESTE (testero del eje 20), en el extremo del Lado Tierra |
 
 ## Pendiente
 

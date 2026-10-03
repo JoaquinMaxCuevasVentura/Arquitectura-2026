@@ -105,6 +105,7 @@ ME2 = [(14.660, 18.940), (53.490, 57.770)]
 ME3_NE = [(2.03, 2.068), (7.03, 2.068), (65.43, 2.278), (70.43, 2.278)]     # (X centro, Z centro); rombo de 1,20
 ME3_EJE1 = [(41.32, 1.86), (36.81, 1.86), (6.84, 1.86), (2.04, 1.86)]        # (Y centro, Z centro)
 ME3_EJE20 = [(33.28, 1.86), (39.16, 1.86)]
+ME3_SO = [(75.435, 1.862), (80.435, 1.862)]                              # (X centro, Z centro) detrás de las PT2 del Lado Aire
 VENTANAS_AIRE = [  # (X0, X1, Z0, Z1) Lado Aire: ME-4, ME-5 y ME-6 aproximadas desde el alzado SO
     (67.83, 70.33, 4.82, 6.51), (63.04, 65.53, 4.82, 6.51), (58.23, 60.73, 4.82, 6.51), (53.43, 55.93, 4.82, 6.51),
     (38.60, 42.94, 3.76, 6.51), (38.63, 42.91, 0.0, 2.36), (33.80, 38.14, 0.0, 2.66), (33.80, 38.14, 3.76, 6.51),
@@ -813,13 +814,20 @@ def envolvente_general(C, M):
     # anexo (ejes 18-20): muros perimetrales con rombos ME-3 en el testero del eje 20
     ax0, ax1 = ANEXO["x"]
     ay0, ay1 = ANEXO["y"]
-    an = Malla()
-    an.caja(ax0, ax1, ay1 - 0.15, ay1, 0.0, ANEXO["z"])   # el muro del Lado Tierra del anexo se genera en muro_landside
-    an.crear("ANEXO_MUROS", M["duralit"], col)
+    # muro del anexo hacia la pista (el muro del Lado Tierra del anexo se genera en muro_landside), con los
+    # rombos ME-3 detrás de las celosías PT2 del Lado Aire
+    placa_con_huecos("ANEXO_MURO_LADO_AIRE", [rect(ax0, ax1, 0.0, ANEXO["z"])] + [rombo(cx, cz) for cx, cz in ME3_SO],
+                     0.15, "XZ", ay1 - 0.075, M["duralit"], col)
+    for i, (cx, cz) in enumerate(ME3_SO):
+        placa_con_huecos(f"ME3_SO_{i}_VIDRIO", [rombo(cx, cz, 1.12)], 0.027, "XZ", ay1 - 0.03, M["vidrio"], C["03_CARPINTERIAS_M1"])
+        placa_con_huecos(f"ME3_SO_{i}_MARCO", [rombo(cx, cz, 1.20), rombo(cx, cz, 1.016)], 0.10, "XZ", ay1 - 0.06,
+                         M["perfil"], C["03_CARPINTERIAS_M1"])
     placa_con_huecos("TESTERO_EJE_20", [rect(Y_MURO_EXT, ay1, 0.0, ANEXO["z"])] + [rombo(cy, cz) for cy, cz in ME3_EJE20],
                      0.15, "YZ", ax1 - 0.075, M["duralit"], col)
     for i, (cy, cz) in enumerate(ME3_EJE20):
         placa_con_huecos(f"ME3_EJE20_{i}_VIDRIO", [rombo(cy, cz, 1.12)], 0.027, "YZ", ax1 - 0.03, M["vidrio"], C["03_CARPINTERIAS_M1"])
+        placa_con_huecos(f"ME3_EJE20_{i}_MARCO", [rombo(cy, cz, 1.20), rombo(cy, cz, 1.016)], 0.10, "YZ", ax1 - 0.06,
+                         M["perfil"], C["03_CARPINTERIAS_M1"])
     # interior básico (bloqueado): piso, fondo y cielo cálidos detrás del vidrio del Lado Tierra
     it = Malla()
     it.caja(X_ALERO[0] + 0.2, X_ALERO[1] - 0.2, Y_COL_INT + 0.05, 9.0, -0.05, 0.0)
