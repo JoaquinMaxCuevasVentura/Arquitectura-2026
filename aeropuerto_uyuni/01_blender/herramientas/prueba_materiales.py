@@ -284,10 +284,13 @@ def capa_polvo(mat, w_cav=0.5, w_arr=0.6, w_pie=0.0, opacidad=0.5, radio=0.01, d
     g.L.new(color, b.inputs["Base Color"])
     g.L.new(g.mezcla(total, fuente(g, b.inputs["Roughness"]), rug_polvo, "FLOAT"), b.inputs["Roughness"])
     g.L.new(g.m("MULTIPLY", fuente(g, b.inputs["Metallic"]), g.m("SUBTRACT", 1.0, total)), b.inputs["Metallic"])
-    # relieve positivo del polvo (la suciedad se deposita encima): Bump encadenado al relieve que ya hubiera
+    # relieve positivo del polvo (la suciedad se deposita encima): Bump encadenado al relieve que ya hubiera.
+    # La altura sale solo de máscaras baratas (Arriba, Pie y ruido): Cycles evalúa tres veces todo lo que alimenta la
+    # altura de un Bump (en el punto y desplazado en x e y), así que un AO o un Bevel ahí triplica su costo.
+    barato = g.m("MAXIMUM", g.m("MULTIPLY", M["Arriba"], w_arr), g.m("MULTIPLY", M["Pie"], w_pie))
     bump = g.n("ShaderNodeBump")
     bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.25, 0.0004
-    g.L.new(g.m("MULTIPLY", total, M["Grano"]), bump.inputs["Height"])
+    g.L.new(g.m("MULTIPLY", g.m("MULTIPLY", barato, k), M["Grano"]), bump.inputs["Height"])
     if b.inputs["Normal"].is_linked:
         g.L.new(b.inputs["Normal"].links[0].from_socket, bump.inputs["Normal"])
     g.L.new(bump.outputs["Normal"], b.inputs["Normal"])
