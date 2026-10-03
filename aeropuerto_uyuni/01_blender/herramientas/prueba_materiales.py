@@ -19,6 +19,7 @@ La intensidad del polvo sale de la propiedad de escena "polvo" (0 = sin polvo, 1
 Uso: python prueba_materiales.py -- archivo.blend carpeta [camaras] [ancho] [muestras]
      camaras: lista separada por comas (por defecto CAM_06_DETALLE_CELOSIA,CAM_05_LETRERO_HORIZONTE)
 """
+import json
 import math
 import os
 import sys
@@ -44,6 +45,10 @@ for vl in sc.view_layers:
 POLVO = "#BDB3A1"          # polvo seco y salino, más claro que el suelo
 SALPICADO = "#8E826E"      # tierra salpicada al pie de los muros
 CORTEN_DENSO = "#3A1A0E"   # pátina densa de caras superiores y cantos
+CORTEN_LOTE = "#5E2C1A"    # plancha de un lote más pardo (más oxidado, menos naranja)
+# Rayos por punto sombreado. Con 96 a 384 muestras de cámara, 2 en AO y 4 en Bevel convergen igual que 8 y cuestan
+# mucho menos: el ruido se promedia entre las muestras de cámara y el OIDN limpia el resto.
+MUESTRAS_AO, MUESTRAS_BEVEL = 2, 4
 
 
 def srgb(h):
@@ -80,16 +85,28 @@ r.resolution_x, r.resolution_y, r.resolution_percentage = ancho, round(ancho * 9
 r.image_settings.file_format, r.image_settings.color_mode, r.image_settings.quality = "JPEG", "RGB", 94
 cy.device, cy.samples, cy.use_adaptive_sampling, cy.adaptive_threshold = "CPU", muestras, True, 0.01
 cy.use_denoising, cy.denoiser = True, "OPENIMAGEDENOISE"
-tiempos = {}
+REGISTRO = f"{salida}/tiempos.json"
+try:
+    with open(REGISTRO) as f:
+        tiempos = json.load(f)
+except (OSError, ValueError):
+    tiempos = {}
 
 
 def render(camara, etapa):
+    """Renderiza y anota el tiempo. El ANTES no cambia entre corridas: si ya está, con su tiempo, no se repite."""
     sc.camera = bpy.data.objects[camara]
     sc.render.filepath = f"{salida}/{camara}_{etapa}.jpg"
+    clave = f"{camara}_{etapa}"
+    if etapa == "A_ANTES" and clave in tiempos and os.path.exists(sc.render.filepath):
+        print(f"[PRUEBA] {clave} ya está ({tiempos[clave]:.0f} s)", flush=True)
+        return
     t = time.time()
     bpy.ops.render.render(write_still=True, scene=sc.name)
-    tiempos[(camara, etapa)] = time.time() - t
-    print(f"[PRUEBA] {camara} {etapa} -> {tiempos[(camara, etapa)]:.0f} s", flush=True)
+    tiempos[clave] = time.time() - t
+    with open(REGISTRO, "w") as f:
+        json.dump(tiempos, f, indent=1)
+    print(f"[PRUEBA] {camara} {etapa} -> {tiempos[clave]:.0f} s", flush=True)
 
 
 for c in camaras:
@@ -172,14 +189,14 @@ def grupo_mascaras():
     # Arista: producto punto entre la normal biselada y la normal real. En una arista de 90°, en el filo la normal
     # biselada está a 45° -> cos 45° = 0,707; en la cara plana -> 1. El radio varía con ruido (ancho irregular).
     radio = g.m("MULTIPLY", gi.outputs["Radio arista"], g.rango(g.ruido(P, 6.0, 3.0), 0.3, 0.7, 0.35, 1.0))
-    bev = g.n("ShaderNodeBevel", samples=8)
+    bev = g.n("ShaderNodeBevel", samples=MUESTRAS_BEVEL)
     g.con(radio, bev.inputs["Radius"])
     dot = g.n("ShaderNodeVectorMath", operation="DOT_PRODUCT")
     g.L.new(bev.outputs["Normal"], dot.inputs[0])
     g.L.new(Nn, dot.inputs[1])
     g.con(g.rango(dot.outputs["Value"], 0.70, 0.995, 1.0, 0.0, suave=False), go.inputs["Arista"])
     # Cavidad: AO con otros objetos (no solo local) -> rincones, juntas, encuentros muro/vereda, valles de nervios
-    ao = g.n("ShaderNodeAmbientOcclusion", samples=8, only_local=False, inside=False)
+    ao = g.n("ShaderNodeAmbientOcclusion", samples=MUESTRAS_AO, only_local=False, inside=False)
     g.L.new(gi.outputs["Distancia AO"], ao.inputs["Distance"])
     g.con(g.rango(g.m("SUBTRACT", 1.0, ao.outputs["AO"]), 0.10, 0.55), go.inputs["Cavidad"])
     # Arriba: caras que miran al cielo (componente Z de la normal del mundo)
@@ -295,14 +312,16 @@ def corten_inteligente(mat, fac_corten):
     b = bsdf(mat)
     M = mascaras(g, radio=0.004, dist_ao=0.15)
     geo = g.n("ShaderNodeNewGeometry")
-    # 1. variación por plancha (cada plancha de 1 x 2 m es una isla): ±10 % de valor, como lotes distintos de acero
+    # 1. variación por plancha (cada plancha de 1 x 2 m es una isla), como lotes distintos de acero:
+    #    ±15 % de valor y, en parte de las planchas, un tono más pardo
     isla = geo.outputs["Random Per Island"]
-    lote = g.m("ADD", 0.90, g.m("MULTIPLY", isla, 0.20))
+    lote = g.m("ADD", 0.85, g.m("MULTIPLY", isla, 0.30))
     base = fuente(g, b.inputs["Base Color"])
     vm = g.n("ShaderNodeVectorMath", operation="SCALE")
     g.L.new(base, vm.inputs[0])
     g.con(g.mezcla(fac_corten, 1.0, lote, "FLOAT"), vm.inputs["Scale"])
-    color = vm.outputs["Vector"]
+    pardo = g.m("MULTIPLY", g.rango(g.m("FRACT", g.m("MULTIPLY", isla, 7.31)), 0.55, 1.0, 0.0, 0.45), fac_corten)
+    color = g.mezcla(pardo, vm.outputs["Vector"], srgb(CORTEN_LOTE))
     # 2. caras superiores (retienen humedad y depósitos) y cantos: pátina más densa y oscura
     denso = g.m("MAXIMUM", g.m("MULTIPLY", M["Arriba"], 0.65), g.m("MULTIPLY", M["Arista"], 0.40))
     denso = g.m("MULTIPLY", g.m("MULTIPLY", denso, g.m("ADD", 0.5, g.m("MULTIPLY", M["Ruptura"], 0.5))), fac_corten)
@@ -431,7 +450,7 @@ gd = G(diag.node_tree)
 for n in list(diag.node_tree.nodes):
     if n.type != "OUTPUT_MATERIAL":
         diag.node_tree.nodes.remove(n)
-Md = mascaras(gd)
+Md = mascaras(gd, radio=0.01, dist_ao=0.10)     # AO de 0,10 m: lee nervios, juntas y encuentros sin saturar
 cc = gd.n("ShaderNodeCombineColor")
 gd.L.new(Md["Arista"], cc.inputs[0])
 gd.L.new(Md["Cavidad"], cc.inputs[1])
@@ -454,6 +473,6 @@ cy.samples = muestras
 for c in camaras:
     render(c, "C_DESPUES")
 for c in camaras:
-    a, d = tiempos[(c, "A_ANTES")], tiempos[(c, "C_DESPUES")]
+    a, d = tiempos[f"{c}_A_ANTES"], tiempos[f"{c}_C_DESPUES"]
     print(f"[COSTO] {c}: antes {a:.0f} s, después {d:.0f} s ({100 * (d / a - 1):+.0f} %)", flush=True)
 bpy.ops.wm.save_as_mainfile(filepath=f"{salida}/prueba_materiales.blend", compress=True)
