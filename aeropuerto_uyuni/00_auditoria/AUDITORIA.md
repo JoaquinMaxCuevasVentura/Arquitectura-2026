@@ -132,10 +132,11 @@ Como todo se modela desde cero con bpy, "suprimir" equivale simplemente a no mod
 
 | # | Tema | Decisión |
 |---|---|---|
-| 1 | UYUNI espejado y 5 rombos del antepecho | **Se eliminan.** Quedan solo las letras corpóreas de corten (1,18 × 1,50 m), sobre el antepecho, en la misma posición que el UYUNI del CAD. |
+| 1 | Letrero UYUNI del antepecho | **Corregido el 3 de octubre: se MANTIENE.** Es el concepto "línea de horizonte": montículos de sal (triángulos perforados) y letras UYUNI sobre el horizonte (+7,764), con su reflejo debajo (marcos y letras en contorno). Elementos **blancos** sobre el antepecho de **chapa café chocolate** (continuación de la cubierta). Modulación del CAD: 1446 · 2000 · 1000 · 2717 · 3×1000 · 1184 · 5576 · 5952 · 2000 · 6401 · 308; letras de 1,50 m con trazo de 200 mm; perforaciones de Ø 50 mm. La "falsa isóptica / estructura anamórfica" a eliminar no es este letrero: no figura en los archivos recibidos. |
 | 2 | Celosías | **Oeste: 2 · Este: 2 · Lado Tierra: 5 PT2 · Lado Aire: 2 PT2.** |
 | 3 | Retenedores de nieve | Doble barra **a 0,40 m del borde libre**, con abrazaderas sobre los nervios cada 0,30 m. |
 | 4 | Hero shot (CAM_01) | **Luz de mañana**, con sol sobre la fachada NNE y sombras de las planchas corten. |
 | 5 | Repositorio | Se suben los informes. |
+| 6 | Materiales (imagen de referencia del 3 de octubre) | Antepecho en chapa café chocolate con nervios verticales; letrero blanco; muros de Duralit en crema claro; bolardos; bañadores cálidos al pie de las celosías y nieve en el borde (hora azul). |
 | — | Cumbrera | Sin respuesta. Se toma el perfil de los alzados laterales (≈ +13,0) para el volumen y queda como parámetro. |
 | — | Colecciones | Se usa la lista de la Tarea 0.2 (`_REF_CAD`, `01_ESTRUCTURA` … `08_CAMERAS_LIGHTS`). |

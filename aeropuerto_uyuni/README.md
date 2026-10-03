@@ -3,16 +3,16 @@
 | Carpeta | Contenido |
 |---|---|
 | `00_auditoria/` | Auditoría técnica del DXF y los IFC (Fases 0 y 0.5): `AUDITORIA.md`, informes JSON, 16 vistas aisladas (PNG + DXF limpio), decisiones confirmadas y el script de auditoría. |
-| `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v1.blend` (ya generado) y renders de prueba en `previews/`. |
+| `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v2.blend` (ya generado) y renders de prueba en `previews/`. |
 
 ## Cómo usarlo en Blender 5.2
 
-**Opción 1: abrir el modelo ya generado.** Abre `01_blender/uyuni_v1.blend`. Contiene dos escenas:
+**Opción 1: abrir el modelo ya generado.** Abre `01_blender/uyuni_v2.blend`. Contiene dos escenas:
 
 | Escena | Luz | Cámaras |
 |---|---|---|
-| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30 | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_DRON |
-| `UYUNI_CREPUSCULO` | Hora azul, interior encendido, piso mojado | CAM_03 |
+| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30 | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_DRON |
+| `UYUNI_CREPUSCULO` | Hora azul: interior, alero y letrero encendidos; piso mojado; nieve en el borde | CAM_03 |
 
 **Opción 2: regenerar desde el script** (por ejemplo, después de cambiar un parámetro): Scripting > Open > `01_blender/uyuni_modelo.py` > Run Script. Al volver a ejecutarlo, borra y vuelve a crear solo sus propias colecciones.
 
@@ -45,7 +45,16 @@ Todos están al inicio de `uyuni_modelo.py`:
 - `CELOSIAS` (posiciones de las celosías)
 - `FECHA_DIA` y `FECHA_CREPUSCULO`
 
-Las propiedades `humedad`, `nieve`, `luz_interior` y `luz_alero` de cada escena controlan los materiales: piso mojado, nieve en el suelo y luces.
+Las propiedades `humedad`, `nieve`, `luz_interior`, `luz_alero` y `luz_letrero` de cada escena controlan los materiales: piso mojado, nieve en el suelo y luces.
+
+## Letrero "línea de horizonte" (v2)
+
+Va sobre el antepecho de chapa café chocolate (continuación de la cubierta) y todos sus elementos son blancos:
+- Letras UYUNI de 1,50 m sobre el horizonte (+7,764) y su reflejo en contorno debajo.
+- Montículos de sal (triángulos perforados con agujeros de Ø 50 mm) y su reflejo en marcos triangulares.
+- Línea de horizonte de X 40,976 a 72,252.
+
+La modulación sale del CAD. Las letras sobresalen 0,25 m por encima del antepecho y el reflejo 0,35 m por debajo, igual que en el dibujo.
 
 ## Pendiente
 
