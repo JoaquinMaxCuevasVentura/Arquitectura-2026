@@ -54,7 +54,7 @@ Va sobre el antepecho de chapa café chocolate (continuación de la cubierta) y 
 - Montículos de sal (triángulos perforados con agujeros de Ø 50 mm) y su reflejo en marcos triangulares.
 - Línea de horizonte de X 40,976 a 72,252.
 
-La modulación sale del CAD. Las letras sobresalen 0,25 m por encima del antepecho y el reflejo 0,35 m por debajo, igual que en el dibujo.
+La modulación sale del CAD. Las letras sobresalen 0,25 m por encima del antepecho y el reflejo 0,35 m por debajo, igual que en el dibujo (decisión confirmada; se mantiene así por ahora).
 
 ## Celosías corten
 

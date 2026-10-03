@@ -138,5 +138,6 @@ Como todo se modela desde cero con bpy, "suprimir" equivale simplemente a no mod
 | 4 | Hero shot (CAM_01) | **Luz de mañana**, con sol sobre la fachada NNE y sombras de las planchas corten. |
 | 5 | Repositorio | Se suben los informes. |
 | 6 | Materiales (imagen de referencia del 3 de octubre) | Antepecho en chapa café chocolate con nervios verticales; letrero blanco; muros de Duralit en crema claro; bolardos; bañadores cálidos al pie de las celosías y nieve en el borde (hora azul). |
+| 7 | Letras UYUNI respecto del antepecho | **Sobresalen, como en el CAD (por ahora):** las letras 0,25 m por encima del antepecho (+9,264) y el reflejo 0,35 m por debajo (+6,264). |
 | — | Cumbrera | Sin respuesta. Se toma el perfil de los alzados laterales (≈ +13,0) para el volumen y queda como parámetro. |
 | — | Colecciones | Se usa la lista de la Tarea 0.2 (`_REF_CAD`, `01_ESTRUCTURA` … `08_CAMERAS_LIGHTS`). |
