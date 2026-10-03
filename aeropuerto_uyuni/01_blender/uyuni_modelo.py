@@ -105,7 +105,14 @@ ME2 = [(14.660, 18.940), (53.490, 57.770)]
 ME3_NE = [(2.03, 2.068), (7.03, 2.068), (65.43, 2.278), (70.43, 2.278)]     # (X centro, Z centro); rombo de 1,20
 ME3_EJE1 = [(41.32, 1.86), (36.81, 1.86), (6.84, 1.86), (2.04, 1.86)]        # (Y centro, Z centro)
 ME3_EJE20 = [(33.28, 1.86), (39.16, 1.86)]
-ME3_SO = [(75.435, 1.862), (80.435, 1.862)]                              # (X centro, Z centro) detrás de las PT2 del Lado Aire
+ME3_SO = [(75.435, 1.862), (80.435, 1.862)]
+# Fachada OESTE (testero del eje 1): rombo perforado sobre el ME-3 (lado 1,96; interior 1,36), bloque bajo con mástil
+ROMBO_OESTE = dict(y=36.815, z=5.65, semi_ext=1.389, semi_int=0.965, semi_placa=0.93)
+MASTIL_OESTE = dict(x=0.6, y=48.37, z_base=7.98, z_cambio=8.88, z_tope=10.38)
+CAJA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 50.51), z=(3.45, 6.15))      # volumen saliente hacia la pista
+PLATAFORMA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 49.77), z=0.45)        # descanso de 0,45 m con 3 escalones
+# Fachada ESTE (testero del eje 20): franja de chapa café chocolate nervada, en todo el ancho
+FRANJA_ESTE = dict(y=(-0.308, 43.474), z=(4.41, 6.21))                              # (X centro, Z centro) detrás de las PT2 del Lado Aire
 VENTANAS_AIRE = [  # (X0, X1, Z0, Z1) Lado Aire: ME-4, ME-5 y ME-6 aproximadas desde el alzado SO
     (67.83, 70.33, 4.82, 6.51), (63.04, 65.53, 4.82, 6.51), (58.23, 60.73, 4.82, 6.51), (53.43, 55.93, 4.82, 6.51),
     (38.60, 42.94, 3.76, 6.51), (38.63, 42.91, 0.0, 2.36), (33.80, 38.14, 0.0, 2.66), (33.80, 38.14, 3.76, 6.51),
@@ -847,6 +854,59 @@ def borde_v(variante, u):
     return pts[-1][1]
 
 
+def elementos_laterales(C, M):
+    """Elementos de los alzados laterales (pedido del 3 de octubre): rombo perforado y bloque bajo con mástil en la
+    fachada OESTE (testero del eje 1) y franja de chapa café chocolate nervada en la fachada ESTE (testero del eje 20)."""
+    col = C["02_ENVOLVENTE"]
+    # --- rombo perforado (montículo) sobre el ME-3: marco blanco, fondo oscuro y chapa blanca perforada
+    r = ROMBO_OESTE
+    xw = X_ALERO[0]                                   # cara exterior del testero del eje 1
+    def rombo_semi(cy, cz, semi):
+        return [(cy, cz - semi), (cy + semi, cz), (cy, cz + semi), (cy - semi, cz)]
+    placa_con_huecos("ROMBO_OESTE_MARCO", [rombo_semi(r["y"], r["z"], r["semi_ext"]), rombo_semi(r["y"], r["z"], r["semi_int"])],
+                     0.06, "YZ", xw - 0.03, M["letrero"], col)
+    placa_con_huecos("ROMBO_OESTE_FONDO", [rombo_semi(r["y"], r["z"], r["semi_int"] + 0.01)], 0.006, "YZ", xw - 0.003,
+                     M["plenum"], col)
+    huecos, paso, rad = [], 0.09, 0.02
+    n = int(r["semi_placa"] / paso) + 1
+    for i in range(-n, n + 1):
+        for j in range(-n, n + 1):
+            cy, cz = r["y"] + i * paso, r["z"] + j * paso
+            if abs(cy - r["y"]) + abs(cz - r["z"]) <= r["semi_placa"] - 0.05:
+                huecos.append([(cy + rad * math.cos(2 * math.pi * k / 10), cz + rad * math.sin(2 * math.pi * k / 10)) for k in range(10)])
+    placa_con_huecos("ROMBO_OESTE_CHAPA_PERFORADA", [rombo_semi(r["y"], r["z"], r["semi_placa"])] + huecos, 0.003, "YZ",
+                     xw - 0.04, M["letrero"], col)
+    # --- bloque bajo del Lado Aire: mástil, volumen saliente y descanso con escalones
+    mt = MASTIL_OESTE
+    m = Malla()
+    m.caja(mt["x"] - 0.10, mt["x"] + 0.10, mt["y"] - 0.10, mt["y"] + 0.10, mt["z_base"], mt["z_cambio"])
+    m.caja(mt["x"] - 0.05, mt["x"] + 0.05, mt["y"] - 0.05, mt["y"] + 0.05, mt["z_cambio"], mt["z_tope"])
+    m.crear("MASTIL_OESTE", M["galvanizado"], col)
+    cj = CAJA_OESTE
+    c = Malla()
+    c.caja(cj["x"][0], cj["x"][1], cj["y"][0], cj["y"][1], cj["z"][0], cj["z"][1])
+    c.crear("VOLUMEN_SALIENTE_OESTE", M["duralit"], col)
+    pf = PLATAFORMA_OESTE
+    e = Malla()
+    e.caja(pf["x"][0], pf["x"][1], pf["y"][0], pf["y"][1], 0.0, pf["z"])
+    for k, h in enumerate((0.30, 0.15)):              # escalones de 0,15 hacia +X
+        e.caja(pf["x"][1] + 0.30 * k, pf["x"][1] + 0.30 * (k + 1), pf["y"][0], pf["y"][1], 0.0, h)
+    e.crear("DESCANSO_ESCALONES_OESTE", M["hormigon"], col)
+    # --- franja nervada café chocolate en el testero del eje 20 (+4,41 a +6,21)
+    fr = FRANJA_ESTE
+    xe = ANEXO["x"][1]
+    f = Malla()
+    f.caja(xe, xe + 0.02, fr["y"][0], fr["y"][1], fr["z"][0], fr["z"][1])
+    f.crear("FRANJA_ESTE_CHAPA", M["chapa"], col)
+    nv = Malla()
+    nv.caja(xe + 0.02, xe + 0.02 + NERVIO_ANTEPECHO, fr["y"][0] + 0.10, fr["y"][0] + 0.10 + NERVIO_SECCION[0], fr["z"][0], fr["z"][1])
+    ob = nv.crear("FRANJA_ESTE_NERVIOS", M["chapa"], col)
+    arr = ob.modifiers.new("Array_0.30", "ARRAY")
+    arr.use_relative_offset, arr.use_constant_offset = False, True
+    arr.constant_offset_displace = (0, NERVIO_PASO, 0)
+    arr.count = int((fr["y"][1] - fr["y"][0] - 0.12) / NERVIO_PASO) + 1
+
+
 def celosias(C, M):
     """Pantallas corten PT1/PT2: 15 planchas de 1,00 x 2,00 m (1 mm, juntas de 5 mm) con calados andinos (vacíos)
     sobre un bastidor de tubos de 40 x 40 que sigue las líneas salmón del CAD (verticales cada 1,00 m, horizontales
@@ -1261,6 +1321,7 @@ def construir(muestras=256):
     antepecho_alero(C, M)
     cubierta(C, M)
     envolvente_general(C, M)
+    elementos_laterales(C, M)
     celosias(C, M)
     letrero(C, M)
     entorno(C, M)

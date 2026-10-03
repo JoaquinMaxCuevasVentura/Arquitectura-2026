@@ -78,6 +78,14 @@ Ubicación:
 | Lado Aire | 2, en el extremo del anexo, con rombos ME-3 detrás |
 | Cada lateral | 2: PT1 en la OESTE (testero del eje 1) y PT2 en la ESTE (testero del eje 20), en el extremo del Lado Tierra |
 
+## Elementos de los alzados laterales
+
+- **Fachada OESTE (testero del eje 1):**
+  - Rombo de 1,96 m de lado sobre el ME-3, con su centro a +5,65. Lleva marco blanco y chapa blanca perforada sobre un fondo oscuro.
+  - Bloque bajo del Lado Aire con mástil (base de 0,20 m hasta +8,88 y fuste de 0,10 m hasta +10,38).
+  - Volumen saliente de +3,45 a +6,15 y descanso de 0,45 m con escalones. El alzado no da su posición en X; se ubicaron junto al eje 1.
+- **Fachada ESTE (testero del eje 20):** franja de chapa café chocolate nervada (nervios cada 0,30 m) de +4,41 a +6,21, en todo el ancho.
+
 ## Pendiente
 
 - **Vehículos 4x4, minibús y turistas:** hoy son cajas de ubicación en `07_ASSETS/PROXIES_COLOCACION`, visibles solo en el visor. Hay que reemplazarlas por modelos reales (Sketchfab o BlenderKit).
