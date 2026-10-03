@@ -9,7 +9,7 @@
 | `01_blender/previews/` | Vistas previas de las cámaras CAM_01 a CAM_06. |
 | `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): 4 alzados y 2 cortes. |
 | `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas, verificar contra el CAD e inventariar la escena. |
-| `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. |
+| `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. `unificar_color.py`: "Lightroom a medida" que unifica el color de las fotos generadas con IA, con una aplicación en el navegador y un modo por lotes (ver `UNIFICAR_COLOR.md`). |
 
 ## Cómo usarlo en Blender 5.2
 
