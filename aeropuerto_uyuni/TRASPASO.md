@@ -333,6 +333,8 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 | `CAM_06_DETALLE_CELOSIA` | DIA | Planchas corten, calados y sus sombras. |
 | `CAM_07_PROPUESTAS` | DIA y DIA_P2_SALAR_LITIO | Fachada completa para que la gerencia elija la propuesta de color (punto 11 de la sección 5). Se renderiza con `herramientas/render_propuestas.py`. |
 
+**Antes de los renders finales:** aplicar las mejoras de fotorrealismo de `02_postproduccion/FOTORREALISMO_BLENDER.md`. Son, sobre todo, exposición medida con False Color (la escena estaba ≈ 0,7 EV sobreexpuesta) y verticales rectas con *shift*. Se probaron en CAM_01.
+
 **Configuración** (hoy: 4K al 50 %, 256 muestras, GPU, OIDN, AgX Medium High Contrast):
 1. Resolución de 3840 × 2160 al **100 %**.
 2. Cycles en GPU, con OptiX o CUDA activado en *Preferences > System*.
