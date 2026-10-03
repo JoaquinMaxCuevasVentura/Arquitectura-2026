@@ -26,9 +26,10 @@ Antes de proponer nada, lee completo aeropuerto_uyuni/TRASPASO.md. Si necesitas 
 
 Reglas:
 - No cambies las decisiones del cliente (sección 5 de TRASPASO.md) sin preguntarme. En particular:
-  - el letrero "línea de horizonte" se mantiene, blanco, sobre el antepecho café chocolate;
-  - las letras sobresalen del antepecho;
-  - los retenedores van a 0,40 m del borde;
+  - el letrero "línea de horizonte" se mantiene, con pirámides facetadas en 3D y despegado 12 cm de la chapa;
+  - hay dos propuestas de color (P1 "Patrimonio Ferroviario" con letrero corten, P2 "Salar & Litio" en blanco) y dos geometrías del letrero (A sobresale, B contenida): no elijas por el cliente;
+  - el retenedor de nieve es un doble tubo de 1" de 18 cm de alto sobre la primera correa;
+  - muros y columnas de revoque continuo, sin juntas; sin bolardos;
   - el hero shot es con luz de mañana.
 - uyuni_modelo.py es la fuente de verdad:
   - todo cambio de geometría va en el script, con medidas numéricas tomadas del DXF;

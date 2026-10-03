@@ -9,16 +9,23 @@
 | `01_blender/previews/` | Vistas previas de las cámaras CAM_01 a CAM_06. |
 | `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): 4 alzados y 2 cortes. |
 | `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas, verificar contra el CAD e inventariar la escena. |
-| `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. `unificar_color.py`: "Lightroom a medida" que unifica el color de las fotos generadas con IA, con una aplicación en el navegador y un modo por lotes (ver `UNIFICAR_COLOR.md`). |
+| `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. `PROMPT_UPSCALE_PROPUESTAS.md`: prompts y ajustes para escalar ×2 con IA los renders de las dos propuestas. `unificar_color.py`: "Lightroom a medida" que unifica el color de las fotos generadas con IA, con una aplicación en el navegador y un modo por lotes (ver `UNIFICAR_COLOR.md`). |
 
 ## Cómo usarlo en Blender 5.2
 
-**Opción 1: abrir el modelo ya generado.** Abre `01_blender/uyuni_v2.blend`. Contiene dos escenas:
+**Opción 1: abrir el modelo ya generado.** Abre `01_blender/uyuni_v2.blend`. Contiene tres escenas:
 
 | Escena | Luz | Cámaras |
 |---|---|---|
-| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30 | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_DRON |
+| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30. Propuesta 1 "Patrimonio Ferroviario" | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_07, CAM_07B, CAM_DRON |
+| `UYUNI_DIA_P2_SALAR_LITIO` | La misma mañana con la propuesta 2 "Salar & Litio" | CAM_07 |
 | `UYUNI_CREPUSCULO` | Hora azul: interior, alero y letrero encendidos; piso mojado; nieve en el borde | CAM_03 |
+
+**Propuestas y letrero:**
+- La propiedad `propuesta` de la escena elige la paleta: 0 es P1 y 1 es P2. Los colores están en `PALETA`.
+- La propiedad `letras_corten` elige el material del letrero: 1 es corten y 0 es blanco.
+- La geometría del letrero tiene dos colecciones: `LETRERO_A_SOBRESALE` (la visible) y `LETRERO_B_CONTENIDO`.
+- Para renderizar las variantes sin interfaz, usa `herramientas/render_propuestas.py`.
 
 **Opción 2: regenerar desde el script** (por ejemplo, después de cambiar un parámetro): Scripting > Open > `01_blender/uyuni_modelo.py` > Run Script. Al volver a ejecutarlo, borra y vuelve a crear solo sus propias colecciones.
 
@@ -56,12 +63,17 @@ Las propiedades `humedad`, `nieve`, `luz_interior`, `luz_alero` y `luz_letrero` 
 
 ## Letrero "línea de horizonte" (v2)
 
-Va sobre el antepecho de chapa café chocolate (continuación de la cubierta) y todos sus elementos son blancos:
-- Letras UYUNI de 1,50 m sobre el horizonte (+7,764) y su reflejo en contorno debajo.
-- Montículos de sal (triángulos perforados con agujeros de Ø 50 mm) y su reflejo en marcos triangulares.
+Va sobre el antepecho de chapa (continuación de la cubierta). Es blanco o de acero corten, según la propuesta:
+- Letras UYUNI de 1,50 m sobre el horizonte (+7,764), de 8 cm de espesor, y su reflejo en contorno debajo.
+- Montículos de sal: **pirámides facetadas en 3D**, con dos caras triangulares que el sol separa en luz y penumbra, y su reflejo en marcos triangulares.
 - Línea de horizonte de X 40,976 a 72,252.
+- Juego de 3 pirámides sin texto (grande + 2 chicas) sobre la puerta de salida, con su tramo de horizonte de X 13,30 a 20,30.
 
-La modulación sale del CAD. Las letras sobresalen 0,25 m por encima del antepecho y el reflejo 0,35 m por debajo, igual que en el dibujo (decisión confirmada; se mantiene así por ahora).
+Todo el conjunto flota despegado 12 cm de la chapa sobre pernos ocultos, para que la sombra propia se separe de las piezas.
+
+La modulación sale del CAD. Hay dos geometrías para probar:
+- **A:** como en el dibujo. Las letras sobresalen 0,25 m por encima del antepecho y el reflejo 0,35 m por debajo.
+- **B:** contenida en los 2,40 m, reescalada al 72 % y centrada.
 
 ## Celosías corten
 
@@ -91,7 +103,7 @@ Ubicación:
   - Rombo de 1,96 m de lado sobre el ME-3, con su centro a +5,65. Lleva marco blanco y chapa blanca perforada sobre un fondo oscuro.
   - Bloque bajo del Lado Aire con mástil (base de 0,20 m hasta +8,88 y fuste de 0,10 m hasta +10,38).
   - Volumen saliente de +3,45 a +6,15 y descanso de 0,45 m con escalones. El alzado no da su posición en X; se ubicaron junto al eje 1.
-- **Fachada ESTE (testero del eje 20):** franja de chapa café chocolate nervada (nervios cada 0,30 m) de +4,41 a +6,21, en todo el ancho.
+- **Fachada ESTE (testero del eje 20):** franja de chapa nervada (nervios cada 0,30 m), del color del parapeto, de +4,41 a +6,21, en todo el ancho.
 
 ## Pendiente
 

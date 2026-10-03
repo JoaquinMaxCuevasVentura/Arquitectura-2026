@@ -17,10 +17,10 @@ Esta guía permite que otra persona o IA continúe el proyecto sin repetir la au
 |---|---|---|
 | 0 y 0.5 | Auditoría del DXF y del IFC, y triage de vistas | ✅ Terminada (`00_auditoria/`). |
 | 1 | Suprimir lo obsoleto, dinteles rectos a +5,51, mampara M1 y antepecho de 2,40 m | ✅ El modelo se hizo desde cero: lo obsoleto, simplemente, no se modeló. |
-| 2 | Cubierta engrapada, retenedores de nieve, goterón sin canaleta, zanja y cielo Luxalon | ✅ |
+| 2 | Cubierta engrapada, retenedores de nieve, goterón sin canaleta, zanja y cielo del alero | ✅ Revisado el 3 de octubre: retenedor fino y cielo listonado (sección 5). |
 | 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 11 módulos y letrero "línea de horizonte". |
 | Materiales | PBR | ✅ Procedurales, sin texturas de imagen. |
-| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan tres cosas: 1) el paisaje (horizonte, cerros, suelo con textura y vegetación); 2) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 3) la variante de cielo nublado. El entorno inmediato ya está: acera, zanja, calzada, estacionamiento, bolardos y plataforma. |
+| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan tres cosas: 1) el paisaje (horizonte, cerros, suelo con textura y vegetación); 2) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 3) la variante de cielo nublado. El entorno inmediato ya está: acera, zanja, calzada, estacionamiento y plataforma (los bolardos se quitaron el 3 de octubre). |
 | 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05 y CAM_06). **Faltan los renders finales con GPU.** |
 | 6 | Dron de 20–30 s, 24 fps, 1080p, MP4 H.264 | ⚠️ La trayectoria está lista (`CAM_DRON`, 600 cuadros = 25 s). Faltan la configuración de salida y el render. |
 | 7 | Ficha de costos para el Ministro, láminas PDF, MP4 y facturación | ❌ Pendiente (sección 8.6). |
@@ -125,26 +125,51 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
 ## 5. Decisiones del cliente (no cambiar sin consultarle)
 
 1. **Letrero "línea de horizonte": se mantiene.** Es un concepto, no la "estructura anamórfica" que el brief pedía eliminar (esa no aparece en los archivos recibidos).
-   - Lleva montículos de sal (triángulos perforados con agujeros de Ø 50 mm) y letras UYUNI sobre una línea de horizonte a +7,764, con su reflejo debajo (marcos y letras en contorno).
-   - Todo es **blanco**, sobre el antepecho de **chapa café chocolate** con nervios verticales, que es continuación de la cubierta.
-   - La modulación sale del CAD: 1446 · 2000 · 1000 · 2717 · 3×1000 · 1184 · 5576 · 5952 · 2000 · 6401 · 308.
-2. **Letras UYUNI: sobresalen del antepecho, como en el CAD, por ahora.** Suben 0,25 m por encima (+9,264) y el reflejo baja 0,35 m por debajo (+6,264).
+   - Lleva montículos de sal y letras UYUNI sobre una línea de horizonte a +7,764, con su reflejo debajo (marcos y letras en contorno).
+   - La modulación sale del CAD: 1446 · 2000 · 1000 · 2717 · 3×1000 · 1184 · 5576 · 5952 · 2000 · 6401 · 308. El texto queda solo sobre el ingreso principal (ME-2 de X 53,49–57,77).
+   - **Reunión del 3 de octubre:**
+     - **Montículos:** pasan a ser **pirámides facetadas en 3D**, ya no chapas planas perforadas. Tienen dos caras triangulares unidas por una arista que baja del vértice al centro de la base, donde sobresale 15 cm en las grandes y 10 cm en las chicas. El sol ilumina una cara y deja la otra en penumbra.
+     - **Despegue:** todo el conjunto (letras, pirámides y horizonte) **flota despegado de la chapa** sobre pernos ocultos. El dorso queda a 12 cm de la chapa y las letras tienen 8 cm de espesor, así la sombra se separa de la pieza.
+     - **Juego sobre la puerta de salida:** sobre la ME-2 izquierda (centro X 16,80) se suma un **juego asimétrico de 3 pirámides sin texto** (grande + 2 chicas) con su tramo de horizonte (X 13,30–20,30) y sus reflejos.
+     - **Material:** blanco o **acero corten**, según la propiedad `letras_corten` de la escena. P1 lleva corten sobre parapeto antracita; P2, blanco.
+2. **Geometría de las letras: hay dos versiones para probar**, en colecciones hermanas dentro de `LETRERO_HORIZONTE_UYUNI`:
+   - **A `LETRERO_A_SOBRESALE`:** como en el CAD. Las letras suben 0,25 m por encima del antepecho (+9,264) y el reflejo baja 0,35 m por debajo (+6,264).
+   - **B `LETRERO_B_CONTENIDO`:** queda dentro de los 2,40 m del antepecho. El horizonte va al centro (+7,812) y cada pieza se reescala al 72 % sobre su eje, con 12 cm libres arriba y abajo (`LETRERO_B_MARGEN`).
+   - Por defecto se ve la A. Para ver la B, excluye la colección A y activa la B en la capa de vista, o usa `herramientas/render_propuestas.py` con las variantes `P1B` y `P2B`.
 3. **Celosías:** 2 en la OESTE, 2 en la ESTE, 5 PT2 en el Lado Tierra y 2 PT2 en el Lado Aire. Las posiciones y variantes exactas están en `CELOSIAS`.
 4. **En los detalles PT1/PT2, las tramas grises son vacíos (calados)** y las líneas salmón son el bastidor que sostiene las planchas por detrás.
-5. **Retenedores de nieve:** doble barra a **0,40 m del borde libre**, con abrazaderas sobre los nervios cada 0,30 m. El CAD dibuja una abrazadera a ≈ 1,35 m, pero manda la decisión.
+5. **Retenedor de nieve (revisado el 3 de octubre):**
+   - **18 cm de alto** sobre la chapa;
+   - **doble tubo delgado de 1"** (25,4 mm);
+   - abrazaderas sobre un nervio de cada dos (cada 0,60 m);
+   - **fijado sobre la primera correa**. La correa no está en el IFC: se supone a 0,30 m del borde libre (`CORREA_1_DIST_BORDE`, punto abierto 11).
 6. **Hero shot (CAM_01): luz de mañana**, con el sol sobre la fachada y las sombras de las planchas corten.
-7. **Materiales (imagen de referencia del cliente):**
-   - antepecho de chapa café chocolate `#3D281D` con nervios verticales;
-   - letrero blanco;
-   - muros de Duralit en **crema claro** (el brief decía gris);
-   - corten `#7A381F`;
-   - perfilería negra mate;
-   - bolardos;
-   - bañadores cálidos al pie de las celosías y nieve en el borde de la cubierta, en la hora azul.
+7. **Materiales (revisados el 3 de octubre):**
+   - **Muros y columnas:** panel EPS de 80 mm con malla y **revoque proyectado continuo**, sin placas ni juntas verticales. Viga y columna van revocadas en el mismo plano y tono que el muro. Solo hay una **buña horizontal fina** (10 mm) arriba y abajo de la viga de +5,51 a +6,01. Hacen de fondo neutro.
+   - **Carpintería de aluminio:** antracita mate `#3A3E41`, no negro brillante.
+   - **Cielo falso del alero:** **parrilla de listones** de 40 × 100 mm, perpendiculares a la fachada cada 0,15 m (antecedente del Rectorado), sobre perfiles portantes y un **plenum negro mate** que oculta el interior del alero. Las luminarias son lineales, entre listones.
+   - **Sin bolardos ni postes de iluminación peatonal:** no están en el presupuesto.
+   - **Colores:** dependen de la propuesta (punto 11).
+   - **Hora azul:** bañadores cálidos al pie de las celosías y nieve en el borde de la cubierta.
 8. **Elementos de los laterales (aprobados):**
    - en la OESTE: rombo perforado, bloque con mástil y volumen saliente;
    - en la ESTE: franja nervada de +4,41 a +6,21.
 9. **Colecciones:** se usa la lista de la Tarea 0.2 del brief, de `_REF_CAD` a `08_CAMERAS_LIGHTS`.
+11. **Dos propuestas de color para la gerencia (reunión del 3 de octubre).** Las elige la propiedad `propuesta` de la escena: 0 es P1 (escena `UYUNI_DIA`) y 1 es P2 (escena `UYUNI_DIA_P2_SALAR_LITIO`). Los colores están en `PALETA`.
+
+    | Elemento | P1 "Patrimonio Ferroviario" | P2 "Salar & Litio" |
+    |---|---|---|
+    | Celosías | Acero corten, óxido cobrizo cálido | Blanco perla |
+    | Parapeto y remates | Antracita mate | Blanco perla |
+    | Letrero y pirámides | **Corten** (`letras_corten` = 1) | Blanco, con sombras por relieve |
+    | Cubierta | Antracita | Gris claro metálico |
+    | Cielo listonado | Símil madera | Blanco |
+    | Muros y columnas | Hormigón claro `#B9B5AD` | Gris neutro `#6B6E70` |
+    | Carpintería | Antracita mate | Antracita mate |
+
+    El color de la cubierta, la madera del cielo en P1 y el bastidor de las celosías (color del muro en P2) no se pidieron expresamente: son propuestas mías y conviene confirmarlas.
+
+    La vista para la gerencia es `CAM_07_PROPUESTAS`. Parte de la perspectiva de la captura del cliente, que está guardada tal cual como `CAM_07B_CAPTURA_CLIENTE`, mejorada así: fachada completa con márgenes, 28 mm desde 6,0 m de altura y verticales rectas.
 10. **Reglas de oro del brief:**
     - el DXF solo sirve para verificar: no se calca ni se importa como geometría;
     - toda la geometría se genera con `bpy` a partir de medidas numéricas;
@@ -163,10 +188,11 @@ Están ordenados de mayor a menor impacto en los renders.
 | 4 | **Elemento vertical en la esquina del eje 1 / Lado Aire** | No está modelado. | Los alzados SO y OESTE muestran un elemento vertical con travesaños a distintas alturas, en X ≈ −0,36…−0,10. Puede ser una escalera de gato o una bajante con abrazaderas. | nuevo, en `elementos_laterales()` |
 | 5 | **Mástil OESTE** | X = 0,6. Es un supuesto, porque el alzado no da su posición en X. | Se puede confirmar con el alzado SO. | `MASTIL_OESTE` |
 | 6 | **Lado Aire** | Las ventanas ME-4, ME-5 y ME-6 son vanos simples aproximados desde el alzado SO. | El CAD trae el despiece de las carpinterías, las puertas menores y la ubicación exacta de cada ME. Las fichas ME4, ME5 y ME6 están en `vistas/`. | `VENTANAS_AIRE`, `envolvente_general()` |
-| 7 | **Rombo perforado OESTE** | Blanco: el color es un supuesto. | Consultar si va blanco como el letrero o en corten. | `elementos_laterales()` |
+| 7 | **Rombo perforado OESTE** | Usa el material del letrero: corten en P1 y blanco en P2. | Confirmar con el cliente. | `elementos_laterales()` |
 | 8 | **Entorno** | El corte da la acera de 4,00 m, el bordillo de 0,15 m y la zanja de 0,50 × 0,20 m. La calzada, el estacionamiento y la plataforma del Lado Aire son supuestos. | No hay planta de emplazamiento en los archivos recibidos. Si el cliente la tiene, conviene pedirla. | `entorno()`, `CALZADA_Y` |
 | 9 | **Cerchas de la cubierta** | No están modeladas, porque no se ven desde afuera. | Los cortes las dibujan. Son opcionales. | — |
 | 10 | **Interiores** | Una caja emisiva cálida, según el brief: "interiores básicos". | — | `envolvente_general()` |
+| 11 | **Primera correa de la cubierta** | El retenedor de nieve se fija sobre ella; se supuso a 0,30 m del borde libre. | Ubicarla en el plano de la estructura metálica. | `CORREA_1_DIST_BORDE` |
 
 **Ya resueltos (no hace falta volver a revisarlos):**
 - Termopanel: 26,8 mm según el CAD (4+4 / 12 / 3+3). El brief decía 21 mm por error de suma.
@@ -191,17 +217,17 @@ Están ordenados de mayor a menor impacto en los renders.
 | Función | Colección | Objetos principales |
 |---|---|---|
 | `estructura` | `01_ESTRUCTURA` | `UY_COLUMNAS_EJE_A` (0,40 × 1,00) y `UY_VIGAS_DINTEL_300x500` |
-| `muro_landside`, `mamparas` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | paños `UY_MURO_NE_*` (Duralit) y `UY_MAMPARA_M1_FRAMES/GLASS/SELLOS` (7 ME-1 y 2 ME-2) |
-| `antepecho_alero` | `02_ENVOLVENTE` | `UY_ANTEPECHO_2_40_CHAPA`, `UY_ANTEPECHO_NERVIOS` (Array cada 0,30), `UY_CIELO_LUXALON_LAMAS`, `UY_LUMINARIAS_ALERO` |
+| `muro_landside`, `mamparas` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | paños `UY_MURO_NE_*` (revoque con buñas) y `UY_MAMPARA_M1_FRAMES/GLASS/SELLOS` (7 ME-1 y 2 ME-2) |
+| `antepecho_alero` | `02_ENVOLVENTE` | `UY_ANTEPECHO_2_40_CHAPA`, `UY_ANTEPECHO_NERVIOS` (Array cada 0,30), `UY_CIELO_LISTONES` (Array cada 0,15), `UY_CIELO_PLENUM_NEGRO`, `UY_LUMINARIAS_ALERO` |
 | `cubierta` | `04_CUBIERTA_INDUSTRIAL` | `UY_CUBIERTA_CHAPA`, `UY_CUBIERTA_NERVIOS_*`, `UY_RETENEDOR_*`, `UY_GOTERON_BORDE`, `UY_CUBIERTA_ANEXO` |
 | `envolvente_general` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | testeros, fachadas del Lado Aire, anexo, ME-3 e interior |
 | `elementos_laterales` | `02_ENVOLVENTE` | `UY_ROMBO_OESTE_*`, `UY_MASTIL_OESTE`, `UY_DESCANSO_ESCALONES_OESTE`, `UY_FRANJA_ESTE_*` |
 | `celosias` | `05_CELOSIAS_CORTEN` | `UY_CELOSIA_<fachada>_<variante>_<n>` y `UY_CELOSIAS_BASTIDOR` |
-| `letrero` | `02_ENVOLVENTE/LETRERO_HORIZONTE_UYUNI` | letras, reflejo, montículos, separadores y línea de horizonte |
-| `entorno` | `06_ENTORNO_SITE` | acera, zanja con rejilla, bordillo, calzada, estacionamiento, bolardos, plataforma y `UY_SUELO_ALTIPLANO` (plano de 4 × 4 km) |
+| `letrero` | `02_ENVOLVENTE/LETRERO_HORIZONTE_UYUNI/LETRERO_A_SOBRESALE` y `.../LETRERO_B_CONTENIDO` | letras, reflejo, pirámides 3D, marcos, separadores y líneas de horizonte (sufijo `_A` o `_B`) |
+| `entorno` | `06_ENTORNO_SITE` | acera, zanja con rejilla, bordillo, calzada, estacionamiento, plataforma y `UY_SUELO_ALTIPLANO` (plano de 4 × 4 km) |
 | `assets` | `07_ASSETS/PROXIES_COLOCACION` | 15 cajas de ubicación, ocultas en el render (ver 8.2) |
 | `referencias_cad` | `_REF_CAD/*` | las vistas del CAD como planos de referencia, ocultos en el render |
-| `camaras_y_dron` | `08_CAMERAS_LIGHTS` | 7 cámaras fijas, `CAM_DRON` con su objetivo `DRON_OBJETIVO` y `NORTE_VERDADERO` |
+| `camaras_y_dron` | `08_CAMERAS_LIGHTS` | 9 cámaras fijas (con `CAM_07_PROPUESTAS` y `CAM_07B_CAPTURA_CLIENTE`), `CAM_DRON` con su objetivo `DRON_OBJETIVO` y `NORTE_VERDADERO` |
 
 - **`DATOS_GEOM`:** es un JSON incrustado con los contornos de las planchas PT1, PT2A, PT2B y PT2R, las letras UYUNI y el letrero. Se extrajeron de las tramas del DXF y ya restan los calados. Son datos: no hace falta tocarlos.
 - **Dos escenas, mismas colecciones:**
@@ -292,11 +318,12 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 |---|---|---|
 | `CAM_01_HERO_LADO_TIERRA` | DIA | Hero a la altura de los ojos (1,65 m), 32 mm: M1, alero de 2 m y sombras de las celosías. |
 | `CAM_02_DETALLE_ALERO` | DIA | Encuentro superior: chapa engrapada, retenedores, goterón y antepecho. |
-| `CAM_02B_DETALLE_CIELO` | DIA | Cielo Luxalon, columnas y M1 desde la acera. |
+| `CAM_02B_DETALLE_CIELO` | DIA | Cielo listonado, columnas y M1 desde la acera. |
 | `CAM_03_CREPUSCULAR_NIEVE` | **CREPUSCULO** | Hora azul, piso mojado con reflejos e interior cálido. |
 | `CAM_04_AEREA_GENERAL` | DIA | Aérea semicenital: volumetría limpia del Lado Tierra y del Lado Aire. |
 | `CAM_05_LETRERO_HORIZONTE` | DIA | Concepto del letrero. |
 | `CAM_06_DETALLE_CELOSIA` | DIA | Planchas corten, calados y sus sombras. |
+| `CAM_07_PROPUESTAS` | DIA y DIA_P2_SALAR_LITIO | Fachada completa para que la gerencia elija la propuesta de color (punto 11 de la sección 5). Se renderiza con `herramientas/render_propuestas.py`. |
 
 **Configuración** (hoy: 4K al 50 %, 256 muestras, GPU, OIDN, AgX Medium High Contrast):
 1. Resolución de 3840 × 2160 al **100 %**.
