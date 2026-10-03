@@ -143,6 +143,8 @@ NORTE_LOCAL_DEG = 301.043         # norte verdadero, antihorario desde +X local
 FECHA_DIA = (2026, 10, 4, 9.50)   # 09:30
 FECHA_CREPUSCULO = (2026, 10, 4, 18.65)
 ALTITUD_MSNM = 3666.6
+# aire seco y limpio del altiplano: pocos aerosoles y algo más de ozono para un azul más profundo
+CIELO_ATMOSFERA = dict(air_density=0.9, aerosol_density=0.02, dust_density=0.02, ozone_density=3.0)
 
 # Propuestas de color para la decisión de gerencia (reunión del 3 de octubre). La propiedad "propuesta" de cada
 # escena elige la paleta: 0 = P1 "Patrimonio Ferroviario" (corten y tonos oscuros), 1 = P2 "Salar & Litio" (blanco
@@ -815,7 +817,15 @@ def antepecho_alero(C, M):
     arr.use_relative_offset, arr.use_constant_offset = False, True
     arr.constant_offset_displace = (NERVIO_PASO, 0, 0)
     arr.count = int((x1 - x0 - 0.12) / NERVIO_PASO) + 1
-    # cielo falso tipo parrilla: listones perpendiculares a la fachada sobre perfiles portantes y plenum negro mate
+    cielo_alero(C, M)
+
+
+def cielo_alero(C, M):
+    """Cielo falso tipo parrilla: listones perpendiculares a la fachada sobre perfiles portantes y plenum negro mate,
+    con luminarias lineales entre listones (reunión del 3 de octubre)."""
+    col = C["02_ENVOLVENTE"]
+    x0, x1 = X_ALERO
+    ye = Y_ANTEPECHO_EXT
     cl = CIELO_LISTON
     xi, xf = x0 + E_ANTEPECHO, x1 - E_ANTEPECHO
     yi, yf = ye + E_ANTEPECHO + 0.01, Y_MURO_EXT - 0.01
@@ -872,8 +882,24 @@ def cubierta(C, M):
         arr.use_constant_offset = True
         arr.constant_offset_displace = (NERVIO_PASO, 0, 0)
         arr.count = int((xb - x_ini - 0.03) / NERVIO_PASO) + 1
-    # retenedor de nieve: abrazadera sobre un nervio de cada dos + doble tubo de 1", 18 cm sobre la chapa,
-    # fijado sobre la primera correa
+    retenedor_nieve(C, M)
+    # goterón recto (sin canaleta): pestaña vertical delante del antepecho
+    g = Malla()
+    y0 = PERFIL_CUBIERTA[0][0]
+    g.prisma_yz([(y0 - 0.012, Z_ANTEPECHO[1] - 0.07), (y0, Z_ANTEPECHO[1] - 0.07), (y0, z_cubierta(y0) + 0.01),
+                 (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.01), (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.002),
+                 (y0 - 0.012, z_cubierta(y0) + 0.012)], X_ALERO[0] - 0.01, X_ALERO[1] + 0.01)
+    g.crear("GOTERON_BORDE", M["antepecho"], col)
+    # cubierta del anexo (ejes 18-20), plana, detrás de las celosías PT2
+    an = Malla()
+    an.caja(ANEXO["x"][0] - 0.25, ANEXO["x"][1] + 0.05, ANEXO["y"][0] - 0.05, ANEXO["y"][1] + 0.05, ANEXO["z"], ANEXO["z"] + 0.25)
+    an.crear("CUBIERTA_ANEXO", M["cubierta"], col)
+
+
+def retenedor_nieve(C, M):
+    """Retenedor de nieve (reunión del 3 de octubre): abrazadera sobre un nervio de cada dos + doble tubo de 1",
+    18 cm sobre la chapa, fijado sobre la primera correa."""
+    col = C["04_CUBIERTA_INDUSTRIAL"]
     R = RETENEDOR
     yb = PERFIL_CUBIERTA[0][0] + CORREA_1_DIST_BORDE
     zb = z_cubierta(yb)
@@ -892,17 +918,6 @@ def cubierta(C, M):
     for dz in R["tubos_z"]:
         br.cilindro_x(X_ALERO[0] + 0.05, X_ALERO[1] - 0.05, yb, zb + dz, R["tubo_d"] / 2)
     br.crear("RETENEDOR_TUBOS_1PULG", M["galvanizado"], col, suave=True)
-    # goterón recto (sin canaleta): pestaña vertical delante del antepecho
-    g = Malla()
-    y0 = PERFIL_CUBIERTA[0][0]
-    g.prisma_yz([(y0 - 0.012, Z_ANTEPECHO[1] - 0.07), (y0, Z_ANTEPECHO[1] - 0.07), (y0, z_cubierta(y0) + 0.01),
-                 (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.01), (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.002),
-                 (y0 - 0.012, z_cubierta(y0) + 0.012)], X_ALERO[0] - 0.01, X_ALERO[1] + 0.01)
-    g.crear("GOTERON_BORDE", M["antepecho"], col)
-    # cubierta del anexo (ejes 18-20), plana, detrás de las celosías PT2
-    an = Malla()
-    an.caja(ANEXO["x"][0] - 0.25, ANEXO["x"][1] + 0.05, ANEXO["y"][0] - 0.05, ANEXO["y"][1] + 0.05, ANEXO["z"], ANEXO["z"] + 0.25)
-    an.crear("CUBIERTA_ANEXO", M["cubierta"], col)
 
 
 def envolvente_general(C, M):
@@ -1360,8 +1375,7 @@ def mundo(nombre, azimut, elev, fuerza, disco=False):
             break
         except TypeError:
             continue
-    # aire seco y limpio del altiplano: pocos aerosoles y algo más de ozono para un azul más profundo
-    for k, v in dict(altitude=ALTITUD_MSNM, air_density=0.9, aerosol_density=0.02, dust_density=0.02, ozone_density=3.0,
+    for k, v in dict(altitude=ALTITUD_MSNM, **CIELO_ATMOSFERA,
                      sun_disc=disco, sun_elevation=math.radians(elev),
                      sun_rotation=math.radians((90.0 - (NORTE_LOCAL_DEG - azimut)) % 360)).items():
         if hasattr(sky, k):
@@ -1418,15 +1432,8 @@ def camaras_y_dron(C, escena):
         "CAM_06_DETALLE_CELOSIA": camara("CAM_06_DETALLE_CELOSIA", (62.5, -9.5, 2.0), (71.5, -0.5, 3.2), 28, col),
         # aérea semicenital: Lado Tierra + Lado Aire, volumetría limpia
         "CAM_04_AEREA_GENERAL": camara("CAM_04_AEREA_GENERAL", (-22.0, -58.0, 48.0), (38.0, 8.0, 2.0), 35, col),
-        # propuestas de color (pedido del 3 de octubre): la perspectiva de la captura del cliente (resuelta con 11
-        # puntos, error 1,3 px), mejorada: fachada completa con márgenes del 3,5 %, cámara horizontal (verticales
-        # rectas) y edificio centrado en altura, 28 mm desde 6,0 m de altura y 32° de oblicuidad
-        "CAM_07_PROPUESTAS": camara("CAM_07_PROPUESTAS", (83.851, -43.695, 6.0),
-                                    (83.851 - 26.50, -43.695 + 42.40, 6.0), 28, col),
-        # la captura del cliente tal cual: 26 mm desde 6,85 m, levemente inclinada hacia abajo
-        "CAM_07B_CAPTURA_CLIENTE": camara("CAM_07B_CAPTURA_CLIENTE", (78.01, -46.19, 6.85),
-                                          (78.01 - 25.04, -46.19 + 43.27, 6.85 - 1.34), 26.1, col),
     }
+    cams.update(camaras_propuestas(col))
     # recorrido de dron: 25 s a 24 fps (600 cuadros) - aproximación, descenso, paso rasante, elevación
     cam = camara("CAM_DRON", (-40.0, -120.0, 55.0), (36.0, 10.0, 5.0), 24, col)
     obj = bpy.data.objects.new("DRON_OBJETIVO", None)
@@ -1453,6 +1460,20 @@ def camaras_y_dron(C, escena):
     n.rotation_euler = (math.radians(-90), 0, math.radians(NORTE_LOCAL_DEG - 90))   # flecha (+Z) hacia el norte verdadero
     col.objects.link(n)
     return cams
+
+
+def camaras_propuestas(col):
+    """Cámaras de las propuestas de color (pedido del 3 de octubre)."""
+    return {
+        # la perspectiva de la captura del cliente (resuelta con 11 puntos, error 1,3 px), mejorada: fachada completa
+        # con márgenes del 3,5 %, cámara horizontal (verticales rectas) y edificio centrado en altura, 28 mm desde
+        # 6,0 m de altura y 32° de oblicuidad
+        "CAM_07_PROPUESTAS": camara("CAM_07_PROPUESTAS", (83.851, -43.695, 6.0),
+                                    (83.851 - 26.50, -43.695 + 42.40, 6.0), 28, col),
+        # la captura del cliente tal cual: 26 mm desde 6,85 m, levemente inclinada hacia abajo
+        "CAM_07B_CAPTURA_CLIENTE": camara("CAM_07B_CAPTURA_CLIENTE", (78.01, -46.19, 6.85),
+                                          (78.01 - 25.04, -46.19 + 43.27, 6.85 - 1.34), 26.1, col),
+    }
 
 
 def config_render(sc, muestras=256):
@@ -1509,6 +1530,44 @@ def georreferencia(sc):
 # =============================================================================
 # 6. EJECUCIÓN
 # =============================================================================
+# Propiedades que leen los materiales: "propuesta" (0 = P1, 1 = P2) y "letras_corten" (1 = corten, 0 = blanco)
+PROPIEDADES_ESCENA = {"UYUNI_DIA": dict(propuesta=0, letras_corten=1),
+                      "UYUNI_DIA_P2_SALAR_LITIO": dict(propuesta=1, letras_corten=0),
+                      "UYUNI_CREPUSCULO": dict(propuesta=0, letras_corten=0)}
+
+
+def propiedades_escena(sc):
+    for k, v in PROPIEDADES_ESCENA.get(sc.name, {}).items():
+        sc[k] = v
+
+
+def escena_propuesta_2(sc, C, luz_dia, cam, muestras):
+    """La misma mañana con la propuesta 2 (Salar & Litio): comparte colecciones, sol y cielo; cambia la paleta."""
+    sc3 = bpy.data.scenes.new("UYUNI_DIA_P2_SALAR_LITIO")
+    for n in COLECCIONES:
+        sc3.collection.children.link(C[n])
+    sc3.collection.children.link(luz_dia)
+    sc3.world = sc.world
+    for k in ("humedad", "nieve", "luz_interior", "luz_alero", "luz_letrero"):
+        sc3[k] = sc[k]
+    propiedades_escena(sc3)
+    sc3.camera = cam
+    config_render(sc3, muestras)
+    georreferencia(sc3)
+    return sc3
+
+
+def nieve_crepusculo(col, M):
+    """Nieve sutil en el borde de la cubierta, hasta el retenedor (escena de crepúsculo)."""
+    nv = Malla()
+    y0 = PERFIL_CUBIERTA[0][0]
+    yb = y0 + CORREA_1_DIST_BORDE
+    nv.prisma_yz([(y0 + 0.02, z_cubierta(y0) + 0.01), (yb + 0.04, z_cubierta(yb + 0.04) + 0.01),
+                  (yb + 0.04, z_cubierta(yb + 0.04) + 0.16), (yb - 0.05, z_cubierta(yb) + 0.07), (y0 + 0.02, z_cubierta(y0) + 0.035)],
+                 X_ALERO[0] + 0.05, X_ALERO[1] - 0.05)
+    nv.crear("NIEVE_BORDE_CUBIERTA", M["nieve"], col, suave=True)
+
+
 def construir(muestras=256):
     limpiar()
     sc = bpy.context.scene
@@ -1538,25 +1597,11 @@ def construir(muestras=256):
     sol("SOL_MANANA", az, el, 4.5, luz_dia)
     sc.world = mundo("CIELO_MANANA", az, el, 0.18)
     sc["humedad"], sc["nieve"], sc["luz_interior"], sc["luz_alero"], sc["luz_letrero"] = 0.0, 0.0, 0.6, 0.0, 0.0
-    sc["propuesta"] = 0       # P1 Patrimonio Ferroviario
-    sc["letras_corten"] = 1   # P1: letrero de acero corten sobre parapeto antracita
+    propiedades_escena(sc)
     sc.camera = cams["CAM_01_HERO_LADO_TIERRA"]
     config_render(sc, muestras)
     georreferencia(sc)
-
-    # --- la misma mañana con la propuesta 2 (Salar & Litio): comparte colecciones, sol y cielo; cambia la paleta
-    sc3 = bpy.data.scenes.new("UYUNI_DIA_P2_SALAR_LITIO")
-    for n in COLECCIONES:
-        sc3.collection.children.link(C[n])
-    sc3.collection.children.link(luz_dia)
-    sc3.world = sc.world
-    for k in ("humedad", "nieve", "luz_interior", "luz_alero", "luz_letrero"):
-        sc3[k] = sc[k]
-    sc3["propuesta"] = 1
-    sc3["letras_corten"] = 0  # P2: letrero blanco con sombras por relieve
-    sc3.camera = cams["CAM_07_PROPUESTAS"]
-    config_render(sc3, muestras)
-    georreferencia(sc3)
+    sc3 = escena_propuesta_2(sc, C, luz_dia, cams["CAM_07_PROPUESTAS"], muestras)
 
     # --- escena de crepúsculo: comparte las colecciones; cambian luz, cielo y propiedades (humedad, nieve)
     sc2 = bpy.data.scenes.new("UYUNI_CREPUSCULO")
@@ -1579,8 +1624,7 @@ def construir(muestras=256):
             luz_cre.objects.link(ob)
     sc2.world = mundo("CIELO_HORA_AZUL", az2, max(el2, -4.0), 0.9)
     sc2["humedad"], sc2["nieve"], sc2["luz_interior"], sc2["luz_alero"], sc2["luz_letrero"] = 1.0, 0.6, 7.0, 1.0, 2.5
-    sc2["propuesta"] = 0
-    sc2["letras_corten"] = 0
+    propiedades_escena(sc2)
     for fach, tipo, a_, b_ in CELOSIAS:   # bañadores cálidos al pie de las celosías del Lado Tierra
         if fach != "NE":
             continue
@@ -1592,14 +1636,7 @@ def construir(muestras=256):
         ob.location = ((a_ + b_) / 2, Y_COL_EXT - CELOSIA_SEP - 0.9, 0.05)
         ob.rotation_euler = Vector((0.0, 0.32, 1.0)).to_track_quat("-Z", "Y").to_euler()
         luz_cre.objects.link(ob)
-    nieve_col = coleccion("09_NIEVE_CREPUSCULO", sc2.collection)   # nieve sutil: borde de cubierta y retenedores
-    nv = Malla()
-    y0 = PERFIL_CUBIERTA[0][0]
-    yb = y0 + CORREA_1_DIST_BORDE
-    nv.prisma_yz([(y0 + 0.02, z_cubierta(y0) + 0.01), (yb + 0.04, z_cubierta(yb + 0.04) + 0.01),
-                  (yb + 0.04, z_cubierta(yb + 0.04) + 0.16), (yb - 0.05, z_cubierta(yb) + 0.07), (y0 + 0.02, z_cubierta(y0) + 0.035)],
-                 X_ALERO[0] + 0.05, X_ALERO[1] - 0.05)
-    nv.crear("NIEVE_BORDE_CUBIERTA", M["nieve"], nieve_col, suave=True)
+    nieve_crepusculo(coleccion("09_NIEVE_CREPUSCULO", sc2.collection), M)
     sc2.camera = cams["CAM_03_CREPUSCULAR_NIEVE"]
     config_render(sc2, muestras)
     sc2.view_settings.exposure = 0.6
@@ -1610,4 +1647,5 @@ def construir(muestras=256):
     return sc, sc2
 
 
-construir()
+if __name__ == "__main__":   # Blender (Run Script) y exec(..., {"__name__": "__main__"}) lo ejecutan; el parche solo lo carga
+    construir()

@@ -1,6 +1,8 @@
 # Aeropuerto de Uyuni: visualización de la Terminal de Pasajeros
 
 > **¿Vas a continuar el proyecto?** Empieza por [`TRASPASO.md`](TRASPASO.md), que reúne el estado, las coordenadas, las decisiones del cliente, los puntos abiertos y los pendientes. Para pasárselo a otra IA hay una instrucción lista en [`PROMPT_CONTINUACION.md`](PROMPT_CONTINUACION.md).
+>
+> **Cambios de la reunión del 3 de octubre:** están en [`CAMBIOS_REUNION_3OCT.md`](CAMBIOS_REUNION_3OCT.md). Para llevarlos a un `.blend` que ya tiene avance propio, usa `01_blender/herramientas/aplicar_cambios_reunion.py`.
 
 | Carpeta | Contenido |
 |---|---|
@@ -8,7 +10,8 @@
 | `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v2.blend` (ya generado) e `inventario_escena.json` (qué hay en la escena y dónde). |
 | `01_blender/previews/` | Vistas previas de las cámaras CAM_01 a CAM_06. |
 | `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): 4 alzados y 2 cortes. |
-| `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas, verificar contra el CAD e inventariar la escena. |
+| `01_blender/propuestas/` | Hojas comparativas de las dos propuestas de color (CAM_07) y del letrero: corten o blanco, geometría A o B. |
+| `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas y las propuestas, verificar contra el CAD, inventariar la escena y aplicar los cambios del 3 de octubre sobre un `.blend` existente. |
 | `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. `PROMPT_UPSCALE_PROPUESTAS.md`: prompts y ajustes para escalar ×2 con IA los renders de las dos propuestas. `unificar_color.py`: "Lightroom a medida" que unifica el color de las fotos generadas con IA, con una aplicación en el navegador y un modo por lotes (ver `UNIFICAR_COLOR.md`). |
 
 ## Cómo usarlo en Blender 5.2

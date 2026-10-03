@@ -21,7 +21,7 @@ Esta guía permite que otra persona o IA continúe el proyecto sin repetir la au
 | 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 11 módulos y letrero "línea de horizonte". |
 | Materiales | PBR | ✅ Procedurales, sin texturas de imagen. |
 | 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan tres cosas: 1) el paisaje (horizonte, cerros, suelo con textura y vegetación); 2) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 3) la variante de cielo nublado. El entorno inmediato ya está: acera, zanja, calzada, estacionamiento y plataforma (los bolardos se quitaron el 3 de octubre). |
-| 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05 y CAM_06). **Faltan los renders finales con GPU.** |
+| 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05, CAM_06 y CAM_07). Las dos propuestas de CAM_07 y los primeros planos del letrero ya se renderizaron en la nube (CPU). **Faltan los renders finales de CAM_01 a CAM_06 con GPU.** |
 | 6 | Dron de 20–30 s, 24 fps, 1080p, MP4 H.264 | ⚠️ La trayectoria está lista (`CAM_DRON`, 600 cuadros = 25 s). Faltan la configuración de salida y el render. |
 | 7 | Ficha de costos para el Ministro, láminas PDF, MP4 y facturación | ❌ Pendiente (sección 8.6). |
 
@@ -33,6 +33,7 @@ El paquete (`UYUNI_paquete_traspaso_….zip`) es el repositorio completo:
 aeropuerto_uyuni/
 ├── README.md                    uso rápido (escenas, render, parámetros clave)
 ├── TRASPASO.md                  esta guía
+├── CAMBIOS_REUNION_3OCT.md      cambios desde el primer traspaso y cómo llevarlos a un .blend con avance propio
 ├── PROMPT_CONTINUACION.md       instrucción lista para pegar en otra IA
 ├── 00_auditoria/
 │   ├── AUDITORIA.md             hallazgos, cotas verificadas y decisiones del cliente
@@ -43,11 +44,14 @@ aeropuerto_uyuni/
 │   └── scripts/auditoria_uyuni.py
 └── 01_blender/
     ├── uyuni_modelo.py          FUENTE DE VERDAD: genera todo el modelo
-    ├── uyuni_v2.blend           el modelo ya generado (escenas UYUNI_DIA y UYUNI_CREPUSCULO)
+    ├── uyuni_v2.blend           el modelo ya generado (escenas UYUNI_DIA, UYUNI_DIA_P2_SALAR_LITIO y UYUNI_CREPUSCULO)
     ├── inventario_escena.json   escenas, colecciones, objetos (con caja envolvente), cámaras, luces, materiales y proxies
     ├── previews/                vistas previas de CAM_01 a CAM_06 (1280 px, 24 muestras)
     ├── verificacion/            modelo superpuesto al CAD: 4 alzados y 2 cortes
-    └── herramientas/            scripts sin interfaz: construir, renderizar, verificar e inventariar
+    ├── propuestas/              hojas comparativas: dos propuestas de color y letrero (material y geometría)
+    └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas), verificar,
+                                 inventariar y aplicar_cambios_reunion.py (cambios del 3 de octubre sobre un .blend existente)
+02_postproduccion/               prompts de IA por vista, prompts de upscale y unificar_color.py (revelado de serie)
 reports/                         estudio de costos de renders (proyecto Tupiza): referencia para la fase 7.3
 research_notes/                  notas de mercado y costos de renders en Bolivia
 ```
@@ -230,8 +234,9 @@ Están ordenados de mayor a menor impacto en los renders.
 | `camaras_y_dron` | `08_CAMERAS_LIGHTS` | 9 cámaras fijas (con `CAM_07_PROPUESTAS` y `CAM_07B_CAPTURA_CLIENTE`), `CAM_DRON` con su objetivo `DRON_OBJETIVO` y `NORTE_VERDADERO` |
 
 - **`DATOS_GEOM`:** es un JSON incrustado con los contornos de las planchas PT1, PT2A, PT2B y PT2R, las letras UYUNI y el letrero. Se extrajeron de las tramas del DXF y ya restan los calados. Son datos: no hace falta tocarlos.
-- **Dos escenas, mismas colecciones:**
-  - `UYUNI_DIA` agrega `08_LUZ_DIA`.
+- **Tres escenas, mismas colecciones:**
+  - `UYUNI_DIA` (propuesta 1) agrega `08_LUZ_DIA`.
+  - `UYUNI_DIA_P2_SALAR_LITIO` (propuesta 2) comparte `08_LUZ_DIA` y el cielo de la mañana.
   - `UYUNI_CREPUSCULO` agrega `08_LUZ_CREPUSCULO` (luna, spots bajo el alero y bañadores de las celosías) y `09_NIEVE_CREPUSCULO`.
 - **Propiedades de escena que leen los materiales** (nodo Attribute, tipo *View Layer*):
 
@@ -241,17 +246,20 @@ Están ordenados de mayor a menor impacto en los renders.
   | `nieve` | nieve en el suelo | 0 | 0,6 |
   | `luz_interior` | interior encendido | 0,6 | 7 |
   | `luz_alero` | luminarias del alero | 0 | 1 |
-  | `luz_letrero` | letrero encendido | 0 | 2,5 |
+  | `luz_letrero` | letrero encendido (solo si es blanco) | 0 | 2,5 |
+  | `propuesta` | cubierta, parapeto, muros, cielo, celosías y bastidor (`PALETA`) | 0 en `UYUNI_DIA`, 1 en `UYUNI_DIA_P2_SALAR_LITIO` | 0 |
+  | `letras_corten` | letrero, pirámides y rombo OESTE: 1 corten, 0 blanco | 1 en P1, 0 en P2 | 0 |
 
   Cambiarlas en *Scene Properties > Custom Properties* modifica el aspecto sin tocar los materiales.
 - **Nombres:** objetos, mallas, materiales y mundos llevan el prefijo `UY_`. Unidades en metros, escala 1,0.
 
-> ⚠️ **Al volver a ejecutar el script, `limpiar()` borra todo lo que haya en sus colecciones** (`_REF_CAD` a `08_CAMERAS_LIGHTS`, más las de luz y nieve), elimina y recrea la escena `UYUNI_CREPUSCULO` y purga los datos huérfanos.
+> ⚠️ **Al volver a ejecutar el script, `limpiar()` borra todo lo que haya en sus colecciones** (`_REF_CAD` a `08_CAMERAS_LIGHTS`, más las de luz y nieve), elimina y recrea las escenas `UYUNI_CREPUSCULO` y `UYUNI_DIA_P2_SALAR_LITIO` y purga los datos huérfanos.
+> - Para llevar los cambios del 3 de octubre a un `.blend` que ya tiene avance propio, **no hace falta regenerarlo**: usa `herramientas/aplicar_cambios_reunion.py` (ver `CAMBIOS_REUNION_3OCT.md`).
 > - Cualquier cosa que se agregue **a mano** dentro de esas colecciones (por ejemplo, assets en `07_ASSETS`) se pierde.
 > - Opción recomendada: agregar los assets **por código**. Se guardan en `01_blender/assets/` y una función nueva del script los importa (append o link) y los ubica, así todo sigue siendo regenerable.
 > - Opción alternativa, si se colocan a mano: usar una colección propia (por ejemplo, `10_CONTEXTO_ASSETS`), enlazarla en **las dos escenas** y no volver a ejecutar el script; o volver a enlazarla después de ejecutarlo:
 >   ```python
->   for n in ("UYUNI_DIA", "UYUNI_CREPUSCULO"):
+>   for n in ("UYUNI_DIA", "UYUNI_DIA_P2_SALAR_LITIO", "UYUNI_CREPUSCULO"):
 >       sc = bpy.data.scenes[n]
 >       if "10_CONTEXTO_ASSETS" not in sc.collection.children:
 >           sc.collection.children.link(bpy.data.collections["10_CONTEXTO_ASSETS"])
@@ -305,7 +313,7 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 ### 8.3 Cielo y clima (fase 4.4)
 
 **Día:**
-- Hoy usa el cielo procedural `MULTIPLE_SCATTERING` de Blender 5.2, configurado con altitud 3666,6 m, aire 1,0, aerosoles 0,08 y ozono 1,2. Su sol está sincronizado con `UY_SOL_MANANA` (fuerza 4,5).
+- Hoy usa el cielo procedural `MULTIPLE_SCATTERING` de Blender 5.2, configurado con altitud 3666,6 m, aire 0,9, aerosoles 0,02 y ozono 3,0 (`CIELO_ATMOSFERA`, ajustado el 3 de octubre para un azul más profundo, de aire seco de altura). Su sol está sincronizado con `UY_SOL_MANANA` (fuerza 4,5).
 - Si se usa un HDRI (Poly Haven), hay que rotarlo para que su sol coincida con la dirección de la sección 3, o usarlo solo para reflejos y mantener el sol del script.
 
 **Hora azul:** cielo de dispersión con el sol a −3,9°, piso mojado, nieve sutil, interior a 2700–3200 K, spots bajo el alero y bañadores en las celosías.
