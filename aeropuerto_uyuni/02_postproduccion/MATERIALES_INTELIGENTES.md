@@ -28,7 +28,7 @@ El antes y el después usan la luz corregida de la prueba de fotorrealismo (×0,
 | **Polvo en cavidades y velo en lo oscuro** | AO en los valles de los nervios del antepecho (0,06 m) y en los encuentros (0,10 a 0,35 m), y un velo de 8 a 12 % en chapas, carpintería y bastidor | El antracita deja de ser un negro "de catálogo". Los nervios y los encuentros toman un polvo claro muy leve |
 | **Pátina por geometría** | Caras superiores y cantos más oscuros (máscaras Arriba y Arista) | Casi no se ve a esta distancia: las planchas tienen 1 mm de espesor. Pesa en piezas gruesas y en vistas desde arriba |
 | **Listones por isla, galvanizado y asfalto con Voronoi** | Tono, veta y rugosidad por listón; *spangle* y árido | Correcto pero imperceptible a estas distancias: el cielo está en sombra y los tubos y el árido son chicos. Sirve para acercamientos (CAM_02B) |
-| **Vidrio con capa fina** (CAM_01, `01_blender/fotorrealismo/Prueba_vidrio_CAM01.jpg`, herramienta `prueba_vidrio.py`) | Metálico 0,15 → 0 y transmisión 0,8 → 1. El reflejo sale de una capa `Thin Film` de 57 nm con IOR 2,4 | El cielo reflejado sale de 11 a 13 % más claro y **neutro (plateado)**, como en un vidrio real con capa de óxido; el reflejo del suelo, 11 % más oscuro. Con el atajo de hoy, el reflejo toma el tinte azul de la base, y eso un vidrio real no lo hace. Mismo tiempo de render |
+| **Vidrio de control solar** (CAM_01) | Cinco variantes, de la actual a la receta *Backfacing* | Ver la sección 4. La recomendada es física (capa fina, sin metálico) y cuesta lo mismo que la actual |
 
 **Costo de render** (CPU, 1280 px, 96 muestras):
 
@@ -73,7 +73,7 @@ Lo que queda (+34 a +61 %) es el AO de las superficies grandes (revoque y vereda
 |---|---|
 | `Geometry > Random Per Island` | Un valor aleatorio por isla de malla. Cada plancha de corten de 1 × 2 m y cada listón del cielo (copias del modificador Array) es una isla. Sirve para variar color, rugosidad y veta pieza por pieza, como en una obra real. Probado |
 | `Principled > Diffuse Roughness` | Rugosidad del componente difuso: aplana la luz rasante en superficies porosas. Valores: 0,8 en revoque, 0,7 en hormigón, 0,5 en óxido y 0,6 en asfalto |
-| `Principled > Thin Film` | Interferencia de capa fina. Es la física real del vidrio de control solar con capa de óxido (ver la sección 3) |
+| `Principled > Thin Film` | Interferencia de capa fina. Es la física real del vidrio de control solar con capa de óxido (ver la sección 4) |
 
 **Se adapta al proyecto:**
 
@@ -133,11 +133,83 @@ Valores de color en sRGB; entre paréntesis, la luminancia lineal (rango físico
 | `UY_SUELO_ALTIPLANO` | ruido procedural | PBR de Poly Haven y costra de sal con Voronoi *Distance to Edge*: polígonos de 0,3 a 1 m, filtrados con F1 y deformados con ruido |
 | `UY_CIELO_LISTONES` | la misma veta en todos los listones | por listón (*Random Per Island*): ±8 % de valor, fase de la veta distinta y rug ± 0,06. Probado |
 | `UY_PLENUM_NEGRO_MATE` y `UY_SELLO_ESTRUCTURAL_NEGRO` | 0,001 y 0,003 | `#303030` (0,03) |
-| `UY_VIDRIO_CONTROL_SOLAR` | met 0,15 (atajo para que refleje), transmisión 0,8 | met **0**, transmisión 1, IOR 1,52; la base es el tinte de transmisión. La capa de control solar va con `Thin Film`: 57 nm e IOR 2,4. Es una capa de óxido tipo TiO₂ de un cuarto de onda a 550 nm, con reflectancia ≈ 34 %. Para un reflejo azulado, de 45 a 50 nm. Más el abombado leve de la prueba de fotorrealismo. Probado |
+| `UY_VIDRIO_CONTROL_SOLAR` | met 0,15 (atajo para que refleje), transmisión 0,8 | met **0**, transmisión 1; el reflejo sale de una capa fina (`Thin Film` de 50 nm con IOR 2,4), con ondas de templado y polvo en el perímetro. Receta completa en la sección 4. Probado |
 | `UY_NIEVE` (escena crepuscular) | `#F4F6FA` (0,92), *subsurface* 0,2 | `#E8EBF0` (0,82); *subsurface* con *random walk*; destellos opcionales con Voronoi |
 | Vehículos y personas | *proxies* | Se reemplazan por assets. En la pintura de auto: base dieléctrica más `Coat` 1; si es metalizada, met 1 más `Coat`. Neumático en 0,03 |
 
-## 4. Nota de diseño (para el proyecto, no para el render)
+## 4. Vidrio de control solar
+
+Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contrastado con Blender 5.2 y con el modelo, y prueba en CAM_01 con cinco variantes, con la misma luz y el mismo encuadre.
+
+**Hoja:** `01_blender/fotorrealismo/Prueba_vidrio_CAM01.jpg`. **Herramienta:** `01_blender/herramientas/prueba_vidrio.py`.
+
+| Variante | Qué es | Luminancia media* (cielo reflejado / interior) | Lectura |
+|---|---|---|---|
+| 1 · Hoy | metálico 0,15, transmisión 0,8 | 149 / 125 | El reflejo toma el tinte azul de la base: es un atajo, no física |
+| 2 · Capa fina | metálico 0, transmisión 1, `Thin Film` de 57 nm con IOR 2,4 | 169 / 111 | Reflejo plateado y neutro, más claro, con la física correcta |
+| 3 · Físico completo | capa de 50 nm (azul acero), tinte `#A9BCCB`, ondas de templado y polvo en el perímetro | 160 / 102 | **Recomendado.** Reflejo azul acero, interior más oscuro, reflejos apenas ondulados |
+| 4 · Receta *Backfacing* | `Mix Shader` por `Backfacing`; por fuera, metálico 0,9 sobre `#0D151D`, sin transmisión | 49 / 24 | Casi negro: refleja menos que un vidrio común |
+| 5 · Físico oscuro | como el 3, con tinte `#6E808E` | 154 / 93 | Desde afuera, apenas más oscuro que el 3: de día manda el reflejo. El tinte pesa de cerca, desde adentro y en la hora azul |
+
+\*En el mismo paño, de 0 a 255 en la imagen final. Las cinco tardan lo mismo: de 110 a 116 s, con la CPU compartida con la cola de 4K.
+
+**La física del texto es correcta:**
+- No existe un vidrio que deje pasar la luz en un solo sentido (reciprocidad de Helmholtz). El "espejo" de día sale de tres cosas:
+  - la diferencia de iluminancia entre afuera y adentro, de 100 a 1 o más;
+  - la capa reflectiva, que refleja del 20 al 40 %;
+  - la absorción del vidrio tintado.
+- En Uyuni la diferencia es aún mayor, porque a 3660 m el sol es más intenso:
+  - de día, el vidrio se verá casi siempre como espejo;
+  - en la hora azul, al revés: el interior encendido se ve desde afuera (CAM_03).
+
+**Camino A (físico): se adopta, con dos correcciones.**
+- El modelo ya tiene lo que este camino pide: un interior básico con piso y luz cálida detrás del vidrio. Son los objetos `INTERIOR_PISO` e `INTERIOR_LUZ`, con la propiedad `luz_interior`: 0,6 de día y 7,0 en la hora azul. El efecto espejo sale solo.
+- **La reflectancia no debe salir de un "toque de metálico".** Ese metálico tiñe el reflejo con el color base y no cambia con el ángulo como una capa real.
+  - En 5.2, `Thin Film` reproduce lo que es la capa pirolítica o por *sputtering*: un óxido de unas decenas de nanómetros que refleja por interferencia.
+  - 57 nm con IOR 2,4 (tipo TiO₂) es un cuarto de onda a 550 nm: reflectancia ≈ 34 %, reflejo plateado.
+  - Con 47 a 50 nm, el pico se corre al azul (450 a 480 nm): reflejo azul acero, como el de las fotos.
+  - El resto de la luz pasa (transmisión 1) con el tinte del color base, y el reflejo crece en ángulo rasante, como en la realidad.
+- **`Volume Absorption` (densidad 5 a 15) es correcto en lo físico, pero aquí no conviene:**
+  - con `Thin Wall`, el paño no se trata como un volumen;
+  - un volumen cuesta más;
+  - el color base ya cumple de tinte de transmisión.
+
+**Camino B (*Backfacing*): no se recomienda en este proyecto.**
+1. **Todas las cámaras están afuera** (CAM_01 a CAM_07 y el dron). El truco solo sirve cuando la cámara entra al edificio. Aquí equivale a pintar el vidrio de espejo negro opaco.
+2. **Apaga la hora azul.** Sin transmisión por fuera, desaparece el interior encendido de CAM_03.
+3. **No funciona con los paños del modelo.** Cada paño es una caja de 27 mm.
+   - Su cara interior también mira hacia adentro, así que desde adentro se vería de frente (`Backfacing` = 0) y mostraría el espejo.
+   - El truco solo funciona con un plano único y la normal hacia afuera.
+4. **La receta no da el 20 a 40 % que describe el mismo texto.**
+   - Con metálico 0,9, el color base es la reflectancia a 0°. `#0D151D` es ≈ 0,7 % lineal: el vidrio refleja menos que uno común (4 % por cara) y solo brilla en ángulo rasante.
+   - La variante 4 lo muestra: luminancia de 49 contra 160.
+   - Un espejo metálico del 30 % necesitaría un color base de ≈ 0,3 lineal (≈ `#959FA8`), no casi negro.
+5. Además, el `Mix Shader` evalúa los dos BSDF (sección 2).
+
+**Detalles para romper el aspecto CG: se adoptan, ajustados.**
+
+| Detalle del texto | Ajuste para Uyuni |
+|---|---|
+| Distorsión de templado (*roller wave*) con un Noise de escala 1,5 a 3 | Es una onda periódica, no un ruido: las marcas de los rodillos del horno de templado tienen un paso de unos 30 cm. Mejor un `Wave Texture` en bandas de 0,33 m, con fase al azar por paño (*Random Per Island*) y algo de `Distortion`. Bump de 0,02 a 0,04, con distancia de 3 mm. Reemplaza al abombado con ruido de la prueba de fotorrealismo. Probado: a la distancia de CAM_01 casi no se percibe, como en la realidad. Se nota de cerca, en el reflejo de líneas rectas como el horizonte |
+| Polvo en el perímetro (AO → rugosidad de 0,35 a 0,6) | Correcto, pero el edificio es nuevo: de 0,02 en el centro a 0,15–0,2 junto a la perfilería. AO de 0,12 m con 2 rayos, que nunca entra en un Bump. Probado |
+| Tinte del reflejo con base `#0A1118` o `#081014` | Ese tinte, en el color base de un metal, oscurece todo (punto 4). Con capa fina, el tinte del reflejo sale del espesor de la capa, y el color base queda para el tinte de transmisión |
+| DVH a 3660 m (no está en el texto) | Un DVH fabricado abajo y sin tubos capilares se infla en Uyuni: cada paño queda convexo y el reflejo se deforma "en almohada" (sección 5). Con una especificación correcta no pasa, así que en el render no se agrega |
+
+**Receta final de `UY_VIDRIO_CONTROL_SOLAR`** (variante 3):
+
+| Parámetro | Valor |
+|---|---|
+| Shader | un solo Principled BSDF, sin `Mix Shader` |
+| Base Color | tinte de transmisión `#A9BCCB`; más oscuro (`#6E808E`) si se quiere ver menos el interior |
+| Metallic | 0 |
+| Roughness | 0,02 en el centro y de 0,15 a 0,2 junto a la perfilería (AO de 0,12 m) |
+| IOR | 1,52 |
+| Transmission | 1 |
+| Thin Wall | sí: cada paño es una caja de 27 mm, y sus dos caras hacen de las dos hojas del DVH |
+| Thin Film | 50 nm con IOR 2,4 (azul acero) o 57 nm (plateado) |
+| Normal | ondas de templado: `Wave Texture` en bandas de 0,33 m con fase por paño y `Bump` de 0,03 con distancia de 3 mm |
+
+## 5. Nota de diseño (para el proyecto, no para el render)
 
 **El corten escurre óxido durante sus primeros meses** (en inglés, *bleeding*) y mancha las superficies claras y porosas de abajo, como el hormigón. Las guías de diseño recomiendan:
 - goterones;
@@ -148,20 +220,27 @@ En la P1, las celosías corten están a 20 cm de la vereda de hormigón y a 12 c
 
 En el render no se muestran manchas: el edificio se presenta nuevo.
 
-## 5. Fuentes consultadas
+**El DVH de Uyuni necesita tubos capilares o fabricarse en altura.**
+- Los fabricantes recomiendan tubos capilares cuando entre la fábrica y la obra hay más de 800 m de diferencia de altura.
+- Sin ellos, el aire de la cámara queda a la presión de la fábrica. En Uyuni la presión es un tercio menor que en Santa Cruz: los paños se abomban hacia afuera, el sello trabaja de más y el vidrio puede romperse.
+- Un DVH de Santa Cruz (416 m) instalado en Uyuni está en ese caso; uno de La Paz o de El Alto, no.
+- Conviene que la especificación de las mamparas ME-1 y ME-2 lo diga.
+
+## 6. Fuentes consultadas
 
 - clima de Uyuni: [Weather Spark](https://weatherspark.com/y/27661/Average-Weather-in-Uyuni-Bolivia-Year-Round) y [Salar de Uyuni, mes a mes](https://www.salardeuyuni.com/blogs/what-s-the-weather-like-at-salar-de-uyuni-month-by-month-guide/);
 - corten: [SteelConstruction.info](https://www.steelconstruction.info/Weathering_steel), [Corten Australia](https://cortenaustralia.com.au/design-considerations/) y [DMD](https://dmd-world.com/posts/prevent-bleeding-weathering-steel);
+- DVH en altura: [Viridian: tubos capilares](https://www.viridianglass.com/wp-content/uploads/2024/04/TechDirect%E2%84%A2-Specifications-Metal-Spacer-Capillary-Breather-Tubes.pdf) y [Cardinal: capillary tubes](https://www.cardinalcorp.com/glossary/capillary-tubes/);
 - nodo Bevel: [manual de Blender 5.2](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/bevel.html);
 - API de Blender 5.2: verificada en el propio módulo `bpy` 5.2.2 (nodos, entradas y tipos citados).
 
-## 6. Prompt para la otra IA
+## 7. Prompt para la otra IA
 
-Pégalo después del prompt de fotorrealismo (`FOTORREALISMO_BLENDER.md`, sección 4), cuando ya lo haya aplicado. Adjunta la hoja `Prueba_materiales_CAM06_CAM05.jpg`.
+Pégalo después del prompt de fotorrealismo (`FOTORREALISMO_BLENDER.md`, sección 4), cuando ya lo haya aplicado. Adjunta las hojas `Prueba_materiales_CAM06_CAM05.jpg` y `Prueba_vidrio_CAM01.jpg`.
 
 ```text
 Siguiente etapa: materiales. Partes del .blend formal, ya actualizado con los cambios del 3 de octubre y con las mejoras de fotorrealismo (exposición, cámaras y compositor). En el paquete tienes:
-- la revisión técnica, en 02_postproduccion/MATERIALES_INTELIGENTES.md: lee completas las secciones 2 y 3;
+- la revisión técnica, en 02_postproduccion/MATERIALES_INTELIGENTES.md: lee completas las secciones 2, 3 y 4;
 - una prueba que ya funciona en Blender 5.2: 01_blender/herramientas/prueba_materiales.py, con su hoja de resultados (adjunta), y la del vidrio, prueba_vidrio.py. Trae el grupo de nodos UY_MASCARAS_ALTIPLANO y las funciones capa_polvo(), corten_inteligente(), listones_por_isla(), galvanizado_spangle() y asfalto_arido().
 
 Objetivo: que todos los materiales respondan a la geometría como en la realidad (aristas, cavidades, gravedad, pieza por pieza), sin mapas UV ni horneado y con valores físicos.
@@ -224,10 +303,12 @@ Tareas, en este orden:
    - hormigón visto con poros (Voronoi F1 y relieve negativo);
    - veredas con tierra acumulada al pie de los muros y en las juntas (AO).
 
-7. Vidrio de control solar (probado en CAM_01):
-   - metálico 0 y transmisión 1; la base es el tinte de transmisión;
-   - el reflejo sale de la capa: Thin Film de 57 nm, IOR 2,4 (reflejo plateado neutro). Si prefiero un reflejo azulado, de 45 a 50 nm: muéstrame las dos;
-   - mantén el abombado leve.
+7. Vidrio de control solar (sección 4, probado en CAM_01):
+   - un solo Principled: metálico 0, transmisión 1, IOR 1,52, Thin Wall; el color base es el tinte de transmisión (#A9BCCB);
+   - el reflejo sale de la capa: Thin Film de 50 nm con IOR 2,4 (azul acero). Muéstrame también 57 nm (plateado) y el tinte oscuro #6E808E;
+   - ondas de templado: Wave Texture en bandas de 0,33 m con fase por paño (Random Per Island) y Bump de 0,03 con 3 mm; reemplaza al abombado con ruido;
+   - polvo en el perímetro: AO de 0,12 m (2 rayos) que lleva la rugosidad de 0,02 a 0,18. Nunca en el Bump;
+   - no uses el truco de Backfacing ni el metálico para el reflejo: deja el vidrio casi negro, apaga la hora azul y no funciona con paños en caja.
 
 8. Suelo del contexto (si ya está con Poly Haven): costra de sal en manchas, con Voronoi Distance to Edge filtrado con F1 y deformado con ruido. Nunca sobre la calzada ni la plataforma.
 

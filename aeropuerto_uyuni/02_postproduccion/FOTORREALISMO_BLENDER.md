@@ -55,7 +55,7 @@ Pasos de exposición respecto del gris medio (0,18 lineal):
 | Sol de 0,545° | El script usa 0,53°. En el aire limpio de 3660 m conviene entre 0,53° y 0,6°, no más |
 | Microbisel (nodo Bevel) | Probado: radios de la tabla de arriba. Para aristas grandes conviene además un bisel real de 1 a 2 cm en la geometría: borde superior del antepecho, esquinas de columnas y goterón |
 | Rugosidad nunca constante | En metales (probado) y en el vidrio: marcas de limpieza muy suaves, con rugosidad de 0,02 a 0,05 |
-| Vidrio abombado | Probado. Mantener la fuerza baja: entre 0,03 y 0,05 con Distance 0,05 |
+| Vidrio abombado | Probado. Mantener la fuerza baja: entre 0,03 y 0,05 con Distance 0,05. **Actualizado** en `MATERIALES_INTELIGENTES.md`, sección 4: mejor ondas de templado periódicas por paño, con capa fina para el reflejo |
 | Albedos físicos (blancos ≤ 0,85, negros ≥ 0,03) | Ver la sección 3 |
 | Revoque no perfectamente plano | Bump de muy baja frecuencia (ondas de llana de 0,5 a 1 m), fuerza 0,05 a 0,1 y distancia 1 a 2 mm. Se ve con luz rasante |
 | Contexto que tape el horizonte | Cerros bajos a 5–20 km, con Displace sobre un plano o con un modelo de elevación SRTM / Copernicus (TRASPASO 8.1) |
@@ -142,7 +142,7 @@ Tareas, en este orden:
    - microbisel con nodo Bevel en chapas, letrero, revoque, perfiles, hormigón y listones;
    - bisel geométrico de 1 a 2 cm en el borde del antepecho, las esquinas de columnas y el goterón;
    - rugosidad variable en metales y vidrio;
-   - vidrio levemente abombado;
+   - vidrio levemente ondulado (la receta definitiva del vidrio está en MATERIALES_INTELIGENTES.md, sección 4);
    - ondas de llana de muy baja frecuencia en el revoque;
    - albedos dentro de 0,03–0,85;
    - polvo muy sutil al pie de los muros (franja de 20–30 cm). Nada de desportillado.
