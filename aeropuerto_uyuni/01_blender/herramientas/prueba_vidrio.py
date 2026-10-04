@@ -9,6 +9,9 @@
                       #0D151D sin transmisión; por dentro, vidrio transparente
   V5_FISICO_OSCURO    V3 con un tinte de transmisión oscuro (#6E808E): el aspecto de "vidrio espejo" gris azulado de
                       las fachadas corporativas, sin perder la transparencia física (la hora azul sigue funcionando)
+  V6_OSCURO_BAJA_REFLEXION  la elección del cliente (4 de octubre): el tinte oscuro del V5 con una capa de baja
+                      reflexión (IOR 1,8 y 67 nm: ≈ 13 % por cara en lugar de ≈ 34 %), para ver la estructura detrás
+                      del vidrio. El interior de día pasa a 3500 K (Blackbody), sin el resplandor naranja
 
 Uso: python prueba_vidrio.py -- archivo.blend carpeta [camara] [ancho] [muestras] [variantes]
      variantes: lista separada por comas (por defecto, las cinco);
@@ -28,7 +31,7 @@ camara = args[2] if len(args) > 2 else "CAM_01_HERO_LADO_TIERRA"
 ancho = int(args[3]) if len(args) > 3 else 1280
 muestras = int(args[4]) if len(args) > 4 else 64
 variantes = args[5].split(",") if len(args) > 5 else ["V1_HOY", "V2_CAPA_FINA", "V3_FISICO_COMPLETO", "V4_BACKFACING",
-                                                     "V5_FISICO_OSCURO"]
+                                                     "V5_FISICO_OSCURO", "V6_OSCURO_BAJA_REFLEXION"]
 os.makedirs(salida, exist_ok=True)
 
 
@@ -63,11 +66,13 @@ def preparar():
     return sc, mat, mat.node_tree, next(n for n in mat.node_tree.nodes if n.type == "BSDF_PRINCIPLED")
 
 
-def capa_fina(b, espesor_nm, tinte=None):
+def capa_fina(b, espesor_nm, tinte=None, ior_capa=2.4):
+    """Capa de control solar por interferencia. Reflectancia a cuarto de onda sobre vidrio (n = 1,52):
+    ((1,52 − n²) / (1,52 + n²))²: n = 2,4 -> ≈ 34 %; n = 1,8 -> ≈ 13 %. El pico cae en λ = 4 · n · espesor."""
     b.inputs["Metallic"].default_value = 0.0
     b.inputs["Transmission Weight"].default_value = 1.0
     b.inputs["Thin Film Thickness"].default_value = espesor_nm
-    b.inputs["Thin Film IOR"].default_value = 2.4
+    b.inputs["Thin Film IOR"].default_value = ior_capa
     if tinte:
         b.inputs["Base Color"].default_value = srgb(tinte)
 
@@ -167,6 +172,15 @@ for v in variantes:
         polvo_perimetral(nt, b)
     elif v == "V4_BACKFACING":
         receta_backfacing(nt, b)
+    elif v == "V6_OSCURO_BAJA_REFLEXION":
+        capa_fina(b, 67.0, tinte="#6E808E", ior_capa=1.8)          # pico a 482 nm: reflejo azul acero tenue
+        nt.links.new(ondas_de_templado(nt, b), b.inputs["Normal"])
+        polvo_perimetral(nt, b)
+        interior = bpy.data.materials["UY_INTERIOR_LUZ_CALIDA"].node_tree
+        bb = interior.nodes.new("ShaderNodeBlackbody")
+        bb.inputs["Temperature"].default_value = 3500.0
+        nt_b = next(n for n in interior.nodes if n.type == "BSDF_PRINCIPLED")
+        interior.links.new(bb.outputs["Color"], nt_b.inputs["Emission Color"])
     sc.render.filepath = archivo
     t = time.time()
     bpy.ops.render.render(write_still=True, scene=sc.name)

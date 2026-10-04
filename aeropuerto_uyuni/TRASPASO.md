@@ -178,6 +178,14 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     El color de la cubierta, la madera del cielo en P1 y el bastidor de las celosías (color del muro en P2) no se pidieron expresamente: son propuestas mías y conviene confirmarlas.
 
     La vista para la gerencia es `CAM_07_PROPUESTAS`. Parte de la perspectiva de la captura del cliente, que está guardada tal cual como `CAM_07B_CAPTURA_CLIENTE`, mejorada así: fachada completa con márgenes, 28 mm desde 6,0 m de altura y verticales rectas.
+12. **Vidrio de las fachadas y control solar (4 de octubre):**
+    - **DVH:**
+      - vidrio interior laminado incoloro de 3+3 mm;
+      - cámara de aire;
+      - vidrio exterior de 4 mm, acoplado o laminado con una lámina o un tratamiento de control solar.
+    - **Menos reflexión:** el arquitecto pide bajar la reflectividad del vidrio exterior. La fachada no debe parecer un espejo ciego: tiene que dejar ver la estructura de adentro (columnas, vigas y carpinterías).
+    - **Tono más oscuro:** se valida, porque contrasta y resalta la estructura y los elementos blancos del edificio.
+    - **En el render:** variante 6 de `02_postproduccion/MATERIALES_INTELIGENTES.md`, sección 4 (tinte `#6E808E` y capa de baja reflexión). Para que se vea la estructura detrás del vidrio hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
 10. **Reglas de oro del brief:**
     - el DXF solo sirve para verificar: no se calca ni se importa como geometría;
     - toda la geometría se genera con `bpy` a partir de medidas numéricas;
