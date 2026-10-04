@@ -25,7 +25,7 @@ Vas a continuar un proyecto de visualización arquitectónica en Blender 5.2 (Cy
 
 Contexto:
 - Ya trabajaste en este proyecto a partir del primer paquete de traspaso (commit 7b19bea), pero tu sesión se cortó a mitad de camino. Tu avance quedó en el .blend "formal" que te adjunto (o te indico) y en los scripts que hayas generado.
-- Mientras tanto, otro asistente hizo seis cosas sobre el modelo de la versión anterior (la sexta, al final de la lista):
+- Mientras tanto, otro asistente hizo siete cosas sobre el modelo de la versión anterior (las dos últimas, al final de la lista):
   1. implementó los cambios de la reunión con el cliente del 3 de octubre (aeropuerto_uyuni/CAMBIOS_REUNION_3OCT.md) y las decisiones del 4 de octubre (TRASPASO.md, sección 5);
   2. renderizó en 4K las dos opciones finales que eligió el cliente (las tienes en UYUNI_renders_opciones_finales.zip);
   3. investigó y probó en el modelo cómo llegar al realismo fotográfico: cámaras, exposición, materiales, vidrio y luz nocturna;
@@ -38,6 +38,12 @@ Contexto:
      - los nichos de la fachada principal solo en los ventanales;
      - las puertas ME-2 y el retenedor de nieve según sus detalles.
      Está en aeropuerto_uyuni/CAMBIOS_4OCT_FACHADAS.md y lo verificó sin renders, con láminas 2D (01_blender/verificacion/).
+  7. con las respuestas del cliente de la noche del 4 de octubre (CAMBIOS_4OCT_FACHADAS.md, sección 11):
+     - la carpintería en negro mate;
+     - la vereda del Lado Tierra con sus dos dársenas, según la planta A111;
+     - el contexto: calles, estacionamiento, pista 13/31 con rodaje y manga de viento, terreno de 45 km con cerros y el Salar, y paja brava;
+     - la librea de BoA en los dos aviones;
+     - la cámara CAM_10_PISTA_HORIZONTE.
 
 Adjuntos:
 1. UYUNI_paquete_traspaso_2026-10-04_v3.1.zip:
@@ -59,7 +65,7 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - No rehagas lo que ya está hecho ni descartes tu avance.
 
 1. Integra los cambios de la reunión en el formal sin perder tu avance.
-   - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta sobre la copia 01_blender/herramientas/aplicar_cambios_reunion.py (CAMBIOS_REUNION_3OCT.md, sección 2A) y después aplicar_cambios_4oct.py (decisiones del 4 de octubre: letras y muros casi negros en P2, vidrio elegido, geometría A).
+   - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta sobre la copia 01_blender/herramientas/aplicar_cambios_reunion.py (CAMBIOS_REUNION_3OCT.md, sección 2A) y después aplicar_cambios_4oct.py (decisiones del 4 de octubre: letras y muros casi negros en P2, vidrio elegido, geometría A y carpintería en negro mate).
    - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C y aeropuerto_uyuni/CAMBIOS_REUNION_3OCT_uyuni_modelo.diff; las del 4 de octubre están en TRASPASO.md (sección 5, puntos 2, 11 y 12) y en uyuni_modelo.py (LETRAS_GRIS, VIDRIO, mat_letrero, mat_vidrio y mat_emisor).
    - Verifica con CAM_07_PROPUESTAS en UYUNI_DIA (P1) y UYUNI_DIA_P2_SALAR_LITIO (P2), contra los renders de las opciones finales.
 
@@ -69,8 +75,9 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - nichos de la fachada principal;
    - puertas ME-2;
    - retenedor de nieve;
-   - mangas y aviones.
-   Si tu .blend formal es anterior, regenera la geometría desde uyuni_modelo.py (no hay parche para estos cambios) y vuelve a enlazar tus colecciones. No cambies la cumbrera ni los puntos de la sección 8 de ese documento: solo dime qué encuentras.
+   - mangas y aviones;
+   - vereda del Lado Tierra (cordón de la A111 con dos dársenas).
+   Si tu .blend formal es anterior, regenera la geometría desde uyuni_modelo.py (no hay parche para estos cambios) y vuelve a enlazar tus colecciones. No cambies la cumbrera ni los puntos abiertos de las secciones 8 y 11.6 de ese documento: solo dime qué encuentras.
 
 3. Cámaras (guía, sección 1): verticales rectas con shift_y en CAM_01, CAM_03, CAM_05 y CAM_06; altura de ojos; lentes de 24 a 35 mm.
 
@@ -83,25 +90,23 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - En Cycles, el sol no atraviesa el vidrio (MUESTREO_Y_RENDIMIENTO.md, sección 3). Cuando modeles la estructura detrás del vidrio, usa el vidrio transparente para los rayos de sombra de esa sección.
    - El vidrio elegido deja pasar 2,9 % de la luz, y con eso la estructura no se ve de día. No cambies el tinte sin preguntarme: prepárame la comparación con #A9BCCB y la misma capa (15 %) en CAM_05 y CAM_07.
 
-6. Contexto y paisaje con assets de Poly Haven (TRASPASO 8.1 y guía, sección 6):
-   - suelo de tierra y grava clara con costras de sal; paja brava y tola; cerros bajos;
-   - sin árboles ni césped; calzada y plataforma libres; escala real de las texturas.
+6. Contexto y paisaje (TRASPASO 8.1 y guía, sección 6). Ya hay una base procedural en el script: terreno de 45 km con cerros y el Salar (terreno), paja brava instanciada (paja_brava), calles, estacionamiento y acceso (entorno). Mejórala con assets de Poly Haven, sin rehacerla:
+   - textura PBR de tierra y grava clara con costras de sal para el suelo cercano; dos o tres mallas más de paja brava y algo de tola;
+   - sin árboles ni césped; calzada, estacionamiento, plataforma y pista libres; escala real de las texturas.
    Después, vehículos y personas reales en lugar de los 15 proxies (TRASPASO 8.2).
 
-6b. Lado Aire (pedido del cliente del 4 de octubre; TRASPASO 5.13, 5.14 y 8.7):
-   - ya están en el modelo:
-     - las dos mangas, en las puertas de embarque del nivel 1P;
-     - dos 737-800 genéricos con librea blanca (mangas_y_aviones);
-     - veredas, camino de servicio, plataforma y marcas (entorno_aire);
-   - librea de BoA, la aerolínea estatal: pregúntame antes de usarla;
-   - falta la pista real (4000 × 45 m, cabeceras 13/31, casi paralela a la fachada), con la calle de rodaje, la señalización OACI y su extensión hasta el horizonte, para que las tomas aéreas no muestren vacíos.
+6b. Lado Aire (pedido del cliente del 4 de octubre; TRASPASO 5.13, 5.14, 5.17 y 8.7). Ya está en el modelo:
+   - las dos mangas, en las puertas de embarque del nivel 1P;
+   - dos 737-800 con la librea de BoA, que el cliente autorizó (mangas_y_aviones, LIBREA_BOA). Es una aproximación: si consigues una foto de un 737-800 de BoA con licencia que permita usarla como referencia, ajústala;
+   - veredas, camino de servicio, plataforma y marcas (entorno_aire);
+   - la pista 13/31 hasta el horizonte, con marcas OACI, calle de rodaje y manga de viento (contexto_aeropuerto). Su distancia a la terminal es supuesta (330 m al eje, PISTA): no la cambies sin el dato del cliente.
 
 7. Escena nocturna: el prompt de ILUMINACION_NOCTURNA.md (sección 5).
 
 8. Cielo (TRASPASO 8.3): luz de mañana sincronizada con el sol del script y una variante de cielo nublado invernal.
 
 9. Compositor, render y video (guía, secciones 7 y 8; TRASPASO 8.4 y 8.5). Los ajustes de render salen del prompt de MUESTREO_Y_RENDIMIENTO.md (sección 5): perfiles de borrador y final, y el video del dron con semilla animada. Déjalo listo para que yo renderice en mi PC con GPU:
-   - CAM_01 a CAM_07 en 4K, con las dos propuestas en CAM_07;
+   - CAM_01 a CAM_10 en 4K, con las dos propuestas en CAM_07;
    - video del dron en 1080p, 24 fps, MP4 H.264.
 
 Reglas:
@@ -117,11 +122,12 @@ Reglas:
   - las puertas ME-2 siguen su detalle: hojas corredizas por dentro, viga de acero negro mate y operador;
   - muros y columnas de revoque continuo, sin juntas y con buñas solo en la viga;
   - cielo del alero listonado sobre plenum negro;
-  - carpintería antracita mate;
+  - carpintería en negro mate (#2E2F31, pintura en polvo, sin metálico), decisión del 4 de octubre: perfiles, puertas y la viga de la ME-2;
+  - la vereda del Lado Tierra sigue el cordón de la planta A111, con sus dos dársenas;
   - sin bolardos ni postes de iluminación peatonal;
   - el hero shot es con luz de mañana;
   - vidrio de las fachadas (4 de octubre): DVH con laminado incoloro de 3+3 mm adentro y 4 mm con control solar afuera; tono oscuro y poca reflexión, para que la fachada no parezca un espejo ciego y deje ver la estructura de adentro. Ya está en el modelo (VIDRIO; MATERIALES_INTELIGENTES.md, sección 4, variante 6);
-  - Lado Aire (4 de octubre): perspectiva general aprobada. La fachada, los laterales, las mangas y los aviones ya están según los DXF nuevos (CAMBIOS_4OCT_FACHADAS.md). Falta la pista hasta el horizonte (paso 6b).
+  - Lado Aire (4 de octubre): perspectiva general aprobada. La fachada, los laterales, las mangas, los aviones con la librea de BoA y la pista ya están (CAMBIOS_4OCT_FACHADAS.md, paso 6b).
 - Realismo (guía de realismo):
   - mejora la manera de fotografiar el edificio, no el edificio;
   - los colores de PALETA no se tocan; el metálico y la rugosidad sí, según la tabla, y dime el valor anterior y el nuevo;

@@ -10,6 +10,13 @@
 > - nichos de la fachada principal solo en los ventanales;
 > - puertas ME-2 y retenedor de nieve según sus detalles.
 >
+> **Y por la noche, con las respuestas del cliente** (misma nota, sección 11):
+> - carpintería en negro mate;
+> - vereda del Lado Tierra con sus dos dársenas, según la A111;
+> - contexto: calles, estacionamiento, pista 13/31 con rodaje, terreno con cerros y el Salar, y paja brava;
+> - librea de BoA en los dos aviones;
+> - cámara `CAM_10_PISTA_HORIZONTE`.
+>
 > Se verificaron sin renders, con láminas 2D en `01_blender/verificacion/`.
 
 | Carpeta | Contenido |
@@ -17,9 +24,9 @@
 | `00_auditoria/` | Auditoría técnica del DXF y los IFC (Fases 0 y 0.5): `AUDITORIA.md`, informes JSON, 16 vistas aisladas (PNG + DXF limpio), decisiones confirmadas y el script de auditoría. |
 | `01_blender/` | Modelo paramétrico: `uyuni_modelo.py` (fuente), `uyuni_v2.blend` (ya generado) e `inventario_escena.json` (qué hay en la escena y dónde). |
 | `01_blender/previews/` | Vistas previas de las cámaras CAM_01 a CAM_06. |
-| `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): alzados, cortes y plantas. Las del Lado Aire, los laterales, la ME-2, el retenedor y el 737 son del 4 de octubre, en 2D sin render (`exportar_geometria.py` + `superponer_cad_2d.py`). |
+| `01_blender/verificacion/` | El modelo superpuesto al CAD (en rojo): alzados, cortes y plantas. Las del Lado Aire, los laterales, la ME-2, el retenedor, el 737, las veredas del Lado Tierra y el contexto (sitio, pista y horizonte) son del 4 de octubre, en 2D sin render (`exportar_geometria.py` + `superponer_cad_2d.py`). `ENCUADRE_*` muestra qué entra en cuadro en CAM_10 y CAM_04, también sin render. |
 | `01_blender/propuestas/` | Hojas comparativas de las dos propuestas de color (CAM_07) y del letrero: corten o blanco, geometría A o B. |
-| `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas y las propuestas, verificar contra el CAD, inventariar la escena, aplicar los cambios del 3 de octubre sobre un `.blend` existente y probar técnicas de fotorrealismo (`prueba_fotorrealismo.py`) materiales inteligentes (`prueba_materiales.py` y `prueba_vidrio.py`) e iluminación nocturna (`prueba_noche.py`), y medir qué ajustes de render pagan (`prueba_muestreo.py`, con `hoja_muestreo.py` para los números). `aplicar_cambios_4oct.py` lleva a un `.blend` existente las decisiones del 4 de octubre: letras y muros casi negros en P2, vidrio elegido y geometría A. `exportar_geometria.py` y `superponer_cad_2d.py` verifican el modelo contra los DXF del cliente sin renderizar: cortes y proyecciones con matplotlib. |
+| `01_blender/herramientas/` | Scripts sin interfaz para generar el `.blend`, renderizar vistas previas y las propuestas, verificar contra el CAD, inventariar la escena, aplicar los cambios del 3 de octubre sobre un `.blend` existente y probar técnicas de fotorrealismo (`prueba_fotorrealismo.py`) materiales inteligentes (`prueba_materiales.py` y `prueba_vidrio.py`) e iluminación nocturna (`prueba_noche.py`), y medir qué ajustes de render pagan (`prueba_muestreo.py`, con `hoja_muestreo.py` para los números). `aplicar_cambios_4oct.py` lleva a un `.blend` existente las decisiones de color del 4 de octubre: letras y muros casi negros en P2, vidrio elegido, geometría A y carpintería en negro mate. `exportar_geometria.py` y `superponer_cad_2d.py` verifican el modelo contra los DXF del cliente sin renderizar: cortes y proyecciones con matplotlib. |
 | `02_postproduccion/` | `PROMPTS_IA_RENDERS.md`: prompts por vista para postproducir los renders con IA, con el flujo de trabajo y el control de calidad. `PROMPT_UPSCALE_PROPUESTAS.md`: prompts y ajustes para escalar ×2 con IA los renders de las dos propuestas. `FOTORREALISMO_BLENDER.md`: revisión de técnicas de fotorrealismo para Blender 5.2, prueba en CAM_01 (`01_blender/fotorrealismo/`) y prompt para aplicarlas. `MATERIALES_INTELIGENTES.md`: revisión de materiales procedurales que responden a la geometría (aristas, cavidades, polvo por gravedad), receta por material, prueba en CAM_06, CAM_05 y CAM_01 (vidrio) y prompt. `ILUMINACION_NOCTURNA.md`: fundamentos de iluminación y composición aplicados a la escena nocturna, prueba en CAM_03 y prompt. `MUESTREO_Y_RENDIMIENTO.md`: qué ajustes de render pagan y cuáles no en esta escena (umbral, tope, rebotes, cáusticas, clamp, poligonaje) y la luz que atraviesa el vidrio, con prueba y prompt. **`GUIA_REALISMO_FOTOGRAFICO.md`: resumen de todo lo anterior (cámaras, exposición, luz de día y de noche, materiales, contexto, compositor, render y trampas de Blender 5.2)**. `unificar_color.py`: "Lightroom a medida" que unifica el color de las fotos generadas con IA, con una aplicación en el navegador y un modo por lotes (ver `UNIFICAR_COLOR.md`). |
 
 ## Cómo usarlo en Blender 5.2
@@ -28,7 +35,7 @@
 
 | Escena | Luz | Cámaras |
 |---|---|---|
-| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30. Propuesta 1 "Patrimonio Ferroviario" | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_07, CAM_07B, CAM_08 y CAM_09 (Lado Aire), CAM_DRON |
+| `UYUNI_DIA` | Mañana: sol calculado para Uyuni el 4 de octubre a las 09:30. Propuesta 1 "Patrimonio Ferroviario" | CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_07, CAM_07B, CAM_08 y CAM_09 (Lado Aire), CAM_10 (pista hasta el horizonte), CAM_DRON |
 | `UYUNI_DIA_P2_SALAR_LITIO` | La misma mañana con la propuesta 2 "Salar & Litio" | CAM_07 |
 | `UYUNI_CREPUSCULO` | Hora azul: interior, alero y letrero encendidos; piso mojado; nieve en el borde | CAM_03 |
 
@@ -128,15 +135,11 @@ Ubicación:
 
 El detalle está en `TRASPASO.md`: los puntos por revisar contra el DXF, en la sección 6, y los pendientes con su especificación, en la sección 8. En resumen:
 - **Vehículos 4x4, minibús y turistas:** hoy son cajas de ubicación en `07_ASSETS/PROXIES_COLOCACION`, visibles solo en el visor. Hay que reemplazarlas por modelos reales.
-- **Contexto:** paisaje de altiplano, vegetación y variante de cielo nublado.
-- **Para confirmar con el cliente** (`CAMBIOS_4OCT_FACHADAS.md`, sección 8):
-  - ME-6 del bloque;
-  - altura del vestíbulo y del anexo;
-  - remate de la cubierta sobre el eje I;
-  - puertas de embarque, posición y librea de los aviones;
-  - tubos del retenedor;
-  - color de la carpintería;
-  - cordón del Lado Tierra de la planta A111.
-- **Pista** hasta el horizonte con su calle de rodaje (TRASPASO.md, 8.7).
+- **Contexto:** ya hay terreno con cerros y el Salar, paja brava, calles, estacionamiento, pista y rodaje. Falta la variante de cielo nublado y, si se quiere, el horizonte real a partir de un modelo de elevación.
+- **Para confirmar con el cliente** (`CAMBIOS_4OCT_FACHADAS.md`, secciones 8 y 11.6):
+  - **distancia entre la terminal y la pista**: hoy es supuesta (330 m al eje), porque la georreferencia del IFC pone la pista del Lado Tierra;
+  - calles y estacionamiento (son una propuesta) y cerco perimetral (no está modelado);
+  - librea de BoA: una foto o el manual de marca para ajustarla;
+  - remate de la cubierta sobre el eje I y galería del bloque.
 - **Cumbrera:** se usó +13,02 (alzados laterales); las fachadas NE y SO marcan +13,43.
 - **Renders finales y video del dron:** se renderizan en la PC con GPU.

@@ -11,6 +11,9 @@ Qué hace:
    variante 6).
 4. Interior: el emisor pasa de RGB naranja a 3500 K (Blackbody) con el mismo brillo.
 5. Geometría del letrero: la A (tamaño original, sin reducción) queda activa en las tres escenas. La B se conserva.
+6. Carpintería en negro mate (pintura en polvo, PERFIL_COLOR): reemplaza al antracita en perfiles y puertas.
+La geometría del 4 de octubre (Lado Aire, testeros, veredas de la A111, contexto, librea BoA) no se aplica con este
+script: es más simple volver a generar el modelo con uyuni_modelo.py.
 
 Se puede volver a ejecutar: rehace solo lo suyo.
 
@@ -40,8 +43,8 @@ salida = os.path.abspath(args[1]) if len(args) > 1 else None
 
 G = {"__file__": os.path.abspath(MODELO), "__name__": "uyuni_modelo_cambios"}
 exec(compile(open(MODELO, encoding="utf-8").read(), MODELO, "exec"), G)
-if "LETRAS_GRIS" not in G or "VIDRIO" not in G:
-    raise RuntimeError("uyuni_modelo.py no es la versión del 4 de octubre (le faltan LETRAS_GRIS y VIDRIO)")
+if "LETRAS_GRIS" not in G or "VIDRIO" not in G or "mat_perfil" not in G:
+    raise RuntimeError("uyuni_modelo.py no es la versión del 4 de octubre (le faltan LETRAS_GRIS, VIDRIO o mat_perfil)")
 P = G["PREFIJO"]
 informe = []
 
@@ -67,6 +70,21 @@ material_nuevo("REVOQUE_FACHADA_BUNAS", lambda: G["mat_revoque"]("REVOQUE_FACHAD
 material_nuevo("BASTIDOR_CELOSIAS", lambda: G["mat_propuesta"]("BASTIDOR_CELOSIAS", "bastidor"))
 material_nuevo("VIDRIO_CONTROL_SOLAR", G["mat_vidrio"])
 material_nuevo("INTERIOR_LUZ_CALIDA", lambda: G["mat_emisor"]("INTERIOR_LUZ_CALIDA", "#FFB46B", "luz_interior", kelvin=3500))
+# 6. carpintería en negro mate (pintura en polvo): el material nuevo reemplaza al antracita (y al negro anodizado
+#    original, si quedó alguno), y las puertas de acero toman el mismo acabado
+perfil = material_nuevo("ALUMINIO_NEGRO_MATE", G["mat_perfil"])
+for viejo_nombre in ("ALUMINIO_ANTRACITA_MATE", "ALUMINIO_ANODIZADO_NEGRO_MATE"):
+    viejo = bpy.data.materials.get(P + viejo_nombre)
+    if viejo:
+        viejo.user_remap(perfil)
+        bpy.data.materials.remove(viejo)
+        informe.append(f"material {viejo_nombre} reemplazado por ALUMINIO_NEGRO_MATE")
+puerta_vieja = bpy.data.materials.get(P + "PUERTA_ACERO_PINTADO")
+if puerta_vieja:
+    puerta = G["mat_simple"]("PUERTA_ACERO_NEGRO_MATE", G["PERFIL_COLOR"], rug=G["PERFIL_RUGOSIDAD"])
+    puerta_vieja.user_remap(puerta)
+    bpy.data.materials.remove(puerta_vieja)
+    informe.append("material PUERTA_ACERO_PINTADO reemplazado por PUERTA_ACERO_NEGRO_MATE")
 
 for sc in bpy.data.scenes:
     G["propiedades_escena"](sc)

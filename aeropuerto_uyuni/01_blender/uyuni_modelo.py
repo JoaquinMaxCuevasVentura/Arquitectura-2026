@@ -20,13 +20,14 @@ Norte verdadero en coordenadas locales: 301,043° (antihorario desde +X). El Lad
 
 Escenas (la propiedad "propuesta" de cada escena elige la paleta: 0 = P1 Patrimonio Ferroviario, 1 = P2 Salar & Litio):
   UYUNI_DIA                 luz de mañana (sol calculado para Uyuni), P1 - CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05,
-                            CAM_06, CAM_07, CAM_07B, CAM_08 y CAM_09 (Lado Aire), CAM_DRON
+                            CAM_06, CAM_07, CAM_07B, CAM_08 y CAM_09 (Lado Aire), CAM_10 (pista), CAM_DRON
   UYUNI_DIA_P2_SALAR_LITIO  la misma mañana con la paleta P2 - CAM_07
   UYUNI_CREPUSCULO          hora azul: interior y alero encendidos, piso mojado, nieve - CAM_03
 """
 import json
 import math
 import os
+import random
 import warnings
 
 import bmesh
@@ -135,10 +136,27 @@ PUERTAS_SIMPLES_ESTE = [(15.978, 16.978)]                                  # hoj
 PATIO_ESTE = dict(bocas=[(18.703, 22.421), (22.721, 27.248)], z=3.21, x_fondo=77.90, puerta_fondo=(25.628, 26.628),
                   puerta_lado=(80.20, 81.20))
 
-ZANJA = dict(y=(-1.965, -1.465), prof=0.20)                          # bajo la línea de goteo
-ACERA_Y = (-4.308, Y_MURO_EXT)
+# --- Lado Tierra: vereda y cordón de la planta baja A111 (capa A-FLOR, aplicada el 4 de octubre). La vereda llega a
+# 8,8 m del muro, con dos dársenas de ascenso y descenso de 2,10 m de fondo (tramo recto de 7,17 m y rampas a 45° con
+# curvas de r 1,0); la esquina oeste dobla en una curva de r 4,021 y la este en una de r 1,0. Los cordones laterales
+# siguen hacia el Lado Aire (cordon_aire).
+ZANJA = dict(y=(-1.965, -1.465), prof=0.20)                          # bajo la línea de goteo del alero
 BORDILLO_DESNIVEL = 0.15
-CALZADA_Y = (-14.308, -4.308)
+Y_CORDON_TIERRA = -8.413
+DARSENAS_TIERRA = (20.975, 62.96)       # X donde el cordón deja la línea de -8,413 para entrar en cada dársena
+DARSENA = dict(fondo=2.10, recto=7.171, r=1.0)
+X_CORDON_LATERAL = (-3.57, 85.515)      # cordones de las veredas laterales (testeros de los ejes 1 y 20)
+# Calles y estacionamiento del Lado Tierra: contexto que no está en la A111, armado con la vista aérea del modelo del
+# cliente. Calzada de dos carriles frente al edificio con sentido hacia el eje 1 (el edificio queda a la derecha del
+# conductor), cantero central, estacionamiento de cuatro filas a 90° (120 puestos de 2,50 x 5,00, pasillos de 6,00) y
+# un anillo de 7,00 m que lo rodea, sigue por los testeros hasta la plataforma y sale hacia Uyuni (a 3 km hacia -X).
+CALLE_ANCHO = 7.0
+Y_CALZADA_TIERRA = Y_CORDON_TIERRA - CALLE_ANCHO                      # borde exterior de la calzada frontal (-15,413)
+CANTERO = dict(ancho=3.0, cruces=(16.80, 55.63), cruce_ancho=4.0)     # pasos peatonales frente a las dos ME-2
+ESTACIONAMIENTO = dict(x=(4.0, 79.0), puesto=(2.5, 5.0), pasillo=6.0, divisor=2.0, isla_fin=1.5, borde_sur=2.0)
+Y_ANILLO_SUR = (-61.413, -54.413)        # tramo sur del anillo y camino de acceso (hacia Uyuni, por -X)
+X_ACCESO = -3000.0
+R_ESQUINA_ANILLO = 12.0
 
 # Celosías corten: módulos de 5,00 x 6,00 m (placas de 1,00 x 2,00 m de 1 mm), a 0,12 m de su fondo
 CELOSIA_SEP = 0.12
@@ -180,10 +198,35 @@ FRANJA_ESTE = dict(y=(-0.308, 43.474), z=(4.41, 6.21))
 # Entorno del Lado Aire: cordón de la planta baja A111 (capa A-FLOR, en cordon_aire) y camino de servicio de la vista
 # aérea del cliente (la banda azul), paralelo a la fachada entre la vereda y los puestos de las aeronaves
 CAMINO_AIRE_Y = (55.0, 65.0)
-PLATAFORMA_AIRE = dict(x=(-160.0, 260.0), y=(40.0, 175.0))
+PLATAFORMA_AIRE = dict(x=(-110.0, 200.0), y=(40.0, 130.0))   # la calle de rodaje de la plataforma más 28 m
 CALLE_RODAJE_Y = 102.0            # eje amarillo de la calle de rodaje de la plataforma, detrás de los puestos
-# Mangas (puentes de embarque) en las dos puertas del nivel 1P y dos Boeing 737-800 genéricos (librea blanca, sin
-# marcas), estacionados como en la captura del modelo del cliente: casi paralelos a la fachada, nariz hacia el eje 1
+# --- Contexto del aeropuerto (4 de octubre). Pista 13/31 de 4000 x 45 m de asfalto (datos publicados del aeródromo
+# SLUY): llevadas a coordenadas locales con la georreferencia del IFC, sus cabeceras caen en X -1034,5 (31) y
+# X 2962,6 (13) y la pista queda paralela al eje X, como el edificio. Esa misma georreferencia la pone 55 m del lado
+# tierra, lo que no es posible (el origen del IFC no está en el sitio real de la terminal): se mantienen las X y la
+# orientación, y el eje va del Lado Aire a una distancia supuesta. Con 330 m, la plataforma queda fuera de la franja
+# (150 m) y las colas de los 737 y la cumbrera quedan bajo la superficie de transición 1:7. A confirmar con el plano
+# de sitio del cliente.
+PISTA = dict(x=(-1034.5, 2962.6), y=330.0, ancho=45.0, sobrepaso=60.0, nombres=("31", "13"))
+RODAJE = dict(x=150.0, ancho=23.0, r_plataforma=30.0, r_pista=45.0, espera=90.0)   # calle de rodaje a la pista
+MANGA_VIENTO = (230.0, 250.0)
+# Terreno: altiplano plano alrededor del aeropuerto, curvatura de la Tierra (radio efectivo con refracción) desde
+# 3,5 km y cordones de cerros en el horizonte; al oeste y noroeste, el Salar de Uyuni (blanco y plano) desde 18 km.
+TERRENO = dict(radio=45000.0, r_plano=3500.0, r_tierra=7.43e6, centro=(41.0, 22.0), azimutes=240)
+CERROS = [  # (azimut verdadero °, semiancho °, distancia km, altura m): cordillera de Chichas al este, lomas al sur
+    (28.0, 14.0, 26.0, 250.0), (58.0, 18.0, 17.0, 390.0), (88.0, 14.0, 14.0, 480.0), (112.0, 12.0, 19.0, 420.0),
+    (138.0, 16.0, 23.0, 350.0), (163.0, 12.0, 30.0, 290.0), (192.0, 18.0, 34.0, 230.0), (222.0, 12.0, 40.0, 260.0),
+    (352.0, 16.0, 40.0, 230.0), (8.0, 10.0, 36.0, 190.0)]
+SALAR = dict(azimut=(238.0, 332.0), desde=15000.0)   # sin lomas delante: desde 26 m de altura se ve como franja blanca
+# Paja brava (Festuca orthophylla): matas de 0,3 a 0,8 m dispersas en el suelo libre y en las islas del estacionamiento
+PAJA_BRAVA = dict(radio=650.0, densidad=0.045, semilla=7, margen=1.5)
+# Librea de Boliviana de Aviación (BoA) en los dos 737-800 (pedido del cliente, 4 de octubre), aproximada: fuselaje
+# blanco, deriva y winglets azul BoA, franjas rojo-amarillo-verde de la bandera en la deriva y el nombre en azul.
+LIBREA_BOA = dict(azul="#1C3F94", rojo="#D52B1E", amarillo="#F4D000", verde="#007934",
+                  # (texto, x de inicio desde la nariz, base sobre el eje del fuselaje, alto): sobre y bajo las ventanillas
+                  titulo=("BoA", -6.0, 0.66, 1.10), subtitulo=("Boliviana de Aviación", -6.3, -0.08, 0.20))
+# Mangas (puentes de embarque) en las dos puertas del nivel 1P y dos Boeing 737-800 (con la librea de BoA desde el 4
+# de octubre), estacionados como en la captura del modelo del cliente: casi paralelos a la fachada, nariz hacia el eje 1
 MANGAS = [dict(x=sum(CAJA_OESTE["x"]) / 2, y_frente=CAJA_OESTE["y"][1]), dict(x=46.887, y_frente=46.894)]
 MANGA = dict(z_piso=3.85, y_rotonda=52.6, r_rotonda=1.8, tunel_a=(2.5, 3.0), tunel_b=(2.75, 3.25),
              cabina=(3.2, 3.4, 3.1))
@@ -211,7 +254,11 @@ PALETA = {
     "celosia":   (("#8E4524", 0.20, 0.80), ("#EFEEE9", 0.0, 0.50)),    # corten oxidado (color medio) | blanco perla
     "bastidor":  (("#232323", 0.60, 0.50), ("#36393B", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
 }
-PERFIL_COLOR = "#3A3E41"          # carpintería de aluminio antracita mate (no negro brillante), en las dos propuestas
+# Carpintería (perfiles, puertas, viga y operador de la ME-2), en las dos propuestas: aluminio con pintura en polvo
+# negro mate (pedido del 4 de octubre; antes antracita #3A3E41). Sin metálico y rugosa, como una pintura mate real;
+# #2E2F31 es ≈ 0,027 de luminancia lineal, el negro más oscuro que no se vuelve un hueco sin forma en el render.
+PERFIL_COLOR = "#2E2F31"
+PERFIL_RUGOSIDAD = 0.60
 # Revisión del 4 de octubre: en P2 (parapeto blanco) las letras y pirámides van en un gris casi negro, no en blanco,
 # igual que los muros; propiedad "letras_gris" de la escena (1 en P2). Letras del tamaño original: geometría A.
 # #2E3133 es ≈ 0,03 de luminancia lineal, el piso de albedo de la guía (como el asfalto nuevo); el muro, #36393B, ≈ 0,04.
@@ -223,7 +270,8 @@ VIDRIO = dict(tinte="#6E808E", capa_nm=67.0, capa_ior=1.8, onda_paso=0.33, polvo
 
 PREFIJO = "UY_"
 COLECCIONES = ["_REF_CAD", "01_ESTRUCTURA", "02_ENVOLVENTE", "03_CARPINTERIAS_M1", "04_CUBIERTA_INDUSTRIAL",
-               "05_CELOSIAS_CORTEN", "06_ENTORNO_SITE", "07_ASSETS", "08_CAMERAS_LIGHTS", "10_MANGAS_AERONAVES"]
+               "05_CELOSIAS_CORTEN", "06_ENTORNO_SITE", "07_ASSETS", "08_CAMERAS_LIGHTS", "10_MANGAS_AERONAVES",
+               "11_CONTEXTO_AEROPUERTO"]
 
 # Chapas de las celosías ya resueltas (contorno menos calados andinos): PT1, PT2A (picos en 0-2-4 m) y PT2B
 # (picos en 1-3-5 m), con origen en la esquina inferior izquierda del módulo; y letras UYUNI en coordenadas de la
@@ -578,6 +626,11 @@ def mat_simple(nombre, color, metal=0.0, rug=0.5, **extra):
     return mat
 
 
+def mat_perfil():
+    """Carpintería de aluminio con pintura en polvo negro mate: dieléctrica (la pintura tapa el metal)."""
+    return mat_simple("ALUMINIO_NEGRO_MATE", PERFIL_COLOR, metal=0.0, rug=PERFIL_RUGOSIDAD)
+
+
 def mat_propuesta(nombre, rol):
     """Material liso de dos paletas: la propiedad "propuesta" de la escena mezcla P1 (0) y P2 (1) de PALETA[rol]."""
     (c1, m1, r1), (c2, m2, r2) = PALETA[rol]
@@ -781,21 +834,65 @@ def mat_plataforma():
 
 
 def mat_suelo():
-    """Suelo árido del altiplano, con nieve o escarcha opcional ("nieve" en la view layer o la escena)."""
+    """Suelo árido del altiplano, con nieve o escarcha opcional ("nieve" en la view layer o la escena). El atributo
+    "salar" de la malla del terreno (1 en el Salar de Uyuni) lo vuelve costra de sal blanca, y a varios kilómetros el
+    color se aclara y se enfría (perspectiva aérea aproximada: el aire del altiplano es limpio, pero no a 30 km)."""
     mat = bpy.data.materials.new(PREFIJO + "SUELO_ALTIPLANO")
     nb = Nodos(mat)
     tc, _ = nb.coord()
     c = nb.mix(nb.ruido(0.08, 6.0, tc.outputs["Object"]), srgb("#B8A887"), srgb("#9E8C6C"))
     c2 = nb.mixc(nb.m("MULTIPLY", nb.ruido(2.5, 8.0, tc.outputs["Object"]), 0.5), c, srgb("#CBBF9F"))
+    salar = nb.n("ShaderNodeAttribute", attribute_type="GEOMETRY", attribute_name="salar").outputs["Fac"]
+    c2 = nb.mixc(salar, c2, nb.mix(nb.ruido(0.02, 4.0, tc.outputs["Object"]), srgb("#E9E7E1"), srgb("#D9D6CE")))
     nieve = nb.m("MULTIPLY", nb.atributo("nieve"), nb.m("GREATER_THAN", nb.ruido(0.6, 5.0, tc.outputs["Object"]), 0.47))
     c3 = nb.mixc(nieve, c2, srgb("#F2F4F7"))
-    nb.ent("Base Color", c3)
-    nb.ent("Roughness", nb.mixf(nieve, 0.96, 0.55))
+    lejos = nb.m("SUBTRACT", 1.0, nb.m("EXPONENT", nb.m("MULTIPLY", nb.n("ShaderNodeCameraData").outputs["View Distance"],
+                                                         -1.0 / 45000.0)))
+    nb.ent("Base Color", nb.mixc(nb.m("MULTIPLY", lejos, 0.85), c3, srgb("#A9B4C2")))
+    nb.ent("Roughness", nb.mixf(nieve, nb.mixf(salar, 0.96, 0.75), 0.55))
     bump = nb.n("ShaderNodeBump")
     bump.inputs["Strength"].default_value = 0.35
     nb.con(nb.ruido(30.0, 8.0, tc.outputs["Object"]), bump.inputs["Height"])
     nb.ent("Normal", bump.outputs["Normal"])
     mat.diffuse_color = srgb("#B8A887")
+    return mat
+
+
+def mat_grava():
+    """Grava volcánica oscura de las islas del estacionamiento y del cantero (las islas negras del modelo del cliente)."""
+    mat = bpy.data.materials.new(PREFIJO + "GRAVA_VOLCANICA_ISLAS")
+    nb = Nodos(mat)
+    tc, _ = nb.coord()
+    nb.ent("Base Color", nb.mix(nb.ruido(45.0, 4.0, tc.outputs["Object"]), srgb("#2B2826"), srgb("#45403B")))
+    nb.ent("Roughness", 0.9)
+    bump = nb.n("ShaderNodeBump")
+    bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.8, 0.01
+    nb.con(nb.ruido(60.0, 2.0, tc.outputs["Object"]), bump.inputs["Height"])
+    nb.ent("Normal", bump.outputs["Normal"])
+    mat.diffuse_color = srgb("#36322F")
+    return mat
+
+
+def mat_paja():
+    """Paja brava: hojas de color paja con base verde grisácea, tono distinto en cada mata (Random de la instancia) y
+    algo de luz a través de las hojas cuando están a contraluz."""
+    mat = bpy.data.materials.new(PREFIJO + "PAJA_BRAVA")
+    nb = Nodos(mat)
+    tc, sep = nb.coord()
+    al = nb.n("ShaderNodeObjectInfo").outputs["Random"]
+    c = nb.mixc(al, srgb("#B49C66"), srgb("#D3C08C"))
+    base = nb.m("SUBTRACT", 1.0, nb.m("MULTIPLY", sep.outputs["Z"], 7.0, clamp=True))
+    c = nb.mixc(nb.m("MULTIPLY", base, 0.7), c, srgb("#7B7A55"))
+    nb.ent("Base Color", c)
+    nb.ent("Roughness", 0.72)
+    tr = nb.n("ShaderNodeBsdfTranslucent")
+    nb.con(c, tr.inputs["Color"])
+    mix = nb.n("ShaderNodeMixShader")
+    mix.inputs["Fac"].default_value = 0.25
+    nb.nt.links.new(nb.bsdf.outputs["BSDF"], mix.inputs[1])
+    nb.nt.links.new(tr.outputs["BSDF"], mix.inputs[2])
+    nb.nt.links.new(mix.outputs["Shader"], nb.out.inputs["Surface"])
+    mat.diffuse_color = srgb("#C2AD78")
     return mat
 
 
@@ -861,7 +958,7 @@ def crear_materiales():
         antepecho=mat_propuesta("CHAPA_ANTEPECHO_REMATES", "antepecho"),
         celosia=mat_celosia(),
         vidrio=mat_vidrio(),
-        perfil=mat_simple("ALUMINIO_ANTRACITA_MATE", PERFIL_COLOR, metal=0.25, rug=0.55),
+        perfil=mat_perfil(),
         sello=mat_simple("SELLO_ESTRUCTURAL_NEGRO", "#0B0B0B", rug=0.6),
         muro=mat_revoque("REVOQUE_CONTINUO"),
         muro_buna=mat_revoque("REVOQUE_FACHADA_BUNAS", bunas=VIGA_1),   # buñas finas arriba y abajo de la viga
@@ -885,7 +982,7 @@ def crear_materiales():
         nieve=mat_simple("NIEVE", "#F4F6FA", rug=0.45, Subsurface_Weight=0.2),
         # Lado Aire (4 de octubre)
         muro_aire=mat_revoque("REVOQUE_LADO_AIRE", bunas=BUNAS_AIRE),   # buñas en el borde de las vigas V30x50
-        puerta=mat_simple("PUERTA_ACERO_PINTADO", PERFIL_COLOR, rug=0.45),
+        puerta=mat_simple("PUERTA_ACERO_NEGRO_MATE", PERFIL_COLOR, rug=PERFIL_RUGOSIDAD),
         cortina=mat_simple("CORTINA_ENROLLABLE_GALVANIZADA", "#A4A8AB", metal=0.85, rug=0.42),
         senal_amarilla=mat_simple("PINTURA_PLATAFORMA_AMARILLA", "#D9A514", rug=0.6),
         senal_roja=mat_simple("PINTURA_PLATAFORMA_ROJA", "#A7292B", rug=0.6),
@@ -897,6 +994,12 @@ def crear_materiales():
         avion_motor=mat_simple("AVION_GONDOLA_MOTOR", "#D7DADD", metal=0.35, rug=0.25),
         avion_oscuro=mat_simple("AVION_TOBERA_Y_TREN", "#2B2D30", metal=0.6, rug=0.45),
         avion_vidrio=mat_simple("AVION_VENTANILLAS", "#0E1216", metal=0.3, rug=0.06),
+        # librea BoA y contexto (4 de octubre)
+        **{f"boa_{k}": mat_simple(f"AVION_BOA_{k.upper()}", LIBREA_BOA[k], metal=0.05, rug=0.22, Coat_Weight=0.6,
+                                  Coat_Roughness=0.08) for k in ("azul", "rojo", "amarillo", "verde")},
+        grava=mat_grava(),
+        paja=mat_paja(),
+        manga_viento=mat_simple("MANGA_VIENTO_NARANJA", "#E8611A", rug=0.7),
     )
     return M
 
@@ -1029,7 +1132,7 @@ def mamparas(C, M):
         ac.caja(x0 + c, x1 - c, py0 + 0.002, py1 - 0.002, zv0, zv1)
         zo0, zo1, fo = P["operador"]                                        # operador bajo la viga, del lado interior
         ac.caja(x0 + c, x1 - c, py1 - 0.10, py1 + fo - 0.10, zo0, zo1)
-        ac.crear(f"ME2_VIGA_OPERADOR_{x0:05.2f}", M["sello"], col)
+        ac.crear(f"ME2_VIGA_OPERADOR_{x0:05.2f}", M["perfil"], col)        # mismo negro mate que la carpintería
         # paños fijos: laterales abajo (hasta +2,40) y los cuatro de arriba (desde +2,44), con sellos negros
         for k in range(4):
             a = x0 + k * paso + (0.005 if k else 0.0)
@@ -1386,7 +1489,7 @@ def fachada_aire(C, M):
     yI, yR, xb = Y_FACHADA_AIRE["principal_der"], Y_FACHADA_AIRE["principal_izq"], X_CAMBIO_AIRE
     def z_techo(y):
         return z_cubierta(y) - E_CUBIERTA - 0.01
-    pf, vd, pm, cm, gm, fm = Malla(), Malla(), Malla(), Malla(), Malla(), Malla()
+    pf, vd, pm, cm, gm = Malla(), Malla(), Malla(), Malla(), Malla()
     # --- muro del eje I, de testero a testero (dentro del bloque es el fondo de la galería y del recinto)
     huecos = [rect(a, b, ME4_Z[0], ME4_Z[1]) for a, b in ME4_AIRE]
     huecos += [rect(a, b, max(z0, 0.0005), z1) for a, b, z0, z1 in ME5_AIRE]
@@ -1800,42 +1903,43 @@ def letrero_variante(col, M, s, zh_n, suf):
 
 
 def entorno(C, M):
-    """Acera fratasada, zanja de drenaje bajo el goterón, bordillo, calzada, estacionamiento y altiplano."""
+    """Lado Tierra según la planta baja A111: vereda hasta el cordón (con sus dos dársenas), zanja de drenaje con rejilla
+    bajo el goterón del alero y cordón. Fuera de la A111 (contexto): calzada frontal, cantero con dos pasos peatonales,
+    estacionamiento con islas de grava volcánica, anillo y camino de acceso, con su señalización. Después llama al Lado
+    Aire, al contexto del aeropuerto (pista y rodaje), al terreno y a la paja brava."""
     col = C["06_ENTORNO_SITE"]
-    xa, xb = -60.0, 145.0
-    ac = Malla()
-    ac.caja(xa, xb, ACERA_Y[0], ZANJA["y"][0], -BORDILLO_DESNIVEL - 0.05, 0.0)
-    ac.caja(xa, xb, ZANJA["y"][1], ACERA_Y[1] - 0.001, -BORDILLO_DESNIVEL - 0.05, 0.0)
-    ac.crear("ACERA_HORMIGON", M["acera"], col)
-    z = Malla()   # zanja en U de hormigón (0,50 x 0,20) con rejilla galvanizada
-    z.caja(xa, xb, ZANJA["y"][0], ZANJA["y"][1], -ZANJA["prof"] - 0.10, -ZANJA["prof"])
-    z.crear("ZANJA_DRENAJE", M["hormigon"], col)
+    z1 = -BORDILLO_DESNIVEL                                          # cara superior del asfalto
+    cord = cordon_tierra()
+    inv = cord[::-1]                                                 # de este a oeste: la vereda queda a la derecha
+    za, zb = ZANJA["y"]
+    xz0, xz1 = X_ALERO
+    # vereda 2 mm bajo el cordón, con el borde 1 cm dentro de él (sin caras coplanares) y el hueco de la zanja
+    placa_con_huecos("VEREDA_TIERRA", [paralela_derecha(inv, 0.01), rect(xz0, xz1, za, zb)], 0.198, "XY", -0.101,
+                     M["acera"], col)
+    placa_con_huecos("CORDON_TIERRA", [franja_derecha(inv, 0.15)], 0.25, "XY", -0.125, M["hormigon"], col)
+    zj = Malla()   # zanja en U de hormigón (0,50 x 0,20) con rejilla galvanizada, a lo largo del alero
+    zj.caja(xz0, xz1, za, zb, -ZANJA["prof"] - 0.10, -ZANJA["prof"])
+    zj.crear("ZANJA_DRENAJE", M["hormigon"], col)
     rj = Malla()
-    yy = ZANJA["y"][0] + 0.02
-    while yy < ZANJA["y"][1] - 0.02:
-        rj.caja(xa, xb, yy, yy + 0.005, -0.035, -0.005)
+    yy = za + 0.02
+    while yy < zb - 0.02:
+        rj.caja(xz0, xz1, yy, yy + 0.005, -0.035, -0.005)
         yy += 0.035
     rj.crear("ZANJA_REJILLA", M["galvanizado"], col)
-    cal = Malla()
-    cal.caja(xa - 200, xb + 200, CALZADA_Y[0], CALZADA_Y[1], -BORDILLO_DESNIVEL - 0.10, -BORDILLO_DESNIVEL)
-    cal.caja(xa, xb, -36.0, CALZADA_Y[0], -BORDILLO_DESNIVEL - 0.10, -BORDILLO_DESNIVEL)   # estacionamiento
-    cal.crear("CALZADA_ASFALTO", M["asfalto"], col)
-    entorno_aire(C, M)
-    sv = Malla()   # líneas de estacionamiento cada 2,60 m
-    x = 0.0
-    while x < 90:
-        sv.caja(x, x + 0.10, -35.0, -30.0, -BORDILLO_DESNIVEL, -BORDILLO_DESNIVEL + 0.002)
-        x += 2.60
-    sv.caja(xa - 200, xb + 200, (CALZADA_Y[0] + CALZADA_Y[1]) / 2 - 0.06, (CALZADA_Y[0] + CALZADA_Y[1]) / 2 + 0.06,
-            -BORDILLO_DESNIVEL, -BORDILLO_DESNIVEL + 0.002)
-    sv.crear("SENALIZACION_VIAL", M["senal"], col)
-    b = Malla()
-    b.caja(xa, xb, ACERA_Y[0] - 0.15, ACERA_Y[0], -BORDILLO_DESNIVEL - 0.05, 0.0)
-    b.crear("BORDILLO", M["hormigon"], col)
+    # asfalto: calzada frontal, calles de los testeros, anillo, estacionamiento y acceso (un solo contorno)
+    placa_con_huecos("CALZADA_ASFALTO", [calzada_tierra(cord)], 0.10, "XY", z1 - 0.05, M["asfalto"], col)
+    # islas: cordón de hormigón de 0,15 y relleno de grava volcánica 3 cm más abajo
+    islas = islas_tierra()
+    interiores = [contraer(p, 0.15) for p in islas]
+    placa_con_huecos("ISLAS_CORDON", [q for par in zip(islas, interiores) for q in par], 0.25, "XY", -0.125,
+                     M["hormigon"], col)
+    placa_con_huecos("ISLAS_GRAVA", interiores, 0.22, "XY", -0.14, M["grava"], col)
+    senalizacion_tierra(col, M)
     # sin bolardos ni postes de iluminación peatonal: no están en el presupuesto (reunión del 3 de octubre)
-    s = Malla()
-    s.caja(-2000, 2000, -2000, 2000, -0.60, -BORDILLO_DESNIVEL - 0.08)
-    s.crear("SUELO_ALTIPLANO", M["suelo"], col)
+    entorno_aire(C, M)
+    contexto_aeropuerto(C, M)
+    terreno(C, M)
+    paja_brava(C, M, interiores)
 
 
 def arco(cx, cy, r, a0, a1, n=8):
@@ -1851,8 +1955,8 @@ def sin_repetidos(pts, tol=1e-6):
     return out
 
 
-def franja_derecha(pts, ancho):
-    """Polígono de una franja de 'ancho' a la derecha de la polilínea pts (uniones a inglete)."""
+def paralela_derecha(pts, ancho):
+    """Polilínea paralela a pts, a 'ancho' a su derecha (negativo: a la izquierda), con uniones a inglete."""
     pts = sin_repetidos(pts)
     def nor(a, b):
         dx, dy = b[0] - a[0], b[1] - a[1]
@@ -1870,7 +1974,173 @@ def franja_derecha(pts, ancho):
         mx, my = (mx / ml, my / ml) if ml > 1e-9 else n1
         d = ancho / max(mx * n1[0] + my * n1[1], 0.3)
         off.append((p[0] + mx * d, p[1] + my * d))
-    return pts + off[::-1]
+    return off
+
+
+def franja_derecha(pts, ancho):
+    """Polígono de una franja de 'ancho' a la derecha de la polilínea pts (uniones a inglete)."""
+    pts = sin_repetidos(pts)
+    return pts + paralela_derecha(pts, ancho)[::-1]
+
+
+def contraer(pol, d):
+    """Polígono cerrado antihorario contraído d hacia adentro (uniones a inglete)."""
+    pol = sin_repetidos(pol)
+    n = len(pol)
+    out = []
+    for i in range(n):
+        a, p, b = pol[i - 1], pol[i], pol[(i + 1) % n]
+        normales = []
+        for u, v in ((a, p), (p, b)):
+            dx, dy = v[0] - u[0], v[1] - u[1]
+            l = math.hypot(dx, dy)
+            normales.append((-dy / l, dx / l))                       # izquierda = adentro
+        (n1x, n1y), (n2x, n2y) = normales
+        mx, my = n1x + n2x, n1y + n2y
+        ml = math.hypot(mx, my)
+        mx, my = (mx / ml, my / ml) if ml > 1e-9 else (n1x, n1y)
+        k = d / max(mx * n1x + my * n1y, 0.3)
+        out.append((p[0] + mx * k, p[1] + my * k))
+    return out
+
+
+def rect_redondeado(x0, x1, y0, y1, r, n=4):
+    """Rectángulo antihorario con las esquinas redondeadas (radio r)."""
+    r = min(r, (x1 - x0) / 2 - 1e-4, (y1 - y0) / 2 - 1e-4)
+    return sin_repetidos(arco(x1 - r, y0 + r, r, 270, 360, n) + arco(x1 - r, y1 - r, r, 0, 90, n)
+                         + arco(x0 + r, y1 - r, r, 90, 180, n) + arco(x0 + r, y0 + r, r, 180, 270, n))
+
+
+def largo_darsena():
+    """Largo total de una dársena del Lado Tierra: dos rampas a 45° (con sus curvas) y el tramo recto."""
+    f, l, r = DARSENA["fondo"], DARSENA["recto"], DARSENA["r"]
+    return 2 * (f + 2 * r * (math.sqrt(2) - 1)) + l
+
+
+def darsena(x0):
+    """Cordón de una dársena (planta A111) de oeste a este: sube a 45° hasta 2,10 m más adentro, sigue recto y vuelve."""
+    f, l, r = DARSENA["fondo"], DARSENA["recto"], DARSENA["r"]
+    yc, yd = Y_CORDON_TIERRA, Y_CORDON_TIERRA + f
+    dx = f + 2 * r * (math.sqrt(2) - 1)                              # avance de cada rampa con sus dos curvas
+    return (arco(x0, yc + r, r, 270, 315, 4) + arco(x0 + dx, yd - r, r, 135, 90, 4)
+            + arco(x0 + dx + l, yd - r, r, 90, 45, 4) + arco(x0 + 2 * dx + l, yc + r, r, 225, 270, 4))
+
+
+def cordon_tierra():
+    """Cordón del Lado Tierra (A111, capa A-FLOR) de oeste a este: del cordón lateral oeste a la esquina en curva (r
+    4,021 y contracurva de r 1,0), la línea de -8,413 con sus dos dársenas y la esquina este (r 1,0) hasta el cordón
+    lateral este. Empieza y termina en el plano del muro (Y 0,392), donde siguen los tramos de cordon_aire."""
+    xo, xe = X_CORDON_LATERAL
+    yc = Y_CORDON_TIERRA
+    pts = [(xo, Y_MURO_EXT)] + arco(0.45, -1.423, 4.021, 180, 260.7, 10) + arco(-0.57, -6.322, 1.0, 68.3, 0, 6)
+    pts += arco(1.43, yc + 1.0, 1.0, 180, 270, 6)
+    for x0 in DARSENAS_TIERRA:
+        pts += darsena(x0)
+    pts += arco(xe - 1.0, yc + 1.0, 1.0, 270, 360, 6) + [(xe, Y_MURO_EXT)]
+    return sin_repetidos(pts)
+
+
+def calzada_tierra(cord):
+    """Contorno del asfalto del Lado Tierra: sigue el cordón 5 cm por debajo de él, sube por las calles de los testeros
+    hasta la plataforma, rodea el estacionamiento (esquina sureste en curva) y sale hacia Uyuni por el acceso."""
+    xo, xe = X_CORDON_LATERAL
+    w, R = CALLE_ANCHO, R_ESQUINA_ANILLO
+    ys0, ys1 = Y_ANILLO_SUR
+    ya = PLATAFORMA_AIRE["y"][0]
+    borde = paralela_derecha(cord[::-1], 0.05)[::-1]                 # de oeste a este, bajo el cordón
+    pts = [(xo - w, ya), (xo + 0.05, ya)] + borde + [(xe - 0.05, ya), (xe + w, ya)]
+    pts += arco(xe + w - R, ys0 + R, R, 0, -90, 6) + [(X_ACCESO, ys0), (X_ACCESO, ys1)]
+    pts += arco(xo - w - 8.0, ys1 + 8.0, 8.0, 270, 360, 6)
+    return sin_repetidos(pts)
+
+
+def filas_estacionamiento():
+    """Franjas en Y del estacionamiento, de norte a sur: las cuatro filas de puestos, el divisor y la franja sur."""
+    E = ESTACIONAMIENTO
+    pl, pa = E["puesto"][1], E["pasillo"]
+    y = Y_CALZADA_TIERRA - CANTERO["ancho"]
+    f1 = (y - pl, y)
+    y -= pl + pa
+    f2 = (y - pl, y)
+    y -= pl
+    div = (y - E["divisor"], y)
+    y -= E["divisor"]
+    f3 = (y - pl, y)
+    y -= pl + pa
+    f4 = (y - pl, y)
+    y -= pl
+    return [f1, f2, f3, f4], div, (y - E["borde_sur"], y)
+
+
+def islas_tierra():
+    """Contornos antihorarios de las islas: el cantero partido por los dos pasos peatonales, la isla central del
+    estacionamiento (divisor de las filas 2 y 3 con sus cabeceras, en H) y la franja sur."""
+    xo, xe = X_CORDON_LATERAL
+    yc, c = Y_CALZADA_TIERRA, CANTERO
+    cortes = [xo]
+    for xc in c["cruces"]:
+        cortes += [xc - c["cruce_ancho"] / 2, xc + c["cruce_ancho"] / 2]
+    cortes.append(xe)
+    islas = [rect_redondeado(a, b, yc - c["ancho"], yc, 1.5) for a, b in zip(cortes[::2], cortes[1::2])]
+    (_, f2, f3, _), dv, sur = filas_estacionamiento()
+    x0, x1 = ESTACIONAMIENTO["x"]
+    fi = ESTACIONAMIENTO["isla_fin"]
+    islas.append([(x0 - fi, f3[0]), (x0, f3[0]), (x0, dv[0]), (x1, dv[0]), (x1, f3[0]), (x1 + fi, f3[0]),
+                  (x1 + fi, f2[1]), (x1, f2[1]), (x1, dv[1]), (x0, dv[1]), (x0, f2[1]), (x0 - fi, f2[1])])
+    islas.append(rect_redondeado(xo, xe, sur[0], sur[1], 1.0))
+    return islas
+
+
+def senalizacion_tierra(col, M):
+    """Pintura vial del Lado Tierra: línea de carril discontinua y bocas de las dársenas en la calzada frontal, pasos
+    peatonales (cebra) frente a las ME-2, puestos del estacionamiento, ejes amarillos del anillo y del acceso (doble
+    sentido) y bordes blancos del acceso."""
+    sv, sa = Malla(), Malla()
+    z1 = -BORDILLO_DESNIVEL
+    def pinta(m, x0, x1, y0, y1):
+        m.caja(x0, x1, y0, y1, z1, z1 + 0.002)
+    xo, xe = X_CORDON_LATERAL
+    w = CALLE_ANCHO
+    ys0, ys1 = Y_ANILLO_SUR
+    ya = PLATAFORMA_AIRE["y"][0]
+    cruces = CANTERO["cruces"]
+    ym = (Y_CORDON_TIERRA + Y_CALZADA_TIERRA) / 2
+    x = 3.0
+    while x < xe - 3.0:                                             # carril: trazos de 3 m cada 8 m
+        if all(abs(x + 1.5 - c) > 4.0 for c in cruces):
+            pinta(sv, x, x + 3.0, ym - 0.06, ym + 0.06)
+        x += 8.0
+    for x0 in DARSENAS_TIERRA:                                      # boca de cada dársena: trazos de 1 m cada 2 m
+        x = x0 + 0.5
+        while x + 1.0 < x0 + largo_darsena() - 0.5:
+            pinta(sv, x, x + 1.0, Y_CORDON_TIERRA - 0.12, Y_CORDON_TIERRA - 0.02)
+            x += 2.0
+    for c in cruces:                                                # cebras: franjas de 0,50 cada 1,00 m
+        y = Y_CALZADA_TIERRA + 0.4
+        while y + 0.5 <= Y_CORDON_TIERRA - 0.3:
+            pinta(sv, c - CANTERO["cruce_ancho"] / 2, c + CANTERO["cruce_ancho"] / 2, y, y + 0.5)
+            y += 1.0
+    filas, _, _ = filas_estacionamiento()
+    (x0, x1), ap = ESTACIONAMIENTO["x"], ESTACIONAMIENTO["puesto"][0]
+    for f0, f1 in filas:                                            # puestos de 2,50 x 5,00
+        for k in range(round((x1 - x0) / ap) + 1):
+            pinta(sv, x0 + k * ap - 0.05, x0 + k * ap + 0.05, f0 + 0.10, f1 - 0.10)
+    for xc in (xo - w / 2, xe + w / 2):                            # calles de los testeros: eje amarillo
+        y = ys1 + 4.0
+        while y + 3.0 < ya - 2.0:
+            if y + 3.0 < Y_CALZADA_TIERRA - 1.0 or y > Y_CORDON_TIERRA + 1.0:
+                pinta(sa, xc - 0.06, xc + 0.06, y, y + 3.0)
+            y += 6.0
+    yc = (ys0 + ys1) / 2
+    x = X_ACCESO + 5.0
+    while x + 3.0 < xe + w - R_ESQUINA_ANILLO:                     # tramo sur del anillo y acceso: eje amarillo
+        if not (xo - w - 2.0 < x + 3.0 and x < xo + 2.0):
+            pinta(sa, x, x + 3.0, yc - 0.06, yc + 0.06)
+        x += 6.0
+    for yb in (ys0 + 0.25, ys1 - 0.37):                            # bordes blancos del acceso
+        pinta(sv, X_ACCESO, xo - w - 8.0, yb, yb + 0.12)
+    sv.crear("SENALIZACION_VIAL", M["senal"], col)
+    sa.crear("SENALIZACION_VIAL_AMARILLA", M["senal_amarilla"], col)
 
 
 def cordon_aire():
@@ -1888,16 +2158,19 @@ def cordon_aire():
 def entorno_aire(C, M):
     """Lado Aire: veredas y cordón según la planta baja A111 (laterales, frente del bloque, bajo la marquesina y a lo
     largo de la fachada), plataforma de hormigón, camino de servicio de asfalto (la banda azul de la vista aérea del
-    cliente) y marcas: bordes y eje del camino en blanco, calle de rodaje, guías y barras de parada en amarillo."""
+    cliente) y marcas: bordes y eje del camino en blanco, calle de rodaje, guías y barras de parada en amarillo. Las
+    calles de los testeros (entorno) llegan al borde de la plataforma."""
     col = C["06_ENTORNO_SITE"]
     ta, tb = cordon_aire()
     yI, yR = Y_FACHADA_AIRE["principal_der"], Y_FACHADA_AIRE["principal_izq"]
     ax1, ay1 = ANEXO["x"][1], ANEXO["y"][1]
     vs, ni = VESTIBULO_AIRE, NICHO_AIRE
-    oeste = ta + [(X_ALERO[0], yR), (X_ALERO[0], Y_MURO_EXT)]
-    este = tb + [(ax1, Y_MURO_EXT), (ax1, ay1), (X_ALERO[1], ay1), (X_ALERO[1], yI), (vs["x"][1], yI),
-                 (vs["x"][1], vs["y"][1]), (vs["x"][0], vs["y"][1]), (vs["x"][0], yI), (ni["x"][1], yI),
-                 (ni["x"][1], ni["y"][0]), (ni["x"][0], ni["y"][0]), (ni["x"][0], yI), (X_CAMBIO_AIRE, yI)]
+    # el borde de cada vereda va 1 cm dentro del cordón, para que sus caras no coincidan con las del cordón
+    oeste = paralela_derecha(ta, 0.01) + [(X_ALERO[0], yR), (X_ALERO[0], Y_MURO_EXT)]
+    este = paralela_derecha(tb, 0.01) + [(ax1, Y_MURO_EXT), (ax1, ay1), (X_ALERO[1], ay1), (X_ALERO[1], yI),
+                                         (vs["x"][1], yI), (vs["x"][1], vs["y"][1]), (vs["x"][0], vs["y"][1]),
+                                         (vs["x"][0], yI), (ni["x"][1], yI), (ni["x"][1], ni["y"][0]),
+                                         (ni["x"][0], ni["y"][0]), (ni["x"][0], yI), (X_CAMBIO_AIRE, yI)]
     for nombre, pol in (("VEREDA_AIRE_OESTE", oeste), ("VEREDA_AIRE_ESTE", este)):   # 2 mm bajo el cordón
         placa_con_huecos(nombre, [pol], 0.198, "XY", -0.101, M["acera"], col)
     for i, tramo in enumerate((ta, tb)):
@@ -1921,14 +2194,283 @@ def entorno_aire(C, M):
         bl.caja(x, x + 3.0, (cy0 + cy1) / 2 - 0.06, (cy0 + cy1) / 2 + 0.06, zs0, zs1)
         x += 6.0
     bl.crear("CAMINO_SERVICIO_AIRE_MARCAS", M["senal"], col)
-    am = Malla()                                                     # calle de rodaje y puestos de estacionamiento
-    am.caja(px0, px1, CALLE_RODAJE_Y - 0.075, CALLE_RODAJE_Y + 0.075, zs0, zs1)
+    am = Malla()                         # calle de rodaje de la plataforma (sigue a la pista en contexto_aeropuerto)
+    am.caja(px0 + 15.0, RODAJE["x"] - RODAJE["r_plataforma"], CALLE_RODAJE_Y - 0.075, CALLE_RODAJE_Y + 0.075, zs0, zs1)
     for nx, ny, ang in puestos_aviones():
         h = (math.cos(ang), math.sin(ang))
         sx, sy = nx - 4.8 * h[0], ny - 4.8 * h[1]                   # parada de la rueda de nariz
         am.caja_rotada(sx - 17.5 * h[0], sy - 17.5 * h[1], 35.0, 0.15, zs0, zs1, ang)
         am.caja_rotada(sx, sy, 0.30, 4.0, zs0, zs1, ang)
     am.crear("PLATAFORMA_MARCAS_AMARILLAS", M["senal_amarilla"], col)
+
+
+def suave(a, b, x):
+    """Escalón suave (smoothstep) de 0 en a a 1 en b."""
+    t = min(max((x - a) / (b - a), 0.0), 1.0)
+    return t * t * (3 - 2 * t)
+
+
+def linea(m, pts, ancho, z=-BORDILLO_DESNIVEL):
+    """Pintura de 'ancho' a lo largo de la polilínea pts (tramos rectos de 2 mm de espesor sobre la cota z)."""
+    for a, b in zip(pts, pts[1:]):
+        m.caja_eje((a[0], a[1], z), (b[0], b[1], z), ancho, 0.002)
+
+
+# trazos de las cifras de designación de pista (u, v) en una caja de 3 x 9 m con trazo de 0,9 m (OACI, simplificadas)
+DIGITOS = {"1": [(1.05, 1.95, 0.0, 9.0)],
+           "3": [(0.0, 3.0, 8.1, 9.0), (0.6, 3.0, 4.05, 4.95), (0.0, 3.0, 0.0, 0.9), (2.1, 3.0, 0.0, 9.0)]}
+
+
+def designacion(m, texto, xd, yc, s, z):
+    """Cifras de 9 m sobre la pista, legibles desde la aproximación (el avión avanza hacia s·X): u crece a la derecha del
+    piloto (-s·Y) y v hacia adelante, desde xd."""
+    ancho = 3.0 * len(texto) + 1.5 * (len(texto) - 1)
+    for i, ch in enumerate(texto):
+        u0 = -ancho / 2 + 4.5 * i
+        for ua, ub, va, vb in DIGITOS[ch]:
+            m.caja(xd + s * va, xd + s * vb, yc - s * (u0 + ua), yc - s * (u0 + ub), z, z + 0.002)
+
+
+def contexto_aeropuerto(C, M):
+    """Pista 13/31 con marcas OACI (umbral, designación, eje, punto de visada, zona de toma de contacto y bordes) y
+    zonas de parada con chevrones; calle de rodaje de la plataforma a la pista con su eje, punto de espera y curvas de
+    entrada; manga de viento. La Y de la pista es supuesta (ver PISTA)."""
+    col = C["11_CONTEXTO_AEROPUERTO"]
+    P, Rd = PISTA, RODAJE
+    yc, sa = P["y"], P["ancho"] / 2
+    x31, x13 = P["x"]
+    z1 = -BORDILLO_DESNIVEL
+    pv = Malla()
+    pv.caja(x31 - P["sobrepaso"], x13 + P["sobrepaso"], yc - sa, yc + sa, z1 - 0.10, z1)
+    pv.crear("PISTA_13_31_ASFALTO", M["asfalto"], col)
+    xr, ar, rf = Rd["x"], Rd["ancho"] / 2, 20.0
+    py1 = PLATAFORMA_AIRE["y"][1]
+    rodaje = (arco(xr - ar - rf, py1 + rf, rf, 270, 360, 6) + arco(xr - ar - rf, yc - sa - rf, rf, 0, 90, 6)
+              + arco(xr + ar + rf, yc - sa - rf, rf, 90, 180, 6) + arco(xr + ar + rf, py1 + rf, rf, 180, 270, 6))
+    placa_con_huecos("CALLE_RODAJE_ASFALTO", [sin_repetidos(rodaje)], 0.10, "XY", z1 - 0.05, M["asfalto"], col)
+    mb, ma = Malla(), Malla()                                        # pintura blanca (pista) y amarilla
+    def pinta(m, x0, x1, y0, y1):
+        m.caja(x0, x1, y0, y1, z1, z1 + 0.002)
+    for xt, s, nombre in ((x31, 1, P["nombres"][0]), (x13, -1, P["nombres"][1])):
+        for k in range(6):                                           # umbral: 12 franjas de 30 x 1,6 m
+            for lado in (1, -1):
+                yy = yc + lado * (2.4 + 3.2 * k)
+                pinta(mb, xt + s * 6, xt + s * 36, yy - 0.8, yy + 0.8)
+        designacion(mb, nombre, xt + s * 48, yc, s, z1)              # a 12 m de las franjas
+        for lado in (1, -1):
+            pinta(mb, xt + s * 400, xt + s * 445, yc + lado * 9, yc + lado * 15)      # punto de visada
+            for dist, n in ((150, 3), (300, 3), (600, 2), (750, 2), (900, 1), (1050, 1)):   # toma de contacto
+                for j in range(n):
+                    a = 9 + 4.5 * j
+                    pinta(mb, xt + s * dist, xt + s * (dist + 22.5), yc + lado * a, yc + lado * (a + 3))
+        for k in range(2):                                           # zona de parada: chevrones hacia el umbral
+            xa = xt - s * (15 + 30 * k)
+            for lado in (1, -1):
+                linea(ma, [(xa, yc), (xa - s * (sa - 1.5), yc + lado * (sa - 1.5))], 0.9)
+    x = x31 + 69
+    while x + 30 < x13 - 69:                                         # eje: trazos de 30 m cada 50 m
+        pinta(mb, x, x + 30, yc - 0.225, yc + 0.225)
+        x += 50
+    for lado in (1, -1):                                             # bordes de 0,90, cortados en la calle de rodaje
+        yb = yc + lado * (sa - 0.45)
+        tramos = [(x31, x13)] if lado == 1 else [(x31, xr - ar - rf), (xr + ar + rf, x13)]
+        for a, b in tramos:
+            pinta(mb, a, b, yb - 0.45, yb + 0.45)
+    rp, rpi = Rd["r_plataforma"], Rd["r_pista"]
+    linea(ma, arco(xr - rp, CALLE_RODAJE_Y + rp, rp, 270, 360, 8) + [(xr, yc - rpi)], 0.15)   # eje del rodaje
+    for sgn in (1, -1):                                              # curvas de entrada al eje de la pista
+        linea(ma, arco(xr - sgn * rpi, yc - rpi, rpi, 0 if sgn == 1 else 180, 90, 10), 0.15)
+    yh = yc - Rd["espera"]                                           # punto de espera (patrón A)
+    for y0, continua in ((yh - 0.90, True), (yh - 0.60, True), (yh - 0.15, False), (yh + 0.15, False)):
+        x = xr - ar
+        while x < xr + ar:
+            pinta(ma, x, xr + ar if continua else min(x + 0.9, xr + ar), y0, y0 + 0.15)
+            x = xr + ar if continua else x + 1.8
+    mb.crear("PISTA_MARCAS_BLANCAS", M["senal"], col)
+    ma.crear("PISTA_Y_RODAJE_MARCAS_AMARILLAS", M["senal_amarilla"], col)
+    manga_viento(col, M)
+
+
+def manga_viento(col, M):
+    """Manga de viento entre la plataforma y la pista: mástil de 6 m y cono de 3,6 m en cinco franjas naranja y blancas,
+    inflado por un viento suave del noreste (apunta al azimut 240°) y algo caído."""
+    xm, ym = MANGA_VIENTO
+    z0 = -BORDILLO_DESNIVEL - 0.08
+    ms, mn, mbl = Malla(), Malla(), Malla()
+    ms.caja(xm - 0.4, xm + 0.4, ym - 0.4, ym + 0.4, z0 - 0.1, z0 + 0.15)
+    ms.cilindro_z(xm, ym, z0 + 0.15, 6.25, 0.055, seg=12)
+    phi = math.radians(NORTE_LOCAL_DEG - 240.0)
+    d = Vector((math.cos(phi), math.sin(phi), -math.tan(math.radians(12.0)))).normalized()
+    p = d.orthogonal().normalized()
+    q = d.cross(p)
+    o = Vector((xm, ym, 6.0)) + d * 0.08
+    ms.loft([[tuple(o + d * s_ + 0.465 * (math.cos(2 * math.pi * j / 16) * p + math.sin(2 * math.pi * j / 16) * q))
+              for j in range(16)] for s_ in (-0.03, 0.03)], tapas=(False, False))   # aro de la boca
+    for k in range(5):
+        anillos = [[tuple(o + d * s_ + r * (math.cos(2 * math.pi * j / 16) * p + math.sin(2 * math.pi * j / 16) * q))
+                    for j in range(16)] for s_, r in ((3.6 * k / 5, 0.45 - 0.22 * k / 5), (3.6 * (k + 1) / 5, 0.45 - 0.22 * (k + 1) / 5))]
+        (mn if k % 2 == 0 else mbl).loft(anillos, tapas=(False, False))
+    ms.crear("MANGA_VIENTO_MASTIL", M["galvanizado"], col)
+    mn.crear("MANGA_VIENTO_FRANJAS_NARANJA", M["manga_viento"], col, suave=True)
+    mbl.crear("MANGA_VIENTO_FRANJAS_BLANCAS", M["senal"], col, suave=True)
+
+
+def altura_terreno(r, phi):
+    """(z, salar) del terreno a r metros del centro de TERRENO, en el ángulo local phi (rad): plano del aeropuerto,
+    curvatura de la Tierra desde r_plano, cordones de CERROS y lomas bajas desde 5 km; plano en el Salar."""
+    T = TERRENO
+    az = (NORTE_LOCAL_DEG - math.degrees(phi)) % 360
+    a = math.radians(az)
+    s0, s1 = SALAR["azimut"]
+    hacia_salar = min(suave(s0 - 6.0, s0 + 2.0, az), 1.0 - suave(s1 - 2.0, s1 + 6.0, az))
+    salar = suave(SALAR["desde"] - 1500.0, SALAR["desde"] + 500.0, r) * hacia_salar
+    h = 0.0
+    for azc, semi, dk, hm in CERROS:
+        da = (az - azc + 180.0) % 360.0 - 180.0
+        fa = math.exp(-(da / semi) ** 2)
+        if fa < 1e-3:
+            continue
+        d = dk * 1000.0
+        rug = (1.0 + 0.32 * math.sin(5 * a + r / 2300.0) + 0.20 * math.sin(13 * a - r / 1300.0 + 1.7)
+               + 0.10 * math.sin(31 * a + r / 700.0))
+        h += hm * fa * math.exp(-((r - d) / (0.3 * d)) ** 2) * rug
+    lomas = 30.0 * (0.5 + 0.5 * math.sin(7 * a + r / 1700.0)) * (0.5 + 0.5 * math.sin(11 * a - r / 900.0 + 1.1))
+    h = h * suave(4000.0, 7000.0, r) * (1.0 - salar) + lomas * suave(5000.0, 9000.0, r) * (1.0 - hacia_salar)
+    caida = max(r - T["r_plano"], 0.0) ** 2 / (2 * T["r_tierra"])
+    return -BORDILLO_DESNIVEL - 0.08 - caida + h, salar
+
+
+def terreno(C, M):
+    """Suelo del altiplano: malla polar de 45 km de radio centrada en el edificio, con el atributo "salar" que lee el
+    material (reemplaza al plano de 4 x 4 km). Plana hasta 3,5 km, donde están el edificio, las calles y la pista."""
+    T = TERRENO
+    cx, cy = T["centro"]
+    radios = [150.0, 300.0, 500.0, 800.0, 1200.0, 1700.0, 2300.0, 3000.0, 3500.0, 4200.0, 5000.0, 6000.0]
+    radios += [float(r) for r in range(7000, int(T["radio"]) + 1, 1000)]
+    n = T["azimutes"]
+    m = Malla()
+    m.v.append((cx, cy, -BORDILLO_DESNIVEL - 0.08))
+    sal = [0.0]
+    for r in radios:
+        for k in range(n):
+            phi = 2 * math.pi * k / n
+            z, s = altura_terreno(r, phi)
+            m.v.append((cx + r * math.cos(phi), cy + r * math.sin(phi), z))
+            sal.append(s)
+    m.f += [(0, 1 + k, 1 + (k + 1) % n) for k in range(n)]
+    for i in range(len(radios) - 1):
+        a0, b0 = 1 + i * n, 1 + (i + 1) * n
+        m.f += [(a0 + k, b0 + k, b0 + (k + 1) % n, a0 + (k + 1) % n) for k in range(n)]
+    ob = m.crear("SUELO_ALTIPLANO", M["suelo"], C["06_ENTORNO_SITE"])
+    if ob.data.polygons[0].normal.z < 0:
+        ob.data.flip_normals()
+    ob.data.attributes.new("salar", "FLOAT", "POINT").data.foreach_set("value", sal)
+    return ob
+
+
+def suelo_libre(x, y, m):
+    """True si (x, y) es suelo natural: fuera del edificio, veredas, calles, estacionamiento, plataforma, rodaje y de la
+    franja nivelada de la pista, con un margen m."""
+    xo, xe = X_CORDON_LATERAL
+    w = CALLE_ANCHO
+    ys0, ys1 = Y_ANILLO_SUR
+    (px0, px1), (py0, py1) = PLATAFORMA_AIRE["x"], PLATAFORMA_AIRE["y"]
+    return not ((xo - w - m < x < xe + w + m and ys0 - m < y < 51.0 + m)
+                or (x < xo - w + m and ys0 - m < y < ys1 + m)
+                or (px0 - m < x < px1 + m and py0 - m < y < py1 + m)
+                or (abs(x - RODAJE["x"]) < RODAJE["ancho"] / 2 + 20.0 + m and py1 - m < y < PISTA["y"])
+                or abs(y - PISTA["y"]) < 75.0
+                or math.hypot(x - MANGA_VIENTO[0], y - MANGA_VIENTO[1]) < 4.0)
+
+
+def mata_paja_brava():
+    """Malla de una mata de paja brava de unos 0,55 m: 90 hojas finas que nacen del centro y se abren y caen."""
+    rnd = random.Random(PAJA_BRAVA["semilla"])
+    m = Malla()
+    for _ in range(90):
+        th = rnd.uniform(0.0, 2 * math.pi)
+        inc = math.radians(rnd.uniform(6.0, 58.0))
+        largo = rnd.uniform(0.32, 0.68)
+        r0 = rnd.uniform(0.0, 0.07)
+        ux, uy = math.cos(th), math.sin(th)
+        px, py = -uy, ux
+        i0 = len(m.v)
+        ts = (0.0, 0.3, 0.6, 0.85, 1.0)
+        for t in ts:
+            h = largo * t
+            rad = r0 + h * math.sin(inc) + 0.12 * largo * t * t
+            z = h * math.cos(inc) - 0.20 * largo * t * t * math.sin(inc)
+            w = 0.007 * (1.0 - t) + 0.0008
+            cxp, cyp = rad * ux, rad * uy
+            m.v += [(cxp - px * w, cyp - py * w, z), (cxp + px * w, cyp + py * w, z)]
+        for j in range(len(ts) - 1):
+            a = i0 + 2 * j
+            m.f.append((a, a + 1, a + 3, a + 2))
+    return m
+
+
+def gn_dispersion(nombre, proto, escala=(0.6, 1.4)):
+    """Geometry Nodes: una instancia de proto en cada vértice, con giro y escala al azar (sin realizar: memoria baja)."""
+    ng = bpy.data.node_groups.new(PREFIJO + nombre, "GeometryNodeTree")
+    ng.interface.new_socket(name="Geometry", in_out="INPUT", socket_type="NodeSocketGeometry")
+    ng.interface.new_socket(name="Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry")
+    N, L = ng.nodes, ng.links
+    gi, go = N.new("NodeGroupInput"), N.new("NodeGroupOutput")
+    oi = N.new("GeometryNodeObjectInfo")
+    oi.inputs["Object"].default_value = proto
+    io = N.new("GeometryNodeInstanceOnPoints")
+    giro = N.new("FunctionNodeRandomValue")
+    giro.data_type = "FLOAT_VECTOR"
+    giro.inputs["Min"].default_value = (-0.10, -0.10, 0.0)
+    giro.inputs["Max"].default_value = (0.10, 0.10, 2 * math.pi)
+    esc = N.new("FunctionNodeRandomValue")
+    esc.data_type = "FLOAT"
+    esc.inputs["Min"].default_value, esc.inputs["Max"].default_value = escala
+    esc.inputs["Seed"].default_value = 3
+    L.new(gi.outputs[0], io.inputs["Points"])
+    L.new(oi.outputs["Geometry"], io.inputs["Instance"])
+    L.new(giro.outputs["Value"], io.inputs["Rotation"])
+    L.new(esc.outputs["Value"], io.inputs["Scale"])
+    L.new(io.outputs["Instances"], go.inputs[0])
+    return ng
+
+
+def paja_brava(C, M, islas):
+    """Matas de paja brava: dispersas en manchas en el suelo libre hasta 650 m del edificio (suelo_libre) y más densas
+    en las islas de grava del Lado Tierra. Un objeto de puntos con Geometry Nodes instancia la mata (oculta en el
+    render, bajo el suelo); los puntos quedan en el objeto PAJA_BRAVA_DISPERSION."""
+    col = C["11_CONTEXTO_AEROPUERTO"]
+    P = PAJA_BRAVA
+    proto = mata_paja_brava().crear("PAJA_BRAVA_MATA", M["paja"], col)
+    proto.location = (0.0, 0.0, -5.0)
+    proto.hide_render = True
+    rnd = random.Random(P["semilla"] + 1)
+    cx, cy = TERRENO["centro"]
+    R, zs = P["radio"], -BORDILLO_DESNIVEL - 0.08
+    pts = []
+    for _ in range(int(math.pi * R * R * P["densidad"])):
+        r, a = R * math.sqrt(rnd.random()), rnd.uniform(0.0, 2 * math.pi)
+        x, y = cx + r * math.cos(a), cy + r * math.sin(a)
+        mancha = ((0.5 + 0.5 * math.sin(x / 23.0 + 1.3 * math.sin(y / 31.0)))
+                  * (0.5 + 0.5 * math.sin(y / 17.0 - 0.7 * math.sin(x / 29.0))))
+        if rnd.random() < 0.25 + 0.75 * mancha and suelo_libre(x, y, P["margen"]):
+            pts.append((x, y, zs))
+    pie_camaras = [(50.5, -36.0)]                                    # CAM_03, a la altura del ojo sobre la isla central
+    for pol in islas:
+        adentro = contraer(pol, 0.35)
+        xs, ys = [p[0] for p in pol], [p[1] for p in pol]
+        area = 0.5 * abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pol, pol[1:] + pol[:1])))
+        for _ in range(int(area * 0.35)):
+            x, y = rnd.uniform(min(xs), max(xs)), rnd.uniform(min(ys), max(ys))
+            if dentro_poligono(x, y, adentro) and all(math.hypot(x - u, y - v) > 3.0 for u, v in pie_camaras):
+                pts.append((x, y, -0.03))
+    me = bpy.data.meshes.new(PREFIJO + "PAJA_BRAVA_DISPERSION")
+    me.from_pydata(pts, [], [])
+    ob = bpy.data.objects.new(PREFIJO + "PAJA_BRAVA_DISPERSION", me)
+    ob["puntos_dispersion"] = 1                                      # exportar_geometria.py guarda sus puntos
+    col.objects.link(ob)
+    ob.modifiers.new("DISPERSION_PAJA_BRAVA", "NODES").node_group = gn_dispersion("GN_PAJA_BRAVA", proto)
+    return ob
 
 
 def puestos_aviones():
@@ -1946,7 +2488,8 @@ def puestos_aviones():
 
 # --- Boeing 737-800 genérico (medidas reales: 39,5 m de largo, 35,8 m de envergadura con winglets, 12,5 m de alto).
 # Ejes locales: x hacia adelante (nariz en x = 0), y hacia la izquierda, z hacia arriba desde el piso.
-AV = dict(r=1.88, b=2.005, zc=3.155, nariz=6.5, cono=(28.0, 38.0))
+AV = dict(r=1.88, b=2.005, zc=3.155, nariz=6.5, cono=(28.0, 38.0),
+          deriva=((4.4, -29.6, 8.2, 0.11), (5.3, -30.9, 7.0, 0.11), (12.55, -36.75, 2.7, 0.09)))   # (z, x b. ataque, cuerda, t)
 
 
 def semiancho_fuselaje(x):
@@ -1971,13 +2514,115 @@ def seccion_fuselaje(t):
     return AV["r"], AV["b"], AV["zc"]
 
 
+def naca_yt(x, t):
+    """Semiespesor del perfil NACA simétrico de espesor relativo t en la fracción de cuerda x."""
+    return 5 * t * (0.2969 * math.sqrt(x) - 0.1260 * x - 0.3516 * x ** 2 + 0.2843 * x ** 3 - 0.1036 * x ** 4)
+
+
+def fracciones_perfil(n=10):
+    return [0.5 * (1 - math.cos(math.pi * k / (n - 1))) for k in range(n)]
+
+
 def perfil_ala(c, t, n=10):
     """Perfil NACA simétrico de espesor relativo t y cuerda c: [(distancia al borde de ataque, espesor), ...] del
     borde de fuga al de ataque por arriba y de vuelta por abajo (anillo cerrado)."""
-    xs = [0.5 * (1 - math.cos(math.pi * k / (n - 1))) for k in range(n)]
-    def yt(x):
-        return 5 * t * (0.2969 * math.sqrt(x) - 0.1260 * x - 0.3516 * x ** 2 + 0.2843 * x ** 3 - 0.1036 * x ** 4)
-    return [(x * c, yt(x) * c) for x in reversed(xs)] + [(x * c, -yt(x) * c) for x in xs[1:-1]]
+    xs = fracciones_perfil(n)
+    return [(x * c, naca_yt(x, t) * c) for x in reversed(xs)] + [(x * c, -naca_yt(x, t) * c) for x in xs[1:-1]]
+
+
+def estaciones_deriva(paso=0.6):
+    """Estaciones de AV["deriva"] con intermedias cada ~0,6 m de altura (interpoladas linealmente): las caras del loft
+    quedan chicas y casi planas, así la librea pegada a 6 mm queda siempre por fuera de la piel."""
+    est = AV["deriva"]
+    out = []
+    for a, b in zip(est, est[1:]):
+        n = max(2, round((b[0] - a[0]) / paso))
+        out += [tuple(a[i] + (b[i] - a[i]) * k / n for i in range(4)) for k in range(n)]
+    return out + [est[-1]]
+
+
+def piel_deriva(u, z, lado, sep=0.006):
+    """Punto (x, y, z) sobre la deriva a la fracción de cuerda u y la altura z, en la cara izquierda (lado 1) o derecha
+    (-1) y 'sep' por fuera de ella. Interpola como el loft de la deriva (mismas estaciones y fracciones de perfil_ala)."""
+    est = estaciones_deriva()
+    i = max([k for k in range(len(est) - 1) if est[k][0] <= z] or [0])
+    (z0, xl0, c0, t0), (z1, xl1, c1, t1) = est[i], est[i + 1]
+    w = (z - z0) / (z1 - z0)
+    xs = fracciones_perfil()
+    j = max(k for k in range(len(xs) - 1) if xs[k] <= u)
+    q = (u - xs[j]) / (xs[j + 1] - xs[j])
+    d0, d1 = (c * (naca_yt(xs[j], t) * (1 - q) + naca_yt(xs[j + 1], t) * q) for c, t in ((c0, t0), (c1, t1)))
+    return ((xl0 - u * c0) * (1 - w) + (xl1 - u * c1) * w, lado * (d0 * (1 - w) + d1 * w + sep), z)
+
+
+def franjas_deriva():
+    """Librea BoA: tres franjas de 0,40 m de alto (rojo, amarillo y verde, de arriba abajo, como la bandera) que cruzan
+    las dos caras de la deriva en diagonal, desde abajo y adelante hacia arriba y atrás, curvándose como una cola de
+    ave en vuelo. [(clave del material, Malla)]."""
+    est = estaciones_deriva()
+    def borde(z):                                                    # (x del borde de ataque, cuerda) a la altura z
+        i = max([k for k in range(len(est) - 1) if est[k][0] <= z] or [0])
+        (z0, xl0, c0, _), (z1, xl1, c1, _) = est[i], est[i + 1]
+        w = (z - z0) / (z1 - z0)
+        return xl0 + (xl1 - xl0) * w, c0 + (c1 - c0) * w
+    out = []
+    for k, clave in enumerate(("boa_rojo", "boa_amarillo", "boa_verde")):
+        m = Malla()
+        dz = 0.50 * (1 - k)
+        for lado in (1, -1):
+            i0, ns = len(m.v), 30
+            for i in range(ns + 1):
+                s = i / ns
+                x, zc = -32.5 - 6.1 * s, 5.7 + 6.1 * s ** 1.25 + dz
+                for zz in (zc - 0.20, zc + 0.20):
+                    zz = min(max(zz, 4.75), 12.45)
+                    xle, c = borde(zz)
+                    m.v.append(piel_deriva(min(max((xle - x) / c, 0.02), 0.98), zz, lado))
+            m.f += [(i0 + 2 * i, i0 + 2 * i + 2, i0 + 2 * i + 3, i0 + 2 * i + 1) for i in range(ns)]
+        out.append((clave, m))
+    return out
+
+
+def texto_fuselaje(texto, x_ini, z_base, alto, sep=0.006):
+    """Texto de la librea (fuente de Blender engrosada) proyectado sobre las dos caras del fuselaje, legible desde cada
+    lado: empieza en x_ini hacia la cola, con la base en z_base y 'alto' de alto. Se corta en franjas de 6 cm para que
+    siga la curvatura de la sección."""
+    cu = bpy.data.curves.new(PREFIJO + "TEXTO_TMP", "FONT")
+    cu.body, cu.size, cu.offset = texto, 1.0, 0.012
+    ob = bpy.data.objects.new(PREFIJO + "TEXTO_TMP", cu)
+    bpy.context.scene.collection.objects.link(ob)
+    dg = bpy.context.evaluated_depsgraph_get()
+    dg.update()
+    me = bpy.data.meshes.new_from_object(ob.evaluated_get(dg))
+    bpy.data.objects.remove(ob, do_unlink=True)
+    bpy.data.curves.remove(cu)
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    bpy.data.meshes.remove(me)
+    xs, ys = [v.co.x for v in bm.verts], [v.co.y for v in bm.verts]
+    k = alto / (max(ys) - min(ys))
+    for v in bm.verts:
+        v.co = ((v.co.x - min(xs)) * k, (v.co.y - min(ys)) * k, 0.0)
+    largo = (max(xs) - min(xs)) * k
+    w = 0.06
+    while w < alto:
+        bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], plane_co=(0.0, w, 0.0),
+                               plane_no=(0.0, 1.0, 0.0))
+        w += 0.06
+    bmesh.ops.triangulate(bm, faces=bm.faces[:])
+    bm.verts.index_update()
+    planos = [(v.co.x, v.co.y) for v in bm.verts]
+    caras = [tuple(v.index for v in f.verts) for f in bm.faces]
+    bm.free()
+    m = Malla()
+    for lado in (1, -1):
+        i0 = len(m.v)
+        for u, w in planos:
+            x, z = (x_ini - u if lado == 1 else x_ini - largo + u), z_base + w
+            a, b, zc = seccion_fuselaje(-x)
+            m.v.append((x, lado * (a * math.sqrt(max(0.0, 1 - ((z - zc) / b) ** 2)) + sep), z))
+        m.f += [tuple(i0 + i for i in c) for c in caras]
+    return m
 
 
 def avion_737_partes():
@@ -2008,7 +2653,7 @@ def avion_737_partes():
         wl.loft([[(xle - s, lado * (yy + d), z) for s, d in perfil_ala(c, 0.09)]
                  for yy, xle, c, z in ((yt_ - 0.25, xt_ - 0.05, 1.20, zt_), (yt_ + 0.15, xt_ - 0.45, 1.05, zt_ + 0.45),
                                        (yt_ + 0.65, xt_ - 1.55, 0.55, zt_ + 2.45))])
-    partes.append(("WINGLETS", wl, "avion", True))
+    partes.append(("WINGLETS", wl, "boa_azul", True))                 # librea BoA: winglets y deriva en azul
     # estabilizador horizontal (diedro 7°) y deriva
     eh = Malla()
     for lado in (1, -1):
@@ -2016,9 +2661,13 @@ def avion_737_partes():
                  for y, xle, c, z, t in ((0.3, -32.4, 4.2, 4.25, 0.10), (7.17, -36.8, 1.3, 5.07, 0.08))])
     partes.append(("ESTABILIZADOR", eh, "avion_ala", True))
     de = Malla()
-    de.loft([[(xle - s, d, z) for s, d in perfil_ala(c, t)]
-             for z, xle, c, t in ((4.4, -29.6, 8.2, 0.11), (5.3, -30.9, 7.0, 0.11), (12.55, -36.75, 2.7, 0.09))])
-    partes.append(("DERIVA", de, "avion", True))
+    de.loft([[(xle - s, d, z) for s, d in perfil_ala(c, t)] for z, xle, c, t in estaciones_deriva()])
+    partes.append(("DERIVA", de, "boa_azul", True))
+    # librea BoA: franjas de la bandera en la deriva y el nombre en las dos caras del fuselaje
+    for clave, m in franjas_deriva():
+        partes.append((f"LIBREA_DERIVA_{clave[4:].upper()}", m, clave, True))
+    for nombre, (texto, x0, dz, alto) in (("TITULO", LIBREA_BOA["titulo"]), ("SUBTITULO", LIBREA_BOA["subtitulo"])):
+        partes.append((f"LIBREA_{nombre}", texto_fuselaje(texto, x0, AV["zc"] + dz, alto), "boa_azul", True))
     # motores CFM56-7B bajo el ala (y = ±4,83), con pilón, ventilador oscuro y tobera
     mo, fn, py_ = Malla(), Malla(), Malla()
     st = [(-11.0, 0.74), (-10.62, 0.79), (-10.75, 0.90), (-11.4, 0.99), (-12.6, 0.98), (-13.9, 0.86), (-14.0, 0.56),
@@ -2103,7 +2752,8 @@ def manga_embarque(m, mo, g, cabina_c, z_cabina, rumbo_cabina):
 
 def mangas_y_aviones(C, M):
     """Dos mangas en las puertas de embarque del nivel 1P (caja del bloque del eje R y vestíbulo de los ejes 10-11) y
-    dos Boeing 737-800 genéricos, con la puerta L1 en la cabina de cada manga. Los dos aviones comparten mallas."""
+    dos Boeing 737-800 con la librea de BoA, con la puerta L1 en la cabina de cada manga. Los dos aviones comparten
+    mallas."""
     col = C["10_MANGAS_AERONAVES"]
     partes = avion_737_partes()
     zp = -BORDILLO_DESNIVEL                                        # la plataforma
@@ -2153,14 +2803,20 @@ def assets(C, M):
                   ne.crear(nombre + "_RUEDAS", M["neumatico"], col, suave=True)]
         for p in partes:
             p.matrix_world = Matrix.Translation((x, y, zc)) @ Matrix.Rotation(math.radians(rot), 4, "Z")
-    vagoneta("4x4_01", 8.0, -7.2, 0)
-    vagoneta("4x4_02", 24.5, -7.2, 0)
-    vagoneta("4x4_03", 47.0, -11.4, 180)
-    vagoneta("4x4_04_ESTAC", 30.0 + 1.3, -32.5, 90)
-    vagoneta("4x4_05_ESTAC", 35.2 + 1.3, -32.5, 90)
-    vagoneta("MINIBUS_TRANSFER", 63.0, -7.4, 0, largo=6.4, ancho=2.05, alto=2.55, parrilla=False)
+    # calzada frontal con sentido hacia el eje 1 (rot 180): dos carriles y las dos dársenas de la A111
+    yd = Y_CORDON_TIERRA + DARSENA["fondo"]                         # fondo de las dársenas (-6,313)
+    xd1, xd2 = (x + DARSENA["fondo"] + 2 * DARSENA["r"] * (math.sqrt(2) - 1) + DARSENA["recto"] / 2
+                for x in DARSENAS_TIERRA)                           # centro del tramo recto de cada dársena
+    vagoneta("4x4_01", 8.0, Y_CORDON_TIERRA - 1.75, 180)
+    vagoneta("4x4_02", xd1, yd - 1.05, 180)
+    vagoneta("4x4_03", 47.0, Y_CALZADA_TIERRA + 1.75, 180)
+    (_, f2, _, _), _, _ = filas_estacionamiento()                   # dos en la fila 2, de frente al divisor
+    vagoneta("4x4_04_ESTAC", 30.25, (f2[0] + f2[1]) / 2, 270)
+    vagoneta("4x4_05_ESTAC", 35.25, (f2[0] + f2[1]) / 2, 270)
+    vagoneta("MINIBUS_TRANSFER", xd2, yd - 1.09, 180, largo=6.4, ancho=2.05, alto=2.55, parrilla=False)
     personas = [(16.0, -2.0, 0), (17.6, -2.6, 1), (18.2, -1.4, 2), (54.8, -2.2, 3), (56.4, -3.1, 4), (57.1, -1.8, 0),
-                (36.0, -3.3, 1), (9.5, -6.5, 2), (25.4, -6.6, 3)]
+                (36.0, -3.3, 1), (9.5, -6.5, 2), (25.4, -5.7, 3)]
+    vereda = cordon_tierra()
     for i, (x, y, c) in enumerate(personas):
         h = 1.62 + 0.12 * ((i * 7) % 5) / 4
         p = Malla()
@@ -2171,7 +2827,7 @@ def assets(C, M):
         if i % 3 == 0:
             p.caja(0.30, 0.68, -0.12, 0.12, 0.05, 0.72)       # maleta
         ob = p.crear(f"TURISTA_{i:02d}", M["ropa"][c], col)
-        ob.location = (x, y, 0.0 if y > ACERA_Y[0] else -BORDILLO_DESNIVEL)
+        ob.location = (x, y, 0.0 if dentro_poligono(x, y, vereda) else -BORDILLO_DESNIVEL)
 
 
 def referencias_cad(C):
@@ -2301,7 +2957,7 @@ def camara(nombre, pos, mira, focal, col, sensor=36.0, shift_y=0.0):
     cd.lens = focal
     cd.sensor_width = sensor
     cd.shift_y = shift_y      # descentramiento: encuadra sin inclinar la cámara (verticales rectas)
-    cd.clip_start, cd.clip_end = 0.1, 6000.0
+    cd.clip_start, cd.clip_end = 0.1, 60000.0     # los cerros del horizonte llegan a 45 km
     ob = bpy.data.objects.new(nombre, cd)
     ob.location = pos
     apuntar(ob, mira)
@@ -2330,6 +2986,10 @@ def camaras_y_dron(C, escena):
         # con su 737 en primer plano y la fachada detrás
         "CAM_08_LADO_AIRE": camara("CAM_08_LADO_AIRE", (112.0, 150.0, 40.0), (32.0, 52.0, 4.0), 28, col),
         "CAM_09_MANGA_737": camara("CAM_09_MANGA_737", (10.0, 122.0, 30.0), (14.0, 56.0, 3.0), 30, col),
+        # contexto (4 de octubre): aérea desde el oeste, a 90 m, sobre el borde de la pista: la pista 13/31 nace abajo
+        # a la izquierda y llega al horizonte (cabecera 13), la calle de rodaje lleva a la plataforma, y los 737 y la
+        # terminal quedan a la derecha; al fondo (mira al noroeste) el Salar como franja blanca
+        "CAM_10_PISTA_HORIZONTE": camara("CAM_10_PISTA_HORIZONTE", (-350.0, 320.0, 90.0), (229.6, 164.6, 5.7), 30, col),
     }
     cams.update(camaras_propuestas(col))
     # recorrido de dron: 25 s a 24 fps (600 cuadros) - aproximación, descenso, paso rasante, elevación

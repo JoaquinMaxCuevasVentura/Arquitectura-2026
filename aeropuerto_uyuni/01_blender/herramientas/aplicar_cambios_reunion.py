@@ -11,7 +11,8 @@ Qué hace:
    - Columnas y vigas de hormigón visto → revoque.
    - Chapa café chocolate → cubierta y parapeto según la propuesta.
    - Corten → celosía corten o blanca.
-   - Perfilería negra → antracita mate.
+   - Perfilería negra metálica → negro mate (pintura en polvo; el 3 de octubre fue antracita y el 4 volvió al negro,
+     pero mate).
    - Bastidor, letrero y plenum → sus versiones nuevas.
 2. Geometría: quita los bolardos y reemplaza el cielo Luxalon por el listonado, el retenedor de nieve por el de 1",
    el letrero completo por el nuevo (geometrías A y B, pirámides 3D, juego sobre la salida) y la nieve del
@@ -104,8 +105,7 @@ M = dict(
     cubierta=material_nuevo("CHAPA_CUBIERTA", lambda: G["mat_propuesta"]("CHAPA_CUBIERTA", "cubierta")),
     antepecho=material_nuevo("CHAPA_ANTEPECHO_REMATES", lambda: G["mat_propuesta"]("CHAPA_ANTEPECHO_REMATES", "antepecho")),
     celosia=material_nuevo("CELOSIA_CORTEN_O_BLANCA", G["mat_celosia"]),
-    perfil=material_nuevo("ALUMINIO_ANTRACITA_MATE",
-                          lambda: G["mat_simple"]("ALUMINIO_ANTRACITA_MATE", G["PERFIL_COLOR"], metal=0.25, rug=0.55)),
+    perfil=material_nuevo("ALUMINIO_NEGRO_MATE", G["mat_perfil"]),
     muro=material_nuevo("REVOQUE_CONTINUO", lambda: G["mat_revoque"]("REVOQUE_CONTINUO")),
     muro_buna=material_nuevo("REVOQUE_FACHADA_BUNAS", lambda: G["mat_revoque"]("REVOQUE_FACHADA_BUNAS", bunas=G["VIGA_1"])),
     cielo=material_nuevo("CIELO_LISTONES", G["mat_cielo"]),
@@ -147,6 +147,7 @@ reasignar("DURALIT_FIBROCEMENTO", [("MURO_NE_", M["muro_buna"])], M["muro"])
 reasignar("HORMIGON_VISTO", [("COLUMNAS_EJE_A", M["muro"]), ("VIGAS_DINTEL", M["muro_buna"])], None)
 reasignar("CORTEN_OXIDADO", [], M["celosia"])
 reasignar("ALUMINIO_ANODIZADO_NEGRO_MATE", [], M["perfil"])
+reasignar("ALUMINIO_ANTRACITA_MATE", [], M["perfil"])          # de una pasada anterior (antracita hasta el 4 de oct.)
 reasignar("BASTIDOR_ACERO_NEGRO", [], M["bastidor"])
 reasignar("LETRERO_BLANCO", [], M["letrero"])
 reasignar("PLENUM_NEGRO", [], M["plenum"])

@@ -36,6 +36,7 @@
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
     "10_MANGAS_AERONAVES",
+    "11_CONTEXTO_AEROPUERTO",
     "08_LUZ_CREPUSCULO",
     "09_NIEVE_CREPUSCULO"
    ],
@@ -88,6 +89,7 @@
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
     "10_MANGAS_AERONAVES",
+    "11_CONTEXTO_AEROPUERTO",
     "08_LUZ_DIA"
    ],
    "propiedades": {
@@ -139,6 +141,7 @@
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
     "10_MANGAS_AERONAVES",
+    "11_CONTEXTO_AEROPUERTO",
     "08_LUZ_DIA"
    ],
    "propiedades": {
@@ -215,7 +218,7 @@
   },
   "06_ENTORNO_SITE": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 15,
+   "objetos": 18,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -235,7 +238,7 @@
   },
   "08_CAMERAS_LIGHTS": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 14,
+   "objetos": 15,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -259,7 +262,13 @@
   },
   "10_MANGAS_AERONAVES": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 24,
+   "objetos": 34,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "11_CONTEXTO_AEROPUERTO": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
+   "objetos": 9,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -527,6 +536,24 @@
    "oculto_en_render": false
   },
   {
+   "nombre": "CAM_10_PISTA_HORIZONTE",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    -350.0,
+    320.0,
+    90.0
+   ],
+   "rotacion_deg": [
+    82.0,
+    -0.0,
+    -105.01
+   ],
+   "oculto_en_render": false
+  },
+  {
    "nombre": "CAM_DRON",
    "tipo": "CAMERA",
    "colecciones": [
@@ -588,24 +615,24 @@
    ],
    "ubicacion": [
     8.0,
-    -7.2,
+    -10.163,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
      5.55,
-     -8.17,
+     -11.133,
      0.3
     ],
     "max": [
      10.45,
-     -6.23,
+     -9.193,
      2.35
     ]
    },
@@ -624,24 +651,24 @@
    ],
    "ubicacion": [
     8.0,
-    -7.2,
+    -10.163,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
      6.0,
-     -8.16,
+     -11.123,
      -0.15
     ],
     "max": [
      10.0,
-     -6.24,
+     -9.203,
      0.65
     ]
    },
@@ -660,24 +687,24 @@
    ],
    "ubicacion": [
     8.0,
-    -7.2,
+    -10.163,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     6.5,
-     -8.12,
+     5.7,
+     -11.083,
      1.1
     ],
     "max": [
-     10.3,
-     -6.28,
+     9.5,
+     -9.243,
      1.84
     ]
    },
@@ -695,25 +722,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    24.5,
-    -7.2,
+    27.489,
+    -7.363,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     22.05,
-     -8.17,
+     25.039,
+     -8.333,
      0.3
     ],
     "max": [
-     26.95,
-     -6.23,
+     29.939,
+     -6.393,
      2.35
     ]
    },
@@ -731,25 +758,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    24.5,
-    -7.2,
+    27.489,
+    -7.363,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     22.5,
-     -8.16,
+     25.489,
+     -8.323,
      -0.15
     ],
     "max": [
-     26.5,
-     -6.24,
+     29.489,
+     -6.403,
      0.65
     ]
    },
@@ -767,25 +794,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    24.5,
-    -7.2,
+    27.489,
+    -7.363,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     23.0,
-     -8.12,
+     25.189,
+     -8.283,
      1.1
     ],
     "max": [
-     26.8,
-     -6.28,
+     28.989,
+     -6.443,
      1.84
     ]
    },
@@ -804,7 +831,7 @@
    ],
    "ubicacion": [
     47.0,
-    -11.4,
+    -13.663,
     -0.15
    ],
    "rotacion_deg": [
@@ -816,12 +843,12 @@
    "caja_mundo": {
     "min": [
      44.55,
-     -12.37,
+     -14.633,
      0.3
     ],
     "max": [
      49.45,
-     -10.43,
+     -12.693,
      2.35
     ]
    },
@@ -840,7 +867,7 @@
    ],
    "ubicacion": [
     47.0,
-    -11.4,
+    -13.663,
     -0.15
    ],
    "rotacion_deg": [
@@ -852,12 +879,12 @@
    "caja_mundo": {
     "min": [
      45.0,
-     -12.36,
+     -14.623,
      -0.15
     ],
     "max": [
      49.0,
-     -10.44,
+     -12.703,
      0.65
     ]
    },
@@ -876,7 +903,7 @@
    ],
    "ubicacion": [
     47.0,
-    -11.4,
+    -13.663,
     -0.15
    ],
    "rotacion_deg": [
@@ -888,12 +915,12 @@
    "caja_mundo": {
     "min": [
      44.7,
-     -12.32,
+     -14.583,
      1.1
     ],
     "max": [
      48.5,
-     -10.48,
+     -12.743,
      1.84
     ]
    },
@@ -911,25 +938,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    31.3,
-    -32.5,
+    30.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     30.33,
-     -34.95,
+     29.28,
+     -34.363,
      0.3
     ],
     "max": [
-     32.27,
-     -30.05,
+     31.22,
+     -29.463,
      2.35
     ]
    },
@@ -947,25 +974,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    31.3,
-    -32.5,
+    30.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     30.34,
-     -34.5,
+     29.29,
+     -33.913,
      -0.15
     ],
     "max": [
-     32.26,
-     -30.5,
+     31.21,
+     -29.913,
      0.65
     ]
    },
@@ -983,25 +1010,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    31.3,
-    -32.5,
+    30.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     30.38,
-     -34.0,
+     29.33,
+     -34.213,
      1.1
     ],
     "max": [
-     32.22,
-     -30.2,
+     31.17,
+     -30.413,
      1.84
     ]
    },
@@ -1019,25 +1046,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    36.5,
-    -32.5,
+    35.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     35.53,
-     -34.95,
+     34.28,
+     -34.363,
      0.3
     ],
     "max": [
-     37.47,
-     -30.05,
+     36.22,
+     -29.463,
      2.35
     ]
    },
@@ -1055,25 +1082,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    36.5,
-    -32.5,
+    35.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     35.54,
-     -34.5,
+     34.29,
+     -33.913,
      -0.15
     ],
     "max": [
-     37.46,
-     -30.5,
+     36.21,
+     -29.913,
      0.65
     ]
    },
@@ -1091,25 +1118,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    36.5,
-    -32.5,
+    35.25,
+    -31.913,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
-    -0.0,
-    90.0
+    0.0,
+    -90.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     35.58,
-     -34.0,
+     34.33,
+     -34.213,
      1.1
     ],
     "max": [
-     37.42,
-     -30.2,
+     36.17,
+     -30.413,
      1.84
     ]
    },
@@ -1117,42 +1144,6 @@
    "caras": 6,
    "materiales": [
     "UY_VIDRIO_VEHICULO"
-   ],
-   "modificadores": []
-  },
-  {
-   "nombre": "UY_ACERA_HORMIGON",
-   "tipo": "MESH",
-   "colecciones": [
-    "06_ENTORNO_SITE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     -60.0,
-     -4.308,
-     -0.2
-    ],
-    "max": [
-     145.0,
-     0.391,
-     0.0
-    ]
-   },
-   "vertices": 16,
-   "caras": 12,
-   "materiales": [
-    "UY_HORMIGON_FRATASADO"
    ],
    "modificadores": []
   },
@@ -1367,10 +1358,10 @@
      12.4
     ]
    },
-   "vertices": 56,
-   "caras": 72,
+   "vertices": 272,
+   "caras": 288,
    "materiales": [
-    "UY_AVION_PINTURA_BLANCA"
+    "UY_AVION_BOA_AZUL"
    ],
    "modificadores": []
   },
@@ -1403,10 +1394,10 @@
      12.4
     ]
    },
-   "vertices": 56,
-   "caras": 72,
+   "vertices": 272,
+   "caras": 288,
    "materiales": [
-    "UY_AVION_PINTURA_BLANCA"
+    "UY_AVION_BOA_AZUL"
    ],
    "modificadores": []
   },
@@ -1551,6 +1542,366 @@
    "caras": 616,
    "materiales": [
     "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_AMARILLO_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     31.372,
+     79.584,
+     5.35
+    ],
+    "max": [
+     37.357,
+     82.365,
+     11.85
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_AMARILLO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_AMARILLO_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     76.429,
+     79.584,
+     5.35
+    ],
+    "max": [
+     82.414,
+     82.365,
+     11.85
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_AMARILLO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_ROJO_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     31.385,
+     79.62,
+     5.85
+    ],
+    "max": [
+     37.344,
+     82.328,
+     12.3
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_ROJO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_ROJO_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     76.442,
+     79.62,
+     5.85
+    ],
+    "max": [
+     82.401,
+     82.328,
+     12.3
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_ROJO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_VERDE_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     31.359,
+     79.549,
+     4.85
+    ],
+    "max": [
+     37.37,
+     82.4,
+     11.35
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_VERDE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_DERIVA_VERDE_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     76.416,
+     79.549,
+     4.85
+    ],
+    "max": [
+     82.427,
+     82.4,
+     11.35
+    ]
+   },
+   "vertices": 124,
+   "caras": 60,
+   "materiales": [
+    "UY_AVION_BOA_VERDE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_SUBTITULO_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.233,
+     69.198,
+     2.925
+    ],
+    "max": [
+     9.734,
+     73.547,
+     3.125
+    ]
+   },
+   "vertices": 4082,
+   "caras": 4972,
+   "materiales": [
+    "UY_AVION_BOA_AZUL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_SUBTITULO_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     51.29,
+     69.198,
+     2.925
+    ],
+    "max": [
+     54.791,
+     73.547,
+     3.125
+    ]
+   },
+   "vertices": 4082,
+   "caras": 4972,
+   "materiales": [
+    "UY_AVION_BOA_AZUL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_TITULO_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     5.987,
+     69.194,
+     3.665
+    ],
+    "max": [
+     9.704,
+     73.451,
+     4.765
+    ]
+   },
+   "vertices": 1646,
+   "caras": 2580,
+   "materiales": [
+    "UY_AVION_BOA_AZUL"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_LIBREA_TITULO_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     51.044,
+     69.194,
+     3.665
+    ],
+    "max": [
+     54.761,
+     73.451,
+     4.765
+    ]
+   },
+   "vertices": 1646,
+   "caras": 2580,
+   "materiales": [
+    "UY_AVION_BOA_AZUL"
    ],
    "modificadores": []
   },
@@ -2018,7 +2369,7 @@
    "vertices": 112,
    "caras": 144,
    "materiales": [
-    "UY_AVION_PINTURA_BLANCA"
+    "UY_AVION_BOA_AZUL"
    ],
    "modificadores": []
   },
@@ -2054,7 +2405,7 @@
    "vertices": 112,
    "caras": 144,
    "materiales": [
-    "UY_AVION_PINTURA_BLANCA"
+    "UY_AVION_BOA_AZUL"
    ],
    "modificadores": []
   },
@@ -2239,42 +2590,6 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_BORDILLO",
-   "tipo": "MESH",
-   "colecciones": [
-    "06_ENTORNO_SITE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     -60.0,
-     -4.458,
-     -0.2
-    ],
-    "max": [
-     145.0,
-     -4.308,
-     0.0
-    ]
-   },
-   "vertices": 8,
-   "caras": 6,
-   "materiales": [
-    "UY_HORMIGON_VISTO"
-   ],
-   "modificadores": []
-  },
-  {
    "nombre": "UY_CAJA_EMBARQUE_OESTE",
    "tipo": "MESH",
    "colecciones": [
@@ -2342,7 +2657,7 @@
    "vertices": 40,
    "caras": 30,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -2383,6 +2698,42 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_CALLE_RODAJE_ASFALTO",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     118.5,
+     130.0,
+     -0.25
+    ],
+    "max": [
+     181.5,
+     307.5,
+     -0.15
+    ]
+   },
+   "vertices": 112,
+   "caras": 80,
+   "materiales": [
+    "UY_ASFALTO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_CALZADA_ASFALTO",
    "tipo": "MESH",
    "colecciones": [
@@ -2401,18 +2752,18 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -260.0,
-     -36.0,
+     -3000.0,
+     -61.413,
      -0.25
     ],
     "max": [
-     345.0,
-     -4.308,
+     92.515,
+     40.0,
      -0.15
     ]
    },
-   "vertices": 16,
-   "caras": 12,
+   "vertices": 376,
+   "caras": 278,
    "materiales": [
     "UY_ASFALTO"
    ],
@@ -2437,12 +2788,12 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -160.0,
+     -110.0,
      55.0,
      -0.25
     ],
     "max": [
-     260.0,
+     200.0,
      65.0,
      -0.15
     ]
@@ -2473,18 +2824,18 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -160.0,
+     -110.0,
      55.15,
      -0.15
     ],
     "max": [
-     260.0,
+     200.0,
      64.85,
      -0.148
     ]
    },
-   "vertices": 576,
-   "caras": 432,
+   "vertices": 432,
+   "caras": 324,
    "materiales": [
     "UY_PINTURA_VIAL_BLANCA"
    ],
@@ -2522,7 +2873,7 @@
    "vertices": 744,
    "caras": 558,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -3285,6 +3636,42 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_CORDON_TIERRA",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -3.571,
+     -8.413,
+     -0.25
+    ],
+    "max": [
+     85.515,
+     0.392,
+     0.0
+    ]
+   },
+   "vertices": 592,
+   "caras": 440,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_CUBIERTA_ANEXO",
    "tipo": "MESH",
    "colecciones": [
@@ -3867,6 +4254,78 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_ISLAS_CORDON",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -3.57,
+     -54.413,
+     -0.25
+    ],
+    "max": [
+     85.515,
+     -15.413,
+     0.0
+    ]
+   },
+   "vertices": 736,
+   "caras": 552,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ISLAS_GRAVA",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -3.42,
+     -54.263,
+     -0.25
+    ],
+    "max": [
+     85.365,
+     -15.563,
+     -0.03
+    ]
+   },
+   "vertices": 368,
+   "caras": 256,
+   "materiales": [
+    "UY_GRAVA_VOLCANICA_ISLAS"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_LETRERO_LETRAS_UYUNI_A",
    "tipo": "MESH",
    "colecciones": [
@@ -4384,7 +4843,7 @@
    "vertices": 592,
    "caras": 444,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4533,6 +4992,114 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_MANGA_VIENTO_FRANJAS_BLANCAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     230.024,
+     250.475,
+     5.117
+    ],
+    "max": [
+     231.641,
+     252.675,
+     6.231
+    ]
+   },
+   "vertices": 64,
+   "caras": 32,
+   "materiales": [
+    "UY_PINTURA_VIAL_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MANGA_VIENTO_FRANJAS_NARANJA",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     229.644,
+     249.836,
+     5.01
+    ],
+    "max": [
+     231.944,
+     253.268,
+     6.424
+    ]
+   },
+   "vertices": 96,
+   "caras": 48,
+   "materiales": [
+    "UY_MANGA_VIENTO_NARANJA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MANGA_VIENTO_MASTIL",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     229.6,
+     249.6,
+     -0.33
+    ],
+    "max": [
+     230.459,
+     250.4,
+     6.444
+    ]
+   },
+   "vertices": 64,
+   "caras": 36,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_MARQUESINA_AIRE",
    "tipo": "MESH",
    "colecciones": [
@@ -4636,7 +5203,7 @@
    "vertices": 16,
    "caras": 12,
    "materiales": [
-    "UY_SELLO_ESTRUCTURAL_NEGRO"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4672,7 +5239,7 @@
    "vertices": 16,
    "caras": 12,
    "materiales": [
-    "UY_SELLO_ESTRUCTURAL_NEGRO"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4708,7 +5275,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4780,7 +5347,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4852,7 +5419,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4924,7 +5491,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -4996,7 +5563,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5068,7 +5635,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5140,7 +5707,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5212,7 +5779,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5284,7 +5851,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5356,7 +5923,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5428,7 +5995,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5500,7 +6067,7 @@
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_ALUMINIO_ANTRACITA_MATE"
+    "UY_ALUMINIO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5547,25 +6114,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    63.0,
-    -7.4,
+    69.474,
+    -7.403,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     59.8,
-     -8.425,
+     66.274,
+     -8.428,
      0.3
     ],
     "max": [
-     66.2,
-     -6.375,
+     72.674,
+     -6.378,
      2.4
     ]
    },
@@ -5583,25 +6150,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    63.0,
-    -7.4,
+    69.474,
+    -7.403,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     60.25,
-     -8.415,
+     66.724,
+     -8.418,
      -0.15
     ],
     "max": [
-     65.75,
-     -6.385,
+     72.224,
+     -6.388,
      0.65
     ]
    },
@@ -5619,25 +6186,25 @@
     "PROXIES_COLOCACION"
    ],
    "ubicacion": [
-    63.0,
-    -7.4,
+    69.474,
+    -7.403,
     -0.15
    ],
    "rotacion_deg": [
     0.0,
     -0.0,
-    0.0
+    180.0
    ],
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     60.75,
-     -8.375,
+     66.424,
+     -8.378,
      1.1
     ],
     "max": [
-     66.05,
-     -6.425,
+     71.724,
+     -6.428,
      2.34
     ]
    },
@@ -6477,6 +7044,78 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_PAJA_BRAVA_DISPERSION",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -608.022,
+     -626.102,
+     -0.23
+    ],
+    "max": [
+     689.61,
+     670.956,
+     -0.03
+    ]
+   },
+   "vertices": 21981,
+   "caras": 0,
+   "materiales": [],
+   "modificadores": [
+    "NODES:DISPERSION_PAJA_BRAVA"
+   ]
+  },
+  {
+   "nombre": "UY_PAJA_BRAVA_MATA",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    -5.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": true,
+   "caja_mundo": {
+    "min": [
+     -0.554,
+     -0.583,
+     -5.0
+    ],
+    "max": [
+     0.512,
+     0.524,
+     -4.396
+    ]
+   },
+   "vertices": 900,
+   "caras": 360,
+   "materiales": [
+    "UY_PAJA_BRAVA"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_PATIO_ESTE_COSTADO_NORTE",
    "tipo": "MESH",
    "colecciones": [
@@ -6657,6 +7296,114 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_PISTA_13_31_ASFALTO",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -1094.5,
+     307.5,
+     -0.25
+    ],
+    "max": [
+     3022.6,
+     352.5,
+     -0.15
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_ASFALTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PISTA_MARCAS_BLANCAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -1034.5,
+     307.5,
+     -0.15
+    ],
+    "max": [
+     2962.6,
+     352.5,
+     -0.148
+    ]
+   },
+   "vertices": 1328,
+   "caras": 996,
+   "materiales": [
+    "UY_PINTURA_VIAL_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PISTA_Y_RODAJE_MARCAS_AMARILLAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "11_CONTEXTO_AEROPUERTO"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -1100.818,
+     101.925,
+     -0.15
+    ],
+    "max": [
+     3028.918,
+     351.318,
+     -0.148
+    ]
+   },
+   "vertices": 520,
+   "caras": 390,
+   "materiales": [
+    "UY_PINTURA_PLATAFORMA_AMARILLA"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_PLATAFORMA_AIRE_HORMIGON",
    "tipo": "MESH",
    "colecciones": [
@@ -6675,13 +7422,13 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -160.0,
+     -110.0,
      40.0,
      -0.25
     ],
     "max": [
-     260.0,
-     175.0,
+     200.0,
+     130.0,
      -0.15
     ]
    },
@@ -6711,12 +7458,12 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -160.0,
+     -95.0,
      68.527,
      -0.15
     ],
     "max": [
-     260.0,
+     120.0,
      102.075,
      -0.148
     ]
@@ -6760,7 +7507,7 @@
    "vertices": 80,
    "caras": 60,
    "materiales": [
-    "UY_PUERTA_ACERO_PINTADO"
+    "UY_PUERTA_ACERO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -6796,7 +7543,7 @@
    "vertices": 800,
    "caras": 600,
    "materiales": [
-    "UY_PUERTA_ACERO_PINTADO"
+    "UY_PUERTA_ACERO_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -7651,20 +8398,56 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -260.0,
-     -35.0,
+     -3000.0,
+     -61.163,
      -0.15
     ],
     "max": [
-     345.0,
-     -9.248,
+     79.05,
+     -8.433,
      -0.148
     ]
    },
-   "vertices": 288,
-   "caras": 216,
+   "vertices": 1264,
+   "caras": 948,
    "materiales": [
     "UY_PINTURA_VIAL_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_SENALIZACION_VIAL_AMARILLA",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -2995.0,
+     -57.973,
+     -0.15
+    ],
+    "max": [
+     89.075,
+     36.587,
+     -0.148
+    ]
+   },
+   "vertices": 4296,
+   "caras": 3222,
+   "materiales": [
+    "UY_PINTURA_PLATAFORMA_AMARILLA"
    ],
    "modificadores": []
   },
@@ -7975,18 +8758,18 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -2000.0,
-     -2000.0,
-     -0.6
+     -44959.0,
+     -44978.0,
+     -116.128
     ],
     "max": [
-     2000.0,
-     2000.0,
-     -0.23
+     45041.0,
+     45022.0,
+     620.061
     ]
    },
-   "vertices": 8,
-   "caras": 6,
+   "vertices": 12241,
+   "caras": 12240,
    "materiales": [
     "UY_SUELO_ALTIPLANO"
    ],
@@ -8361,7 +9144,7 @@
    "ubicacion": [
     9.5,
     -6.5,
-    -0.15
+    0.0
    ],
    "rotacion_deg": [
     0.0,
@@ -8373,12 +9156,12 @@
     "min": [
      9.26,
      -6.65,
-     -0.15
+     0.0
     ],
     "max": [
      9.74,
      -6.14,
-     1.59
+     1.74
     ]
    },
    "vertices": 32,
@@ -8396,8 +9179,8 @@
    ],
    "ubicacion": [
     25.4,
-    -6.6,
-    -0.15
+    -5.7,
+    0.0
    ],
    "rotacion_deg": [
     0.0,
@@ -8408,13 +9191,13 @@
    "caja_mundo": {
     "min": [
      25.16,
-     -6.75,
-     -0.15
+     -5.85,
+     0.0
     ],
     "max": [
      25.64,
-     -6.24,
-     1.5
+     -5.34,
+     1.65
     ]
    },
    "vertices": 32,
@@ -8538,8 +9321,8 @@
      -0.2
     ],
     "max": [
-     85.515,
-     49.079,
+     85.505,
+     49.069,
      -0.002
     ]
    },
@@ -8569,18 +9352,54 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -3.57,
+     -3.56,
      0.392,
      -0.2
     ],
     "max": [
-     19.4,
-     50.779,
+     19.39,
+     50.769,
      -0.002
     ]
    },
    "vertices": 92,
    "caras": 65,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VEREDA_TIERRA",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -3.561,
+     -8.403,
+     -0.2
+    ],
+    "max": [
+     85.505,
+     0.392,
+     -0.002
+    ]
+   },
+   "vertices": 312,
+   "caras": 234,
    "materiales": [
     "UY_HORMIGON_FRATASADO"
    ],
@@ -8785,12 +9604,12 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -60.0,
+     -0.23,
      -1.965,
      -0.3
     ],
     "max": [
-     145.0,
+     72.56,
      -1.465,
      -0.2
     ]
@@ -8821,12 +9640,12 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -60.0,
+     -0.23,
      -1.945,
      -0.035
     ],
     "max": [
-     145.0,
+     72.56,
      -1.485,
      -0.005
     ]
@@ -9020,6 +9839,23 @@
     0.056,
     -0.924,
     -0.378
+   ],
+   "focal_mm": 30.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_10_PISTA_HORIZONTE": {
+   "ubicacion": [
+    -350.0,
+    320.0,
+    90.0
+   ],
+   "direccion": [
+    0.956,
+    -0.256,
+    -0.139
    ],
    "focal_mm": 30.0,
    "sensor_mm": 36.0,
@@ -9470,7 +10306,7 @@
  "materiales": [
   {
    "nombre": "UY_ACERO_GALVANIZADO",
-   "usuarios": 7,
+   "usuarios": 8,
    "color_visor": [
     0.337,
     0.356,
@@ -9484,12 +10320,12 @@
    ]
   },
   {
-   "nombre": "UY_ALUMINIO_ANTRACITA_MATE",
-   "usuarios": 15,
+   "nombre": "UY_ALUMINIO_NEGRO_MATE",
+   "usuarios": 17,
    "color_visor": [
-    0.042,
-    0.048,
-    0.053,
+    0.027,
+    0.028,
+    0.031,
     1.0
    ],
    "propiedades_de_escena_que_lee": [],
@@ -9500,7 +10336,7 @@
   },
   {
    "nombre": "UY_ASFALTO",
-   "usuarios": 2,
+   "usuarios": 4,
    "color_visor": [
     0.033,
     0.033,
@@ -9537,6 +10373,66 @@
    ]
   },
   {
+   "nombre": "UY_AVION_BOA_AMARILLO",
+   "usuarios": 1,
+   "color_visor": [
+    0.905,
+    0.631,
+    0.0,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_BOA_AZUL",
+   "usuarios": 4,
+   "color_visor": [
+    0.012,
+    0.05,
+    0.296,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_BOA_ROJO",
+   "usuarios": 1,
+   "color_visor": [
+    0.665,
+    0.024,
+    0.013,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_BOA_VERDE",
+   "usuarios": 1,
+   "color_visor": [
+    0.0,
+    0.191,
+    0.034,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
    "nombre": "UY_AVION_GONDOLA_MOTOR",
    "usuarios": 1,
    "color_visor": [
@@ -9553,7 +10449,7 @@
   },
   {
    "nombre": "UY_AVION_PINTURA_BLANCA",
-   "usuarios": 3,
+   "usuarios": 1,
    "color_visor": [
     0.815,
     0.831,
@@ -9719,6 +10615,26 @@
    ]
   },
   {
+   "nombre": "UY_GRAVA_VOLCANICA_ISLAS",
+   "usuarios": 1,
+   "color_visor": [
+    0.037,
+    0.032,
+    0.028,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBump",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
    "nombre": "UY_HORMIGON_FRATASADO",
    "usuarios": 5,
    "color_visor": [
@@ -9766,7 +10682,7 @@
   },
   {
    "nombre": "UY_HORMIGON_VISTO",
-   "usuarios": 5,
+   "usuarios": 6,
    "color_visor": [
     0.296,
     0.292,
@@ -9880,6 +10796,21 @@
    ]
   },
   {
+   "nombre": "UY_MANGA_VIENTO_NARANJA",
+   "usuarios": 1,
+   "color_visor": [
+    0.807,
+    0.12,
+    0.01,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
    "nombre": "UY_NEUMATICO",
    "usuarios": 7,
    "color_visor": [
@@ -9910,8 +10841,30 @@
    ]
   },
   {
-   "nombre": "UY_PINTURA_PLATAFORMA_AMARILLA",
+   "nombre": "UY_PAJA_BRAVA",
    "usuarios": 1,
+   "color_visor": [
+    0.539,
+    0.418,
+    0.188,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBsdfTranslucent",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeMixShader",
+    "ShaderNodeObjectInfo",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord"
+   ]
+  },
+  {
+   "nombre": "UY_PINTURA_PLATAFORMA_AMARILLA",
+   "usuarios": 3,
    "color_visor": [
     0.694,
     0.376,
@@ -9941,7 +10894,7 @@
   },
   {
    "nombre": "UY_PINTURA_VIAL_BLANCA",
-   "usuarios": 2,
+   "usuarios": 4,
    "color_visor": [
     0.807,
     0.807,
@@ -9985,12 +10938,12 @@
    ]
   },
   {
-   "nombre": "UY_PUERTA_ACERO_PINTADO",
+   "nombre": "UY_PUERTA_ACERO_NEGRO_MATE",
    "usuarios": 2,
    "color_visor": [
-    0.042,
-    0.048,
-    0.053,
+    0.027,
+    0.028,
+    0.031,
     1.0
    ],
    "propiedades_de_escena_que_lee": [],
@@ -10409,7 +11362,7 @@
   },
   {
    "nombre": "UY_SELLO_ESTRUCTURAL_NEGRO",
-   "usuarios": 3,
+   "usuarios": 1,
    "color_visor": [
     0.003,
     0.003,
@@ -10432,12 +11385,14 @@
     1.0
    ],
    "propiedades_de_escena_que_lee": [
-    "nieve"
+    "nieve",
+    "salar"
    ],
    "nodos": [
     "ShaderNodeAttribute",
     "ShaderNodeBsdfPrincipled",
     "ShaderNodeBump",
+    "ShaderNodeCameraData",
     "ShaderNodeMath",
     "ShaderNodeMix",
     "ShaderNodeOutputMaterial",
@@ -10495,7 +11450,7 @@
    ],
    "centro_base": [
     8.0,
-    -7.2,
+    -10.163,
     -0.15
    ],
    "tamano": [
@@ -10503,7 +11458,7 @@
     1.94,
     2.5
    ],
-   "rotacion_z_deg": 0.0
+   "rotacion_z_deg": 180.0
   },
   {
    "proxy": "UY_4x4_02",
@@ -10514,8 +11469,8 @@
     "UY_4x4_02_VIDRIOS"
    ],
    "centro_base": [
-    24.5,
-    -7.2,
+    27.489,
+    -7.363,
     -0.15
    ],
    "tamano": [
@@ -10523,7 +11478,7 @@
     1.94,
     2.5
    ],
-   "rotacion_z_deg": 0.0
+   "rotacion_z_deg": 180.0
   },
   {
    "proxy": "UY_4x4_03",
@@ -10535,7 +11490,7 @@
    ],
    "centro_base": [
     47.0,
-    -11.4,
+    -13.663,
     -0.15
    ],
    "tamano": [
@@ -10554,8 +11509,8 @@
     "UY_4x4_04_ESTAC_VIDRIOS"
    ],
    "centro_base": [
-    31.3,
-    -32.5,
+    30.25,
+    -31.913,
     -0.15
    ],
    "tamano": [
@@ -10563,7 +11518,7 @@
     4.9,
     2.5
    ],
-   "rotacion_z_deg": 90.0
+   "rotacion_z_deg": -90.0
   },
   {
    "proxy": "UY_4x4_05_ESTAC",
@@ -10574,8 +11529,8 @@
     "UY_4x4_05_ESTAC_VIDRIOS"
    ],
    "centro_base": [
-    36.5,
-    -32.5,
+    35.25,
+    -31.913,
     -0.15
    ],
    "tamano": [
@@ -10583,7 +11538,7 @@
     4.9,
     2.5
    ],
-   "rotacion_z_deg": 90.0
+   "rotacion_z_deg": -90.0
   },
   {
    "proxy": "UY_MINIBUS_TRANSFER",
@@ -10594,8 +11549,8 @@
     "UY_MINIBUS_TRANSFER_VIDRIOS"
    ],
    "centro_base": [
-    63.0,
-    -7.4,
+    69.474,
+    -7.403,
     -0.15
    ],
    "tamano": [
@@ -10603,7 +11558,7 @@
     2.05,
     2.55
    ],
-   "rotacion_z_deg": 0.0
+   "rotacion_z_deg": 180.0
   },
   {
    "proxy": "UY_TURISTA_00",
@@ -10740,7 +11695,7 @@
    "centro_base": [
     9.5,
     -6.395,
-    -0.15
+    0.0
    ],
    "tamano": [
     0.48,
@@ -10757,8 +11712,8 @@
    ],
    "centro_base": [
     25.4,
-    -6.495,
-    -0.15
+    -5.595,
+    0.0
    ],
    "tamano": [
     0.48,

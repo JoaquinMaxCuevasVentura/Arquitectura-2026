@@ -33,6 +33,8 @@ Los prompts están en inglés porque los upscalers siguen mejor los términos fo
 
 ## Prompt base (las dos propuestas)
 
+> Este prompt es para los renders de las propuestas del 3 y 4 de octubre, que tienen la carpintería antracita. Desde la noche del 4 de octubre la carpintería es **negro mate**: para los renders nuevos, cambia "matte anthracite aluminum window and door frames" por "matte black powder-coated aluminum window and door frames".
+
 ```
 Faithful 2x upscale of an architectural photograph: a new single-story airport passenger terminal on the Bolivian Altiplano (Uyuni, 3,660 m). Keep every line, proportion, color, object and the framing exactly as in the input; only add true photographic micro-detail and clarity.
 Clear, dry morning at 9:30. Crisp high-altitude sunlight from the upper left, slightly behind the camera; sharp natural shadows falling to the right. Deep cobalt-blue sky that grades lighter toward the horizon, clean and cloudless.

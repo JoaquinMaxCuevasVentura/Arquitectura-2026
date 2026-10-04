@@ -1,4 +1,6 @@
-# Cambios del 4 de octubre (tarde): Lado Aire, laterales y detalles
+# Cambios del 4 de octubre (tarde y noche): Lado Aire, laterales, detalles y contexto
+
+Las secciones 1 a 10 son los cambios de la tarde. La sección 11 recoge las respuestas del cliente de la noche y lo que se hizo con ellas: carpintería en negro mate, veredas del Lado Tierra según la A111, contexto del aeropuerto (calles, estacionamiento, pista, rodaje, terreno y paja brava) y librea de BoA.
 
 **Insumos nuevos del cliente:**
 - DXF de la planta baja (A111), de la fachada SUROESTE (Lado Aire), de las fachadas ESTE y OESTE y del detalle de las puertas ME-2;
@@ -132,7 +134,7 @@ Los DXF no van en el repositorio (es público): se suman a `UYUNI_insumos_client
 **Aeronaves (`avion_737_partes()`):**
 - **Modelo:** dos Boeing 737-800 generados por código, con las medidas reales: 39,45 m de largo, 35,7 m de envergadura con winglets y 12,55 m de alto.
 - **Partes:** fuselaje, alas con flecha y diedro, winglets, motores CFM56 con pilón, estabilizadores, tren, ventanillas y puesto de pilotaje.
-- **Librea:** blanca genérica, sin marcas.
+- **Librea:** la de BoA desde la respuesta del cliente (sección 11.4). Antes era blanca genérica, sin marcas.
 - **Mallas:** los dos aviones las comparten.
 
 **Estacionamiento:**
@@ -153,41 +155,30 @@ Los DXF no van en el repositorio (es público): se suman a `UYUNI_insumos_client
   - lateral este hasta 85,515;
   - esquinas de radio 1 m.
 - **Camino de servicio de asfalto** (la banda azul de la vista aérea): entre Y 55 y 65, con bordes continuos y eje discontinuo blancos.
-- **Plataforma:** de hormigón, en losas de 5 × 5 m (`mat_plataforma`).
-- **Marcas amarillas:** calle de rodaje en Y 102 y, en cada puesto, la guía y la barra de parada de la rueda de nariz.
+- **Plataforma:** de hormigón, en losas de 5 × 5 m (`mat_plataforma`). Desde la sección 11 llega hasta Y 130 (la calle de rodaje más 28 m) y va de X −110 a 200.
+- **Marcas amarillas:** calle de rodaje en Y 102 y, en cada puesto, la guía y la barra de parada de la rueda de nariz. La calle de rodaje sigue hacia la pista (sección 11.3).
 - **En el script:** `cordon_aire()`, `entorno_aire()` y `puestos_aviones()`.
 
-## 8. Para confirmar con el cliente
+## 8. Puntos que se consultaron al cliente
 
-1. **ME-6 del bloque (X 0,21–4,49):**
-   - el alzado SO la dibuja;
-   - la planta la pone en la línea interior del eje I, detrás del muro macizo del eje R. Así se modeló, por eso no se ve.
-   - ¿Va en la cara exterior?
-2. **Altura del vestíbulo:**
-   - se usó +7,325, como en el alzado SO;
-   - el alzado ESTE sugiere +6,91;
-   - el IFC solo trae la losa a +3,70.
-3. **Remate de la cubierta sobre el eje I:**
+Respuestas de la noche del 4 de octubre:
+
+| Punto | Respuesta | En el modelo |
+|---|---|---|
+| ME-6 del bloque (X 0,21–4,49): la planta la pone en la línea interior del eje I, detrás del muro macizo | "Está bien como le dejaste" | Sigue en la línea interior |
+| Alturas del vestíbulo (+7,325; el alzado ESTE sugiere +6,91) y del anexo (+6,30; ESTE +6,21, SO +5,62) | "Déjalo como estaba por ahora" | Sin cambios |
+| Mangas y aviones: puertas de embarque, orientación y librea | La orientación está bien; BoA tiene autorización | Librea de BoA (11.4) |
+| Tubos del retenedor | Tres tubos de 1/2", según el dibujo | Ya estaba así: tres de 21,3 mm |
+| Color de la carpintería (el detalle de la ME-2 dice "negro mate") | "Acércate al negro mate" | Negro mate (11.1) |
+| Cordón del Lado Tierra (la A111 dibuja una vereda de ≈ 8,8 m con dos dársenas) | "Aplica las veredas y de paso realiza el modelado de más contexto" | Aplicado (11.2) y contexto nuevo (11.3) |
+
+Siguen abiertos:
+1. **Remate de la cubierta sobre el eje I:**
    - el modelo la corta al ras de las pilastras, como en el alzado ESTE;
    - el alzado SO dibuja líneas de cubierta a +7,33 y +7,51, y además marca la cumbrera a +13,43.
-4. **Altura del anexo:** el modelo usa +6,30; el alzado ESTE da +6,21 y el SO, +5,62.
-5. **Mangas y aviones:**
-   - ¿son esas las dos puertas de embarque?
-   - ¿la orientación y la posición de los aviones están bien?
-   - **Librea:** ¿BoA? Solo con autorización para usar la marca.
-6. **Tubos del retenedor:**
-   - se usaron tres tubos de 21,3 mm (1/2");
-   - en la reunión se habló de un doble tubo de 1", pero un tubo de 1" (25,4 mm) no entra en el agujero de 23 mm del detalle;
-   - ¿tres tubos o dos?
-7. **Color de la carpintería:**
-   - el detalle de la ME-2 dice "aluminio negro mate";
-   - el modelo usa antracita mate `#3A3E41`, por la decisión del 3 de octubre.
-8. **Cordón del Lado Tierra:**
-   - la planta A111 dibuja una vereda de ≈ 8,8 m con dos dársenas;
-   - el modelo mantiene la de 4,0 m del corte, la de los renders aprobados.
-   - Cambiarla afecta CAM_01, CAM_03 y CAM_07: ¿se aplica?
-9. **Galería del bloque:**
+2. **Galería del bloque:**
    - el vano de 4,40 m hacia la pista se interpretó como una galería cubierta abierta, con un muro vidriado y una puerta doble hacia el recinto del bloque.
+3. **Lo nuevo de la sección 11 que no está en los planos:** posición de la pista, calles, estacionamiento y librea (ver 11.6).
 
 ## 9. Láminas de verificación (`01_blender/verificacion/`)
 
@@ -200,9 +191,16 @@ Los DXF no van en el repositorio (es público): se suman a `UYUNI_insumos_client
 | `ME2_CORTE_HORIZONTAL.jpg` y `ME2_CORTE_VERTICAL.jpg` | Puerta ME-2 sobre su detalle |
 | `RETENEDOR_NIEVE_CORTE.jpg` | Corte por una abrazadera del retenedor |
 | `LADO_AIRE_PLANTA_GENERAL.jpg` y `LADO_AIRE_PISO.jpg` | Mangas, aviones, camino de servicio y marcas en planta |
-| `AVION_737_800_VISTAS.jpg` | El 737-800 generado: lateral, planta y frente |
+| `AVION_737_800_VISTAS.jpg` | El 737-800 con la librea de BoA: los dos lados, planta y frente |
+| `LADO_TIERRA_PLANTA_VEREDAS.jpg`, `LADO_TIERRA_VEREDA_ESQUINA_OESTE.jpg`, `LADO_TIERRA_VEREDA_DARSENA_1.jpg` | Corte a −0,10 de veredas, cordones e islas (verde) con la A111 encima (rojo fino) |
+| `LADO_TIERRA_PLANTA_SITIO.jpg` | Calzada, cantero, estacionamiento, anillo y acceso, en planta |
+| `CONTEXTO_PLATAFORMA_RODAJE.jpg`, `CONTEXTO_AEROPUERTO_PLANTA.jpg`, `CONTEXTO_PISTA_CABECERAS.jpg` | Plataforma, rodaje, pista y sus marcas; la paja brava como puntos |
+| `CONTEXTO_HORIZONTE.jpg` | Horizonte de cerros visto desde la terminal, con la dirección de cada cámara |
+| `ENCUADRE_CAM_10_PISTA_HORIZONTE.jpg`, `ENCUADRE_CAM_04_AEREA_GENERAL.jpg` | Encuadre aproximado de esas cámaras, en perspectiva y sin render |
 
 Las tres superposiciones de los alzados (`SUPERPOSICION_FACHADA_*`) ahora son proyecciones 2D: no están hechas con render. Las de la fachada NE y de los cortes siguen siendo las del 3 de octubre, hechas con render, y `lamina_verificacion_alzados.jpg` todavía muestra el Lado Aire anterior.
+
+Los encuadres (`ENCUADRE_*`) tampoco son renders: son una proyección en perspectiva dibujada con matplotlib, sin luz, sombras ni cielo, y con orden de pintor (alguna cara grande puede quedar mal ordenada). Sirven para revisar qué entra en cuadro, no cómo se verá.
 
 ## 10. Cómo llevarlo a un `.blend` con avance propio
 
@@ -210,5 +208,107 @@ Estos cambios tocan la geometría de casi todo el edificio, así que no hay parc
 - **Recomendado:**
   1. regenerar desde `uyuni_modelo.py`;
   2. volver a enlazar las colecciones propias (TRASPASO.md, sección 7).
-- **Se borran al regenerar:** los objetos dentro de las colecciones del script, incluida la nueva `10_MANGAS_AERONAVES`.
+- **Se borran al regenerar:** los objetos dentro de las colecciones del script, incluidas las nuevas `10_MANGAS_AERONAVES` y `11_CONTEXTO_AEROPUERTO`.
 - **`aplicar_cambios_reunion.py`:** ya conoce los nombres nuevos del retenedor, así que no lo duplica.
+- **`aplicar_cambios_4oct.py`:** además de las decisiones de color de la mañana, pasa la carpintería a negro mate (sección 11.1) en un `.blend` existente. El resto de esta lista es geometría: se regenera.
+
+## 11. Respuestas del cliente y contexto (noche del 4 de octubre)
+
+### 11.1 Carpintería en negro mate
+
+- **Color:** `PERFIL_COLOR` pasa de antracita `#3A3E41` a negro mate **`#2E2F31`** (≈ 0,027 de luminancia lineal: el negro más oscuro que en el render no se vuelve un hueco sin forma).
+- **Acabado:** pintura en polvo mate: sin metálico (antes 0,25) y rugosidad 0,60 (`PERFIL_RUGOSIDAD`).
+- **Alcance:**
+  - perfiles de las mamparas, rombos ME-3, ventanas y cajas del Lado Aire;
+  - puertas de acero, con el mismo acabado (`UY_PUERTA_ACERO_NEGRO_MATE`);
+  - viga y operador de la ME-2, que antes usaban el sello negro.
+- **Material:** `UY_ALUMINIO_NEGRO_MATE` (`mat_perfil()`), en lugar de `UY_ALUMINIO_ANTRACITA_MATE`. Las herramientas de prueba (`prueba_materiales.py`, `prueba_fotorrealismo.py`) usan el nombre nuevo.
+
+### 11.2 Veredas del Lado Tierra según la A111
+
+- **Cordón (capa A-FLOR, `cordon_tierra()`):**
+  - línea general a Y −8,413: la vereda tiene ≈ 8,8 m desde el muro;
+  - **dos dársenas** de ascenso y descenso (X 20,975–34,004 y 62,96–75,988): 2,10 m de fondo, tramo recto de 7,17 m y rampas a 45° con curvas de r 1,0 (`DARSENAS_TIERRA`, `DARSENA`);
+  - esquina oeste: curva de r 4,021 y contracurva de r 1,0 hasta X 0,43; esquina este de r 1,0;
+  - sigue en los cordones laterales (X −3,57 y 85,515) hasta el Lado Aire.
+- **Vereda** (`UY_VEREDA_TIERRA`) de hormigón fratasado, con la **zanja** de drenaje y su rejilla a lo largo del alero (X −0,23 a 72,56).
+- **Verificación:** el cordón del modelo coincide con el de la A111 con un desvío máximo de 1,0 cm (medio, 1,6 mm), por la discretización de los arcos.
+- **Detalle:** el borde de cada vereda queda 1 cm dentro de su cordón, y el asfalto 5 cm por debajo de él. Así no hay caras coplanares (también en las veredas del Lado Aire).
+- **Proxies:** las vagonetas y el minibús van en la calzada y en las dársenas; los turistas, en la vereda.
+- **Cámaras:** cambia lo que se ve en CAM_01, CAM_03, CAM_05, CAM_06 y CAM_07. Ninguna se movió.
+
+### 11.3 Contexto nuevo (no está en los planos del cliente)
+
+Armado con la vista aérea del modelo del cliente y con los datos publicados del aeródromo.
+
+**Calles y estacionamiento del Lado Tierra (`calzada_tierra()`, `islas_tierra()`, `senalizacion_tierra()`):**
+- **Calzada frontal:** dos carriles (7,0 m) con sentido hacia el eje 1, para que el edificio quede a la derecha del conductor; línea de carril discontinua y trazos en la boca de cada dársena.
+- **Cantero central:** 3,0 m, cortado por dos pasos peatonales tipo cebra frente a las dos ME-2.
+- **Estacionamiento:** cuatro filas a 90° de 30 puestos de 2,50 × 5,00 (120 puestos), con pasillos de 6,0 m.
+- **Islas:** de grava volcánica oscura con cordón de hormigón: las islas negras del modelo del cliente.
+- **Anillo de 7,0 m alrededor del estacionamiento:**
+  - por los testeros sube hasta la plataforma (las calles que unen el Lado Tierra con el Lado Aire en la vista aérea);
+  - por el sur sale el **camino de acceso** hacia Uyuni (−X, 3 km);
+  - eje amarillo discontinuo en los tramos de doble sentido y bordes blancos en el acceso.
+
+**Pista, rodaje y plataforma (`contexto_aeropuerto()`, colección `11_CONTEXTO_AEROPUERTO`):**
+- **Pista 13/31:** 4000 × 45 m de asfalto, con zonas de parada de 60 m con chevrones amarillos.
+- **Marcas OACI:**
+  - umbral de 12 franjas;
+  - designación "31" y "13" en cifras de 9 m, legibles desde cada aproximación;
+  - eje discontinuo;
+  - punto de visada a 400 m;
+  - zona de toma de contacto;
+  - bordes de 0,90 m.
+- **Posición:**
+  - las cabeceras se pasaron de sus coordenadas publicadas a coordenadas locales con la georreferencia del IFC: X −1034,5 (cabecera 31) y X 2962,6 (cabecera 13);
+  - la pista resulta **paralela al eje X**, como el edificio;
+  - esa misma georreferencia la pone a ≈ 55 m del Lado Tierra, lo que no puede ser: el origen del IFC no está en el sitio real de la terminal;
+  - se mantuvieron las X y la orientación, y el eje se puso del Lado Aire a una **distancia supuesta de 330 m** (`PISTA["y"]`). Así la plataforma queda fuera de la franja de 150 m, y las colas de los 737 y la cumbrera quedan bajo la superficie de transición 1:7.
+- **Calle de rodaje:** de 23 m, de la plataforma a la pista en X 150, con curvas de enlace, eje amarillo que sale de la calle de rodaje de la plataforma, punto de espera a 90 m del eje de la pista y curvas de entrada a la pista en los dos sentidos.
+- **Plataforma:** pasa a X −110..200 e Y 40..130 (antes −160..260 y 40..175).
+- **Manga de viento** junto a la pista, naranja y blanca.
+
+**Terreno (`terreno()`):**
+- el plano de 4 × 4 km pasa a una malla polar de **45 km de radio**, plana hasta 3,5 km;
+- más allá, la curvatura de la Tierra (con refracción) y **cordones de cerros** (`CERROS`): la cordillera de Chichas al este (hasta ≈ 2,4° sobre el horizonte) y lomas al sur y al norte;
+- al oeste y noroeste, el **Salar de Uyuni** desde 15 km: plano y blanco (atributo `salar` de la malla, que lee `mat_suelo`). Desde una cámara alta se ve como franja blanca en el horizonte;
+- `mat_suelo` aclara y enfría el color con la distancia (perspectiva aérea aproximada);
+- la lámina `CONTEXTO_HORIZONTE.jpg` muestra el horizonte por azimut y hacia dónde mira cada cámara;
+- las cámaras ven hasta 60 km (`clip_end`).
+
+**Paja brava (`paja_brava()`):**
+- matas de 0,3 a 0,8 m (*Festuca orthophylla*), en manchas, en el suelo libre hasta 650 m del edificio. No van en calles, veredas, plataforma ni rodaje, ni en la franja de 75 m a cada lado del eje de la pista;
+- más densas en las islas del estacionamiento y en el cantero;
+- son 21 981 instancias de Geometry Nodes de una sola malla (`UY_PAJA_BRAVA_MATA`, oculta en el render), sobre los puntos de `UY_PAJA_BRAVA_DISPERSION`: casi no pesan en memoria.
+
+### 11.4 Librea de BoA en los dos 737-800
+
+El cliente confirmó que BoA tiene autorización. No hubo referencia gráfica de la librea: es una aproximación.
+- fuselaje blanco;
+- **deriva y winglets en azul BoA** `#1C3F94`;
+- **tres franjas rojo, amarillo y verde** (los colores de la bandera) que cruzan la deriva en diagonal, como una cola de ave en vuelo;
+- **"BoA"** en azul sobre las ventanillas delanteras, de 1,10 m de alto, y "Boliviana de Aviación" debajo de ellas, en los dos lados y legibles desde cada uno.
+
+En el script:
+- `LIBREA_BOA`, `franjas_deriva()`, `texto_fuselaje()` y `piel_deriva()`;
+- la deriva se arma con estaciones cada ≈ 0,6 m (`estaciones_deriva()`), para que la librea, a 6 mm de la piel, quede siempre por fuera.
+
+### 11.5 Cámara nueva
+
+- **`CAM_10_PISTA_HORIZONTE`:** aérea desde el oeste, a 90 m sobre el borde de la pista, con lente de 30 mm.
+  - la pista nace abajo a la izquierda y llega al horizonte;
+  - la calle de rodaje lleva a la plataforma;
+  - los dos 737 y la terminal quedan a la derecha;
+  - al fondo (mira al noroeste) queda el Salar.
+- Sin renderizar: se revisó con `ENCUADRE_CAM_10_PISTA_HORIZONTE.jpg`.
+
+### 11.6 Para confirmar con el cliente
+
+1. **Distancia de la pista a la terminal:**
+   - se supuso 330 m entre la fachada y el eje de la pista;
+   - con un plano de sitio o la distancia real, se corrige con un solo parámetro (`PISTA["y"]`);
+   - también confirmar en qué tramo de la pista queda la terminal: con la georreferencia del IFC, a 1 km de la cabecera 31.
+2. **Calles, estacionamiento y acceso:** son una propuesta de contexto, no un diseño. Si hay un plano de urbanización o de accesos, se reemplazan.
+3. **Cerco perimetral:** no se modeló. Las calles de los testeros llegan a la plataforma sin portón, como en la vista aérea del cliente. ¿Dónde va el límite del Lado Aire?
+4. **Librea:** con una foto o el manual de marca de BoA, se ajustan los colores, el logo de la deriva y la tipografía del nombre.

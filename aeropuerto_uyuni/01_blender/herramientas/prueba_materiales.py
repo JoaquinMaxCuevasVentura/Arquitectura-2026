@@ -419,7 +419,7 @@ t0 = time.time()
 for nombre, valor in (("CHAPA_CUBIERTA", 0.0), ("CHAPA_ANTEPECHO_REMATES", 0.0), ("BASTIDOR_CELOSIAS", 0.0),
                       ("CELOSIA_CORTEN_O_BLANCA", 0.0)):
     metalico_binario(mat(nombre), valor)
-bsdf(mat("ALUMINIO_ANTRACITA_MATE")).inputs["Metallic"].default_value = 0.0
+bsdf(mat("ALUMINIO_NEGRO_MATE")).inputs["Metallic"].default_value = 0.0
 let = bsdf(mat("LETRERO_BLANCO_O_CORTEN")).inputs["Metallic"]
 if let.is_linked and let.links[0].from_node.type == "MIX":
     next(x for x in let.links[0].from_node.inputs if x.name == "B" and x.type == "VALUE").default_value = 0.0
@@ -437,7 +437,7 @@ for nombre in ("REVOQUE_CONTINUO", "REVOQUE_FACHADA_BUNAS"):
 for nombre in ("CHAPA_ANTEPECHO_REMATES", "CHAPA_CUBIERTA"):
     ruido_rugosidad(mat(nombre), 0.06, 2.5)
     capa_polvo(mat(nombre), w_cav=0.6, w_arr=0.55, opacidad=0.60, dist_ao=0.06, pelicula=0.12)
-capa_polvo(mat("ALUMINIO_ANTRACITA_MATE"), w_cav=0.5, w_arr=0.7, w_pie=0.6, opacidad=0.60, dist_ao=0.10, pelicula=0.08)
+capa_polvo(mat("ALUMINIO_NEGRO_MATE"), w_cav=0.5, w_arr=0.7, w_pie=0.6, opacidad=0.60, dist_ao=0.10, pelicula=0.08)
 capa_polvo(mat("BASTIDOR_CELOSIAS"), w_cav=0.4, w_arr=0.6, opacidad=0.50, dist_ao=0.10, pelicula=0.08)
 galvanizado_spangle(mat("ACERO_GALVANIZADO"))
 capa_polvo(mat("ACERO_GALVANIZADO"), w_cav=0.3, w_arr=0.7, opacidad=0.55, dist_ao=0.05, pelicula=0.10)

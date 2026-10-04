@@ -33,10 +33,10 @@ ancho = int(args[5]) if len(args) > 5 else 1280
 muestras = int(args[6]) if len(args) > 6 else 96
 
 BISEL = {"CHAPA_CUBIERTA": 0.004, "CHAPA_ANTEPECHO_REMATES": 0.004, "LETRERO_BLANCO_O_CORTEN": 0.006,
-         "REVOQUE_CONTINUO": 0.008, "REVOQUE_FACHADA_BUNAS": 0.008, "ALUMINIO_ANTRACITA_MATE": 0.002,
+         "REVOQUE_CONTINUO": 0.008, "REVOQUE_FACHADA_BUNAS": 0.008, "ALUMINIO_NEGRO_MATE": 0.002,
          "HORMIGON_VISTO": 0.005, "ACERO_GALVANIZADO": 0.002, "CIELO_LISTONES": 0.003}          # radio (m)
 RUGOSIDAD = {"CHAPA_CUBIERTA": (0.07, 2.5), "CHAPA_ANTEPECHO_REMATES": (0.07, 2.5),
-             "ALUMINIO_ANTRACITA_MATE": (0.05, 6.0), "ACERO_GALVANIZADO": (0.06, 6.0)}            # (amplitud, escala)
+             "ALUMINIO_NEGRO_MATE": (0.05, 6.0), "ACERO_GALVANIZADO": (0.06, 6.0)}            # (amplitud, escala)
 
 bpy.ops.wm.open_mainfile(filepath=blend)
 sc = bpy.data.scenes[escena]
