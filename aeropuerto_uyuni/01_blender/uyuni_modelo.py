@@ -152,12 +152,19 @@ CIELO_ATMOSFERA = dict(air_density=0.9, aerosol_density=0.02, dust_density=0.02,
 PALETA = {
     "cubierta":  (("#373C40", 0.35, 0.45), ("#C3C6C8", 0.55, 0.35)),   # P1 antracita RAL 7016 | P2 gris claro aluminio
     "antepecho": (("#373C40", 0.15, 0.55), ("#ECEBE6", 0.0, 0.50)),    # parapeto y remates: antracita mate | blanco perla
-    "muro":      (("#B9B5AD", 0.0, 0.92), ("#6B6E70", 0.0, 0.90)),     # revoque continuo: hormigón claro | gris neutro
+    "muro":      (("#B9B5AD", 0.0, 0.92), ("#575B5E", 0.0, 0.90)),     # revoque continuo: hormigón claro | gris oscuro (4 oct)
     "cielo":     (("#8C5A34", 0.0, 0.55), ("#EDECE8", 0.0, 0.50)),     # listones: símil madera | blanco
     "celosia":   (("#8E4524", 0.20, 0.80), ("#EFEEE9", 0.0, 0.50)),    # corten oxidado (color medio) | blanco perla
-    "bastidor":  (("#232323", 0.60, 0.50), ("#6B6E70", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
+    "bastidor":  (("#232323", 0.60, 0.50), ("#575B5E", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
 }
 PERFIL_COLOR = "#3A3E41"          # carpintería de aluminio antracita mate (no negro brillante), en las dos propuestas
+# Revisión del 4 de octubre: en P2 (parapeto blanco) las letras y pirámides van en gris oscuro, no en blanco; propiedad
+# "letras_gris" de la escena (1 en P2). Letras del tamaño original: geometría A.
+LETRAS_GRIS = "#45494C"
+# Vidrio elegido el 4 de octubre: DVH con laminado incoloro 3+3 adentro, cámara y 4 mm con control solar afuera. Tono
+# oscuro y poca reflexión, para que la fachada no sea un espejo ciego (MATERIALES_INTELIGENTES.md, sección 4, variante 6).
+# El reflejo sale de una capa fina: a cuarto de onda sobre vidrio, IOR 1,8 da ≈ 13 % por cara, con pico en 4·n·d ≈ 482 nm.
+VIDRIO = dict(tinte="#6E808E", capa_nm=67.0, capa_ior=1.8, onda_paso=0.33, polvo_ao=0.12)
 
 PREFIJO = "UY_"
 COLECCIONES = ["_REF_CAD", "01_ESTRUCTURA", "02_ENVOLVENTE", "03_CARPINTERIAS_M1", "04_CUBIERTA_INDUSTRIAL",
@@ -566,12 +573,44 @@ def mat_cielo():
 
 
 def mat_vidrio():
-    """Vidrio de control solar semirreflectivo (ref. Banco Mercantil Santa Cruz, Achumani)."""
-    mat = mat_simple("VIDRIO_CONTROL_SOLAR", "#C5D8E8", metal=0.15, rug=0.02, IOR=1.52, Transmission_Weight=0.80)
-    nb_bsdf = mat.node_tree.nodes.get("Principled BSDF")
-    if nb_bsdf and "Thin Wall" in nb_bsdf.inputs:
-        nb_bsdf.inputs["Thin Wall"].default_value = True
-    mat.diffuse_color = (0.55, 0.65, 0.72, 0.6)
+    """Vidrio de control solar elegido el 4 de octubre (VIDRIO): dieléctrico con transmisión, sin metálico. El color base
+    es el tinte de transmisión y el reflejo sale de una capa fina de baja reflexión (Thin Film), como en un vidrio real.
+    Cada paño es una caja de 27 mm con Thin Wall: sus dos caras hacen de las dos hojas del DVH. Lleva ondas de templado
+    por paño (roller wave) y polvo fino junto a la perfilería, que solo toca la rugosidad (nunca la altura de un Bump)."""
+    mat = bpy.data.materials.new(PREFIJO + "VIDRIO_CONTROL_SOLAR")
+    nb = Nodos(mat)
+    nb.ent("Base Color", srgb(VIDRIO["tinte"]))
+    nb.ent("Metallic", 0.0)
+    nb.ent("IOR", 1.52)
+    nb.ent("Transmission Weight", 1.0)
+    nb.ent("Thin Wall", True)
+    nb.ent("Thin Film Thickness", VIDRIO["capa_nm"])
+    nb.ent("Thin Film IOR", VIDRIO["capa_ior"])
+    geo = nb.n("ShaderNodeNewGeometry")
+    # ondas de templado: bandas horizontales de ~0,33 m (paso de los rodillos) con fase al azar por paño
+    onda = nb.n("ShaderNodeTexWave", wave_type="BANDS", bands_direction="Z")
+    onda.inputs["Scale"].default_value = 2 * math.pi / 20 / VIDRIO["onda_paso"]
+    onda.inputs["Distortion"].default_value = 0.6
+    onda.inputs["Detail"].default_value = 0.0
+    nb.nt.links.new(geo.outputs["Position"], onda.inputs["Vector"])
+    nb.con(nb.m("MULTIPLY", geo.outputs["Random Per Island"], 2 * math.pi), onda.inputs["Phase Offset"])
+    bump = nb.n("ShaderNodeBump")
+    bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.03, 0.003
+    nb.con(onda.outputs["Fac"], bump.inputs["Height"])
+    nb.ent("Normal", bump.outputs["Normal"])
+    # polvo fino junto a la perfilería: AO corto con los demás objetos -> rugosidad de 0,02 a 0,18
+    ao = nb.n("ShaderNodeAmbientOcclusion", samples=2, only_local=False)
+    ao.inputs["Distance"].default_value = VIDRIO["polvo_ao"]
+    borde = nb.n("ShaderNodeMapRange", interpolation_type="SMOOTHSTEP", clamp=True)
+    nb.con(nb.m("SUBTRACT", 1.0, ao.outputs["AO"]), borde.inputs["Value"])
+    borde.inputs["From Min"].default_value, borde.inputs["From Max"].default_value = 0.10, 0.50
+    polvo = nb.m("MULTIPLY", borde.outputs["Result"], nb.ruido(14.0, 4.0, geo.outputs["Position"]))
+    rug = nb.n("ShaderNodeMapRange", clamp=True)
+    nb.con(polvo, rug.inputs["Value"])
+    rug.inputs["From Min"].default_value, rug.inputs["From Max"].default_value = 0.0, 0.6
+    rug.inputs["To Min"].default_value, rug.inputs["To Max"].default_value = 0.02, 0.18
+    nb.ent("Roughness", rug.outputs["Result"])
+    mat.diffuse_color = (0.25, 0.32, 0.37, 0.7)
     return mat
 
 
@@ -637,30 +676,44 @@ def mat_hormigon():
     return mat
 
 
-def mat_emisor(nombre, color, propiedad, fuerza_base=1.0):
-    """Emisión cálida cuya intensidad sale de la propiedad 'propiedad' de la escena / view layer."""
+def mat_emisor(nombre, color, propiedad, fuerza_base=1.0, kelvin=None):
+    """Emisión cálida cuya intensidad sale de la propiedad 'propiedad' de la escena / view layer.
+
+    Con 'kelvin', el color sale de un Blackbody a esa temperatura. En Cycles, el Blackbody tiene luminancia 1: la
+    fuerza se multiplica por la luminancia de 'color' para que el brillo quede igual y solo cambie el tono."""
     mat = bpy.data.materials.new(PREFIJO + nombre)
     nb = Nodos(mat)
     nb.ent("Base Color", srgb("#202020"))
-    nb.ent("Emission Color", srgb(color))
+    if kelvin:
+        bb = nb.n("ShaderNodeBlackbody")
+        bb.inputs["Temperature"].default_value = kelvin
+        nb.ent("Emission Color", bb.outputs["Color"])
+        c = srgb(color)
+        fuerza_base *= 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+    else:
+        nb.ent("Emission Color", srgb(color))
     nb.ent("Emission Strength", nb.m("MULTIPLY", nb.atributo(propiedad), fuerza_base))
     mat.diffuse_color = srgb(color)
     return mat
 
 
 def mat_letrero():
-    """Letras, pirámides y horizonte: blanco satinado o acero corten como las celosías (propiedad "letras_corten" de
-    la escena: 0 blanco, 1 corten). De noche, las blancas emiten (propiedad "luz_letrero")."""
+    """Letras, pirámides y horizonte: blanco satinado, gris oscuro o acero corten como las celosías. Propiedades de la
+    escena: "letras_corten" (1 corten) y, si no es corten, "letras_gris" (1 gris oscuro, 0 blanco). P1 va en corten y
+    P2 en gris oscuro sobre el parapeto blanco (4 de octubre). De noche, solo las blancas emiten ("luz_letrero")."""
     mat = bpy.data.materials.new(PREFIJO + "LETRERO_BLANCO_O_CORTEN")
     nb = Nodos(mat)
     tc, _ = nb.coord()
     k = nb.atributo("letras_corten")
+    g = nb.atributo("letras_gris")
     corten, r2n = color_corten(nb, tc)
-    nb.ent("Base Color", nb.mixc(k, srgb("#F3F3EF"), corten))
-    nb.ent("Roughness", nb.mixf(k, 0.28, nb.m("ADD", 0.74, nb.m("MULTIPLY", r2n, 0.15))))
+    pintura = nb.mixc(g, srgb("#F3F3EF"), srgb(LETRAS_GRIS))
+    nb.ent("Base Color", nb.mixc(k, pintura, corten))
+    nb.ent("Roughness", nb.mixf(k, nb.mixf(g, 0.28, 0.45), nb.m("ADD", 0.74, nb.m("MULTIPLY", r2n, 0.15))))
     nb.ent("Metallic", nb.mixf(k, 0.0, 0.2))
     nb.ent("Emission Color", srgb("#FFF6E8"))
-    nb.ent("Emission Strength", nb.m("MULTIPLY", nb.atributo("luz_letrero"), nb.m("SUBTRACT", 1.0, k)))
+    blancas = nb.m("MULTIPLY", nb.m("SUBTRACT", 1.0, k), nb.m("SUBTRACT", 1.0, g))
+    nb.ent("Emission Strength", nb.m("MULTIPLY", nb.atributo("luz_letrero"), blancas))
     mat.diffuse_color = srgb("#F3F3EF")
     return mat
 
@@ -683,7 +736,7 @@ def crear_materiales():
         plenum=mat_simple("PLENUM_NEGRO_MATE", "#030303", rug=1.0),
         galvanizado=mat_simple("ACERO_GALVANIZADO", "#9DA1A5", metal=0.9, rug=0.35),
         bastidor=mat_propuesta("BASTIDOR_CELOSIAS", "bastidor"),
-        interior=mat_emisor("INTERIOR_LUZ_CALIDA", "#FFB46B", "luz_interior"),
+        interior=mat_emisor("INTERIOR_LUZ_CALIDA", "#FFB46B", "luz_interior", kelvin=3500),   # mismo brillo, sin naranja
         piso_int=mat_simple("PISO_INTERIOR_GRES", "#8F8A82", rug=0.35),
         luminaria=mat_emisor("LUMINARIA_ALERO", "#FFC27A", "luz_alero", 40.0),
         letrero=mat_letrero(),
@@ -1530,10 +1583,11 @@ def georreferencia(sc):
 # =============================================================================
 # 6. EJECUCIÓN
 # =============================================================================
-# Propiedades que leen los materiales: "propuesta" (0 = P1, 1 = P2) y "letras_corten" (1 = corten, 0 = blanco)
-PROPIEDADES_ESCENA = {"UYUNI_DIA": dict(propuesta=0, letras_corten=1),
-                      "UYUNI_DIA_P2_SALAR_LITIO": dict(propuesta=1, letras_corten=0),
-                      "UYUNI_CREPUSCULO": dict(propuesta=0, letras_corten=0)}
+# Propiedades que leen los materiales: "propuesta" (0 = P1, 1 = P2), "letras_corten" (1 = corten) y "letras_gris"
+# (1 = gris oscuro, 0 = blanco, si no son corten)
+PROPIEDADES_ESCENA = {"UYUNI_DIA": dict(propuesta=0, letras_corten=1, letras_gris=0),
+                      "UYUNI_DIA_P2_SALAR_LITIO": dict(propuesta=1, letras_corten=0, letras_gris=1),
+                      "UYUNI_CREPUSCULO": dict(propuesta=0, letras_corten=0, letras_gris=0)}
 
 
 def propiedades_escena(sc):

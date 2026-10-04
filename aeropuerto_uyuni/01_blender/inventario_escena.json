@@ -46,6 +46,7 @@
     "luz_letrero": 2.5,
     "propuesta": 0.0,
     "letras_corten": 0.0,
+    "letras_gris": 0.0,
     "UTM_EPSG": 32719.0,
     "UTM_E_origen": 724956.439,
     "UTM_N_origen": 7737860.959,
@@ -95,6 +96,7 @@
     "luz_letrero": 0.0,
     "propuesta": 0.0,
     "letras_corten": 1.0,
+    "letras_gris": 0.0,
     "UTM_EPSG": 32719.0,
     "UTM_E_origen": 724956.439,
     "UTM_N_origen": 7737860.959,
@@ -144,6 +146,7 @@
     "luz_letrero": 0.0,
     "propuesta": 1.0,
     "letras_corten": 0.0,
+    "letras_gris": 1.0,
     "UTM_EPSG": 32719.0,
     "UTM_E_origen": 724956.439,
     "UTM_N_origen": 7737860.959,
@@ -7189,6 +7192,7 @@
    ],
    "nodos": [
     "ShaderNodeAttribute",
+    "ShaderNodeBlackbody",
     "ShaderNodeBsdfPrincipled",
     "ShaderNodeMath",
     "ShaderNodeOutputMaterial"
@@ -7205,6 +7209,7 @@
    ],
    "propiedades_de_escena_que_lee": [
     "letras_corten",
+    "letras_gris",
     "luz_letrero"
    ],
    "nodos": [
@@ -7753,15 +7758,22 @@
    "nombre": "UY_VIDRIO_CONTROL_SOLAR",
    "usuarios": 15,
    "color_visor": [
-    0.55,
-    0.65,
-    0.72,
-    0.6
+    0.25,
+    0.32,
+    0.37,
+    0.7
    ],
    "propiedades_de_escena_que_lee": [],
    "nodos": [
+    "ShaderNodeAmbientOcclusion",
     "ShaderNodeBsdfPrincipled",
-    "ShaderNodeOutputMaterial"
+    "ShaderNodeBump",
+    "ShaderNodeMapRange",
+    "ShaderNodeMath",
+    "ShaderNodeNewGeometry",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeTexNoise",
+    "ShaderNodeTexWave"
    ]
   },
   {

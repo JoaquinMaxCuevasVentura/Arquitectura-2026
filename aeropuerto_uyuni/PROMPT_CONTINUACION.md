@@ -51,8 +51,8 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - No rehagas lo que ya está hecho ni descartes tu avance.
 
 1. Integra los cambios de la reunión en el formal sin perder tu avance.
-   - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta 01_blender/herramientas/aplicar_cambios_reunion.py sobre la copia (CAMBIOS_REUNION_3OCT.md, sección 2A).
-   - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C y aeropuerto_uyuni/CAMBIOS_REUNION_3OCT_uyuni_modelo.diff.
+   - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta sobre la copia 01_blender/herramientas/aplicar_cambios_reunion.py (CAMBIOS_REUNION_3OCT.md, sección 2A) y después aplicar_cambios_4oct.py (decisiones del 4 de octubre: letras gris oscuro y muros más oscuros en P2, vidrio elegido, geometría A).
+   - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C y aeropuerto_uyuni/CAMBIOS_REUNION_3OCT_uyuni_modelo.diff; las del 4 de octubre están en TRASPASO.md (sección 5, puntos 2, 11 y 12) y en uyuni_modelo.py (LETRAS_GRIS, VIDRIO, mat_letrero, mat_vidrio y mat_emisor).
    - Verifica con CAM_07_PROPUESTAS en UYUNI_DIA (P1) y UYUNI_DIA_P2_SALAR_LITIO (P2), contra los renders finales.
 
 2. Completa la revisión contra el DXF (TRASPASO.md, sección 6):
@@ -91,18 +91,18 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
 Reglas:
 - No cambies las decisiones del cliente (TRASPASO.md, sección 5) sin preguntarme. En particular:
   - el letrero "línea de horizonte" va despegado 12 cm de la chapa, con pirámides facetadas en 3D, y lleva un juego de 3 pirámides sin texto sobre la puerta de salida;
-  - las dos propuestas de color y las dos geometrías del letrero tienen que seguir funcionando hasta que el cliente elija:
+  - las dos propuestas de color tienen que seguir funcionando hasta que el cliente elija:
     - P1 "Patrimonio Ferroviario": corten, parapeto antracita, letrero corten;
-    - P2 "Salar & Litio": blanco integral, muros grises;
-    - geometría A: sobresale; geometría B: contenida;
-    - todo se maneja con las propiedades de escena "propuesta" y "letras_corten" y con las colecciones LETRERO_A_SOBRESALE y LETRERO_B_CONTENIDO;
+    - P2 "Salar & Litio": blanco integral; letras y pirámides en gris oscuro (#45494C) y muros en gris más oscuro (#575B5E), decisión del 4 de octubre;
+    - geometría del letrero: la A (tamaño original, sin reducción), decidida el 4 de octubre. La B se conserva, pero ya no se entrega;
+    - todo se maneja con las propiedades de escena "propuesta", "letras_corten" y "letras_gris" y con las colecciones LETRERO_A_SOBRESALE y LETRERO_B_CONTENIDO;
   - el retenedor de nieve es un doble tubo de 1", de 18 cm de alto, sobre la primera correa;
   - muros y columnas de revoque continuo, sin juntas y con buñas solo en la viga;
   - cielo del alero listonado sobre plenum negro;
   - carpintería antracita mate;
   - sin bolardos ni postes de iluminación peatonal;
   - el hero shot es con luz de mañana;
-  - vidrio de las fachadas (4 de octubre): DVH con laminado incoloro de 3+3 mm adentro y 4 mm con control solar afuera; tono oscuro y poca reflexión, para que la fachada no parezca un espejo ciego y deje ver la estructura de adentro (MATERIALES_INTELIGENTES.md, sección 4, variante 6);
+  - vidrio de las fachadas (4 de octubre): DVH con laminado incoloro de 3+3 mm adentro y 4 mm con control solar afuera; tono oscuro y poca reflexión, para que la fachada no parezca un espejo ciego y deje ver la estructura de adentro. Ya está en el modelo (VIDRIO; MATERIALES_INTELIGENTES.md, sección 4, variante 6);
   - Lado Aire (4 de octubre): perspectiva general aprobada; faltan mangas, aeronaves y la pista hasta el horizonte (paso 6b).
 - Realismo (guía de realismo):
   - mejora la manera de fotografiar el edificio, no el edificio;

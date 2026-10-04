@@ -170,6 +170,7 @@ Se suman a las de `TRASPASO.md` (sección 10):
 - **Nodo Musgrave:** no existe desde 4.1. `Noise Texture` tiene tipos (`FBM`, `MULTIFRACTAL`, `RIDGED_MULTIFRACTAL`, `HYBRID_MULTIFRACTAL`, `HETERO_TERRAIN`) y `Distortion`.
 - **`bmesh`:** con el módulo `bpy`, existe recién después de `import bpy`.
 - **Emisión sin muestreo:** `material.cycles.emission_sampling = "NONE"`.
+- **`Blackbody` tiene luminancia 1** (medido en 5.2). Si un emisor pasa de RGB a Kelvin, hay que multiplicar su fuerza por la luminancia del color anterior para no cambiar el brillo. `mat_emisor(..., kelvin=)` del modelo ya lo hace.
 - **Luces:** `light.use_temperature` y `light.temperature`; las Area Lights tienen `spread`.
 - **Light Groups:** `view_layer.lightgroups.add(name=...)` y `objeto.lightgroup`. El mundo también tiene `lightgroup`.
 - **`Bump`:** todo lo que alimenta su altura se evalúa tres veces. Un AO o un Bevel ahí triplica su costo.

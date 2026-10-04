@@ -121,7 +121,7 @@ Valores de color en sRGB; entre paréntesis, la luminancia lineal (rango físico
 | `UY_CHAPA_CUBIERTA` | P1 `#373C40`, met 0,35, rug 0,45. P2 `#C3C6C8`, met 0,55, rug 0,35 | **P1:** chapa prepintada, met **0**, rug 0,45 ± 0,06. **P2:** hay que definir si es chapa pintada gris (met 0) o aluzinc sin pintar (met 1, base ≈ `#B8BBBD`, con *spangle*). Polvo: cavidades 0,6 (AO 0,06 m, nervios), arriba 0,55, velo 0,12, opacidad 0,6. Es lo que más se ve en las aéreas |
 | `UY_CHAPA_ANTEPECHO_REMATES` | P1 met 0,15; P2 met 0 | met **0**; rug ± 0,06; polvo en los valles de los nervios (AO 0,06 m) y en la cara superior del remate, con un velo de 0,12: en lo oscuro, nada queda negro puro en un lugar polvoriento |
 | `UY_CELOSIA_CORTEN_O_BLANCA` | P1 met 0,20, rug 0,80; P2 `#EFEEE9` (0,85) | **P1, corten inteligente:** met **0**; lotes por plancha (*Random Per Island*): ±15 % de valor, y en algo menos de la mitad de las planchas un tono más pardo (`#5E2C1A`); caras superiores (65 %) y cantos (40 %) con pátina densa `#3A1A0E`; rug de 0,80 a 0,92; rug difusa 0,5; salpicado al pie. **P2:** `#E6E5E0` (0,79), met 0, rug 0,45; polvo en los cantos superiores |
-| `UY_LETRERO_BLANCO_O_CORTEN` | corten met 0,20; blanco `#F3F3EF` (0,89), rug 0,28 | **Corten:** igual que la celosía, pero con ±5 % entre piezas (una letra distinta de otra parece un defecto). **Blanco:** `#E5E5E1` (0,78), rug 0,30–0,35 con ruido. Polvo leve en las caras superiores de letras y pirámides |
+| `UY_LETRERO_BLANCO_O_CORTEN` | corten met 0,20; blanco `#F3F3EF` (0,89), rug 0,28; **gris oscuro `#45494C`, rug 0,45, en P2 desde el 4 de octubre** | **Corten:** igual que la celosía, pero con ±5 % entre piezas (una letra distinta de otra parece un defecto). **Blanco:** `#E5E5E1` (0,78), rug 0,30–0,35 con ruido. Polvo leve en las caras superiores de letras y pirámides |
 | `UY_BASTIDOR_CELOSIAS` | P1 `#232323`, met 0,60 | met **0** (acero pintado); polvo arriba |
 | `UY_ALUMINIO_ANTRACITA_MATE` | `#3A3E41`, met 0,25, rug 0,55 | met **0** (pintura en polvo mate), rug 0,55–0,65 con ruido. Polvo en alféizares y travesaños (arriba 0,7) y en el encuentro con el vidrio (AO 0,10 m) |
 | `UY_ACERO_GALVANIZADO` | `#9DA1A5`, met 0,9, rug 0,35 | met **1**; base `#B4B8BA`; *spangle* con Voronoi F1 (escala 60): ±8 % de valor y rug de 0,30 a 0,46. Polvo arriba |
@@ -146,6 +146,7 @@ Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contra
 - **El arquitecto pide menos reflexión:** que la fachada no sea un espejo ciego y deje ver la estructura de adentro (columnas, vigas y carpinterías).
 - **Valida el tono más oscuro:** contrasta y resalta la estructura y los elementos blancos.
 - **Para el render:** la variante 6 es el tinte oscuro de la 5 con una capa de baja reflexión. La reflectancia baja de ≈ 34 % a ≈ 13 % por cara, y el cielo reflejado, un 23 %.
+- **Ya está en `uyuni_modelo.py`:** constante `VIDRIO` y función `mat_vidrio`. Para un `.blend` con avance propio, con `aplicar_cambios_4oct.py`.
 - **Pendiente:** para que se vea la estructura detrás del vidrio, esta tiene que existir en el modelo. Hoy, detrás del vidrio hay una caja vacía: hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
 
 **Hoja:** `01_blender/fotorrealismo/Prueba_vidrio_CAM01.jpg`. **Herramienta:** `01_blender/herramientas/prueba_vidrio.py`.

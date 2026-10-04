@@ -52,7 +52,8 @@ aeropuerto_uyuni/
     ├── propuestas/              hojas comparativas: dos propuestas de color y letrero (material y geometría)
     ├── fotorrealismo/           hojas de las pruebas de realismo: día, materiales, vidrio y noche
     └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas), verificar,
-                                 inventariar, aplicar_cambios_reunion.py (cambios del 3 de octubre sobre un .blend existente)
+                                 inventariar, aplicar_cambios_reunion.py y aplicar_cambios_4oct.py (decisiones del 3 y del
+                                 4 de octubre sobre un .blend existente)
                                  y las pruebas de realismo prueba_*.py
 02_postproduccion/               GUIA_REALISMO_FOTOGRAFICO.md y sus documentos de detalle (fotorrealismo, materiales,
                                  iluminación nocturna), prompts de IA por vista, de upscale y unificar_color.py
@@ -144,6 +145,7 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
    - **A `LETRERO_A_SOBRESALE`:** como en el CAD. Las letras suben 0,25 m por encima del antepecho (+9,264) y el reflejo baja 0,35 m por debajo (+6,264).
    - **B `LETRERO_B_CONTENIDO`:** queda dentro de los 2,40 m del antepecho. El horizonte va al centro (+7,812) y cada pieza se reescala al 72 % sobre su eje, con 12 cm libres arriba y abajo (`LETRERO_B_MARGEN`).
    - Por defecto se ve la A. Para ver la B, excluye la colección A y activa la B en la capa de vista, o usa `herramientas/render_propuestas.py` con las variantes `P1B` y `P2B`.
+   - **Decisión del 4 de octubre: queda la A**, con las letras de tamaño original, sin reducción. La B se conserva en el modelo, pero ya no se entrega.
 3. **Celosías:** 2 en la OESTE, 2 en la ESTE, 5 PT2 en el Lado Tierra y 2 PT2 en el Lado Aire. Las posiciones y variantes exactas están en `CELOSIAS`.
 4. **En los detalles PT1/PT2, las tramas grises son vacíos (calados)** y las líneas salmón son el bastidor que sostiene las planchas por detrás.
 5. **Retenedor de nieve (revisado el 3 de octubre):**
@@ -169,10 +171,10 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     |---|---|---|
     | Celosías | Acero corten, óxido cobrizo cálido | Blanco perla |
     | Parapeto y remates | Antracita mate | Blanco perla |
-    | Letrero y pirámides | **Corten** (`letras_corten` = 1) | Blanco, con sombras por relieve |
+    | Letrero y pirámides | **Corten** (`letras_corten` = 1) | **Gris oscuro** `#45494C` (`letras_gris` = 1), decidido el 4 de octubre |
     | Cubierta | Antracita | Gris claro metálico |
     | Cielo listonado | Símil madera | Blanco |
-    | Muros y columnas | Hormigón claro `#B9B5AD` | Gris neutro `#6B6E70` |
+    | Muros y columnas | Hormigón claro `#B9B5AD` | **Gris oscuro** `#575B5E` (4 de octubre; antes `#6B6E70`) |
     | Carpintería | Antracita mate | Antracita mate |
 
     El color de la cubierta, la madera del cielo en P1 y el bastidor de las celosías (color del muro en P2) no se pidieron expresamente: son propuestas mías y conviene confirmarlas.
@@ -185,7 +187,9 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
       - vidrio exterior de 4 mm, acoplado o laminado con una lámina o un tratamiento de control solar.
     - **Menos reflexión:** el arquitecto pide bajar la reflectividad del vidrio exterior. La fachada no debe parecer un espejo ciego: tiene que dejar ver la estructura de adentro (columnas, vigas y carpinterías).
     - **Tono más oscuro:** se valida, porque contrasta y resalta la estructura y los elementos blancos del edificio.
-    - **En el render:** variante 6 de `02_postproduccion/MATERIALES_INTELIGENTES.md`, sección 4 (tinte `#6E808E` y capa de baja reflexión). Para que se vea la estructura detrás del vidrio hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
+    - **En el modelo:** ya está, con la variante 6 de `02_postproduccion/MATERIALES_INTELIGENTES.md`, sección 4 (`VIDRIO` y `mat_vidrio`: tinte `#6E808E` y capa de baja reflexión). Para que se vea la estructura detrás del vidrio, falta modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
+    - **Opciones finales para el cliente (4 de octubre):** P1 con letras corten sobre el parapeto antracita y P2 con letras gris oscuro sobre el parapeto blanco, las dos con la geometría A y este vidrio.
+    - **Para llevarlo a un `.blend` con avance propio:** `01_blender/herramientas/aplicar_cambios_4oct.py`, después de `aplicar_cambios_reunion.py`.
 13. **Fachada Lado Aire, pista y plataforma (4 de octubre):**
     - se aprueba la perspectiva general del Lado Aire;
     - hay que incorporar al render las **mangas de abordaje**, **aeronaves Boeing de la aerolínea estatal** (BoA) y la **extensión de la pista hasta el horizonte**, para que las tomas aéreas no muestren vacíos;
@@ -213,6 +217,15 @@ Están ordenados de mayor a menor impacto en los renders.
 | 9 | **Cerchas de la cubierta** | No están modeladas, porque no se ven desde afuera. | Los cortes las dibujan. Son opcionales. | — |
 | 10 | **Interiores** | Una caja emisiva cálida, según el brief: "interiores básicos". | — | `envolvente_general()` |
 | 11 | **Primera correa de la cubierta** | El retenedor de nieve se fija sobre ella; se supuso a 0,30 m del borde libre. | Ubicarla en el plano de la estructura metálica. | `CORREA_1_DIST_BORDE` |
+
+**Abiertos desde el 4 de octubre (preguntar al cliente):**
+- **El letrero de noche:**
+  - hoy la escena `UYUNI_CREPUSCULO` usa letras blancas que emiten;
+  - las dos opciones elegidas son corten (P1) y gris oscuro (P2), que no emiten;
+  - hay que definir cómo se ilumina el letrero de noche: retroiluminado con halo sobre el parapeto, o con bañadores.
+- **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto.
+- **La librea de BoA en las aeronaves:** solo con autorización para usar la marca; si no, una librea blanca genérica.
+- **La posición exacta de la pista:** sacarla de OpenStreetMap o de Google Earth, o de un plano de sitio del cliente si lo hay (sección 8.7).
 
 **Ya resueltos (no hace falta volver a revisarlos):**
 - Termopanel: 26,8 mm según el CAD (4+4 / 12 / 3+3). El brief decía 21 mm por error de suma.

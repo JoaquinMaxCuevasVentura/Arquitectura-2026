@@ -126,7 +126,8 @@ Siguiente etapa: iluminación nocturna (escena UYUNI_CREPUSCULO, CAM_03). Partes
 Hazlo permanente y regenerable: funciones en uyuni_modelo.py, o un script propio que corra después del modelo. Nada a mano.
 
 Reglas:
-- No cambies el diseño ni las decisiones del cliente. De noche, el letrero sigue la configuración de la escena: letras blancas que emiten. Si quieres proponer letras corten retroiluminadas (halo), pregúntame.
+- No cambies el diseño ni las decisiones del cliente.
+- El letrero de noche es un punto abierto (TRASPASO.md, sección 6). Hoy la escena usa letras blancas que emiten, pero las opciones elegidas el 4 de octubre son corten (P1) y gris oscuro (P2), que no emiten. Propón cómo iluminarlo (halo retroiluminado sobre el parapeto o bañadores) y pregúntame antes de aplicarlo.
 - Toda fuente real va en Kelvin: luces con use_temperature y emisores con Blackbody. Lo que se ve tiene la misma temperatura que lo que ilumina.
 - Nada de luces sin fuente visible (rim, kicker) ni de "relleno" que aplane la noche: la oscuridad es parte de la imagen.
 - Mide con False Color y sin compositor. La exposición se ajusta como en una cámara, sin tocar las proporciones entre las luces.

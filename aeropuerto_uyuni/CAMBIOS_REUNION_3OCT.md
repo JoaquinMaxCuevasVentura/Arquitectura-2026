@@ -5,6 +5,7 @@ Este documento sirve para **llevar estos cambios al modelo "formal"**: el `.blen
 - **Base:** versión del primer traspaso (commit `7b19bea`).
 - **Versión nueva:** `01_blender/uyuni_modelo.py` de este paquete.
 - **Diferencias línea por línea:** `CAMBIOS_REUNION_3OCT_uyuni_modelo.diff`, en esta misma carpeta.
+- **Después, las decisiones del 4 de octubre** (letras gris oscuro y muros más oscuros en P2, vidrio elegido y geometría A): `01_blender/herramientas/aplicar_cambios_4oct.py`, que corre después del script de esta reunión. El detalle está en `TRASPASO.md`, sección 5, puntos 2, 11 y 12.
 
 ## 1. Qué cambió
 
