@@ -34,6 +34,7 @@ aeropuerto_uyuni/
 ├── README.md                    uso rápido (escenas, render, parámetros clave)
 ├── TRASPASO.md                  esta guía
 ├── CAMBIOS_REUNION_3OCT.md      cambios desde el primer traspaso y cómo llevarlos a un .blend con avance propio
+├── CAMBIOS_REUNION_3OCT_uyuni_modelo.diff   los mismos cambios, línea por línea, en el script
 ├── PROMPT_CONTINUACION.md       instrucción lista para pegar en otra IA
 ├── 00_auditoria/
 │   ├── AUDITORIA.md             hallazgos, cotas verificadas y decisiones del cliente
@@ -49,9 +50,12 @@ aeropuerto_uyuni/
     ├── previews/                vistas previas de CAM_01 a CAM_06 (1280 px, 24 muestras)
     ├── verificacion/            modelo superpuesto al CAD: 4 alzados y 2 cortes
     ├── propuestas/              hojas comparativas: dos propuestas de color y letrero (material y geometría)
+    ├── fotorrealismo/           hojas de las pruebas de realismo: día, materiales, vidrio y noche
     └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas), verificar,
-                                 inventariar y aplicar_cambios_reunion.py (cambios del 3 de octubre sobre un .blend existente)
-02_postproduccion/               prompts de IA por vista, prompts de upscale y unificar_color.py (revelado de serie)
+                                 inventariar, aplicar_cambios_reunion.py (cambios del 3 de octubre sobre un .blend existente)
+                                 y las pruebas de realismo prueba_*.py
+02_postproduccion/               GUIA_REALISMO_FOTOGRAFICO.md y sus documentos de detalle (fotorrealismo, materiales,
+                                 iluminación nocturna), prompts de IA por vista, de upscale y unificar_color.py
 reports/                         estudio de costos de renders (proyecto Tupiza): referencia para la fase 7.3
 research_notes/                  notas de mercado y costos de renders en Bolivia
 ```

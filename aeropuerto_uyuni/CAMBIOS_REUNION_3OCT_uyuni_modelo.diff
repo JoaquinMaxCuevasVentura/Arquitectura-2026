@@ -1,0 +1,1005 @@
+diff --git a/aeropuerto_uyuni/01_blender/uyuni_modelo.py b/aeropuerto_uyuni/01_blender/uyuni_modelo.py
+index 1706d20..d2246e1 100644
+--- a/aeropuerto_uyuni/01_blender/uyuni_modelo.py
++++ b/aeropuerto_uyuni/01_blender/uyuni_modelo.py
+@@ -18,9 +18,11 @@ Sistema de coordenadas (el mismo del IFC, en coordenadas locales del edificio):
+ Georreferencia: UTM 19S (EPSG:32719), origen E 724956,439 / N 7737860,959, X local rotado 148,2058° (antihorario desde el Este).
+ Norte verdadero en coordenadas locales: 301,043° (antihorario desde +X). El Lado Tierra mira al NNE (azimut 31°).
+ 
+-Escenas:
+-  UYUNI_DIA         luz de mañana (sol calculado para Uyuni) - CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05, CAM_06, CAM_DRON
+-  UYUNI_CREPUSCULO  hora azul: interior y alero encendidos, piso mojado, nieve - CAM_03
++Escenas (la propiedad "propuesta" de cada escena elige la paleta: 0 = P1 Patrimonio Ferroviario, 1 = P2 Salar & Litio):
++  UYUNI_DIA                 luz de mañana (sol calculado para Uyuni), P1 - CAM_01, CAM_02, CAM_02B, CAM_04, CAM_05,
++                            CAM_06, CAM_07, CAM_07B, CAM_DRON
++  UYUNI_DIA_P2_SALAR_LITIO  la misma mañana con la paleta P2 - CAM_07
++  UYUNI_CREPUSCULO          hora azul: interior y alero encendidos, piso mojado, nieve - CAM_03
+ """
+ import json
+ import math
+@@ -54,17 +56,28 @@ Z_TRAVESANO = (2.400, 2.465)      # travesaño 65 x 65
+ PERFIL_CARA = 0.065
+ VIGA_1 = (5.51, 6.01)             # viga HºAº 300 x 500 (dintel recto)
+ VIGA_2 = (7.10, 7.60)
+-Z_ANTEPECHO = (6.612, 9.012)      # antepecho de 2,40 m = una placa Duralit de 1,20 x 2,40 en vertical
++Z_ANTEPECHO = (6.612, 9.012)      # antepecho de 2,40 m
+ Y_ANTEPECHO_EXT = -1.632          # cara exterior del antepecho (volado de 2,0 m desde el muro)
+ E_ANTEPECHO = 0.15
+-Z_CIELO = 6.635                   # cielo lineal tipo Luxalon bajo el alero
++Z_CIELO = 6.635                   # cara inferior del cielo falso del alero
++# Cielo falso tipo parrilla / listonado (pedido del 3 de octubre, antecedente del Rectorado): listones de 40 x 100
++# perpendiculares a la fachada cada 0,15 m, sobre un plenum negro mate que impide ver el interior del alero
++CIELO_LISTON = dict(ancho=0.040, alto=0.100, paso=0.150, plenum=0.18)
+ X_ALERO = (-0.23, 72.56)          # extensión del antepecho y la cubierta principal (fachada NE)
+-NERVIO_ANTEPECHO = 0.040          # el antepecho es continuación de la chapa café chocolate (nervios verticales)
+-# Letrero "línea de horizonte": montículos de sal (triángulos perforados) sobre el horizonte (+7,764) y su
+-# reflejo debajo (marcos y letras en contorno). Elementos blancos para contrastar con la chapa café chocolate.
+-# Modulación del CAD: 1446 | rombo 2000 | rombo 1000 | 2717 | 3 x 1000 | 1184 | UYUNI 5576 | 5952 | rombo 2000 | 6401 | 308
+-LETRERO_SEP = 0.03                # separación entre el letrero y los nervios del antepecho
+-LETRERO_FONDO = dict(letras=0.10, reflejo=0.06, rombos=0.012, marcos=0.04, horizonte=0.04)
++NERVIO_ANTEPECHO = 0.040          # el antepecho es continuación de la chapa de la cubierta (nervios verticales)
++# Letrero "línea de horizonte": montículos de sal sobre el horizonte (+7,764) y su reflejo debajo (marcos y letras en
++# contorno). Modulación del CAD: 1446 | rombo 2000 | rombo 1000 | 2717 | 3 x 1000 | 1184 | UYUNI 5576 | 5952 | rombo 2000 | 6401 | 308
++# Desde el 3 de octubre todo el conjunto (letras, pirámides y horizonte) flota despegado de la chapa sobre pernos
++# ocultos: su dorso queda a 12 cm de la chapa (8 cm delante de los nervios de 4 cm), así la sombra propia se separa
++# de la pieza. Letras de 8 cm de espesor (cara frontal a 20 cm de la chapa) y montículos como pirámides facetadas en 3D.
++LETRERO_SEP = 0.08                # separación entre el dorso del letrero y los nervios del antepecho
++LETRERO_FONDO = dict(letras=0.08, reflejo=0.05, marcos=0.05, horizonte=0.05)
++PIRAMIDE_FONDO = dict(grande=0.15, chica=0.10)   # saliente de la arista frontal, en la base
++# Dos geometrías para la reunión: A sobresale del antepecho como en el CAD; B queda dentro de sus 2,40 m, centrada,
++# con este margen libre arriba y abajo (escala resultante: 72 %). Ver variantes_letrero().
++LETRERO_B_MARGEN = 0.12
++# Juego asimétrico sin texto sobre la puerta de salida (ME-2 del eje 4-5, centro X 16,80): grande + 2 chicas
++LETRERO_SALIDA = dict(x0=14.80, piezas=("grande", "chica", "chica"), horizonte=(13.30, 20.30))
+ 
+ # Perfil de cubierta (Y, Z cara superior): corte del DXF + alzados laterales; cumbrera sobre los ejes F/G
+ CUMBRERA_Z = 13.02                # las laterales marcan +13,02 y las fachadas NE/SO +13,43 (sin confirmar)
+@@ -72,7 +85,11 @@ PERFIL_CUBIERTA = [(-1.672, 9.14), (16.30, 11.77), (28.28, CUMBRERA_Z), (37.73,
+ E_CUBIERTA = 0.10
+ NERVIO_PASO = 0.30                # chapa engrapada con nervios cada 0,30 m
+ NERVIO_SECCION = (0.025, 0.045)
+-RETENEDOR_DIST_BORDE = 0.40       # doble barra a 0,40 m del borde libre (decisión del 3 de octubre de 2026)
++# Retenedor de nieve (revisión del 3 de octubre): 18 cm de alto sobre la chapa, doble tubo de 1" (25,4 mm),
++# abrazaderas cada 2 nervios, fijado sobre la primera correa. La correa no está en el IFC: se supone a 0,30 m
++# del borde libre (sobre el antepecho); ajustar con el plano de la estructura metálica.
++CORREA_1_DIST_BORDE = 0.30
++RETENEDOR = dict(alto=0.18, tubo_d=0.0254, tubos_z=(0.085, 0.150), paso=0.60)
+ 
+ Y_FACHADA_AIRE = {"principal_izq": 48.47, "principal_der": 44.54}   # cara Lado Aire (eje R / eje I)
+ X_CAMBIO_AIRE = 48.25
+@@ -113,7 +130,7 @@ ROMBO_OESTE = dict(y=36.815, z=5.65, semi_ext=1.389, semi_int=0.965, semi_placa=
+ MASTIL_OESTE = dict(x=0.6, y=48.37, z_base=7.98, z_cambio=8.88, z_tope=10.38)
+ CAJA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 50.51), z=(3.45, 6.15))      # volumen saliente hacia la pista
+ PLATAFORMA_OESTE = dict(x=(0.3, 2.8), y=(48.47, 49.77), z=0.45)        # descanso de 0,45 m con 3 escalones
+-# Fachada ESTE (testero del eje 20): franja de chapa café chocolate nervada, en todo el ancho
++# Fachada ESTE (testero del eje 20): franja de chapa nervada (color del parapeto), en todo el ancho
+ FRANJA_ESTE = dict(y=(-0.308, 43.474), z=(4.41, 6.21))
+ VENTANAS_AIRE = [  # (X0, X1, Z0, Z1) Lado Aire: ME-4, ME-5 y ME-6 aproximadas desde el alzado SO
+     (67.83, 70.33, 4.82, 6.51), (63.04, 65.53, 4.82, 6.51), (58.23, 60.73, 4.82, 6.51), (53.43, 55.93, 4.82, 6.51),
+@@ -126,6 +143,21 @@ NORTE_LOCAL_DEG = 301.043         # norte verdadero, antihorario desde +X local
+ FECHA_DIA = (2026, 10, 4, 9.50)   # 09:30
+ FECHA_CREPUSCULO = (2026, 10, 4, 18.65)
+ ALTITUD_MSNM = 3666.6
++# aire seco y limpio del altiplano: pocos aerosoles y algo más de ozono para un azul más profundo
++CIELO_ATMOSFERA = dict(air_density=0.9, aerosol_density=0.02, dust_density=0.02, ozone_density=3.0)
++
++# Propuestas de color para la decisión de gerencia (reunión del 3 de octubre). La propiedad "propuesta" de cada
++# escena elige la paleta: 0 = P1 "Patrimonio Ferroviario" (corten y tonos oscuros), 1 = P2 "Salar & Litio" (blanco
++# integral). Cada rol tiene (color sRGB, metálico, rugosidad) para P1 y para P2.
++PALETA = {
++    "cubierta":  (("#373C40", 0.35, 0.45), ("#C3C6C8", 0.55, 0.35)),   # P1 antracita RAL 7016 | P2 gris claro aluminio
++    "antepecho": (("#373C40", 0.15, 0.55), ("#ECEBE6", 0.0, 0.50)),    # parapeto y remates: antracita mate | blanco perla
++    "muro":      (("#B9B5AD", 0.0, 0.92), ("#6B6E70", 0.0, 0.90)),     # revoque continuo: hormigón claro | gris neutro
++    "cielo":     (("#8C5A34", 0.0, 0.55), ("#EDECE8", 0.0, 0.50)),     # listones: símil madera | blanco
++    "celosia":   (("#8E4524", 0.20, 0.80), ("#EFEEE9", 0.0, 0.50)),    # corten oxidado (color medio) | blanco perla
++    "bastidor":  (("#232323", 0.60, 0.50), ("#6B6E70", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
++}
++PERFIL_COLOR = "#3A3E41"          # carpintería de aluminio antracita mate (no negro brillante), en las dos propuestas
+ 
+ PREFIJO = "UY_"
+ COLECCIONES = ["_REF_CAD", "01_ESTRUCTURA", "02_ENVOLVENTE", "03_CARPINTERIAS_M1", "04_CUBIERTA_INDUSTRIAL",
+@@ -167,9 +199,10 @@ def limpiar():
+         for sub in list(c.children_recursive):
+             bpy.data.collections.remove(sub)
+         bpy.data.collections.remove(c)
+-    sc = bpy.data.scenes.get("UYUNI_CREPUSCULO")
+-    if sc and len(bpy.data.scenes) > 1:
+-        bpy.data.scenes.remove(sc)
++    for nombre in ("UYUNI_CREPUSCULO", "UYUNI_DIA_P2_SALAR_LITIO"):
++        sc = bpy.data.scenes.get(nombre)
++        if sc and len(bpy.data.scenes) > 1:
++            bpy.data.scenes.remove(sc)
+     for w in list(bpy.data.worlds):
+         if w.name.startswith(PREFIJO):
+             bpy.data.worlds.remove(w)
+@@ -285,6 +318,15 @@ def placa_con_huecos(nombre, contornos, espesor, plano, desplaz, mat, col):
+     return ob
+ 
+ 
++def dentro_poligono(x, y, pts):
++    """Prueba punto en polígono (par-impar)."""
++    dentro = False
++    for (x0, y0), (x1, y1) in zip(pts, pts[1:] + pts[:1]):
++        if (y0 > y) != (y1 > y) and x < x0 + (y - y0) * (x1 - x0) / (y1 - y0):
++            dentro = not dentro
++    return dentro
++
++
+ def rombo(cu, cv, lado=1.20):
+     d = lado / math.sqrt(2)
+     return [(cu, cv - d), (cu + d, cv), (cu, cv + d), (cu - d, cv)]
+@@ -409,69 +451,117 @@ def mat_simple(nombre, color, metal=0.0, rug=0.5, **extra):
+     return mat
+ 
+ 
+-def mat_duralit():
+-    """Fibrocemento Duralit crema claro mate: placas de 1,20 x 2,40 con junta de 7 mm y tornillo visto."""
+-    mat = bpy.data.materials.new(PREFIJO + "DURALIT_FIBROCEMENTO")
++def mat_propuesta(nombre, rol):
++    """Material liso de dos paletas: la propiedad "propuesta" de la escena mezcla P1 (0) y P2 (1) de PALETA[rol]."""
++    (c1, m1, r1), (c2, m2, r2) = PALETA[rol]
++    mat = bpy.data.materials.new(PREFIJO + nombre)
++    nb = Nodos(mat)
++    p = nb.atributo("propuesta")
++    nb.ent("Base Color", nb.mixc(p, srgb(c1), srgb(c2)))
++    nb.ent("Metallic", nb.mixf(p, m1, m2))
++    nb.ent("Roughness", nb.mixf(p, r1, r2))
++    mat.diffuse_color = srgb(c1)
++    return mat
++
++
++def mat_revoque(nombre, bunas=()):
++    """Revoque proyectado continuo sobre panel EPS de 80 mm con malla: sin placas ni juntas verticales.
++
++    Color de PALETA["muro"] (según la propuesta). Grano fino de mortero y variación tonal muy suave. 'bunas': cotas Z
++    de buñas horizontales finas (10 mm), solo en caras verticales (entre viga y muro)."""
++    (c1, _, r1), (c2, _, r2) = PALETA["muro"]
++    mat = bpy.data.materials.new(PREFIJO + nombre)
+     nb = Nodos(mat)
+-    _, sep = nb.coord()
+-    geo = nb.n("ShaderNodeNewGeometry")
+-    nsep = nb.n("ShaderNodeSeparateXYZ")
+-    nb.nt.links.new(geo.outputs["Normal"], nsep.inputs[0])
+-    lateral = nb.m("GREATER_THAN", nb.m("ABSOLUTE", nsep.outputs["X"]), nb.m("ABSOLUTE", nsep.outputs["Y"]))
+-    u = nb.mixf(lateral, sep.outputs["X"], sep.outputs["Y"])
+-    v = sep.outputs["Z"]
+-    gu = nb.dist_junta(u, 1.20)
+-    gv = nb.dist_junta(v, 2.40, Z_ANTEPECHO[0])
+-    junta = nb.m("MAXIMUM", nb.m("LESS_THAN", gu, 0.0035), nb.m("LESS_THAN", gv, 0.0035))
+-    # tornillos a 3 cm del borde: cada 0,40 m en bordes verticales y cada 0,30 m en horizontales
+-    def punto(a_borde, b_libre, paso):
+-        vm = nb.n("ShaderNodeCombineXYZ")
+-        nb.con(nb.m("SUBTRACT", a_borde, 0.03), vm.inputs[0])
+-        nb.con(nb.dist_junta(b_libre, paso), vm.inputs[1])
+-        ln = nb.n("ShaderNodeVectorMath", operation="LENGTH")
+-        nb.nt.links.new(vm.outputs[0], ln.inputs[0])
+-        return nb.m("LESS_THAN", ln.outputs["Value"], 0.0045)
+-    torn = nb.m("MAXIMUM", punto(gu, v, 0.40), punto(gv, u, 0.30))
+-    var = nb.ruido(3.0, 4.0)
+-    base = nb.mix(nb.m("MULTIPLY", var, 0.25), srgb("#CBC4B6"), srgb("#BFB8AA"))   # crema claro (ref. imagen)
+-    col_j = nb.mixc(junta, base, srgb("#3B3B39"))
+-    col_t = nb.mixc(torn, col_j, srgb("#6F706C"))
+-    nb.ent("Base Color", col_t)
+-    nb.ent("Roughness", nb.mixf(torn, 0.85, 0.45))
+-    nb.ent("Metallic", nb.mixf(torn, 0.0, 0.6))
+-    alto = nb.m("SUBTRACT", nb.m("ADD", nb.m("MULTIPLY", nb.ruido(220.0, 2.0), 0.15), nb.m("MULTIPLY", torn, 0.6)), junta)
++    tc, sep = nb.coord()
++    p = nb.atributo("propuesta")
++    base = nb.mixc(p, srgb(c1), srgb(c2))
++    tono = nb.m("ADD", 0.97, nb.m("MULTIPLY", nb.ruido(0.35, 3.0, tc.outputs["Object"]), 0.06))   # ±3 % en manchas grandes
++    col = nb.n("ShaderNodeVectorMath", operation="SCALE")
++    nb.nt.links.new(base, col.inputs[0])
++    nb.con(tono, col.inputs["Scale"])
++    color = col.outputs["Vector"]
++    alto = nb.m("MULTIPLY", nb.ruido(380.0, 2.0, tc.outputs["Object"]), 0.5)                    # grano del mortero
++    if bunas:
++        geo = nb.n("ShaderNodeNewGeometry")
++        nsep = nb.n("ShaderNodeSeparateXYZ")
++        nb.nt.links.new(geo.outputs["Normal"], nsep.inputs[0])
++        vertical = nb.m("LESS_THAN", nb.m("ABSOLUTE", nsep.outputs["Z"]), 0.5)
++        en_buna = None
++        for zb in bunas:
++            b = nb.m("LESS_THAN", nb.m("ABSOLUTE", nb.m("SUBTRACT", sep.outputs["Z"], zb)), 0.005)
++            en_buna = b if en_buna is None else nb.m("MAXIMUM", en_buna, b)
++        buna = nb.m("MULTIPLY", en_buna, vertical)
++        color = nb.mixc(nb.m("MULTIPLY", buna, 0.55), color, srgb("#202020"))
++        alto = nb.m("SUBTRACT", alto, nb.m("MULTIPLY", buna, 3.0))
++    nb.ent("Base Color", color)
++    nb.ent("Roughness", nb.mixf(p, r1, r2))
+     bump = nb.n("ShaderNodeBump")
+-    bump.inputs["Strength"].default_value = 0.6
+-    bump.inputs["Distance"].default_value = 0.004
++    bump.inputs["Strength"].default_value = 0.35
++    bump.inputs["Distance"].default_value = 0.002
+     nb.con(alto, bump.inputs["Height"])
+     nb.ent("Normal", bump.outputs["Normal"])
+-    mat.diffuse_color = srgb("#CBC4B6")
++    mat.diffuse_color = srgb(c1)
+     return mat
+ 
+ 
+-def mat_corten():
+-    """Acero corten envejecido (referencia: Cementerio de Trenes de Uyuni)."""
+-    mat = bpy.data.materials.new(PREFIJO + "CORTEN_OXIDADO")
+-    nb = Nodos(mat)
+-    tc, _ = nb.coord()
+-    r1 = nb.ruido(4.0, 8.0, tc.outputs["Object"])
+-    r2 = nb.ruido(38.0, 6.0, tc.outputs["Object"])
++def color_corten(nb, tc):
++    """Color de acero corten oxidado (cobrizo cálido) y el ruido fino que modula su rugosidad."""
++    r1n = nb.ruido(4.0, 8.0, tc.outputs["Object"])
++    r2n = nb.ruido(38.0, 6.0, tc.outputs["Object"])
+     ramp = nb.n("ShaderNodeValToRGB")
+-    nb.con(nb.m("ADD", nb.m("MULTIPLY", r1, 0.7), nb.m("MULTIPLY", r2, 0.3)), ramp.inputs["Fac"])
++    nb.con(nb.m("ADD", nb.m("MULTIPLY", r1n, 0.7), nb.m("MULTIPLY", r2n, 0.3)), ramp.inputs["Fac"])
+     els = ramp.color_ramp.elements
+-    els[0].position, els[0].color = 0.30, srgb("#4E2414")
+-    els[1].position, els[1].color = 0.70, srgb("#9A4A22")
++    els[0].position, els[0].color = 0.30, srgb("#4F2413")
++    els[1].position, els[1].color = 0.72, srgb("#A5562A")
+     e = els.new(0.52)
+-    e.color = srgb("#7A381F")
+-    nb.ent("Base Color", ramp.outputs["Color"])
+-    nb.ent("Metallic", 0.2)
+-    nb.ent("Roughness", nb.m("ADD", 0.78, nb.m("MULTIPLY", r2, 0.15)))
++    e.color = srgb("#7F3C1F")
++    return ramp.outputs["Color"], r2n
++
++
++def mat_celosia():
++    """Celosías: P1 acero corten oxidado (cobrizo cálido, ref. Cementerio de Trenes); P2 chapa pintada blanco perla."""
++    (_, m1, r1), (c2, m2, r2) = PALETA["celosia"]
++    mat = bpy.data.materials.new(PREFIJO + "CELOSIA_CORTEN_O_BLANCA")
++    nb = Nodos(mat)
++    tc, _ = nb.coord()
++    p = nb.atributo("propuesta")
++    corten, r2n = color_corten(nb, tc)
++    r1n = nb.ruido(4.0, 8.0, tc.outputs["Object"])
++    blanco = nb.mixc(nb.m("MULTIPLY", r1n, 0.08), srgb(c2), srgb("#DCDBD5"))   # pintura con leve variación
++    nb.ent("Base Color", nb.mixc(p, corten, blanco))
++    nb.ent("Metallic", nb.mixf(p, m1, m2))
++    nb.ent("Roughness", nb.mixf(p, nb.m("ADD", r1 - 0.04, nb.m("MULTIPLY", r2n, 0.15)), r2))
+     bump = nb.n("ShaderNodeBump")
+-    bump.inputs["Strength"].default_value = 0.25
+     bump.inputs["Distance"].default_value = 0.002
++    nb.con(nb.mixf(p, 0.25, 0.04), bump.inputs["Strength"])
+     nb.con(nb.ruido(140.0, 4.0, tc.outputs["Object"]), bump.inputs["Height"])
+     nb.ent("Normal", bump.outputs["Normal"])
+-    mat.diffuse_color = srgb("#7A381F")
++    mat.diffuse_color = srgb("#8E4524")
++    return mat
++
++
++def mat_cielo():
++    """Listones del cielo falso: P1 aluminio símil madera (veta a lo largo del listón, en Y); P2 blanco."""
++    (c1, m1, r1), (c2, m2, r2) = PALETA["cielo"]
++    mat = bpy.data.materials.new(PREFIJO + "CIELO_LISTONES")
++    nb = Nodos(mat)
++    tc, sep = nb.coord()
++    p = nb.atributo("propuesta")
++    onda = nb.n("ShaderNodeTexWave", wave_type="BANDS", bands_direction="X")
++    onda.inputs["Scale"].default_value = 3.0
++    onda.inputs["Distortion"].default_value = 6.0
++    onda.inputs["Detail"].default_value = 3.0
++    vec = nb.n("ShaderNodeCombineXYZ")      # veta en Y: comprime X y Z, estira Y
++    nb.con(nb.m("MULTIPLY", sep.outputs["X"], 22.0), vec.inputs[0])
++    nb.con(nb.m("MULTIPLY", sep.outputs["Y"], 0.6), vec.inputs[1])
++    nb.con(nb.m("MULTIPLY", sep.outputs["Z"], 22.0), vec.inputs[2])
++    nb.nt.links.new(vec.outputs[0], onda.inputs["Vector"])
++    madera = nb.mixc(nb.m("MULTIPLY", onda.outputs["Fac"], 0.55), srgb(c1), srgb("#6E4325"))
++    madera = nb.mixc(nb.m("MULTIPLY", nb.ruido(1.5, 4.0, tc.outputs["Object"]), 0.35), madera, srgb("#A67446"))
++    nb.ent("Base Color", nb.mixc(p, madera, srgb(c2)))
++    nb.ent("Metallic", nb.mixf(p, m1, m2))
++    nb.ent("Roughness", nb.mixf(p, r1, r2))
++    mat.diffuse_color = srgb(c1)
+     return mat
+ 
+ 
+@@ -559,38 +649,44 @@ def mat_emisor(nombre, color, propiedad, fuerza_base=1.0):
+ 
+ 
+ def mat_letrero():
+-    """Blanco satinado para letras y montículos; de noche emite (propiedad "luz_letrero")."""
+-    mat = bpy.data.materials.new(PREFIJO + "LETRERO_BLANCO")
++    """Letras, pirámides y horizonte: blanco satinado o acero corten como las celosías (propiedad "letras_corten" de
++    la escena: 0 blanco, 1 corten). De noche, las blancas emiten (propiedad "luz_letrero")."""
++    mat = bpy.data.materials.new(PREFIJO + "LETRERO_BLANCO_O_CORTEN")
+     nb = Nodos(mat)
+-    nb.ent("Base Color", srgb("#F3F3EF"))
+-    nb.ent("Roughness", 0.28)
++    tc, _ = nb.coord()
++    k = nb.atributo("letras_corten")
++    corten, r2n = color_corten(nb, tc)
++    nb.ent("Base Color", nb.mixc(k, srgb("#F3F3EF"), corten))
++    nb.ent("Roughness", nb.mixf(k, 0.28, nb.m("ADD", 0.74, nb.m("MULTIPLY", r2n, 0.15))))
++    nb.ent("Metallic", nb.mixf(k, 0.0, 0.2))
+     nb.ent("Emission Color", srgb("#FFF6E8"))
+-    nb.ent("Emission Strength", nb.atributo("luz_letrero"))
++    nb.ent("Emission Strength", nb.m("MULTIPLY", nb.atributo("luz_letrero"), nb.m("SUBTRACT", 1.0, k)))
+     mat.diffuse_color = srgb("#F3F3EF")
+     return mat
+ 
+ 
+ def crear_materiales():
+     M = dict(
+-        chapa=mat_simple("CHAPA_CAFE_CHOCOLATE_ACERGAL", "#3D281D", metal=0.85, rug=0.38),
+-        corten=mat_corten(),
++        cubierta=mat_propuesta("CHAPA_CUBIERTA", "cubierta"),
++        antepecho=mat_propuesta("CHAPA_ANTEPECHO_REMATES", "antepecho"),
++        celosia=mat_celosia(),
+         vidrio=mat_vidrio(),
+-        perfil=mat_simple("ALUMINIO_ANODIZADO_NEGRO_MATE", "#1A1A1A", metal=0.7, rug=0.45),
++        perfil=mat_simple("ALUMINIO_ANTRACITA_MATE", PERFIL_COLOR, metal=0.25, rug=0.55),
+         sello=mat_simple("SELLO_ESTRUCTURAL_NEGRO", "#0B0B0B", rug=0.6),
+-        duralit=mat_duralit(),
++        muro=mat_revoque("REVOQUE_CONTINUO"),
++        muro_buna=mat_revoque("REVOQUE_FACHADA_BUNAS", bunas=VIGA_1),   # buñas finas arriba y abajo de la viga
+         hormigon=mat_hormigon(),
+         acera=mat_acera(),
+         asfalto=mat_asfalto(),
+         suelo=mat_suelo(),
+-        luxalon=mat_simple("LUXALON_ALUMINIO_CHAMPAGNE", "#CFCAC0", metal=0.7, rug=0.3),
+-        plenum=mat_simple("PLENUM_NEGRO", "#050505", rug=0.9),
++        cielo=mat_cielo(),
++        plenum=mat_simple("PLENUM_NEGRO_MATE", "#030303", rug=1.0),
+         galvanizado=mat_simple("ACERO_GALVANIZADO", "#9DA1A5", metal=0.9, rug=0.35),
+-        bastidor=mat_simple("BASTIDOR_ACERO_NEGRO", "#202020", metal=0.6, rug=0.5),
++        bastidor=mat_propuesta("BASTIDOR_CELOSIAS", "bastidor"),
+         interior=mat_emisor("INTERIOR_LUZ_CALIDA", "#FFB46B", "luz_interior"),
+         piso_int=mat_simple("PISO_INTERIOR_GRES", "#8F8A82", rug=0.35),
+         luminaria=mat_emisor("LUMINARIA_ALERO", "#FFC27A", "luz_alero", 40.0),
+         letrero=mat_letrero(),
+-        bolardo=mat_simple("BOLARDO_ACERO_GRAFITO", "#2A2B2D", metal=0.8, rug=0.4),
+         pintura_blanca=mat_simple("PINTURA_VEHICULO_BLANCO", "#E9E9E4", metal=0.3, rug=0.3),
+         vidrio_auto=mat_simple("VIDRIO_VEHICULO", "#101418", metal=0.2, rug=0.05),
+         neumatico=mat_simple("NEUMATICO", "#121212", rug=0.8),
+@@ -613,15 +709,15 @@ def estructura(C, M):
+         # la cara extrema queda 1 cm detrás del testero o del antepecho: compartir plano da manchas negras en Cycles
+         x1 = min(x + COL_ANCHO / 2, (ANEXO["x"][1] if anexo else X_ALERO[1]) - 0.01)
+         m.caja(x - COL_ANCHO / 2, x1, Y_COL_EXT, Y_COL_INT, 0.0, z1)
+-    m.crear("COLUMNAS_EJE_A", M["hormigon"], col)
++    m.crear("COLUMNAS_EJE_A", M["muro"], col)          # revocadas, mismo tono que el muro
+     v = Malla()
+     for z0, z1 in (VIGA_1, VIGA_2):   # vigas 300 x 500 (dintel recto a +5,51)
+         v.caja(X_ALERO[0] + 0.03, X_ALERO[1] - 0.03, Y_MURO_EXT, Y_MURO_EXT + 0.30, z0, z1)
+-    v.crear("VIGAS_DINTEL_300x500", M["hormigon"], col)
++    v.crear("VIGAS_DINTEL_300x500", M["muro_buna"], col)   # en el plano del muro, revocadas
+ 
+ 
+ def muro_landside(C, M):
+-    """Paños ciegos entre columnas (panel M2 revestido en Duralit) con vanos ME-1/ME-2 y rombos ME-3."""
++    """Paños ciegos entre columnas (panel EPS de 80 mm con revoque proyectado continuo) con vanos ME-1/ME-2 y rombos ME-3."""
+     col = C["02_ENVOLVENTE"]
+     xs = sorted(EJES_X.values())
+     huecos_rect = ME1 + ME2
+@@ -641,20 +737,20 @@ def muro_landside(C, M):
+         if len(cont) == 1:
+             contornos.append(cont[0])   # sin vanos: se suma a la placa única
+         else:
+-            placa_con_huecos(f"MURO_NE_{xa:05.2f}", cont, E_MURO, "XZ", Y_MURO_EXT + E_MURO / 2, M["duralit"], col)
++            placa_con_huecos(f"MURO_NE_{xa:05.2f}", cont, E_MURO, "XZ", Y_MURO_EXT + E_MURO / 2, M["muro_buna"], col)
+     if contornos:
+         m = Malla()
+         for c in contornos:
+             (u0, v0), (u1, _), _, (_, v1) = c
+             m.caja(u0, u1, Y_MURO_EXT, Y_MURO_EXT + E_MURO, v0, v1)
+-        m.crear("MURO_NE_CIEGO", M["duralit"], col)
++        m.crear("MURO_NE_CIEGO", M["muro_buna"], col)
+     # franja de muro entre vigas (+6,01 a +7,10) y sobre la viga superior, hasta la cubierta; sus extremos
+     # quedan 1 cm dentro de los testeros para no compartir plano con su cara exterior
+     f = Malla()
+     xa, xb = X_ALERO[0] + 0.01, X_ALERO[1] - 0.01
+     f.caja(xa, xb, Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_1[1], VIGA_2[0])
+     f.caja(xa, xb, Y_MURO_EXT, Y_MURO_EXT + E_MURO, VIGA_2[1], z_cubierta(Y_MURO_EXT) - E_CUBIERTA)
+-    f.crear("MURO_NE_SOBRE_DINTEL", M["duralit"], col)
++    f.crear("MURO_NE_SOBRE_DINTEL", M["muro_buna"], col)
+ 
+ 
+ def mamparas(C, M):
+@@ -702,8 +798,8 @@ def mamparas(C, M):
+ 
+ 
+ def antepecho_alero(C, M):
+-    """Antepecho de 2,40 m en chapa engrapada café chocolate (continuación de la cubierta), retornos laterales,
+-    cielo lineal tipo Luxalon y luminarias."""
++    """Antepecho de 2,40 m en chapa engrapada (continuación de la cubierta, color del parapeto según la propuesta),
++    retornos laterales, cielo falso listonado sobre plenum negro mate y luminarias lineales entre listones."""
+     col = C["02_ENVOLVENTE"]
+     x0, x1 = X_ALERO
+     ye = Y_ANTEPECHO_EXT
+@@ -713,38 +809,56 @@ def antepecho_alero(C, M):
+     for xa, xb in ((x0, x0 + E_ANTEPECHO), (x1 - E_ANTEPECHO, x1)):   # retornos que cierran el volado
+         a.prisma_yz([(yr, Z_ANTEPECHO[0]), (Y_MURO_EXT, Z_ANTEPECHO[0]), (Y_MURO_EXT, z_cubierta(Y_MURO_EXT) - 0.02),
+                      (yr, z_cubierta(yr) - 0.02)], xa, xb)
+-    a.crear("ANTEPECHO_2_40_CHAPA", M["chapa"], col)
++    a.crear("ANTEPECHO_2_40_CHAPA", M["antepecho"], col)
+     nv = Malla()   # nervios verticales (junta engrapada) cada 0,30 m sobre la cara exterior
+     nv.caja(x0 + 0.10, x0 + 0.10 + NERVIO_SECCION[0], ye - NERVIO_ANTEPECHO, ye, Z_ANTEPECHO[0], Z_ANTEPECHO[1])
+-    ob = nv.crear("ANTEPECHO_NERVIOS", M["chapa"], col)
++    ob = nv.crear("ANTEPECHO_NERVIOS", M["antepecho"], col)
+     arr = ob.modifiers.new("Array_0.30", "ARRAY")
+     arr.use_relative_offset, arr.use_constant_offset = False, True
+     arr.constant_offset_displace = (NERVIO_PASO, 0, 0)
+     arr.count = int((x1 - x0 - 0.12) / NERVIO_PASO) + 1
+-    # plenum oscuro y lamas Luxalon (84 mm + 16 mm de junta) en sentido longitudinal
++    cielo_alero(C, M)
++
++
++def cielo_alero(C, M):
++    """Cielo falso tipo parrilla: listones perpendiculares a la fachada sobre perfiles portantes y plenum negro mate,
++    con luminarias lineales entre listones (reunión del 3 de octubre)."""
++    col = C["02_ENVOLVENTE"]
++    x0, x1 = X_ALERO
++    ye = Y_ANTEPECHO_EXT
++    cl = CIELO_LISTON
++    xi, xf = x0 + E_ANTEPECHO, x1 - E_ANTEPECHO
++    yi, yf = ye + E_ANTEPECHO + 0.01, Y_MURO_EXT - 0.01
+     p = Malla()
+-    p.caja(x0 + E_ANTEPECHO, x1 - E_ANTEPECHO, ye + E_ANTEPECHO, Y_MURO_EXT, Z_CIELO + 0.06, Z_CIELO + 0.07)
+-    p.crear("CIELO_PLENUM", M["plenum"], col)
+-    lam = Malla()
+-    y = ye + E_ANTEPECHO + 0.02
+-    while y + 0.084 <= Y_MURO_EXT - 0.01:
+-        lam.prisma_yz([(y, Z_CIELO + 0.016), (y + 0.006, Z_CIELO), (y + 0.078, Z_CIELO), (y + 0.084, Z_CIELO + 0.016)],
+-                      x0 + E_ANTEPECHO, x1 - E_ANTEPECHO)
+-        y += 0.10
+-    lam.crear("CIELO_LUXALON_LAMAS", M["luxalon"], col)
+-    # luminarias empotradas: una por vano, centradas en el volado
++    p.caja(xi, xf, yi - 0.01, Y_MURO_EXT, Z_CIELO + cl["plenum"], Z_CIELO + cl["plenum"] + 0.01)
++    for yp in (yi + 0.30, (yi + yf) / 2, yf - 0.30):      # portantes (omega negro) sobre los listones
++        p.caja(xi, xf, yp - 0.02, yp + 0.02, Z_CIELO + cl["alto"], Z_CIELO + cl["alto"] + 0.03)
++    p.crear("CIELO_PLENUM_NEGRO", M["plenum"], col)
++    x_ini = xi + 0.02
++    ls = Malla()
++    ls.caja(x_ini, x_ini + cl["ancho"], yi, yf, Z_CIELO, Z_CIELO + cl["alto"])
++    ob = ls.crear("CIELO_LISTONES", M["cielo"], col)
++    arr = ob.modifiers.new(f"Array_{cl['paso']:.2f}", "ARRAY")
++    arr.use_relative_offset, arr.use_constant_offset = False, True
++    arr.constant_offset_displace = (cl["paso"], 0, 0)
++    arr.count = int((xf - 0.02 - cl["ancho"] - x_ini) / cl["paso"]) + 1
++    # luminarias lineales empotradas: una por vano, en el hueco entre dos listones y a lo largo de ellos (en Y)
+     lu = Malla()
+-    yc = (ye + E_ANTEPECHO + Y_MURO_EXT) / 2
++    yc = (yi + yf) / 2
+     xs = sorted(EJES_X.values())
++    hueco = (cl["paso"] - cl["ancho"]) / 2 + cl["ancho"]       # centro del hueco desde el borde del listón
+     for xa, xb in zip(xs, xs[1:]):
+         xm = (xa + xb) / 2
+         if x0 + 0.5 < xm < x1 - 0.5 and xb - xa > 1:
+-            lu.caja(xm - 0.09, xm + 0.09, yc - 0.09, yc + 0.09, Z_CIELO - 0.004, Z_CIELO + 0.002)
++            k = round((xm - x_ini - hueco) / cl["paso"])
++            xc = x_ini + k * cl["paso"] + hueco
++            lu.caja(xc - 0.0175, xc + 0.0175, yc - 0.60, yc + 0.60, Z_CIELO + 0.05, Z_CIELO + 0.07)
+     lu.crear("LUMINARIAS_ALERO", M["luminaria"], col)
+ 
+ 
+ def cubierta(C, M):
+-    """Chapa engrapada café chocolate, nervios cada 0,30, retenedores de nieve y goterón sin canaleta."""
++    """Chapa engrapada (color según la propuesta), nervios cada 0,30, retenedor de nieve sobre la primera correa y
++    goterón sin canaleta (remate, color del parapeto)."""
+     col = C["04_CUBIERTA_INDUSTRIAL"]
+     tramos = [(X_ALERO[0], X_CAMBIO_AIRE, PERFIL_CUBIERTA),
+               (X_CAMBIO_AIRE, X_ALERO[1], [p for p in PERFIL_CUBIERTA if p[0] <= Y_FACHADA_AIRE["principal_der"]]
+@@ -754,7 +868,7 @@ def cubierta(C, M):
+         top = list(perf)
+         bot = [(y, z - E_CUBIERTA) for y, z in reversed(top)]
+         s.prisma_yz(top + bot, xa, xb)
+-    s.crear("CUBIERTA_CHAPA", M["chapa"], col)
++    s.crear("CUBIERTA_CHAPA", M["cubierta"], col)
+     # nervio (junta alzada) siguiendo el perfil; repetido con un modificador Array cada 0,30 m
+     for i, (xa, xb, perf) in enumerate(tramos):
+         r = Malla()
+@@ -762,38 +876,48 @@ def cubierta(C, M):
+         alto = [(y, z + NERVIO_SECCION[1]) for y, z in reversed(top)]
+         x_ini = X_ALERO[0] + 0.10 + math.ceil((xa - X_ALERO[0] - 0.10) / NERVIO_PASO - 1e-9) * NERVIO_PASO
+         r.prisma_yz(top + alto, x_ini, x_ini + NERVIO_SECCION[0])
+-        ob = r.crear(f"CUBIERTA_NERVIOS_{i}", M["chapa"], col)
++        ob = r.crear(f"CUBIERTA_NERVIOS_{i}", M["cubierta"], col)
+         arr = ob.modifiers.new("Array_0.30", "ARRAY")
+         arr.use_relative_offset = False
+         arr.use_constant_offset = True
+         arr.constant_offset_displace = (NERVIO_PASO, 0, 0)
+         arr.count = int((xb - x_ini - 0.03) / NERVIO_PASO) + 1
+-    # retenedores de nieve: abrazadera sobre cada nervio + doble barra tubular a 0,40 m del borde libre
+-    yb = PERFIL_CUBIERTA[0][0] + RETENEDOR_DIST_BORDE
+-    zb = z_cubierta(yb)
+-    ab = Malla()
+-    ab.caja(X_ALERO[0] + 0.10 - 0.008, X_ALERO[0] + 0.10 + NERVIO_SECCION[0] + 0.008, yb - 0.03, yb + 0.03,
+-            zb + NERVIO_SECCION[1] - 0.01, zb + NERVIO_SECCION[1] + 0.13)
+-    ob = ab.crear("RETENEDOR_ABRAZADERAS", M["galvanizado"], col)
+-    arr = ob.modifiers.new("Array_0.30", "ARRAY")
+-    arr.use_relative_offset, arr.use_constant_offset = False, True
+-    arr.constant_offset_displace = (NERVIO_PASO, 0, 0)
+-    arr.count = int((X_ALERO[1] - X_ALERO[0] - 0.12) / NERVIO_PASO) + 1
+-    br = Malla()
+-    for dz in (0.075, 0.135):
+-        br.cilindro_x(X_ALERO[0] + 0.05, X_ALERO[1] - 0.05, yb, zb + NERVIO_SECCION[1] + dz - 0.01, 0.017)
+-    br.crear("RETENEDOR_BARRAS_TUBULARES", M["galvanizado"], col, suave=True)
++    retenedor_nieve(C, M)
+     # goterón recto (sin canaleta): pestaña vertical delante del antepecho
+     g = Malla()
+     y0 = PERFIL_CUBIERTA[0][0]
+     g.prisma_yz([(y0 - 0.012, Z_ANTEPECHO[1] - 0.07), (y0, Z_ANTEPECHO[1] - 0.07), (y0, z_cubierta(y0) + 0.01),
+                  (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.01), (y0 + 0.25, z_cubierta(y0 + 0.25) + 0.002),
+                  (y0 - 0.012, z_cubierta(y0) + 0.012)], X_ALERO[0] - 0.01, X_ALERO[1] + 0.01)
+-    g.crear("GOTERON_BORDE", M["chapa"], col)
++    g.crear("GOTERON_BORDE", M["antepecho"], col)
+     # cubierta del anexo (ejes 18-20), plana, detrás de las celosías PT2
+     an = Malla()
+     an.caja(ANEXO["x"][0] - 0.25, ANEXO["x"][1] + 0.05, ANEXO["y"][0] - 0.05, ANEXO["y"][1] + 0.05, ANEXO["z"], ANEXO["z"] + 0.25)
+-    an.crear("CUBIERTA_ANEXO", M["chapa"], col)
++    an.crear("CUBIERTA_ANEXO", M["cubierta"], col)
++
++
++def retenedor_nieve(C, M):
++    """Retenedor de nieve (reunión del 3 de octubre): abrazadera sobre un nervio de cada dos + doble tubo de 1",
++    18 cm sobre la chapa, fijado sobre la primera correa."""
++    col = C["04_CUBIERTA_INDUSTRIAL"]
++    R = RETENEDOR
++    yb = PERFIL_CUBIERTA[0][0] + CORREA_1_DIST_BORDE
++    zb = z_cubierta(yb)
++    zn = NERVIO_SECCION[1]
++    xc = X_ALERO[0] + 0.10 + NERVIO_SECCION[0] / 2      # eje del primer nervio
++    ab = Malla()
++    ab.caja(xc - 0.0205, xc + 0.0205, yb - 0.03, yb + 0.03, zb + zn - 0.025, zb + zn + 0.012)   # mordaza sobre el nervio
++    ab.prisma_yz([(yb - 0.045, z_cubierta(yb - 0.045) + zn), (yb + 0.045, z_cubierta(yb + 0.045) + zn),
++                  (yb + 0.016, zb + R["alto"]), (yb - 0.026, zb + R["alto"])], xc - 0.003, xc + 0.003)   # placa de 6 mm
++    ob = ab.crear("RETENEDOR_ABRAZADERAS", M["galvanizado"], col)
++    arr = ob.modifiers.new(f"Array_{R['paso']:.2f}", "ARRAY")
++    arr.use_relative_offset, arr.use_constant_offset = False, True
++    arr.constant_offset_displace = (R["paso"], 0, 0)
++    arr.count = int((X_ALERO[1] - X_ALERO[0] - 0.12) / R["paso"]) + 1
++    br = Malla()
++    for dz in R["tubos_z"]:
++        br.cilindro_x(X_ALERO[0] + 0.05, X_ALERO[1] - 0.05, yb, zb + dz, R["tubo_d"] / 2)
++    br.crear("RETENEDOR_TUBOS_1PULG", M["galvanizado"], col, suave=True)
+ 
+ 
+ def envolvente_general(C, M):
+@@ -805,7 +929,7 @@ def envolvente_general(C, M):
+         ys = [Y_MURO_EXT] + [p[0] for p in PERFIL_CUBIERTA if Y_MURO_EXT < p[0] < ya] + [ya]
+         cont = [(Y_MURO_EXT, 0.0), (ya, 0.0)] + [(y, z_cubierta(y) - E_CUBIERTA - 0.01) for y in reversed(ys)]
+         huecos = [rombo(cy, cz, 1.20) for cy, cz in rombos]
+-        placa_con_huecos(nombre, [cont] + huecos, 0.15, "YZ", x, M["duralit"], col)
++        placa_con_huecos(nombre, [cont] + huecos, 0.15, "YZ", x, M["muro"], col)
+     testero(X_ALERO[0] + 0.075, ya_izq, ME3_EJE1, "TESTERO_EJE_1")
+     testero(X_ALERO[1] - 0.075, ya_der, [], "TESTERO_EJE_17")
+     for i, (cy, cz) in enumerate(ME3_EJE1):
+@@ -816,7 +940,7 @@ def envolvente_general(C, M):
+         zt = z_cubierta(ya) - E_CUBIERTA - 0.01
+         huecos = [rect(max(a, xa + 0.05), min(b, xb - 0.05), max(z0, 0.0005), min(z1, zt - 0.05))
+                   for a, b, z0, z1 in VENTANAS_AIRE if a < xb and b > xa]
+-        placa_con_huecos(f"FACHADA_AIRE_{xa:05.1f}", [rect(xa, xb, 0.0, zt)] + huecos, 0.15, "XZ", ya - 0.075, M["duralit"], col)
++        placa_con_huecos(f"FACHADA_AIRE_{xa:05.1f}", [rect(xa, xb, 0.0, zt)] + huecos, 0.15, "XZ", ya - 0.075, M["muro"], col)
+         vv = Malla()
+         for u0, u1, v0, v1 in [(h[0][0], h[1][0], h[0][1], h[2][1]) for h in huecos]:
+             vv.caja(u0, u1, ya - 0.10, ya - 0.073, v0, v1)
+@@ -825,20 +949,20 @@ def envolvente_general(C, M):
+     # retorno entre los dos tramos del Lado Aire
+     r = Malla()
+     r.caja(X_CAMBIO_AIRE - 0.075, X_CAMBIO_AIRE + 0.075, ya_der, ya_izq, 0.0, z_cubierta(ya_der) - E_CUBIERTA)
+-    r.crear("RETORNO_AIRE", M["duralit"], col)
++    r.crear("RETORNO_AIRE", M["muro"], col)
+     # anexo (ejes 18-20): muros perimetrales con rombos ME-3 en el testero del eje 20
+     ax0, ax1 = ANEXO["x"]
+     ay0, ay1 = ANEXO["y"]
+     # muro del anexo hacia la pista (el muro del Lado Tierra del anexo se genera en muro_landside), con los
+     # rombos ME-3 detrás de las celosías PT2 del Lado Aire
+     placa_con_huecos("ANEXO_MURO_LADO_AIRE", [rect(ax0, ax1, 0.0, ANEXO["z"])] + [rombo(cx, cz) for cx, cz in ME3_SO],
+-                     0.15, "XZ", ay1 - 0.075, M["duralit"], col)
++                     0.15, "XZ", ay1 - 0.075, M["muro"], col)
+     for i, (cx, cz) in enumerate(ME3_SO):
+         placa_con_huecos(f"ME3_SO_{i}_VIDRIO", [rombo(cx, cz, 1.12)], 0.027, "XZ", ay1 - 0.03, M["vidrio"], C["03_CARPINTERIAS_M1"])
+         placa_con_huecos(f"ME3_SO_{i}_MARCO", [rombo(cx, cz, 1.20), rombo(cx, cz, 1.016)], 0.10, "XZ", ay1 - 0.06,
+                          M["perfil"], C["03_CARPINTERIAS_M1"])
+     placa_con_huecos("TESTERO_EJE_20", [rect(Y_MURO_EXT, ay1, 0.0, ANEXO["z"])] + [rombo(cy, cz) for cy, cz in ME3_EJE20],
+-                     0.15, "YZ", ax1 - 0.075, M["duralit"], col)
++                     0.15, "YZ", ax1 - 0.075, M["muro"], col)
+     for i, (cy, cz) in enumerate(ME3_EJE20):
+         placa_con_huecos(f"ME3_EJE20_{i}_VIDRIO", [rombo(cy, cz, 1.12)], 0.027, "YZ", ax1 - 0.03, M["vidrio"], C["03_CARPINTERIAS_M1"])
+         placa_con_huecos(f"ME3_EJE20_{i}_MARCO", [rombo(cy, cz, 1.20), rombo(cy, cz, 1.016)], 0.10, "YZ", ax1 - 0.06,
+@@ -864,7 +988,7 @@ def borde_v(variante, u):
+ 
+ def elementos_laterales(C, M):
+     """Elementos de los alzados laterales (pedido del 3 de octubre): rombo perforado y bloque bajo con mástil en la
+-    fachada OESTE (testero del eje 1) y franja de chapa café chocolate nervada en la fachada ESTE (testero del eje 20)."""
++    fachada OESTE (testero del eje 1) y franja de chapa nervada (color del parapeto) en la fachada ESTE (testero del eje 20)."""
+     col = C["02_ENVOLVENTE"]
+     # --- rombo perforado (montículo) sobre el ME-3: marco blanco, fondo oscuro y chapa blanca perforada
+     r = ROMBO_OESTE
+@@ -893,22 +1017,22 @@ def elementos_laterales(C, M):
+     cj = CAJA_OESTE
+     c = Malla()
+     c.caja(cj["x"][0], cj["x"][1], cj["y"][0], cj["y"][1], cj["z"][0], cj["z"][1])
+-    c.crear("VOLUMEN_SALIENTE_OESTE", M["duralit"], col)
++    c.crear("VOLUMEN_SALIENTE_OESTE", M["muro"], col)
+     pf = PLATAFORMA_OESTE
+     e = Malla()
+     e.caja(pf["x"][0], pf["x"][1], pf["y"][0], pf["y"][1], 0.0, pf["z"])
+     for k, h in enumerate((0.30, 0.15)):              # escalones de 0,15 hacia +X
+         e.caja(pf["x"][1] + 0.30 * k, pf["x"][1] + 0.30 * (k + 1), pf["y"][0], pf["y"][1], 0.0, h)
+     e.crear("DESCANSO_ESCALONES_OESTE", M["hormigon"], col)
+-    # --- franja nervada café chocolate en el testero del eje 20 (+4,41 a +6,21)
++    # --- franja nervada (color del parapeto) en el testero del eje 20 (+4,41 a +6,21)
+     fr = FRANJA_ESTE
+     xe = ANEXO["x"][1]
+     f = Malla()
+     f.caja(xe, xe + 0.02, fr["y"][0], fr["y"][1], fr["z"][0], fr["z"][1])
+-    f.crear("FRANJA_ESTE_CHAPA", M["chapa"], col)
++    f.crear("FRANJA_ESTE_CHAPA", M["antepecho"], col)
+     nv = Malla()
+     nv.caja(xe + 0.02, xe + 0.02 + NERVIO_ANTEPECHO, fr["y"][0] + 0.10, fr["y"][0] + 0.10 + NERVIO_SECCION[0], fr["z"][0], fr["z"][1])
+-    ob = nv.crear("FRANJA_ESTE_NERVIOS", M["chapa"], col)
++    ob = nv.crear("FRANJA_ESTE_NERVIOS", M["antepecho"], col)
+     arr = ob.modifiers.new("Array_0.30", "ARRAY")
+     arr.use_relative_offset, arr.use_constant_offset = False, True
+     arr.constant_offset_displace = (0, NERVIO_PASO, 0)
+@@ -916,7 +1040,7 @@ def elementos_laterales(C, M):
+ 
+ 
+ def celosias(C, M):
+-    """Pantallas corten PT1/PT2: 15 planchas de 1,00 x 2,00 m (1 mm, juntas de 5 mm) con calados andinos (vacíos)
++    """Pantallas PT1/PT2 (corten en P1, blancas en P2): 15 planchas de 1,00 x 2,00 m (1 mm, juntas de 5 mm) con calados andinos (vacíos)
+     sobre un bastidor de tubos de 40 x 40 que sigue las líneas salmón del CAD (verticales cada 1,00 m, horizontales
+     cada 2,00 m y el borde superior), separado 0,12 m de su fondo."""
+     col = C["05_CELOSIAS_CORTEN"]
+@@ -939,7 +1063,7 @@ def celosias(C, M):
+             d, off = X_ALERO[0] - CELOSIA_SEP, 0.03
+         else:
+             d, off = ANEXO["x"][1] + CELOSIA_SEP, -0.03
+-        placa_con_huecos(f"CELOSIA_{fach}_{variante}_{i:02d}", anillos, 0.001, plano, d, M["corten"], col)
++        placa_con_huecos(f"CELOSIA_{fach}_{variante}_{i:02d}", anillos, 0.001, plano, d, M["celosia"], col)
+         # bastidor detrás de las planchas (eje del tubo a 3 cm de la plancha)
+         miembros = [((u, 0.0), (u, borde_v(variante, u))) for u in range(6)]
+         for v in (0.0, 2.0, 4.0):
+@@ -960,42 +1084,113 @@ def celosias(C, M):
+     bast.crear("CELOSIAS_BASTIDOR", M["bastidor"], col)
+ 
+ 
++def variantes_letrero():
++    """Geometría del letrero: A como en el CAD (las letras sobresalen 25 cm arriba y 35 cm abajo del antepecho) y B
++    contenida en los 2,40 m: horizonte al centro del antepecho y cada pieza (palabra, pirámide y su reflejo)
++    reescalada sobre su propio eje, con LETRERO_B_MARGEN libre arriba y abajo. Devuelve {colección: (escala, z)}."""
++    L = DATOS_GEOM["LETRERO"]
++    zh = L["horizonte_z"]
++    medio = (Z_ANTEPECHO[1] - Z_ANTEPECHO[0]) / 2
++    alto_max = max(q[1] for pg in L["letras"] for q in pg["ext"]) - zh            # 1,50 m de las letras
++    return {"LETRERO_A_SOBRESALE": (1.0, zh),
++            "LETRERO_B_CONTENIDO": ((medio - LETRERO_B_MARGEN) / alto_max, Z_ANTEPECHO[0] + medio)}
++
++
+ def letrero(C, M):
+-    """Letrero "línea de horizonte" sobre el antepecho (CAD: fachada NE actual).
+-
+-    - Letras UYUNI corpóreas (1,50 m, trazo de 200 mm) apoyadas en la línea de horizonte (+7,764).
+-    - Reflejo: las mismas letras espejadas bajo el horizonte, en contorno de 35 mm.
+-    - Montículos de sal: triángulos perforados (Ø 50 mm) sobre el horizonte; su reflejo debajo son marcos triangulares.
+-      Rombos de 2,00 m (lado 1414) y de 1,00 m (lado 707).
+-    - Línea de horizonte: pletina blanca de X 40,976 a 72,252.
+-    Todo en blanco (contraste con la chapa café chocolate); de noche brilla con la propiedad "luz_letrero".
++    """Letrero "línea de horizonte" sobre el antepecho (CAD: fachada NE actual), con relieve y sombra propia.
++
++    - Letras UYUNI corpóreas (1,50 m, trazo de 200 mm) sobre la línea de horizonte (+7,764), de 8 cm de espesor y
++      despegadas 12 cm de la chapa: la sombra propia se separa de la pieza (efecto flotante).
++    - Reflejo: las mismas letras espejadas bajo el horizonte, en contorno de 35 mm (5 cm de espesor).
++    - Montículos de sal: pirámides facetadas en 3D. La arista frontal baja del vértice superior (en el plano del
++      letrero) al centro de la base, que sobresale 15 cm (grandes, base de 2,00 m) o 10 cm (chicas, base de 1,00 m):
++      la luz separa las dos caras en clara y oscura. Su reflejo debajo son marcos triangulares.
++    - Línea de horizonte: pletina de X 40,976 a 72,252.
++    - Juego asimétrico sin texto sobre la puerta de salida (grande + 2 chicas), con su tramo de horizonte y reflejos.
++    Dos geometrías en colecciones hermanas (ver variantes_letrero): A visible y B excluida de las capas de vista.
++    Material blanco o corten según la propiedad "letras_corten" de la escena; de noche las blancas brillan.
+     """
+-    col = coleccion("LETRERO_HORIZONTE_UYUNI", C["02_ENVOLVENTE"])
++    base = coleccion("LETRERO_HORIZONTE_UYUNI", C["02_ENVOLVENTE"])
++    for nombre, (escala, zh_n) in variantes_letrero().items():
++        letrero_variante(coleccion(nombre, base), M, escala, zh_n, "_" + nombre.split("_")[1])
++
++
++def letrero_variante(col, M, s, zh_n, suf):
+     L = DATOS_GEOM["LETRERO"]
+-    y_fondo = Y_ANTEPECHO_EXT - NERVIO_ANTEPECHO - LETRERO_SEP     # plano trasero del letrero
+-    def anillos(piezas):
++    zh = L["horizonte_z"]
++    y_nervios = Y_ANTEPECHO_EXT - NERVIO_ANTEPECHO
++    y_plano = y_nervios - LETRERO_SEP                       # plano trasero del letrero
++    def tf(cx):                                             # escala s sobre el eje x = cx y el horizonte
++        return lambda u, v: (cx + (u - cx) * s, zh_n + (v - zh) * s)
++    def anillos(piezas, f, dx=0.0):
+         out = []
+         for pg in piezas:
+-            out.append(pg["ext"])
+-            out += pg["holes"]
++            out.append([f(u + dx, v) for u, v in pg["ext"]])
++            out += [[f(u + dx, v) for u, v in h] for h in pg["holes"]]
+         return out
+-    def pieza(nombre, piezas, fondo):
+-        placa_con_huecos(nombre, anillos(piezas), fondo, "XZ", y_fondo - fondo / 2, M["letrero"], col)
+-    pieza("LETRERO_LETRAS_UYUNI", L["letras"], LETRERO_FONDO["letras"])
+-    pieza("LETRERO_REFLEJO_UYUNI", L["reflejo"], LETRERO_FONDO["reflejo"])
+-    pieza("LETRERO_MONTICULOS_PERFORADOS", L["rombos_sup"], LETRERO_FONDO["rombos"])
+-    pieza("LETRERO_REFLEJO_MONTICULOS", L["rombos_inf"], LETRERO_FONDO["marcos"])
+-    zh, (hx0, hx1) = L["horizonte_z"], L["horizonte_x"]
++    def pieza(nombre, anill, fondo):
++        placa_con_huecos(nombre + suf, anill, fondo, "XZ", y_plano - fondo / 2, M["letrero"], col)
++    xs_l = [q[0] for pg in L["letras"] for q in pg["ext"]]
++    f_pal = tf((min(xs_l) + max(xs_l)) / 2)
++    pieza("LETRERO_LETRAS_UYUNI", anillos(L["letras"], f_pal), LETRERO_FONDO["letras"])
++    pieza("LETRERO_REFLEJO_UYUNI", anillos(L["reflejo"], f_pal), LETRERO_FONDO["reflejo"])
++    # montículos: uno por cada reflejo (triángulo hacia abajo) del CAD; la altura sale de las mitades superiores
++    def tipo(x0, x1):
++        return "grande" if x1 - x0 > 1.5 else "chica"
++    alto = {}
++    for pg in L["rombos_sup"]:
++        xs_, zs_ = [q[0] for q in pg["ext"]], [q[1] for q in pg["ext"]]
++        alto[tipo(0, 2 * (max(xs_) - min(xs_)))] = max(zs_) - zh
++    plantilla, montes = {}, []                              # (x0, x1, tipo, pieza del reflejo, desplazamiento)
++    for pg in L["rombos_inf"]:
++        xs_ = [q[0] for q in pg["ext"]]
++        plantilla.setdefault(tipo(min(xs_), max(xs_)), (min(xs_), pg))
++        montes.append((min(xs_), max(xs_), tipo(min(xs_), max(xs_)), pg, 0.0))
++    xs_sal = LETRERO_SALIDA["x0"]                           # juego de la puerta de salida: mismas piezas, desplazadas
++    for t in LETRERO_SALIDA["piezas"]:
++        x_tpl, pg = plantilla[t]
++        ancho = max(q[0] for q in pg["ext"]) - x_tpl
++        montes.append((xs_sal, xs_sal + ancho, t, pg, xs_sal - x_tpl))
++        xs_sal += ancho
++    marcos = []
++    pm = Malla()
++    zb = zh_n + 0.0135                                      # 1 mm sobre la pletina: sin caras coplanares
++    for x0, x1, t, pg, dx in montes:
++        xm = (x0 + x1) / 2
++        f = tf(xm)
++        marcos += anillos([pg], f, dx)
++        i = len(pm.v)
++        (xi, _), (xd, _), (_, zv) = f(x0 + 0.005, zh), f(x1 - 0.005, zh), f(xm, zh + alto[t])
++        pm.v += [(xi, y_plano, zb), (xd, y_plano, zb), (xm, y_plano, zv),
++                 (xm, y_plano - PIRAMIDE_FONDO[t], zb)]     # izquierda, derecha, vértice, centro de la base al frente
++        pm.f += [(i, i + 2, i + 1), (i, i + 1, i + 3), (i, i + 3, i + 2), (i + 1, i + 2, i + 3)]
++    pieza("LETRERO_REFLEJO_MONTICULOS", marcos, LETRERO_FONDO["marcos"])
++    pm.crear("LETRERO_PIRAMIDES_SAL_3D" + suf, M["letrero"], col)
+     h = Malla()
+-    h.caja(hx0, hx1, y_fondo - LETRERO_FONDO["horizonte"], y_fondo, zh - 0.0125, zh + 0.0125)
+-    h.crear("LETRERO_LINEA_HORIZONTE", M["letrero"], col)
+-    sop = Malla()   # separadores ocultos detrás de cada elemento
+-    for pg in L["letras"] + L["rombos_sup"]:
+-        us = [q[0] for q in pg["ext"]]
+-        zs = [q[1] for q in pg["ext"]]
+-        sop.caja((min(us) + max(us)) / 2 - 0.02, (min(us) + max(us)) / 2 + 0.02, y_fondo, Y_ANTEPECHO_EXT - NERVIO_ANTEPECHO,
+-                 (min(zs) + max(zs)) / 2 - 0.02, (min(zs) + max(zs)) / 2 + 0.02)
+-    sop.crear("LETRERO_SEPARADORES", M["bastidor"], col)
++    for hx0, hx1 in (L["horizonte_x"], LETRERO_SALIDA["horizonte"]):
++        h.caja(hx0, hx1, y_plano - LETRERO_FONDO["horizonte"], y_plano, zh_n - 0.0125, zh_n + 0.0125)
++    h.crear("LETRERO_LINEA_HORIZONTE" + suf, M["letrero"], col)
++    sop = Malla()   # separadores ocultos: dentro del trazo de cada letra (no en sus huecos) y de cada pirámide
++    centros = [((x0 + x1) / 2, zh_n + alto[t] * s / 3) for x0, x1, t, _, _ in montes]
++    for pg in L["letras"]:
++        xs_ = [q[0] for q in pg["ext"]]
++        for z in (zh + 0.10, zh + 1.40):
++            tramos, ini = [], None
++            for k in range(int((max(xs_) - min(xs_)) / 0.01) + 1):
++                x = min(xs_) + k * 0.01
++                if dentro_poligono(x, z, pg["ext"]):
++                    ini = x if ini is None else ini
++                elif ini is not None:
++                    tramos.append((ini, x - 0.01))
++                    ini = None
++            if ini is not None:
++                tramos.append((ini, max(xs_)))
++            tramos = [t_ for t_ in tramos if t_[1] - t_[0] >= 0.06]
++            for a_, b_ in {tramos[0], tramos[-1]} if tramos else ():
++                centros.append(f_pal((a_ + b_) / 2, z))
++    for cx, cz in centros:
++        sop.caja(cx - 0.02, cx + 0.02, y_plano, y_nervios, cz - 0.02, cz + 0.02)
++    sop.crear("LETRERO_SEPARADORES" + suf, M["bastidor"], col)
+ 
+ 
+ def entorno(C, M):
+@@ -1033,19 +1228,7 @@ def entorno(C, M):
+     b = Malla()
+     b.caja(xa, xb, ACERA_Y[0] - 0.15, ACERA_Y[0], -BORDILLO_DESNIVEL - 0.05, 0.0)
+     b.crear("BORDILLO", M["hormigon"], col)
+-    bo = Malla()   # bolardos de acero grafito (Ø 0,14 x 0,90) a mitad de cada vano, a 0,40 m del bordillo
+-    xs = sorted(EJES_X.values())
+-    for xa_, xb_ in zip(xs, xs[1:]):
+-        if xb_ - xa_ > 1.0:
+-            seg = 12
+-            perfil = [((xa_ + xb_) / 2 + 0.07 * math.cos(2 * math.pi * k / seg), ACERA_Y[0] + 0.40 + 0.07 * math.sin(2 * math.pi * k / seg)) for k in range(seg)]
+-            n0 = len(bo.v)
+-            bo.v += [(x, y, 0.0) for x, y in perfil] + [(x, y, 0.90) for x, y in perfil]
+-            bo.f.append(tuple(range(n0 + seg - 1, n0 - 1, -1)))
+-            bo.f.append(tuple(range(n0 + seg, n0 + 2 * seg)))
+-            for k in range(seg):
+-                bo.f.append((n0 + k, n0 + (k + 1) % seg, n0 + seg + (k + 1) % seg, n0 + seg + k))
+-    bo.crear("BOLARDOS", M["bolardo"], col, suave=True)
++    # sin bolardos ni postes de iluminación peatonal: no están en el presupuesto (reunión del 3 de octubre)
+     s = Malla()
+     s.caja(-2000, 2000, -2000, 2000, -0.60, -BORDILLO_DESNIVEL - 0.08)
+     s.crear("SUELO_ALTIPLANO", M["suelo"], col)
+@@ -1192,7 +1375,7 @@ def mundo(nombre, azimut, elev, fuerza, disco=False):
+             break
+         except TypeError:
+             continue
+-    for k, v in dict(altitude=ALTITUD_MSNM, air_density=1.0, aerosol_density=0.08, dust_density=0.08, ozone_density=1.2,
++    for k, v in dict(altitude=ALTITUD_MSNM, **CIELO_ATMOSFERA,
+                      sun_disc=disco, sun_elevation=math.radians(elev),
+                      sun_rotation=math.radians((90.0 - (NORTE_LOCAL_DEG - azimut)) % 360)).items():
+         if hasattr(sky, k):
+@@ -1219,10 +1402,11 @@ def sol(nombre, azimut, elev, fuerza, col, temp=5800):
+     return ob
+ 
+ 
+-def camara(nombre, pos, mira, focal, col, sensor=36.0):
++def camara(nombre, pos, mira, focal, col, sensor=36.0, shift_y=0.0):
+     cd = bpy.data.cameras.new(nombre)
+     cd.lens = focal
+     cd.sensor_width = sensor
++    cd.shift_y = shift_y      # descentramiento: encuadra sin inclinar la cámara (verticales rectas)
+     cd.clip_start, cd.clip_end = 0.1, 6000.0
+     ob = bpy.data.objects.new(nombre, cd)
+     ob.location = pos
+@@ -1236,9 +1420,9 @@ def camaras_y_dron(C, escena):
+     cams = {
+         # Hero, Lado Tierra: perspectiva angular a nivel de ojo (1,65 m), 32 mm
+         "CAM_01_HERO_LADO_TIERRA": camara("CAM_01_HERO_LADO_TIERRA", (91.0, -17.0, 1.65), (57.0, -0.5, 4.6), 32, col),
+-        # detalle constructivo: encuentro chapa / retenedores / antepecho Duralit (vista elevada)
++        # detalle constructivo: encuentro chapa / retenedor de nieve / antepecho (vista elevada)
+         "CAM_02_DETALLE_ALERO": camara("CAM_02_DETALLE_ALERO", (-2.8, -5.6, 10.1), (5.0, -1.0, 8.6), 35, col),
+-        # detalle del cielo Luxalon, columnas y M1 desde la acera
++        # detalle del cielo listonado, columnas y M1 desde la acera
+         "CAM_02B_DETALLE_CIELO": camara("CAM_02B_DETALLE_CIELO", (11.0, -3.6, 1.62), (19.5, -0.4, 6.2), 22, col),
+         # crepuscular / nocturna con nieve y piso mojado (escena UYUNI_CREPUSCULO)
+         "CAM_03_CREPUSCULAR_NIEVE": camara("CAM_03_CREPUSCULAR_NIEVE", (50.5, -36.0, 1.7), (50.5, 0.0, 5.0), 24, col),
+@@ -1249,6 +1433,7 @@ def camaras_y_dron(C, escena):
+         # aérea semicenital: Lado Tierra + Lado Aire, volumetría limpia
+         "CAM_04_AEREA_GENERAL": camara("CAM_04_AEREA_GENERAL", (-22.0, -58.0, 48.0), (38.0, 8.0, 2.0), 35, col),
+     }
++    cams.update(camaras_propuestas(col))
+     # recorrido de dron: 25 s a 24 fps (600 cuadros) - aproximación, descenso, paso rasante, elevación
+     cam = camara("CAM_DRON", (-40.0, -120.0, 55.0), (36.0, 10.0, 5.0), 24, col)
+     obj = bpy.data.objects.new("DRON_OBJETIVO", None)
+@@ -1277,6 +1462,20 @@ def camaras_y_dron(C, escena):
+     return cams
+ 
+ 
++def camaras_propuestas(col):
++    """Cámaras de las propuestas de color (pedido del 3 de octubre)."""
++    return {
++        # la perspectiva de la captura del cliente (resuelta con 11 puntos, error 1,3 px), mejorada: fachada completa
++        # con márgenes del 3,5 %, cámara horizontal (verticales rectas) y edificio centrado en altura, 28 mm desde
++        # 6,0 m de altura y 32° de oblicuidad
++        "CAM_07_PROPUESTAS": camara("CAM_07_PROPUESTAS", (83.851, -43.695, 6.0),
++                                    (83.851 - 26.50, -43.695 + 42.40, 6.0), 28, col),
++        # la captura del cliente tal cual: 26 mm desde 6,85 m, levemente inclinada hacia abajo
++        "CAM_07B_CAPTURA_CLIENTE": camara("CAM_07B_CAPTURA_CLIENTE", (78.01, -46.19, 6.85),
++                                          (78.01 - 25.04, -46.19 + 43.27, 6.85 - 1.34), 26.1, col),
++    }
++
++
+ def config_render(sc, muestras=256):
+     sc.render.engine = "CYCLES"
+     sc.cycles.samples = muestras
+@@ -1302,6 +1501,23 @@ def config_render(sc, muestras=256):
+     sc.unit_settings.scale_length = 1.0
+ 
+ 
++def geometria_letrero(sc, variante):
++    """Deja visible la geometría "A" (sobresale) o "B" (contenida) del letrero en todas las capas de vista de sc."""
++    def buscar(lc, nombre):
++        if lc.name == nombre:
++            return lc
++        for h in lc.children:
++            r = buscar(h, nombre)
++            if r:
++                return r
++    for vl in sc.view_layers:
++        vl.update()                    # en una escena nueva la capa de vista se sincroniza recién al actualizarla
++        for nombre in variantes_letrero():
++            lc = buscar(vl.layer_collection, nombre)
++            if lc:
++                lc.exclude = not nombre.startswith("LETRERO_" + variante)
++
++
+ def georreferencia(sc):
+     sc["UTM_EPSG"] = 32719
+     sc["UTM_E_origen"] = 724956.439
+@@ -1314,6 +1530,44 @@ def georreferencia(sc):
+ # =============================================================================
+ # 6. EJECUCIÓN
+ # =============================================================================
++# Propiedades que leen los materiales: "propuesta" (0 = P1, 1 = P2) y "letras_corten" (1 = corten, 0 = blanco)
++PROPIEDADES_ESCENA = {"UYUNI_DIA": dict(propuesta=0, letras_corten=1),
++                      "UYUNI_DIA_P2_SALAR_LITIO": dict(propuesta=1, letras_corten=0),
++                      "UYUNI_CREPUSCULO": dict(propuesta=0, letras_corten=0)}
++
++
++def propiedades_escena(sc):
++    for k, v in PROPIEDADES_ESCENA.get(sc.name, {}).items():
++        sc[k] = v
++
++
++def escena_propuesta_2(sc, C, luz_dia, cam, muestras):
++    """La misma mañana con la propuesta 2 (Salar & Litio): comparte colecciones, sol y cielo; cambia la paleta."""
++    sc3 = bpy.data.scenes.new("UYUNI_DIA_P2_SALAR_LITIO")
++    for n in COLECCIONES:
++        sc3.collection.children.link(C[n])
++    sc3.collection.children.link(luz_dia)
++    sc3.world = sc.world
++    for k in ("humedad", "nieve", "luz_interior", "luz_alero", "luz_letrero"):
++        sc3[k] = sc[k]
++    propiedades_escena(sc3)
++    sc3.camera = cam
++    config_render(sc3, muestras)
++    georreferencia(sc3)
++    return sc3
++
++
++def nieve_crepusculo(col, M):
++    """Nieve sutil en el borde de la cubierta, hasta el retenedor (escena de crepúsculo)."""
++    nv = Malla()
++    y0 = PERFIL_CUBIERTA[0][0]
++    yb = y0 + CORREA_1_DIST_BORDE
++    nv.prisma_yz([(y0 + 0.02, z_cubierta(y0) + 0.01), (yb + 0.04, z_cubierta(yb + 0.04) + 0.01),
++                  (yb + 0.04, z_cubierta(yb + 0.04) + 0.16), (yb - 0.05, z_cubierta(yb) + 0.07), (y0 + 0.02, z_cubierta(y0) + 0.035)],
++                 X_ALERO[0] + 0.05, X_ALERO[1] - 0.05)
++    nv.crear("NIEVE_BORDE_CUBIERTA", M["nieve"], col, suave=True)
++
++
+ def construir(muestras=256):
+     limpiar()
+     sc = bpy.context.scene
+@@ -1343,9 +1597,11 @@ def construir(muestras=256):
+     sol("SOL_MANANA", az, el, 4.5, luz_dia)
+     sc.world = mundo("CIELO_MANANA", az, el, 0.18)
+     sc["humedad"], sc["nieve"], sc["luz_interior"], sc["luz_alero"], sc["luz_letrero"] = 0.0, 0.0, 0.6, 0.0, 0.0
++    propiedades_escena(sc)
+     sc.camera = cams["CAM_01_HERO_LADO_TIERRA"]
+     config_render(sc, muestras)
+     georreferencia(sc)
++    sc3 = escena_propuesta_2(sc, C, luz_dia, cams["CAM_07_PROPUESTAS"], muestras)
+ 
+     # --- escena de crepúsculo: comparte las colecciones; cambian luz, cielo y propiedades (humedad, nieve)
+     sc2 = bpy.data.scenes.new("UYUNI_CREPUSCULO")
+@@ -1356,7 +1612,7 @@ def construir(muestras=256):
+     sol("LUNA_RELLENO", (az2 + 180) % 360, 35.0, 0.03, luz_cre, temp=7500)
+     xs = sorted(EJES_X.values())
+     yc = (Y_ANTEPECHO_EXT + E_ANTEPECHO + Y_MURO_EXT) / 2
+-    for xa, xb in zip(xs, xs[1:]):   # un spot cálido por vano bajo el cielo Luxalon
++    for xa, xb in zip(xs, xs[1:]):   # un spot cálido por vano bajo el cielo listonado
+         xm = (xa + xb) / 2
+         if X_ALERO[0] + 0.5 < xm < X_ALERO[1] - 0.5 and xb - xa > 1:
+             ld = bpy.data.lights.new(f"{PREFIJO}SPOT_ALERO_{xm:05.1f}", "SPOT")
+@@ -1368,6 +1624,7 @@ def construir(muestras=256):
+             luz_cre.objects.link(ob)
+     sc2.world = mundo("CIELO_HORA_AZUL", az2, max(el2, -4.0), 0.9)
+     sc2["humedad"], sc2["nieve"], sc2["luz_interior"], sc2["luz_alero"], sc2["luz_letrero"] = 1.0, 0.6, 7.0, 1.0, 2.5
++    propiedades_escena(sc2)
+     for fach, tipo, a_, b_ in CELOSIAS:   # bañadores cálidos al pie de las celosías del Lado Tierra
+         if fach != "NE":
+             continue
+@@ -1379,20 +1636,16 @@ def construir(muestras=256):
+         ob.location = ((a_ + b_) / 2, Y_COL_EXT - CELOSIA_SEP - 0.9, 0.05)
+         ob.rotation_euler = Vector((0.0, 0.32, 1.0)).to_track_quat("-Z", "Y").to_euler()
+         luz_cre.objects.link(ob)
+-    nieve_col = coleccion("09_NIEVE_CREPUSCULO", sc2.collection)   # nieve sutil: borde de cubierta y retenedores
+-    nv = Malla()
+-    y0 = PERFIL_CUBIERTA[0][0]
+-    yb = y0 + RETENEDOR_DIST_BORDE
+-    nv.prisma_yz([(y0 + 0.02, z_cubierta(y0) + 0.01), (yb + 0.04, z_cubierta(yb + 0.04) + 0.01),
+-                  (yb + 0.04, z_cubierta(yb + 0.04) + 0.16), (yb - 0.05, z_cubierta(yb) + 0.07), (y0 + 0.02, z_cubierta(y0) + 0.035)],
+-                 X_ALERO[0] + 0.05, X_ALERO[1] - 0.05)
+-    nv.crear("NIEVE_BORDE_CUBIERTA", M["nieve"], nieve_col, suave=True)
++    nieve_crepusculo(coleccion("09_NIEVE_CREPUSCULO", sc2.collection), M)
+     sc2.camera = cams["CAM_03_CREPUSCULAR_NIEVE"]
+     config_render(sc2, muestras)
+     sc2.view_settings.exposure = 0.6
+     georreferencia(sc2)
++    for escena in (sc, sc2, sc3):   # geometría A del letrero visible; la B queda excluida (se activa a mano)
++        geometria_letrero(escena, "A")
+     print(f"[UYUNI] Modelo generado. Sol mañana: azimut {az:.1f}°, elevación {el:.1f}° | crepúsculo: {az2:.1f}°, {el2:.1f}°")
+     return sc, sc2
+ 
+ 
+-construir()
++if __name__ == "__main__":   # Blender (Run Script) y exec(..., {"__name__": "__main__"}) lo ejecutan; el parche solo lo carga
++    construir()

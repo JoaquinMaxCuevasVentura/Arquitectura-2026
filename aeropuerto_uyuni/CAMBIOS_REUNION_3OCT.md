@@ -4,7 +4,7 @@ Este documento sirve para **llevar estos cambios al modelo "formal"**: el `.blen
 
 - **Base:** versión del primer traspaso (commit `7b19bea`).
 - **Versión nueva:** `01_blender/uyuni_modelo.py` de este paquete.
-- **Diferencias línea por línea:** `CAMBIOS_REUNION_3OCT_uyuni_modelo.diff`, en el zip de cambios.
+- **Diferencias línea por línea:** `CAMBIOS_REUNION_3OCT_uyuni_modelo.diff`, en esta misma carpeta.
 
 ## 1. Qué cambió
 

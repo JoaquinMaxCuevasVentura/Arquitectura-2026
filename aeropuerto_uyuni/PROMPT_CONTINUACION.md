@@ -52,7 +52,7 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
 
 1. Integra los cambios de la reunión en el formal sin perder tu avance.
    - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta 01_blender/herramientas/aplicar_cambios_reunion.py sobre la copia (CAMBIOS_REUNION_3OCT.md, sección 2A).
-   - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C.
+   - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C y aeropuerto_uyuni/CAMBIOS_REUNION_3OCT_uyuni_modelo.diff.
    - Verifica con CAM_07_PROPUESTAS en UYUNI_DIA (P1) y UYUNI_DIA_P2_SALAR_LITIO (P2), contra los renders finales.
 
 2. Completa la revisión contra el DXF (TRASPASO.md, sección 6):
