@@ -94,7 +94,7 @@ Detalle y prueba: `ILUMINACION_NOCTURNA.md`.
 | **Corten** | Dieléctrico, con un lote por plancha (*Random Per Island*: ±15 %, algunas más pardas) y pátina más densa en caras superiores y cantos |
 | **Variación por pieza** | *Random Per Island* en los listones del cielo y en las planchas de corten |
 | **Galvanizado y asfalto** | *Spangle* y árido con Voronoi F1 |
-| **Vidrio de control solar** | Un solo Principled: metálico 0, transmisión 1, IOR 1,52, `Thin Wall`; capa `Thin Film` de 50 nm con IOR 2,4 (azul acero); tinte `#A9BCCB`; ondas de templado (`Wave Texture` en bandas de 0,33 m, con fase por paño); polvo en el perímetro. **Nada de metálico para el reflejo ni del truco de Backfacing** |
+| **Vidrio de control solar** (elegido por el cliente) | Un solo Principled: metálico 0, transmisión 1, IOR 1,52, `Thin Wall`; tinte oscuro `#6E808E`; capa de baja reflexión `Thin Film` de 67 nm con IOR 1,8 (≈ 13 % por cara); ondas de templado (`Wave Texture` en bandas de 0,33 m, con fase por paño); polvo en el perímetro. La fachada no debe parecer un espejo ciego: detrás del vidrio tiene que haber estructura que ver. **Nada de metálico para el reflejo ni del truco de Backfacing** |
 | **Costo** | AO con 2 rayos y Bevel con 4. Nunca un AO o un Bevel en la altura de un `Bump` (Cycles la evalúa tres veces). Costo medido: de +34 a +61 % |
 | **Diagnóstico** | El material `UY_DIAG_MASCARAS`, como *Material Override*, pinta aristas, cavidades y gravedad en rojo, verde y azul |
 

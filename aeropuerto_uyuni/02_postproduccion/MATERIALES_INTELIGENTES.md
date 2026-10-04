@@ -139,7 +139,14 @@ Valores de color en sRGB; entre paréntesis, la luminancia lineal (rango físico
 
 ## 4. Vidrio de control solar
 
-Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contrastado con Blender 5.2 y con el modelo, y prueba en CAM_01 con cinco variantes, con la misma luz y el mismo encuadre.
+Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contrastado con Blender 5.2 y con el modelo, y prueba en CAM_01 con seis variantes, con la misma luz y el mismo encuadre.
+
+**Decisión del cliente (4 de octubre): variante 6.**
+- **DVH:** vidrio interior laminado incoloro de 3+3 mm, cámara de aire y vidrio exterior de 4 mm, acoplado o laminado con lámina o tratamiento de control solar.
+- **El arquitecto pide menos reflexión:** que la fachada no sea un espejo ciego y deje ver la estructura de adentro (columnas, vigas y carpinterías).
+- **Valida el tono más oscuro:** contrasta y resalta la estructura y los elementos blancos.
+- **Para el render:** la variante 6 es el tinte oscuro de la 5 con una capa de baja reflexión. La reflectancia baja de ≈ 34 % a ≈ 13 % por cara, y el cielo reflejado, un 23 %.
+- **Pendiente:** para que se vea la estructura detrás del vidrio, esta tiene que existir en el modelo. Hoy, detrás del vidrio hay una caja vacía: hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
 
 **Hoja:** `01_blender/fotorrealismo/Prueba_vidrio_CAM01.jpg`. **Herramienta:** `01_blender/herramientas/prueba_vidrio.py`.
 
@@ -150,8 +157,9 @@ Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contra
 | 3 · Físico completo | capa de 50 nm (azul acero), tinte `#A9BCCB`, ondas de templado y polvo en el perímetro | 160 / 102 | **Recomendado.** Reflejo azul acero, interior más oscuro, reflejos apenas ondulados |
 | 4 · Receta *Backfacing* | `Mix Shader` por `Backfacing`; por fuera, metálico 0,9 sobre `#0D151D`, sin transmisión | 49 / 24 | Casi negro: refleja menos que un vidrio común |
 | 5 · Físico oscuro | como el 3, con tinte `#6E808E` | 154 / 93 | Desde afuera, apenas más oscuro que el 3: de día manda el reflejo. El tinte pesa de cerca, desde adentro y en la hora azul |
+| **6 · Elegido: oscuro, baja reflexión** | tinte `#6E808E`; capa de IOR 1,8 y 67 nm; ondas y polvo; interior a 3500 K | 119 / 67 | **Elegido por el cliente.** Refleja un 23 % menos de cielo que el 5. El vidrio queda oscuro y los muros claros contrastan |
 
-\*En el mismo paño, de 0 a 255 en la imagen final. Las cinco tardan lo mismo: de 110 a 116 s, con la CPU compartida con la cola de 4K.
+\*En el mismo paño, de 0 a 255 en la imagen final. Las seis tardan lo mismo: de 110 a 116 s con la CPU compartida, y 62 s la 6, con la CPU libre.
 
 **La física del texto es correcta:**
 - No existe un vidrio que deje pasar la luz en un solo sentido (reciprocidad de Helmholtz). El "espejo" de día sale de tres cosas:
@@ -195,18 +203,18 @@ Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contra
 | Tinte del reflejo con base `#0A1118` o `#081014` | Ese tinte, en el color base de un metal, oscurece todo (punto 4). Con capa fina, el tinte del reflejo sale del espesor de la capa, y el color base queda para el tinte de transmisión |
 | DVH a 3660 m (no está en el texto) | Un DVH fabricado abajo y sin tubos capilares se infla en Uyuni: cada paño queda convexo y el reflejo se deforma "en almohada" (sección 5). Con una especificación correcta no pasa, así que en el render no se agrega |
 
-**Receta final de `UY_VIDRIO_CONTROL_SOLAR`** (variante 3):
+**Receta final de `UY_VIDRIO_CONTROL_SOLAR`** (variante 6, elegida por el cliente):
 
 | Parámetro | Valor |
 |---|---|
 | Shader | un solo Principled BSDF, sin `Mix Shader` |
-| Base Color | tinte de transmisión `#A9BCCB`; más oscuro (`#6E808E`) si se quiere ver menos el interior |
+| Base Color | tinte de transmisión `#6E808E` (oscuro, elegido) |
 | Metallic | 0 |
 | Roughness | 0,02 en el centro y de 0,15 a 0,2 junto a la perfilería (AO de 0,12 m) |
 | IOR | 1,52 |
 | Transmission | 1 |
 | Thin Wall | sí: cada paño es una caja de 27 mm, y sus dos caras hacen de las dos hojas del DVH |
-| Thin Film | 50 nm con IOR 2,4 (azul acero) o 57 nm (plateado) |
+| Thin Film | **67 nm con IOR 1,8**: capa de baja reflexión, ≈ 13 % por cara, con pico a 482 nm (reflejo azul acero tenue). Las capas de IOR 2,4 (variantes 2, 3 y 5) reflejan ≈ 34 %: demasiado espejo para el pedido del arquitecto |
 | Normal | ondas de templado: `Wave Texture` en bandas de 0,33 m con fase por paño y `Bump` de 0,03 con distancia de 3 mm |
 
 ## 5. Nota de diseño (para el proyecto, no para el render)
@@ -303,12 +311,14 @@ Tareas, en este orden:
    - hormigón visto con poros (Voronoi F1 y relieve negativo);
    - veredas con tierra acumulada al pie de los muros y en las juntas (AO).
 
-7. Vidrio de control solar (sección 4, probado en CAM_01):
-   - un solo Principled: metálico 0, transmisión 1, IOR 1,52, Thin Wall; el color base es el tinte de transmisión (#A9BCCB);
-   - el reflejo sale de la capa: Thin Film de 50 nm con IOR 2,4 (azul acero). Muéstrame también 57 nm (plateado) y el tinte oscuro #6E808E;
-   - ondas de templado: Wave Texture en bandas de 0,33 m con fase por paño (Random Per Island) y Bump de 0,03 con 3 mm; reemplaza al abombado con ruido;
+7. Vidrio de control solar: la variante 6, elegida por el cliente (sección 4, probada en CAM_01):
+   - DVH real: laminado incoloro 3+3 adentro, cámara y 4 mm con control solar afuera; la fachada no debe parecer un espejo ciego;
+   - un solo Principled: metálico 0, transmisión 1, IOR 1,52, Thin Wall; color base oscuro, como tinte de transmisión (#6E808E);
+   - el reflejo sale de una capa de baja reflexión: Thin Film de 67 nm con IOR 1,8 (≈ 13 % por cara);
+   - ondas de templado: Wave Texture en bandas de 0,33 m con fase por paño (Random Per Island) y Bump de 0,03 con 3 mm;
    - polvo en el perímetro: AO de 0,12 m (2 rayos) que lleva la rugosidad de 0,02 a 0,18. Nunca en el Bump;
-   - no uses el truco de Backfacing ni el metálico para el reflejo: deja el vidrio casi negro, apaga la hora azul y no funciona con paños en caja.
+   - para que se vea la estructura detrás del vidrio, modela las columnas y vigas interiores cercanas a la fachada a partir del IFC, y lleva el interior a 3500 K (Blackbody), sin el resplandor naranja;
+   - no uses el truco de Backfacing ni el metálico para el reflejo.
 
 8. Suelo del contexto (si ya está con Poly Haven): costra de sal en manchas, con Voronoi Distance to Edge filtrado con F1 y deformado con ruido. Nunca sobre la calzada ni la plataforma.
 

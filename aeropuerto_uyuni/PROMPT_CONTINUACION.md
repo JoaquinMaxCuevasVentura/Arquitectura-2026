@@ -75,6 +75,11 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - sin árboles ni césped; calzada y plataforma libres; escala real de las texturas.
    Después, vehículos y personas reales en lugar de los 15 proxies (TRASPASO 8.2).
 
+6b. Lado Aire (pedido del cliente del 4 de octubre; TRASPASO 5.13 y 8.7):
+   - dos mangas de abordaje generadas por código, en las puertas del modelo del cliente;
+   - aeronaves Boeing 737-800 de BoA, la aerolínea estatal. Pregúntame antes de usar su librea; si no se puede, va una librea blanca genérica;
+   - la pista real (4000 × 45 m, cabeceras 13/31, casi paralela a la fachada), con la calle de rodaje, la señalización OACI y su extensión hasta el horizonte, para que las tomas aéreas no muestren vacíos.
+
 7. Escena nocturna: el prompt de ILUMINACION_NOCTURNA.md (sección 5).
 
 8. Cielo (TRASPASO 8.3): luz de mañana sincronizada con el sol del script y una variante de cielo nublado invernal.
@@ -96,7 +101,9 @@ Reglas:
   - cielo del alero listonado sobre plenum negro;
   - carpintería antracita mate;
   - sin bolardos ni postes de iluminación peatonal;
-  - el hero shot es con luz de mañana.
+  - el hero shot es con luz de mañana;
+  - vidrio de las fachadas (4 de octubre): DVH con laminado incoloro de 3+3 mm adentro y 4 mm con control solar afuera; tono oscuro y poca reflexión, para que la fachada no parezca un espejo ciego y deje ver la estructura de adentro (MATERIALES_INTELIGENTES.md, sección 4, variante 6);
+  - Lado Aire (4 de octubre): perspectiva general aprobada; faltan mangas, aeronaves y la pista hasta el horizonte (paso 6b).
 - Realismo (guía de realismo):
   - mejora la manera de fotografiar el edificio, no el edificio;
   - los colores de PALETA no se tocan; el metálico y la rugosidad sí, según la tabla, y dime el valor anterior y el nuevo;
@@ -114,7 +121,7 @@ Reglas:
   - Registra cada asset externo en 01_blender/assets/CREDITOS.md: fuente, autor, licencia y URL. Las licencias deben permitir uso comercial.
 - Antes de usar la API, revisa las trampas de Blender 5.2: TRASPASO.md (sección 10) y la guía (sección 10).
 - Si algo del CAD es ambiguo o contradice una decisión, pregúntame antes de suponer.
-- Prioriza lo que se ve en CAM_01, CAM_03, CAM_04, CAM_07 y en el recorrido del dron. El video del dron vence el lunes 5 de octubre.
+- Prioriza lo que se ve en CAM_01, CAM_03, CAM_04, CAM_07, en la perspectiva del Lado Aire y en el recorrido del dron. El video del dron vence el lunes 5 de octubre.
 
 Entrega:
 - el informe del paso 0: qué tenías hecho, a medias y pendiente;

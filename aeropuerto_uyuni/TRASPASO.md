@@ -186,6 +186,10 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     - **Menos reflexión:** el arquitecto pide bajar la reflectividad del vidrio exterior. La fachada no debe parecer un espejo ciego: tiene que dejar ver la estructura de adentro (columnas, vigas y carpinterías).
     - **Tono más oscuro:** se valida, porque contrasta y resalta la estructura y los elementos blancos del edificio.
     - **En el render:** variante 6 de `02_postproduccion/MATERIALES_INTELIGENTES.md`, sección 4 (tinte `#6E808E` y capa de baja reflexión). Para que se vea la estructura detrás del vidrio hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
+13. **Fachada Lado Aire, pista y plataforma (4 de octubre):**
+    - se aprueba la perspectiva general del Lado Aire;
+    - hay que incorporar al render las **mangas de abordaje**, **aeronaves Boeing de la aerolínea estatal** (BoA) y la **extensión de la pista hasta el horizonte**, para que las tomas aéreas no muestren vacíos;
+    - especificación en la sección 8.7.
 10. **Reglas de oro del brief:**
     - el DXF solo sirve para verificar: no se calca ni se importa como geometría;
     - toda la geometría se genera con `bpy` a partir de medidas numéricas;
@@ -409,6 +413,32 @@ for cam in ["CAM_01_HERO_LADO_TIERRA", "CAM_02_DETALLE_ALERO", "CAM_02B_DETALLE_
 **7.2 · Láminas PDF:** pocas palabras, renders de alto impacto con llamadas técnicas simples y el MP4 del dron.
 
 **7.3 · Cotización del servicio:** el repositorio tiene estudios de costos de renders en Bolivia hechos para otro proyecto, la terminal de Tupiza. Están en `reports/` y en `research_notes/Costos de renderizado La Paz Bolivia/`. Sirven de referencia para cotizar y para decidir si se emite con o sin factura.
+
+### 8.7 Lado Aire: mangas, aeronaves y pista (pedido del 4 de octubre)
+
+**Mangas de abordaje (puentes de embarque):**
+- **Cantidad y posición:** las del modelo del cliente (captura de la reunión): dos mangas que salen de la fachada del Lado Aire hacia los puestos de estacionamiento. Confirmar las puertas con el alzado SO del DXF; si no está claro, preguntar.
+- **Partes:**
+  - rotonda fija junto al edificio, de ≈ 3,5 m de diámetro;
+  - túnel telescópico de 2 o 3 tramos, de ≈ 2,8 m de ancho por ≈ 3 m de alto, con pendiente máxima de 1:12;
+  - cabina en la puerta del avión: el umbral de la puerta del 737-800 queda a ≈ 2,7 m del piso;
+  - columna de apoyo con tren de ruedas.
+- **Materiales:** metal pintado blanco o gris claro, con bandas vidriadas. Se generan por código, como el resto del edificio.
+
+**Aeronaves:**
+- **Modelo:** Boeing 737-800, que es el que BoA opera en las rutas nacionales (también el 737-700). Medidas: 39,5 m de largo, 35,8 m de envergadura con *winglets* y 12,5 m de alto.
+- **Cantidad y posición:** uno o dos, con la nariz hacia la manga.
+- **Origen del modelo:** un asset con licencia que permita uso comercial (CC0 o CC-BY de Sketchfab, BlenderKit u otro), registrado en `CREDITOS.md`.
+- **Librea:** la de BoA solo si el cliente confirma que se puede usar la marca; si no, una librea blanca genérica. Hay que preguntar.
+
+**Pista y plataforma:**
+- **Pista real:** 4000 × 45 m, asfalto, cabeceras 13/31, con balizamiento.
+- **Orientación:** el eje largo del edificio (X local) apunta a un azimut de ≈ 301° (sección 3), así que la pista corre casi paralela a la fachada.
+- **Posición:** se toma de OpenStreetMap o de Google Earth (`aeroway = runway`) y se pasa a coordenadas locales con la georreferencia de la sección 3.
+- **Señalización según el Anexo 14 de la OACI:** umbrales con barras, designadores 13 y 31, eje discontinuo, zona de toma de contacto, punto de visada y bordes.
+- **Calle de rodaje:** une la plataforma con la pista, con eje amarillo.
+- **Plataforma:** marcas de los puestos en amarillo y líneas de seguridad.
+- **Pista entera hasta el horizonte**, con el terreno del altiplano y los cerros detrás, para que CAM_04 y el dron no muestren el borde del suelo.
 
 ## 9. Herramientas sin interfaz
 
