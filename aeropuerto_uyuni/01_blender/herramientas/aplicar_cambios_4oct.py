@@ -4,9 +4,9 @@ Sirve para el modelo "formal" con avance propio, después de aplicar_cambios_reu
 regenera el modelo ni toca nada que no esté en esta lista; no purga datos huérfanos.
 
 Qué hace:
-1. Letrero: en P2 las letras, pirámides y horizonte van en gris oscuro (LETRAS_GRIS) sobre el parapeto blanco. Rehace
+1. Letrero: en P2 las letras, pirámides y horizonte van en gris casi negro (LETRAS_GRIS) sobre el parapeto blanco. Rehace
    el material del letrero con la propiedad nueva "letras_gris" y la escribe en las tres escenas.
-2. Muros de P2 (y el bastidor de las celosías, que va igual que el muro): gris más oscuro (PALETA["muro"]).
+2. Muros de P2 (y el bastidor de las celosías, que va igual que el muro): casi negro (PALETA["muro"]).
 3. Vidrio elegido: DVH con control solar, tono oscuro y poca reflexión (VIDRIO; MATERIALES_INTELIGENTES.md, sección 4,
    variante 6).
 4. Interior: el emisor pasa de RGB naranja a 3500 K (Blackbody) con el mismo brillo.

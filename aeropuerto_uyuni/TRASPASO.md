@@ -171,10 +171,10 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     |---|---|---|
     | Celosías | Acero corten, óxido cobrizo cálido | Blanco perla |
     | Parapeto y remates | Antracita mate | Blanco perla |
-    | Letrero y pirámides | **Corten** (`letras_corten` = 1) | **Gris oscuro** `#45494C` (`letras_gris` = 1), decidido el 4 de octubre |
+    | Letrero y pirámides | **Corten** (`letras_corten` = 1) | **Gris casi negro** `#2E3133` (`letras_gris` = 1), decidido el 4 de octubre |
     | Cubierta | Antracita | Gris claro metálico |
     | Cielo listonado | Símil madera | Blanco |
-    | Muros y columnas | Hormigón claro `#B9B5AD` | **Gris oscuro** `#575B5E` (4 de octubre; antes `#6B6E70`) |
+    | Muros y columnas | Hormigón claro `#B9B5AD` | **Casi negro** `#36393B` (4 de octubre; antes `#6B6E70`) |
     | Carpintería | Antracita mate | Antracita mate |
 
     El color de la cubierta, la madera del cielo en P1 y el bastidor de las celosías (color del muro en P2) no se pidieron expresamente: son propuestas mías y conviene confirmarlas.
@@ -188,7 +188,7 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     - **Menos reflexión:** el arquitecto pide bajar la reflectividad del vidrio exterior. La fachada no debe parecer un espejo ciego: tiene que dejar ver la estructura de adentro (columnas, vigas y carpinterías).
     - **Tono más oscuro:** se valida, porque contrasta y resalta la estructura y los elementos blancos del edificio.
     - **En el modelo:** ya está, con la variante 6 de `02_postproduccion/MATERIALES_INTELIGENTES.md`, sección 4 (`VIDRIO` y `mat_vidrio`: tinte `#6E808E` y capa de baja reflexión). Para que se vea la estructura detrás del vidrio, falta modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
-    - **Opciones finales para el cliente (4 de octubre):** P1 con letras corten sobre el parapeto antracita y P2 con letras gris oscuro sobre el parapeto blanco, las dos con la geometría A y este vidrio.
+    - **Opciones finales para el cliente (4 de octubre):** P1 con letras corten sobre el parapeto antracita y P2 con letras casi negras sobre el parapeto blanco, las dos con la geometría A y este vidrio.
     - **Para llevarlo a un `.blend` con avance propio:** `01_blender/herramientas/aplicar_cambios_4oct.py`, después de `aplicar_cambios_reunion.py`.
 13. **Fachada Lado Aire, pista y plataforma (4 de octubre):**
     - se aprueba la perspectiva general del Lado Aire;
@@ -221,7 +221,7 @@ Están ordenados de mayor a menor impacto en los renders.
 **Abiertos desde el 4 de octubre (preguntar al cliente):**
 - **El letrero de noche:**
   - hoy la escena `UYUNI_CREPUSCULO` usa letras blancas que emiten;
-  - las dos opciones elegidas son corten (P1) y gris oscuro (P2), que no emiten;
+  - las dos opciones elegidas son corten (P1) y casi negro (P2), que no emiten;
   - hay que definir cómo se ilumina el letrero de noche: retroiluminado con halo sobre el parapeto, o con bañadores.
 - **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto.
 - **La librea de BoA en las aeronaves:** solo con autorización para usar la marca; si no, una librea blanca genérica.

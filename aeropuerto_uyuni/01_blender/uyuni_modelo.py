@@ -152,15 +152,16 @@ CIELO_ATMOSFERA = dict(air_density=0.9, aerosol_density=0.02, dust_density=0.02,
 PALETA = {
     "cubierta":  (("#373C40", 0.35, 0.45), ("#C3C6C8", 0.55, 0.35)),   # P1 antracita RAL 7016 | P2 gris claro aluminio
     "antepecho": (("#373C40", 0.15, 0.55), ("#ECEBE6", 0.0, 0.50)),    # parapeto y remates: antracita mate | blanco perla
-    "muro":      (("#B9B5AD", 0.0, 0.92), ("#575B5E", 0.0, 0.90)),     # revoque continuo: hormigón claro | gris oscuro (4 oct)
+    "muro":      (("#B9B5AD", 0.0, 0.92), ("#36393B", 0.0, 0.90)),     # revoque continuo: hormigón claro | casi negro (4 oct)
     "cielo":     (("#8C5A34", 0.0, 0.55), ("#EDECE8", 0.0, 0.50)),     # listones: símil madera | blanco
     "celosia":   (("#8E4524", 0.20, 0.80), ("#EFEEE9", 0.0, 0.50)),    # corten oxidado (color medio) | blanco perla
-    "bastidor":  (("#232323", 0.60, 0.50), ("#575B5E", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
+    "bastidor":  (("#232323", 0.60, 0.50), ("#36393B", 0.0, 0.80)),    # oscuro | igual al muro (se pierde detrás)
 }
 PERFIL_COLOR = "#3A3E41"          # carpintería de aluminio antracita mate (no negro brillante), en las dos propuestas
-# Revisión del 4 de octubre: en P2 (parapeto blanco) las letras y pirámides van en gris oscuro, no en blanco; propiedad
-# "letras_gris" de la escena (1 en P2). Letras del tamaño original: geometría A.
-LETRAS_GRIS = "#45494C"
+# Revisión del 4 de octubre: en P2 (parapeto blanco) las letras y pirámides van en un gris casi negro, no en blanco,
+# igual que los muros; propiedad "letras_gris" de la escena (1 en P2). Letras del tamaño original: geometría A.
+# #2E3133 es ≈ 0,03 de luminancia lineal, el piso de albedo de la guía (como el asfalto nuevo); el muro, #36393B, ≈ 0,04.
+LETRAS_GRIS = "#2E3133"
 # Vidrio elegido el 4 de octubre: DVH con laminado incoloro 3+3 adentro, cámara y 4 mm con control solar afuera. Tono
 # oscuro y poca reflexión, para que la fachada no sea un espejo ciego (MATERIALES_INTELIGENTES.md, sección 4, variante 6).
 # El reflejo sale de una capa fina: a cuarto de onda sobre vidrio, IOR 1,8 da ≈ 13 % por cara, con pico en 4·n·d ≈ 482 nm.
@@ -698,9 +699,9 @@ def mat_emisor(nombre, color, propiedad, fuerza_base=1.0, kelvin=None):
 
 
 def mat_letrero():
-    """Letras, pirámides y horizonte: blanco satinado, gris oscuro o acero corten como las celosías. Propiedades de la
-    escena: "letras_corten" (1 corten) y, si no es corten, "letras_gris" (1 gris oscuro, 0 blanco). P1 va en corten y
-    P2 en gris oscuro sobre el parapeto blanco (4 de octubre). De noche, solo las blancas emiten ("luz_letrero")."""
+    """Letras, pirámides y horizonte: blanco satinado, gris casi negro o acero corten como las celosías. Propiedades de la
+    escena: "letras_corten" (1 corten) y, si no es corten, "letras_gris" (1 casi negro, 0 blanco). P1 va en corten y
+    P2 en gris casi negro sobre el parapeto blanco (4 de octubre). De noche, solo las blancas emiten ("luz_letrero")."""
     mat = bpy.data.materials.new(PREFIJO + "LETRERO_BLANCO_O_CORTEN")
     nb = Nodos(mat)
     tc, _ = nb.coord()
@@ -1584,7 +1585,7 @@ def georreferencia(sc):
 # 6. EJECUCIÓN
 # =============================================================================
 # Propiedades que leen los materiales: "propuesta" (0 = P1, 1 = P2), "letras_corten" (1 = corten) y "letras_gris"
-# (1 = gris oscuro, 0 = blanco, si no son corten)
+# (1 = gris casi negro, 0 = blanco, si no son corten)
 PROPIEDADES_ESCENA = {"UYUNI_DIA": dict(propuesta=0, letras_corten=1, letras_gris=0),
                       "UYUNI_DIA_P2_SALAR_LITIO": dict(propuesta=1, letras_corten=0, letras_gris=1),
                       "UYUNI_CREPUSCULO": dict(propuesta=0, letras_corten=0, letras_gris=0)}
