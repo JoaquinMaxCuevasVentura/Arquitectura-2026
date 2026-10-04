@@ -101,6 +101,9 @@ Y_FACHADA_AIRE = {"principal_izq": 48.601, "principal_der": 43.872}  # cara exte
 X_CAMBIO_AIRE = 19.33             # cara este del bloque del eje R (su muro lateral, sobre la marquesina)
 E_MURO_AIRE = 0.16                # panel de 100 mm con revoque de 30 mm a cada lado (planta)
 Y_PILASTRA_AIRE = 44.572          # cara de las columnas C40x100 (43,542-44,542) revocadas; ahí termina la cubierta
+# Revisión del cliente: los paños opacos y las ventanas pequeñas se enrasan
+# con las pilastras. Solo las dos crujías con grandes ME-5/ME-6 forman nichos.
+Y_MURO_RAS_AIRE = Y_PILASTRA_AIRE
 PILASTRAS_AIRE = [19.2, 24.0, 28.8, 33.6, 38.4, 48.5, 53.23, 58.03, 62.83, 67.63, 72.36]   # ejes con columna a la vista
 Z_PILASTRA = 7.01
 BUNAS_AIRE = (3.26, 3.76, 6.51, 7.01)    # vigas de borde V30x50 (+3,20 y +6,45) enrasadas en el revoque: solo buñas
@@ -114,6 +117,7 @@ ENROLLABLES_AIRE = [(22.285, 23.77), (24.521, 26.021), (55.807, 57.307), (58.28,
 Z_ENROLLABLE = 1.60
 PUERTA_P01_AIRE = (69.775, 70.775, 2.10)                     # batiente de 1,00 x 2,10
 NICHO_AIRE = dict(x=(29.03, 30.23), y=(42.66, 43.872), z=3.20, puerta_y=(42.69, 43.69))   # entrada con puerta lateral
+PUERTA_FRONTAL_AIRE = (NICHO_AIRE["x"][0] + .10, NICHO_AIRE["x"][1] - .10, 2.10)
 MARQUESINA_AIRE = dict(x=(19.33, 28.95), y=(43.872, 46.786), losa=(3.65, 3.70), viga=(3.20, 3.70), borde_y=46.486,
                        vigas_x=[(23.85, 24.15), (28.65, 28.95)], vigueta=(0.10, 3.45, 3.65), paso=0.50)
 VESTIBULO_AIRE = dict(x=(42.97, 48.23), y=(43.872, 46.894), z=7.325, puerta_y=(44.554, 46.529), puerta_z=2.362)
@@ -1478,9 +1482,10 @@ def fachada_aire(C, M):
 
     - Bloque de los ejes 1-5 hasta el eje R (cara 48,601): vano libre a una galería cubierta, abertura con antepecho,
       muro vidriado con puerta doble al fondo de la galería y la caja de la puerta de embarque 1 (elementos_laterales).
-    - Muro del eje I (cara 43,872) entre los ejes 5 y 17, con pilastras de las columnas hasta 44,572 y +7,01, buñas de
-      las vigas de borde, ventanas ME-4 y ME-5, puerta corrediza ME-6, cinco enrollables, la puerta P-01 y el nicho
-      de entrada entre los ejes 7 y 8.
+    - Entre los ejes 5 y 17, paños opacos enrasados con las pilastras a Y 44,572;
+      únicamente las crujías con ME-5/ME-6 conservan el fondo a Y 43,872.
+      ME-4, enrollables y puertas acompañan el nuevo plano del muro. La entrada
+      entre los ejes 7 y 8 tiene ahora una puerta frontal, sin nicho lateral.
     - Marquesina de hormigón entre los ejes 5 y 7 (losa, vigas y viguetas del IFC) y el vestíbulo de los ejes 10-11,
       de dos niveles, con la puerta de embarque 2 arriba y su corrediza al costado.
     """
@@ -1496,22 +1501,47 @@ def fachada_aire(C, M):
     huecos += [rect(a, b, 0.0005, ME6_Z) for a, b in ME6_AIRE]
     huecos += [rect(a, b, 0.0005, Z_ENROLLABLE) for a, b in ENROLLABLES_AIRE]
     huecos += [rect(PUERTA_P01_AIRE[0], PUERTA_P01_AIRE[1], 0.0005, PUERTA_P01_AIRE[2])]
-    huecos += [rect(NICHO_AIRE["x"][0], NICHO_AIRE["x"][1], 0.0005, NICHO_AIRE["z"])]
+    huecos += [rect(PUERTA_FRONTAL_AIRE[0], PUERTA_FRONTAL_AIRE[1], 0.0005, PUERTA_FRONTAL_AIRE[2])]
     bx0, bx1, bz0, bz1 = BLOQUE_AIRE["me5"]
     huecos += [rect(bx0, bx1, 0.0005, bz1)]
     x_ini, x_fin = X_ALERO[0] + 0.15, X_ALERO[1] - 0.15
-    placa_con_huecos("FACHADA_AIRE_EJE_I", [rect(x_ini, x_fin, 0.0, z_techo(yI))] + huecos, e, "XZ", yI - e / 2,
+    # El fondo del bloque del eje R permanece en su plano original.
+    placa_con_huecos("FACHADA_AIRE_EJE_I", [rect(x_ini, xb - e, 0.0, z_techo(yI)), rect(bx0,bx1,.0005,bz1)], e, "XZ", yI - e / 2,
                      M["muro_aire"], col)
+    paños_ras = []
+    for izquierda, derecha in zip(PILASTRAS_AIRE, PILASTRAS_AIRE[1:]):
+        u0, u1 = izquierda + .23, derecha - .23
+        nicho = any(u0-.01 <= a and b <= u1+.01 for a,b,_,_ in ME5_AIRE)
+        cara = yI if nicho else Y_MURO_RAS_AIRE
+        contornos = [rect(u0,u1,0.0,z_techo(cara))]
+        for hole in huecos:
+            a,b = hole[0][0],hole[1][0]
+            z0,z1 = hole[0][1],hole[2][1]
+            if a < u1 and b > u0:
+                contornos.append(rect(max(a,u0+.002),min(b,u1-.002),z0,z1))
+        ob = placa_con_huecos(f"FACHADA_AIRE_{'NICHO_VENTANAL' if nicho else 'RAS'}_{izquierda:05.2f}",
+                             contornos,e,"XZ",cara-e/2,M["muro_aire"],col)
+        ob["UY_PLANO_EXTERIOR_M"] = cara
+        ob["UY_REVISION_CLIENTE"] = "Paños enrasados; solo nichos de grandes ventanales"
+        if not nicho: paños_ras.append((u0,u1))
+    # Cierra sobre las cabezas de las columnas, sin solapar sus caras visibles.
+    remates = Malla()
+    for x in PILASTRAS_AIRE:
+        if z_techo(Y_MURO_RAS_AIRE) > Z_PILASTRA:
+            remates.prisma_yz([(yI-e,Z_PILASTRA),(Y_MURO_RAS_AIRE,Z_PILASTRA),
+                               (Y_MURO_RAS_AIRE,z_techo(Y_MURO_RAS_AIRE)),(yI-e,z_techo(yI-e))],x-.23,x+.23)
+    remates.crear("FACHADA_AIRE_REMATES_PILASTRAS",M["muro_aire"],col)
     wc = yI - e / 2                                   # carpinterías a mitad del muro
+    wc_ras = Y_MURO_RAS_AIRE - e / 2
     for a, b in ME4_AIRE:
-        ventana(pf, vd, "XZ", a, b, ME4_Z[0], ME4_Z[1], 2, wc)
+        ventana(pf, vd, "XZ", a, b, ME4_Z[0], ME4_Z[1], 2, wc_ras)
     for a, b, z0, z1 in ME5_AIRE + [BLOQUE_AIRE["me5"]]:
         ventana(pf, vd, "XZ", a, b, z0, z1, 3, wc)
     for a, b in ME6_AIRE:
         corrediza(pf, vd, "XZ", a, b, 1.103, ME6_Z, wc, +1, z_hoja=2.242)
     for a, b in ENROLLABLES_AIRE:
-        enrollable(cm, gm, "XZ", a, b, Z_ENROLLABLE, yI - 0.05)
-    puerta_batiente(pm, "XZ", PUERTA_P01_AIRE[0], PUERTA_P01_AIRE[1], PUERTA_P01_AIRE[2], wc, +1)
+        enrollable(cm, gm, "XZ", a, b, Z_ENROLLABLE, Y_MURO_RAS_AIRE - 0.05)
+    puerta_batiente(pm, "XZ", PUERTA_P01_AIRE[0], PUERTA_P01_AIRE[1], PUERTA_P01_AIRE[2], wc_ras, +1)
     # --- pilastras (columnas C40x100 revocadas), con 1 cm metido en el muro
     pl = Malla()
     for x in PILASTRAS_AIRE:
@@ -1546,19 +1576,9 @@ def fachada_aire(C, M):
     piso = Malla()
     piso.caja(gx0, gx1, yI, yR - e, -0.05, 0.0)
     piso.crear("BLOQUE_AIRE_PISO_GALERIA", M["acera"], col)
-    # --- nicho de entrada (ejes 7-8): fondo, costados, techo y puerta en su costado este
-    nx0, nx1 = NICHO_AIRE["x"]
-    ny0 = NICHO_AIRE["y"][0]
-    nz = NICHO_AIRE["z"]
-    ni = Malla()
-    ni.caja(nx0 - e, nx1 + e, ny0 - e, ny0, 0.0, nz + e)                   # fondo
-    ni.caja(nx0 - e, nx0, ny0, yI - e, 0.0, nz + e)                        # costado oeste
-    ni.caja(nx0, nx1, ny0, yI - e, nz, nz + e)                             # techo
-    ni.crear("NICHO_AIRE", M["muro"], col)
-    pya, pyb = NICHO_AIRE["puerta_y"]
-    placa_con_huecos("NICHO_AIRE_COSTADO_ESTE", [rect(ny0, yI - e, 0.0, nz + e), rect(pya, pyb, 0.0005, 2.10)], e, "YZ",
-                     nx1 + e / 2, M["muro"], col)
-    puerta_batiente(pm, "YZ", pya, pyb, 2.10, nx1 + e / 2, -1)
+    # --- entrada frontal alineada, conserva la hoja de 1,00 x 2,10 m.
+    puerta_batiente(pm, "XZ", PUERTA_FRONTAL_AIRE[0], PUERTA_FRONTAL_AIRE[1],
+                    PUERTA_FRONTAL_AIRE[2],wc_ras,+1)
     # --- marquesina (losa, viga de borde, vigas laterales y viguetas V10x25 cada 0,50)
     mq = MARQUESINA_AIRE
     mx0, mx1 = mq["x"]
@@ -1602,12 +1622,17 @@ def fachada_aire(C, M):
     ia = Malla()
     ia.caja(x_ini, x_fin, 36.0, yI - e, -0.05, 0.0)
     ia.caja(x_ini, x_fin, 36.0, yI - e, 3.70, 3.85)
+    for a,b in paños_ras:
+        ia.caja(a,b,yI-e,Y_MURO_RAS_AIRE-e,-.05,0.0)
+        ia.caja(a,b,yI-e,Y_MURO_RAS_AIRE-e,3.70,3.85)
     ia.caja(gx0 + 0.15, xb - e, yI, yR - e, 3.70, 3.85)                    # entrepiso del bloque, sobre la galería
     ia.caja(X_ALERO[0] + 0.15, gx0 - 0.15, yI, yR - e, -0.05, 0.0)         # piso del recinto del bloque
     ia.crear("INTERIOR_AIRE_PISOS", M["piso_int"], col)
     il = Malla()
     il.caja(x_ini, x_fin, 36.0, 36.1, 0.0, 7.0)
     il.caja(x_ini, x_fin, 36.0, yI - e, 7.0, 7.05)
+    for a,b in paños_ras:
+        il.caja(a,b,yI-e,Y_MURO_RAS_AIRE-e,7.0,7.05)
     il.caja(X_ALERO[0] + 0.15, X_ALERO[0] + 0.25, yI, yR - e, 0.0, 3.60)  # fondo del recinto del bloque
     il.crear("INTERIOR_AIRE_LUZ", M["interior"], col)
     # --- bajante con abrazaderas en la esquina del eje 1 (alzados SO y OESTE)
@@ -3130,7 +3155,7 @@ def nieve_crepusculo(col, M):
     nv.crear("NIEVE_BORDE_CUBIERTA", M["nieve"], col, suave=True)
 
 
-def construir(muestras=256):
+def construir(muestras=256, continuacion=True):
     limpiar()
     sc = bpy.context.scene
     sc.name = "UYUNI_DIA"
@@ -3206,6 +3231,14 @@ def construir(muestras=256):
     georreferencia(sc2)
     for escena in (sc, sc2, sc3):   # geometría A del letrero visible; la B queda excluida (se activa a mano)
         geometria_letrero(escena, "A")
+    if continuacion:
+        import sys
+        from pathlib import Path
+        carpeta = str(Path(__file__).resolve().parent)
+        if carpeta not in sys.path:
+            sys.path.insert(0, carpeta)
+        from continuacion.pipeline import aplicar
+        aplicar(globals())
     print(f"[UYUNI] Modelo generado. Sol mañana: azimut {az:.1f}°, elevación {el:.1f}° | crepúsculo: {az2:.1f}°, {el2:.1f}°")
     return sc, sc2
 

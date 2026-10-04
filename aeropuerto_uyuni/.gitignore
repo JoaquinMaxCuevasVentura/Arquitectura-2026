@@ -2,3 +2,9 @@
 *.blend1
 *.blend2
 __pycache__/
+# Insumos del cliente y modelos cuyo permiso no permite publicar los originales.
+01_blender/assets/local/
+01_blender/uyuni_continuacion_local.blend
+01_blender/revision_codex/
+01_blender/renders_finales/
+01_blender/renders_video/

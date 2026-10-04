@@ -1,5 +1,12 @@
 # Instrucción para continuar el proyecto con otra IA (v3.1)
 
+**Actualización posterior del cliente, 4 de octubre:** antes de aplicar este
+prompt histórico, leer `CONTINUACION_CODEX.md`. La fuente contiene ya exteriores
+revisados y las cámaras del storyboard. En Lado Aire, los paños opacos, ventanas
+pequeñas y puertas deben quedar enrasados con las pilastras (Y 44,572); solo
+los grandes ventanales conservan sus nichos. La entrada pequeña es frontal,
+sin el nicho lateral anterior. Conservar estas decisiones al regenerar.
+
 Copia el bloque de abajo y pégalo como primer mensaje.
 
 **Adjunta:**

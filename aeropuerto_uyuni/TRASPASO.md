@@ -1,5 +1,13 @@
 # Traspaso: visualización de la Terminal de Pasajeros del Aeropuerto de Uyuni
 
+**Continuación Codex, 4 de octubre:** leer también `CONTINUACION_CODEX.md`.
+La rama `codex/continuacion-uyuni` incorpora exteriores revisados, assets CC0,
+cámaras/compositor y el montaje del storyboard de 120 s. Por indicación posterior
+del cliente, los paños de la fachada trasera avanzan 0,70 m hasta las pilastras;
+solo quedan nichos en las dos crujías de ventanales grandes. La entrada pequeña
+es ahora frontal y alineada. Land Cruiser y personas escaneadas se incorporan
+en el `.blend` local, excluido de Git; el minibús público sigue provisional.
+
 **Fecha:** 3 de octubre de 2026, actualizada el 4 de octubre: por la tarde, Lado Aire, laterales y detalles; por la noche, carpintería negro mate, veredas de la A111, contexto del aeropuerto y librea de BoA (las dos en `CAMBIOS_4OCT_FACHADAS.md`) · **Blender:** 5.2.2 LTS, Cycles · **Rama del repositorio:** `claude/clever-hypatia-i19958`
 
 Esta guía permite que otra persona o IA continúe el proyecto sin repetir la auditoría. Antes de tocar el modelo, lee las secciones 1 a 6. Para saber de dónde sale cada medida, ve a `00_auditoria/AUDITORIA.md`.

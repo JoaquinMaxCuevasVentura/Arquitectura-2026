@@ -1,0 +1,35 @@
+{
+  "credits": [
+    {
+      "asset": "grass_medium_01",
+      "authors": {
+        "Rob Tuytel": "Photography",
+        "Rico Cilliers": "Modeling"
+      },
+      "source": "https://polyhaven.com/a/grass_medium_01",
+      "license": "CC0 1.0",
+      "license_url": "https://polyhaven.com/license",
+      "credit": "Powered by Poly Haven"
+    },
+    {
+      "asset": "sandy_gravel_02",
+      "authors": {
+        "Dario Barresi": "All"
+      },
+      "source": "https://polyhaven.com/a/sandy_gravel_02",
+      "license": "CC0 1.0",
+      "license_url": "https://polyhaven.com/license",
+      "credit": "Powered by Poly Haven"
+    },
+    {
+      "asset": "kloofendal_overcast",
+      "authors": {
+        "Greg Zaal": "All"
+      },
+      "source": "https://polyhaven.com/a/kloofendal_overcast",
+      "license": "CC0 1.0",
+      "license_url": "https://polyhaven.com/license",
+      "credit": "Powered by Poly Haven"
+    }
+  ]
+}
