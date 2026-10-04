@@ -155,7 +155,7 @@ reasignar("LUXALON_ALUMINIO_CHAMPAGNE", [], M["cielo"])
 # --- 3. geometría: quitar lo viejo (y lo de una pasada anterior de este parche) y rehacer ---
 quitar = ["BOLARDOS", "CIELO_PLENUM", "CIELO_LUXALON_LAMAS", "LUMINARIAS_ALERO", "RETENEDOR_ABRAZADERAS",
           "RETENEDOR_BARRAS_TUBULARES", "NIEVE_BORDE_CUBIERTA", "CIELO_PLENUM_NEGRO", "CIELO_LISTONES",
-          "RETENEDOR_TUBOS_1PULG"]
+          "RETENEDOR_TUBOS_1PULG", "RETENEDOR_PLACAS", "RETENEDOR_OREJAS", "RETENEDOR_TUBOS"]   # los tres últimos: detalle del 4 de oct.
 for n in quitar:
     if borrar_objeto(P + n):
         informe.append(f"quitado {P + n}")

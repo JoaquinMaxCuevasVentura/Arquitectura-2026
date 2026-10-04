@@ -35,6 +35,7 @@
     "06_ENTORNO_SITE",
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
+    "10_MANGAS_AERONAVES",
     "08_LUZ_CREPUSCULO",
     "09_NIEVE_CREPUSCULO"
    ],
@@ -86,6 +87,7 @@
     "06_ENTORNO_SITE",
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
+    "10_MANGAS_AERONAVES",
     "08_LUZ_DIA"
    ],
    "propiedades": {
@@ -136,6 +138,7 @@
     "06_ENTORNO_SITE",
     "07_ASSETS",
     "08_CAMERAS_LIGHTS",
+    "10_MANGAS_AERONAVES",
     "08_LUZ_DIA"
    ],
    "propiedades": {
@@ -165,7 +168,7 @@
   },
   "02_ENVOLVENTE": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 37,
+   "objetos": 58,
    "oculta_en_render": false,
    "hijas": [
     "LETRERO_HORIZONTE_UYUNI"
@@ -194,25 +197,25 @@
   },
   "03_CARPINTERIAS_M1": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 29,
+   "objetos": 38,
    "oculta_en_render": false,
    "hijas": []
   },
   "04_CUBIERTA_INDUSTRIAL": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 7,
+   "objetos": 10,
    "oculta_en_render": false,
    "hijas": []
   },
   "05_CELOSIAS_CORTEN": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 12,
+   "objetos": 15,
    "oculta_en_render": false,
    "hijas": []
   },
   "06_ENTORNO_SITE": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 8,
+   "objetos": 15,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -232,7 +235,7 @@
   },
   "08_CAMERAS_LIGHTS": {
    "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
-   "objetos": 12,
+   "objetos": 14,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -251,6 +254,12 @@
   "09_NIEVE_CREPUSCULO": {
    "padre": "UYUNI_CREPUSCULO",
    "objetos": 1,
+   "oculta_en_render": false,
+   "hijas": []
+  },
+  "10_MANGAS_AERONAVES": {
+   "padre": "UYUNI_CREPUSCULO + UYUNI_DIA + UYUNI_DIA_P2_SALAR_LITIO",
+   "objetos": 24,
    "oculta_en_render": false,
    "hijas": []
   },
@@ -478,6 +487,42 @@
     90.0,
     -0.0,
     32.01
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_08_LADO_AIRE",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    112.0,
+    150.0,
+    40.0
+   ],
+   "rotacion_deg": [
+    74.12,
+    -0.0,
+    140.77
+   ],
+   "oculto_en_render": false
+  },
+  {
+   "nombre": "CAM_09_MANGA_737",
+   "tipo": "CAMERA",
+   "colecciones": [
+    "08_CAMERAS_LIGHTS"
+   ],
+   "ubicacion": [
+    10.0,
+    122.0,
+    30.0
+   ],
+   "rotacion_deg": [
+    67.79,
+    0.0,
+    -176.53
    ],
    "oculto_en_render": false
   },
@@ -1131,12 +1176,12 @@
    "caja_mundo": {
     "min": [
      72.81,
-     44.39,
+     43.474,
      -0.0
     ],
     "max": [
      82.71,
-     44.54,
+     43.624,
      6.3
     ]
    },
@@ -1222,6 +1267,978 @@
    ]
   },
   {
+   "nombre": "UY_AVION_737_ALAS_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     6.366,
+     56.795,
+     1.004
+    ],
+    "max": [
+     27.158,
+     92.34,
+     3.338
+    ]
+   },
+   "vertices": 148,
+   "caras": 180,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_ALAS_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     51.423,
+     56.795,
+     1.004
+    ],
+    "max": [
+     72.215,
+     92.34,
+     3.338
+    ]
+   },
+   "vertices": 148,
+   "caras": 180,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_DERIVA_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     28.621,
+     78.52,
+     4.25
+    ],
+    "max": [
+     38.182,
+     82.728,
+     12.4
+    ]
+   },
+   "vertices": 56,
+   "caras": 72,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_DERIVA_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     73.678,
+     78.52,
+     4.25
+    ],
+    "max": [
+     83.239,
+     82.728,
+     12.4
+    ]
+   },
+   "vertices": 56,
+   "caras": 72,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_ESTABILIZADOR_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     28.952,
+     73.159,
+     3.892
+    ],
+    "max": [
+     39.213,
+     88.584,
+     4.971
+    ]
+   },
+   "vertices": 76,
+   "caras": 108,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_ESTABILIZADOR_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     74.009,
+     73.159,
+     3.892
+    ],
+    "max": [
+     84.27,
+     88.584,
+     4.971
+    ]
+   },
+   "vertices": 76,
+   "caras": 108,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_FUSELAJE_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.319,
+     67.05,
+     0.983
+    ],
+    "max": [
+     37.31,
+     83.579,
+     5.01
+    ]
+   },
+   "vertices": 590,
+   "caras": 616,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_FUSELAJE_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     45.376,
+     67.05,
+     0.983
+    ],
+    "max": [
+     82.367,
+     83.579,
+     5.01
+    ]
+   },
+   "vertices": 590,
+   "caras": 616,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_MOTORES_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     8.947,
+     66.979,
+     0.239
+    ],
+    "max": [
+     17.514,
+     79.586,
+     2.101
+    ]
+   },
+   "vertices": 436,
+   "caras": 480,
+   "materiales": [
+    "UY_AVION_GONDOLA_MOTOR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_MOTORES_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     54.004,
+     66.979,
+     0.239
+    ],
+    "max": [
+     62.571,
+     79.586,
+     2.101
+    ]
+   },
+   "vertices": 436,
+   "caras": 480,
+   "materiales": [
+    "UY_AVION_GONDOLA_MOTOR"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_MOTORES_VENTILADOR_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     9.371,
+     67.337,
+     0.43
+    ],
+    "max": [
+     13.2,
+     77.812,
+     1.91
+    ]
+   },
+   "vertices": 96,
+   "caras": 52,
+   "materiales": [
+    "UY_AVION_TOBERA_Y_TREN"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_MOTORES_VENTILADOR_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     54.428,
+     67.337,
+     0.43
+    ],
+    "max": [
+     58.257,
+     77.812,
+     1.91
+    ]
+   },
+   "vertices": 96,
+   "caras": 52,
+   "materiales": [
+    "UY_AVION_TOBERA_Y_TREN"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_PILONES_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     10.062,
+     68.069,
+     1.87
+    ],
+    "max": [
+     16.381,
+     78.489,
+     2.32
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_PILONES_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     55.119,
+     68.069,
+     1.87
+    ],
+    "max": [
+     61.438,
+     78.489,
+     2.32
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_AVION_ALA_GRIS_METALICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_RUEDAS_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     3.951,
+     67.06,
+     -0.145
+    ],
+    "max": [
+     21.857,
+     79.267,
+     0.984
+    ]
+   },
+   "vertices": 248,
+   "caras": 136,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_RUEDAS_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     49.008,
+     67.06,
+     -0.145
+    ],
+    "max": [
+     66.914,
+     79.267,
+     0.984
+    ]
+   },
+   "vertices": 248,
+   "caras": 136,
+   "materiales": [
+    "UY_NEUMATICO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_TREN_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     4.362,
+     67.617,
+     0.2
+    ],
+    "max": [
+     21.273,
+     78.647,
+     1.8
+    ]
+   },
+   "vertices": 96,
+   "caras": 54,
+   "materiales": [
+    "UY_AVION_TOBERA_Y_TREN"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_TREN_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     49.419,
+     67.617,
+     0.2
+    ],
+    "max": [
+     66.33,
+     78.647,
+     1.8
+    ]
+   },
+   "vertices": 96,
+   "caras": 54,
+   "materiales": [
+    "UY_AVION_TOBERA_Y_TREN"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_VENTANILLAS_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     2.249,
+     67.771,
+     3.245
+    ],
+    "max": [
+     30.407,
+     81.049,
+     4.055
+    ]
+   },
+   "vertices": 672,
+   "caras": 504,
+   "materiales": [
+    "UY_AVION_VENTANILLAS"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_VENTANILLAS_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     47.306,
+     67.771,
+     3.245
+    ],
+    "max": [
+     75.464,
+     81.049,
+     4.055
+    ]
+   },
+   "vertices": 672,
+   "caras": 504,
+   "materiales": [
+    "UY_AVION_VENTANILLAS"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_WINGLETS_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.958,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     14.062,
+     59.046,
+     3.276
+    ],
+    "max": [
+     28.188,
+     93.265,
+     5.726
+    ]
+   },
+   "vertices": 112,
+   "caras": 144,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_AVION_737_WINGLETS_2",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    46.015,
+    68.816,
+    -0.15
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    -160.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     59.119,
+     59.046,
+     3.276
+    ],
+    "max": [
+     73.245,
+     93.265,
+     5.726
+    ]
+   },
+   "vertices": 112,
+   "caras": 144,
+   "materiales": [
+    "UY_AVION_PINTURA_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BAJANTE_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.366,
+     48.39,
+     0.3
+    ],
+    "max": [
+     -0.246,
+     48.51,
+     7.98
+    ]
+   },
+   "vertices": 152,
+   "caras": 108,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BLOQUE_AIRE_MURO_EXTERIOR",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.08,
+     48.441,
+     -0.0
+    ],
+    "max": [
+     19.17,
+     48.601,
+     7.87
+    ]
+   },
+   "vertices": 48,
+   "caras": 40,
+   "materiales": [
+    "UY_REVOQUE_LADO_AIRE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BLOQUE_AIRE_MURO_LATERAL",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     19.17,
+     43.872,
+     0.0
+    ],
+    "max": [
+     19.33,
+     48.601,
+     8.603
+    ]
+   },
+   "vertices": 10,
+   "caras": 7,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BLOQUE_AIRE_PISO_GALERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     8.0,
+     43.872,
+     -0.05
+    ],
+    "max": [
+     19.17,
+     48.441,
+     0.0
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_BLOQUE_AIRE_TABIQUE_GALERIA",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     7.85,
+     43.872,
+     -0.0
+    ],
+    "max": [
+     8.0,
+     48.441,
+     8.603
+    ]
+   },
+   "vertices": 36,
+   "caras": 27,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_BORDILLO",
    "tipo": "MESH",
    "colecciones": [
@@ -1254,6 +2271,114 @@
    "caras": 6,
    "materiales": [
     "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CAJA_EMBARQUE_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.83,
+     48.601,
+     3.45
+    ],
+    "max": [
+     2.83,
+     50.51,
+     6.15
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CAJA_EMBARQUE_OESTE_PERFILES",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.87,
+     50.43,
+     3.82
+    ],
+    "max": [
+     2.79,
+     50.51,
+     6.12
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_ALUMINIO_ANTRACITA_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CAJA_EMBARQUE_OESTE_VIDRIO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     0.9,
+     50.457,
+     3.85
+    ],
+    "max": [
+     2.76,
+     50.484,
+     6.09
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
    ],
    "modificadores": []
   },
@@ -1294,6 +2419,150 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_CAMINO_SERVICIO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -160.0,
+     55.0,
+     -0.25
+    ],
+    "max": [
+     260.0,
+     65.0,
+     -0.15
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_ASFALTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CAMINO_SERVICIO_AIRE_MARCAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -160.0,
+     55.15,
+     -0.15
+    ],
+    "max": [
+     260.0,
+     64.85,
+     -0.148
+    ]
+   },
+   "vertices": 576,
+   "caras": 432,
+   "materiales": [
+    "UY_PINTURA_VIAL_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CARPINTERIAS_AIRE_PERFILES",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     7.91,
+     43.696,
+     0.0
+    ],
+    "max": [
+     70.355,
+     48.401,
+     6.51
+    ]
+   },
+   "vertices": 744,
+   "caras": 558,
+   "materiales": [
+    "UY_ALUMINIO_ANTRACITA_MATE"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CARPINTERIAS_AIRE_VIDRIOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     7.946,
+     43.705,
+     0.04
+    ],
+    "max": [
+     70.345,
+     48.391,
+     6.455
+    ]
+   },
+   "vertices": 240,
+   "caras": 180,
+   "materiales": [
+    "UY_VIDRIO_CONTROL_SOLAR"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_CELOSIAS_BASTIDOR",
    "tipo": "MESH",
    "colecciones": [
@@ -1314,18 +2583,54 @@
     "min": [
      -0.489,
      -0.599,
-     0.18
+     0.09
     ],
     "max": [
      82.96,
-     44.65,
-     6.22
+     43.87,
+     6.214
     ]
    },
-   "vertices": 1144,
-   "caras": 858,
+   "vertices": 1392,
+   "caras": 1044,
    "materiales": [
     "UY_BASTIDOR_CELOSIAS"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE1_PT1R_11",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.35,
+     19.421,
+     0.11
+    ],
+    "max": [
+     -0.349,
+     24.421,
+     6.11
+    ]
+   },
+   "vertices": 2112,
+   "caras": 1488,
+   "materiales": [
+    "UY_CELOSIA_CORTEN_O_BLANCA"
    ],
    "modificadores": []
   },
@@ -1350,12 +2655,12 @@
     "min": [
      -0.351,
      -0.579,
-     0.2
+     0.11
     ],
     "max": [
      -0.349,
      4.421,
-     6.2
+     6.11
     ]
    },
    "vertices": 2748,
@@ -1386,12 +2691,12 @@
     "min": [
      -0.351,
      4.421,
-     0.2
+     0.11
     ],
     "max": [
      -0.349,
      9.421,
-     6.2
+     6.11
     ]
    },
    "vertices": 2748,
@@ -1402,7 +2707,79 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_CELOSIA_EJE20_PT2A_09",
+   "nombre": "UY_CELOSIA_EJE1_PT1_09",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.35,
+     9.421,
+     0.11
+    ],
+    "max": [
+     -0.349,
+     14.421,
+     6.11
+    ]
+   },
+   "vertices": 2748,
+   "caras": 1973,
+   "materiales": [
+    "UY_CELOSIA_CORTEN_O_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE1_PT1_10",
+   "tipo": "MESH",
+   "colecciones": [
+    "05_CELOSIAS_CORTEN"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.35,
+     14.421,
+     0.11
+    ],
+    "max": [
+     -0.349,
+     19.421,
+     6.11
+    ]
+   },
+   "vertices": 2748,
+   "caras": 1973,
+   "materiales": [
+    "UY_CELOSIA_CORTEN_O_BLANCA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CELOSIA_EJE20_PT2A_12",
    "tipo": "MESH",
    "colecciones": [
     "05_CELOSIAS_CORTEN"
@@ -1438,7 +2815,7 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_CELOSIA_EJE20_PT2B_10",
+   "nombre": "UY_CELOSIA_EJE20_PT2B_13",
    "tipo": "MESH",
    "colecciones": [
     "05_CELOSIAS_CORTEN"
@@ -1673,12 +3050,12 @@
    "caja_mundo": {
     "min": [
      77.94,
-     44.66,
+     43.88,
      0.2
     ],
     "max": [
      82.94,
-     44.66,
+     43.881,
      6.2
     ]
    },
@@ -1709,12 +3086,12 @@
    "caja_mundo": {
     "min": [
      72.94,
-     44.66,
+     43.88,
      0.2
     ],
     "max": [
      77.94,
-     44.66,
+     43.881,
      6.2
     ]
    },
@@ -1836,6 +3213,78 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_CORDON_AIRE_0",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -3.57,
+     0.392,
+     -0.25
+    ],
+    "max": [
+     19.4,
+     50.779,
+     0.0
+    ]
+   },
+   "vertices": 168,
+   "caras": 122,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_CORDON_AIRE_1",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     19.33,
+     0.392,
+     -0.25
+    ],
+    "max": [
+     85.515,
+     49.079,
+     0.0
+    ]
+   },
+   "vertices": 104,
+   "caras": 74,
+   "materiales": [
+    "UY_HORMIGON_VISTO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_CUBIERTA_ANEXO",
    "tipo": "MESH",
    "colecciones": [
@@ -1860,7 +3309,7 @@
     ],
     "max": [
      82.76,
-     44.59,
+     43.674,
      6.55
     ]
    },
@@ -1931,7 +3380,7 @@
      7.98
     ],
     "max": [
-     48.195,
+     19.095,
      48.68,
      13.065
     ]
@@ -1964,13 +3413,13 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     48.47,
+     19.37,
      -1.672,
-     8.359
+     8.457
     ],
     "max": [
      72.495,
-     44.84,
+     44.572,
      13.065
     ]
    },
@@ -2003,12 +3452,12 @@
    "caja_mundo": {
     "min": [
      0.3,
-     48.47,
+     48.601,
      0.0
     ],
     "max": [
      3.4,
-     49.77,
+     49.777,
      0.45
     ]
    },
@@ -2020,10 +3469,10 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_FACHADA_AIRE_-00.2",
+   "nombre": "UY_ENROLLABLES_AIRE_CORTINAS",
    "tipo": "MESH",
    "colecciones": [
-    "02_ENVOLVENTE"
+    "03_CARPINTERIAS_M1"
    ],
    "ubicacion": [
     0.0,
@@ -2038,25 +3487,61 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -0.23,
-     48.32,
-     -0.0
+     22.315,
+     43.802,
+     0.0
     ],
     "max": [
-     48.25,
-     48.47,
-     7.87
+     62.57,
+     43.842,
+     1.6
     ]
    },
-   "vertices": 96,
-   "caras": 88,
+   "vertices": 920,
+   "caras": 690,
    "materiales": [
-    "UY_REVOQUE_CONTINUO"
+    "UY_CORTINA_ENROLLABLE_GALVANIZADA"
    ],
    "modificadores": []
   },
   {
-   "nombre": "UY_FACHADA_AIRE_048.2",
+   "nombre": "UY_ENROLLABLES_AIRE_GUIAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     22.285,
+     43.777,
+     0.0
+    ],
+    "max": [
+     62.6,
+     43.867,
+     1.6
+    ]
+   },
+   "vertices": 80,
+   "caras": 60,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_FACHADA_AIRE_EJE_I",
    "tipo": "MESH",
    "colecciones": [
     "02_ENVOLVENTE"
@@ -2074,20 +3559,20 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     48.25,
-     44.39,
+     -0.08,
+     43.712,
      -0.0
     ],
     "max": [
-     72.56,
-     44.54,
-     8.358
+     72.41,
+     43.872,
+     8.603
     ]
    },
-   "vertices": 80,
-   "caras": 72,
+   "vertices": 272,
+   "caras": 264,
    "materiales": [
-    "UY_REVOQUE_CONTINUO"
+    "UY_REVOQUE_LADO_AIRE"
    ],
    "modificadores": []
   },
@@ -2198,6 +3683,114 @@
    "caras": 8,
    "materiales": [
     "UY_CHAPA_ANTEPECHO_REMATES"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_GOTERON_LADO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     19.33,
+     44.572,
+     8.277
+    ],
+    "max": [
+     72.57,
+     44.592,
+     8.469
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_ANTEPECHO_REMATES"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_INTERIOR_AIRE_LUZ",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.08,
+     36.0,
+     0.0
+    ],
+    "max": [
+     72.41,
+     48.441,
+     7.05
+    ]
+   },
+   "vertices": 24,
+   "caras": 18,
+   "materiales": [
+    "UY_INTERIOR_LUZ_CALIDA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_INTERIOR_AIRE_PISOS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.08,
+     36.0,
+     -0.05
+    ],
+    "max": [
+     72.41,
+     48.441,
+     3.85
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_PISO_INTERIOR_GRES"
    ],
    "modificadores": []
   },
@@ -2779,12 +4372,12 @@
    "caja_mundo": {
     "min": [
      10.925,
-     0.367,
+     0.522,
      0.0
     ],
     "max": [
      61.505,
-     0.692,
+     0.738,
      5.51
     ]
    },
@@ -2815,12 +4408,12 @@
    "caja_mundo": {
     "min": [
      10.927,
-     0.379,
+     0.479,
      0.002
     ],
     "max": [
      61.503,
-     0.506,
+     0.726,
      5.508
     ]
    },
@@ -2860,10 +4453,118 @@
      5.51
     ]
    },
-   "vertices": 176,
-   "caras": 132,
+   "vertices": 192,
+   "caras": 144,
    "materiales": [
     "UY_SELLO_ESTRUCTURAL_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MANGAS_EMBARQUE",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.09,
+     46.894,
+     -0.15
+    ],
+    "max": [
+     53.267,
+     68.565,
+     6.67
+    ]
+   },
+   "vertices": 464,
+   "caras": 276,
+   "materiales": [
+    "UY_MANGA_CHAPA_GRIS_CLARO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MANGAS_FUELLES_Y_RUEDAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "10_MANGAS_AERONAVES"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     3.704,
+     62.223,
+     -0.147
+    ],
+    "max": [
+     51.985,
+     68.966,
+     5.1
+    ]
+   },
+   "vertices": 168,
+   "caras": 228,
+   "materiales": [
+    "UY_MANGA_FUELLE_Y_CAUCHO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MARQUESINA_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     19.33,
+     43.872,
+     3.2
+    ],
+    "max": [
+     28.95,
+     46.786,
+     3.7
+    ]
+   },
+   "vertices": 256,
+   "caras": 192,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
@@ -2900,6 +4601,78 @@
    "caras": 12,
    "materiales": [
     "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME2_VIGA_OPERADOR_14.66",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     14.725,
+     0.524,
+     2.32
+    ],
+    "max": [
+     18.875,
+     0.742,
+     2.64
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_SELLO_ESTRUCTURAL_NEGRO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_ME2_VIGA_OPERADOR_53.49",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     53.555,
+     0.524,
+     2.32
+    ],
+    "max": [
+     57.705,
+     0.742,
+     2.64
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_SELLO_ESTRUCTURAL_NEGRO"
    ],
    "modificadores": []
   },
@@ -3355,12 +5128,12 @@
    "caja_mundo": {
     "min": [
      1.181,
-     0.412,
+     -0.288,
      1.219
     ],
     "max": [
      2.879,
-     0.512,
+     -0.188,
      2.917
     ]
    },
@@ -3391,12 +5164,12 @@
    "caja_mundo": {
     "min": [
      1.238,
-     0.466,
+     -0.234,
      1.276
     ],
     "max": [
      2.822,
-     0.493,
+     -0.207,
      2.86
     ]
    },
@@ -3427,12 +5200,12 @@
    "caja_mundo": {
     "min": [
      6.181,
-     0.412,
+     -0.288,
      1.219
     ],
     "max": [
      7.879,
-     0.512,
+     -0.188,
      2.917
     ]
    },
@@ -3463,12 +5236,12 @@
    "caja_mundo": {
     "min": [
      6.238,
-     0.466,
+     -0.234,
      1.276
     ],
     "max": [
      7.822,
-     0.493,
+     -0.207,
      2.86
     ]
    },
@@ -3499,12 +5272,12 @@
    "caja_mundo": {
     "min": [
      64.581,
-     0.412,
+     -0.288,
      1.429
     ],
     "max": [
      66.279,
-     0.512,
+     -0.188,
      3.127
     ]
    },
@@ -3535,12 +5308,12 @@
    "caja_mundo": {
     "min": [
      64.638,
-     0.466,
+     -0.234,
      1.486
     ],
     "max": [
      66.222,
-     0.493,
+     -0.207,
      3.07
     ]
    },
@@ -3571,12 +5344,12 @@
    "caja_mundo": {
     "min": [
      69.581,
-     0.412,
+     -0.288,
      1.429
     ],
     "max": [
      71.279,
-     0.512,
+     -0.188,
      3.127
     ]
    },
@@ -3607,12 +5380,12 @@
    "caja_mundo": {
     "min": [
      69.638,
-     0.466,
+     -0.234,
      1.486
     ],
     "max": [
      71.222,
-     0.493,
+     -0.207,
      3.07
     ]
    },
@@ -3643,12 +5416,12 @@
    "caja_mundo": {
     "min": [
      74.586,
-     44.43,
+     43.514,
      1.013
     ],
     "max": [
      76.284,
-     44.53,
+     43.614,
      2.711
     ]
    },
@@ -3679,12 +5452,12 @@
    "caja_mundo": {
     "min": [
      74.643,
-     44.496,
+     43.581,
      1.07
     ],
     "max": [
      76.227,
-     44.523,
+     43.608,
      2.654
     ]
    },
@@ -3715,12 +5488,12 @@
    "caja_mundo": {
     "min": [
      79.586,
-     44.43,
+     43.514,
      1.013
     ],
     "max": [
      81.284,
-     44.53,
+     43.614,
      2.711
     ]
    },
@@ -3751,12 +5524,12 @@
    "caja_mundo": {
     "min": [
      79.643,
-     44.496,
+     43.581,
      1.07
     ],
     "max": [
      81.227,
-     44.523,
+     43.608,
      2.654
     ]
    },
@@ -3872,78 +5645,6 @@
    "caras": 6,
    "materiales": [
     "UY_VIDRIO_VEHICULO"
-   ],
-   "modificadores": []
-  },
-  {
-   "nombre": "UY_MURO_NE_00.00",
-   "tipo": "MESH",
-   "colecciones": [
-    "02_ENVOLVENTE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     0.2,
-     0.392,
-     -0.0
-    ],
-    "max": [
-     4.6,
-     0.522,
-     5.51
-    ]
-   },
-   "vertices": 32,
-   "caras": 24,
-   "materiales": [
-    "UY_REVOQUE_FACHADA_BUNAS"
-   ],
-   "modificadores": []
-  },
-  {
-   "nombre": "UY_MURO_NE_04.80",
-   "tipo": "MESH",
-   "colecciones": [
-    "02_ENVOLVENTE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     5.0,
-     0.392,
-     -0.0
-    ],
-    "max": [
-     9.4,
-     0.522,
-     5.51
-    ]
-   },
-   "vertices": 32,
-   "caras": 24,
-   "materiales": [
-    "UY_REVOQUE_FACHADA_BUNAS"
    ],
    "modificadores": []
   },
@@ -4272,7 +5973,7 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_MURO_NE_62.83",
+   "nombre": "UY_MURO_NE_RAS_00.00",
    "tipo": "MESH",
    "colecciones": [
     "02_ENVOLVENTE"
@@ -4290,25 +5991,25 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     63.03,
-     0.392,
+     0.2,
+     -0.308,
      -0.0
     ],
     "max": [
-     67.43,
-     0.522,
-     5.51
+     4.6,
+     -0.178,
+     6.815
     ]
    },
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_REVOQUE_FACHADA_BUNAS"
+    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
   {
-   "nombre": "UY_MURO_NE_67.63",
+   "nombre": "UY_MURO_NE_RAS_04.80",
    "tipo": "MESH",
    "colecciones": [
     "02_ENVOLVENTE"
@@ -4326,25 +6027,25 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     67.83,
-     0.392,
+     5.0,
+     -0.308,
      -0.0
     ],
     "max": [
-     72.16,
-     0.522,
-     5.51
+     9.4,
+     -0.178,
+     6.815
     ]
    },
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_REVOQUE_FACHADA_BUNAS"
+    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
   {
-   "nombre": "UY_MURO_NE_CIEGO",
+   "nombre": "UY_MURO_NE_RAS_24.00",
    "tipo": "MESH",
    "colecciones": [
     "02_ENVOLVENTE"
@@ -4363,19 +6064,271 @@
    "caja_mundo": {
     "min": [
      24.2,
-     0.392,
-     0.0
+     -0.308,
+     -0.0
     ],
     "max": [
-     82.31,
-     0.522,
+     28.6,
+     -0.178,
+     6.815
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_43.20",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     43.4,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     47.8,
+     -0.178,
+     6.815
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_48.00",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     48.2,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     48.3,
+     -0.178,
+     6.815
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_62.83",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     63.03,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     67.43,
+     -0.178,
+     6.815
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_67.63",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     67.83,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     72.16,
+     -0.178,
+     6.815
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_72.36",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     72.56,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     72.61,
+     -0.178,
      6.3
     ]
    },
-   "vertices": 48,
-   "caras": 36,
+   "vertices": 16,
+   "caras": 8,
    "materiales": [
-    "UY_REVOQUE_FACHADA_BUNAS"
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_72.81",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     73.01,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     77.46,
+     -0.178,
+     6.3
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_MURO_NE_RAS_77.66",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.86,
+     -0.308,
+     -0.0
+    ],
+    "max": [
+     82.31,
+     -0.178,
+     6.3
+    ]
+   },
+   "vertices": 16,
+   "caras": 8,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
@@ -4416,6 +6369,78 @@
    "modificadores": []
   },
   {
+   "nombre": "UY_NICHO_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     28.87,
+     42.5,
+     0.0
+    ],
+    "max": [
+     30.39,
+     43.712,
+     3.36
+    ]
+   },
+   "vertices": 24,
+   "caras": 18,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_NICHO_AIRE_COSTADO_ESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     30.23,
+     42.66,
+     -0.0
+    ],
+    "max": [
+     30.39,
+     43.712,
+     3.36
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
    "nombre": "UY_NIEVE_BORDE_CUBIERTA",
    "tipo": "MESH",
    "colecciones": [
@@ -4440,19 +6465,199 @@
     ],
     "max": [
      72.51,
-     -1.332,
-     9.35
+     1.511,
+     9.636
     ]
    },
-   "vertices": 10,
-   "caras": 7,
+   "vertices": 14,
+   "caras": 9,
    "materiales": [
     "UY_NIEVE"
    ],
    "modificadores": []
   },
   {
-   "nombre": "UY_PLATAFORMA_LADO_AIRE",
+   "nombre": "UY_PATIO_ESTE_COSTADO_NORTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.9,
+     27.248,
+     -0.0
+    ],
+    "max": [
+     82.56,
+     27.398,
+     3.36
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PATIO_ESTE_FONDO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.75,
+     18.553,
+     -0.0
+    ],
+    "max": [
+     77.9,
+     27.398,
+     3.36
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PATIO_ESTE_MUROS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.9,
+     18.553,
+     0.0
+    ],
+    "max": [
+     82.56,
+     27.248,
+     3.36
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PATIO_ESTE_PISO",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.9,
+     18.703,
+     -0.05
+    ],
+    "max": [
+     82.57,
+     27.248,
+     0.0
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PILASTRAS_AIRE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     18.97,
+     43.862,
+     0.0
+    ],
+    "max": [
+     72.59,
+     44.572,
+     7.01
+    ]
+   },
+   "vertices": 88,
+   "caras": 66,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PLATAFORMA_AIRE_HORMIGON",
    "tipo": "MESH",
    "colecciones": [
     "06_ENTORNO_SITE"
@@ -4470,20 +6675,164 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -10.0,
-     49.0,
+     -160.0,
+     40.0,
      -0.25
     ],
     "max": [
-     95.0,
-     120.0,
+     260.0,
+     175.0,
      -0.15
     ]
    },
-   "vertices": 8,
-   "caras": 6,
+   "vertices": 16,
+   "caras": 12,
    "materiales": [
-    "UY_HORMIGON_FRATASADO"
+    "UY_HORMIGON_PLATAFORMA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PLATAFORMA_MARCAS_AMARILLAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "06_ENTORNO_SITE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -160.0,
+     68.527,
+     -0.15
+    ],
+    "max": [
+     260.0,
+     102.075,
+     -0.148
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_PINTURA_PLATAFORMA_AMARILLA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PUERTAS_AIRE_ACERO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     30.26,
+     42.69,
+     0.0
+    ],
+    "max": [
+     70.775,
+     43.842,
+     2.1
+    ]
+   },
+   "vertices": 80,
+   "caras": 60,
+   "materiales": [
+    "UY_PUERTA_ACERO_PINTADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PUERTAS_ESTE_ACERO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.79,
+     3.039,
+     0.0
+    ],
+    "max": [
+     82.7,
+     27.358,
+     2.85
+    ]
+   },
+   "vertices": 800,
+   "caras": 600,
+   "materiales": [
+    "UY_PUERTA_ACERO_PINTADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_PUERTAS_ESTE_REJILLAS_FONDO",
+   "tipo": "MESH",
+   "colecciones": [
+    "03_CARPINTERIAS_M1"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     77.785,
+     3.039,
+     2.02
+    ],
+    "max": [
+     82.605,
+     26.628,
+     2.85
+    ]
+   },
+   "vertices": 40,
+   "caras": 30,
+   "materiales": [
+    "UY_PLENUM_NEGRO_MATE"
    ],
    "modificadores": []
   },
@@ -5064,7 +7413,7 @@
    "modificadores": []
   },
   {
-   "nombre": "UY_RETENEDOR_ABRAZADERAS",
+   "nombre": "UY_RETENEDOR_OREJAS",
    "tipo": "MESH",
    "colecciones": [
     "04_CUBIERTA_INDUSTRIAL"
@@ -5082,18 +7431,18 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     -0.138,
-     -1.417,
-     9.204
+     -0.145,
+     -0.35,
+     9.336
     ],
     "max": [
-     72.503,
-     -1.327,
-     9.364
+     72.509,
+     -0.233,
+     9.385
     ]
    },
-   "vertices": 16,
-   "caras": 12,
+   "vertices": 56,
+   "caras": 36,
    "materiales": [
     "UY_ACERO_GALVANIZADO"
    ],
@@ -5102,7 +7451,45 @@
    ]
   },
   {
-   "nombre": "UY_RETENEDOR_TUBOS_1PULG",
+   "nombre": "UY_RETENEDOR_PLACAS",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     -0.121,
+     -0.345,
+     9.334
+    ],
+    "max": [
+     72.485,
+     -0.233,
+     9.515
+    ]
+   },
+   "vertices": 252,
+   "caras": 197,
+   "materiales": [
+    "UY_ACERO_GALVANIZADO"
+   ],
+   "modificadores": [
+    "ARRAY:Array_0.60"
+   ]
+  },
+  {
+   "nombre": "UY_RETENEDOR_TUBOS",
    "tipo": "MESH",
    "colecciones": [
     "04_CUBIERTA_INDUSTRIAL"
@@ -5121,55 +7508,19 @@
    "caja_mundo": {
     "min": [
      -0.18,
-     -1.385,
-     9.256
+     -0.319,
+     9.38
     ],
     "max": [
      72.51,
-     -1.359,
-     9.347
+     -0.285,
+     9.489
     ]
    },
-   "vertices": 64,
-   "caras": 36,
+   "vertices": 96,
+   "caras": 54,
    "materiales": [
     "UY_ACERO_GALVANIZADO"
-   ],
-   "modificadores": []
-  },
-  {
-   "nombre": "UY_RETORNO_AIRE",
-   "tipo": "MESH",
-   "colecciones": [
-    "02_ENVOLVENTE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     48.175,
-     44.54,
-     0.0
-    ],
-    "max": [
-     48.325,
-     48.47,
-     8.368
-    ]
-   },
-   "vertices": 8,
-   "caras": 6,
-   "materiales": [
-    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
@@ -5661,17 +8012,17 @@
    "caja_mundo": {
     "min": [
      -0.23,
-     0.392,
+     -0.308,
      -0.0
     ],
     "max": [
      -0.08,
-     48.47,
+     48.601,
      12.91
     ]
    },
-   "vertices": 96,
-   "caras": 84,
+   "vertices": 104,
+   "caras": 90,
    "materiales": [
     "UY_REVOQUE_CONTINUO"
    ],
@@ -5702,7 +8053,7 @@
     ],
     "max": [
      72.56,
-     44.54,
+     44.572,
      12.91
     ]
    },
@@ -5733,17 +8084,17 @@
    "caja_mundo": {
     "min": [
      82.56,
-     0.392,
+     -0.308,
      -0.0
     ],
     "max": [
      82.71,
-     44.54,
+     43.624,
      6.3
     ]
    },
-   "vertices": 48,
-   "caras": 40,
+   "vertices": 144,
+   "caras": 136,
    "materiales": [
     "UY_REVOQUE_CONTINUO"
    ],
@@ -6164,10 +8515,10 @@
    "oculto_en_render": false
   },
   {
-   "nombre": "UY_VIDRIOS_AIRE_-00.2",
+   "nombre": "UY_VEREDA_AIRE_ESTE",
    "tipo": "MESH",
    "colecciones": [
-    "03_CARPINTERIAS_M1"
+    "06_ENTORNO_SITE"
    ],
    "ubicacion": [
     0.0,
@@ -6182,28 +8533,28 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     9.8,
-     48.37,
-     0.001
+     19.33,
+     0.392,
+     -0.2
     ],
     "max": [
-     42.94,
-     48.397,
-     6.51
+     85.515,
+     49.079,
+     -0.002
     ]
    },
-   "vertices": 40,
-   "caras": 30,
+   "vertices": 104,
+   "caras": 74,
    "materiales": [
-    "UY_VIDRIO_CONTROL_SOLAR"
+    "UY_HORMIGON_FRATASADO"
    ],
    "modificadores": []
   },
   {
-   "nombre": "UY_VIDRIOS_AIRE_048.2",
+   "nombre": "UY_VEREDA_AIRE_OESTE",
    "tipo": "MESH",
    "colecciones": [
-    "03_CARPINTERIAS_M1"
+    "06_ENTORNO_SITE"
    ],
    "ubicacion": [
     0.0,
@@ -6218,20 +8569,164 @@
    "oculto_en_render": false,
    "caja_mundo": {
     "min": [
-     53.43,
-     44.44,
-     4.82
+     -3.57,
+     0.392,
+     -0.2
     ],
     "max": [
-     70.33,
-     44.467,
-     6.51
+     19.4,
+     50.779,
+     -0.002
+    ]
+   },
+   "vertices": 92,
+   "caras": 65,
+   "materiales": [
+    "UY_HORMIGON_FRATASADO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VESTIBULO_AIRE_COSTADO_OESTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.97,
+     43.872,
+     -0.0
+    ],
+    "max": [
+     43.13,
+     46.734,
+     7.325
     ]
    },
    "vertices": 32,
    "caras": 24,
    "materiales": [
-    "UY_VIDRIO_CONTROL_SOLAR"
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VESTIBULO_AIRE_CUBIERTA",
+   "tipo": "MESH",
+   "colecciones": [
+    "04_CUBIERTA_INDUSTRIAL"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.94,
+     43.872,
+     7.165
+    ],
+    "max": [
+     48.26,
+     46.924,
+     7.335
+    ]
+   },
+   "vertices": 8,
+   "caras": 6,
+   "materiales": [
+    "UY_CHAPA_CUBIERTA"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VESTIBULO_AIRE_FRENTE",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     42.97,
+     46.734,
+     -0.0
+    ],
+    "max": [
+     48.23,
+     46.894,
+     7.325
+    ]
+   },
+   "vertices": 32,
+   "caras": 24,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
+   ],
+   "modificadores": []
+  },
+  {
+   "nombre": "UY_VESTIBULO_AIRE_MUROS",
+   "tipo": "MESH",
+   "colecciones": [
+    "02_ENVOLVENTE"
+   ],
+   "ubicacion": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_deg": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "oculto_en_render": false,
+   "caja_mundo": {
+    "min": [
+     43.13,
+     43.872,
+     0.0
+    ],
+    "max": [
+     48.23,
+     46.734,
+     7.325
+    ]
+   },
+   "vertices": 16,
+   "caras": 12,
+   "materiales": [
+    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
@@ -6268,42 +8763,6 @@
    "caras": 12,
    "materiales": [
     "UY_REVOQUE_FACHADA_BUNAS"
-   ],
-   "modificadores": []
-  },
-  {
-   "nombre": "UY_VOLUMEN_SALIENTE_OESTE",
-   "tipo": "MESH",
-   "colecciones": [
-    "02_ENVOLVENTE"
-   ],
-   "ubicacion": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "rotacion_deg": [
-    0.0,
-    0.0,
-    0.0
-   ],
-   "oculto_en_render": false,
-   "caja_mundo": {
-    "min": [
-     0.3,
-     48.47,
-     3.45
-    ],
-    "max": [
-     2.8,
-     50.51,
-     6.15
-    ]
-   },
-   "vertices": 8,
-   "caras": 6,
-   "materiales": [
-    "UY_REVOQUE_CONTINUO"
    ],
    "modificadores": []
   },
@@ -6529,6 +8988,40 @@
     0.0
    ],
    "focal_mm": 28.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_08_LADO_AIRE": {
+   "ubicacion": [
+    112.0,
+    150.0,
+    40.0
+   ],
+   "direccion": [
+    -0.608,
+    -0.745,
+    -0.274
+   ],
+   "focal_mm": 28.0,
+   "sensor_mm": 36.0,
+   "tipo": "PERSP",
+   "animada": false,
+   "restricciones": []
+  },
+  "CAM_09_MANGA_737": {
+   "ubicacion": [
+    10.0,
+    122.0,
+    30.0
+   ],
+   "direccion": [
+    0.056,
+    -0.924,
+    -0.378
+   ],
+   "focal_mm": 30.0,
    "sensor_mm": 36.0,
    "tipo": "PERSP",
    "animada": false,
@@ -6977,7 +9470,7 @@
  "materiales": [
   {
    "nombre": "UY_ACERO_GALVANIZADO",
-   "usuarios": 4,
+   "usuarios": 7,
    "color_visor": [
     0.337,
     0.356,
@@ -6992,7 +9485,7 @@
   },
   {
    "nombre": "UY_ALUMINIO_ANTRACITA_MATE",
-   "usuarios": 13,
+   "usuarios": 15,
    "color_visor": [
     0.042,
     0.048,
@@ -7007,7 +9500,7 @@
   },
   {
    "nombre": "UY_ASFALTO",
-   "usuarios": 1,
+   "usuarios": 2,
    "color_visor": [
     0.033,
     0.033,
@@ -7026,6 +9519,81 @@
     "ShaderNodeSeparateXYZ",
     "ShaderNodeTexCoord",
     "ShaderNodeTexNoise"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_ALA_GRIS_METALICO",
+   "usuarios": 3,
+   "color_visor": [
+    0.462,
+    0.491,
+    0.521,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_GONDOLA_MOTOR",
+   "usuarios": 1,
+   "color_visor": [
+    0.68,
+    0.701,
+    0.723,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_PINTURA_BLANCA",
+   "usuarios": 3,
+   "color_visor": [
+    0.815,
+    0.831,
+    0.847,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_TOBERA_Y_TREN",
+   "usuarios": 2,
+   "color_visor": [
+    0.024,
+    0.026,
+    0.03,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_AVION_VENTANILLAS",
+   "usuarios": 1,
+   "color_visor": [
+    0.004,
+    0.006,
+    0.008,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
    ]
   },
   {
@@ -7049,7 +9617,7 @@
   },
   {
    "nombre": "UY_CELOSIA_CORTEN_O_BLANCA",
-   "usuarios": 11,
+   "usuarios": 14,
    "color_visor": [
     0.27,
     0.06,
@@ -7074,7 +9642,7 @@
   },
   {
    "nombre": "UY_CHAPA_ANTEPECHO_REMATES",
-   "usuarios": 5,
+   "usuarios": 6,
    "color_visor": [
     0.038,
     0.045,
@@ -7093,7 +9661,7 @@
   },
   {
    "nombre": "UY_CHAPA_CUBIERTA",
-   "usuarios": 4,
+   "usuarios": 5,
    "color_visor": [
     0.038,
     0.045,
@@ -7136,8 +9704,23 @@
    ]
   },
   {
+   "nombre": "UY_CORTINA_ENROLLABLE_GALVANIZADA",
+   "usuarios": 1,
+   "color_visor": [
+    0.371,
+    0.392,
+    0.407,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
    "nombre": "UY_HORMIGON_FRATASADO",
-   "usuarios": 2,
+   "usuarios": 5,
    "color_visor": [
     0.434,
     0.418,
@@ -7159,8 +9742,31 @@
    ]
   },
   {
+   "nombre": "UY_HORMIGON_PLATAFORMA",
+   "usuarios": 1,
+   "color_visor": [
+    0.361,
+    0.342,
+    0.305,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "humedad"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise"
+   ]
+  },
+  {
    "nombre": "UY_HORMIGON_VISTO",
-   "usuarios": 3,
+   "usuarios": 5,
    "color_visor": [
     0.296,
     0.292,
@@ -7180,7 +9786,7 @@
   },
   {
    "nombre": "UY_INTERIOR_LUZ_CALIDA",
-   "usuarios": 1,
+   "usuarios": 2,
    "color_visor": [
     1.0,
     0.456,
@@ -7244,8 +9850,38 @@
    ]
   },
   {
+   "nombre": "UY_MANGA_CHAPA_GRIS_CLARO",
+   "usuarios": 1,
+   "color_visor": [
+    0.651,
+    0.672,
+    0.687,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_MANGA_FUELLE_Y_CAUCHO",
+   "usuarios": 1,
+   "color_visor": [
+    0.012,
+    0.012,
+    0.012,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
    "nombre": "UY_NEUMATICO",
-   "usuarios": 6,
+   "usuarios": 7,
    "color_visor": [
     0.006,
     0.006,
@@ -7274,6 +9910,21 @@
    ]
   },
   {
+   "nombre": "UY_PINTURA_PLATAFORMA_AMARILLA",
+   "usuarios": 1,
+   "color_visor": [
+    0.694,
+    0.376,
+    0.007,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
    "nombre": "UY_PINTURA_VEHICULO_BLANCO",
    "usuarios": 6,
    "color_visor": [
@@ -7290,7 +9941,7 @@
   },
   {
    "nombre": "UY_PINTURA_VIAL_BLANCA",
-   "usuarios": 1,
+   "usuarios": 2,
    "color_visor": [
     0.807,
     0.807,
@@ -7305,7 +9956,7 @@
   },
   {
    "nombre": "UY_PISO_INTERIOR_GRES",
-   "usuarios": 1,
+   "usuarios": 2,
    "color_visor": [
     0.275,
     0.254,
@@ -7320,11 +9971,26 @@
   },
   {
    "nombre": "UY_PLENUM_NEGRO_MATE",
-   "usuarios": 2,
+   "usuarios": 3,
    "color_visor": [
     0.001,
     0.001,
     0.001,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [],
+   "nodos": [
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeOutputMaterial"
+   ]
+  },
+  {
+   "nombre": "UY_PUERTA_ACERO_PINTADO",
+   "usuarios": 2,
+   "color_visor": [
+    0.042,
+    0.048,
+    0.053,
     1.0
    ],
    "propiedades_de_escena_que_lee": [],
@@ -7591,7 +10257,7 @@
   },
   {
    "nombre": "UY_REVOQUE_CONTINUO",
-   "usuarios": 9,
+   "usuarios": 28,
    "color_visor": [
     0.485,
     0.462,
@@ -7616,7 +10282,33 @@
   },
   {
    "nombre": "UY_REVOQUE_FACHADA_BUNAS",
-   "usuarios": 16,
+   "usuarios": 11,
+   "color_visor": [
+    0.485,
+    0.462,
+    0.418,
+    1.0
+   ],
+   "propiedades_de_escena_que_lee": [
+    "propuesta"
+   ],
+   "nodos": [
+    "ShaderNodeAttribute",
+    "ShaderNodeBsdfPrincipled",
+    "ShaderNodeBump",
+    "ShaderNodeMath",
+    "ShaderNodeMix",
+    "ShaderNodeNewGeometry",
+    "ShaderNodeOutputMaterial",
+    "ShaderNodeSeparateXYZ",
+    "ShaderNodeTexCoord",
+    "ShaderNodeTexNoise",
+    "ShaderNodeVectorMath"
+   ]
+  },
+  {
+   "nombre": "UY_REVOQUE_LADO_AIRE",
+   "usuarios": 2,
    "color_visor": [
     0.485,
     0.462,
@@ -7717,7 +10409,7 @@
   },
   {
    "nombre": "UY_SELLO_ESTRUCTURAL_NEGRO",
-   "usuarios": 1,
+   "usuarios": 3,
    "color_visor": [
     0.003,
     0.003,

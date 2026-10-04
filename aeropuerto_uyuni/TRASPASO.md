@@ -1,6 +1,6 @@
 # Traspaso: visualización de la Terminal de Pasajeros del Aeropuerto de Uyuni
 
-**Fecha:** 3 de octubre de 2026 · **Blender:** 5.2.2 LTS, Cycles · **Rama del repositorio:** `claude/clever-hypatia-i19958`
+**Fecha:** 3 de octubre de 2026, actualizada el 4 de octubre (Lado Aire, laterales y detalles: `CAMBIOS_4OCT_FACHADAS.md`) · **Blender:** 5.2.2 LTS, Cycles · **Rama del repositorio:** `claude/clever-hypatia-i19958`
 
 Esta guía permite que otra persona o IA continúe el proyecto sin repetir la auditoría. Antes de tocar el modelo, lee las secciones 1 a 6. Para saber de dónde sale cada medida, ve a `00_auditoria/AUDITORIA.md`.
 
@@ -17,11 +17,11 @@ Esta guía permite que otra persona o IA continúe el proyecto sin repetir la au
 |---|---|---|
 | 0 y 0.5 | Auditoría del DXF y del IFC, y triage de vistas | ✅ Terminada (`00_auditoria/`). |
 | 1 | Suprimir lo obsoleto, dinteles rectos a +5,51, mampara M1 y antepecho de 2,40 m | ✅ El modelo se hizo desde cero: lo obsoleto, simplemente, no se modeló. |
-| 2 | Cubierta engrapada, retenedores de nieve, goterón sin canaleta, zanja y cielo del alero | ✅ Revisado el 3 de octubre: retenedor fino y cielo listonado (sección 5). |
-| 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 11 módulos y letrero "línea de horizonte". |
+| 2 | Cubierta engrapada, retenedores de nieve, goterón sin canaleta, zanja y cielo del alero | ✅ Revisado el 3 de octubre (cielo listonado). El retenedor sigue el detalle del cliente del 4 de octubre (sección 5). |
+| 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 14 módulos (3 más en la OESTE desde el 4 de octubre) y letrero "línea de horizonte". |
 | Materiales | PBR | ✅ Procedurales, sin texturas de imagen. |
-| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan tres cosas: 1) el paisaje (horizonte, cerros, suelo con textura y vegetación); 2) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 3) la variante de cielo nublado. El entorno inmediato ya está: acera, zanja, calzada, estacionamiento y plataforma (los bolardos se quitaron el 3 de octubre). |
-| 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05, CAM_06 y CAM_07). Las dos propuestas de CAM_07 y los primeros planos del letrero ya se renderizaron en la nube (CPU). **Faltan los renders finales de CAM_01 a CAM_06 con GPU.** |
+| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan tres cosas: 1) el paisaje (horizonte, cerros, suelo con textura y vegetación); 2) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 3) la variante de cielo nublado. El entorno inmediato ya está: acera, zanja, calzada y estacionamiento del Lado Tierra (los bolardos se quitaron el 3 de octubre). En el Lado Aire, desde el 4 de octubre: veredas y cordón de la planta A111, camino de servicio, plataforma con marcas, dos mangas y dos 737-800 genéricos. Falta la pista (sección 8.7). |
+| 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05, CAM_06, CAM_07 y, para el Lado Aire, CAM_08 y CAM_09). Las dos propuestas de CAM_07 y los primeros planos del letrero ya se renderizaron en la nube (CPU), antes de los cambios de fachada del 4 de octubre. **Faltan los renders finales de CAM_01 a CAM_09 con GPU.** |
 | 6 | Dron de 20–30 s, 24 fps, 1080p, MP4 H.264 | ⚠️ La trayectoria está lista (`CAM_DRON`, 600 cuadros = 25 s). Faltan la configuración de salida y el render. |
 | 7 | Ficha de costos para el Ministro, láminas PDF, MP4 y facturación | ❌ Pendiente (sección 8.6). |
 
@@ -35,6 +35,7 @@ aeropuerto_uyuni/
 ├── TRASPASO.md                  esta guía
 ├── CAMBIOS_REUNION_3OCT.md      cambios desde el primer traspaso y cómo llevarlos a un .blend con avance propio
 ├── CAMBIOS_REUNION_3OCT_uyuni_modelo.diff   los mismos cambios, línea por línea, en el script
+├── CAMBIOS_4OCT_FACHADAS.md     Lado Aire, laterales, mangas y aviones, nichos, ME-2 y retenedor (4 de octubre, tarde)
 ├── PROMPT_CONTINUACION.md       instrucción lista para pegar en otra IA
 ├── 00_auditoria/
 │   ├── AUDITORIA.md             hallazgos, cotas verificadas y decisiones del cliente
@@ -48,14 +49,16 @@ aeropuerto_uyuni/
     ├── uyuni_v2.blend           el modelo ya generado (escenas UYUNI_DIA, UYUNI_DIA_P2_SALAR_LITIO y UYUNI_CREPUSCULO)
     ├── inventario_escena.json   escenas, colecciones, objetos (con caja envolvente), cámaras, luces, materiales y proxies
     ├── previews/                vistas previas de CAM_01 a CAM_06 (1280 px, 24 muestras)
-    ├── verificacion/            modelo superpuesto al CAD: 4 alzados y 2 cortes
+    ├── verificacion/            modelo superpuesto al CAD: alzados, cortes y plantas (las del Lado Aire, los
+    │                            laterales, la ME-2 y el retenedor son proyecciones 2D, sin render)
     ├── propuestas/              hojas comparativas: dos propuestas de color y letrero (material y geometría)
     ├── fotorrealismo/           hojas de las pruebas de realismo: día, materiales, vidrio, noche y muestreo
     └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas, y en franjas
                                  que se retoman: render_banda.py y unir_bandas.py), verificar, inventariar,
                                  aplicar_cambios_reunion.py y aplicar_cambios_4oct.py (decisiones del 3 y del 4 de octubre
-                                 sobre un .blend existente) y las pruebas de realismo prueba_*.py (hoja_muestreo.py saca
-                                 los números de prueba_muestreo.py)
+                                 sobre un .blend existente), las pruebas de realismo prueba_*.py (hoja_muestreo.py saca
+                                 los números de prueba_muestreo.py) y la verificación sin render: exportar_geometria.py
+                                 y superponer_cad_2d.py
 02_postproduccion/               GUIA_REALISMO_FOTOGRAFICO.md y sus documentos de detalle (fotorrealismo, materiales,
                                  iluminación nocturna, muestreo y rendimiento), prompts de IA por vista, de upscale y
                                  unificar_color.py
@@ -71,6 +74,10 @@ Los archivos originales del cliente (DXF, IFC y PDF) **no están en el repositor
 | `AU-SUP-EST-TP-ZZ-MO-TerminalPasajeros.ifc` | Estructura de HºAº exportada con *parts*: las columnas no traen geometría. |
 | `AU-CBI-ARQ-TP-ZZ-MO-TerminalPasajeros_detached-AU-SUP-EST-…ifc` | Mismo modelo estructural sin *parts*. Es el que se usó para la geometría. **No es la arquitectura.** |
 | `…_detached.pdf` y `…_detached_a.pdf` | Planta Baja y Planta Alta (acabados de piso, ejes 1–20 y A–R). |
+| `…_Sheet_-_A111_-_PLANTA_BAJA.dxf` (4 de octubre) | Planta baja arquitectónica en coordenadas del modelo (1:1): muros, puertas, vidrios, columnas y cordón de vereda (capa A-FLOR). |
+| `tp-arq-x-cad-FachadaSUROESTE_FACHADATRASERA.dxf` (4 de octubre) | Alzado del Lado Aire con sus carpinterías y puertas. |
+| `tp-arq-x-cad-FachadaESTE_y_FachadaOESTE.dxf` (4 de octubre) | Los dos testeros. Respecto del DXF anterior solo suma 3 módulos de celosía en la OESTE. |
+| `tp-arq-x-cad-detalle_puertas_ME-2.dxf` (4 de octubre) | Elevación y secciones de la ME-2: hojas corredizas, viga de acero y operador. |
 
 ## 3. Coordenadas, georreferencia y sol
 
@@ -119,7 +126,7 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
 | Vista (`00_auditoria/vistas/`) | Qué es | DXF → modelo | Se mira desde |
 |---|---|---|---|
 | `FACHADA_NORESTE_ACTUAL` | Lado Tierra | X = x · Z = y | −Y |
-| `FACHADA_SUROESTE` | Lado Aire | X = 187,84 − x · Z = y | +Y |
+| `FACHADA_SUROESTE` | Lado Aire | X = 187,866 − x · Z = y (hasta el 4 de octubre se usó 187,84: la planta A111 muestra que el alzado va corrido 2,6 cm) | +Y |
 | `FACHADA_ESTE` | testero del eje 20 | Y = −0,308 + (x − 249,787) · Z = y | +X |
 | `FACHADA_OESTE` | testero del eje 1 | Y = −0,308 + (384,834 − x) · Z = y | −X |
 | `CORTE_ACTUAL_POR_M1` | corte por una ME-1 | Y = −41,147 − x · Z = y | +X |
@@ -127,10 +134,20 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
 | `CORTE_ORIGINAL_B-K-A`, `FACHADA_NORESTE_ORIGINAL` | diseño anterior | Y = −15,193 − x (corte) o X = x (fachada) · Z = y − 42,914 | — |
 | `ME1`…`ME6`, `PT1_PT2`, `PANELES_LETRAS_PIRAMIDES` | fichas de detalle 1:1 | coordenadas propias: se mide dentro de cada ficha | — |
 
+**DXF del 4 de octubre** (en `UYUNI_insumos_cliente.zip`, sin vistas aisladas):
+
+| DXF | DXF → modelo | Se mira desde |
+|---|---|---|
+| Planta baja A111 | X = x · Y = y (1:1) | arriba |
+| Fachada SUROESTE | X = 187,866 − x · Z = y | +Y |
+| Fachadas ESTE y OESTE: la ESTE en x < 320 | Y = x − 250,095 · Z = y | +X |
+| Fachadas ESTE y OESTE: la OESTE en x > 320 | Y = 384,526 − x · Z = y | −X |
+| Detalle ME-2: sección 1 (horizontal) | X = x − 30,148 + X₀ de la ME-2 · Y = 0,479 + (y + 25,45) | arriba |
+| Detalle ME-2: sección 2 (vertical) | Y = 0,479 + (x − 36,233) · Z = y + 24,42 | +X |
+
 **Superposiciones** (`01_blender/verificacion/`):
-- Cada `SUPERPOSICION_<vista>.jpg` es un render ortogonal del modelo con el CAD encima, en rojo, con el mismo encuadre y la misma escala que el PNG de la vista.
-- Las láminas `lamina_verificacion_alzados.jpg` y `lamina_verificacion_cortes.jpg` las resumen.
-- Se regeneran con `herramientas/verificar_alzados.py` y `herramientas/superponer_cad.py` (sección 9).
+- **Con render (3 de octubre):** `SUPERPOSICION_FACHADA_NORESTE_ACTUAL.jpg` y los dos cortes son renders ortogonales del modelo con el CAD encima, en rojo, con el mismo encuadre y la misma escala que el PNG de la vista. Se regeneran con `herramientas/verificar_alzados.py` y `herramientas/superponer_cad.py` (sección 9). Las láminas `lamina_verificacion_alzados.jpg` y `lamina_verificacion_cortes.jpg` son de esa fecha: todavía muestran el Lado Aire y los laterales anteriores.
+- **Sin render (4 de octubre):** el Lado Aire (`LADO_AIRE_*`), los alzados SUROESTE, ESTE y OESTE (`SUPERPOSICION_FACHADA_*`), los nichos de la fachada principal, la ME-2, el retenedor y el 737. Son cortes y proyecciones del modelo dibujados con matplotlib sobre los DXF del cliente, con `herramientas/exportar_geometria.py` y `herramientas/superponer_cad_2d.py` (sección 9). No gastan render.
 - **Es la forma más rápida de ver qué falta o qué no encaja.**
 
 ## 5. Decisiones del cliente (no cambiar sin consultarle)
@@ -148,13 +165,16 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
    - **B `LETRERO_B_CONTENIDO`:** queda dentro de los 2,40 m del antepecho. El horizonte va al centro (+7,812) y cada pieza se reescala al 72 % sobre su eje, con 12 cm libres arriba y abajo (`LETRERO_B_MARGEN`).
    - Por defecto se ve la A. Para ver la B, excluye la colección A y activa la B en la capa de vista, o usa `herramientas/render_propuestas.py` con las variantes `P1B` y `P2B`.
    - **Decisión del 4 de octubre: queda la A**, con las letras de tamaño original, sin reducción. La B se conserva en el modelo, pero ya no se entrega.
-3. **Celosías:** 2 en la OESTE, 2 en la ESTE, 5 PT2 en el Lado Tierra y 2 PT2 en el Lado Aire. Las posiciones y variantes exactas están en `CELOSIAS`.
+3. **Celosías:** 5 en la OESTE (4 PT1 y una en rampa, `PT1R`, según el DXF del 4 de octubre; apoyan a +0,11), 2 en la ESTE, 5 PT2 en el Lado Tierra y 2 PT2 en el Lado Aire. Las posiciones y variantes exactas están en `CELOSIAS`.
 4. **En los detalles PT1/PT2, las tramas grises son vacíos (calados)** y las líneas salmón son el bastidor que sostiene las planchas por detrás.
-5. **Retenedor de nieve (revisado el 3 de octubre):**
-   - **18 cm de alto** sobre la chapa;
-   - **doble tubo delgado de 1"** (25,4 mm);
+5. **Retenedor de nieve (detalle del cliente del 4 de octubre; reemplaza la versión del 3 de octubre):**
+   - abrazadera de chapa de 6 mm, de **174 mm de alto y 113 mm de base**, con la cabeza redondeada, perpendicular a la chapa y en el plano del nervio;
+   - dos orejas de 38 mm que muerden el nervio, con su perno;
+   - **tres agujeros de 23 mm** (centros a 48,5, 92,5 y 137,5 mm de la base), con un tubo en cada uno;
+   - eje a **1,398 m del borde, medido sobre la pendiente**, encima de la primera correa (casi sobre la línea de las columnas);
    - abrazaderas sobre un nervio de cada dos (cada 0,60 m);
-   - **fijado sobre la primera correa**. La correa no está en el IFC: se supone a 0,30 m del borde libre (`CORREA_1_DIST_BORDE`, punto abierto 11).
+   - todo en `RETENEDOR`;
+   - **por confirmar:** los tubos son de 21,3 mm (1/2"), porque uno de 1" no entra en el agujero de 23 mm. Y van tres, uno por agujero, cuando en la reunión se habló de doble tubo.
 6. **Hero shot (CAM_01): luz de mañana**, con el sol sobre la fachada y las sombras de las planchas corten.
 7. **Materiales (revisados el 3 de octubre):**
    - **Muros y columnas:** panel EPS de 80 mm con malla y **revoque proyectado continuo**, sin placas ni juntas verticales. Viga y columna van revocadas en el mismo plano y tono que el muro. Solo hay una **buña horizontal fina** (10 mm) arriba y abajo de la viga de +5,51 a +6,01. Hacen de fondo neutro.
@@ -164,8 +184,11 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
    - **Colores:** dependen de la propuesta (punto 11).
    - **Hora azul:** bañadores cálidos al pie de las celosías y nieve en el borde de la cubierta.
 8. **Elementos de los laterales (aprobados):**
-   - en la OESTE: rombo perforado, bloque con mástil y volumen saliente;
-   - en la ESTE: franja nervada de +4,41 a +6,21.
+   - en la OESTE: rombo perforado, bloque con mástil y volumen saliente (la caja de la puerta de embarque 1);
+   - en la ESTE: franja nervada de +4,41 a +6,21;
+   - **desde el 4 de octubre, según el DXF:**
+     - en la ESTE, puertas dobles y simples con rejilla y el patio techado;
+     - en la OESTE, los 3 módulos de celosía nuevos (`CAMBIOS_4OCT_FACHADAS.md`, sección 5).
 9. **Colecciones:** se usa la lista de la Tarea 0.2 del brief, de `_REF_CAD` a `08_CAMERAS_LIGHTS`.
 11. **Dos propuestas de color para la gerencia (reunión del 3 de octubre).** Las elige la propiedad `propuesta` de la escena: 0 es P1 (escena `UYUNI_DIA`) y 1 es P2 (escena `UYUNI_DIA_P2_SALAR_LITIO`). Los colores están en `PALETA`.
 
@@ -196,6 +219,19 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     - se aprueba la perspectiva general del Lado Aire;
     - hay que incorporar al render las **mangas de abordaje**, **aeronaves Boeing de la aerolínea estatal** (BoA) y la **extensión de la pista hasta el horizonte**, para que las tomas aéreas no muestren vacíos;
     - especificación en la sección 8.7.
+14. **Fachada Lado Aire, laterales, mangas y aviones (4 de octubre, tarde, con los DXF nuevos):**
+    - **fachada:** se modela como la dibujan la planta A111 y el alzado SO:
+      - el bloque de los ejes 1-5 llega al eje R;
+      - el resto de la fachada es el muro del eje I, con pilastras, puertas, ventanas, nicho, marquesina y vestíbulo;
+    - **mangas:** dos, en las dos puertas de embarque del nivel 1P;
+    - **aviones:** dos 737-800 estacionados como en la captura del modelo del cliente;
+    - **entorno:** veredas y cordón de la planta, y el camino de servicio de la vista aérea;
+    - **detalle:** `CAMBIOS_4OCT_FACHADAS.md`; lo que falta confirmar está en su sección 8.
+15. **Fachada principal: nicho solo en los ventanales (4 de octubre).** Los paños con ME-1 o ME-2 quedan retirados en el plano del muro. Todos los demás van al ras de la cara de las columnas: ciegos, con rombos ME-3, detrás de las celosías y en el anexo.
+16. **Puertas ME-2 según su detalle (4 de octubre):**
+    - las hojas corredizas automáticas corren por el lado interior del perfil;
+    - van bajo una viga de acero negro mate de 170 × 200 mm, con el operador debajo;
+    - no queda ninguna rendija que deje ver el interior.
 10. **Reglas de oro del brief:**
     - el DXF solo sirve para verificar: no se calca ni se importa como geometría;
     - toda la geometría se genera con `bpy` a partir de medidas numéricas;
@@ -208,17 +244,17 @@ Están ordenados de mayor a menor impacto en los renders.
 
 | # | Tema | Cómo está hoy | Qué revisar | Parámetro o función |
 |---|---|---|---|---|
-| 1 | **Testero del eje 20 (FACHADA ESTE)** | Solo tiene celosías, 2 ME-3 y la franja nervada. | El CAD dibuja además 2 puertas dobles detrás de las PT2, 1 puerta doble con sobreluz, 2 vanos grandes tipo portón y 2 elementos menores. **No están modelados.** Se ven en el final del dron y en vistas oblicuas. Mira `SUPERPOSICION_FACHADA_ESTE.jpg`. | `envolvente_general()` |
+| 1 | **Testero del eje 20 (FACHADA ESTE)** | ✅ Resuelto el 4 de octubre: puertas dobles y simples con rejilla y el patio techado, según el DXF. | Mira `SUPERPOSICION_FACHADA_ESTE.jpg`. | `testero_este()` |
 | 2 | **Cumbrera** | +13,02, según los alzados laterales. | Las fachadas NE y SO marcan +13,43. La diferencia se ve en las superposiciones NE y SO: la banda nervada del CAD queda más alta que la del modelo. **Confirmar con el cliente antes de cambiarla.** | `CUMBRERA_Z` (mueve solo el vértice de la cumbrera de `PERFIL_CUBIERTA`) |
-| 3 | **Volumen saliente del Lado Aire (esquina del eje 1)** | Se modeló en X 0,3–2,8, Y 48,47–50,51 y Z 3,45–6,15. La X es un supuesto. | El alzado SO dibuja en esa posición un rectángulo enmarcado en **X 0,804–2,804 y Z 3,82–6,12**, con marco de 40 mm y travesaño a +5,90. Si es el mismo elemento, hay que ajustar la X y agregar esa carpintería. | `CAJA_OESTE`, `PLATAFORMA_OESTE` |
-| 4 | **Elemento vertical en la esquina del eje 1 / Lado Aire** | No está modelado. | Los alzados SO y OESTE muestran un elemento vertical con travesaños a distintas alturas, en X ≈ −0,36…−0,10. Puede ser una escalera de gato o una bajante con abrazaderas. | nuevo, en `elementos_laterales()` |
+| 3 | **Volumen saliente del Lado Aire (esquina del eje 1)** | ✅ Resuelto el 4 de octubre: es la caja de la puerta de embarque 1 (X 0,83–2,83, como en el alzado SO), con su frente vidriado. Ahí se apoya la manga 1. | — | `CAJA_OESTE`, `elementos_laterales()` |
+| 4 | **Elemento vertical en la esquina del eje 1 / Lado Aire** | ✅ Modelado el 4 de octubre como bajante con abrazaderas, a las alturas del alzado SO. | Si el cliente aclara que es una escalera de gato, se cambia. | `BAJANTE_OESTE` |
 | 5 | **Mástil OESTE** | X = 0,6. Es un supuesto, porque el alzado no da su posición en X. | Se puede confirmar con el alzado SO. | `MASTIL_OESTE` |
-| 6 | **Lado Aire** | Las ventanas ME-4, ME-5 y ME-6 son vanos simples aproximados desde el alzado SO. | El CAD trae el despiece de las carpinterías, las puertas menores y la ubicación exacta de cada ME. Las fichas ME4, ME5 y ME6 están en `vistas/`. | `VENTANAS_AIRE`, `envolvente_general()` |
+| 6 | **Lado Aire** | ✅ Resuelto el 4 de octubre con la planta A111 y el alzado SO: carpinterías, puertas, pilastras, marquesina, nicho, vestíbulo y bloque. | Lo que falta confirmar está en `CAMBIOS_4OCT_FACHADAS.md`, sección 8. | `fachada_aire()` |
 | 7 | **Rombo perforado OESTE** | Usa el material del letrero: corten en P1 y blanco en P2. | Confirmar con el cliente. | `elementos_laterales()` |
-| 8 | **Entorno** | El corte da la acera de 4,00 m, el bordillo de 0,15 m y la zanja de 0,50 × 0,20 m. La calzada, el estacionamiento y la plataforma del Lado Aire son supuestos. | No hay planta de emplazamiento en los archivos recibidos. Si el cliente la tiene, conviene pedirla. | `entorno()`, `CALZADA_Y` |
+| 8 | **Entorno** | Lado Tierra: el corte da la acera de 4,00 m, el bordillo de 0,15 m y la zanja de 0,50 × 0,20 m. Lado Aire y laterales (4 de octubre): veredas y cordón de la planta A111, más el camino de servicio de la vista aérea del cliente. | La A111 dibuja en el Lado Tierra una vereda de ≈ 8,8 m con dos dársenas. No se aplicó porque cambia las vistas aprobadas: **preguntar al cliente.** | `entorno()`, `entorno_aire()`, `CALZADA_Y` |
 | 9 | **Cerchas de la cubierta** | No están modeladas, porque no se ven desde afuera. | Los cortes las dibujan. Son opcionales. | — |
-| 10 | **Interiores** | Una caja emisiva cálida, según el brief: "interiores básicos". | — | `envolvente_general()` |
-| 11 | **Primera correa de la cubierta** | El retenedor de nieve se fija sobre ella; se supuso a 0,30 m del borde libre. | Ubicarla en el plano de la estructura metálica. | `CORREA_1_DIST_BORDE` |
+| 10 | **Interiores** | Una caja emisiva cálida en cada lado, según el brief: "interiores básicos". | — | `envolvente_general()`, `fachada_aire()` |
+| 11 | **Primera correa de la cubierta** | ✅ Resuelto con el detalle del cliente: el retenedor va a 1,398 m del borde, medido sobre la pendiente. | — | `RETENEDOR` |
 
 **Abiertos desde el 4 de octubre (preguntar al cliente):**
 - **El letrero de noche:**
@@ -228,8 +264,16 @@ Están ordenados de mayor a menor impacto en los renders.
 - **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto. Además (`02_postproduccion/MUESTREO_Y_RENDIMIENTO.md`, sección 3):
   - en Cycles, el sol no atraviesa el vidrio: para que la estructura reciba luz de afuera, el vidrio tiene que ser transparente para los rayos de sombra (la receta está en esa sección);
   - el vidrio elegido deja pasar 2,9 % de la luz, mucho menos que un DVH de control solar habitual (de 20 a 50 %; los más oscuros, de 10 a 20 %). Con eso la estructura no se ve de día. Proponer al cliente el tinte `#A9BCCB` con la misma capa, que deja pasar 15 % (medido) y de día se sigue viendo oscuro, y mostrarle la prueba antes de cambiarlo.
-- **La librea de BoA en las aeronaves:** solo con autorización para usar la marca; si no, una librea blanca genérica.
+- **La librea de BoA en las aeronaves:** solo con autorización para usar la marca. Hoy llevan una librea blanca genérica.
 - **La posición exacta de la pista:** sacarla de OpenStreetMap o de Google Earth, o de un plano de sitio del cliente si lo hay (sección 8.7).
+- **Lado Aire, laterales y detalles:** los nueve puntos de `CAMBIOS_4OCT_FACHADAS.md`, sección 8. Entre ellos:
+  - la ME-6 del bloque;
+  - la altura del vestíbulo y la del anexo;
+  - el remate de la cubierta sobre el eje I;
+  - las puertas de embarque y la posición de los aviones;
+  - los tubos del retenedor;
+  - el color de la carpintería;
+  - el cordón del Lado Tierra.
 
 **Ya resueltos (no hace falta volver a revisarlos):**
 - Termopanel: 26,8 mm según el CAD (4+4 / 12 / 3+3). El brief decía 21 mm por error de suma.
@@ -239,7 +283,8 @@ Están ordenados de mayor a menor impacto en los renders.
 **Diferencias dentro del propio CAD (no copiarlas al modelo):**
 - **Alero en los laterales:** los alzados ESTE y OESTE no dibujan el volado de 2 m ni el antepecho en el extremo del Lado Tierra. Cortan la cubierta en Y ≈ −0,26, a ≈ +8,9. Los cortes vigentes y la fachada NE sí los dibujan. El modelo sigue los cortes, por eso en las superposiciones laterales el antepecho sobresale del contorno rojo.
 - **Diseño original:** la fila superior del DXF (doble pantalla, canaleta, vidrio en el eje K) es el diseño descartado.
-- **Retenedor:** el CAD lo ubica a ≈ 1,35 m del borde; manda la decisión del cliente (0,40 m).
+- **Retenedor:** el CAD lo ubicaba a ≈ 1,35 m del borde. El detalle del cliente del 4 de octubre lo confirma: 1,398 m sobre la pendiente, y así está en el modelo.
+- **Alzado SO contra la planta A111:** el alzado va corrido 2,6 cm en X. Además dibuja la ME-6 del bloque, que en la planta queda en la línea interior, detrás del muro del eje R. El modelo sigue la planta.
 
 ## 7. Cómo está hecho el modelo
 
@@ -254,19 +299,23 @@ Están ordenados de mayor a menor impacto en los renders.
 | Función | Colección | Objetos principales |
 |---|---|---|
 | `estructura` | `01_ESTRUCTURA` | `UY_COLUMNAS_EJE_A` (0,40 × 1,00) y `UY_VIGAS_DINTEL_300x500` |
-| `muro_landside`, `mamparas` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | paños `UY_MURO_NE_*` (revoque con buñas) y `UY_MAMPARA_M1_FRAMES/GLASS/SELLOS` (7 ME-1 y 2 ME-2) |
+| `muro_landside`, `mamparas` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | paños `UY_MURO_NE_*` (en nicho, revoque con buñas) y `UY_MURO_NE_RAS_*` (al ras de las columnas), `UY_MAMPARA_M1_FRAMES/GLASS/SELLOS` (7 ME-1 y 2 ME-2) y `UY_ME2_VIGA_OPERADOR_*` |
 | `antepecho_alero` | `02_ENVOLVENTE` | `UY_ANTEPECHO_2_40_CHAPA`, `UY_ANTEPECHO_NERVIOS` (Array cada 0,30), `UY_CIELO_LISTONES` (Array cada 0,15), `UY_CIELO_PLENUM_NEGRO`, `UY_LUMINARIAS_ALERO` |
-| `cubierta` | `04_CUBIERTA_INDUSTRIAL` | `UY_CUBIERTA_CHAPA`, `UY_CUBIERTA_NERVIOS_*`, `UY_RETENEDOR_*`, `UY_GOTERON_BORDE`, `UY_CUBIERTA_ANEXO` |
-| `envolvente_general` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | testeros, fachadas del Lado Aire, anexo, ME-3 e interior |
-| `elementos_laterales` | `02_ENVOLVENTE` | `UY_ROMBO_OESTE_*`, `UY_MASTIL_OESTE`, `UY_DESCANSO_ESCALONES_OESTE`, `UY_FRANJA_ESTE_*` |
+| `cubierta` | `04_CUBIERTA_INDUSTRIAL` | `UY_CUBIERTA_CHAPA`, `UY_CUBIERTA_NERVIOS_*`, `UY_RETENEDOR_PLACAS/OREJAS/TUBOS`, `UY_GOTERON_BORDE`, `UY_CUBIERTA_ANEXO` |
+| `envolvente_general` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | testeros, anexo, ME-3 e interior. Llama a `fachada_aire` y a `testero_este` |
+| `fachada_aire` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1`, `04_CUBIERTA_INDUSTRIAL` | `UY_FACHADA_AIRE_EJE_I`, `UY_PILASTRAS_AIRE`, `UY_BLOQUE_AIRE_*`, `UY_MARQUESINA_AIRE`, `UY_NICHO_AIRE*`, `UY_VESTIBULO_AIRE_*`, `UY_CARPINTERIAS_AIRE_*`, `UY_PUERTAS_AIRE_ACERO`, `UY_ENROLLABLES_AIRE_*`, `UY_INTERIOR_AIRE_*`, `UY_BAJANTE_OESTE` y `UY_GOTERON_LADO_AIRE` |
+| `testero_este` | `02_ENVOLVENTE`, `03_CARPINTERIAS_M1` | `UY_TESTERO_EJE_20`, `UY_PATIO_ESTE_*` y `UY_PUERTAS_ESTE_*` |
+| `elementos_laterales` | `02_ENVOLVENTE` | `UY_ROMBO_OESTE_*`, `UY_MASTIL_OESTE`, `UY_CAJA_EMBARQUE_OESTE*`, `UY_DESCANSO_ESCALONES_OESTE`, `UY_FRANJA_ESTE_*` |
 | `celosias` | `05_CELOSIAS_CORTEN` | `UY_CELOSIA_<fachada>_<variante>_<n>` y `UY_CELOSIAS_BASTIDOR` |
 | `letrero` | `02_ENVOLVENTE/LETRERO_HORIZONTE_UYUNI/LETRERO_A_SOBRESALE` y `.../LETRERO_B_CONTENIDO` | letras, reflejo, pirámides 3D, marcos, separadores y líneas de horizonte (sufijo `_A` o `_B`) |
-| `entorno` | `06_ENTORNO_SITE` | acera, zanja con rejilla, bordillo, calzada, estacionamiento, plataforma y `UY_SUELO_ALTIPLANO` (plano de 4 × 4 km) |
+| `entorno` | `06_ENTORNO_SITE` | acera, zanja con rejilla, bordillo, calzada, estacionamiento y `UY_SUELO_ALTIPLANO` (plano de 4 × 4 km). Llama a `entorno_aire` |
+| `entorno_aire` | `06_ENTORNO_SITE` | `UY_VEREDA_AIRE_OESTE/ESTE`, `UY_CORDON_AIRE_*`, `UY_PLATAFORMA_AIRE_HORMIGON`, `UY_CAMINO_SERVICIO_AIRE` y sus marcas, `UY_PLATAFORMA_MARCAS_AMARILLAS` |
+| `mangas_y_aviones` | `10_MANGAS_AERONAVES` | `UY_MANGAS_EMBARQUE`, `UY_MANGAS_FUELLES_Y_RUEDAS` y los dos 737-800 (`UY_AVION_737_<parte>_1` y `_2`, con mallas compartidas) |
 | `assets` | `07_ASSETS/PROXIES_COLOCACION` | 15 cajas de ubicación, ocultas en el render (ver 8.2) |
 | `referencias_cad` | `_REF_CAD/*` | las vistas del CAD como planos de referencia, ocultos en el render |
-| `camaras_y_dron` | `08_CAMERAS_LIGHTS` | 9 cámaras fijas (con `CAM_07_PROPUESTAS` y `CAM_07B_CAPTURA_CLIENTE`), `CAM_DRON` con su objetivo `DRON_OBJETIVO` y `NORTE_VERDADERO` |
+| `camaras_y_dron` | `08_CAMERAS_LIGHTS` | 11 cámaras fijas (con `CAM_07_PROPUESTAS`, `CAM_07B_CAPTURA_CLIENTE`, `CAM_08_LADO_AIRE` y `CAM_09_MANGA_737`), `CAM_DRON` con su objetivo `DRON_OBJETIVO` y `NORTE_VERDADERO` |
 
-- **`DATOS_GEOM`:** es un JSON incrustado con los contornos de las planchas PT1, PT2A, PT2B y PT2R, las letras UYUNI y el letrero. Se extrajeron de las tramas del DXF y ya restan los calados. Son datos: no hace falta tocarlos.
+- **`DATOS_GEOM`:** es un JSON incrustado con los contornos de las planchas PT1, PT2A, PT2B, PT2R y PT1R, las letras UYUNI y el letrero. Se extrajeron de las tramas del DXF y ya restan los calados. La PT1R son las planchas de la PT1 recortadas por la rampa del DXF del 4 de octubre. Son datos: no hace falta tocarlos.
 - **Tres escenas, mismas colecciones:**
   - `UYUNI_DIA` (propuesta 1) agrega `08_LUZ_DIA`.
   - `UYUNI_DIA_P2_SALAR_LITIO` (propuesta 2) comparte `08_LUZ_DIA` y el cielo de la mañana.
@@ -286,7 +335,7 @@ Están ordenados de mayor a menor impacto en los renders.
   Cambiarlas en *Scene Properties > Custom Properties* modifica el aspecto sin tocar los materiales.
 - **Nombres:** objetos, mallas, materiales y mundos llevan el prefijo `UY_`. Unidades en metros, escala 1,0.
 
-> ⚠️ **Al volver a ejecutar el script, `limpiar()` borra todo lo que haya en sus colecciones** (`_REF_CAD` a `08_CAMERAS_LIGHTS`, más las de luz y nieve), elimina y recrea las escenas `UYUNI_CREPUSCULO` y `UYUNI_DIA_P2_SALAR_LITIO` y purga los datos huérfanos.
+> ⚠️ **Al volver a ejecutar el script, `limpiar()` borra todo lo que haya en sus colecciones** (`_REF_CAD` a `08_CAMERAS_LIGHTS` y `10_MANGAS_AERONAVES`, más las de luz y nieve), elimina y recrea las escenas `UYUNI_CREPUSCULO` y `UYUNI_DIA_P2_SALAR_LITIO` y purga los datos huérfanos.
 > - Para llevar los cambios del 3 de octubre a un `.blend` que ya tiene avance propio, **no hace falta regenerarlo**: usa `herramientas/aplicar_cambios_reunion.py` (ver `CAMBIOS_REUNION_3OCT.md`).
 > - Cualquier cosa que se agregue **a mano** dentro de esas colecciones (por ejemplo, assets en `07_ASSETS`) se pierde.
 > - Opción recomendada: agregar los assets **por código**. Se guardan en `01_blender/assets/` y una función nueva del script los importa (append o link) y los ubica, así todo sigue siendo regenerable.
@@ -435,6 +484,17 @@ for cam in ["CAM_01_HERO_LADO_TIERRA", "CAM_02_DETALLE_ALERO", "CAM_02B_DETALLE_
 
 ### 8.7 Lado Aire: mangas, aeronaves y pista (pedido del 4 de octubre)
 
+**Estado al 4 de octubre por la tarde** (`CAMBIOS_4OCT_FACHADAS.md`, secciones 6 y 7):
+- **Hecho:**
+  - dos mangas generadas por código, en las dos puertas de embarque del nivel 1P;
+  - dos 737-800, también generados por código, con medidas reales y librea blanca genérica;
+  - veredas, camino de servicio, plataforma y marcas de los puestos.
+- **Falta la pista hasta el horizonte**, con su calle de rodaje.
+- **Opcional:** cambiar los aviones por un asset con licencia, si se quiere más detalle en primeros planos. `avion_737_partes()` alcanza para las tomas generales.
+- **Ajustes:**
+  - posición de los aviones: `AVION_RUMBO`, `AVION_PUERTA_L1` y `PUERTA_DESDE_ROTONDA`;
+  - medidas de las mangas: `MANGA`.
+
 **Mangas de abordaje (puentes de embarque):**
 - **Cantidad y posición:** las del modelo del cliente (captura de la reunión): dos mangas que salen de la fachada del Lado Aire hacia los puestos de estacionamiento. Confirmar las puertas con el alzado SO del DXF; si no está claro, preguntar.
 - **Partes:**
@@ -474,7 +534,13 @@ python herramientas/verificar_alzados.py -- uyuni_v2.blend ../00_auditoria/vista
 python herramientas/superponer_cad.py /tmp/verif ../00_auditoria/vistas verificacion
 # 5. Inventario de la escena
 python herramientas/inventario_escena.py -- uyuni_v2.blend inventario_escena.json
+# 6. Verificación SIN render: geometría evaluada a .npz y láminas con matplotlib sobre los DXF del cliente
+#    (la carpeta de los DXF es la de UYUNI_insumos_cliente.zip; el segundo paso necesita numpy, matplotlib y ezdxf)
+python herramientas/exportar_geometria.py -- uyuni_v2.blend /tmp/geometria.npz
+python herramientas/superponer_cad_2d.py /tmp/geometria.npz /ruta/a/los/dxf verificacion
 ```
+
+Los pasos 2 y 3 renderizan. Cuando no haya que gastar en render, usa el 6: corta y proyecta la geometría del modelo y la dibuja sobre la planta A111 y los alzados del cliente, en unos 30 s.
 
 La auditoría se vuelve a correr con `00_auditoria/scripts/auditoria_uyuni.py` (usa ezdxf, ifcopenshell, numpy y matplotlib).
 
