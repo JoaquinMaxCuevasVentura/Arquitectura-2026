@@ -71,7 +71,7 @@ Se mide con *View Transform* `False Color`, sin compositor. Leyenda calibrada en
 | Elemento | Receta |
 |---|---|
 | Cielo | Sol entre −4° y −6° (el modelo está a −3,94°). Cielo y luces quedan a 2–3 EV de distancia |
-| Temperaturas | Todo en Kelvin: luces con `use_temperature`, emisores con `Blackbody`. Alero, 3000 K; interior, 3500 K; letrero LED, 4000 K; uplights de las celosías, 2700 K. **Lo que se ve debe tener la misma temperatura que lo que ilumina** |
+| Temperaturas | Todo en Kelvin: luces con `use_temperature`, emisores con `Blackbody`. Alero, 3000 K; interior, 3500 K; letrero LED, de 4000 K (blanco cálido) a 5000 K (blanco neutro); uplights de las celosías, 2700 K. **Lo que se ve debe tener la misma temperatura que lo que ilumina** |
 | Luminarias | Se ven pero no iluminan: `material.cycles.emission_sampling = "NONE"` y el objeto sin visibilidad difusa. Ilumina el Spot que tiene adentro: menos ruido y sin luz duplicada |
 | Interior | No una caja emisiva pareja. Paredes claras, una grilla de Area Lights de techo con `Spread` y algo que iluminar: mostradores, columnas, personas. De noche, el interior es el foco |
 | Letrero | Brillante pero legible: entre +3 y +5 EV |
@@ -119,7 +119,7 @@ Detalle, receta por material y prueba: `MATERIALES_INTELIGENTES.md`.
 | Glare | `Bloom`: umbral 1,2, fuerza 0,12, tamaño 0,55 | `Fog Glow`: umbral 1,5, fuerza 0,08, tamaño 0,5 |
 | Lente | Distorsión −0,008 y dispersión 0,006, con `Fit` | La misma |
 | Viñeteo | 30 % | 30 % |
-| Grano | ±0,6 % en lineal | ±0,4 % en lineal (en la imagen oscura se nota más) |
+| Grano | ±0,6 % en lineal | ±0,2 % en lineal (de noche pesa mucho más: con ±0,4 % ya parecía ruido) |
 
 En Blender 5.2:
 - el compositor es un grupo de nodos en `scene.compositing_node_group`, con salida por `Group Output`;

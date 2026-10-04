@@ -11,11 +11,12 @@ Renderiza el ANTES y el DESPUÉS, cada uno con su diagnóstico en False Color. E
   4. Exposición medida: con False Color, cielo entre -1 y 0 EV, muros con barridos de luz entre +1 y +2, interior
      entre +2 y +3 y solo las fuentes por encima de +5. Se ajusta como en una cámara (exposición), sin tocar las
      proporciones entre luces.
-  5. Óptica nocturna en el compositor: halo suave (Fog Glow) en las fuentes, viñeteo y grano aditivo de ±0,4 %
-     (en lineal: en una imagen oscura se nota más que el ±0,6 % del día, como el grano de un ISO alto).
+  5. Óptica nocturna en el compositor: halo suave (Fog Glow) en las fuentes, viñeteo y grano aditivo de ±0,2 %.
+     Como se suma en lineal, en una imagen oscura pesa mucho más que de día: con ±0,4 % ya parecía ruido.
 
 Uso: python prueba_noche.py -- archivo.blend carpeta [ancho] [muestras] [exposicion_despues]
 """
+import json
 import math
 import os
 import sys
@@ -59,7 +60,12 @@ r, cy = sc.render, sc.cycles
 cy.device, cy.use_adaptive_sampling, cy.adaptive_threshold = "CPU", True, 0.01
 cy.use_denoising, cy.denoiser = True, "OPENIMAGEDENOISE"
 r.image_settings.file_format, r.image_settings.color_mode, r.image_settings.quality = "JPEG", "RGB", 94
-tiempos = {}
+REGISTRO = f"{salida}/tiempos.json"
+try:
+    with open(REGISTRO) as f:
+        tiempos = json.load(f)
+except (OSError, ValueError):
+    tiempos = {}
 
 
 def render(nombre, false_color=False):
@@ -73,9 +79,16 @@ def render(nombre, false_color=False):
         r.resolution_x, r.resolution_y, cy.samples = ancho, round(ancho * 9 / 16), muestras
     r.resolution_percentage = 100
     r.filepath = f"{salida}/{nombre}.jpg"
+    if nombre.startswith("A_") and nombre in tiempos and os.path.exists(r.filepath):    # el antes no cambia
+        print(f"[NOCHE] {nombre} ya está ({tiempos[nombre]:.0f} s)", flush=True)
+        sc.view_settings.view_transform, sc.view_settings.look = vt, lk
+        sc.compositing_node_group = usa_comp
+        return
     t = time.time()
     bpy.ops.render.render(write_still=True, scene=sc.name)
     tiempos[nombre] = time.time() - t
+    with open(REGISTRO, "w") as f:
+        json.dump(tiempos, f, indent=1)
     print(f"[NOCHE] {nombre} -> {tiempos[nombre]:.0f} s", flush=True)
     sc.view_settings.view_transform, sc.view_settings.look = vt, lk
     sc.compositing_node_group = usa_comp
@@ -186,7 +199,7 @@ L.new(co.outputs["Pixel"], wn.inputs["Vector"])
 gr = N.new("ShaderNodeMath")
 gr.operation = "MULTIPLY_ADD"
 L.new(wn.outputs["Value"], gr.inputs[0])
-gr.inputs[1].default_value, gr.inputs[2].default_value = 0.008, -0.004      # ±0,4 % en lineal: se nota en las sombras
+gr.inputs[1].default_value, gr.inputs[2].default_value = 0.004, -0.002      # ±0,2 % en lineal: de noche pesa mucho
 add = N.new("ShaderNodeMix")
 add.data_type, add.blend_type = "RGBA", "ADD"
 next(s for s in add.inputs if s.name == "Factor" and s.type == "VALUE").default_value = 1.0

@@ -337,6 +337,10 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 
 **Después, los materiales:** `02_postproduccion/MATERIALES_INTELIGENTES.md`. Máscaras procedurales (aristas, cavidades y gravedad) para el polvo fino del altiplano y la pátina del corten, metálico binario, variación pieza por pieza y receta para cada material, con el vidrio de control solar con capa fina. Se probaron en CAM_06, CAM_05 y CAM_01.
 
+**Y la noche:** `02_postproduccion/ILUMINACION_NOCTURNA.md`. Emisores en Kelvin, luz práctica (la luminaria se ve y el Spot ilumina), interior con profundidad y exposición medida con False Color. Se probó en CAM_03.
+
+**Resumen de todo:** `02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md`.
+
 **Configuración** (hoy: 4K al 50 %, 256 muestras, GPU, OIDN, AgX Medium High Contrast):
 1. Resolución de 3840 × 2160 al **100 %**.
 2. Cycles en GPU, con OptiX o CUDA activado en *Preferences > System*.
