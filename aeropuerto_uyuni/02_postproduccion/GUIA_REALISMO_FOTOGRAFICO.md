@@ -7,6 +7,7 @@ Resumen de todo lo investigado y probado sobre el modelo, en un solo lugar. Cada
 | `FOTORREALISMO_BLENDER.md` | Cámaras, exposición con False Color, microbisel, compositor | CAM_01 de día |
 | `MATERIALES_INTELIGENTES.md` | Materiales que responden a la geometría, receta por material, vidrio de control solar | CAM_06, CAM_05 y CAM_01 |
 | `ILUMINACION_NOCTURNA.md` | Fundamentos de iluminación, composición y escena nocturna | CAM_03 en la hora azul |
+| `MUESTREO_Y_RENDIMIENTO.md` | Ajustes de render que pagan y los que no (umbral, tope, rebotes, cáusticas, clamp, poligonaje) y la luz que atraviesa el vidrio | CAM_07 con P2, CAM_05, CAM_03 y una ventana de prueba |
 
 Las herramientas de cada prueba están en `01_blender/herramientas/` (`prueba_*.py`) y sus hojas, en `01_blender/fotorrealismo/`.
 
@@ -73,7 +74,7 @@ Se mide con *View Transform* `False Color`, sin compositor. Leyenda calibrada en
 | Cielo | Sol entre −4° y −6° (el modelo está a −3,94°). Cielo y luces quedan a 2–3 EV de distancia |
 | Temperaturas | Todo en Kelvin: luces con `use_temperature`, emisores con `Blackbody`. Alero, 3000 K; interior, 3500 K; letrero LED, de 4000 K (blanco cálido) a 5000 K (blanco neutro); uplights de las celosías, 2700 K. **Lo que se ve debe tener la misma temperatura que lo que ilumina** |
 | Luminarias | Se ven pero no iluminan: `material.cycles.emission_sampling = "NONE"` y el objeto sin visibilidad difusa. Ilumina el Spot que tiene adentro: menos ruido y sin luz duplicada |
-| Interior | No una caja emisiva pareja. Paredes claras, una grilla de Area Lights de techo con `Spread` y algo que iluminar: mostradores, columnas, personas. De noche, el interior es el foco |
+| Interior | No una caja emisiva pareja. Paredes claras, una grilla de Area Lights de techo con `Spread` y algo que iluminar: mostradores, columnas, personas. De noche, el interior es el foco. Para que su luz salga a la vereda, el vidrio tiene que ser transparente para los rayos de sombra (sección 5) |
 | Letrero | Brillante pero legible: entre +3 y +5 EV |
 | Light Groups | Cielo, interior, alero, letrero y uplights en grupos separados (`view_layer.lightgroups` y `objeto.lightgroup`): las proporciones se ajustan en el compositor sin volver a renderizar |
 | Movimiento (opcional) | Exposición larga: personas algo movidas y estelas de faros, con desenfoque de movimiento |
@@ -95,6 +96,7 @@ Detalle y prueba: `ILUMINACION_NOCTURNA.md`.
 | **Variación por pieza** | *Random Per Island* en los listones del cielo y en las planchas de corten |
 | **Galvanizado y asfalto** | *Spangle* y árido con Voronoi F1 |
 | **Vidrio de control solar** (elegido por el cliente) | Un solo Principled: metálico 0, transmisión 1, IOR 1,52, `Thin Wall`; tinte oscuro `#6E808E`; capa de baja reflexión `Thin Film` de 67 nm con IOR 1,8 (≈ 13 % por cara); ondas de templado (`Wave Texture` en bandas de 0,33 m, con fase por paño); polvo en el perímetro. La fachada no debe parecer un espejo ciego: detrás del vidrio tiene que haber estructura que ver. **Nada de metálico para el reflejo ni del truco de Backfacing** |
+| **El vidrio y la luz que lo atraviesa** | En Cycles, el sol no atraviesa el vidrio: es opaco para los rayos de sombra. Donde se vea el interior, el vidrio tiene que ser transparente para esos rayos (`Light Path` > `Is Shadow Ray` con un `Transparent BSDF`). El elegido deja pasar 2,9 % de la luz: con eso, la estructura no se ve de día. Con el tinte `#A9BCCB` y la misma capa, 15 % (medido). Hay que confirmarlo con el cliente. Detalle: `MUESTREO_Y_RENDIMIENTO.md`, sección 3 |
 | **Costo** | AO con 2 rayos y Bevel con 4. Nunca un AO o un Bevel en la altura de un `Bump` (Cycles la evalúa tres veces). Costo medido: de +34 a +61 % |
 | **Diagnóstico** | El material `UY_DIAG_MASCARAS`, como *Material Override*, pinta aristas, cavidades y gravedad en rojo, verde y azul |
 
@@ -129,15 +131,28 @@ En Blender 5.2:
 
 ## 8. Render y salidas
 
-| Parámetro | De día | De noche |
-|---|---|---|
-| Muestras | 384 a 512 | 512 a 1024 |
-| Umbral adaptativo | 0,008 a 0,01 | 0,005 |
-| Rebotes (total, difuso, brillo, transmisión) | 12 / 6 / 6 / 12 | igual |
-| *Clamp* indirecto | 8 | 3 a 5 (contra las luciérnagas) |
-| *Light tree* | sí | sí |
-| Eliminación de ruido | OIDN con albedo y normal, *prefilter* `ACCURATE` y calidad `HIGH` | igual |
-| Filtro | 1,5 px | igual |
+Medido en la escena: `MUESTREO_Y_RENDIMIENTO.md`.
+
+| Parámetro | Borradores y revisiones | Finales de día | Finales de noche |
+|---|---|---|---|
+| Umbral de ruido | 0,03 | 0,008 | 0,005 |
+| Tope de muestras | 384 | 384 en la CPU; 1024 en la GPU | de 512 a 1024 |
+| Mínimo de muestras | 0 (automático) | igual | igual |
+| Rebotes (total, difuso, brillo, transmisión) | 12 / 6 / 6 / 12 | igual | igual |
+| *Clamp* directo / indirecto | 0 / 8 | 0 / 8 | 0 / 10 |
+| Cáusticas reflectivas y refractivas | encendidas | igual | igual |
+| *Light tree* | sí | sí | sí |
+| *Path guiding* | no | no | no |
+| Eliminación de ruido | OIDN con albedo y normal, *prefilter* `ACCURATE` y calidad `HIGH` | igual | igual |
+| Filtro | 1,5 px | igual | igual |
+
+**Lo medido:**
+- **Umbral:** con 0,03 el render es 3,8 veces más rápido, a cambio del doble de error en el detalle fino (celosías y letrero). Sirve para borradores y revisiones; no para los finales.
+- **Tope:** con 0,008, el 22 % de los píxeles (el edificio) llega al tope de 384. Con 1024 tarda un 69 % más y el error baja un 20 %. En la GPU conviene; en la CPU de la nube, 384 es un buen compromiso.
+- **De noche:** clamp indirecto en 10, no de 3 a 5. Con 4, las ventanas encendidas y sus reflejos en el piso mojado pierden un 16 % de luz (para Cycles, el interior visto a través del vidrio es luz indirecta); con 10, un 1 %. Las luciérnagas fuertes no cambian.
+- **No ahorran tiempo en esta escena:** el mínimo de 16, bajar los rebotes, apagar las cáusticas reflectivas y el *path guiding* (este cuesta un 39 % más). Los rebotes cortos y las cáusticas apagadas además oscurecen: de 0,3 a 0,7 % y de 2,5 a 2,8 %.
+- **Poligonaje:** 170 veces más triángulos tardaron lo mismo. Pesan en la memoria: unos 94 bytes por triángulo en Cycles.
+- **Vidrio:** el sol no lo atraviesa, y el elegido deja pasar 2,9 % de la luz. Ver la sección 5 y `MUESTREO_Y_RENDIMIENTO.md`, sección 3.
 
 **Salidas:**
 - PNG de 16 bits y un JPG de 8 bits con difuminado;
@@ -177,4 +192,9 @@ Se suman a las de `TRASPASO.md` (sección 10):
 - **`Bevel`:** solo ve la malla del mismo objeto. Para los encuentros entre objetos está el AO.
 - **Propiedades leídas con `Attribute`:** no apagan ramas en la compilación. Para ahorrar costo de verdad, hay que regenerar el material sin la rama.
 - **Paños de vidrio en caja:** el truco de `Backfacing` no funciona con cajas; `Thin Wall` hace de las dos hojas del DVH.
+- **El vidrio con transmisión es opaco para los rayos de sombra**, con `Thin Wall` o sin él: el sol no lo atraviesa y el interior no recibe luz de afuera (`MUESTREO_Y_RENDIMIENTO.md`, sección 3).
 - **PNG de 16 bits:** PIL los trunca. Se leen con `pypng`.
+- **EXR multicapa:** primero `image_settings.media_type = "MULTI_LAYER_IMAGE"` y después `file_format = "OPEN_EXR_MULTILAYER"`. Con `media_type` en `IMAGE`, el formato multicapa no aparece en la lista.
+- **Pase de muestras por píxel:** `view_layer.cycles.pass_debug_sample_count = True`. Sale como la capa `Debug Sample Count`, en fracción del tope de muestras.
+- **Mínimo de muestras:** Cycles lo redondea hacia arriba en pasos de 16 y nunca hace menos de 32 (medido: con mínimo 16 hizo 32; con el automático y umbral 0,03, 48; con 0,008, 80).
+- **`view_layer.depsgraph`:** vale `None` hasta que se llama a `view_layer.update()`.

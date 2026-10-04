@@ -113,7 +113,7 @@ El sombreado y la luz son dos caras de la misma ecuación: un material bien hech
 | Luna | Relleno muy tenue y frío (la que ya hay: 0,03 a 7500 K) |
 | Light Groups | Cinco grupos (cielo, interior, alero, letrero, uplights) para ajustar proporciones en el compositor |
 | Compositor | `Glare` tipo `Fog Glow` muy leve (umbral 1,5, fuerza 0,08), viñeteo al 30 % y grano aditivo de ±0,2 %. Como se suma en lineal, de noche pesa mucho más que de día: con ±0,4 % ya parecía ruido |
-| Render | De noche hay más ruido: de 512 a 1024 muestras, `adaptive_threshold` de 0,005, `clamp` indirecto de 3 a 5 contra las luciérnagas, *light tree* encendido, cáusticas apagadas y OIDN con albedo y normal |
+| Render | De noche hay más ruido: de 512 a 1024 muestras, `adaptive_threshold` de 0,005, `clamp` indirecto en 10 (no de 3 a 5: con 4, las ventanas encendidas y sus reflejos pierden un 16 %, porque el interior visto a través del vidrio es luz indirecta; ver `MUESTREO_Y_RENDIMIENTO.md`), *light tree* encendido, cáusticas encendidas (apagarlas no ahorra tiempo y de día oscurece un 2,5 %; de noche no se midió) y OIDN con albedo y normal |
 
 ## 5. Prompt para la otra IA
 
@@ -161,7 +161,7 @@ Tareas, en este orden:
    - grano de ±0,2 % en lineal (con ±0,4 % ya parece ruido);
    - asígnale la escena al nodo Render Layers.
 
-8. Render nocturno: de 512 a 1024 muestras, umbral adaptativo de 0,005, clamp indirecto de 3 a 5 y light tree.
+8. Render nocturno: de 512 a 1024 muestras, umbral adaptativo de 0,005, clamp indirecto en 10 y light tree. No bajes el clamp: con 4, las ventanas encendidas pierden un 16 % (MUESTREO_Y_RENDIMIENTO.md).
 
 9. Opcional (pregúntame antes): un vehículo con faros y estelas (desenfoque de movimiento) y personas algo movidas en el acceso, como en una exposición larga.
 

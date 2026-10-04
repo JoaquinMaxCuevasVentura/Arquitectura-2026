@@ -1,20 +1,20 @@
-# Instrucción para continuar el proyecto con otra IA (v3)
+# Instrucción para continuar el proyecto con otra IA (v3.1)
 
 Copia el bloque de abajo y pégalo como primer mensaje.
 
 **Adjunta:**
-1. `UYUNI_paquete_traspaso_2026-10-04_v3.zip`: este repositorio completo y actualizado.
+1. `UYUNI_paquete_traspaso_2026-10-04_v3.1.zip`: este repositorio completo y actualizado.
 2. `UYUNI_insumos_cliente.zip`: el DXF, los IFC y los PDF originales (el mismo de antes).
-3. `UYUNI_renders_finales.zip`: los renders entregados de las dos propuestas (el cliente todavía elige), que sirven de referencia del aspecto actual.
+3. `UYUNI_renders_opciones_finales.zip`: las dos opciones finales del 4 de octubre en 4K, con sus acercamientos del letrero (el cliente elige entre ellas). Sirven de referencia del aspecto actual.
 4. **El avance anterior de la IA:**
    - el `.blend` "formal" en el que venía trabajando y los scripts o archivos que haya generado;
    - si trabaja vía MCP en tu PC, basta con decirle dónde está el `.blend`.
 
-`UYUNI_novedades_desde_v2.zip` trae solo lo nuevo desde el paquete v2. Sirve si la IA ya tiene el v2.
+`UYUNI_novedades_desde_v3.zip` trae solo lo nuevo desde el paquete v3. Sirve si la IA ya tiene el v3: en ese caso, usa el mensaje corto de `LEEME_PRIMERO.md` en lugar de este prompt.
 
 Si la IA no acepta zips, sube por separado al menos estos archivos:
-- `TRASPASO.md`, `CAMBIOS_REUNION_3OCT.md`, `00_auditoria/AUDITORIA.md` y `02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md`;
-- `01_blender/uyuni_modelo.py` y `01_blender/herramientas/aplicar_cambios_reunion.py`;
+- `TRASPASO.md`, `CAMBIOS_REUNION_3OCT.md`, `00_auditoria/AUDITORIA.md`, `02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md` y `02_postproduccion/MUESTREO_Y_RENDIMIENTO.md`;
+- `01_blender/uyuni_modelo.py`, `01_blender/herramientas/aplicar_cambios_reunion.py` y `aplicar_cambios_4oct.py`;
 - `01_blender/inventario_escena.json`, las hojas de `01_blender/propuestas/` y las de `01_blender/fotorrealismo/`;
 - el DXF original.
 
@@ -25,23 +25,24 @@ Vas a continuar un proyecto de visualización arquitectónica en Blender 5.2 (Cy
 
 Contexto:
 - Ya trabajaste en este proyecto a partir del primer paquete de traspaso (commit 7b19bea), pero tu sesión se cortó a mitad de camino. Tu avance quedó en el .blend "formal" que te adjunto (o te indico) y en los scripts que hayas generado.
-- Mientras tanto, otro asistente hizo cuatro cosas sobre el modelo de la versión anterior:
-  1. implementó los cambios de la reunión con el cliente del 3 de octubre (aeropuerto_uyuni/CAMBIOS_REUNION_3OCT.md);
-  2. renderizó las dos propuestas de color en 4K (las tienes en UYUNI_renders_finales.zip);
+- Mientras tanto, otro asistente hizo cinco cosas sobre el modelo de la versión anterior:
+  1. implementó los cambios de la reunión con el cliente del 3 de octubre (aeropuerto_uyuni/CAMBIOS_REUNION_3OCT.md) y las decisiones del 4 de octubre (TRASPASO.md, sección 5);
+  2. renderizó en 4K las dos opciones finales que eligió el cliente (las tienes en UYUNI_renders_opciones_finales.zip);
   3. investigó y probó en el modelo cómo llegar al realismo fotográfico: cámaras, exposición, materiales, vidrio y luz nocturna;
-  4. dejó todo resumido en aeropuerto_uyuni/02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md, con un documento de detalle por tema.
+  4. midió en la escena qué ajustes de render pagan y cuáles no, y cómo atraviesa la luz el vidrio (02_postproduccion/MUESTREO_Y_RENDIMIENTO.md);
+  5. dejó todo resumido en aeropuerto_uyuni/02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md, con un documento de detalle por tema.
 
 Adjuntos:
-1. UYUNI_paquete_traspaso_2026-10-04_v3.zip:
+1. UYUNI_paquete_traspaso_2026-10-04_v3.1.zip:
    - el modelo paramétrico actualizado (01_blender/uyuni_modelo.py) y su .blend;
-   - el script que aplica solo los cambios de la reunión sobre un .blend existente (01_blender/herramientas/aplicar_cambios_reunion.py);
+   - los scripts que aplican solo los cambios del 3 y del 4 de octubre sobre un .blend existente (01_blender/herramientas/aplicar_cambios_reunion.py y aplicar_cambios_4oct.py);
    - TRASPASO.md, con las decisiones del cliente;
-   - la guía de realismo y sus tres documentos de detalle (02_postproduccion/), con las pruebas que ya funcionan en 5.2 (01_blender/herramientas/prueba_*.py) y sus hojas (01_blender/fotorrealismo/).
+   - la guía de realismo y sus cuatro documentos de detalle (02_postproduccion/), con las pruebas que ya funcionan en 5.2 (01_blender/herramientas/prueba_*.py) y sus hojas (01_blender/fotorrealismo/).
 2. UYUNI_insumos_cliente.zip: el DXF, los IFC y los PDF originales.
-3. UYUNI_renders_finales.zip: los renders entregados de las dos propuestas (el cliente todavía no eligió).
+3. UYUNI_renders_opciones_finales.zip: las dos opciones finales del 4 de octubre (P1 con letras corten y P2 con letras y muros casi negros, las dos con la geometría A); el cliente elige entre ellas.
 4. Tu avance anterior: el .blend formal y tus scripts.
 
-Antes de proponer nada, lee completos TRASPASO.md, CAMBIOS_REUNION_3OCT.md y GUIA_REALISMO_FOTOGRAFICO.md. Si necesitas saber de dónde sale una medida, consulta 00_auditoria/AUDITORIA.md.
+Antes de proponer nada, lee completos TRASPASO.md, CAMBIOS_REUNION_3OCT.md, GUIA_REALISMO_FOTOGRAFICO.md y MUESTREO_Y_RENDIMIENTO.md. Si necesitas saber de dónde sale una medida, consulta 00_auditoria/AUDITORIA.md.
 
 Tareas, en este orden. Después de cada una, muéstrame el antes y el después con la misma cámara y la misma luz.
 
@@ -53,7 +54,7 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
 1. Integra los cambios de la reunión en el formal sin perder tu avance.
    - Si no modificaste uyuni_modelo.py: copia el .blend formal y ejecuta sobre la copia 01_blender/herramientas/aplicar_cambios_reunion.py (CAMBIOS_REUNION_3OCT.md, sección 2A) y después aplicar_cambios_4oct.py (decisiones del 4 de octubre: letras y muros casi negros en P2, vidrio elegido, geometría A).
    - Si modificaste tu copia del script: porta los cambios a mano con la sección 2C y aeropuerto_uyuni/CAMBIOS_REUNION_3OCT_uyuni_modelo.diff; las del 4 de octubre están en TRASPASO.md (sección 5, puntos 2, 11 y 12) y en uyuni_modelo.py (LETRAS_GRIS, VIDRIO, mat_letrero, mat_vidrio y mat_emisor).
-   - Verifica con CAM_07_PROPUESTAS en UYUNI_DIA (P1) y UYUNI_DIA_P2_SALAR_LITIO (P2), contra los renders finales.
+   - Verifica con CAM_07_PROPUESTAS en UYUNI_DIA (P1) y UYUNI_DIA_P2_SALAR_LITIO (P2), contra los renders de las opciones finales.
 
 2. Completa la revisión contra el DXF (TRASPASO.md, sección 6):
    - testero del eje 20;
@@ -69,6 +70,8 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
    - microbisel, rugosidad variable y Diffuse Roughness.
 
 5. Materiales inteligentes y vidrio: el prompt de MATERIALES_INTELIGENTES.md (sección 7), completo, con la receta del vidrio (sección 4).
+   - En Cycles, el sol no atraviesa el vidrio (MUESTREO_Y_RENDIMIENTO.md, sección 3). Cuando modeles la estructura detrás del vidrio, usa el vidrio transparente para los rayos de sombra de esa sección.
+   - El vidrio elegido deja pasar 2,9 % de la luz, y con eso la estructura no se ve de día. No cambies el tinte sin preguntarme: prepárame la comparación con #A9BCCB y la misma capa (15 %) en CAM_05 y CAM_07.
 
 6. Contexto y paisaje con assets de Poly Haven (TRASPASO 8.1 y guía, sección 6):
    - suelo de tierra y grava clara con costras de sal; paja brava y tola; cerros bajos;
@@ -84,7 +87,7 @@ Tareas, en este orden. Después de cada una, muéstrame el antes y el después c
 
 8. Cielo (TRASPASO 8.3): luz de mañana sincronizada con el sol del script y una variante de cielo nublado invernal.
 
-9. Compositor, render y video (guía, secciones 7 y 8; TRASPASO 8.4 y 8.5). Déjalo listo para que yo renderice en mi PC con GPU:
+9. Compositor, render y video (guía, secciones 7 y 8; TRASPASO 8.4 y 8.5). Los ajustes de render salen del prompt de MUESTREO_Y_RENDIMIENTO.md (sección 5): perfiles de borrador y final, y el video del dron con semilla animada. Déjalo listo para que yo renderice en mi PC con GPU:
    - CAM_01 a CAM_07 en 4K, con las dos propuestas en CAM_07;
    - video del dron en 1080p, 24 fps, MP4 H.264.
 
@@ -108,7 +111,8 @@ Reglas:
   - mejora la manera de fotografiar el edificio, no el edificio;
   - los colores de PALETA no se tocan; el metálico y la rugosidad sí, según la tabla, y dime el valor anterior y el nuevo;
   - la terminal es nueva: sin desgaste, grietas, óxido corrido ni mugre oscura. Solo un polvo claro y salino de días;
-  - mide siempre con False Color, con las metas de la guía (sección 2).
+  - mide siempre con False Color, con las metas de la guía (sección 2);
+  - no bajes los rebotes, no apagues las cáusticas ni bajes el clamp para ganar tiempo: en esta escena no ahorran y oscurecen (MUESTREO_Y_RENDIMIENTO.md). Para iterar, umbral de ruido 0,03.
 - uyuni_modelo.py es la fuente de verdad del edificio:
   - todo cambio de geometría va en el script, con medidas numéricas del DXF;
   - el DXF solo sirve para verificar: no calques ni importes sus líneas.

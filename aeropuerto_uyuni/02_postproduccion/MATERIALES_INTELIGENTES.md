@@ -148,6 +148,10 @@ Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contra
 - **Para el render:** la variante 6 es el tinte oscuro de la 5 con una capa de baja reflexión. La reflectancia baja de ≈ 34 % a ≈ 13 % por cara, y el cielo reflejado, un 23 %.
 - **Ya está en `uyuni_modelo.py`:** constante `VIDRIO` y función `mat_vidrio`. Para un `.blend` con avance propio, con `aplicar_cambios_4oct.py`.
 - **Pendiente:** para que se vea la estructura detrás del vidrio, esta tiene que existir en el modelo. Hoy, detrás del vidrio hay una caja vacía: hay que modelar las columnas y vigas interiores cercanas a la fachada, a partir del IFC.
+- **La luz que atraviesa el vidrio** (prueba de `MUESTREO_Y_RENDIMIENTO.md`, sección 3):
+  - en Cycles, el sol no atraviesa este vidrio, ni ningún vidrio con transmisión: es opaco para los rayos de sombra. Para que la estructura de adentro reciba sol y cielo, el vidrio tiene que ser transparente para esos rayos (la receta está en esa sección);
+  - el vidrio deja pasar 2,9 % de la luz: cada cara del paño pasa el tinte (≈ 21 % en luminancia), menos lo que refleja la capa. Un DVH de control solar habitual deja pasar de 20 a 50 %; los más oscuros, de 10 a 20 %;
+  - con 2,9 %, la estructura no se va a ver de día. Con la misma capa, el tinte `#A9BCCB` (el de la variante 3) deja pasar 15 %, y `#8E9FAD`, 7 % (medido). Hay que proponérselo al cliente y mostrarle la prueba antes de cambiarlo. De día, el vidrio va a seguir viéndose oscuro, porque el interior está mucho más oscuro que la calle.
 
 **Hoja:** `01_blender/fotorrealismo/Prueba_vidrio_CAM01.jpg`. **Herramienta:** `01_blender/herramientas/prueba_vidrio.py`.
 
@@ -209,7 +213,7 @@ Revisión del texto sobre el vidrio reflectivo ("espejo unidireccional"), contra
 | Parámetro | Valor |
 |---|---|
 | Shader | un solo Principled BSDF, sin `Mix Shader` |
-| Base Color | tinte de transmisión `#6E808E` (oscuro, elegido) |
+| Base Color | tinte de transmisión `#6E808E` (oscuro, elegido). Entre las dos caras deja pasar 2,9 % de la luz: ver arriba |
 | Metallic | 0 |
 | Roughness | 0,02 en el centro y de 0,15 a 0,2 junto a la perfilería (AO de 0,12 m) |
 | IOR | 1,52 |

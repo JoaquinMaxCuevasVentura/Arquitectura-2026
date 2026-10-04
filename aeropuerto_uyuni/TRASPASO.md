@@ -50,13 +50,15 @@ aeropuerto_uyuni/
     ├── previews/                vistas previas de CAM_01 a CAM_06 (1280 px, 24 muestras)
     ├── verificacion/            modelo superpuesto al CAD: 4 alzados y 2 cortes
     ├── propuestas/              hojas comparativas: dos propuestas de color y letrero (material y geometría)
-    ├── fotorrealismo/           hojas de las pruebas de realismo: día, materiales, vidrio y noche
-    └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas), verificar,
-                                 inventariar, aplicar_cambios_reunion.py y aplicar_cambios_4oct.py (decisiones del 3 y del
-                                 4 de octubre sobre un .blend existente)
-                                 y las pruebas de realismo prueba_*.py
+    ├── fotorrealismo/           hojas de las pruebas de realismo: día, materiales, vidrio, noche y muestreo
+    └── herramientas/            scripts sin interfaz: construir, renderizar (también las propuestas, y en franjas
+                                 que se retoman: render_banda.py y unir_bandas.py), verificar, inventariar,
+                                 aplicar_cambios_reunion.py y aplicar_cambios_4oct.py (decisiones del 3 y del 4 de octubre
+                                 sobre un .blend existente) y las pruebas de realismo prueba_*.py (hoja_muestreo.py saca
+                                 los números de prueba_muestreo.py)
 02_postproduccion/               GUIA_REALISMO_FOTOGRAFICO.md y sus documentos de detalle (fotorrealismo, materiales,
-                                 iluminación nocturna), prompts de IA por vista, de upscale y unificar_color.py
+                                 iluminación nocturna, muestreo y rendimiento), prompts de IA por vista, de upscale y
+                                 unificar_color.py
 reports/                         estudio de costos de renders (proyecto Tupiza): referencia para la fase 7.3
 research_notes/                  notas de mercado y costos de renders en Bolivia
 ```
@@ -223,7 +225,9 @@ Están ordenados de mayor a menor impacto en los renders.
   - hoy la escena `UYUNI_CREPUSCULO` usa letras blancas que emiten;
   - las dos opciones elegidas son corten (P1) y casi negro (P2), que no emiten;
   - hay que definir cómo se ilumina el letrero de noche: retroiluminado con halo sobre el parapeto, o con bañadores.
-- **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto.
+- **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto. Además (`02_postproduccion/MUESTREO_Y_RENDIMIENTO.md`, sección 3):
+  - en Cycles, el sol no atraviesa el vidrio: para que la estructura reciba luz de afuera, el vidrio tiene que ser transparente para los rayos de sombra (la receta está en esa sección);
+  - el vidrio elegido deja pasar 2,9 % de la luz, mucho menos que un DVH de control solar habitual (de 20 a 50 %; los más oscuros, de 10 a 20 %). Con eso la estructura no se ve de día. Proponer al cliente el tinte `#A9BCCB` con la misma capa, que deja pasar 15 % (medido) y de día se sigue viendo oscuro, y mostrarle la prueba antes de cambiarlo.
 - **La librea de BoA en las aeronaves:** solo con autorización para usar la marca; si no, una librea blanca genérica.
 - **La posición exacta de la pista:** sacarla de OpenStreetMap o de Google Earth, o de un plano de sitio del cliente si lo hay (sección 8.7).
 
@@ -367,6 +371,8 @@ Hay que reemplazar los 15 proxies de `07_ASSETS/PROXIES_COLOCACION`. Sus posicio
 **Después, los materiales:** `02_postproduccion/MATERIALES_INTELIGENTES.md`. Máscaras procedurales (aristas, cavidades y gravedad) para el polvo fino del altiplano y la pátina del corten, metálico binario, variación pieza por pieza y receta para cada material, con el vidrio de control solar con capa fina. Se probaron en CAM_06, CAM_05 y CAM_01.
 
 **Y la noche:** `02_postproduccion/ILUMINACION_NOCTURNA.md`. Emisores en Kelvin, luz práctica (la luminaria se ve y el Spot ilumina), interior con profundidad y exposición medida con False Color. Se probó en CAM_03.
+
+**Los ajustes del render:** `02_postproduccion/MUESTREO_Y_RENDIMIENTO.md`. Qué ajustes pagan y cuáles no en esta escena (umbral de ruido, tope de muestras, rebotes, cáusticas, clamp, poligonaje) y cómo atraviesa la luz el vidrio. Se probó en CAM_07, CAM_05, CAM_03 y en una ventana de prueba.
 
 **Resumen de todo:** `02_postproduccion/GUIA_REALISMO_FOTOGRAFICO.md`.
 
