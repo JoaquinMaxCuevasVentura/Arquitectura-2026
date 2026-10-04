@@ -23,7 +23,8 @@ rutas descritas en `01_blender/assets/CREDITOS.md` y configura
 la variable anterior `UYUNI_PERSONAS_LOCALES`. Sin activar assets locales, el
 archivo público conserva seis vehículos compartibles provisionales y los proxies
 de personas ocultos. El minibús de traslado sigue siendo un modelo genérico: el
-Sprinter encontrado requiere acceso adicional que no se ha confirmado.
+Sprinter encontrado no está disponible para esta cuenta: su descarga devuelve
+HTTP 403. No se ha adquirido una suscripción ni un modelo de pago.
 La vegetación procedural se sustituye por 21.975 instancias de tres matas
 escaneadas de Poly Haven con textura seca: LOD0 cerca del frente y LOD2 a partir
 de 110 m. No se realiza la geometría de las instancias. También se usan suelo
@@ -91,13 +92,13 @@ para las imágenes fijas.
 
 ```powershell
 # Render del programa, por imágenes y con reanudación por configuración/hash.
-blender -b 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --proposal P1
+blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --proposal P1
 
 # Revisar montaje y rangos sin renderizar.
-blender -b 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --check
+blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --check
 
 # Imágenes fijas. P2 se incluye como CAM_07_P2.
-blender -b 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
+blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
 ```
 
 ## Verificación y pendientes de aprobación
@@ -130,3 +131,7 @@ La prueba temporal del recorrido corto contiene 48 cuadros a 1080p y 24 fps,
 con versiones RAW y OIDN; se realizó antes de añadir el Land Cruiser y las nuevas
 variantes de personas. Comprueba movimiento y denoising, no la apariencia final
 de esos assets. No se ha renderizado el master completo de 120 segundos.
+
+También se verificaron tres vistas de revisión P1, P2 y hora azul a 3840 x 2160,
+PNG de 16 bits, 128 muestras y umbral .02. Se renderizaron con OptiX en una
+RTX 3070 Laptop; los ajustes de producción del archivo no se modificaron.
