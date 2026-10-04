@@ -5,7 +5,7 @@ Copia el bloque de abajo y pégalo como primer mensaje.
 **Adjunta:**
 1. `UYUNI_paquete_traspaso_2026-10-04_v3.zip`: este repositorio completo y actualizado.
 2. `UYUNI_insumos_cliente.zip`: el DXF, los IFC y los PDF originales (el mismo de antes).
-3. `UYUNI_renders_finales.zip`: los renders aprobados de las dos propuestas, que sirven de referencia del aspecto actual.
+3. `UYUNI_renders_finales.zip`: los renders entregados de las dos propuestas (el cliente todavía elige), que sirven de referencia del aspecto actual.
 4. **El avance anterior de la IA:**
    - el `.blend` "formal" en el que venía trabajando y los scripts o archivos que haya generado;
    - si trabaja vía MCP en tu PC, basta con decirle dónde está el `.blend`.
@@ -38,7 +38,7 @@ Adjuntos:
    - TRASPASO.md, con las decisiones del cliente;
    - la guía de realismo y sus tres documentos de detalle (02_postproduccion/), con las pruebas que ya funcionan en 5.2 (01_blender/herramientas/prueba_*.py) y sus hojas (01_blender/fotorrealismo/).
 2. UYUNI_insumos_cliente.zip: el DXF, los IFC y los PDF originales.
-3. UYUNI_renders_finales.zip: los renders aprobados de las dos propuestas.
+3. UYUNI_renders_finales.zip: los renders entregados de las dos propuestas (el cliente todavía no eligió).
 4. Tu avance anterior: el .blend formal y tus scripts.
 
 Antes de proponer nada, lee completos TRASPASO.md, CAMBIOS_REUNION_3OCT.md y GUIA_REALISMO_FOTOGRAFICO.md. Si necesitas saber de dónde sale una medida, consulta 00_auditoria/AUDITORIA.md.
