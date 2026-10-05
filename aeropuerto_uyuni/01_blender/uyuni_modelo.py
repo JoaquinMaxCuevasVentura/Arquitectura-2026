@@ -185,24 +185,34 @@ COLUMNAS = dict(pos=[(83.2, -44.4), (85.2, -42.4)], diametro=0.9, alto=3.5)   # 
 # Celosías corten: módulos de 5,00 x 6,00 m (placas de 1,00 x 2,00 m de 1 mm), a 0,12 m de su fondo
 CELOSIA_SEP = 0.12
 JUNTA_ESQUINA_NO = 0.003         # junta entre las dos chapas, sin prolongarlas a través del plano perpendicular
+TIPO_CELOSIA_LATERAL = os.environ.get("UYUNI_CELOSIA_LATERAL", "recta")
+if TIPO_CELOSIA_LATERAL not in ("recta", "zigzag"):
+    raise ValueError("UYUNI_CELOSIA_LATERAL debe ser recta o zigzag")
 CELOSIAS = [  # (fachada, variante, inicio, fin) - en NE/SO son X; en laterales son Y. Variante según el DXF:
     # PT1 rectangular | PT2A picos en 0-2-4 m | PT2B picos en 1-3-5 m | PT2R rampa a 45° (de 2,0 a 6,0 m) + zigzag
     ("NE", "PT2B", -0.469, 4.531), ("NE", "PT2A", 4.531, 9.531),
     ("NE", "PT2R", 67.932, 72.932), ("NE", "PT2B", 72.932, 77.932), ("NE", "PT2A", 77.932, 82.932),
     ("SO", "PT2B", 72.94, 77.94), ("SO", "PT2A", 77.94, 82.94),
-    # OESTE: dos PT1 más y un módulo en rampa (DXF del 4 de octubre)
+    # OESTE original: cuatro PT1 y un módulo en rampa; conserva la opción de esquina ya resuelta.
     ("EJE1", "PT1", -0.579, 4.421), ("EJE1", "PT1", 4.421, 9.421), ("EJE1", "PT1", 9.421, 14.421),
     ("EJE1", "PT1", 14.421, 19.421), ("EJE1", "PT1R", 19.421, 24.421),
     ("EJE20", "PT2A", -0.388, 4.612), ("EJE20", "PT2B", 4.612, 9.612),
 ]
+if TIPO_CELOSIA_LATERAL == "zigzag":
+    # El desfase de 32 mm alinea el perfil superior de ambas chapas en la esquina, sin escalar los módulos.
+    # El último conserva la diagonal de 4 m hasta 2 m, enlazada al pico del zigzag de la última referencia.
+    variantes_laterales = iter(("PT2B", "PT2A", "PT2B", "PT2A", "PT2BR"))
+    CELOSIAS = [(fach, next(variantes_laterales), a + 0.032, b + 0.032) if fach == "EJE1"
+                else (fach, variante, a, b) for fach, variante, a, b in CELOSIAS]
 # borde superior de cada variante (u, v) - la estructura (líneas salmón del CAD) lo sigue
 BORDE_SUPERIOR = {"PT1": [(0, 6.0), (5, 6.0)],
                   "PT2A": [(u, 6.0 if u % 2 == 0 else 5.0) for u in range(6)],
                   "PT2B": [(u, 6.0 if u % 2 == 1 else 5.0) for u in range(6)],
+                  "PT2BR": [(0, 5.0), (1, 6.0), (5, 2.0)],
                   "PT2R": [(0, 2.0), (4, 6.0), (5, 5.0)],
                   "PT1R": [(0, 6.0), (1, 6.0), (5, 2.0)]}      # PT1 con bajada a 45° (OESTE, de 6,0 a 2,0 m)
 Z_CELOSIA = 0.20
-Z_CELOSIA_FACHADA = {"EJE1": 0.11}   # el alzado OESTE las apoya a +0,11
+Z_CELOSIA_FACHADA = {"EJE1": Z_CELOSIA if TIPO_CELOSIA_LATERAL == "zigzag" else 0.11}
 
 # Mamparas del Lado Tierra (X inicial, X final) - centradas en sus vanos
 ME1 = [(10.925, 13.075), (20.525, 22.675), (30.125, 32.275), (34.925, 37.075), (39.725, 41.875),
@@ -1876,7 +1886,13 @@ def celosias(C, M):
         def tr(pts):
             return [(u0 + u, zb + v) for u, v in pts]
         anillos = []
-        for pg in DATOS_GEOM[variante]:
+        datos = DATOS_GEOM.get(variante)
+        if variante == "PT2BR":
+            # PT2R reflejado: mantiene los calados del CAD y el pico antes de la bajada diagonal.
+            reflejar = lambda pts: [(5 - u, v) for u, v in reversed(pts)]
+            datos = [{"ext": reflejar(pg["ext"]), "holes": [reflejar(h) for h in pg["holes"]]}
+                     for pg in DATOS_GEOM["PT2R"]]
+        for pg in datos:
             anillos.append(tr(pg["ext"]))
             anillos += [tr(h) for h in pg["holes"]]
         if fach == "NE":
@@ -1917,7 +1933,10 @@ def celosias(C, M):
                 bast.prisma_yz(poly, d + off - 0.02, d + off + 0.02)
     # Un único tubo 40 x 40, detrás de ambos planos de chapa, resuelve la esquina del eje 1.
     z0 = min(Z_CELOSIA, Z_CELOSIA_FACHADA.get("EJE1", Z_CELOSIA)) - 0.02
-    z1 = Z_CELOSIA_FACHADA.get("EJE1", Z_CELOSIA) + borde_v("PT1", 0)
+    alturas = [Z_CELOSIA_FACHADA.get(fach, Z_CELOSIA) + borde_v(variante, (xc if fach == "NE" else yc) + 0.05 - a)
+               for fach, variante, a, b in CELOSIAS
+               if (fach == "NE" and a < xc < b) or (fach == "EJE1" and a < yc < b)]
+    z1 = max(alturas) + 0.02 if TIPO_CELOSIA_LATERAL == "zigzag" else Z_CELOSIA_FACHADA["EJE1"] + borde_v("PT1", 0)
     bast.caja(xc + 0.01, xc + 0.05, yc + 0.01, yc + 0.05, z0, z1)
     bast.crear("CELOSIAS_BASTIDOR", M["bastidor"], col)
 

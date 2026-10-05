@@ -87,12 +87,39 @@ y la puerta lateral. El cambio se realiza en `fachada_aire()` del constructor.
 
 ## Cámaras, montaje y compositor
 
-**Revisión puntual del 4 de octubre, antes de renders:** se corrige el cruce de
-celosías entre el Lado Tierra y el testero del eje 1. Las chapas se recortan hasta
-su encuentro con una junta de 3 mm y un único poste interior de 40 x 40 mm.
-Los nuevos cantos de 1 mm quedan cerrados. Solo cambian los dos paneles de
-esquina y el bastidor; la corrección está en `celosias()` y se aplica a ambas
-propuestas. Se conservan las 23 cámaras con sus ajustes.
+**Revisión puntual del 4 de octubre, antes de renders:** se conservan dos
+opciones de celosías del lateral del eje 1, por indicación del cliente:
+
+- **A, lateral recto:** `01_blender/uyuni_v2.blend`. Conserva la fila anterior,
+  incluido su módulo terminal en rampa, con la esquina ya corregida.
+- **B, lateral en zigzag:** `01_blender/uyuni_v2_lateral_zigzag.blend`. Usa cuatro
+  módulos en zigzag PT2B/PT2A de 5 x 6 m y conserva el quiebre del último módulo:
+  su primer metro sube de 5 a 6 m y desde ese pico baja en diagonal durante 4 m
+  hasta 2 m, según la última captura del cliente. El remate PT2BR refleja el
+  módulo PT2R del CAD, conserva sus calados y enlaza a 5 m con el panel contiguo.
+  La base se alinea a 0,20 m y la fila se
+  desplaza 32 mm para que el perfil superior coincida con el frente en la esquina.
+
+En las dos opciones las chapas se recortan hasta el encuentro con una junta de
+3 mm y un único poste interior de 40 x 40 mm. Los nuevos cantos de 1 mm quedan
+cerrados; en B la altura del poste acompaña el perfil en zigzag. La corrección
+está en `celosias()`. Cada archivo conserva las dos propuestas de color y las
+23 cámaras con sus ajustes y animaciones. La comprobación de B conserva además
+las otras 430 mallas y verifica que los cinco paneles estén cerrados y compartidos
+por las dos escenas de propuesta.
+
+Para regenerar cada opción desde la carpeta `aeropuerto_uyuni`:
+
+```powershell
+$env:UYUNI_CELOSIA_LATERAL='recta'
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 -P 01_blender/herramientas/construir_blend.py -- 01_blender/uyuni_modelo.py 01_blender/uyuni_v2.blend
+$env:UYUNI_CELOSIA_LATERAL='zigzag'
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 -P 01_blender/herramientas/construir_blend.py -- 01_blender/uyuni_modelo.py 01_blender/uyuni_v2_lateral_zigzag.blend
+Remove-Item Env:UYUNI_CELOSIA_LATERAL
+```
+
+Sin esa variable el constructor usa A. Estos comandos construyen los archivos;
+no inician renders.
 
 El inventario contiene **12 vistas fijas**: 01, 02, 02B, 03 (hora azul), 04,
 05, 06, 07, 07B (captura del cliente), 08, 09 y 10. Hay además diez cámaras del

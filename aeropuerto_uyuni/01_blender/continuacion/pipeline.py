@@ -32,6 +32,7 @@ def aplicar(fuente):
     letrero_A=fuente["geometria_letrero"]
     original = list(bpy.data.scenes)
     report = {"base": "acf7f58", "propuestas": ["Patrimonio Ferroviario", "Salar & Litio"]}
+    report["celosia_lateral"] = fuente["TIPO_CELOSIA_LATERAL"]
     report["fachada_trasera"]={"paños_opacos_y_ME4":"Enrasados con pilastras",
                                "avance_m":.7,"cara_exterior_m":fuente["Y_MURO_RAS_AIRE"],
                                "nichos":"Solo crujías con grandes ME5/ME6",
