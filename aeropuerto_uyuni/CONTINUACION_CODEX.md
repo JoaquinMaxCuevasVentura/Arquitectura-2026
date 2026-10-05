@@ -194,7 +194,8 @@ limpio `CONTEXTO_IA` definido por Claude.
 ## Verificación y pendientes de aprobación
 
 El video se retoma el 5 de octubre, por tomas independientes. Se mantienen diez
-tomas, 120 s, 24 fps y el plan de salida 4K para P1/P2. La toma 09, Ingreso UYUNI,
+tomas, 120 s y 24 fps para P1/P2. El cliente cambia todas las tomas a 1080p
+el 5 de octubre para producir bases destinadas a Google Flow. La toma 09, Ingreso UYUNI,
 pasa a hora azul por indicación del cliente: hereda el cielo, exposición, neón
 atenuado e interior cálido ya validados, conserva la cámara y los 192 cuadros.
 `storyboard.actualizar_hora_azul` permite actualizar un montaje existente y se
@@ -208,8 +209,16 @@ toma con gestión de color consistente. La reanudación verifica la fuente y
 los scripts; el MP4 también verifica el manifiesto de entrada. `--pause-file`
 pausa antes del siguiente fotograma. `--check` exporta `plan.json` sin render.
 Las revisiones locales quedan en `outputs/Video_Tomas`, fuera del repositorio.
-El master de dos minutos todavía no se ha producido: primero se revisan
-cámaras, acciones del contexto y tiempo/almacenamiento de una toma 4K.
+El master de dos minutos todavía no se ha producido. Las pruebas 4K de 128 muestras
+midieron 55–74 segundos por cuadro, antes de la decisión de producir en 1080p.
+`render_video_lote.py` organiza las veinte tomas en bloques de hasta 144 cuadros,
+con fuente y scripts congelados, manifiestos, H.264 y reanudación. `video_encode.py`
+codifica cada bloque y `video_media.py` verifica resolución, duración y FPS;
+el lote compara tres fotogramas decodificados con los PNG de origen. Solo después
+de verificar y guardar el MP4 se liberan los PNG temporales del bloque.
+El perfil conserva umbral de ruido .01, OIDN, motion blur .5 y rebotes; utiliza
+128 muestras y datos persistentes. No se reducen las intensidades de luz.
+Las tomas 01 y 10 son comunes a las dos paletas y se reutilizan verificadas.
 
 `validar_continuacion.py` reabre el archivo y compara las 240 mallas base.
 Los cambios autorizados son la dispersión del paisaje, la colocación de los
@@ -247,8 +256,9 @@ solución luminosa; esa prueba se conserva localmente para comparar.
 existente, `herramientas/aplicar_iluminacion_letrero.py` guarda una copia y verifica
 las 459 mallas/cámaras, la idempotencia y los ajustes de escenas.
 La hora azul P2 queda guardada y su compositor lee la escena correcta.
-Las personas y vehículos son contexto estático: falta animar sus acciones del
-guion. No se incorpora música ni locución sin archivos autorizados. Los renders
+Las personas y vehículos permanecen estáticos por pedido del cliente del 5 de
+octubre: sus acciones ya no son un pendiente de esta producción para Flow.
+No se incorpora música ni locución sin archivos autorizados. Los renders
 de revisión no constituyen el master final del video de dos minutos.
 
 La revisión de cámaras incluye 30 imágenes (inicio, mitad y final de cada plano).

@@ -1,8 +1,8 @@
 # Aeropuerto de Uyuni · Guion técnico de video dron
 
-Borrador de dirección · 4 de octubre de 2026. **120 s / 24 fps / 2880 cuadros / 3840 × 2160.**
+Borrador de dirección · 4 de octubre de 2026. Producción para Flow aprobada el 5 de octubre: **120 s / 24 fps / 2880 cuadros / 1920 × 1080**, por propuesta P1/P2.
 
-Producción retomada el 5 de octubre: revisión por tomas antes del render final. Las trayectorias se comprueban contra el volumen principal; falta completar acciones de personas y vehículos y revisar sus colisiones.
+Producción retomada el 5 de octubre, con diez tomas por propuesta. Por indicación del cliente, no se producen acciones de personas ni vehículos; se conservan los movimientos de cámara y el cierre gráfico. Las bases se entregan para su posterior mejora de realismo en Google Flow. Las trayectorias se comprueban contra el volumen principal.
 
 ## Intención y montaje
 
@@ -46,7 +46,7 @@ Motion blur de 180° a 24 fps: **0,5 cuadros, equivalente a 1/48 s**. Iniciar la
 
 **Duración:** 14 s. **Cuadros de programa:** 289–624 (inclusivos).
 
-**Imagen y acción:** Aproximación oblicua al Lado Tierra. Mantener el edificio completo antes de bajar. Una 4x4 avanza hacia la zona de descenso, sin ocultar el ingreso.
+**Imagen y acción:** Aproximación oblicua al Lado Tierra. Mantener el edificio completo antes de bajar. Sin acción de vehículos.
 
 **Luz:** MANANA_NNE.
 
@@ -66,7 +66,7 @@ Motion blur de 180° a 24 fps: **0,5 cuadros, equivalente a 1/48 s**. Iniciar la
 
 **Duración:** 14 s. **Cuadros de programa:** 625–960 (inclusivos).
 
-**Imagen y acción:** Dolly oblicuo de fachada. Una pareja con equipaje camina hacia el acceso principal, fuera del eje óptico del rótulo. Mostrar mamparas y continuidad del alero.
+**Imagen y acción:** Dolly oblicuo de fachada. Mostrar mamparas y continuidad del alero, sin acción de personas.
 
 **Luz:** MANANA_NNE.
 
@@ -247,9 +247,9 @@ El cierre no agrega seis segundos después de los dos minutos: ocupa 01:54–02:
 1. Crear una copia de trabajo del .blend validado y una escena/colección específica para el video.
 2. Completar Lado Aire, resolver retenedor y sustituir proxies con assets autorizados antes de aprobación de encuadres.
 3. Pasada de cámara en viewport a 1280 × 720 sin DOF ni motion blur; verificar colisiones y legibilidad del rótulo.
-4. Pruebas de inicio/medio/final de cada plano; aprobar orientación solar y continuidad de vehículos.
+4. Pruebas de inicio/medio/final de cada plano; aprobar orientación solar y mantener el contexto estático.
 5. Render por secuencia de imágenes, color gestionado de forma consistente y sin clamping que altere luz entre planos.
-6. Ensamblar el corte de 2880 cuadros, sonido y gráfico. Exportar master 4K y copia de revisión 1080p.
+6. Entregar diez MP4 independientes a 1080p por propuesta y el montaje de 2880 cuadros, sin audio. Se conserva el gráfico de cierre. Música y locución quedan fuera de estas bases para Flow.
 7. Entregar créditos de fotografía, footage, modelos, texturas y música junto al video.
 
 ## Fuentes y límites del argumento

@@ -33,6 +33,8 @@ def main(argv=None):
     p.add_argument("--keyframes",action="store_true")
     p.add_argument("--pause-file");p.add_argument("--encode",action="store_true")
     p.add_argument("--ffmpeg");p.add_argument("--force",action="store_true")
+    p.add_argument("--persistent-data",action="store_true",help="Reutilizar datos de escena entre fotogramas")
+    p.add_argument("--compositor-device",choices=["CPU","GPU"],default="CPU")
     a=p.parse_args(argv)
     if not 1<=a.start<=a.end<=2880:raise ValueError("Cuadros fuera del programa 1..2880")
     if a.width<320 or a.width%32:raise ValueError("Ancho >= 320, múltiplo de 32")
@@ -89,6 +91,8 @@ def main(argv=None):
         sc.render.resolution_x=a.width;sc.render.resolution_y=round(a.width*9/16)
         sc.render.resolution_percentage=100
         sc.render.fps,sc.render.fps_base=24,1.0;sc.render.use_sequencer=False
+        render_plan.required_set(sc.render,"use_persistent_data",a.persistent_data)
+        render_plan.enum_set(sc.render,"compositor_device",a.compositor_device)
         sc.compositing_node_group=None if sc.get("UY_PLANO")==10 else render_plan.make_optics(
             sc,night="CREPUSCULO" in sc.name,width=a.width,animated=True)
         render_plan.pass_settings(sc,enabled=a.exr)
@@ -102,6 +106,8 @@ def main(argv=None):
             spec={"blend_sha256":source_hash,"code_sha256":code_hash,"proposal":a.proposal,
                   "shot":job["shot"],"frame":f,"scene":sc.name,"cfg":cfg,"width":a.width,
                   "raw":a.raw,"exr":a.exr,"gpu":info,"optics_version":render_plan.OPTICS_VERSION,
+                  "persistent_data":a.persistent_data,
+                  "compositor_device":a.compositor_device,
                   "camera_matrix":[list(row) for row in sc.camera.matrix_world],
                   "lens":sc.camera.data.lens,"exposure":sc.view_settings.exposure}
             row=render_plan.measured_render(sc,directory/f"VIDEO_{f:04d}",spec,manifest,
