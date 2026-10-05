@@ -636,20 +636,33 @@ def render_drone(args, device, device_info, test=False):
     return outputs
 
 
-def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False):
+def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False, *,
+                    prefix="CAM_DRON_", video_name=None, input_fingerprint=None):
     """PNG→H.264. External ffmpeg preferred; Blender VSE is a local dependency-free fallback."""
     directory = Path(directory).resolve()
-    images = [directory / f"CAM_DRON_{f:04d}.png" for f in range(start, end + 1)]
+    if not re.fullmatch(r"[A-Za-z0-9_]+", prefix):
+        raise ValueError("Invalid image sequence prefix")
+    images = [directory / f"{prefix}{f:04d}.png" for f in range(start, end + 1)]
     missing = [str(p) for p in images if not p.is_file() or not p.stat().st_size]
     if missing:
         raise RuntimeError(f"Incomplete sequence: {missing[:5]}")
-    destination = directory / f"dron_uyuni_{start:04d}_{end:04d}.mp4"
+    name = video_name or f"dron_uyuni_{start:04d}_{end:04d}.mp4"
+    if Path(name).name != name or not name.endswith(".mp4"):
+        raise ValueError("video_name must be an MP4 filename")
+    destination = directory / name
     if destination.exists() and not overwrite:
+        metadata = destination.with_suffix(".json")
+        if input_fingerprint and metadata.is_file():
+            previous = json.loads(metadata.read_text(encoding="utf-8"))
+            if (previous.get("input_fingerprint") == input_fingerprint and
+                    previous.get("start") == start and previous.get("end") == end and
+                    destination.stat().st_size):
+                return str(destination)
         raise RuntimeError(f"Video already exists; use --force to replace: {destination}")
     executable = ffmpeg or shutil.which("ffmpeg")
     if executable:
         command = [str(executable), "-y" if overwrite else "-n", "-framerate", "24", "-start_number", str(start),
-                   "-i", str(directory / "CAM_DRON_%04d.png"), "-frames:v", str(len(images)),
+                   "-i", str(directory / f"{prefix}%04d.png"), "-frames:v", str(len(images)),
                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-movflags", "+faststart", str(destination)]
         subprocess.run(command, check=True, shell=False,
                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0) if os.name == "nt" else 0)
@@ -699,7 +712,7 @@ def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False):
         raise RuntimeError(f"Encoder did not produce {destination}")
     atomic_json(destination.with_suffix(".json"), dict(source=str(directory), frames=len(images),
                  start=start, end=end, fps=24, duration_seconds=len(images)/24, method=method,
-                 output=str(destination)))
+                 output=str(destination), input_fingerprint=input_fingerprint))
     return str(destination)
 
 

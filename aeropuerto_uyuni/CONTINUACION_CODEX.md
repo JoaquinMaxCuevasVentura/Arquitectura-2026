@@ -193,6 +193,24 @@ limpio `CONTEXTO_IA` definido por Claude.
 
 ## Verificación y pendientes de aprobación
 
+El video se retoma el 5 de octubre, por tomas independientes. Se mantienen diez
+tomas, 120 s, 24 fps y el plan de salida 4K para P1/P2. La toma 09, Ingreso UYUNI,
+pasa a hora azul por indicación del cliente: hereda el cielo, exposición, neón
+atenuado e interior cálido ya validados, conserva la cámara y los 192 cuadros.
+`storyboard.actualizar_hora_azul` permite actualizar un montaje existente y se
+comprueba dos veces sin cambiar mallas, cámaras, acciones ni energía de luces.
+
+`render_storyboard.py` separa las salidas en `P1/toma_01` ... `P2/toma_10`,
+con manifiesto y PNG16 por fotograma. `--shot 2,3` selecciona tomas;
+`--keyframes --draft --width 1280 --samples 32` produce inicio/mitad/final.
+`--start N --end M` limita la prueba temporal; `--encode` produce el MP4 de cada
+toma con gestión de color consistente. La reanudación verifica la fuente y
+los scripts; el MP4 también verifica el manifiesto de entrada. `--pause-file`
+pausa antes del siguiente fotograma. `--check` exporta `plan.json` sin render.
+Las revisiones locales quedan en `outputs/Video_Tomas`, fuera del repositorio.
+El master de dos minutos todavía no se ha producido: primero se revisan
+cámaras, acciones del contexto y tiempo/almacenamiento de una toma 4K.
+
 `validar_continuacion.py` reabre el archivo y compara las 240 mallas base.
 Los cambios autorizados son la dispersión del paisaje, la colocación de los
 vehículos proxy, los paños de la fachada trasera solicitados por el cliente y

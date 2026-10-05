@@ -2,7 +2,7 @@
 
 Borrador de dirección · 4 de octubre de 2026. **120 s / 24 fps / 2880 cuadros / 3840 × 2160.**
 
-La animación y el modelado están pausados. Este documento prepara su implementación; no afirma que las trayectorias hayan sido probadas en Blender.
+Producción retomada el 5 de octubre: revisión por tomas antes del render final. Las trayectorias se comprueban contra el volumen principal; falta completar acciones de personas y vehículos y revisar sus colisiones.
 
 ## Intención y montaje
 
@@ -186,9 +186,9 @@ Motion blur de 180° a 24 fps: **0,5 cuadros, equivalente a 1/48 s**. Iniciar la
 
 **Duración:** 8 s. **Cuadros de programa:** 2545–2736 (inclusivos).
 
-**Imagen y acción:** Push de 2 m hacia el logotipo existente. Enfocar en el letrero y conservar el nombre completo y su reflejo. Ajustar distancia por encuadre, sin cambiar proporciones del rótulo.
+**Imagen y acción:** Push de 2 m hacia el logotipo existente en hora azul, aprobado por el cliente el 5 de octubre. Conservar el nombre completo y su grafismo invertido. Heredar el neón atenuado de 4000 K, emisión 2,5, y la luz interior cálida de 3500 K de la escena nocturna corregida. Ajustar distancia por encuadre, sin cambiar proporciones del rótulo.
 
-**Luz:** MANANA_NNE.
+**Luz:** HORA_AZUL, con el mismo cielo, exposición, luces de alero y celosías de la escena nocturna validada. El cambio de luz se realiza por corte desde la toma 08.
 
 **Transición:** Match cut del horizonte a las capas del cierre gráfico.
 
