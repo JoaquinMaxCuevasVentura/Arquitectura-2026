@@ -35,6 +35,7 @@ def main(argv=None):
     p.add_argument("--ffmpeg");p.add_argument("--force",action="store_true")
     p.add_argument("--persistent-data",action="store_true",help="Reutilizar datos de escena entre fotogramas")
     p.add_argument("--compositor-device",choices=["CPU","GPU"],default="CPU")
+    p.add_argument("--denoise-gpu",action="store_true",help="OpenImageDenoise en GPU, misma calidad High/Accurate")
     a=p.parse_args(argv)
     if not 1<=a.start<=a.end<=2880:raise ValueError("Cuadros fuera del programa 1..2880")
     if a.width<320 or a.width%32:raise ValueError("Ancho >= 320, múltiplo de 32")
@@ -69,7 +70,8 @@ def main(argv=None):
         raise RuntimeError("Se requiere montaje de 10 tomas, 2880 cuadros y 24 fps")
     plan=dict(source=bpy.data.filepath,blend_sha256=source_hash,code_sha256=code_hash,
         proposal=a.proposal,resolution=[a.width,a.width*9//16],fps=24,keyframes=a.keyframes,
-        profile="drone_draft" if a.draft else "drone",samples=a.samples or (128 if a.draft else 512),jobs=jobs)
+        profile="drone_draft" if a.draft else "drone",samples=a.samples or (128 if a.draft else 512),
+        denoising_device="GPU" if a.denoise_gpu else "CPU",jobs=jobs)
     render_plan.atomic_json(out/"plan.json",plan)
     print("[STORYBOARD]",[(j["name"],j["frame_count"]) for j in jobs],flush=True)
     if a.check:
@@ -77,7 +79,8 @@ def main(argv=None):
     baseline=render_plan.audit_signature()
     device,info=render_plan.select_device()
     materiales.aplicar({"profile":"DRON"})
-    status=dict(status="running",hardware=info,frames_done=0,videos=[])
+    status=dict(status="running",hardware=info,frames_done=0,videos=[],
+                denoising_device="GPU" if a.denoise_gpu else "CPU",samples=plan["samples"])
     render_plan.atomic_json(out/"estado.json",status)
     for job in jobs:
         sc=bpy.data.scenes[job["scene"]]
@@ -88,6 +91,8 @@ def main(argv=None):
         cfg=render_plan.apply_profile(sc,"drone_draft" if a.draft else "drone",device=device,
                                       transparent_bounces=16,animated=True,denoise=not a.raw,motion_blur=True)
         sc.cycles.samples=plan["samples"];cfg.update(samples=sc.cycles.samples,percent=100)
+        render_plan.required_set(sc.cycles,"denoising_use_gpu",a.denoise_gpu)
+        cfg["denoising_use_gpu"]=sc.cycles.denoising_use_gpu
         sc.render.resolution_x=a.width;sc.render.resolution_y=round(a.width*9/16)
         sc.render.resolution_percentage=100
         sc.render.fps,sc.render.fps_base=24,1.0;sc.render.use_sequencer=False

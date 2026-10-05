@@ -73,6 +73,8 @@ class Batch:
     def save(self):
         self.state['updated'] = now()
         self.state['completed_jobs'] = sum(v['status']=='complete' for v in self.state['jobs'].values())
+        self.state['denoising_device'] = 'GPU' if self.cfg.get('denoise_gpu') else 'CPU'
+        self.state['samples'] = self.cfg['samples']
         atomic(self.state_path, self.state)
         rows = []
         for job in self.cfg['jobs']:
@@ -86,6 +88,7 @@ class Batch:
             'max-width:1100px;margin:40px auto;padding:20px}td,th{text-align:left;padding:10px;border-bottom:1px solid #ccc}'
             'table{width:100%}pre{white-space:pre-wrap}</style><h1>UYUNI · videos por tomas para Flow</h1>'
             f'<p>{self.cfg["width"]} × {self.cfg["height"]} · {self.cfg["fps"]} fps · {self.cfg["samples"]} muestras · '
+            f'reducción de ruido en {self.state["denoising_device"]} · '
             'sin acciones de personas ni vehículos. Toma 09 en hora azul.</p>'
             f'<p>Estado: {self.state["status"]}. Terminadas: {self.state["completed_jobs"]} / {self.state["total_jobs"]}.</p>'
             f'<pre>{current}</pre><table><tr><th>Propuesta</th><th>Toma</th><th>Duración</th><th>Estado</th><th>Archivo</th></tr>'
@@ -194,7 +197,19 @@ class Batch:
                 '--','--out',str(temp_out),'--proposal',job['palette'],'--shot',str(job['shot']),
                 '--start',str(start),'--end',str(end),'--width',str(self.cfg['width']),
                 '--samples',str(self.cfg['samples']),'--persistent-data','--pause-file',self.cfg['pause_file']]
-            self.child(args,label, temp_out/job['palette']/'estado.json')
+            if self.cfg.get('denoise_gpu'): args.append('--denoise-gpu')
+            for attempt in range(1,self.cfg.get('gpu_retries',0)+2):
+                attempt_label=label if attempt==1 else f'{label}_reintento_{attempt-1}'
+                try:
+                    self.child(args,attempt_label,temp_out/job['palette']/'estado.json')
+                    break
+                except RuntimeError as exc:
+                    log='\n'.join((self.logs/f'{attempt_label}.{suffix}.log').read_text(encoding='utf-8',errors='replace')
+                        for suffix in ('stdout','stderr'))
+                    if attempt>self.cfg.get('gpu_retries',0) or not any(token in log for token in
+                            ('CUDA','OPTIX','OptiX','Launch failed','Out of memory')): raise
+                    self.state.setdefault('gpu_retries',[]).append(dict(stage=attempt_label,error=str(exc),time=now()))
+                    self.save(); time.sleep(10)
             manifest=read(frames_dir/'manifest.json'); expected=[]
             for frame in range(start,end+1):
                 png=frames_dir/f'VIDEO_{frame:04d}.png'

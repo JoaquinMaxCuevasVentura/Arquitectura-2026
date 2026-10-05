@@ -220,6 +220,21 @@ El perfil conserva umbral de ruido .01, OIDN, motion blur .5 y rebotes; utiliza
 128 muestras y datos persistentes. No se reducen las intensidades de luz.
 Las tomas 01 y 10 son comunes a las dos paletas y se reutilizan verificadas.
 
+El cliente elige mantener 128 muestras y activar OpenImageDenoise en GPU.
+`render_storyboard.py --denoise-gpu` conserva calidad High, prefilter Accurate,
+pasos de albedo/normal, compositor CPU, umbral .01 y los demás parámetros. El
+plan, estado y manifiesto registran el dispositivo de reducción de ruido.
+El lote lee `denoise_gpu: true` en su configuración. Las pruebas con la escena
+ya cargada, mientras seguía la cola, midieron 23,7 → 15,0 s en la toma 03 y
+29,6 → 20,9 s en la 09; diferencia RGB media de 0,044 y 0,029 sobre 255.
+Son tiempos bajo carga compartida y no una garantía para todas las tomas.
+Una interrupción de CUDA después del cuadro 278 se recuperó sin repetir los
+cuadros guardados. Se cerró y verificó Salar P1/P2 antes de cambiar el código
+congelado de la cola. La transición guarda configuración, estado e identificadores
+previos y verifica los SHA de las entregas. La fuente .blend permanece idéntica.
+`gpu_retries: 2` permite dos reinicios del proceso de render ante errores GPU,
+conservando el manifiesto y sin intervenir en el Blender abierto por el usuario.
+
 `validar_continuacion.py` reabre el archivo y compara las 240 mallas base.
 Los cambios autorizados son la dispersión del paisaje, la colocación de los
 vehículos proxy, los paños de la fachada trasera solicitados por el cliente y
