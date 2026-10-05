@@ -3,6 +3,7 @@
 blender --factory-startup -b -P video_media.py -- trabajo.json
 El JSON define action=verify/assemble, files=[{path,frames}], width, height,
 fps, report, output (assemble) y source_pngs (verify).
+output_width/output_height permiten reducir la resolución sin recortar el encuadre.
 """
 import json
 from pathlib import Path
@@ -17,6 +18,9 @@ def main(spec):
     scene = bpy.data.scenes.new('UY_VIDEO_MEDIA_LOCAL')
     if bpy.context.window:
         bpy.context.window.scene = scene
+    scene.render.resolution_x = spec.get('output_width', spec['width'])
+    scene.render.resolution_y = spec.get('output_height', spec['height'])
+    scene.render.resolution_percentage = 100
     editor = scene.sequence_editor_create()
     reports = []; cursor = 1
     for item in spec['files']:
@@ -25,6 +29,8 @@ def main(spec):
             raise RuntimeError(f'Video ausente: {path}')
         strip = editor.strips.new_movie(path.stem, str(path), channel=1, frame_start=cursor)
         size = [strip.elements[0].orig_width, strip.elements[0].orig_height]
+        strip.transform.scale_x = scene.render.resolution_x / size[0]
+        strip.transform.scale_y = scene.render.resolution_y / size[1]
         frames = strip.frame_duration
         if size != [spec['width'], spec['height']] or frames != item['frames'] or strip.fps != spec['fps']:
             raise RuntimeError(f'Media fuera del plan: {path}, {size}, {frames}, {strip.fps}')
@@ -38,7 +44,8 @@ def main(spec):
     render_plan.enum_set(scene.cycles, 'device', 'CPU')
     render_plan.enum_set(scene.render, 'compositor_device', 'CPU')
     scene.render.use_sequencer = True
-    scene.render.resolution_x, scene.render.resolution_y = spec['width'], spec['height']
+    scene.render.resolution_x = spec.get('output_width', spec['width'])
+    scene.render.resolution_y = spec.get('output_height', spec['height'])
     scene.render.resolution_percentage = 100
     scene.render.fps, scene.render.fps_base = spec['fps'], 1.0
     scene.frame_start, scene.frame_end = 1, cursor-1
@@ -64,7 +71,7 @@ def main(spec):
     else:
         raise ValueError('Acción de media desconocida')
     result = dict(verified=True, files=reports, frames=cursor-1, fps=spec['fps'],
-                  seconds=(cursor-1)/spec['fps'], resolution=[spec['width'], spec['height']],
+                  seconds=(cursor-1)/spec['fps'], resolution=[scene.render.resolution_x, scene.render.resolution_y],
                   samples=previews if spec['action']=='verify' else [])
     render_plan.atomic_json(Path(spec['report']), result)
     print(json.dumps(result, ensure_ascii=False), flush=True)

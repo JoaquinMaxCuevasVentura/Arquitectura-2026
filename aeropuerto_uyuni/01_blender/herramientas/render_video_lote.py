@@ -53,7 +53,9 @@ class Batch:
         self.cfg = config
         self.root = Path(config['work_root']).resolve()
         self.output = Path(config['output_root']).resolve()
-        self.temp = (self.root/'temporales').resolve()
+        self.temp = Path(config.get('temporary_root', self.root/'temporales')).resolve()
+        if not (self.temp.is_relative_to(self.root) or self.temp.is_relative_to(self.output)):
+            raise RuntimeError('Temporales fuera de las carpetas de producción')
         self.logs = self.root/'logs'; self.logs.mkdir(parents=True, exist_ok=True)
         self.output.mkdir(parents=True, exist_ok=True); self.temp.mkdir(parents=True, exist_ok=True)
         self.state_path = self.root/'estado.json'
