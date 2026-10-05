@@ -26,13 +26,13 @@ def ahora():
     return datetime.now(timezone.utc).isoformat()
 
 
-def verificar_png(path):
+def verificar_png(path, expected_size):
     with path.open("rb") as stream:
         header = stream.read(29)
     if header[:8] != b"\x89PNG\r\n\x1a\n" or header[12:16] != b"IHDR":
         raise RuntimeError(f"PNG inválido: {path}")
     width, height = struct.unpack(">II", header[16:24])
-    if (width, height, header[24]) != (7680, 4320, 16):
+    if (width, height, header[24]) != (*expected_size, 16):
         raise RuntimeError(f"Resolución/profundidad inesperada: {path}")
 
 
@@ -52,6 +52,9 @@ def main():
     state_path = control / "estado.json"
     state = dict(estado="iniciando", pid=os.getpid(), inicio=ahora(), fuente=str(source),
                  fuente_sha256=source_hash, total=plan["count"], terminados=[], actual=None)
+    state["previos"] = config.get("previos", [])
+    state["total_proyecto"] = plan["count"] + len(state["previos"])
+    state["resolucion"] = plan["jobs"][0]["spec"]["size"][:2] if plan["jobs"] else None
     # El bloqueo desaparece al salir el proceso, incluso si Blender falla.
     lock = (control / "lote.lock").open("a+b")
     if os.name == "nt":
@@ -87,7 +90,9 @@ def main():
             if result.returncode != 0:
                 raise RuntimeError(f"Blender falló en {job_id}: código {result.returncode}; revisar su log")
             output = Path(job["output"])
-            verificar_png(output)
+            size = job["spec"]["size"]
+            expected_size = tuple(round(value * size[2] / 100) for value in size[:2])
+            verificar_png(output, expected_size)
             manifest_path = output.parent / "manifest.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             if str(output.with_suffix("")) not in manifest["jobs"]:

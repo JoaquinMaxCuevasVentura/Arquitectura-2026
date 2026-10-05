@@ -125,8 +125,10 @@ El inventario contiene **12 vistas fijas**: 01, 02, 02B, 03 (hora azul), 04,
 05, 06, 07, 07B (captura del cliente), 08, 09 y 10. Hay además diez cámaras del
 storyboard y una del recorrido original. La 07B se incorpora a la cola de vistas
 fijas, que antes la omitía. El cliente elige la opción B con lateral en zigzag
-y autoriza iniciar las imágenes fijas: **24 renders, 12 vistas en cada paleta,
-a 7680 x 4320**. El video conserva la pausa anterior.
+y autoriza iniciar las imágenes fijas: **24 vistas, 12 en cada paleta**.
+CAM_01 P1 y P2 se completan a 7680 x 4320. Después el cliente solicita bajar
+las **22 pendientes a 3840 x 2160** para reducir el tiempo. Los dos originales
+8K se conservan y se excluyen de la nueva cola. El video conserva la pausa anterior.
 
 El guion entregado se conserva en `01_blender/guion/`. La escena
 `UYUNI_VIDEO_MASTER_120S` monta diez escenas por cortes: 1–2880, 24 fps, 120 s.
@@ -146,7 +148,7 @@ La escena nublada es otro estado meteorológico, compatible con las dos paletas.
 
 ## Render
 
-Imágenes: 8K PNG de 16 bits con copia JPEG, OIDN Accurate/High, 1024 muestras y ruido .008
+Imágenes pendientes: 4K PNG de 16 bits con copia JPEG, OIDN Accurate/High, 1024 muestras y ruido .008
 de día / .005 de noche. Dron: 512 muestras, ruido .01, semilla animada,
 rebotes 12/6/6/12, transparencia 16, motion blur .5. El render de animación
 aplica el perfil de shaders DRON sin nodos AO/Bevel para evitar el coste del perfil
@@ -163,10 +165,10 @@ blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_
 blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --check
 
 # Validar las 24 vistas sin renderizar. Conserva la geometría de B, cámaras y luces.
-blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode plan-stills --profile final --proposal both --resolution 8k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode plan-stills --profile final --proposal both --resolution 4k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
 
 # Imágenes fijas en ambas paletas, incluida la hora azul de P2.
-blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --proposal both --resolution 8k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --proposal both --resolution 4k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
 ```
 
 `--only CAM_01_P1` selecciona una vista. Sin `--proposal` se conserva la cola
@@ -177,12 +179,14 @@ sobre los archivos de diseño.
 
 El lote local se ejecuta con `herramientas/render_lote.py configuracion.json`:
 un proceso de Blender por imagen, plan validado, registro de progreso, comprobación
-de PNG 8K/16 bits y reanudación por el manifiesto de configuración. Cada proceso
+de dimensiones según el plan y PNG de 16 bits, y reanudación por el manifiesto. Cada proceso
 activa ESTUDIO: microbisel, rugosidad variable, vidrio y máscaras de aristas,
 cavidades y polvo. Se conservan sol 2,7, cielo 0,108, posición de luces,
 encuadres y shift de cámaras. Los archivos `materiales.json` y `plan.json`
 registran los ajustes utilizados. Los originales locales van a
-`D:/Codex_Renders/Uyuni_2026-10-04_8K/`, por el espacio disponible en C:.
+`D:/Codex_Renders/Uyuni_2026-10-04_4K/`, por el espacio disponible en C:.
+Los dos renders terminados en 8K permanecen en la carpeta anterior `_8K`.
+La nueva cola registra esos dos como previos y procesa únicamente las 22 pendientes.
 Un archivo `PAUSAR_DESPUES_ACTUAL.txt` en la carpeta de control pausa la cola
 tras acabar la imagen actual. La versión pública de B conserva el contexto
 limpio `CONTEXTO_IA` definido por Claude.
