@@ -184,6 +184,7 @@ COLUMNAS = dict(pos=[(83.2, -44.4), (85.2, -42.4)], diametro=0.9, alto=3.5)   # 
 
 # Celosías corten: módulos de 5,00 x 6,00 m (placas de 1,00 x 2,00 m de 1 mm), a 0,12 m de su fondo
 CELOSIA_SEP = 0.12
+JUNTA_ESQUINA_NO = 0.003         # junta entre las dos chapas, sin prolongarlas a través del plano perpendicular
 CELOSIAS = [  # (fachada, variante, inicio, fin) - en NE/SO son X; en laterales son Y. Variante según el DXF:
     # PT1 rectangular | PT2A picos en 0-2-4 m | PT2B picos en 1-3-5 m | PT2R rampa a 45° (de 2,0 a 6,0 m) + zigzag
     ("NE", "PT2B", -0.469, 4.531), ("NE", "PT2A", 4.531, 9.531),
@@ -1826,12 +1827,47 @@ def elementos_laterales(C, M):
     arr.count = int((fr["y"][1] - fr["y"][0] - 0.12) / NERVIO_PASO) + 1
 
 
+def recortar_celosia(ob, eje, minimo):
+    """Recorta la chapa extruida en el encuentro y cierra sus cantos de 1 mm."""
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
+    # La conversión de curvas duplica vértices entre tapas y cantos. Soldarlos permite cerrar el nuevo corte.
+    bmesh.ops.remove_doubles(bm, verts=list(bm.verts), dist=1e-6)
+    punto, normal = Vector((0, 0, 0)), Vector((0, 0, 0))
+    punto[eje], normal[eje] = minimo, 1.0
+    corte = bmesh.ops.bisect_plane(bm, geom=list(bm.verts) + list(bm.edges) + list(bm.faces),
+                                 dist=1e-7, plane_co=punto, plane_no=normal,
+                                 clear_inner=True, clear_outer=False)
+    cantos = [e for e in corte["geom_cut"] if isinstance(e, bmesh.types.BMEdge) and e.is_boundary
+              and all(abs(v.co[eje] - minimo) < 1e-6 for v in e.verts)]
+    if cantos:
+        bmesh.ops.holes_fill(bm, edges=cantos, sides=0)
+    bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+    bm.to_mesh(ob.data)
+    bm.free()
+    ob.data.update()
+
+
+def recortar_perfil_u(poly, minimo):
+    """Corte en planta del perfil del bastidor; mantiene el ancho del tubo."""
+    salida = []
+    for p, q in zip(poly, poly[1:] + poly[:1]):
+        dentro_p, dentro_q = p[0] >= minimo, q[0] >= minimo
+        if dentro_p:
+            salida.append(p)
+        if dentro_p != dentro_q:
+            t = (minimo - p[0]) / (q[0] - p[0])
+            salida.append((minimo, p[1] + t * (q[1] - p[1])))
+    return salida
+
+
 def celosias(C, M):
     """Pantallas PT1/PT2 (corten en P1, blancas en P2): 15 planchas de 1,00 x 2,00 m (1 mm, juntas de 5 mm) con calados andinos (vacíos)
     sobre un bastidor de tubos de 40 x 40 que sigue las líneas salmón del CAD (verticales cada 1,00 m, horizontales
     cada 2,00 m y el borde superior), separado 0,12 m de su fondo."""
     col = C["05_CELOSIAS_CORTEN"]
     bast = Malla()
+    xc, yc = X_ALERO[0] - CELOSIA_SEP, Y_COL_EXT - CELOSIA_SEP
     for i, (fach, variante, a, b) in enumerate(CELOSIAS):
         u0 = a
         plano = "XZ" if fach in ("NE", "SO") else "YZ"
@@ -1851,7 +1887,12 @@ def celosias(C, M):
             d, off = X_ALERO[0] - CELOSIA_SEP, 0.03
         else:
             d, off = ANEXO["x"][1] + CELOSIA_SEP, -0.03
-        placa_con_huecos(f"CELOSIA_{fach}_{variante}_{i:02d}", anillos, 0.001, plano, d, M["celosia"], col)
+        ob = placa_con_huecos(f"CELOSIA_{fach}_{variante}_{i:02d}", anillos, 0.001, plano, d, M["celosia"], col)
+        esquina = fach == "NE" and a < xc < b or fach == "EJE1" and a < yc < b
+        if esquina:
+            limite = xc if fach == "NE" else yc
+            recortar_celosia(ob, 0 if fach == "NE" else 1, limite + JUNTA_ESQUINA_NO)
+            ob["junta_esquina_no_m"] = JUNTA_ESQUINA_NO
         # bastidor detrás de las planchas (eje del tubo a 3 cm de la plancha)
         miembros = [((u, 0.0), (u, borde_v(variante, u))) for u in range(6)]
         for v in (0.0, 2.0, 4.0):
@@ -1865,10 +1906,19 @@ def celosias(C, M):
             ln = math.hypot(dx, dz) or 1.0
             nx, nz = -dz / ln * 0.02, dx / ln * 0.02
             poly = tr([(ua + nx, va + nz), (ub + nx, vb + nz), (ub - nx, vb - nz), (ua - nx, va - nz)])
+            if esquina:
+                # Los travesaños llegan al poste común; se suprimen los dos montantes que se cruzaban por fuera.
+                poly = recortar_perfil_u(poly, limite + 0.05)
+                if len(poly) < 3:
+                    continue
             if plano == "XZ":
                 bast.prisma_xz(poly, d + off - 0.02, d + off + 0.02)
             else:
                 bast.prisma_yz(poly, d + off - 0.02, d + off + 0.02)
+    # Un único tubo 40 x 40, detrás de ambos planos de chapa, resuelve la esquina del eje 1.
+    z0 = min(Z_CELOSIA, Z_CELOSIA_FACHADA.get("EJE1", Z_CELOSIA)) - 0.02
+    z1 = Z_CELOSIA_FACHADA.get("EJE1", Z_CELOSIA) + borde_v("PT1", 0)
+    bast.caja(xc + 0.01, xc + 0.05, yc + 0.01, yc + 0.05, z0, z1)
     bast.crear("CELOSIAS_BASTIDOR", M["bastidor"], col)
 
 

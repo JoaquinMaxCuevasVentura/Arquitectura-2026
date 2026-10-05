@@ -87,6 +87,21 @@ y la puerta lateral. El cambio se realiza en `fachada_aire()` del constructor.
 
 ## Cámaras, montaje y compositor
 
+**Revisión puntual del 4 de octubre, antes de renders:** se corrige el cruce de
+celosías entre el Lado Tierra y el testero del eje 1. Las chapas se recortan hasta
+su encuentro con una junta de 3 mm y un único poste interior de 40 x 40 mm.
+Los nuevos cantos de 1 mm quedan cerrados. Solo cambian los dos paneles de
+esquina y el bastidor; la corrección está en `celosias()` y se aplica a ambas
+propuestas. Se conservan las 23 cámaras con sus ajustes.
+
+El inventario contiene **12 vistas fijas**: 01, 02, 02B, 03 (hora azul), 04,
+05, 06, 07, 07B (captura del cliente), 08, 09 y 10. Hay además diez cámaras del
+storyboard y una del recorrido original. La 07B se incorpora a la cola de vistas
+fijas, que antes la omitía. Las 12 vistas en ambas paletas supondrían 24 imágenes;
+la configuración completa de ese lote en 8K queda para la reanudación.
+Por indicación del cliente, los renders finales y el video quedan en pausa tras
+guardar esta corrección. No se ha iniciado el lote de 8K.
+
 El guion entregado se conserva en `01_blender/guion/`. La escena
 `UYUNI_VIDEO_MASTER_120S` monta diez escenas por cortes: 1–2880, 24 fps, 120 s.
 Cada plano tiene cámara propia, sensor de 36 mm y lente constante; posiciones,
