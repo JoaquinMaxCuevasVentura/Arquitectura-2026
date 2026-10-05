@@ -57,6 +57,47 @@ def escena_base(nombre, base):
     return sc
 
 
+def actualizar_hora_azul(data, configurar):
+    """Actualiza tomas aprobadas a hora azul sin tocar cámaras ni geometría.
+
+    También sirve en un archivo existente: conserva sus cámaras, acciones,
+    rangos y strips VSE. Hereda exclusivamente el estado nocturno ya validado.
+    """
+    result = []
+    for shot in data["shots"]:
+        if shot["lighting_state"] != "HORA_AZUL":
+            continue
+        sc = next(s for s in bpy.data.scenes if s.get("UY_PLANO") == shot["id"])
+        if not sc.camera or sc.camera.get("UY_OWNER") != OWNER:
+            raise RuntimeError("Cámara de video ajena al storyboard")
+        base = bpy.data.scenes["UYUNI_CREPUSCULO"]
+        for col in list(sc.collection.children):
+            if col.name == "08_LUZ_DIA":
+                sc.collection.children.unlink(col)
+        for col in base.collection.children:
+            if col.name not in sc.collection.children:
+                sc.collection.children.link(col)
+        for key in base.keys():
+            sc[key] = base[key]
+        sc.name = f"UYUNI_VIDEO_{shot['id']:02d}_CREPUSCULO_{shot['name'].upper().replace(' ', '_')}"
+        sc["UY_PLANO"], sc["UY_ESTADO_LUZ"] = shot["id"], "HORA_AZUL"
+        sc.world = base.world
+        sc.view_settings.exposure = base.view_settings.exposure
+        sc.view_settings.gamma = base.view_settings.gamma
+        sc.view_settings.view_transform = base.view_settings.view_transform
+        sc.view_settings.look = base.view_settings.look
+        configurar(sc, animado=True)
+        sc.camera["UY_GUION"] = json.dumps(shot, ensure_ascii=False)
+        result.append({"shot": shot["id"], "scene": sc.name,
+                       "frames": [sc.frame_start, sc.frame_end],
+                       "neon_strength": sc.get("UY_NEON_EMISSION_STRENGTH"),
+                       "interior_attribute": sc.get("luz_interior")})
+    master = bpy.data.scenes.get("UYUNI_VIDEO_MASTER_120S")
+    if master:
+        master["UY_STORYBOARD"] = json.dumps(data, ensure_ascii=False)
+    return result
+
+
 def material_emision(nombre, color):
     mat = bpy.data.materials.new(nombre); mat.use_nodes = True
     nt = mat.node_tree; nt.nodes.clear()
@@ -78,7 +119,7 @@ def escena_salar(base):
     mesh.from_pydata([(-15000,-15000,0),(15000,-15000,0),(15000,15000,0),(-15000,15000,0)], [], [(0,1,2,3)])
     ob = bpy.data.objects.new(mesh.name, mesh); sc.collection.objects.link(ob)
     mat = bpy.data.materials.new("UY_VIDEO_SALAR_REFLEJO"); mat.use_nodes = True
-    nt = mat.node_tree; b = nt.nodes.get("Principled BSDF")
+    nt = mat.node_tree; b = next(n for n in nt.nodes if n.type == "BSDF_PRINCIPLED")
     b.inputs["Base Color"].default_value = (.72,.73,.73,1)
     b.inputs["Roughness"].default_value = .08; b.inputs["IOR"].default_value = 1.333
     b.inputs["Coat Weight"].default_value = 1
@@ -106,7 +147,7 @@ def cierre_logo(base, start=2737, end=2880):
     sc = bpy.data.scenes.new("UYUNI_VIDEO_10_IDENTIDAD")
     sc.world = bpy.data.worlds.new("UY_VIDEO_GRAPHIC_WORLD")
     sc.world.use_nodes = True
-    sc.world.node_tree.nodes.get("Background").inputs["Color"].default_value = (.018,.024,.027,1)
+    next(n for n in sc.world.node_tree.nodes if n.type == "BACKGROUND").inputs["Color"].default_value = (.018,.024,.027,1)
     col = bpy.data.collections.new("VIDEO_LOGO_ORIGINAL"); sc.collection.children.link(col)
     letter = bpy.data.objects["UY_LETRERO_LETRAS_UYUNI_A"]
     vertices = [letter.matrix_world @ v.co for v in letter.data.vertices]
@@ -204,6 +245,7 @@ def aplicar(data, configurar, letrero_A):
                 if node.type=="TEX_SKY": node.sun_elevation=e; node.sun_rotation=math.radians((90-(north-az))%360)
             sc["UY_SOL_AZIMUT_ELEVACION"]=[az,elev]
         sc.frame_set(sc.frame_start); shots.append((shot,sc))
+    actualizar_hora_azul(data, configurar)
     master=bpy.data.scenes.new("UYUNI_VIDEO_MASTER_120S")
     master.frame_start=1; master.frame_end=data["frame_end"]
     master.render.fps=data["fps"]; master.render.resolution_x,master.render.resolution_y=data["resolution"]

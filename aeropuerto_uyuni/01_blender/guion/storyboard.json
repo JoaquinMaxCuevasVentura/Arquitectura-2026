@@ -2,14 +2,14 @@
   "project": "Aeropuerto de Uyuni",
   "version": "storyboard-01",
   "date": "2026-10-04",
-  "status": "DRAFT_FOR_REVIEW",
+  "status": "PRODUCTION_FLOW_BASES",
   "duration_seconds": 120,
   "fps": 24,
   "frame_start": 1,
   "frame_end": 2880,
   "resolution": [
-    3840,
-    2160
+    1920,
+    1080
   ],
   "preview_resolution": [
     1280,
@@ -172,7 +172,7 @@
       ],
       "lighting_state": "MANANA_NNE",
       "ease": "smootherstep",
-      "action": "Aproximación oblicua al Lado Tierra. Mantener el edificio completo antes de bajar. Una 4x4 avanza hacia la zona de descenso, sin ocultar el ingreso.",
+      "action": "Aproximación oblicua al Lado Tierra. Mantener el edificio completo antes de bajar. Sin acción de vehículos.",
       "transition": "Corte por dirección de movimiento al plano 03.",
       "voiceover": "La propuesta ordena la llegada y concentra la inversión en la envolvente.",
       "scene_space": "AIRPORT_LOCAL",
@@ -216,7 +216,7 @@
       ],
       "lighting_state": "MANANA_NNE",
       "ease": "smootherstep",
-      "action": "Dolly oblicuo de fachada. Una pareja con equipaje camina hacia el acceso principal, fuera del eje óptico del rótulo. Mostrar mamparas y continuidad del alero.",
+      "action": "Dolly oblicuo de fachada. Mostrar mamparas y continuidad del alero, sin acción de personas.",
       "transition": "Corte a detalle de materia.",
       "voiceover": "El alero protege el acceso. Las mamparas y el fondo continuo hacen legible la fachada.",
       "scene_space": "AIRPORT_LOCAL",
@@ -452,7 +452,7 @@
       "end_frame": 2736,
       "reference_image": "letrero-corten-a.jpg",
       "reference_style": "crop-sign",
-      "visual_summary": "Acercamiento frontal al rótulo.",
+      "visual_summary": "Acercamiento frontal al rótulo en hora azul, neón atenuado y luz interior cálida.",
       "lens_mm": 50,
       "sensor_width_mm": 36,
       "fstop": 5.6,
@@ -478,9 +478,9 @@
         -1.85,
         8.1
       ],
-      "lighting_state": "MANANA_NNE",
+      "lighting_state": "HORA_AZUL",
       "ease": "smootherstep",
-      "action": "Push de 2 m hacia el logotipo existente. Enfocar en el letrero y conservar el nombre completo y su reflejo. Ajustar distancia por encuadre, sin cambiar proporciones del rótulo.",
+      "action": "Push de 2 m hacia el logotipo existente en hora azul. Conservar el nombre completo y su grafismo invertido, con neón 4000 K de fuerza 2.5 e interior cálido 3500 K ya validados. Ajustar distancia por encuadre, sin cambiar proporciones del rótulo.",
       "transition": "Match cut del horizonte a las capas del cierre gráfico.",
       "voiceover": "Aeropuerto de Uyuni.",
       "scene_space": "AIRPORT_LOCAL",
@@ -521,6 +521,9 @@
     "The first-purlin snow retainer location must come from structural review, not the camera plan.",
     "Use licensed commercial footage/assets; keep all credits.",
     "Salar photo is a context reference by Diego Delso under CC BY-SA 4.0, not a drone frame.",
-    "Dissolves overlap shots within the 120-second edit; source handles are additional to programme time."
-  ]
+    "Dissolves overlap shots within the 120-second edit; source handles are additional to programme time.",
+    "Decisión del cliente, 5 de octubre: todas las tomas P1/P2 en 1080p, 24 fps, sin acciones de personas ni vehículos; bases para mejorar el realismo en Google Flow."
+  ],
+  "actor_animation": "NONE",
+  "production_samples": 128
 }

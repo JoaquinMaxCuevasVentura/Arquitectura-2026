@@ -87,6 +87,49 @@ y la puerta lateral. El cambio se realiza en `fachada_aire()` del constructor.
 
 ## Cámaras, montaje y compositor
 
+**Revisión puntual del 4 de octubre, antes de renders:** se conservan dos
+opciones de celosías del lateral del eje 1, por indicación del cliente:
+
+- **A, lateral recto:** `01_blender/uyuni_v2.blend`. Conserva la fila anterior,
+  incluido su módulo terminal en rampa, con la esquina ya corregida.
+- **B, lateral en zigzag:** `01_blender/uyuni_v2_lateral_zigzag.blend`. Usa cuatro
+  módulos en zigzag PT2B/PT2A de 5 x 6 m y conserva el quiebre del último módulo:
+  su primer metro sube de 5 a 6 m y desde ese pico baja en diagonal durante 4 m
+  hasta 2 m, según la última captura del cliente. El remate PT2BR refleja el
+  módulo PT2R del CAD, conserva sus calados y enlaza a 5 m con el panel contiguo.
+  La base se alinea a 0,20 m y la fila se
+  desplaza 32 mm para que el perfil superior coincida con el frente en la esquina.
+
+En las dos opciones las chapas se recortan hasta el encuentro con una junta de
+3 mm y un único poste interior de 40 x 40 mm. Los nuevos cantos de 1 mm quedan
+cerrados; en B la altura del poste acompaña el perfil en zigzag. La corrección
+está en `celosias()`. Cada archivo conserva las dos propuestas de color y las
+23 cámaras con sus ajustes y animaciones. La comprobación de B conserva además
+las otras 430 mallas y verifica que los cinco paneles estén cerrados y compartidos
+por las dos escenas de propuesta.
+
+Para regenerar cada opción desde la carpeta `aeropuerto_uyuni`:
+
+```powershell
+$env:UYUNI_CELOSIA_LATERAL='recta'
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 -P 01_blender/herramientas/construir_blend.py -- 01_blender/uyuni_modelo.py 01_blender/uyuni_v2.blend
+$env:UYUNI_CELOSIA_LATERAL='zigzag'
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 -P 01_blender/herramientas/construir_blend.py -- 01_blender/uyuni_modelo.py 01_blender/uyuni_v2_lateral_zigzag.blend
+Remove-Item Env:UYUNI_CELOSIA_LATERAL
+```
+
+Sin esa variable el constructor usa A. Estos comandos construyen los archivos;
+no inician renders.
+
+El inventario contiene **12 vistas fijas**: 01, 02, 02B, 03 (hora azul), 04,
+05, 06, 07, 07B (captura del cliente), 08, 09 y 10. Hay además diez cámaras del
+storyboard y una del recorrido original. La 07B se incorpora a la cola de vistas
+fijas, que antes la omitía. El cliente elige la opción B con lateral en zigzag
+y autoriza iniciar las imágenes fijas: **24 vistas, 12 en cada paleta**.
+CAM_01 P1 y P2 se completan a 7680 x 4320. Después el cliente solicita bajar
+las **22 pendientes a 3840 x 2160** para reducir el tiempo. Los dos originales
+8K se conservan y se excluyen de la nueva cola. El video conserva la pausa anterior.
+
 El guion entregado se conserva en `01_blender/guion/`. La escena
 `UYUNI_VIDEO_MASTER_120S` monta diez escenas por cortes: 1–2880, 24 fps, 120 s.
 Cada plano tiene cámara propia, sensor de 36 mm y lente constante; posiciones,
@@ -105,7 +148,7 @@ La escena nublada es otro estado meteorológico, compatible con las dos paletas.
 
 ## Render
 
-Imágenes: 4K PNG de 16 bits, OIDN Accurate/High, 1024 muestras y ruido .008
+Imágenes pendientes: 4K PNG de 16 bits con copia JPEG, OIDN Accurate/High, 1024 muestras y ruido .008
 de día / .005 de noche. Dron: 512 muestras, ruido .01, semilla animada,
 rebotes 12/6/6/12, transparencia 16, motion blur .5. El render de animación
 aplica el perfil de shaders DRON sin nodos AO/Bevel para evitar el coste del perfil
@@ -121,11 +164,76 @@ blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_
 # Revisar montaje y rangos sin renderizar.
 blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_storyboard.py -- --out 01_blender/renders_video --check
 
-# Imágenes fijas. P2 se incluye como CAM_07_P2.
-blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
+# Validar las 24 vistas sin renderizar. Conserva la geometría de B, cámaras y luces.
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode plan-stills --profile final --proposal both --resolution 4k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
+
+# Imágenes fijas en ambas paletas, incluida la hora azul de P2.
+blender --factory-startup -b --disable-autoexec --python-exit-code 1 01_blender/uyuni_v2_lateral_zigzag.blend -P 01_blender/herramientas/render_plan.py -- --mode stills --profile final --proposal both --resolution 4k --out 01_blender/renders_finales --compositor optics --transparent-bounces 16
 ```
 
+`--only CAM_01_P1` selecciona una vista. Sin `--proposal` se conserva la cola
+anterior de 13 trabajos; sin `--resolution 8k` se conserva la salida a 4K.
+La hora azul P2 usa una copia temporal de la escena de hora azul, con las mismas
+luces y cámara, y las propiedades de color de P2. Las escenas no se guardan
+sobre los archivos de diseño.
+
+El lote local se ejecuta con `herramientas/render_lote.py configuracion.json`:
+un proceso de Blender por imagen, plan validado, registro de progreso, comprobación
+de dimensiones según el plan y PNG de 16 bits, y reanudación por el manifiesto. Cada proceso
+activa ESTUDIO: microbisel, rugosidad variable, vidrio y máscaras de aristas,
+cavidades y polvo. Se conservan sol 2,7, cielo 0,108, posición de luces,
+encuadres y shift de cámaras. Los archivos `materiales.json` y `plan.json`
+registran los ajustes utilizados. Los originales locales van a
+`D:/Codex_Renders/Uyuni_2026-10-04_4K/`, por el espacio disponible en C:.
+Los dos renders terminados en 8K permanecen en la carpeta anterior `_8K`.
+La nueva cola registra esos dos como previos y procesa únicamente las 22 pendientes.
+Un archivo `PAUSAR_DESPUES_ACTUAL.txt` en la carpeta de control pausa la cola
+tras acabar la imagen actual. La versión pública de B conserva el contexto
+limpio `CONTEXTO_IA` definido por Claude.
+
 ## Verificación y pendientes de aprobación
+
+El video se retoma el 5 de octubre, por tomas independientes. Se mantienen diez
+tomas, 120 s y 24 fps para P1/P2. El cliente cambia todas las tomas a 1080p
+el 5 de octubre para producir bases destinadas a Google Flow. La toma 09, Ingreso UYUNI,
+pasa a hora azul por indicación del cliente: hereda el cielo, exposición, neón
+atenuado e interior cálido ya validados, conserva la cámara y los 192 cuadros.
+`storyboard.actualizar_hora_azul` permite actualizar un montaje existente y se
+comprueba dos veces sin cambiar mallas, cámaras, acciones ni energía de luces.
+
+`render_storyboard.py` separa las salidas en `P1/toma_01` ... `P2/toma_10`,
+con manifiesto y PNG16 por fotograma. `--shot 2,3` selecciona tomas;
+`--keyframes --draft --width 1280 --samples 32` produce inicio/mitad/final.
+`--start N --end M` limita la prueba temporal; `--encode` produce el MP4 de cada
+toma con gestión de color consistente. La reanudación verifica la fuente y
+los scripts; el MP4 también verifica el manifiesto de entrada. `--pause-file`
+pausa antes del siguiente fotograma. `--check` exporta `plan.json` sin render.
+Las revisiones locales quedan en `outputs/Video_Tomas`, fuera del repositorio.
+El master de dos minutos todavía no se ha producido. Las pruebas 4K de 128 muestras
+midieron 55–74 segundos por cuadro, antes de la decisión de producir en 1080p.
+`render_video_lote.py` organiza las veinte tomas en bloques de hasta 144 cuadros,
+con fuente y scripts congelados, manifiestos, H.264 y reanudación. `video_encode.py`
+codifica cada bloque y `video_media.py` verifica resolución, duración y FPS;
+el lote compara tres fotogramas decodificados con los PNG de origen. Solo después
+de verificar y guardar el MP4 se liberan los PNG temporales del bloque.
+El perfil conserva umbral de ruido .01, OIDN, motion blur .5 y rebotes; utiliza
+128 muestras y datos persistentes. No se reducen las intensidades de luz.
+Las tomas 01 y 10 son comunes a las dos paletas y se reutilizan verificadas.
+
+El cliente elige mantener 128 muestras y activar OpenImageDenoise en GPU.
+`render_storyboard.py --denoise-gpu` conserva calidad High, prefilter Accurate,
+pasos de albedo/normal, compositor CPU, umbral .01 y los demás parámetros. El
+plan, estado y manifiesto registran el dispositivo de reducción de ruido.
+El lote lee `denoise_gpu: true` en su configuración. Las pruebas con la escena
+ya cargada, mientras seguía la cola, midieron 23,7 → 15,0 s en la toma 03 y
+29,6 → 20,9 s en la 09; diferencia RGB media de 0,044 y 0,029 sobre 255.
+Son tiempos bajo carga compartida y no una garantía para todas las tomas.
+Una interrupción de CUDA después del cuadro 278 se recuperó sin repetir los
+cuadros guardados. Se cerró y verificó Salar P1/P2 antes de cambiar el código
+congelado de la cola. La transición guarda configuración, estado e identificadores
+previos y verifica los SHA de las entregas. La fuente .blend permanece idéntica.
+`gpu_retries: 2` permite dos reinicios del proceso de render ante errores GPU,
+conservando el manifiesto y sin intervenir en el Blender abierto por el usuario.
 
 `validar_continuacion.py` reabre el archivo y compara las 240 mallas base.
 Los cambios autorizados son la dispersión del paisaje, la colocación de los
@@ -141,13 +249,31 @@ no sustituye una comprobación completa de colisiones con aeronaves, mobiliario
 o terreno en producción.
 
 Quedan para revisión: las cotas del frente (fotogrametría, ±0,5 m), los acabados comparativos de
-vidrio, la iluminación del letrero nocturno, el registro de estructura interior
+vidrio, el registro de estructura interior
 IFC y el reemplazo del minibús genérico. El Land Cruiser está incorporado en la
 versión local. Se conserva el vidrio
 aprobado `#6E808E`; la alternativa `#A9BCCB` solo aparece en renders comparativos.
-Halo y bañadores nocturnos se ensayan sin guardarlos sobre la escena de trabajo.
-Las personas y vehículos son contexto estático: falta animar sus acciones del
-guion. No se incorpora música ni locución sin archivos autorizados. Los renders
+La corrección nocturna solicitada después del lote queda guardada en las dos
+opciones de paneles, según la referencia posterior del cliente: difusores tipo
+neón sobre UYUNI, el grafismo invertido, los montículos y la línea horizontal.
+Los cinco objetos luminosos copian las caras frontales CAD, incluidos sus calados;
+se separan 8 mm del metal y tienen 4 mm de espesor. La base metálica conserva
+corten (P1) y casi negro (P2), y permanece visible sin difusores en las escenas
+diurnas. Neón a 4000 K, fuerza de emisión 2,5: aproximadamente una quinta parte
+de la primera prueba, reducida por indicación del cliente. El interior conserva
+las 30 luces existentes a 3500 K y suma 15 áreas de 600 W dirigidas hacia el fondo
+existente. Una capa mate sobre ese fondo y cielo evita los planos emisivos blancos
+detrás del vidrio; no añade recintos ni mobiliario. El tinte aprobado permanece.
+Exposición, cámaras, materiales originales, animación y las otras 53 luces
+permanecen iguales. Los bañadores de la primera prueba se sustituyen por esta
+solución luminosa; esa prueba se conserva localmente para comparar.
+`continuacion/letrero_nocturno.py` lo reproduce al regenerar. Para un archivo
+existente, `herramientas/aplicar_iluminacion_letrero.py` guarda una copia y verifica
+las 459 mallas/cámaras, la idempotencia y los ajustes de escenas.
+La hora azul P2 queda guardada y su compositor lee la escena correcta.
+Las personas y vehículos permanecen estáticos por pedido del cliente del 5 de
+octubre: sus acciones ya no son un pendiente de esta producción para Flow.
+No se incorpora música ni locución sin archivos autorizados. Los renders
 de revisión no constituyen el master final del video de dos minutos.
 
 La revisión de cámaras incluye 30 imágenes (inicio, mitad y final de cada plano).

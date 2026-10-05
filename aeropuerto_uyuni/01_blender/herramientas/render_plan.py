@@ -9,6 +9,9 @@ Run in Blender 5.2, after saving the integrated model to a new .blend:
 
 Defaults: CAM01..07, CAM02B, plus CAM07 P2; A sign only. Extra approved cameras:
   --extra-camera UYUNI_DIA:CAM_08_LADO_AIRE
+All twelve fixed views in both palettes at 8K:
+  --mode stills --profile final --proposal both --resolution 8k
+Use --mode plan-stills with the same options to validate the full queue without rendering.
 Outputs are separated by profile/revision and have a resumable manifest. Change --revision
 after any material/light/geometry edit, particularly when running in an unsaved UI session.
 
@@ -58,12 +61,34 @@ STILLS = [
     ("CAM_06", "UYUNI_DIA", "CAM_06_DETALLE_CELOSIA"),
     ("CAM_07_P1", "UYUNI_DIA", "CAM_07_PROPUESTAS"),
     ("CAM_07_P2", "UYUNI_DIA_P2_SALAR_LITIO", "CAM_07_PROPUESTAS"),
+    ("CAM_07B", "UYUNI_DIA", "CAM_07B_CAPTURA_CLIENTE"),
     ("CAM_08", "UYUNI_DIA", "CAM_08_LADO_AIRE"),
     ("CAM_09", "UYUNI_DIA", "CAM_09_MANGA_737"),
     ("CAM_10", "UYUNI_DIA", "CAM_10_PISTA_HORIZONTE"),
 ]
 SEED = 20261004
 OPTICS_VERSION = 1
+
+
+def still_jobs(proposal=None, extras=()):
+    """Keep the legacy queue by default; explicit palettes cover every distinct fixed view."""
+    jobs = list(STILLS) + [(camera, scene, camera) for scene, camera in
+                          (extra.split(":", 1) for extra in extras)]
+    if proposal is None:
+        return jobs
+    palettes = ("P1", "P2") if proposal == "both" else (proposal,)
+    result, seen = [], set()
+    for job_id, scene, camera in jobs:
+        if camera in seen:
+            continue
+        seen.add(camera)
+        label = re.sub(r"_P[12]$", "", job_id)
+        for palette in palettes:
+            destination = scene
+            if palette == "P2":
+                destination = "UYUNI_CREPUSCULO_P2_SALAR_LITIO" if "CREPUSCULO" in scene else "UYUNI_DIA_P2_SALAR_LITIO"
+            result.append((label + "_" + palette, destination, camera))
+    return result
 
 
 def bpy_module():
@@ -495,7 +520,8 @@ def prepare_scene(scene, camera, cfg_name, args, device, *, animated=False, deno
         scene["propuesta"], scene["letras_corten"], scene["letras_gris"] = 0, 1, 0
     cfg = apply_profile(scene, cfg_name, device=device, denoise=denoise, animated=animated,
                         transparent_bounces=args.transparent_bounces, motion_blur=animated)
-    scene.render.resolution_x, scene.render.resolution_y = (1920, 1080) if animated else (3840, 2160)
+    still_size = (7680, 4320) if getattr(args, "resolution", "4k") == "8k" else (3840, 2160)
+    scene.render.resolution_x, scene.render.resolution_y = (1920, 1080) if animated else still_size
     scene.render.resolution_percentage = cfg["percent"]
     if args.exposure is not None:
         scene.view_settings.exposure = args.exposure
@@ -511,14 +537,15 @@ def prepare_scene(scene, camera, cfg_name, args, device, *, animated=False, deno
     return cfg
 
 
-def render_stills(args, device, device_info):
+def render_stills(args, device, device_info, *, check_only=False):
     bpy = bpy_module()
     from continuacion import materiales
-    materiales.aplicar({"profile":"ESTUDIO" if args.profile=="final" else "DRON"})
-    jobs = list(STILLS)
-    for extra in args.extra_camera:
-        name, camera = extra.split(":", 1)
-        jobs.append((camera, name, camera))
+    material_report = materiales.aplicar({"profile":"ESTUDIO" if args.profile=="final" else "DRON"})
+    proposal = getattr(args, "proposal", None)
+    if proposal in ("P2", "both") and "UYUNI_CREPUSCULO_P2_SALAR_LITIO" not in bpy.data.scenes:
+        night = bpy.data.scenes["UYUNI_CREPUSCULO"].copy()
+        night.name = "UYUNI_CREPUSCULO_P2_SALAR_LITIO"
+    jobs = still_jobs(proposal, args.extra_camera)
     if args.only:
         selected = set(args.only.split(","))
         missing = selected - {j[0] for j in jobs}
@@ -529,19 +556,29 @@ def render_stills(args, device, device_info):
     for _, scene, camera in jobs:
         if scene not in bpy.data.scenes or camera not in bpy.data.objects:
             raise RuntimeError(f"Missing job input: {scene}/{camera}")
+        if camera not in bpy.data.scenes[scene].objects:
+            raise RuntimeError(f"Camera {camera} is not linked to {scene}")
     directory = Path(args.out) / args.revision / args.profile / "stills"
+    atomic_json(directory / "materiales.json", material_report)
     path = directory / "manifest.json"
     manifest = read_manifest(path)
+    planned = []
     for job_id, scene_name, camera_name in jobs:
         scene, camera = bpy.data.scenes[scene_name], bpy.data.objects[camera_name]
         profile = "draft" if args.profile == "draft" else ("final_night" if "CREPUSCULO" in scene_name else "final_day")
         cfg = prepare_scene(scene, camera, profile, args, device)
+        if proposal is not None:
+            palette = int(job_id.endswith("_P2"))
+            scene["propuesta"], scene["letras_corten"], scene["letras_gris"] = palette, 1 - palette, palette
         if "CREPUSCULO" in scene_name:
             scene.cycles.sample_clamp_indirect = 10.0
             cfg["clamp"] = 10.0
         frame = scene.frame_current
         spec = job_spec(scene, camera, cfg, args, job_id, frame)
         spec["hardware"] = device_info
+        planned.append(dict(job_id=job_id, output=str(directory / (job_id + ".png")), spec=spec))
+        if check_only:
+            continue
         measured_render(scene, directory / job_id, spec, manifest, path,
                         exr=args.exr, resume=not args.force)
         if args.diagnostics:
@@ -558,7 +595,9 @@ def render_stills(args, device, device_info):
                 enum_set(scene.view_settings, "view_transform", old_transform)
                 scene.compositing_node_group = old_group
                 scene.render.resolution_x, scene.render.resolution_y, scene.render.resolution_percentage = old_resolution
-    return dict(manifest=str(path), jobs=len(jobs))
+    if check_only:
+        atomic_json(directory / "plan.json", dict(jobs=planned, count=len(planned), render_performed=False))
+    return dict(manifest=str(path), jobs=len(jobs), render_performed=not check_only)
 
 
 def render_drone(args, device, device_info, test=False):
@@ -597,20 +636,33 @@ def render_drone(args, device, device_info, test=False):
     return outputs
 
 
-def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False):
+def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False, *,
+                    prefix="CAM_DRON_", video_name=None, input_fingerprint=None):
     """PNG→H.264. External ffmpeg preferred; Blender VSE is a local dependency-free fallback."""
     directory = Path(directory).resolve()
-    images = [directory / f"CAM_DRON_{f:04d}.png" for f in range(start, end + 1)]
+    if not re.fullmatch(r"[A-Za-z0-9_]+", prefix):
+        raise ValueError("Invalid image sequence prefix")
+    images = [directory / f"{prefix}{f:04d}.png" for f in range(start, end + 1)]
     missing = [str(p) for p in images if not p.is_file() or not p.stat().st_size]
     if missing:
         raise RuntimeError(f"Incomplete sequence: {missing[:5]}")
-    destination = directory / f"dron_uyuni_{start:04d}_{end:04d}.mp4"
+    name = video_name or f"dron_uyuni_{start:04d}_{end:04d}.mp4"
+    if Path(name).name != name or not name.endswith(".mp4"):
+        raise ValueError("video_name must be an MP4 filename")
+    destination = directory / name
     if destination.exists() and not overwrite:
+        metadata = destination.with_suffix(".json")
+        if input_fingerprint and metadata.is_file():
+            previous = json.loads(metadata.read_text(encoding="utf-8"))
+            if (previous.get("input_fingerprint") == input_fingerprint and
+                    previous.get("start") == start and previous.get("end") == end and
+                    destination.stat().st_size):
+                return str(destination)
         raise RuntimeError(f"Video already exists; use --force to replace: {destination}")
     executable = ffmpeg or shutil.which("ffmpeg")
     if executable:
         command = [str(executable), "-y" if overwrite else "-n", "-framerate", "24", "-start_number", str(start),
-                   "-i", str(directory / "CAM_DRON_%04d.png"), "-frames:v", str(len(images)),
+                   "-i", str(directory / f"{prefix}%04d.png"), "-frames:v", str(len(images)),
                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", "-movflags", "+faststart", str(destination)]
         subprocess.run(command, check=True, shell=False,
                        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0) if os.name == "nt" else 0)
@@ -660,14 +712,16 @@ def encode_sequence(directory, start, end, ffmpeg=None, overwrite=False):
         raise RuntimeError(f"Encoder did not produce {destination}")
     atomic_json(destination.with_suffix(".json"), dict(source=str(directory), frames=len(images),
                  start=start, end=end, fps=24, duration_seconds=len(images)/24, method=method,
-                 output=str(destination)))
+                 output=str(destination), input_fingerprint=input_fingerprint))
     return str(destination)
 
 
 def parser():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--mode", choices=["preflight", "configure", "stills", "drone-test", "drone", "encode"], default="preflight")
+    p.add_argument("--mode", choices=["preflight", "configure", "plan-stills", "stills", "drone-test", "drone", "encode"], default="preflight")
     p.add_argument("--profile", choices=["draft", "final"], default="final")
+    p.add_argument("--proposal", choices=["P1", "P2", "both"], help="Render every fixed view in the selected palettes")
+    p.add_argument("--resolution", choices=["4k", "8k"], default="4k", help="Fixed views: 3840x2160 or 7680x4320")
     p.add_argument("--out", required=True)
     p.add_argument("--revision", default="codex_acf7f58")
     p.add_argument("--compositor", choices=["keep", "off", "optics"], default="keep")
@@ -706,8 +760,8 @@ def main(argv=None):
             print(json.dumps(report, ensure_ascii=False))
             return
         device, hardware = select_device(args.allow_cpu, args.backend)
-        if args.mode == "stills":
-            result = render_stills(args, device, hardware)
+        if args.mode in ("stills", "plan-stills"):
+            result = render_stills(args, device, hardware, check_only=args.mode == "plan-stills")
         elif args.mode in ("drone-test", "drone"):
             result = render_drone(args, device, hardware, test=args.mode == "drone-test")
         else:
