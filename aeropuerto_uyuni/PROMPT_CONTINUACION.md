@@ -9,6 +9,15 @@ pequeñas y puertas deben quedar enrasados con las pilastras (Y 44,572); solo
 los grandes ventanales conservan sus nichos. La entrada pequeña es frontal,
 sin el nicho lateral anterior. Conservar estas decisiones al regenerar.
 
+**Letrero nocturno:** tras completar las 24 imágenes (dos en 8K y 22 en 4K), se
+corrige la hora azul de ambas paletas según la referencia posterior del cliente:
+trazos luminosos tipo neón blanco cálido en UYUNI, su grafismo invertido, los
+montículos y la línea horizontal; también se ve el interior cálido encendido.
+`continuacion/letrero_nocturno.py`, integrado en `pipeline.py`, añade difusores
+frente a las caras CAD existentes y conserva la base metálica. En las escenas
+diurnas P1 mantiene corten y P2 letras casi negras. La escena nocturna P2 usa su
+propio compositor con la misma cámara y exposición. Los renders previos se conservan.
+
 Copia el bloque de abajo y pégalo como primer mensaje.
 
 **Adjunta:**

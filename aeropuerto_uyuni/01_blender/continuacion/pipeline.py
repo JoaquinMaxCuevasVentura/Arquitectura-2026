@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 import bpy
-from . import materiales, camaras, contexto, storyboard
+from . import materiales, camaras, contexto, storyboard, letrero_nocturno
 from herramientas import render_plan
 
 # True: el contexto (vegetación, vehículos y personas genéricos) se agrega con IA sobre los renders; en el render solo
@@ -40,6 +40,8 @@ def aplicar(fuente):
     report["exteriores"] = "Frente según las capturas del cliente: uyuni_modelo.frente_lado_tierra"
     report["materiales"] = materiales.aplicar()
     report["camaras_luz"] = camaras.aplicar({"camera_night_height": 1.5})
+    report["letrero_nocturno"] = letrero_nocturno.aplicar()
+    original = list(bpy.data.scenes)  # incluye la hora azul P2 con su misma cámara
     report["suelo"] = contexto.suelo_pbr()
     report["matas_secas"] = contexto.vegetacion(original)
     report["assets"] = contexto.vehiculos_personas(original)
@@ -56,7 +58,6 @@ def aplicar(fuente):
     report["perfil_shaders_guardado"]="DRON; ESTUDIO disponible para renders fijos"
     report["decisiones_pendientes"] = [
         "Vidrio alternativo #A9BCCB: conservar #6E808E hasta aprobación comparativa",
-        "Letrero nocturno: comparar halo/bañadores antes de cambiar el esquema",
         "Cubierta P2: se conserva el acabado actual",
         "IFC interior: requiere registro y selección validados antes de integrar",
     ]

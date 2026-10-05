@@ -40,7 +40,7 @@ Esta guía permite que otra persona o IA continúe el proyecto sin repetir la au
 | 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 14 módulos (3 más en la OESTE desde el 4 de octubre) y letrero "línea de horizonte". |
 | Materiales | PBR | ✅ Procedurales, sin texturas de imagen. |
 | 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan dos cosas: 1) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 2) la variante de cielo nublado. Ya está, desde el 4 de octubre: <br>• **Lado Tierra** según la A111: vereda de ≈ 8,8 m con dos dársenas y zanja; frente según el modelo del cliente (5 de octubre): calzada, jardineras A y B con anillos blancos, separador amarillo, plaza de estacionamiento con hexágonos y espiga, andenes y cebra; calles de los testeros y acceso (los bolardos se quitaron el 3 de octubre). <br>• **Lado Aire:** veredas y cordón de la A111, camino de servicio, plataforma con marcas, dos mangas y dos 737-800 con la librea de BoA. <br>• **Contexto:** pista 13/31 con marcas OACI (su distancia a la terminal es supuesta), calle de rodaje, manga de viento, terreno de 45 km con cerros y el Salar, y paja brava. |
-| 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05, CAM_06, CAM_07, CAM_08 y CAM_09 del Lado Aire y CAM_10 de la pista). Las dos propuestas de CAM_07 y los primeros planos del letrero ya se renderizaron en la nube (CPU), antes de los cambios de fachada del 4 de octubre. **Faltan los renders finales de CAM_01 a CAM_10 con GPU.** |
+| 5 | Cámaras y renders fijos | ✅ Lote de 24 imágenes terminado con GPU: 12 encuadres por paleta, incluidos CAM_02B y CAM_07B. Dos CAM_01 en 8K y las 22 restantes en 4K. La hora azul se actualiza con neón atenuado e interior cálido; el video continúa en pausa. |
 | 6 | Dron de 20–30 s, 24 fps, 1080p, MP4 H.264 | ⚠️ La trayectoria está lista (`CAM_DRON`, 600 cuadros = 25 s). Faltan la configuración de salida y el render. |
 | 7 | Ficha de costos para el Ministro, láminas PDF, MP4 y facturación | ❌ Pendiente (sección 8.6). |
 
@@ -287,11 +287,17 @@ Están ordenados de mayor a menor impacto en los renders.
 | 10 | **Interiores** | Una caja emisiva cálida en cada lado, según el brief: "interiores básicos". | — | `envolvente_general()`, `fachada_aire()` |
 | 11 | **Primera correa de la cubierta** | ✅ Resuelto con el detalle del cliente: el retenedor va a 1,398 m del borde, medido sobre la pendiente. | — | `RETENEDOR` |
 
+**Letrero de noche corregido después del lote del 4 de octubre:** ambas paletas
+conservan la base metálica, corten en P1 y casi negra en P2. Según la referencia
+posterior del cliente se añaden frentes luminosos tipo neón en los trazos CAD:
+UYUNI, su grafismo invertido, montículos y línea horizontal. También se enciende
+el interior existente detrás del vidrio. Los difusores se enlazan solo a las
+escenas de hora azul; la paleta diurna permanece. La fuente reproducible es
+`01_blender/continuacion/letrero_nocturno.py`, integrada en `pipeline.py`.
+La escena `UYUNI_CREPUSCULO_P2_SALAR_LITIO` queda guardada con la misma cámara,
+exposición y luces de P1, y su compositor lee su propia escena.
+
 **Abiertos desde el 4 de octubre (preguntar al cliente):**
-- **El letrero de noche:**
-  - hoy la escena `UYUNI_CREPUSCULO` usa letras blancas que emiten;
-  - las dos opciones elegidas son corten (P1) y casi negro (P2), que no emiten;
-  - hay que definir cómo se ilumina el letrero de noche: retroiluminado con halo sobre el parapeto, o con bañadores.
 - **La estructura detrás del vidrio:** para que se vea, hay que modelar las columnas y vigas interiores cercanas a la fachada (del IFC). Confirmar cuáles quiere ver el arquitecto. Además (`02_postproduccion/MUESTREO_Y_RENDIMIENTO.md`, sección 3):
   - en Cycles, el sol no atraviesa el vidrio: para que la estructura reciba luz de afuera, el vidrio tiene que ser transparente para los rayos de sombra (la receta está en esa sección);
   - el vidrio elegido deja pasar 2,9 % de la luz, mucho menos que un DVH de control solar habitual (de 20 a 50 %; los más oscuros, de 10 a 20 %). Con eso la estructura no se ve de día. Proponer al cliente el tinte `#A9BCCB` con la misma capa, que deja pasar 15 % (medido) y de día se sigue viendo oscuro, y mostrarle la prueba antes de cambiarlo.

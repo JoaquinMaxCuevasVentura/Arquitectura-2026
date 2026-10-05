@@ -207,11 +207,28 @@ no sustituye una comprobación completa de colisiones con aeronaves, mobiliario
 o terreno en producción.
 
 Quedan para revisión: las cotas del frente (fotogrametría, ±0,5 m), los acabados comparativos de
-vidrio, la iluminación del letrero nocturno, el registro de estructura interior
+vidrio, el registro de estructura interior
 IFC y el reemplazo del minibús genérico. El Land Cruiser está incorporado en la
 versión local. Se conserva el vidrio
 aprobado `#6E808E`; la alternativa `#A9BCCB` solo aparece en renders comparativos.
-Halo y bañadores nocturnos se ensayan sin guardarlos sobre la escena de trabajo.
+La corrección nocturna solicitada después del lote queda guardada en las dos
+opciones de paneles, según la referencia posterior del cliente: difusores tipo
+neón sobre UYUNI, el grafismo invertido, los montículos y la línea horizontal.
+Los cinco objetos luminosos copian las caras frontales CAD, incluidos sus calados;
+se separan 8 mm del metal y tienen 4 mm de espesor. La base metálica conserva
+corten (P1) y casi negro (P2), y permanece visible sin difusores en las escenas
+diurnas. Neón a 4000 K, fuerza de emisión 2,5: aproximadamente una quinta parte
+de la primera prueba, reducida por indicación del cliente. El interior conserva
+las 30 luces existentes a 3500 K y suma 15 áreas de 600 W dirigidas hacia el fondo
+existente. Una capa mate sobre ese fondo y cielo evita los planos emisivos blancos
+detrás del vidrio; no añade recintos ni mobiliario. El tinte aprobado permanece.
+Exposición, cámaras, materiales originales, animación y las otras 53 luces
+permanecen iguales. Los bañadores de la primera prueba se sustituyen por esta
+solución luminosa; esa prueba se conserva localmente para comparar.
+`continuacion/letrero_nocturno.py` lo reproduce al regenerar. Para un archivo
+existente, `herramientas/aplicar_iluminacion_letrero.py` guarda una copia y verifica
+las 459 mallas/cámaras, la idempotencia y los ajustes de escenas.
+La hora azul P2 queda guardada y su compositor lee la escena correcta.
 Las personas y vehículos son contexto estático: falta animar sus acciones del
 guion. No se incorpora música ni locución sin archivos autorizados. Los renders
 de revisión no constituyen el master final del video de dos minutos.
