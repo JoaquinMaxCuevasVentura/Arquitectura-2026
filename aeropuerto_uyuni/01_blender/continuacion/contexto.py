@@ -357,6 +357,28 @@ def vehiculos_personas(escenas):
     return report
 
 
+def limpiar_para_ia():
+    """Deja en el render solo lo que la IA no debe inventar: arquitectura, sitio y assets locales de alta calidad.
+
+    Oculta en el render (sin borrarlos) la dispersión de matas del terreno y los vehículos provisionales (GLB públicos
+    que no son el modelo real); los assets locales (Land Cruiser, Sprinter, Renderpeople) quedan visibles.
+    """
+    ocultos = []
+    puntos = bpy.data.objects.get("UY_PAJA_BRAVA_DISPERSION")
+    if puntos and not puntos.hide_render:
+        puntos.hide_render = True
+        ocultos.append(puntos.name)
+    col = bpy.data.collections.get("11_VEHICULOS_PERSONAS")
+    for ob in (col.all_objects if col else []):
+        malla = ob.data.name if ob.type == "MESH" else ""
+        provisional = malla.startswith(("UY_ASSET_SUV_", "UY_ASSET_TRANSFER_")) and "_LOCAL" not in malla
+        if provisional and not ob.hide_render:
+            ob.hide_render = True
+            ocultos.append(ob.name)
+    return {"ocultos_en_render": len(ocultos), "matas": "UY_PAJA_BRAVA_DISPERSION" in ocultos,
+            "vehiculos_provisionales": sum(o != "UY_PAJA_BRAVA_DISPERSION" for o in ocultos)}
+
+
 def cielo_nublado():
     """Una sola escena meteorológica adicional, con P1/P2 como propiedades."""
     existing = bpy.data.scenes.get("UYUNI_DIA_NUBLADO")

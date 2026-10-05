@@ -1,10 +1,19 @@
-"""Continúa el modelo aprobado sin editar sus volúmenes ni sus dos paletas."""
+"""Continúa el modelo aprobado sin editar sus volúmenes ni sus dos paletas.
+
+El frente del Lado Tierra (calzada, jardineras y plaza) ya sale de la fuente (uyuni_modelo.frente_lado_tierra, restituido
+de las capturas del cliente): este paso no lo toca.
+"""
 import json
 from pathlib import Path
 
 import bpy
-from . import materiales, camaras, contexto, storyboard, exteriores
+from . import materiales, camaras, contexto, storyboard
 from herramientas import render_plan
+
+# True: el contexto (vegetación, vehículos y personas genéricos) se agrega con IA sobre los renders; en el render solo
+# quedan la arquitectura, el sitio y los assets locales de alta calidad (variable UYUNI_ASSETS_LOCALES=1). Los objetos
+# ocultos siguen en el archivo y se recuperan con hide_render = False (ver CONTINUACION_CODEX.md).
+CONTEXTO_IA = True
 
 
 def configurar(sc, animado=False):
@@ -27,12 +36,13 @@ def aplicar(fuente):
                                "avance_m":.7,"cara_exterior_m":fuente["Y_MURO_RAS_AIRE"],
                                "nichos":"Solo crujías con grandes ME5/ME6",
                                "entrada_pequeña":"Puerta frontal alineada de 1,00 x 2,10 m"}
-    report["exteriores"]=exteriores.aplicar(fuente)
+    report["exteriores"] = "Frente según las capturas del cliente: uyuni_modelo.frente_lado_tierra"
     report["materiales"] = materiales.aplicar()
     report["camaras_luz"] = camaras.aplicar({"camera_night_height": 1.5})
     report["suelo"] = contexto.suelo_pbr()
     report["matas_secas"] = contexto.vegetacion(original)
     report["assets"] = contexto.vehiculos_personas(original)
+    report["contexto_ia"] = contexto.limpiar_para_ia() if CONTEXTO_IA else "desactivado"
     cloudy = contexto.cielo_nublado()
     for sc in original + [cloudy]:
         configurar(sc)
@@ -49,10 +59,11 @@ def aplicar(fuente):
         "Cubierta P2: se conserva el acabado actual",
         "IFC interior: requiere registro y selección validados antes de integrar",
     ]
+    oculto = " (oculto en el render: contexto con IA)" if CONTEXTO_IA else ""
     if not report["assets"]["vehiculos_locales"]:
-        report["decisiones_pendientes"].append("SUV público provisional; el Land Cruiser se incorpora con UYUNI_ASSETS_LOCALES=1")
+        report["decisiones_pendientes"].append("SUV público provisional" + oculto + "; el Land Cruiser se incorpora con UYUNI_ASSETS_LOCALES=1")
     if not report["assets"]["transfer_local"]:
-        report["decisiones_pendientes"].append("Transfer genérico provisional; pendiente un modelo de pasajeros con acceso autorizado")
+        report["decisiones_pendientes"].append("Transfer genérico provisional" + oculto + "; pendiente un modelo de pasajeros con acceso autorizado")
     text = bpy.data.texts.get("CONTINUACION_CODEX.json") or bpy.data.texts.new("CONTINUACION_CODEX.json")
     text.clear(); text.write(json.dumps(report, ensure_ascii=False, indent=2))
     print("[CODEX]", json.dumps({"matas": report["matas_secas"], "assets": report["assets"],

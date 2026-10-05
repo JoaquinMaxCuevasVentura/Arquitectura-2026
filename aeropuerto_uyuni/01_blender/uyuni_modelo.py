@@ -150,17 +150,37 @@ Y_CORDON_TIERRA = -8.413
 DARSENAS_TIERRA = (20.975, 62.96)       # X donde el cordón deja la línea de -8,413 para entrar en cada dársena
 DARSENA = dict(fondo=2.10, recto=7.171, r=1.0)
 X_CORDON_LATERAL = (-3.57, 85.515)      # cordones de las veredas laterales (testeros de los ejes 1 y 20)
-# Calles y estacionamiento del Lado Tierra: contexto que no está en la A111, armado con la vista aérea del modelo del
-# cliente. Calzada de dos carriles frente al edificio con sentido hacia el eje 1 (el edificio queda a la derecha del
-# conductor), cantero central, estacionamiento de cuatro filas a 90° (120 puestos de 2,50 x 5,00, pasillos de 6,00) y
-# un anillo de 7,00 m que lo rodea, sigue por los testeros hasta la plataforma y sale hacia Uyuni (a 3 km hacia -X).
-CALLE_ANCHO = 7.0
-Y_CALZADA_TIERRA = Y_CORDON_TIERRA - CALLE_ANCHO                      # borde exterior de la calzada frontal (-15,413)
-CANTERO = dict(ancho=3.0, cruces=(16.80, 55.63), cruce_ancho=4.0)     # pasos peatonales frente a las dos ME-2
-ESTACIONAMIENTO = dict(x=(4.0, 79.0), puesto=(2.5, 5.0), pasillo=6.0, divisor=2.0, isla_fin=1.5, borde_sur=2.0)
-Y_ANILLO_SUR = (-61.413, -54.413)        # tramo sur del anillo y camino de acceso (hacia Uyuni, por -X)
-X_ACCESO = -3000.0
-R_ESQUINA_ANILLO = 12.0
+# Frente del Lado Tierra (circulaciones y jardineras): no está en la A111. Restituido por fotogrametría de las capturas
+# del modelo del cliente (DALUX, 4 de octubre): cámaras calibradas con aristas del edificio (cubierta, anexo, celosías)
+# y rectas de fuga; las plantas sacadas de capturas distintas coinciden en ±0,5 m y todo queda paralelo a la fachada.
+# De norte a sur: cordón A111 con una línea amarilla a 0,5 m; dos carriles de llegada (línea blanca discontinua en
+# -13,5); jardineras A y B (tierra oscura con cordón de hormigón y anillos elevados blancos); carriles de salida;
+# separador amarillo L1 y la plaza de estacionamiento (hexágonos elevados, espiga en zigzag y andén del bus).
+# La calzada sigue al oeste hacia Uyuni (acceso) y al sur por la calle del eje 20. Las calles de los testeros y la
+# vereda con sus dársenas quedan como estaban.
+CALLE_ANCHO = 7.0                                     # calles de los testeros (ejes 1 y 20) hasta la plataforma: sin cambios
+FRENTE = dict(
+    y_l1=-32.6, ancho_l1=0.6, x_l1=(-27.0, 78.0),     # separador amarillo (cordón bajo pintado) frente a la plaza
+    oeste=dict(x=(-3000.0, -37.0), y_norte=-9.2, y_sur=-23.0),   # acceso hacia Uyuni y ensanche hasta L1
+    via_este=dict(x_sur=(90.0, 98.8), y_sur=-400.0, r=12.0, empalme=(-14.0, -26.0)),   # calle del eje 20 al sur del frente
+    plaza=[(-4.5, -33.15), (-4.5, -52.0), (-3.8, -58.8), (6.0, -58.8), (3.3, -55.4), (76.0, -55.4), (77.4, -54.0),
+           (77.4, -33.15)],                           # contorno antihorario, con la cuña (rampa) del sudoeste
+    carril=dict(y=-13.5, trazo=2.0, paso=9.6, x0=64.7, x=(-27.0, 84.0)),    # discontinua blanca de los carriles de llegada
+    me2=dict(margen=1.0, fondo=4.0),                  # recuadro claro con borde blanco frente a cada ME-2 (paso peatonal)
+    linea_cordon=[(1.43, -8.9), (84.5, -8.9)],      # línea amarilla a 0,5 m del cordón, frente al edificio
+)
+# Jardineras: tierra con cordón de hormigón; anillos elevados blancos (centro X, centro Y, largo, ancho) de 0,20 x 0,45;
+# hexágonos elevados de la plaza (centro X, centro Y, radio al vértice); línea amarilla a 0,7 m del borde sur de la B
+JARDINERAS = dict(cordon=0.15, linea_b=0.7, anillo=dict(espesor=0.20, alto=0.45),
+                  anillos=[(-19.5, -22.4, 7.4, 1.5), (9.0, -25.3, 4.8, 1.3), (44.25, -22.4, 5.5, 1.4),
+                           (73.55, -24.0, 10.1, 2.2)],
+                  hexagonos=[(3.8, -41.4, 3.6), (68.4, -40.7, 3.6)])
+# Espiga de la plaza: dos líneas en zigzag a 45° (tramos de 2,59 m) entre el andén y el hexágono este; cordones bajos
+ESPIGA = dict(paso=3.66, amplitud=1.83, sup=(47.5, -36.97, 50.63, -40.13, 4), inf=(47.67, -43.03, 5), x_fin=64.5)
+ANDENES = [(40.5, 48.0, -26.2, -23.6), (40.0, 47.5, -37.6, -33.15)]     # andenes del bus (X0, X1, Y0, Y1), +0,15
+CEBRA = dict(x=(77.5, 81.0), y=(-32.6, -26.4), franja=0.5, paso=1.0)     # cruce peatonal en el extremo este
+DISCOS = [(56.5, -28.9), (42.1, -29.5), (31.5, -37.5), (82.84, -29.3), (84.9, -27.3), (84.94, -31.8)]   # tapas amarillas
+COLUMNAS = dict(pos=[(83.2, -44.4), (85.2, -42.4)], diametro=0.9, alto=3.5)   # columnas amarillas de la isla sudeste
 
 # Celosías corten: módulos de 5,00 x 6,00 m (placas de 1,00 x 2,00 m de 1 mm), a 0,12 m de su fondo
 CELOSIA_SEP = 0.12
@@ -862,18 +882,50 @@ def mat_suelo():
     return mat
 
 
-def mat_grava():
-    """Grava volcánica oscura de las islas del estacionamiento y del cantero (las islas negras del modelo del cliente)."""
-    mat = bpy.data.materials.new(PREFIJO + "GRAVA_VOLCANICA_ISLAS")
+def mat_tierra():
+    """Tierra vegetal oscura con mulch fino de grava volcánica: las jardineras del frente (negras en el modelo del
+    cliente) y el relleno de sus anillos elevados."""
+    mat = bpy.data.materials.new(PREFIJO + "TIERRA_JARDINERAS")
     nb = Nodos(mat)
     tc, _ = nb.coord()
-    nb.ent("Base Color", nb.mix(nb.ruido(45.0, 4.0, tc.outputs["Object"]), srgb("#2B2826"), srgb("#45403B")))
-    nb.ent("Roughness", 0.9)
+    c = nb.mix(nb.ruido(45.0, 4.0, tc.outputs["Object"]), srgb("#231E1A"), srgb("#3A332D"))
+    nb.ent("Base Color", nb.mixc(nb.m("MULTIPLY", nb.ruido(2.0, 3.0, tc.outputs["Object"]), 0.35), c, srgb("#4A4038")))
+    nb.ent("Roughness", 0.93)
     bump = nb.n("ShaderNodeBump")
     bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.8, 0.01
     nb.con(nb.ruido(60.0, 2.0, tc.outputs["Object"]), bump.inputs["Height"])
     nb.ent("Normal", bump.outputs["Normal"])
-    mat.diffuse_color = srgb("#36322F")
+    mat.diffuse_color = srgb("#2E2823")
+    return mat
+
+
+def mat_hormigon_blanco():
+    """Hormigón blanco prefabricado de los anillos elevados de las jardineras y de los hexágonos de la plaza."""
+    mat = bpy.data.materials.new(PREFIJO + "HORMIGON_BLANCO_PREFABRICADO")
+    nb = Nodos(mat)
+    tc, _ = nb.coord()
+    nb.ent("Base Color", nb.mix(nb.ruido(6.0, 6.0, tc.outputs["Object"]), srgb("#DEDCD5"), srgb("#CCC9C1")))
+    nb.ent("Roughness", 0.62)
+    bump = nb.n("ShaderNodeBump")
+    bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.15, 0.002
+    nb.con(nb.ruido(220.0, 3.0, tc.outputs["Object"]), bump.inputs["Height"])
+    nb.ent("Normal", bump.outputs["Normal"])
+    mat.diffuse_color = srgb("#D8D6CF")
+    return mat
+
+
+def mat_cordon_amarillo():
+    """Pintura amarilla de tráfico sobre hormigón: separador L1, borde sur de la plaza, espiga y columnas de la isla."""
+    mat = bpy.data.materials.new(PREFIJO + "CORDON_PINTADO_AMARILLO")
+    nb = Nodos(mat)
+    tc, _ = nb.coord()
+    nb.ent("Base Color", nb.mix(nb.ruido(8.0, 6.0, tc.outputs["Object"]), srgb("#D9A514"), srgb("#C2921B")))
+    nb.ent("Roughness", 0.58)
+    bump = nb.n("ShaderNodeBump")
+    bump.inputs["Strength"].default_value, bump.inputs["Distance"].default_value = 0.2, 0.002
+    nb.con(nb.ruido(150.0, 3.0, tc.outputs["Object"]), bump.inputs["Height"])
+    nb.ent("Normal", bump.outputs["Normal"])
+    mat.diffuse_color = srgb("#D9A514")
     return mat
 
 
@@ -1001,7 +1053,9 @@ def crear_materiales():
         # librea BoA y contexto (4 de octubre)
         **{f"boa_{k}": mat_simple(f"AVION_BOA_{k.upper()}", LIBREA_BOA[k], metal=0.05, rug=0.22, Coat_Weight=0.6,
                                   Coat_Roughness=0.08) for k in ("azul", "rojo", "amarillo", "verde")},
-        grava=mat_grava(),
+        tierra=mat_tierra(),
+        hormigon_blanco=mat_hormigon_blanco(),
+        cordon_amarillo=mat_cordon_amarillo(),
         paja=mat_paja(),
         manga_viento=mat_simple("MANGA_VIENTO_NARANJA", "#E8611A", rug=0.7),
     )
@@ -1929,11 +1983,10 @@ def letrero_variante(col, M, s, zh_n, suf):
 
 def entorno(C, M):
     """Lado Tierra según la planta baja A111: vereda hasta el cordón (con sus dos dársenas), zanja de drenaje con rejilla
-    bajo el goterón del alero y cordón. Fuera de la A111 (contexto): calzada frontal, cantero con dos pasos peatonales,
-    estacionamiento con islas de grava volcánica, anillo y camino de acceso, con su señalización. Después llama al Lado
-    Aire, al contexto del aeropuerto (pista y rodaje), al terreno y a la paja brava."""
+    bajo el goterón del alero y cordón. Fuera de la A111, el frente según el modelo del cliente (frente_lado_tierra:
+    calzada, jardineras, plaza y señalización). Después llama al Lado Aire, al contexto del aeropuerto (pista y
+    rodaje), al terreno y a la paja brava."""
     col = C["06_ENTORNO_SITE"]
-    z1 = -BORDILLO_DESNIVEL                                          # cara superior del asfalto
     cord = cordon_tierra()
     inv = cord[::-1]                                                 # de este a oeste: la vereda queda a la derecha
     za, zb = ZANJA["y"]
@@ -1951,20 +2004,12 @@ def entorno(C, M):
         rj.caja(xz0, xz1, yy, yy + 0.005, -0.035, -0.005)
         yy += 0.035
     rj.crear("ZANJA_REJILLA", M["galvanizado"], col)
-    # asfalto: calzada frontal, calles de los testeros, anillo, estacionamiento y acceso (un solo contorno)
-    placa_con_huecos("CALZADA_ASFALTO", [calzada_tierra(cord)], 0.10, "XY", z1 - 0.05, M["asfalto"], col)
-    # islas: cordón de hormigón de 0,15 y relleno de grava volcánica 3 cm más abajo
-    islas = islas_tierra()
-    interiores = [contraer(p, 0.15) for p in islas]
-    placa_con_huecos("ISLAS_CORDON", [q for par in zip(islas, interiores) for q in par], 0.25, "XY", -0.125,
-                     M["hormigon"], col)
-    placa_con_huecos("ISLAS_GRAVA", interiores, 0.22, "XY", -0.14, M["grava"], col)
-    senalizacion_tierra(col, M)
+    frente_lado_tierra(col, M, cord)
     # sin bolardos ni postes de iluminación peatonal: no están en el presupuesto (reunión del 3 de octubre)
     entorno_aire(C, M)
     contexto_aeropuerto(C, M)
     terreno(C, M)
-    paja_brava(C, M, interiores)
+    paja_brava(C, M)
 
 
 def arco(cx, cy, r, a0, a1, n=8):
@@ -2065,105 +2110,178 @@ def cordon_tierra():
     return sin_repetidos(pts)
 
 
-def calzada_tierra(cord):
-    """Contorno del asfalto del Lado Tierra: sigue el cordón 5 cm por debajo de él, sube por las calles de los testeros
-    hasta la plataforma, rodea el estacionamiento (esquina sureste en curva) y sale hacia Uyuni por el acceso."""
-    xo, xe = X_CORDON_LATERAL
-    w, R = CALLE_ANCHO, R_ESQUINA_ANILLO
-    ys0, ys1 = Y_ANILLO_SUR
-    ya = PLATAFORMA_AIRE["y"][0]
-    borde = paralela_derecha(cord[::-1], 0.05)[::-1]                 # de oeste a este, bajo el cordón
-    pts = [(xo - w, ya), (xo + 0.05, ya)] + borde + [(xe - 0.05, ya), (xe + w, ya)]
-    pts += arco(xe + w - R, ys0 + R, R, 0, -90, 6) + [(X_ACCESO, ys0), (X_ACCESO, ys1)]
-    pts += arco(xo - w - 8.0, ys1 + 8.0, 8.0, 270, 360, 6)
+def ese(p0, p1, n=12):
+    """Transición suave entre dos tramos paralelos a X: avance lineal en X y coseno en Y (tangente horizontal en los
+    dos extremos)."""
+    (x0, y0), (x1, y1) = p0, p1
+    return [(x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * (1 - math.cos(math.pi * k / n)) / 2) for k in range(n + 1)]
+
+
+def jardinera_a():
+    """Jardinera A (al oeste del eje 1): borde norte recto en -19,5; al sur, un arco de r 10,37 al oeste y otro de
+    r 9,0 al este unidos por un tramo recto en -26,85 (forma de casco, más ancha al oeste). Contorno antihorario."""
+    yn, ys = -19.5, -26.85
+    (xo, ro), (xe, re) = (-15.58, 10.37), (-6.3, 9.0)
+    a0 = 180 + math.degrees(math.asin((ys + ro - yn) / ro))          # donde el arco oeste corta el borde norte
+    a1 = 360 - math.degrees(math.asin((ys + re - yn) / re))          # y donde lo corta el arco este
+    return sin_repetidos(arco(xo, ys + ro, ro, a0, 270, 16) + arco(xe, ys + re, re, 270, a1, 16))
+
+
+def jardinera_b():
+    """Jardinera B (de X 6 a la esquina este): punta oeste redondeada (r 1,0) que aloja un anillo, panza ancha entre
+    X 21 y 36, tramo medio de 4,6 m y extremo este redondeado (r 3,475), de nuevo ancho. Contorno antihorario."""
+    pts = arco(7.0, -25.4, 1.0, 117.6, 270, 8)
+    pts += ese((29.6, -26.4), (35.8, -23.6)) + ese((64.7, -23.6), (70.0, -25.95))
+    pts += arco(78.83, -22.475, 3.475, 270, 450, 16)
+    pts += ese((27.0, -19.0), (21.4, -22.1)) + [(11.15, -22.1)]
     return sin_repetidos(pts)
 
 
-def filas_estacionamiento():
-    """Franjas en Y del estacionamiento, de norte a sur: las cuatro filas de puestos, el divisor y la franja sur."""
-    E = ESTACIONAMIENTO
-    pl, pa = E["puesto"][1], E["pasillo"]
-    y = Y_CALZADA_TIERRA - CANTERO["ancho"]
-    f1 = (y - pl, y)
-    y -= pl + pa
-    f2 = (y - pl, y)
-    y -= pl
-    div = (y - E["divisor"], y)
-    y -= E["divisor"]
-    f3 = (y - pl, y)
-    y -= pl + pa
-    f4 = (y - pl, y)
-    y -= pl
-    return [f1, f2, f3, f4], div, (y - E["borde_sur"], y)
+def anillo(cx, cy, largo, ancho, d=0.0):
+    """Contorno antihorario de un anillo alargado (rectángulo con extremos semicirculares), d más adentro."""
+    l, w = largo - 2 * d, ancho - 2 * d
+    return rect_redondeado(cx - l / 2, cx + l / 2, cy - w / 2, cy + w / 2, w / 2, 8)
 
 
-def islas_tierra():
-    """Contornos antihorarios de las islas: el cantero partido por los dos pasos peatonales, la isla central del
-    estacionamiento (divisor de las filas 2 y 3 con sus cabeceras, en H) y la franja sur."""
+def hexagono(cx, cy, r):
+    """Hexágono regular antihorario con vértices hacia ±X (radio al vértice r)."""
+    return [(cx + r * math.cos(math.radians(60 * k)), cy + r * math.sin(math.radians(60 * k))) for k in range(6)]
+
+
+def ese_x(p0, p1, n=12):
+    """Transición suave entre dos tramos paralelos a Y: avance lineal en Y y coseno en X."""
+    (x0, y0), (x1, y1) = p0, p1
+    return [(x0 + (x1 - x0) * (1 - math.cos(math.pi * k / n)) / 2, y0 + (y1 - y0) * k / n) for k in range(n + 1)]
+
+
+def calzada_frente(cord):
+    """Contorno antihorario del asfalto del Lado Tierra. Igual que antes junto al edificio: 5 cm bajo todo el cordón
+    A111 (dársenas incluidas) y las calles de los testeros de 7 m hasta la plataforma. Nuevo, en el frente: la calzada
+    hasta el separador L1 (5 cm debajo), su prolongación hacia Uyuni por el oeste (curva de r 8 desde la calle del eje
+    1) y, al sur, la calle del eje 20 (curva de r 12 desde L1 y empalme suave con la calle del testero)."""
+    F, O, V = FRENTE, FRENTE["oeste"], FRENTE["via_este"]
     xo, xe = X_CORDON_LATERAL
-    yc, c = Y_CALZADA_TIERRA, CANTERO
-    cortes = [xo]
-    for xc in c["cruces"]:
-        cortes += [xc - c["cruce_ancho"] / 2, xc + c["cruce_ancho"] / 2]
-    cortes.append(xe)
-    islas = [rect_redondeado(a, b, yc - c["ancho"], yc, 1.5) for a, b in zip(cortes[::2], cortes[1::2])]
-    (_, f2, f3, _), dv, sur = filas_estacionamiento()
-    x0, x1 = ESTACIONAMIENTO["x"]
-    fi = ESTACIONAMIENTO["isla_fin"]
-    islas.append([(x0 - fi, f3[0]), (x0, f3[0]), (x0, dv[0]), (x1, dv[0]), (x1, f3[0]), (x1 + fi, f3[0]),
-                  (x1 + fi, f2[1]), (x1, f2[1]), (x1, dv[1]), (x0, dv[1]), (x0, f2[1]), (x0 - fi, f2[1])])
-    islas.append(rect_redondeado(xo, xe, sur[0], sur[1], 1.0))
-    return islas
+    w, ya, R = CALLE_ANCHO, PLATAFORMA_AIRE["y"][0], V["r"]
+    (vx0, vx1), (e0, e1) = V["x_sur"], V["empalme"]
+    ys, y1 = O["y_sur"] - 0.05, F["y_l1"] - 0.05
+    borde = paralela_derecha(cord[::-1], 0.05)                       # de este a oeste, 5 cm bajo el cordón
+    pts = [(O["x"][0], ys), (O["x"][1], ys)] + ese((O["x"][1], ys), (F["x_l1"][0], y1))[1:]
+    pts += [(F["x_l1"][1], y1)] + arco(F["x_l1"][1], F["y_l1"] - R, R - 0.05, 90, 0, 8)[1:]
+    pts += [(vx0 - 0.05, V["y_sur"]), (vx1, V["y_sur"])] + ese_x((vx1, e1), (xe + w, e0))
+    pts += [(xe + w, ya), (xe - 0.05, ya)] + borde + [(xo + 0.05, ya), (xo - w, ya)]
+    pts += arco(xo - w - 8.0, O["y_norte"] + 8.0, 8.0, 0, -90, 6) + [(O["x"][0], O["y_norte"])]
+    return sin_repetidos(pts)
 
 
-def senalizacion_tierra(col, M):
-    """Pintura vial del Lado Tierra: línea de carril discontinua y bocas de las dársenas en la calzada frontal, pasos
-    peatonales (cebra) frente a las ME-2, puestos del estacionamiento, ejes amarillos del anillo y del acceso (doble
-    sentido) y bordes blancos del acceso."""
+def separador_l1():
+    """Polilíneas del separador amarillo, de oeste a este (la franja queda a su derecha): borde sur del acceso, curva
+    hasta L1, L1 frente a la plaza y curva hacia la calle del eje 20."""
+    F, O, V = FRENTE, FRENTE["oeste"], FRENTE["via_este"]
+    oeste = [(O["x"][1] - 23.0, O["y_sur"])] + ese((O["x"][1], O["y_sur"]), (F["x_l1"][0], F["y_l1"]))
+    R = V["r"]
+    este = arco(F["x_l1"][1], F["y_l1"] - R, R, 90, 0, 8) + [(V["x_sur"][0], -60.0)]
+    return oeste, [(F["x_l1"][0], F["y_l1"]), (F["x_l1"][1], F["y_l1"])], este
+
+
+def espiga():
+    """Las dos líneas en zigzag a 45° de la plaza, del andén al hexágono este."""
+    E = ESPIGA
+    p, a = E["paso"], E["amplitud"]
+    x0, y0, xv, yv, n = E["sup"]
+    sup = [(x0, y0)]
+    for k in range(n):
+        sup += [(xv + k * p, yv), (xv + k * p + p / 2, yv + a)]
+    sup.append((E["x_fin"], yv + a - (E["x_fin"] - sup[-1][0])))
+    xi, yi, m = E["inf"]
+    inf = []
+    for k in range(m):
+        inf += [(xi + k * p, yi), (xi + k * p + p / 2, yi + a)]
+    return sup, inf
+
+
+def linea_jardinera_b():
+    """Línea amarilla a JARDINERAS["linea_b"] del borde de la jardinera B: borde sur desde X 36, extremo este y vuelta
+    por el norte hasta lo alto del arco."""
+    pol = jardinera_b()
+    i0 = next(i for i, p in enumerate(pol) if abs(p[0] - 35.8) < 1e-6)
+    i1 = next(i for i, p in enumerate(pol) if abs(p[0] - 78.83) < 1e-6 and abs(p[1] + 19.0) < 1e-6)
+    return paralela_derecha(pol[i0:i1 + 1], JARDINERAS["linea_b"])
+
+
+def frente_lado_tierra(col, M, cord):
+    """Frente del Lado Tierra según las capturas del modelo del cliente (ver FRENTE): asfalto de la calzada, del acceso
+    y de las calles laterales; jardineras A y B (tierra oscura con cordón de hormigón) con sus
+    anillos elevados blancos; separador amarillo; plaza de estacionamiento con cordones, hexágonos elevados y espiga;
+    andenes del bus, cebra, tapas y columnas amarillas, recuadros frente a las ME-2 y la pintura vial. La vereda y el
+    cordón A111 (cord) no cambian: el asfalto y las dársenas entran 5 cm bajo el cordón."""
+    z1 = -BORDILLO_DESNIVEL                                          # cara superior del asfalto
+    J, A = JARDINERAS, JARDINERAS["anillo"]
+    jard = [jardinera_a(), jardinera_b()]
+    huecos = [contraer(p, 0.05) for p in jard]                      # el asfalto entra 5 cm bajo el cordón
+    placa_con_huecos("CALZADA_ASFALTO", [calzada_frente(cord)] + huecos, 0.10, "XY", z1 - 0.05, M["asfalto"], col)
+    pl = FRENTE["plaza"]
+    placa_con_huecos("FRENTE_PLAZA_ASFALTO", [contraer(pl, -0.05)], 0.10, "XY", z1 - 0.05, M["asfalto"], col)
+    # jardineras: cordón de hormigón de 0,15 al ras de la vereda y tierra 4 cm más abajo
+    tierra = [contraer(p, J["cordon"]) for p in jard]
+    placa_con_huecos("FRENTE_JARDINERAS_CORDON", [q for par in zip(jard, tierra) for q in par], 0.25, "XY", -0.125,
+                     M["hormigon"], col)
+    placa_con_huecos("FRENTE_JARDINERAS_TIERRA", tierra, 0.20, "XY", -0.14, M["tierra"], col)
+    # anillos elevados blancos (0,45 sobre la calzada) con su tierra; hexágonos elevados de la plaza, sin relleno
+    za = z1 + A["alto"]
+    anillos = [anillo(*a) for a in J["anillos"]]
+    dentro = [anillo(*a, d=A["espesor"]) for a in J["anillos"]]
+    r_in = A["espesor"] / math.cos(math.radians(30))
+    hexs = [q for cx, cy, r in J["hexagonos"] for q in (hexagono(cx, cy, r), hexagono(cx, cy, r - r_in))]
+    placa_con_huecos("FRENTE_ANILLOS_BLANCOS", [q for par in zip(anillos, dentro) for q in par] + hexs, za + 0.20,
+                     "XY", (za - 0.20) / 2, M["hormigon_blanco"], col)
+    placa_con_huecos("FRENTE_ANILLOS_TIERRA", dentro, za - 0.07, "XY", (za - 0.13) / 2, M["tierra"], col)
+    # cordones amarillos (+0,15): separador L1 de 0,60 y su continuación de 0,25, borde sur de la plaza de 0,30;
+    # cordones grises de 0,20 en los otros bordes de la plaza; espiga de 0,20 x 0,10
+    oeste, l1, este = separador_l1()
+    am = [franja_derecha(oeste, 0.25), franja_derecha(l1, FRENTE["ancho_l1"]), franja_derecha(este, 0.25),
+          franja_derecha(pl[4:7], 0.30)]
+    placa_con_huecos("FRENTE_CORDONES_AMARILLOS", am, 0.25, "XY", -0.125, M["cordon_amarillo"], col)
+    placa_con_huecos("FRENTE_PLAZA_CORDONES", [franja_derecha(pl[0:5], 0.20), franja_derecha(pl[6:8], 0.20)], 0.25,
+                     "XY", -0.125, M["hormigon"], col)
+    zz = Malla()
+    for linea in espiga():
+        for p, q in zip(linea, linea[1:]):
+            zz.caja_eje((p[0], p[1], z1), (q[0], q[1], z1), 0.20, 0.15, 0.05)
+    zz.crear("FRENTE_ESPIGA_CORDONES", M["cordon_amarillo"], col)
+    # andenes del bus (+0,15, hormigón de vereda) y columnas amarillas de la isla sudeste
+    an = Malla()
+    for x0, x1, y0, y1 in ANDENES:
+        an.caja(x0, x1, y0, y1, -0.25, 0.0)
+    an.crear("FRENTE_ANDENES_BUS", M["acera"], col)
+    co = Malla()
+    for x, y in COLUMNAS["pos"]:
+        co.cilindro_z(x, y, -0.30, z1 + COLUMNAS["alto"], COLUMNAS["diametro"] / 2, 32)
+    co.crear("FRENTE_COLUMNAS_AMARILLAS", M["cordon_amarillo"], col, suave=True)
+    # pintura, 2 mm sobre el asfalto: discontinua de los carriles de llegada, líneas amarillas, cebra y tapas
     sv, sa = Malla(), Malla()
-    z1 = -BORDILLO_DESNIVEL
-    def pinta(m, x0, x1, y0, y1):
-        m.caja(x0, x1, y0, y1, z1, z1 + 0.002)
-    xo, xe = X_CORDON_LATERAL
-    w = CALLE_ANCHO
-    ys0, ys1 = Y_ANILLO_SUR
-    ya = PLATAFORMA_AIRE["y"][0]
-    cruces = CANTERO["cruces"]
-    ym = (Y_CORDON_TIERRA + Y_CALZADA_TIERRA) / 2
-    x = 3.0
-    while x < xe - 3.0:                                             # carril: trazos de 3 m cada 8 m
-        if all(abs(x + 1.5 - c) > 4.0 for c in cruces):
-            pinta(sv, x, x + 3.0, ym - 0.06, ym + 0.06)
-        x += 8.0
-    for x0 in DARSENAS_TIERRA:                                      # boca de cada dársena: trazos de 1 m cada 2 m
-        x = x0 + 0.5
-        while x + 1.0 < x0 + largo_darsena() - 0.5:
-            pinta(sv, x, x + 1.0, Y_CORDON_TIERRA - 0.12, Y_CORDON_TIERRA - 0.02)
-            x += 2.0
-    for c in cruces:                                                # cebras: franjas de 0,50 cada 1,00 m
-        y = Y_CALZADA_TIERRA + 0.4
-        while y + 0.5 <= Y_CORDON_TIERRA - 0.3:
-            pinta(sv, c - CANTERO["cruce_ancho"] / 2, c + CANTERO["cruce_ancho"] / 2, y, y + 0.5)
-            y += 1.0
-    filas, _, _ = filas_estacionamiento()
-    (x0, x1), ap = ESTACIONAMIENTO["x"], ESTACIONAMIENTO["puesto"][0]
-    for f0, f1 in filas:                                            # puestos de 2,50 x 5,00
-        for k in range(round((x1 - x0) / ap) + 1):
-            pinta(sv, x0 + k * ap - 0.05, x0 + k * ap + 0.05, f0 + 0.10, f1 - 0.10)
-    for xc in (xo - w / 2, xe + w / 2):                            # calles de los testeros: eje amarillo
-        y = ys1 + 4.0
-        while y + 3.0 < ya - 2.0:
-            if y + 3.0 < Y_CALZADA_TIERRA - 1.0 or y > Y_CORDON_TIERRA + 1.0:
-                pinta(sa, xc - 0.06, xc + 0.06, y, y + 3.0)
-            y += 6.0
-    yc = (ys0 + ys1) / 2
-    x = X_ACCESO + 5.0
-    while x + 3.0 < xe + w - R_ESQUINA_ANILLO:                     # tramo sur del anillo y acceso: eje amarillo
-        if not (xo - w - 2.0 < x + 3.0 and x < xo + 2.0):
-            pinta(sa, x, x + 3.0, yc - 0.06, yc + 0.06)
-        x += 6.0
-    for yb in (ys0 + 0.25, ys1 - 0.37):                            # bordes blancos del acceso
-        pinta(sv, X_ACCESO, xo - w - 8.0, yb, yb + 0.12)
+    C = FRENTE["carril"]
+    x = C["x0"] - C["paso"] * math.ceil((C["x0"] - C["x"][0]) / C["paso"])
+    while x + C["trazo"] <= C["x"][1]:
+        sv.caja(x, x + C["trazo"], C["y"] - 0.06, C["y"] + 0.06, z1, z1 + 0.002)
+        x += C["paso"]
+    for linea in (FRENTE["linea_cordon"], linea_jardinera_b()):
+        for p, q in zip(linea, linea[1:]):
+            sa.caja_eje((p[0], p[1], z1), (q[0], q[1], z1), 0.15, 0.002)
+    ce = CEBRA
+    y = ce["y"][0] + 0.25
+    while y + ce["franja"] <= ce["y"][1] - 0.2:                      # franjas de 0,50 cada 1,00 m
+        sv.caja(ce["x"][0], ce["x"][1], y, y + ce["franja"], z1, z1 + 0.002)
+        y += ce["paso"]
+    for x, y in DISCOS:
+        sa.cilindro_z(x, y, z1, z1 + 0.004, 0.35, 24)
+    pm = Malla()                                                     # frente a cada ME-2: recuadro claro con borde blanco
+    for x0, x1 in ME2:
+        a, b = x0 - FRENTE["me2"]["margen"], x1 + FRENTE["me2"]["margen"]
+        y0, y1 = Y_CORDON_TIERRA - FRENTE["me2"]["fondo"], Y_CORDON_TIERRA - 0.05
+        pm.caja(a, b, y0, y1, z1, z1 + 0.003)
+        for u0, u1, v0, v1 in ((a, b, y0, y0 + 0.15), (a, a + 0.15, y0, y1), (b - 0.15, b, y0, y1)):
+            sv.caja(u0, u1, v0, v1, z1 + 0.003, z1 + 0.005)
+    pm.crear("FRENTE_PASOS_ME2", M["acera"], col)
     sv.crear("SENALIZACION_VIAL", M["senal"], col)
     sa.crear("SENALIZACION_VIAL_AMARILLA", M["senal_amarilla"], col)
 
@@ -2393,15 +2511,23 @@ def terreno(C, M):
     return ob
 
 
+_PAVIMENTOS = {}
+
+
+def pavimentos(m):
+    """Contornos del asfalto del frente y de la plaza, ensanchados m (se calculan una vez por margen)."""
+    if m not in _PAVIMENTOS:
+        _PAVIMENTOS[m] = [contraer(calzada_frente(cordon_tierra()), -m), contraer(FRENTE["plaza"], -m)]
+    return _PAVIMENTOS[m]
+
+
 def suelo_libre(x, y, m):
-    """True si (x, y) es suelo natural: fuera del edificio, veredas, calles, estacionamiento, plataforma, rodaje y de la
-    franja nivelada de la pista, con un margen m."""
+    """True si (x, y) es suelo natural: fuera del edificio y sus veredas, de la calzada del frente (con el acceso y la
+    calle del eje 20), de la plaza, de la plataforma, del rodaje y de la franja nivelada de la pista, con un margen m."""
     xo, xe = X_CORDON_LATERAL
-    w = CALLE_ANCHO
-    ys0, ys1 = Y_ANILLO_SUR
     (px0, px1), (py0, py1) = PLATAFORMA_AIRE["x"], PLATAFORMA_AIRE["y"]
-    return not ((xo - w - m < x < xe + w + m and ys0 - m < y < 51.0 + m)
-                or (x < xo - w + m and ys0 - m < y < ys1 + m)
+    return not ((xo - m < x < xe + m and Y_CORDON_TIERRA - m < y < 51.0 + m)
+                or any(dentro_poligono(x, y, p) for p in pavimentos(m))
                 or (px0 - m < x < px1 + m and py0 - m < y < py1 + m)
                 or (abs(x - RODAJE["x"]) < RODAJE["ancho"] / 2 + 20.0 + m and py1 - m < y < PISTA["y"])
                 or abs(y - PISTA["y"]) < 75.0
@@ -2460,10 +2586,10 @@ def gn_dispersion(nombre, proto, escala=(0.6, 1.4)):
     return ng
 
 
-def paja_brava(C, M, islas):
-    """Matas de paja brava: dispersas en manchas en el suelo libre hasta 650 m del edificio (suelo_libre) y más densas
-    en las islas de grava del Lado Tierra. Un objeto de puntos con Geometry Nodes instancia la mata (oculta en el
-    render, bajo el suelo); los puntos quedan en el objeto PAJA_BRAVA_DISPERSION."""
+def paja_brava(C, M):
+    """Matas de paja brava dispersas en manchas en el suelo libre hasta 650 m del edificio (suelo_libre). Las jardineras
+    del frente quedan en tierra, como en el modelo del cliente. Un objeto de puntos con Geometry Nodes instancia la mata
+    (oculta en el render, bajo el suelo); los puntos quedan en el objeto PAJA_BRAVA_DISPERSION."""
     col = C["11_CONTEXTO_AEROPUERTO"]
     P = PAJA_BRAVA
     proto = mata_paja_brava().crear("PAJA_BRAVA_MATA", M["paja"], col)
@@ -2480,15 +2606,6 @@ def paja_brava(C, M, islas):
                   * (0.5 + 0.5 * math.sin(y / 17.0 - 0.7 * math.sin(x / 29.0))))
         if rnd.random() < 0.25 + 0.75 * mancha and suelo_libre(x, y, P["margen"]):
             pts.append((x, y, zs))
-    pie_camaras = [(50.5, -36.0)]                                    # CAM_03, a la altura del ojo sobre la isla central
-    for pol in islas:
-        adentro = contraer(pol, 0.35)
-        xs, ys = [p[0] for p in pol], [p[1] for p in pol]
-        area = 0.5 * abs(sum(x0 * y1 - x1 * y0 for (x0, y0), (x1, y1) in zip(pol, pol[1:] + pol[:1])))
-        for _ in range(int(area * 0.35)):
-            x, y = rnd.uniform(min(xs), max(xs)), rnd.uniform(min(ys), max(ys))
-            if dentro_poligono(x, y, adentro) and all(math.hypot(x - u, y - v) > 3.0 for u, v in pie_camaras):
-                pts.append((x, y, -0.03))
     me = bpy.data.meshes.new(PREFIJO + "PAJA_BRAVA_DISPERSION")
     me.from_pydata(pts, [], [])
     ob = bpy.data.objects.new(PREFIJO + "PAJA_BRAVA_DISPERSION", me)
@@ -2834,10 +2951,10 @@ def assets(C, M):
                 for x in DARSENAS_TIERRA)                           # centro del tramo recto de cada dársena
     vagoneta("4x4_01", 8.0, Y_CORDON_TIERRA - 1.75, 180)
     vagoneta("4x4_02", xd1, yd - 1.05, 180)
-    vagoneta("4x4_03", 47.0, Y_CALZADA_TIERRA + 1.75, 180)
-    (_, f2, _, _), _, _ = filas_estacionamiento()                   # dos en la fila 2, de frente al divisor
-    vagoneta("4x4_04_ESTAC", 30.25, (f2[0] + f2[1]) / 2, 270)
-    vagoneta("4x4_05_ESTAC", 35.25, (f2[0] + f2[1]) / 2, 270)
+    vagoneta("4x4_03", 47.0, FRENTE["carril"]["y"] - 1.75, 180)    # segundo carril de llegada
+    xv, yp = ESPIGA["sup"][2], ESPIGA["sup"][3] + ESPIGA["amplitud"]  # plaza: de punta en los dientes de la espiga
+    vagoneta("4x4_04_ESTAC", xv + ESPIGA["paso"], yp + 1.6, 270)
+    vagoneta("4x4_05_ESTAC", xv + 2 * ESPIGA["paso"], yp + 1.6, 270)
     vagoneta("MINIBUS_TRANSFER", xd2, yd - 1.09, 180, largo=6.4, ancho=2.05, alto=2.55, parrilla=False)
     personas = [(16.0, -2.0, 0), (17.6, -2.6, 1), (18.2, -1.4, 2), (54.8, -2.2, 3), (56.4, -3.1, 4), (57.1, -1.8, 0),
                 (36.0, -3.3, 1), (9.5, -6.5, 2), (25.4, -5.7, 3)]

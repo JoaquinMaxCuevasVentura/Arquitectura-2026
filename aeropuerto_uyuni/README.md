@@ -18,6 +18,8 @@
 > - cámara `CAM_10_PISTA_HORIZONTE`.
 >
 > Se verificaron sin renders, con láminas 2D en `01_blender/verificacion/`.
+>
+> **Frente del Lado Tierra, 5 de octubre** ([`CONTINUACION_CODEX.md`](CONTINUACION_CODEX.md)): las jardineras y circulaciones frente a la fachada principal siguen ahora el modelo del cliente (medidas por fotogrametría sobre sus capturas, ±0,5 m): jardineras A y B con anillos blancos, separador amarillo, plaza con hexágonos y espiga, andenes del bus y cebra. Fachada, vereda A111 y calles laterales sin cambios. El render deja fuera la vegetación del terreno y los vehículos provisionales (`CONTEXTO_IA`), para agregar el contexto con IA. Lámina: `01_blender/verificacion/LADO_TIERRA_PLANTA_FRENTE.jpg`.
 
 | Carpeta | Contenido |
 |---|---|
@@ -135,10 +137,10 @@ Ubicación:
 
 El detalle está en `TRASPASO.md`: los puntos por revisar contra el DXF, en la sección 6, y los pendientes con su especificación, en la sección 8. En resumen:
 - **Vehículos 4x4, minibús y turistas:** hoy son cajas de ubicación en `07_ASSETS/PROXIES_COLOCACION`, visibles solo en el visor. Hay que reemplazarlas por modelos reales.
-- **Contexto:** ya hay terreno con cerros y el Salar, paja brava, calles, estacionamiento, pista y rodaje. Falta la variante de cielo nublado y, si se quiere, el horizonte real a partir de un modelo de elevación.
+- **Contexto:** ya hay terreno con cerros y el Salar, paja brava, el frente del cliente (calzada, jardineras y plaza), pista y rodaje. Con `CONTEXTO_IA = True` la vegetación y los vehículos genéricos quedan fuera del render: el contexto se agrega con IA.
 - **Para confirmar con el cliente** (`CAMBIOS_4OCT_FACHADAS.md`, secciones 8 y 11.6):
   - **distancia entre la terminal y la pista**: hoy es supuesta (330 m al eje), porque la georreferencia del IFC pone la pista del Lado Tierra;
-  - calles y estacionamiento (son una propuesta) y cerco perimetral (no está modelado);
+  - cotas del frente (salen de fotogrametría, ±0,5 m; con un plano de sitio pasan a cotas de obra), calles laterales y acceso (propuesta) y cerco perimetral (no está modelado);
   - librea de BoA: una foto o el manual de marca para ajustarla;
   - remate de la cubierta sobre el eje I y galería del bloque.
 - **Cumbrera:** se usó +13,02 (alzados laterales); las fachadas NE y SO marcan +13,43.

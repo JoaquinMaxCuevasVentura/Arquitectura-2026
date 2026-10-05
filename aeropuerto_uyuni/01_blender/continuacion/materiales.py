@@ -38,6 +38,8 @@ ROLES = {
     "UY_REVOQUE_FACHADA_BUNAS": "wall",
     "UY_HORMIGON_VISTO": "concrete",
     "UY_HORMIGON": "concrete",
+    "UY_HORMIGON_BLANCO_PREFABRICADO": "concrete",     # anillos y hexágonos del frente
+    "UY_CORDON_PINTADO_AMARILLO": "pavement",          # separador, espiga y columnas del frente
     "UY_ACERA_HORMIGON": "pavement",
     "UY_ACERA": "pavement",
     "UY_HORMIGON_FRATASADO": "pavement",

@@ -8,15 +8,17 @@ Dibuja con matplotlib la geometría que exporta exportar_geometria.py (no usa Cy
   ME2_CORTE_*                   cortes de la puerta ME-2 sobre su detalle
   RETENEDOR_NIEVE_CORTE         corte por el plano de una abrazadera
   LADO_AIRE_PLANTA_GENERAL / _PISO, AVION_737_800_VISTAS (con la librea de BoA, los dos lados)
-  LADO_TIERRA_PLANTA_VEREDAS / _VEREDA_*   corte a -0,10 de veredas, cordones e islas sobre la A111
-  LADO_TIERRA_PLANTA_SITIO                 calzada, cantero, estacionamiento, anillo y acceso (cenital)
+  LADO_TIERRA_PLANTA_VEREDAS / _VEREDA_*   corte a -0,10 de veredas, cordones y jardineras sobre la A111
+  LADO_TIERRA_PLANTA_SITIO / _FRENTE       sitio y frente del modelo del cliente: calzada, jardineras, plaza (cenital)
   CONTEXTO_PLATAFORMA_RODAJE / _AEROPUERTO_PLANTA / _PISTA_CABECERAS   plataforma, rodaje, pista y marcas
   CONTEXTO_HORIZONTE                       horizonte de cerros visto desde la terminal y hacia dónde mira cada cámara
-  ENCUADRE_CAM_10_* / ENCUADRE_CAM_04_*    encuadre aproximado de esas cámaras, en perspectiva y sin render
+  ENCUADRE_CAM_10/04/01/07_*               encuadre aproximado de esas cámaras, en perspectiva y sin render
 Los DXF son los del cliente (no van en el repositorio, están en UYUNI_insumos_cliente.zip); se buscan por nombre.
+Sin ellos (carpeta "-"), las láminas salen igual, con el modelo solo: sirve para revisar sitio, pista y encuadres.
 
 Uso (Python con numpy, matplotlib y ezdxf):
   python superponer_cad_2d.py /tmp/geometria.npz carpeta_con_los_dxf ../verificacion
+  python superponer_cad_2d.py /tmp/geometria.npz - /tmp/laminas          (sin los DXF del cliente)
 """
 import glob
 import math
@@ -43,7 +45,11 @@ COLOR_NOMBRE = [("LIBREA_DERIVA_ROJO", (0.84, 0.17, 0.12)), ("LIBREA_DERIVA_AMAR
                 ("CAMINO_SERVICIO_AIRE_MARCAS", (0.95, 0.95, 0.93)), ("CAMINO_SERVICIO", (0.22, 0.22, 0.22)),
                 ("MARCAS_AMARILLAS", (0.88, 0.68, 0.10)), ("AMARILLA", (0.88, 0.68, 0.10)),
                 ("MARCAS_BLANCAS", (0.97, 0.97, 0.95)), ("SENALIZACION_VIAL", (0.97, 0.97, 0.95)),
-                ("PLATAFORMA_AIRE", (0.70, 0.68, 0.64)), ("ISLAS_GRAVA", (0.24, 0.22, 0.21)),
+                ("PLATAFORMA_AIRE", (0.70, 0.68, 0.64)), ("JARDINERAS_TIERRA", (0.17, 0.14, 0.12)),
+                ("ANILLOS_TIERRA", (0.17, 0.14, 0.12)), ("ANILLOS_BLANCOS", (0.93, 0.92, 0.89)),
+                ("CORDONES_AMARILLOS", (0.85, 0.65, 0.08)), ("ESPIGA", (0.85, 0.65, 0.08)),
+                ("COLUMNAS_AMARILLAS", (0.85, 0.65, 0.08)), ("ANDENES", (0.80, 0.78, 0.73)),
+                ("PASOS_ME2", (0.80, 0.78, 0.73)), ("PLAZA_ASFALTO", (0.25, 0.25, 0.25)),
                 ("VEREDA", (0.86, 0.83, 0.76)), ("CORDON", (0.55, 0.55, 0.53)), ("CALZADA", (0.25, 0.25, 0.25)),
                 ("PISTA", (0.27, 0.27, 0.27)), ("RODAJE_ASFALTO", (0.27, 0.27, 0.27)),
                 ("ACERA", (0.86, 0.83, 0.76)), ("SUELO", (0.76, 0.70, 0.56)), ("VIDRIO", (0.25, 0.42, 0.55)),
@@ -81,6 +87,8 @@ _cache = {}
 
 
 def lineas_dxf(ruta, tf, filtro_x=None, fuera=("0-COTAS", "0-COTAS REF", "0-COTAS DETALLES", "0-TEXTO", "0-EJES")):
+    if not ruta:                      # sin el DXF del cliente: la lámina sale solo con el modelo
+        return []
     if ruta not in _cache:
         _cache[ruta] = [(c, p) for e in ezdxf.readfile(ruta).modelspace()
                         if e.dxftype() not in ("HATCH", "MTEXT", "TEXT", "DIMENSION") for c, p in segmentos(e)]
@@ -260,9 +268,11 @@ def guardar(fig, carpeta, nombre):
 
 
 def buscar(carpeta, patron):
-    r = sorted(glob.glob(os.path.join(carpeta, patron)))
+    """Primer DXF que cumple el patrón; None si no está (o si la carpeta es "-")."""
+    r = sorted(glob.glob(os.path.join(carpeta, patron))) if carpeta and carpeta != "-" else []
     if not r:
-        raise FileNotFoundError(f"no encuentro {patron} en {carpeta}")
+        print(f"   (sin {patron}: las láminas que lo usan salen solo con el modelo)")
+        return None
     return r[0]
 
 
@@ -380,8 +390,8 @@ def laminas_contexto(objs, puntos, camaras, planta, sal):
     for nombre, ventana, tam, paso in (("LADO_TIERRA_PLANTA_VEREDAS", (-8, 90, -12, 4), (34, 6.6), 2.0),
                                        ("LADO_TIERRA_VEREDA_ESQUINA_OESTE", (-6, 6, -10, 2), (12, 12), 0.5),
                                        ("LADO_TIERRA_VEREDA_DARSENA_1", (18, 37, -11, -3), (20, 9.4), 0.5)):
-        fig, ax = lienzo(ventana, tam, "Lado Tierra: corte del modelo a -0,10 (veredas, cordones e islas, en verde) y la "
-                         "A111 del cliente encima (rojo fino)", paso)
+        fig, ax = lienzo(ventana, tam, "Lado Tierra: corte del modelo a -0,10 (veredas, cordones y jardineras, en verde) y "
+                         "la A111 del cliente encima (rojo fino)", paso)
         trazar(ax, [[a[:2], b[:2]] for a, b in s0], "darkgreen", 1.6)
         trazar(ax, a111, "red", 0.5, 1.0)
         guardar(fig, sal, nombre)
@@ -391,12 +401,19 @@ def laminas_contexto(objs, puntos, camaras, planta, sal):
             u0, u1, v0, v1 = ventana
             m = (p[:, 0] > u0) & (p[:, 0] < u1) & (p[:, 1] > v0) & (p[:, 1] < v1)
             ax.scatter(p[m, 0], p[m, 1], s=tam_punto, c=[(0.62, 0.55, 0.30)], linewidths=0)
-    fig, ax = lienzo((-30, 112, -68, 58), (20, 17.8), "Sitio del Lado Tierra (cenital): vereda y dársenas de la A111, "
-                     "calzada, cantero, estacionamiento de 120 puestos, anillo y acceso; A111 en rojo", 5.0)
+    fig, ax = lienzo((-30, 112, -68, 58), (20, 17.8), "Sitio del Lado Tierra (cenital): vereda y dársenas de la A111 y el "
+                     "frente del modelo del cliente (calzada, jardineras, separador, plaza y calle del eje 20); A111 en rojo",
+                     5.0)
     proyectar(ax, objs, cenital, lambda n, c: "SUELO" not in n and "INTERIOR" not in n)
     dibujar_paja(ax, (-30, 112, -68, 58), 2.0)
     trazar(ax, a111, "tab:red", 0.4, 0.7)
     guardar(fig, sal, "LADO_TIERRA_PLANTA_SITIO")
+    fig, ax = lienzo((-30, 100, -62, 2), (26, 12.8), "Frente del Lado Tierra (cenital), restituido de las capturas del "
+                     "modelo del cliente: jardineras A y B con sus anillos blancos, separador amarillo L1, plaza con "
+                     "hexágonos, espiga y andenes, cebra y columnas de la isla sudeste; A111 en rojo", 2.0)
+    proyectar(ax, objs, cenital, lambda n, c: "SUELO" not in n and "INTERIOR" not in n)
+    trazar(ax, a111, "tab:red", 0.4, 0.7)
+    guardar(fig, sal, "LADO_TIERRA_PLANTA_FRENTE")
     fig, ax = lienzo((-140, 280, -80, 380), (18, 19.5), "Plataforma, calle de rodaje y pista (cenital), con la paja brava "
                      "(puntos ocre)", 20.0)
     proyectar(ax, objs, cenital, lambda n, c: "SUELO" not in n and "INTERIOR" not in n)
@@ -443,7 +460,7 @@ def laminas_contexto(objs, puntos, camaras, planta, sal):
         ax.legend(loc="upper left", fontsize=9)
         guardar(fig, sal, "CONTEXTO_HORIZONTE")
     # encuadres aproximados (sin render) de las vistas que muestran el contexto nuevo
-    for nombre in ("CAM_10_PISTA_HORIZONTE", "CAM_04_AEREA_GENERAL"):
+    for nombre in ("CAM_10_PISTA_HORIZONTE", "CAM_04_AEREA_GENERAL", "CAM_01_HERO_LADO_TIERRA", "CAM_07_PROPUESTAS"):
         if nombre in camaras:
             vista_perspectiva(objs, puntos, camaras[nombre], f"{nombre}: encuadre aproximado SIN render (orden de pintor, "
                               "sin sombras, cielo liso; la paja brava como puntos)", sal, "ENCUADRE_" + nombre)

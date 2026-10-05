@@ -32,19 +32,43 @@ PBR con deformación suave de coordenadas para reducir repetición y HDRI de
 Poly Haven. El catálogo oficial consultado no ofrecía personas
 ni vehículos de pasajeros adecuados; esas sustituciones tienen fuentes separadas.
 
-## Exteriores revisados por las imágenes del cliente
+## Frente del Lado Tierra (5 de octubre): restituido de las capturas del cliente
 
-Se conservan la vereda, las dársenas y el drenaje junto a la fachada A111.
-El frente se reorganiza con tres franjas oscuras de circulación, cada una con
-una jardinera interior ovalada, dos cruces alineados con los ingresos, una fila
-de estacionamiento en espiga y una vía exterior más próxima al edificio.
-Las franjas oscuras son circulación: no se rellenan enteras con vegetación.
-La paja se recorta fuera de las circulaciones y se coloca en las jardineras.
+La propuesta de Codex para el frente (tres franjas oscuras con jardineras ovaladas,
+estacionamiento en espiga a 60°) no seguía el modelo del cliente y se retiró junto
+con `continuacion/exteriores.py`. El frente ahora sale de la fuente
+(`uyuni_modelo.frente_lado_tierra`), medido por fotogrametría sobre las capturas
+DALUX del 4 de octubre: cámaras calibradas con aristas del edificio (cubierta,
+anexo, celosías) y rectas de fuga, con las plantas de dos capturas distintas
+coincidiendo en ±0,5 m. Todo queda paralelo a la fachada.
 
-Las dimensiones nuevas son una propuesta basada en imágenes sin escala:
-franja de circulación de 5 m, jardinera de 1,44 m de ancho, cordón de 18 cm,
-carril exterior de 7 m y fila en espiga de 5 m. Contrastar con el plano antes de
-usar esas cotas para obra. Los objetos del trazado anterior se conservan ocultos.
+De norte a sur: línea amarilla a 0,5 m del cordón; dos carriles de llegada con
+discontinua blanca en Y −13,5 y un recuadro claro frente a cada ME-2; jardineras
+A (X −25,5 a 2,6) y B (X 6 a 82,3) de tierra oscura con cordón de hormigón y
+cuatro anillos elevados blancos (0,20 × 0,45 m); carriles de salida con el andén
+del bus junto a la B y la línea amarilla que la rodea; separador amarillo L1
+(Y −32,6, 0,60 m) y la plaza de estacionamiento (X −4,5 a 77,4, Y −33,2 a −55,4,
+con la cuña del sudoeste) con dos hexágonos elevados blancos, dos líneas de
+espiga en zigzag a 45°, el andén de enfrente y la cebra del extremo este; en la
+isla sudeste, dos columnas amarillas. Parámetros: `FRENTE`, `JARDINERAS`, `ESPIGA`,
+`ANDENES`, `CEBRA`, `DISCOS` y `COLUMNAS`.
+
+No cambian la fachada, la vereda A111 con sus dársenas (asfalto, como antes), el
+cordón, la zanja ni las calles de los testeros de los ejes 1 y 20 hasta la
+plataforma. La comparación malla por malla con `8b00602` da 245 mallas idénticas;
+solo cambian los objetos del frente, los proxies de colocación de tres vehículos
+y la dispersión del paisaje. Láminas: `verificacion/LADO_TIERRA_PLANTA_FRENTE.jpg`
+y `LADO_TIERRA_PLANTA_SITIO.jpg`.
+
+## Contexto con IA (`CONTEXTO_IA` en `continuacion/pipeline.py`)
+
+Con `CONTEXTO_IA = True` (valor por defecto), el render solo muestra arquitectura,
+sitio, aeronaves, mangas y los assets locales de alta calidad: la dispersión de
+matas del terreno y los vehículos provisionales (GLB públicos que no son el modelo
+real) quedan en el archivo con `hide_render`, para que la IA agregue el contexto
+sin heredar assets mediocres. Para recuperarlos, poner `CONTEXTO_IA = False` y
+regenerar, o desmarcar `hide_render` en `UY_PAJA_BRAVA_DISPERSION` y en
+`11_VEHICULOS_PERSONAS`.
 
 Las dos propuestas de fachada siguen siendo **Patrimonio Ferroviario** y
 **Salar & Litio**. Se conserva el acabado actual de la cubierta P2. No se cambian
@@ -104,10 +128,10 @@ blender --factory-startup -b --disable-autoexec 01_blender/uyuni_v2.blend -P 01_
 ## Verificación y pendientes de aprobación
 
 `validar_continuacion.py` reabre el archivo y compara las 240 mallas base.
-Los cambios autorizados son la dispersión del paisaje, la colocación de los dos
-vehículos estacionados y los paños de la fachada trasera solicitados por el
-cliente. La comparación enumera expresamente esas diez mallas modificadas o
-eliminadas y exige que las demás mallas base permanezcan iguales. También
+Los cambios autorizados son la dispersión del paisaje, la colocación de los
+vehículos proxy, los paños de la fachada trasera solicitados por el cliente y
+los objetos del frente (asfalto, pintura, jardineras y plaza). La comparación
+enumera expresamente esas mallas y exige que las demás mallas base permanezcan iguales. También
 comprueba los ocho paños enrasados, dos nichos, los planos de las seis ventanas
 grandes/pequeñas y la puerta frontal. Se comprueban los diez rangos
 del montaje, la duración exacta, las referencias del compositor, las verticales
@@ -116,7 +140,7 @@ volumen principal. Se renderizan inicio/mitad/final de cada plano; esa comprobac
 no sustituye una comprobación completa de colisiones con aeronaves, mobiliario
 o terreno en producción.
 
-Quedan para revisión: el trazado nuevo y sus cotas, los acabados comparativos de
+Quedan para revisión: las cotas del frente (fotogrametría, ±0,5 m), los acabados comparativos de
 vidrio, la iluminación del letrero nocturno, el registro de estructura interior
 IFC y el reemplazo del minibús genérico. El Land Cruiser está incorporado en la
 versión local. Se conserva el vidrio

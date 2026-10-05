@@ -42,6 +42,10 @@ def validar(baseline=None):
               "UY_NICHO_AIRE","UY_NICHO_AIRE_COSTADO_ESTE","UY_INTERIOR_AIRE_PISOS","UY_INTERIOR_AIRE_LUZ"}
         allowed={"UY_PAJA_BRAVA_DISPERSION"} | rear
         allowed.update(name for name in baseline if name.startswith(("UY_4x4_04_ESTAC","UY_4x4_05_ESTAC")))
+        # Frente del Lado Tierra restituido de las capturas del cliente (5 de octubre): asfalto, pintura, jardineras
+        # y plaza; el proxy 4x4_03 pasa al segundo carril. Fachada, vereda A111 y calles laterales no cambian.
+        allowed.update(name for name in baseline if name.startswith(("UY_FRENTE_","UY_ISLAS_","UY_CALZADA_ASFALTO",
+                                                                     "UY_SENALIZACION_VIAL","UY_4x4_03")))
         changed=[name for name,h in baseline.items() if actual.get(name)!=h and name not in allowed]
         report["geometria"]={"mallas_base":len(baseline),"modificadas_o_faltantes":changed,
                              "cambios_exteriores_autorizados":[name for name in allowed-rear if actual.get(name)!=baseline.get(name)],

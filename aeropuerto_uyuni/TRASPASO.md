@@ -8,6 +8,17 @@ solo quedan nichos en las dos crujías de ventanales grandes. La entrada pequeñ
 es ahora frontal y alineada. Land Cruiser y personas escaneadas se incorporan
 en el `.blend` local, excluido de Git; el minibús público sigue provisional.
 
+**Frente del Lado Tierra, 5 de octubre:** las circulaciones y jardineras frente a la
+fachada principal se rehicieron fieles al modelo del cliente, medidas por
+fotogrametría sobre sus capturas DALUX (±0,5 m): `frente_lado_tierra()` y los
+parámetros `FRENTE`, `JARDINERAS`, `ESPIGA`, `ANDENES`, `CEBRA`, `DISCOS` y
+`COLUMNAS`. Reemplaza al cantero, el estacionamiento de 120 puestos y el anillo de
+antes, y a la propuesta de Codex (`continuacion/exteriores.py`, retirado). No
+cambian la fachada, la vereda A111 con sus dársenas, el cordón ni las calles de los
+testeros. Con `CONTEXTO_IA = True` (`continuacion/pipeline.py`) la vegetación del
+terreno y los vehículos provisionales no salen en el render: el contexto se agrega
+con IA. Detalle en `CONTINUACION_CODEX.md`.
+
 **Fecha:** 3 de octubre de 2026, actualizada el 4 de octubre: por la tarde, Lado Aire, laterales y detalles; por la noche, carpintería negro mate, veredas de la A111, contexto del aeropuerto y librea de BoA (las dos en `CAMBIOS_4OCT_FACHADAS.md`) · **Blender:** 5.2.2 LTS, Cycles · **Rama del repositorio:** `claude/clever-hypatia-i19958`
 
 Esta guía permite que otra persona o IA continúe el proyecto sin repetir la auditoría. Antes de tocar el modelo, lee las secciones 1 a 6. Para saber de dónde sale cada medida, ve a `00_auditoria/AUDITORIA.md`.
@@ -28,7 +39,7 @@ Esta guía permite que otra persona o IA continúe el proyecto sin repetir la au
 | 2 | Cubierta engrapada, retenedores de nieve, goterón sin canaleta, zanja y cielo del alero | ✅ Revisado el 3 de octubre (cielo listonado). El retenedor sigue el detalle del cliente del 4 de octubre (sección 5). |
 | 3 | Celosías corten (módulos de 5 × 6 m con planchas de 1 × 2 m) y letrero UYUNI | ✅ 14 módulos (3 más en la OESTE desde el 4 de octubre) y letrero "línea de horizonte". |
 | Materiales | PBR | ✅ Procedurales, sin texturas de imagen. |
-| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan dos cosas: 1) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 2) la variante de cielo nublado. Ya está, desde el 4 de octubre: <br>• **Lado Tierra** según la A111: vereda de ≈ 8,8 m con dos dársenas, zanja, calzada, cantero, estacionamiento de 120 puestos, anillo y acceso (los bolardos se quitaron el 3 de octubre). <br>• **Lado Aire:** veredas y cordón de la A111, camino de servicio, plataforma con marcas, dos mangas y dos 737-800 con la librea de BoA. <br>• **Contexto:** pista 13/31 con marcas OACI (su distancia a la terminal es supuesta), calle de rodaje, manga de viento, terreno de 45 km con cerros y el Salar, y paja brava. |
+| 4 | Entorno, vehículos, personas, clima y cielo | ⚠️ **Parcial.** Faltan dos cosas: 1) reemplazar los vehículos y las personas, que hoy son cajas de ubicación que no salen en el render; 2) la variante de cielo nublado. Ya está, desde el 4 de octubre: <br>• **Lado Tierra** según la A111: vereda de ≈ 8,8 m con dos dársenas y zanja; frente según el modelo del cliente (5 de octubre): calzada, jardineras A y B con anillos blancos, separador amarillo, plaza de estacionamiento con hexágonos y espiga, andenes y cebra; calles de los testeros y acceso (los bolardos se quitaron el 3 de octubre). <br>• **Lado Aire:** veredas y cordón de la A111, camino de servicio, plataforma con marcas, dos mangas y dos 737-800 con la librea de BoA. <br>• **Contexto:** pista 13/31 con marcas OACI (su distancia a la terminal es supuesta), calle de rodaje, manga de viento, terreno de 45 km con cerros y el Salar, y paja brava. |
 | 5 | Cámaras CAM_01 a CAM_04 y renders | ⚠️ Las cámaras están listas (se sumaron CAM_02B, CAM_05, CAM_06, CAM_07, CAM_08 y CAM_09 del Lado Aire y CAM_10 de la pista). Las dos propuestas de CAM_07 y los primeros planos del letrero ya se renderizaron en la nube (CPU), antes de los cambios de fachada del 4 de octubre. **Faltan los renders finales de CAM_01 a CAM_10 con GPU.** |
 | 6 | Dron de 20–30 s, 24 fps, 1080p, MP4 H.264 | ⚠️ La trayectoria está lista (`CAM_DRON`, 600 cuadros = 25 s). Faltan la configuración de salida y el render. |
 | 7 | Ficha de costos para el Ministro, láminas PDF, MP4 y facturación | ❌ Pendiente (sección 8.6). |
@@ -250,7 +261,7 @@ Por la mañana el sol da de frente sobre la fachada principal y las celosías pr
     - **alturas del vestíbulo y del anexo:** quedan como estaban "por ahora";
     - **retenedor:** tres tubos de 1/2";
     - **carpintería:** negro mate (punto 7);
-    - **Lado Tierra:** se aplican la vereda y las dársenas de la A111 y se modela más contexto: calles, estacionamiento, pista, rodaje, terreno y vegetación.
+    - **Lado Tierra:** se aplican la vereda y las dársenas de la A111 y se modela más contexto: calles, estacionamiento, pista, rodaje, terreno y vegetación. El 5 de octubre, el frente (calzada, jardineras y plaza) pasa a seguir el modelo del cliente.
 10. **Reglas de oro del brief:**
     - el DXF solo sirve para verificar: no se calca ni se importa como geometría;
     - toda la geometría se genera con `bpy` a partir de medidas numéricas;
@@ -271,7 +282,7 @@ Están ordenados de mayor a menor impacto en los renders.
 | 6 | **Lado Aire** | ✅ Resuelto el 4 de octubre con la planta A111 y el alzado SO: carpinterías, puertas, pilastras, marquesina, nicho, vestíbulo y bloque. | Lo que falta confirmar está en `CAMBIOS_4OCT_FACHADAS.md`, sección 8. | `fachada_aire()` |
 | 7 | **Rombo perforado OESTE** | Usa el material del letrero: corten en P1 y blanco en P2. | Confirmar con el cliente. | `elementos_laterales()` |
 | 8 | **Entorno** | ✅ Desde el 4 de octubre (noche), todo el cordón sigue la planta A111: en el Lado Tierra, vereda de ≈ 8,8 m con dos dársenas y la zanja de 0,50 × 0,20 m del corte bajo el alero; en el Lado Aire y los laterales, veredas y cordón, más el camino de servicio de la vista aérea del cliente. | Mira `LADO_TIERRA_PLANTA_VEREDAS.jpg`: desvío máximo de 1 cm con la A111. | `cordon_tierra()`, `DARSENAS_TIERRA`, `entorno()`, `cordon_aire()`, `entorno_aire()` |
-| 12 | **Contexto que no está en los planos** | Calles, cantero, estacionamiento y acceso del Lado Tierra: propuesta armada con la vista aérea del cliente. Pista 13/31 con las X de la georreferencia y el eje a una distancia **supuesta** de 330 m del Lado Aire (sección 3). | Plano de sitio o de accesos del cliente, y la distancia real entre la terminal y la pista. | `calzada_tierra()`, `ESTACIONAMIENTO`, `PISTA`, `RODAJE`, `contexto_aeropuerto()` |
+| 12 | **Contexto que no está en los planos** | Frente del Lado Tierra (calzada, jardineras, plaza): medido por fotogrametría sobre las capturas DALUX del cliente (±0,5 m), no sobre un plano. Calles de los testeros y acceso: propuesta. Pista 13/31 con las X de la georreferencia y el eje a una distancia **supuesta** de 330 m del Lado Aire (sección 3). | Plano de sitio o de accesos del cliente (para pasar el frente a cotas de obra), y la distancia real entre la terminal y la pista. | `frente_lado_tierra()`, `calzada_frente()`, `FRENTE`, `JARDINERAS`, `PISTA`, `RODAJE`, `contexto_aeropuerto()` |
 | 9 | **Cerchas de la cubierta** | No están modeladas, porque no se ven desde afuera. | Los cortes las dibujan. Son opcionales. | — |
 | 10 | **Interiores** | Una caja emisiva cálida en cada lado, según el brief: "interiores básicos". | — | `envolvente_general()`, `fachada_aire()` |
 | 11 | **Primera correa de la cubierta** | ✅ Resuelto con el detalle del cliente: el retenedor va a 1,398 m del borde, medido sobre la pendiente. | — | `RETENEDOR` |
@@ -324,7 +335,7 @@ Están ordenados de mayor a menor impacto en los renders.
 | `elementos_laterales` | `02_ENVOLVENTE` | `UY_ROMBO_OESTE_*`, `UY_MASTIL_OESTE`, `UY_CAJA_EMBARQUE_OESTE*`, `UY_DESCANSO_ESCALONES_OESTE`, `UY_FRANJA_ESTE_*` |
 | `celosias` | `05_CELOSIAS_CORTEN` | `UY_CELOSIA_<fachada>_<variante>_<n>` y `UY_CELOSIAS_BASTIDOR` |
 | `letrero` | `02_ENVOLVENTE/LETRERO_HORIZONTE_UYUNI/LETRERO_A_SOBRESALE` y `.../LETRERO_B_CONTENIDO` | letras, reflejo, pirámides 3D, marcos, separadores y líneas de horizonte (sufijo `_A` o `_B`) |
-| `entorno` | `06_ENTORNO_SITE` | Lado Tierra según la A111: `UY_VEREDA_TIERRA`, `UY_CORDON_TIERRA`, `UY_ZANJA_DRENAJE` y `UY_ZANJA_REJILLA`. Contexto: `UY_CALZADA_ASFALTO` (calzada, anillo, estacionamiento y acceso), `UY_ISLAS_CORDON`, `UY_ISLAS_GRAVA`, `UY_SENALIZACION_VIAL` y `UY_SENALIZACION_VIAL_AMARILLA`. Llama a `entorno_aire`, `contexto_aeropuerto`, `terreno` y `paja_brava` |
+| `entorno` | `06_ENTORNO_SITE` | Lado Tierra según la A111: `UY_VEREDA_TIERRA`, `UY_CORDON_TIERRA`, `UY_ZANJA_DRENAJE` y `UY_ZANJA_REJILLA`. Frente (`frente_lado_tierra`): `UY_CALZADA_ASFALTO` (calzada frontal, calles de los testeros, acceso y calle del eje 20), `UY_FRENTE_PLAZA_ASFALTO`, `UY_FRENTE_JARDINERAS_CORDON` / `_TIERRA`, `UY_FRENTE_ANILLOS_BLANCOS` / `_TIERRA`, `UY_FRENTE_CORDONES_AMARILLOS`, `UY_FRENTE_PLAZA_CORDONES`, `UY_FRENTE_ESPIGA_CORDONES`, `UY_FRENTE_ANDENES_BUS`, `UY_FRENTE_COLUMNAS_AMARILLAS`, `UY_FRENTE_PASOS_ME2`, `UY_SENALIZACION_VIAL` y `UY_SENALIZACION_VIAL_AMARILLA`. Llama a `entorno_aire`, `contexto_aeropuerto`, `terreno` y `paja_brava` |
 | `entorno_aire` | `06_ENTORNO_SITE` | `UY_VEREDA_AIRE_OESTE/ESTE`, `UY_CORDON_AIRE_*`, `UY_PLATAFORMA_AIRE_HORMIGON`, `UY_CAMINO_SERVICIO_AIRE` y sus marcas, `UY_PLATAFORMA_MARCAS_AMARILLAS` |
 | `contexto_aeropuerto` | `11_CONTEXTO_AEROPUERTO` | `UY_PISTA_13_31_ASFALTO`, `UY_CALLE_RODAJE_ASFALTO`, `UY_PISTA_MARCAS_BLANCAS`, `UY_PISTA_Y_RODAJE_MARCAS_AMARILLAS` y `UY_MANGA_VIENTO_*` |
 | `terreno` | `06_ENTORNO_SITE` | `UY_SUELO_ALTIPLANO`: malla polar de 45 km con cerros, curvatura y el atributo `salar` |
@@ -375,7 +386,7 @@ Están ordenados de mayor a menor impacto en los renders.
 **Hoy (desde el 4 de octubre, noche; `CAMBIOS_4OCT_FACHADAS.md`, sección 11.3):**
 - **Suelo:** una malla polar de 45 km de radio con material procedural, plana hasta 3,5 km. Su nieve se controla con la propiedad `nieve`.
 - **Relieve:** curvatura de la Tierra y cordones de cerros aproximados (`CERROS`): la cordillera de Chichas al este, hasta ≈ 2,4° sobre el horizonte, y lomas al sur y al norte. Al oeste, el Salar plano y blanco desde 15 km.
-- **Vegetación:** paja brava instanciada con Geometry Nodes (unas 22 000 matas) en manchas, fuera de lo pavimentado y de la franja de la pista, y en las islas del estacionamiento.
+- **Vegetación:** paja brava instanciada con Geometry Nodes (unas 22 000 matas) en manchas, fuera de lo pavimentado y de la franja de la pista. Las jardineras del frente son de tierra, como en el modelo del cliente. Con `CONTEXTO_IA = True` la dispersión no sale en el render.
 - **Lejanía:** el color del suelo se aclara y se enfría con la distancia.
 
 **Por hacer:**
