@@ -215,11 +215,13 @@
       throw new Error('La celda no cabe en ' + papel + orientacion);
     }
 
+    // la grilla se centra en la vertical del espacio disponible
+    const yInicio = gy0 + (gh - (filas * ch + (filas - 1) * sepFila)) / 2;
     const celdas = [];
     for (let f = 0; f < filas; f++) {
       for (let c = 0; c < columnas; c++) {
         const x = gx0 + c * (cw + SEPARACION_COL);
-        const y = gy0 + f * (ch + sepFila);
+        const y = yInicio + f * (ch + sepFila);
         const base = y + ch - prop.bajoBase * h;
         const celda = {
           indice: f * columnas + c + 1,

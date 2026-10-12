@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A pulso · instrumento</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .modulos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .modulo { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid var(--linea); border-radius: 6px; padding: 14px 16px; }
+  .modulo:hover { border-color: var(--cian); }
+  .modulo b { display: block; font-size: 15px; margin-bottom: 4px; }
+  .modulo span { color: var(--tinta-suave); font-size: 13.5px; }
+  .modulo em { font-style: normal; font-family: var(--mono); font-size: 12px; color: var(--cian); }
+  ol.flujo li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html" aria-current="page">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main>
+  <section class="panel">
+    <h2>El espacio que escribe la letra</h2>
+    <p>Este instrumento ordena los ensayos de <i>A pulso</i>: imprime las pautas, registra o digitaliza cada repetición con su identificador, superpone las repeticiones de cada condición y exporta láminas para el atlas y trazos para el editor tipográfico. Funciona sin conexión: basta abrir estos archivos en un navegador. Los datos no salen del equipo; cada bloque se descarga como un archivo <code>.json</code>.</p>
+    <ol class="flujo">
+      <li><b>Imprime</b> la pauta de cada bloque y anota la ficha de ensayo.</li>
+      <li><b>Escribe</b> en el banco con la condición del bloque: en papel o en una tableta.</li>
+      <li><b>Digitaliza</b> la hoja (foto o escaneo) o descarga el bloque de la tableta.</li>
+      <li><b>Superpone</b> las repeticiones, compara con la base, mide y anota la regla candidata en la lámina.</li>
+      <li><b>Exporta</b> los trazos medianos al editor tipográfico, con su identificador.</li>
+    </ol>
+  </section>
+  <div class="modulos">
+    <a class="modulo" href="pautas.html"><em>imprimir</em><b>Pautas y plantillas</b><span>Hojas con celdas, línea base y altura x en cian, y marcas de registro. Plantillas de corte láser para los topes C1–C3.</span></a>
+    <a class="modulo" href="captura.html"><em>M1</em><b>Captura en tableta</b><span>Posición, tiempo, presión e inclinación del lápiz en cada repetición, con la secuencia del protocolo y la numeración automática.</span></a>
+    <a class="modulo" href="digitalizar.html"><em>M2</em><b>Digitalizar una hoja</b><span>De una foto o un escaneo a trazas: corrige la perspectiva, borra la pauta y extrae la línea central de cada celda.</span></a>
+    <a class="modulo" href="superponer.html"><em>M3 · M4</em><b>Superponer y medir</b><span>Repeticiones, densidad y trazo mediano por condición; métricas; medidas a mano; láminas; SVG para el atlas y para el editor.</span></a>
+    <a class="modulo" href="banco.html"><em>banco</em><b>Calculadora del banco</b><span>Alturas de montaje de cada condición a partir de las medidas del cuerpo de quien escribe.</span></a>
+    <a class="modulo" href="ficha.html"><em>imprimir</em><b>Fichas y hojas de sesión</b><span>Ficha de ensayo, medidas corporales, lista del piloto y consentimiento.</span></a>
+  </div>
+  <section class="panel" style="margin-top:16px">
+    <h2>Datos de ejemplo</h2>
+    <p class="ayuda">La carpeta <code>datos_ejemplo/</code> trae bloques y una foto <b>sintéticos</b> para probar el instrumento sin haber escrito todavía. Son trazas inventadas: sirven para aprender a usar las herramientas, no son ensayos ni evidencia.</p>
+  </section>
+</main>
+</body>
+</html>

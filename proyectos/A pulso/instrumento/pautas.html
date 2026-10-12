@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pautas · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style id="pagina-impresion">@page { size: 420mm 297mm; margin: 0; }</style>
+<style>
+  #vista { background: #e9e6df; padding: 16px; border-radius: 6px; overflow: auto; }
+  #vista svg { width: 100%; height: auto; display: block; box-shadow: 0 1px 4px rgba(0,0,0,.18); background: #fff; }
+  #impresion { display: none; }
+  .filas-gesto { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filas-gesto label.campo select { width: 120px; }
+  @media print {
+    body > *:not(#impresion) { display: none !important; }
+    #impresion { display: block; }
+    #impresion svg { display: block; }
+  }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html" aria-current="page">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main>
+  <section class="panel">
+    <h2>Pauta de escritura</h2>
+    <p class="ayuda">La pauta se imprime en cian claro, que desaparece al digitalizar. Las cuatro marcas negras permiten corregir la perspectiva de una foto. Imprime a tamaño real (100 %, sin «ajustar a la página») y verifica la regla de 100 mm.</p>
+    <div class="fila">
+      <label class="campo">Pauta predefinida
+        <select id="preset"></select>
+      </label>
+      <label class="campo">Código
+        <input id="codigo" size="18" spellcheck="false">
+      </label>
+    </div>
+    <h3>Gesto de cada fila</h3>
+    <div id="filas" class="filas-gesto"></div>
+    <h3>Encabezado (opcional: se puede completar a mano)</h3>
+    <div class="fila">
+      <label class="campo">Bloque <input id="e-bloque" size="8"></label>
+      <label class="campo">Fecha <input id="e-fecha" size="10"></label>
+      <label class="campo">Persona <input id="e-persona" size="5" placeholder="P00"></label>
+      <label class="campo">Sesión <input id="e-sesion" size="5" placeholder="S01"></label>
+      <label class="campo">Orden <input id="e-orden" size="3"></label>
+      <label class="campo">Condición <input id="e-condicion" size="8" placeholder="BASE"></label>
+      <label class="campo">Herramienta <input id="e-herramienta" size="14" placeholder="lápiz 2B"></label>
+    </div>
+    <p id="estado" class="estado" hidden></p>
+    <div class="fila" style="margin-top:12px">
+      <button id="imprimir">Imprimir</button>
+      <button id="svg" class="secundario">Descargar SVG</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div id="vista"></div>
+  </section>
+
+  <section class="panel">
+    <h2>Plantillas de topes (condiciones C1–C3)</h2>
+    <p class="ayuda">Para corte láser en MDF o acrílico de 5–6 mm. Rojo = corte; azul = grabado. Se apoyan sobre la pauta haciendo coincidir los agujeros con las marcas. Cada plantilla corresponde al código de pauta elegido arriba.</p>
+    <div class="fila">
+      <button class="secundario" data-tope="C1">C1 · topes en la línea base y la altura x</button>
+      <button class="secundario" data-tope="C2">C2 · canal de 0,75 h</button>
+      <button class="secundario" data-tope="C3">C3 · ventana de 0,6 h</button>
+    </div>
+  </section>
+</main>
+<div id="impresion"></div>
+
+<script src="lib/nucleo.js"></script>
+<script src="lib/dibujo.js"></script>
+<script src="lib/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { nucleo: N, dibujo: D, ui: U } = window.APulso;
+  const $ = U.$;
+  const presets = $('#preset');
+  for (const p of N.PRESETS) presets.append(U.el('option', { value: p.codigo, texto: p.nombre + ' (' + p.codigo + ')' }));
+  presets.append(U.el('option', { value: '', texto: 'Otro código…' }));
+
+  const guardado = U.leerLocal('pautas', {});
+  $('#codigo').value = guardado.codigo || N.PRESETS[0].codigo;
+  presets.value = N.PRESETS.some((p) => p.codigo === $('#codigo').value) ? $('#codigo').value : '';
+  for (const k of ['bloque', 'fecha', 'persona', 'sesion', 'orden', 'condicion', 'herramienta']) {
+    if (guardado[k]) $('#e-' + k).value = guardado[k];
+  }
+
+  let filasGesto = guardado.filasGesto || null;
+  let pauta = null;
+
+  function dibujarSelectoresFila() {
+    const cont = $('#filas');
+    cont.innerHTML = '';
+    if (!pauta) return;
+    const pre = N.PRESETS.find((p) => p.codigo.toUpperCase() === pauta.codigo.toUpperCase());
+    if (!filasGesto || filasGesto.length !== pauta.filas) filasGesto = (pre && pre.filas) ? pre.filas.slice() : new Array(pauta.filas).fill('');
+    for (let f = 0; f < pauta.filas; f++) {
+      const sel = U.el('select', { 'data-fila': f });
+      sel.append(U.el('option', { value: '', texto: '— a mano —' }));
+      for (const [g, nombre] of Object.entries(N.GESTOS)) sel.append(U.el('option', { value: g, texto: g + ' · ' + nombre }));
+      sel.value = filasGesto[f] || '';
+      sel.addEventListener('change', () => { filasGesto[f] = sel.value; actualizar(); });
+      cont.append(U.el('label', { class: 'campo' }, ['Fila ' + (f + 1), sel]));
+    }
+  }
+
+  function encabezado() {
+    const e = {};
+    for (const k of ['bloque', 'fecha', 'persona', 'sesion', 'orden', 'condicion', 'herramienta']) e[k] = $('#e-' + k).value.trim();
+    return e;
+  }
+
+  function actualizar(recrearFilas) {
+    const est = $('#estado');
+    try {
+      const nueva = N.pautaDesdeCodigo($('#codigo').value);
+      const cambio = !pauta || nueva.codigo !== pauta.codigo;
+      pauta = nueva;
+      if (cambio || recrearFilas) dibujarSelectoresFila();
+      U.estado(est, pauta.papel + (pauta.orientacion === 'H' ? ' horizontal' : ' vertical') + ' · ' + pauta.celdas.length + ' celdas · altura x ' + pauta.alturaX + ' mm');
+    } catch (e) {
+      U.estado(est, e.message, 'error');
+      pauta = null;
+      $('#vista').innerHTML = '';
+      return;
+    }
+    const svg = D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado() });
+    $('#vista').innerHTML = svg;
+    $('#impresion').innerHTML = svg;
+    $('#pagina-impresion').textContent = '@page { size: ' + pauta.W + 'mm ' + pauta.H + 'mm; margin: 0; }';
+    U.guardarLocal('pautas', Object.assign({ codigo: pauta.codigo, filasGesto }, encabezado()));
+  }
+
+  presets.addEventListener('change', () => {
+    if (presets.value) { $('#codigo').value = presets.value; filasGesto = null; actualizar(true); }
+    else $('#codigo').focus();
+  });
+  $('#codigo').addEventListener('input', () => {
+    const pre = N.PRESETS.find((p) => p.codigo.toUpperCase() === $('#codigo').value.trim().toUpperCase());
+    presets.value = pre ? pre.codigo : '';
+    actualizar();
+  });
+  document.querySelectorAll('[id^="e-"]').forEach((i) => i.addEventListener('input', () => actualizar()));
+  $('#imprimir').addEventListener('click', () => pauta && window.print());
+  $('#svg').addEventListener('click', () => pauta && U.descargar('pauta_' + pauta.codigo + '.svg', D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado() }), 'image/svg+xml'));
+  document.querySelectorAll('[data-tope]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (!pauta) return;
+      const nivel = b.dataset.tope;
+      U.descargar('topes_' + nivel + '_' + pauta.codigo + '.svg', D.svgPlantillaTopes(pauta, nivel), 'image/svg+xml');
+    })
+  );
+  actualizar(true);
+})();
+</script>
+</body>
+</html>

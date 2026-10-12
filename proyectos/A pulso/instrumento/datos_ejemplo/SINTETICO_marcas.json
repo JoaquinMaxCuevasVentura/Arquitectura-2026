@@ -1,0 +1,41 @@
+{
+ "aviso": "SINTÉTICO: trazas inventadas para probar el instrumento. No son ensayos ni evidencia.",
+ "marcas_px": {
+  "SINTETICO_hoja_A3H-h30-L-3x5_BASE.jpg": [
+   [
+    193.3,
+    175.4
+   ],
+   [
+    2031.4,
+    222.9
+   ],
+   [
+    1976.6,
+    1454.4
+   ],
+   [
+    147,
+    1398.2
+   ]
+  ],
+  "SINTETICO_hoja_A3H-h30-L-3x5_A2B2.jpg": [
+   [
+    193.3,
+    175.4
+   ],
+   [
+    2031.4,
+    222.9
+   ],
+   [
+    1976.6,
+    1454.4
+   ],
+   [
+    147,
+    1398.2
+   ]
+  ]
+ }
+}

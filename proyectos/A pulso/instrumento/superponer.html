@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superponer · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style id="pagina-impresion">@page { size: 420mm 297mm; margin: 10mm; }</style>
+<style>
+  .columnas { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 16px; align-items: start; }
+  @media (max-width: 900px) { .columnas { grid-template-columns: 1fr; } }
+  #lista-bloques { font-size: 12.5px; max-height: 180px; overflow: auto; margin: 6px 0; }
+  #lista-bloques div { padding: 2px 0; border-bottom: 1px dotted var(--linea); }
+  #condiciones label { display: flex; align-items: center; gap: 6px; font-size: 13.5px; padding: 2px 0; }
+  .paneles { display: flex; flex-wrap: wrap; gap: 12px; }
+  .tarjeta-panel { background: #fff; border: 1px solid var(--linea); border-radius: 4px; padding: 6px; }
+  .tarjeta-panel h4 { margin: 0 0 4px; font-size: 13px; display: flex; align-items: center; }
+  .tarjeta-panel h4 small { color: var(--tinta-suave); font-weight: 400; margin-left: 6px; }
+  .tarjeta-panel canvas { display: block; cursor: crosshair; }
+  #lectura { font-family: var(--mono); font-size: 13px; min-height: 1.4em; margin: 8px 0; }
+  #medidas td input { width: 100%; font: inherit; }
+  #lamina { display: none; }
+  #lamina .fila-gesto { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 6mm; break-inside: avoid; }
+  #lamina h1 { font-size: 16pt; margin: 0 0 2mm; }
+  #lamina .sub { color: #555; font-size: 10pt; margin-bottom: 5mm; }
+  #lamina .texto { border: 1px solid #ccc; min-height: 22mm; padding: 2mm; font-size: 10pt; margin-top: 2mm; }
+  #lamina .texto:empty::before { content: attr(data-placeholder); color: #999; }
+  #lamina table.datos { font-size: 8.5pt; width: auto; }
+  #lamina .tarjeta-panel { border: none; padding: 0; }
+  body.modo-lamina #lamina { display: block; }
+  body.modo-lamina main > *:not(#lamina) { display: none; }
+  @media print {
+    body.modo-lamina #lamina .no-imprimir { display: none; }
+    #lamina .texto { border-color: #999; }
+  }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html" aria-current="page">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main>
+  <div class="columnas">
+    <aside>
+      <section class="panel">
+        <h2>Bloques</h2>
+        <label class="campo">Abrir archivos .json <input id="archivos" type="file" accept=".json,application/json" multiple></label>
+        <div id="lista-bloques"></div>
+        <div id="aviso" class="aviso-sintetico" hidden></div>
+        <button id="vaciar" class="secundario" style="margin-top:6px">Quitar todo</button>
+      </section>
+      <section class="panel">
+        <h2>Qué comparar</h2>
+        <div class="fila">
+          <label class="campo">Persona <select id="persona"></select></label>
+          <label class="campo">Gesto <select id="gesto"></select></label>
+        </div>
+        <h3>Condiciones</h3>
+        <div id="condiciones"></div>
+        <label class="check"><input id="calentamiento" type="checkbox"> Incluir calentamiento</label>
+      </section>
+      <section class="panel">
+        <h2>Lectura</h2>
+        <div class="fila">
+          <label class="campo">Alinear
+            <select id="alineacion">
+              <option value="centroide">por el centroide</option>
+              <option value="izquierda">por el borde izquierdo</option>
+              <option value="celda">como se escribió</option>
+            </select>
+          </label>
+          <label class="campo">Tolerancia (mm) <input id="tolerancia" type="number" min="0.3" max="5" step="0.1" value="1.5"></label>
+        </div>
+        <div style="margin-top:8px">
+          <label class="check"><input id="ver-reps" type="checkbox" checked> Repeticiones</label><br>
+          <label class="check"><input id="ver-densidad" type="checkbox" checked> Densidad (por dónde pasan más repeticiones)</label><br>
+          <label class="check"><input id="ver-mediano" type="checkbox" checked> Trazo mediano</label><br>
+          <label class="check"><input id="ver-tinta" type="checkbox"> Tinta escaneada (si existe)</label>
+        </div>
+        <p class="ayuda">El trazo mediano es la línea central de la zona por la que pasa al menos la mitad de las repeticiones, a una distancia menor que la tolerancia. Si se corta, sube la tolerancia: las repeticiones están más dispersas que eso.</p>
+      </section>
+    </aside>
+
+    <div>
+      <section class="panel">
+        <div class="fila" style="justify-content:space-between">
+          <h2 id="titulo-vista" style="margin:0">Abre uno o más bloques para empezar</h2>
+          <div class="fila">
+            <button id="svg" class="secundario" disabled>SVG de la comparación</button>
+            <button id="editor" class="secundario" disabled>Medianos para el editor</button>
+            <button id="csv" class="secundario" disabled>Métricas (CSV)</button>
+            <button id="ver-lamina" disabled>Lámina</button>
+          </div>
+        </div>
+        <div id="paneles" class="paneles" style="margin-top:10px"></div>
+        <div id="lectura" class="ayuda">Haz clic sobre un panel para medir una posición.</div>
+        <div class="fila">
+          <label class="campo">Nombre de la medida <input id="nombre-medida" size="18" placeholder="unión arco-asta"></label>
+          <button id="guardar-medida" class="secundario" disabled>Guardar medida</button>
+          <button id="csv-medidas" class="secundario" disabled>Medidas (CSV)</button>
+        </div>
+        <table id="medidas" class="datos" style="margin-top:8px"></table>
+      </section>
+      <section class="panel">
+        <h2>Métricas por condición</h2>
+        <p class="ayuda">Media ± desviación estándar de las repeticiones. Las métricas de tiempo, presión y levantamientos existen solo para trazas de tableta; el grosor, solo para escaneos.</p>
+        <div style="overflow:auto"><table id="metricas" class="datos"></table></div>
+      </section>
+    </div>
+  </div>
+
+  <section id="lamina">
+    <div class="no-imprimir fila" style="margin-bottom:10px">
+      <button id="imprimir-lamina">Imprimir o guardar como PDF</button>
+      <button id="cerrar-lamina" class="secundario">Volver</button>
+      <span class="ayuda">Puedes escribir en los recuadros antes de imprimir. La lámina se imprime en A3 horizontal.</span>
+    </div>
+    <div id="contenido-lamina"></div>
+  </section>
+</main>
+
+<script src="lib/nucleo.js"></script>
+<script src="lib/geometria.js"></script>
+<script src="lib/imagen.js"></script>
+<script src="lib/metricas.js"></script>
+<script src="lib/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { nucleo: N, geometria: G, metricas: M, ui: U } = window.APulso;
+  const $ = U.$;
+  const CIAN = '#6cc5ee';
+  const COLOR_BASE = '#3d3b38';
+  const ANCHO_PANEL = 330;
+
+  const datos = { bloques: [], ensayos: [], tintas: new Map() };
+  let vista = null; // última vista calculada
+  let medida = null;
+  const medidas = [];
+
+  // ---------- carga ----------
+  $('#archivos').addEventListener('change', async (e) => {
+    for (const f of e.target.files) {
+      try {
+        const obj = JSON.parse(await U.leerTexto(f));
+        agregarBloque(obj, f.name);
+      } catch (err) {
+        alert(f.name + ': ' + err.message);
+      }
+    }
+    e.target.value = '';
+    refrescarFiltros();
+  });
+
+  function agregarBloque(obj, nombre) {
+    const errores = N.validarBloque(obj);
+    if (errores.length) throw new Error(errores.join(' '));
+    if (datos.bloques.some((b) => b.nombre === nombre)) return;
+    datos.bloques.push({ nombre, obj });
+    for (const e of obj.ensayos) datos.ensayos.push(Object.assign({}, e, { _bloque: obj.bloque, _origen: obj.origen, _archivo: nombre }));
+  }
+  window.APulso.cargarBloques = (lista) => { lista.forEach(([obj, nombre]) => agregarBloque(obj, nombre)); refrescarFiltros(); }; // para pruebas
+
+  $('#vaciar').addEventListener('click', () => {
+    datos.bloques = [];
+    datos.ensayos = [];
+    refrescarFiltros();
+  });
+
+  function ordenCondiciones(lista) {
+    const orden = N.CONDICIONES_SERIE;
+    return lista.sort((a, b) => {
+      const ia = orden.indexOf(a);
+      const ib = orden.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+    });
+  }
+
+  function colorDe(cond, todas) {
+    if (cond === 'BASE') return COLOR_BASE;
+    const otras = todas.filter((c) => c !== 'BASE');
+    return U.COLORES[otras.indexOf(cond) % U.COLORES.length];
+  }
+
+  function refrescarFiltros() {
+    const lista = $('#lista-bloques');
+    lista.innerHTML = '';
+    for (const b of datos.bloques) {
+      const n = b.obj.ensayos.filter((e) => !e.calentamiento).length;
+      lista.append(U.el('div', { texto: b.nombre + ' · ' + b.obj.origen + ' · ' + n + ' rep.' }));
+    }
+    const sinteticos = datos.bloques.filter((b) => b.obj.origen === 'sintetico');
+    $('#aviso').hidden = !sinteticos.length;
+    $('#aviso').textContent = sinteticos.length ? 'Hay ' + sinteticos.length + ' bloque(s) SINTÉTICOS: trazas inventadas para probar el instrumento. No son ensayos ni evidencia.' : '';
+
+    const personas = [...new Set(datos.ensayos.map((e) => e._bloque.persona))].sort();
+    llenarSelect($('#persona'), personas, null);
+    const gestos = [...new Set(datos.ensayos.map((e) => e.gesto))].sort();
+    llenarSelect($('#gesto'), gestos, (g) => g + ' · ' + N.GESTOS[g]);
+
+    const conds = ordenCondiciones([...new Set(datos.ensayos.map((e) => e._bloque.condicion))]);
+    const cont = $('#condiciones');
+    const marcadas = new Set([...cont.querySelectorAll('input:checked')].map((i) => i.value));
+    cont.innerHTML = '';
+    for (const c of conds) {
+      const chk = U.el('input', { type: 'checkbox', value: c, checked: marcadas.size ? marcadas.has(c) : true });
+      chk.addEventListener('change', dibujarTodo);
+      cont.append(U.el('label', { title: N.describirCondicion(c) }, [chk, U.el('span', { class: 'chip', style: 'background:' + colorDe(c, conds) }), c]));
+    }
+    dibujarTodo();
+  }
+
+  function llenarSelect(sel, valores, etiqueta) {
+    const actual = sel.value;
+    sel.innerHTML = '';
+    for (const v of valores) sel.append(U.el('option', { value: v, texto: etiqueta ? etiqueta(v) : v }));
+    if (valores.includes(actual)) sel.value = actual;
+  }
+
+  ['persona', 'gesto', 'calentamiento', 'alineacion', 'tolerancia', 'ver-reps', 'ver-densidad', 'ver-mediano', 'ver-tinta'].forEach((id) =>
+    $('#' + id).addEventListener('change', dibujarTodo)
+  );
+
+  // ---------- cálculo ----------
+  function opciones() {
+    return {
+      alineacion: $('#alineacion').value,
+      tolerancia: Math.max(0.3, parseFloat($('#tolerancia').value) || 1.5),
+      reps: $('#ver-reps').checked,
+      densidad: $('#ver-densidad').checked,
+      mediano: $('#ver-mediano').checked,
+      tinta: $('#ver-tinta').checked,
+    };
+  }
+
+  /** Grupos (uno por condición) para una persona y un gesto. Normaliza a la altura x de referencia si difiere. */
+  function calcularGrupos(persona, gesto, condiciones, op) {
+    const todas = ordenCondiciones([...new Set(datos.ensayos.map((e) => e._bloque.condicion))]);
+    const conCal = $('#calentamiento').checked;
+    const grupos = [];
+    let hRef = null;
+    for (const cond of condiciones) {
+      const ens = datos.ensayos.filter((e) => e._bloque.persona === persona && e.gesto === gesto && e._bloque.condicion === cond && (conCal || !e.calentamiento));
+      if (!ens.length) continue;
+      const h = ens[0]._bloque.altura_x_mm;
+      if (hRef == null) hRef = h;
+      const k = hRef / h;
+      const escaladas = k === 1 ? ens : ens.map((e) => Object.assign({}, e, { trazos: e.trazos.map((t) => ({ puntos: t.puntos.map((p) => [p[0] * k, p[1] * k].concat(p.slice(2))) })), _escala: k }));
+      const resumen = M.resumenGrupo(escaladas, hRef, { alineacion: op.alineacion, tolerancia: op.tolerancia, pxPorMm: 5 });
+      const desplaz = escaladas.map((e, i) => {
+        const orig = M.polilineas(e);
+        const al = resumen.alineadas[i];
+        return orig.length && orig[0].length ? al[0][0][0] - orig[0][0][0] : 0;
+      });
+      grupos.push({ cond, color: colorDe(cond, todas), ensayos: escaladas, resumen, desplaz, h, normalizado: k !== 1 });
+    }
+    return { grupos, hRef };
+  }
+
+  function vistaComun(conjuntos, hRef) {
+    const polis = [[[0, 0], [0, hRef]]];
+    for (const { grupos } of conjuntos) for (const g of grupos) for (const al of g.resumen.alineadas) polis.push(...al);
+    const c = G.caja(polis);
+    const m = 4;
+    const x0 = c.x0 - m;
+    const x1 = c.x1 + m;
+    const y0 = Math.min(c.y0, 0) - m;
+    const y1 = Math.max(c.y1, hRef) + m;
+    const escala = Math.min(ANCHO_PANEL / (x1 - x0), 330 / (y1 - y0));
+    return { x0, y1, wMm: x1 - x0, hMm: y1 - y0, escala, wPx: Math.round((x1 - x0) * escala), hPx: Math.round((y1 - y0) * escala), hRef };
+  }
+
+  // ---------- dibujo ----------
+  function rgb(hex) {
+    const v = parseInt(hex.slice(1), 16);
+    return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+  }
+
+  function lienzoDensidad(den, color) {
+    const c = document.createElement('canvas');
+    c.width = den.w;
+    c.height = den.h;
+    const cx = c.getContext('2d');
+    const im = cx.createImageData(den.w, den.h);
+    const [r, g, b] = rgb(color);
+    for (let i = 0; i < den.conteo.length; i++) {
+      if (!den.conteo[i]) continue;
+      im.data[4 * i] = r;
+      im.data[4 * i + 1] = g;
+      im.data[4 * i + 2] = b;
+      im.data[4 * i + 3] = Math.round(Math.min(1, den.conteo[i] / den.n) * 0.5 * 255);
+    }
+    cx.putImageData(im, 0, 0);
+    return c;
+  }
+
+  function imagenTinta(e) {
+    if (!e.tinta) return null;
+    if (!datos.tintas.has(e.id + e._archivo)) {
+      const im = new Image();
+      im.onload = () => dibujarTodo();
+      im.src = e.tinta;
+      datos.tintas.set(e.id + e._archivo, im);
+    }
+    const im = datos.tintas.get(e.id + e._archivo);
+    return im.complete && im.naturalWidth ? im : null;
+  }
+
+  function dibujarPanel(canvas, grupos, v, op, comparacion, dpr) {
+    const d = dpr || window.devicePixelRatio || 1;
+    canvas.width = Math.round(v.wPx * d);
+    canvas.height = Math.round(v.hPx * d);
+    canvas.style.width = v.wPx + 'px';
+    canvas.style.height = v.hPx + 'px';
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(d, 0, 0, d, 0, 0);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, v.wPx, v.hPx);
+    const X = (x) => (x - v.x0) * v.escala;
+    const Y = (y) => (v.y1 - y) * v.escala;
+    // guías
+    ctx.strokeStyle = CIAN;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, Y(0));
+    ctx.lineTo(v.wPx, Y(0));
+    ctx.stroke();
+    ctx.setLineDash([5, 3]);
+    ctx.beginPath();
+    ctx.moveTo(0, Y(v.hRef));
+    ctx.lineTo(v.wPx, Y(v.hRef));
+    ctx.stroke();
+    ctx.setLineDash([]);
+    for (const g of grupos) {
+      const den = g.resumen.densidad;
+      if (op.densidad) {
+        ctx.globalAlpha = comparacion ? 0.5 : 1;
+        ctx.drawImage(lienzoDensidad(den, g.color), X(den.x0), Y(den.y1), (den.w / den.pxPorMm) * v.escala, (den.h / den.pxPorMm) * v.escala);
+        ctx.globalAlpha = 1;
+      }
+      if (op.tinta && !comparacion) {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0.12, 0.7 / Math.sqrt(g.ensayos.length));
+        g.ensayos.forEach((e, i) => {
+          const im = imagenTinta(e);
+          if (!im || !e.tinta_caja) return;
+          const [cx0, cy0, cx1, cy1] = e.tinta_caja.map((t) => t * (e._escala || 1));
+          const dx = g.desplaz[i];
+          ctx.drawImage(im, X(cx0 + dx), Y(cy1), (cx1 - cx0) * v.escala, (cy1 - cy0) * v.escala);
+        });
+        ctx.restore();
+      }
+      if (op.reps && !comparacion) {
+        ctx.strokeStyle = g.color;
+        ctx.globalAlpha = 0.45;
+        ctx.lineWidth = 1;
+        ctx.lineJoin = 'round';
+        for (const polis of g.resumen.alineadas)
+          for (const poli of polis) {
+            ctx.beginPath();
+            poli.forEach((p, k) => (k ? ctx.lineTo(X(p[0]), Y(p[1])) : ctx.moveTo(X(p[0]), Y(p[1]))));
+            ctx.stroke();
+          }
+        ctx.globalAlpha = 1;
+      }
+      if (op.mediano || comparacion) {
+        ctx.strokeStyle = g.color;
+        ctx.lineWidth = comparacion ? 2.5 : 2.2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        for (const poli of g.resumen.mediano) {
+          ctx.beginPath();
+          poli.forEach((p, k) => (k ? ctx.lineTo(X(p[0]), Y(p[1])) : ctx.moveTo(X(p[0]), Y(p[1]))));
+          ctx.stroke();
+        }
+      }
+    }
+    if (medida) {
+      ctx.strokeStyle = '#c8433a';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(X(medida.x), 0);
+      ctx.lineTo(X(medida.x), v.hPx);
+      ctx.moveTo(0, Y(medida.y));
+      ctx.lineTo(v.wPx, Y(medida.y));
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  function tarjeta(titulo, sub, color, canvas) {
+    return U.el('div', { class: 'tarjeta-panel' }, [
+      U.el('h4', {}, [color ? U.el('span', { class: 'chip', style: 'background:' + color }) : null, titulo, sub ? U.el('small', { texto: sub }) : null]),
+      canvas,
+    ]);
+  }
+
+  function dibujarTodo() {
+    const persona = $('#persona').value;
+    const gesto = $('#gesto').value;
+    const conds = [...document.querySelectorAll('#condiciones input:checked')].map((i) => i.value);
+    const op = opciones();
+    const cont = $('#paneles');
+    cont.innerHTML = '';
+    const hayDatos = datos.ensayos.length && persona && gesto && conds.length;
+    ['svg', 'editor', 'csv', 'ver-lamina', 'guardar-medida'].forEach((id) => ($('#' + id).disabled = !hayDatos));
+    if (!hayDatos) {
+      $('#titulo-vista').textContent = datos.ensayos.length ? 'Elige al menos una condición' : 'Abre uno o más bloques para empezar';
+      $('#metricas').innerHTML = '';
+      vista = null;
+      return;
+    }
+    const { grupos, hRef } = calcularGrupos(persona, gesto, conds, op);
+    if (!grupos.length) {
+      $('#titulo-vista').textContent = 'No hay repeticiones de ' + gesto + ' para ' + persona + ' en esas condiciones';
+      $('#metricas').innerHTML = '';
+      vista = null;
+      return;
+    }
+    const v = vistaComun([{ grupos }], hRef);
+    vista = { persona, gesto, grupos, v, op };
+    $('#titulo-vista').textContent = persona + ' · ' + gesto + ' · ' + N.GESTOS[gesto];
+    for (const g of grupos) {
+      const cv = document.createElement('canvas');
+      dibujarPanel(cv, [g], v, op, false);
+      cv.addEventListener('click', (e) => medir(e, cv, v));
+      const avisoMediano = g.resumen.mediano.length > 3 ? ' · mediano cortado' : '';
+      cont.append(tarjeta(g.cond, 'n = ' + g.resumen.n + (g.normalizado ? ' · escalado' : '') + avisoMediano, g.color, cv));
+    }
+    if (grupos.length > 1) {
+      const cv = document.createElement('canvas');
+      dibujarPanel(cv, grupos, v, op, true);
+      cv.addEventListener('click', (e) => medir(e, cv, v));
+      cont.append(tarjeta('Medianos superpuestos', '', null, cv));
+    }
+    tablaMetricas(grupos, $('#metricas'));
+  }
+
+  function medir(e, cv, v) {
+    const r = cv.getBoundingClientRect();
+    const x = v.x0 + (e.clientX - r.left) / v.escala;
+    const y = v.y1 - (e.clientY - r.top) / v.escala;
+    medida = { x, y };
+    $('#lectura').textContent = 'x = ' + U.num(x) + ' mm · y = ' + U.num(y) + ' mm (' + U.num((100 * y) / v.hRef, 0) + ' % de la altura x)';
+    $('#guardar-medida').disabled = false;
+    const op = vista.op;
+    const canvases = $('#paneles').querySelectorAll('canvas');
+    vista.grupos.forEach((g, i) => dibujarPanel(canvases[i], [g], v, op, false));
+    if (vista.grupos.length > 1) dibujarPanel(canvases[canvases.length - 1], vista.grupos, v, op, true);
+  }
+
+  $('#guardar-medida').addEventListener('click', () => {
+    if (!medida || !vista) return;
+    medidas.push({
+      nombre: $('#nombre-medida').value.trim() || 'medida ' + (medidas.length + 1),
+      persona: vista.persona,
+      gesto: vista.gesto,
+      condiciones: vista.grupos.map((g) => g.cond).join(' '),
+      alineacion: vista.op.alineacion,
+      x_mm: medida.x.toFixed(2),
+      y_mm: medida.y.toFixed(2),
+      y_pct_altura_x: ((100 * medida.y) / vista.v.hRef).toFixed(1),
+    });
+    const t = $('#medidas');
+    t.innerHTML = '<tr><th>Medida</th><th>Gesto</th><th>Condiciones</th><th>x (mm)</th><th>y (mm)</th><th>y / h</th></tr>';
+    for (const m of medidas) t.append(U.el('tr', {}, [m.nombre, m.gesto, m.condiciones, m.x_mm.replace('.', ','), m.y_mm.replace('.', ','), m.y_pct_altura_x.replace('.', ',') + ' %'].map((v) => U.el('td', { texto: v }))));
+    $('#csv-medidas').disabled = false;
+  });
+  $('#csv-medidas').addEventListener('click', () => U.descargar('medidas.csv', N.aCSV(medidas, Object.keys(medidas[0])), 'text/csv'));
+
+  const DECIMALES = { inclinacion_grados: 1, eje_grados: 1, piezas: 1, componentes: 1, levantamientos: 1, pausas: 1, presion_media: 2, presion_de: 2, ancho_h: 2, alto_h: 2, duracion_s: 2, en_aire_s: 2 };
+
+  function tablaMetricas(grupos, tabla, claves) {
+    tabla.innerHTML = '';
+    const ks = (claves || Object.keys(M.ETIQUETAS)).filter((k) => grupos.some((g) => g.resumen.resumen[k]));
+    const cab = U.el('tr', {}, [U.el('th', { texto: 'Métrica' })].concat(grupos.map((g) => U.el('th', {}, [U.el('span', { class: 'chip', style: 'background:' + g.color }), g.cond + ' (n=' + g.resumen.n + ')']))));
+    tabla.append(cab);
+    for (const k of ks) {
+      const tr = U.el('tr', {}, [U.el('td', { texto: M.ETIQUETAS[k] })]);
+      for (const g of grupos) {
+        const r = g.resumen.resumen[k];
+        const dec = DECIMALES[k] != null ? DECIMALES[k] : 1;
+        tr.append(U.el('td', { texto: r ? U.num(r.media, dec) + ' ± ' + U.num(r.de, dec) : '—' }));
+      }
+      tabla.append(tr);
+    }
+  }
+
+  // ---------- exportar ----------
+  function rutaSVG(poli, X, Y) {
+    return poli.map((p, k) => (k ? 'L' : 'M') + X(p[0]).toFixed(2) + ' ' + Y(p[1]).toFixed(2)).join(' ');
+  }
+
+  $('#svg').addEventListener('click', () => {
+    if (!vista) return;
+    const { grupos, v, op } = vista;
+    const sep = 6;
+    const paneles = grupos.map((g) => [g]).concat(grupos.length > 1 ? [grupos] : []);
+    const W = paneles.length * v.wMm + (paneles.length - 1) * sep;
+    const H = v.hMm + 10;
+    const s = [];
+    s.push('<svg xmlns="http://www.w3.org/2000/svg" width="' + W.toFixed(1) + 'mm" height="' + H.toFixed(1) + 'mm" viewBox="0 0 ' + W.toFixed(2) + ' ' + H.toFixed(2) + '" font-family="Helvetica, Arial, sans-serif">');
+    paneles.forEach((gs, i) => {
+      const ox = i * (v.wMm + sep);
+      const X = (x) => ox + (x - v.x0);
+      const Y = (y) => 8 + (v.y1 - y);
+      const comp = gs.length > 1;
+      s.push('<text x="' + ox.toFixed(2) + '" y="5" font-size="3.5">' + (comp ? 'Medianos superpuestos' : gs[0].cond + ' · n = ' + gs[0].resumen.n) + '</text>');
+      s.push('<line x1="' + ox + '" y1="' + Y(0) + '" x2="' + (ox + v.wMm) + '" y2="' + Y(0) + '" stroke="' + CIAN + '" stroke-width="0.25"/>');
+      s.push('<line x1="' + ox + '" y1="' + Y(v.hRef) + '" x2="' + (ox + v.wMm) + '" y2="' + Y(v.hRef) + '" stroke="' + CIAN + '" stroke-width="0.25" stroke-dasharray="1.5 1"/>');
+      for (const g of gs) {
+        const den = g.resumen.densidad;
+        if (op.densidad) {
+          s.push('<image x="' + X(den.x0).toFixed(2) + '" y="' + Y(den.y1).toFixed(2) + '" width="' + (den.w / den.pxPorMm).toFixed(2) + '" height="' + (den.h / den.pxPorMm).toFixed(2) + '" opacity="' + (comp ? 0.5 : 1) + '" preserveAspectRatio="none" href="' + lienzoDensidad(den, g.color).toDataURL() + '"/>');
+        }
+        if (op.reps && !comp) for (const polis of g.resumen.alineadas) for (const poli of polis) s.push('<path d="' + rutaSVG(poli, X, Y) + '" fill="none" stroke="' + g.color + '" stroke-opacity="0.45" stroke-width="0.25" stroke-linejoin="round"/>');
+        if (op.mediano || comp) for (const poli of g.resumen.mediano) s.push('<path d="' + rutaSVG(poli, X, Y) + '" fill="none" stroke="' + g.color + '" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"/>');
+      }
+    });
+    s.push('</svg>');
+    U.descargar('AP-' + vista.persona + '-' + vista.gesto + '-comparacion.svg', s.join('\n'), 'image/svg+xml');
+  });
+
+  // Medianos en unidades de fuente: 1000 por eme, altura x = 500. La línea base queda en y = 0.
+  $('#editor').addEventListener('click', () => {
+    if (!vista) return;
+    const k = 500 / vista.v.hRef;
+    for (const g of vista.grupos) {
+      const c = G.caja(g.resumen.mediano.length ? g.resumen.mediano : [[[0, 0]]]);
+      const X = (x) => (x - c.x0) * k + 50;
+      const Y = (y) => -y * k;
+      const ancho = Math.ceil((c.w * k + 100) / 10) * 10;
+      const s = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -800 ' + ancho + ' 1000" width="' + ancho + '" height="1000">',
+        '<!-- A pulso · trazo mediano · ' + vista.persona + ' ' + vista.gesto + ' ' + g.cond + ' · n=' + g.resumen.n + ' · unidades de fuente: altura x = 500 (' + vista.v.hRef + ' mm) -->',
+        '<line x1="0" y1="0" x2="' + ancho + '" y2="0" stroke="#6cc5ee" stroke-width="2"/>',
+        '<line x1="0" y1="-500" x2="' + ancho + '" y2="-500" stroke="#6cc5ee" stroke-width="2"/>',
+      ];
+      for (const poli of g.resumen.mediano) s.push('<path d="' + rutaSVG(poli, X, Y) + '" fill="none" stroke="#000" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>');
+      s.push('</svg>');
+      U.descargar('AP-' + vista.persona + '-' + vista.gesto + '-' + g.cond + '-mediano.svg', s.join('\n'), 'image/svg+xml');
+    }
+  });
+
+  $('#csv').addEventListener('click', () => {
+    if (!vista) return;
+    const filas = [];
+    for (const g of vista.grupos)
+      g.ensayos.forEach((e, i) => {
+        const m = g.resumen.porEnsayo[i];
+        const f = { id: e.id, condicion: g.cond, gesto: e.gesto, archivo: e._archivo, alineacion: vista.op.alineacion, tolerancia_mm: vista.op.tolerancia };
+        for (const k of Object.keys(M.ETIQUETAS)) f[k] = m[k] == null ? '' : Math.round(m[k] * 1000) / 1000;
+        filas.push(f);
+      });
+    U.descargar('AP-' + vista.persona + '-' + vista.gesto + '-metricas.csv', N.aCSV(filas, Object.keys(filas[0])), 'text/csv');
+  });
+
+  // ---------- lámina ----------
+  const CLAVES_LAMINA = ['ancho_h', 'alto_h', 'inclinacion_grados', 'dispersion_mm', 'grosor_mm', 'levantamientos', 'velocidad_mm_s', 'pausas'];
+
+  $('#ver-lamina').addEventListener('click', () => {
+    const persona = $('#persona').value;
+    const conds = [...document.querySelectorAll('#condiciones input:checked')].map((i) => i.value);
+    const op = opciones();
+    const gestos = [...new Set(datos.ensayos.filter((e) => e._bloque.persona === persona).map((e) => e.gesto))].sort();
+    const conjuntos = gestos.map((gesto) => Object.assign({ gesto }, calcularGrupos(persona, gesto, conds, op))).filter((c) => c.grupos.length);
+    if (!conjuntos.length) return;
+    const v = vistaComun(conjuntos, conjuntos[0].hRef);
+    // la lámina A3 apaisada tiene unos 400 mm útiles: se ajusta el tamaño de los paneles
+    const columnas = Math.max(...conjuntos.map((c) => c.grupos.length + (c.grupos.length > 1 ? 1 : 0)));
+    const anchoDisponiblePx = 1400;
+    const k = Math.min(1.3, (anchoDisponiblePx * 0.62) / (columnas * v.wPx + (columnas - 1) * 8));
+    const vl = Object.assign({}, v, { escala: v.escala * k, wPx: Math.round(v.wPx * k), hPx: Math.round(v.hPx * k) });
+    const cont = $('#contenido-lamina');
+    cont.innerHTML = '';
+    const sesiones = [...new Set(datos.ensayos.filter((e) => e._bloque.persona === persona).map((e) => e._bloque.sesion))].join(', ');
+    const sint = datos.bloques.some((b) => b.obj.origen === 'sintetico');
+    cont.append(U.el('h1', { texto: 'A pulso · ' + persona + ' · ' + conds.join(' / ') }));
+    cont.append(U.el('div', { class: 'sub', texto: 'Sesiones ' + sesiones + ' · alineación ' + op.alineacion + ' · tolerancia ' + U.num(op.tolerancia) + ' mm · altura x ' + v.hRef + ' mm · ' + new Date().toLocaleDateString('es') + (sint ? ' · DATOS SINTÉTICOS, NO SON ENSAYOS' : '') }));
+    for (const c of conjuntos) {
+      const fila = U.el('div', { class: 'fila-gesto' });
+      for (const g of c.grupos) {
+        const cv = document.createElement('canvas');
+        dibujarPanel(cv, [g], vl, op, false, 3);
+        fila.append(tarjeta(c.gesto + ' · ' + g.cond, 'n = ' + g.resumen.n, g.color, cv));
+      }
+      if (c.grupos.length > 1) {
+        const cv = document.createElement('canvas');
+        dibujarPanel(cv, c.grupos, vl, op, true, 3);
+        fila.append(tarjeta(c.gesto + ' · medianos', '', null, cv));
+      }
+      const t = U.el('table', { class: 'datos' });
+      tablaMetricas(c.grupos, t, CLAVES_LAMINA);
+      fila.append(U.el('div', { style: 'flex:1;min-width:60mm' }, [t, U.el('div', { class: 'texto', contenteditable: 'true', 'data-placeholder': 'Observaciones sobre ' + c.gesto + '…' })]));
+      cont.append(fila);
+    }
+    cont.append(U.el('div', { class: 'fila', style: 'gap:6mm;align-items:stretch' }, [
+      U.el('div', { style: 'flex:1' }, [U.el('b', { texto: 'Notas en primera persona' }), U.el('div', { class: 'texto', contenteditable: 'true', 'data-placeholder': '¿Qué articulación conducía? ¿Dónde corregí? ¿Qué hizo la mano que no planeé?' })]),
+      U.el('div', { style: 'flex:1' }, [U.el('b', { texto: 'Regla candidata' }), U.el('div', { class: 'texto', contenteditable: 'true', 'data-placeholder': 'En [condición], [rasgo] tiende a [cambio]. Evidencia: … En la letra: …' })]),
+    ]));
+    document.body.classList.add('modo-lamina');
+    window.scrollTo(0, 0);
+  });
+  $('#cerrar-lamina').addEventListener('click', () => document.body.classList.remove('modo-lamina'));
+  $('#imprimir-lamina').addEventListener('click', () => window.print());
+
+  refrescarFiltros();
+})();
+</script>
+</body>
+</html>

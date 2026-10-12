@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digitalizar · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .columnas { display: grid; grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr); gap: 16px; align-items: start; }
+  @media (max-width: 900px) { .columnas { grid-template-columns: 1fr; } }
+  #marco-imagen { position: relative; background: #e9e6df; border-radius: 4px; overflow: hidden; cursor: crosshair; }
+  #marco-imagen canvas { display: block; width: 100%; height: auto; }
+  #celdas { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .celda { border: 1px solid var(--linea); border-radius: 4px; padding: 6px; background: #fff; font-size: 12px; }
+  .celda canvas { width: 100%; height: auto; display: block; background: #fff; }
+  .celda.vacia { opacity: 0.45; }
+  .celda .pie { display: flex; justify-content: space-between; align-items: center; gap: 4px; margin-top: 4px; }
+  .celda .alerta { color: var(--alerta); }
+  #tabla-filas td, #tabla-filas th { padding: 3px 6px; }
+  #tabla-filas input, #tabla-filas select { font: inherit; font-size: 13px; padding: 3px 4px; }
+  ol.pasos { margin: 0; padding-left: 20px; font-size: 13.5px; color: var(--tinta-suave); }
+  ol.pasos li.hecho { color: var(--ok); }
+  ol.pasos li.actual { color: var(--tinta); font-weight: 600; }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html" aria-current="page">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main>
+  <section class="panel">
+    <h2>Digitalizar una hoja (M2)</h2>
+    <p class="ayuda">Convierte una hoja escrita sobre una pauta en trazas: corrige la perspectiva con las cuatro marcas, separa cada celda, elimina la pauta cian y extrae la línea central de cada trazo. Sirve un escaneo a 300–600 ppp o una foto tomada desde arriba, con luz pareja y sin sombras sobre la hoja. El resultado es un bloque <code>.json</code> igual al de la captura en tableta, pero sin tiempo ni presión.</p>
+    <ol class="pasos" id="pasos">
+      <li>Elige la imagen y el código de pauta impreso en la hoja.</li>
+      <li>Haz clic en las cuatro marcas negras en orden: 1 arriba a la izquierda, 2 arriba a la derecha, 3 abajo a la derecha, 4 abajo a la izquierda.</li>
+      <li>Revisa las celdas: ajusta el contraste si falta o sobra tinta y marca las celdas vacías.</li>
+      <li>Completa los datos del bloque y descarga.</li>
+    </ol>
+  </section>
+
+  <div class="columnas">
+    <div>
+      <section class="panel">
+        <div class="fila">
+          <label class="campo">Imagen de la hoja <input id="archivo" type="file" accept="image/*"></label>
+          <label class="campo">Pauta
+            <select id="pauta"></select>
+          </label>
+          <button id="reiniciar-marcas" class="secundario">Volver a marcar</button>
+        </div>
+        <p id="estado" class="estado" hidden></p>
+        <div id="marco-imagen"><canvas id="imagen" width="800" height="560"></canvas></div>
+      </section>
+    </div>
+    <div>
+      <section class="panel">
+        <h3 style="margin-top:0">Datos del bloque</h3>
+        <div class="fila">
+          <label class="campo">Persona <input id="persona" size="5" value="P00"></label>
+          <label class="campo">Sesión <input id="sesion" size="5" value="S01"></label>
+          <label class="campo">Orden <input id="orden" type="number" min="1" value="1"></label>
+          <label class="campo">Condición <input id="condicion" size="8" value="BASE"></label>
+        </div>
+        <div class="fila" style="margin-top:8px">
+          <label class="campo">Fecha <input id="fecha" type="date"></label>
+          <label class="campo">Herramienta <input id="herramienta" size="12" value="lápiz 2B"></label>
+          <label class="campo">Superficie <input id="superficie" size="12" value="papel liso"></label>
+        </div>
+        <h3>Filas de la hoja</h3>
+        <table id="tabla-filas" class="datos"></table>
+        <p class="ayuda">«Desde» es el número de la primera repetición de la fila. Si un gesto ocupa varias filas, la numeración sigue sola.</p>
+        <h3>Extracción</h3>
+        <div class="fila">
+          <label class="campo">Canal
+            <select id="canal">
+              <option value="azul">Azul (borra la pauta cian)</option>
+              <option value="luminancia">Luminancia</option>
+              <option value="rojo">Rojo</option>
+            </select>
+          </label>
+          <label class="campo">Contraste mínimo <input id="delta" type="number" min="5" max="200" value="50"></label>
+          <label class="campo">Mancha mínima (mm²) <input id="areaMin" type="number" min="0" step="0.5" value="1"></label>
+        </div>
+        <div class="fila" style="margin-top:12px">
+          <button id="procesar" disabled>Procesar celdas</button>
+          <button id="descargar" class="secundario" disabled>Descargar bloque</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>Celdas</h2>
+    <p class="ayuda">Gris: tinta detectada. Color: línea central. Haz clic en una celda para marcarla vacía o descartada.</p>
+    <div id="celdas"></div>
+  </section>
+</main>
+
+<script src="lib/nucleo.js"></script>
+<script src="lib/geometria.js"></script>
+<script src="lib/imagen.js"></script>
+<script src="lib/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { nucleo: N, geometria: G, imagen: I, ui: U } = window.APulso;
+  const $ = U.$;
+  const PX_POR_MM = 8; // resolución de cada celda rectificada
+
+  const selPauta = $('#pauta');
+  for (const p of N.PRESETS) selPauta.append(U.el('option', { value: p.codigo, texto: p.codigo + ' · ' + p.nombre }));
+  $('#fecha').value = new Date().toISOString().slice(0, 10);
+
+  let img = null; // { rgba, w, h, gris }
+  let marcas = [];
+  let pauta = N.pautaDesdeCodigo(selPauta.value);
+  let resultados = []; // por celda
+  let H = null;
+
+  const lienzo = $('#imagen');
+  const ctx = lienzo.getContext('2d');
+
+  function paso(n) {
+    document.querySelectorAll('#pasos li').forEach((li, i) => {
+      li.className = i < n ? 'hecho' : i === n ? 'actual' : '';
+    });
+  }
+  paso(0);
+
+  // ---------- filas ----------
+  function filasPorDefecto() {
+    const pre = N.PRESETS.find((p) => p.codigo === pauta.codigo);
+    const filas = [];
+    const gestos = pre && pre.filas ? pre.filas : null;
+    for (let f = 0; f < pauta.filas; f++) filas.push({ gesto: gestos ? gestos[f % gestos.length] : 'G5', desde: null });
+    return filas;
+  }
+  let filas = filasPorDefecto();
+
+  function numerar() {
+    // primera repetición de cada fila: continúa la numeración de su gesto si no se fijó a mano
+    const siguiente = {};
+    return filas.map((f) => {
+      const d = f.desde != null ? f.desde : siguiente[f.gesto] || 1;
+      siguiente[f.gesto] = d + pauta.columnas;
+      return d;
+    });
+  }
+
+  function dibujarFilas() {
+    const t = $('#tabla-filas');
+    t.innerHTML = '<tr><th>Fila</th><th>Gesto</th><th>Desde</th><th>Repeticiones</th></tr>';
+    const desde = numerar();
+    filas.forEach((f, i) => {
+      const sel = U.el('select');
+      for (const [g, nombre] of Object.entries(N.GESTOS)) sel.append(U.el('option', { value: g, texto: g + ' · ' + nombre }));
+      sel.value = f.gesto;
+      sel.addEventListener('change', () => { f.gesto = sel.value; dibujarFilas(); });
+      const inp = U.el('input', { type: 'number', min: 1, value: desde[i], style: 'width:64px' });
+      inp.addEventListener('change', () => { f.desde = parseInt(inp.value, 10) || 1; dibujarFilas(); });
+      const tr = U.el('tr', {}, [
+        U.el('td', { texto: String(i + 1) }),
+        U.el('td', {}, [sel]),
+        U.el('td', {}, [inp]),
+        U.el('td', { texto: 'R' + N.dosDigitos(desde[i]) + '–R' + N.dosDigitos(desde[i] + pauta.columnas - 1) }),
+      ]);
+      t.append(tr);
+    });
+  }
+  dibujarFilas();
+
+  selPauta.addEventListener('change', () => {
+    pauta = N.pautaDesdeCodigo(selPauta.value);
+    filas = filasPorDefecto();
+    dibujarFilas();
+    resultados = [];
+    $('#celdas').innerHTML = '';
+    dibujarImagen();
+    actualizarBotones();
+  });
+
+  // ---------- imagen ----------
+  $('#archivo').addEventListener('change', async (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const url = URL.createObjectURL(f);
+    const im = new Image();
+    im.onload = () => {
+      const c = document.createElement('canvas');
+      c.width = im.naturalWidth;
+      c.height = im.naturalHeight;
+      const cx = c.getContext('2d');
+      cx.drawImage(im, 0, 0);
+      const datos = cx.getImageData(0, 0, c.width, c.height);
+      img = { rgba: datos.data, w: c.width, h: c.height, fuente: c, nombre: f.name };
+      img.gris = I.canal(img.rgba, img.w, img.h, 'azul');
+      marcas = [];
+      resultados = [];
+      $('#celdas').innerHTML = '';
+      lienzo.width = Math.min(1600, img.w);
+      lienzo.height = Math.round((lienzo.width * img.h) / img.w);
+      dibujarImagen();
+      paso(1);
+      U.estado($('#estado'), 'Haz clic en la marca 1 (arriba a la izquierda).');
+      actualizarBotones();
+      URL.revokeObjectURL(url);
+    };
+    im.onerror = () => U.estado($('#estado'), 'No se pudo abrir la imagen.', 'error');
+    im.src = url;
+  });
+
+  function escalaVista() {
+    return lienzo.width / img.w;
+  }
+
+  function dibujarImagen() {
+    ctx.clearRect(0, 0, lienzo.width, lienzo.height);
+    if (!img) return;
+    const s = escalaVista();
+    ctx.drawImage(img.fuente, 0, 0, lienzo.width, lienzo.height);
+    ctx.lineWidth = 2;
+    marcas.forEach(([x, y], k) => {
+      ctx.strokeStyle = '#c8433a';
+      ctx.beginPath();
+      ctx.arc(x * s, y * s, 9, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fillStyle = '#c8433a';
+      ctx.font = 'bold 14px system-ui';
+      ctx.fillText(String(k + 1), x * s + 11, y * s - 8);
+    });
+    if (H) {
+      // contorno de las celdas proyectado sobre la foto, para verificar el registro
+      ctx.strokeStyle = 'rgba(21,147,199,0.9)';
+      ctx.lineWidth = 1.5;
+      for (const c of pauta.celdas) {
+        const esquinas = [[c.x, c.y], [c.x + c.w, c.y], [c.x + c.w, c.y + c.h], [c.x, c.y + c.h]].map(([x, y]) => G.aplicarH(H, x, y));
+        ctx.beginPath();
+        esquinas.forEach(([u, v], i) => (i ? ctx.lineTo(u * s, v * s) : ctx.moveTo(u * s, v * s)));
+        ctx.closePath();
+        ctx.stroke();
+        const [bu0, bv0] = G.aplicarH(H, c.x, c.base);
+        const [bu1, bv1] = G.aplicarH(H, c.x + c.w, c.base);
+        ctx.beginPath();
+        ctx.moveTo(bu0 * s, bv0 * s);
+        ctx.lineTo(bu1 * s, bv1 * s);
+        ctx.stroke();
+      }
+    }
+  }
+
+  lienzo.addEventListener('click', (e) => {
+    if (!img || marcas.length >= 4) return;
+    const r = lienzo.getBoundingClientRect();
+    const s = escalaVista();
+    const x = ((e.clientX - r.left) * (lienzo.width / r.width)) / s;
+    const y = ((e.clientY - r.top) * (lienzo.height / r.height)) / s;
+    // radio de búsqueda: 6 mm si ya se conoce la escala, si no un 2 % de la imagen
+    let radio = 0.02 * Math.max(img.w, img.h);
+    if (marcas.length >= 1) {
+      const mm = G.dist(pauta.marcas[0], pauta.marcas[marcas.length]);
+      const px = G.dist(marcas[0], [x, y]);
+      if (mm > 0) radio = Math.max(6, (px / mm) * 6);
+    }
+    const afinada = I.refinarMarca(img.gris, img.w, img.h, x, y, radio);
+    if (!afinada) {
+      U.estado($('#estado'), 'No encontré una marca negra cerca del clic. Acércate al centro del círculo negro.', 'error');
+      return;
+    }
+    marcas.push(afinada);
+    if (marcas.length < 4) {
+      U.estado($('#estado'), 'Marca ' + marcas.length + ' lista. Haz clic en la marca ' + (marcas.length + 1) + '.');
+    } else {
+      try {
+        H = G.homografia(pauta.marcas, marcas);
+        U.estado($('#estado'), 'Registro listo: revisa que los contornos azules coincidan con las celdas de la hoja y procesa.', 'ok');
+        paso(2);
+      } catch (err) {
+        U.estado($('#estado'), err.message, 'error');
+        marcas = [];
+      }
+    }
+    dibujarImagen();
+    actualizarBotones();
+  });
+
+  $('#reiniciar-marcas').addEventListener('click', () => {
+    marcas = [];
+    H = null;
+    resultados = [];
+    $('#celdas').innerHTML = '';
+    dibujarImagen();
+    if (img) {
+      paso(1);
+      U.estado($('#estado'), 'Haz clic en la marca 1 (arriba a la izquierda).');
+    }
+    actualizarBotones();
+  });
+
+  function actualizarBotones() {
+    $('#procesar').disabled = !(img && H);
+    $('#descargar').disabled = !resultados.some((r) => r && !r.vacia);
+  }
+
+  // ---------- procesamiento ----------
+  function procesar() {
+    if (!(img && H)) return;
+    const op = {
+      canal: $('#canal').value,
+      delta: parseFloat($('#delta').value) || 50,
+      desenfoque: 1,
+      areaMin: (parseFloat($('#areaMin').value) || 0) * PX_POR_MM * PX_POR_MM,
+      largoEspolon: 1.5 * PX_POR_MM,
+    };
+    const anterior = resultados;
+    resultados = pauta.celdas.map((c, i) => {
+      const rect = I.rectificar(img.rgba, img.w, img.h, H, c, PX_POR_MM);
+      const res = I.procesarCelda(rect.data, rect.w, rect.h, op);
+      const base = N.baseEnCelda(c);
+      const aMm = ([px, py]) => [Math.round((px / PX_POR_MM) * 100) / 100, Math.round((base - py / PX_POR_MM) * 100) / 100];
+      const polis = res.polis.map((poli) => (poli.length > 2 ? G.simplificar(G.suavizar(poli, 5), 0.8) : poli).map(aMm));
+      const vaciaAuto = res.areaTinta < 4 * PX_POR_MM * PX_POR_MM;
+      return {
+        celda: c,
+        rect,
+        res,
+        polis,
+        vacia: anterior[i] && anterior[i].manual ? anterior[i].vacia : vaciaAuto,
+        manual: anterior[i] && anterior[i].manual,
+      };
+    });
+    dibujarCeldas();
+    paso(3);
+    actualizarBotones();
+  }
+  $('#procesar').addEventListener('click', procesar);
+  ['canal', 'delta', 'areaMin'].forEach((id) => $('#' + id).addEventListener('change', () => resultados.length && procesar()));
+
+  function dibujarCeldas() {
+    const cont = $('#celdas');
+    cont.innerHTML = '';
+    const desde = numerar();
+    resultados.forEach((r, i) => {
+      const c = r.celda;
+      const fila = filas[c.fila - 1];
+      const rep = desde[c.fila - 1] + c.columna - 1;
+      const cv = U.el('canvas', { width: r.rect.w, height: r.rect.h });
+      const cx = cv.getContext('2d');
+      const im = cx.createImageData(r.rect.w, r.rect.h);
+      for (let k = 0; k < r.res.mask.length; k++) {
+        const v = r.res.mask[k] ? 150 : 255;
+        im.data[4 * k] = im.data[4 * k + 1] = im.data[4 * k + 2] = v;
+        im.data[4 * k + 3] = 255;
+      }
+      cx.putImageData(im, 0, 0);
+      cx.strokeStyle = 'rgba(108,197,238,0.9)';
+      cx.lineWidth = 1;
+      const yb = N.baseEnCelda(c) * PX_POR_MM;
+      cx.beginPath();
+      cx.moveTo(0, yb);
+      cx.lineTo(r.rect.w, yb);
+      cx.moveTo(0, yb - pauta.alturaX * PX_POR_MM);
+      cx.lineTo(r.rect.w, yb - pauta.alturaX * PX_POR_MM);
+      cx.stroke();
+      cx.strokeStyle = U.COLORES[0];
+      cx.lineWidth = 2;
+      for (const poli of r.res.polis) {
+        cx.beginPath();
+        poli.forEach(([x, y], k) => (k ? cx.lineTo(x, y) : cx.moveTo(x, y)));
+        cx.stroke();
+      }
+      const avisos = [];
+      if (r.res.tocaBorde) avisos.push('toca el borde');
+      if (r.res.componentes > 3) avisos.push(r.res.componentes + ' manchas');
+      const div = U.el('div', { class: 'celda' + (r.vacia ? ' vacia' : ''), title: 'Clic: marcar vacía o descartada' }, [
+        cv,
+        U.el('div', { class: 'pie' }, [
+          U.el('span', { texto: '#' + c.indice + ' · ' + fila.gesto + ' · R' + N.dosDigitos(rep) }),
+          U.el('span', { class: 'alerta', texto: r.vacia ? 'vacía' : avisos.join(', ') }),
+        ]),
+      ]);
+      div.addEventListener('click', () => {
+        r.vacia = !r.vacia;
+        r.manual = true;
+        dibujarCeldas();
+        actualizarBotones();
+      });
+      cont.append(div);
+    });
+  }
+
+  // ---------- exportar ----------
+  function pngTinta(r) {
+    // tinta recortada a su caja, negra sobre transparente
+    const { mask } = r.res;
+    const w = r.rect.w;
+    const h = r.rect.h;
+    let x0 = w, y0 = h, x1 = -1, y1 = -1;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) if (mask[y * w + x]) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+    if (x1 < 0) return null;
+    const cw = x1 - x0 + 1;
+    const ch = y1 - y0 + 1;
+    const cv = document.createElement('canvas');
+    cv.width = cw;
+    cv.height = ch;
+    const cx = cv.getContext('2d');
+    const im = cx.createImageData(cw, ch);
+    for (let y = 0; y < ch; y++) for (let x = 0; x < cw; x++) if (mask[(y + y0) * w + (x + x0)]) im.data[4 * (y * cw + x) + 3] = 255;
+    cx.putImageData(im, 0, 0);
+    const base = N.baseEnCelda(r.celda);
+    return {
+      tinta: cv.toDataURL('image/png'),
+      // caja en coordenadas de la traza: [x izquierda, y abajo, x derecha, y arriba] en mm
+      tinta_caja: [x0 / PX_POR_MM, base - (y1 + 1) / PX_POR_MM, (x1 + 1) / PX_POR_MM, base - y0 / PX_POR_MM].map((v) => Math.round(v * 100) / 100),
+    };
+  }
+
+  $('#descargar').addEventListener('click', () => {
+    let b;
+    try {
+      b = N.nuevoBloque({
+        persona: $('#persona').value,
+        sesion: $('#sesion').value,
+        condicion: $('#condicion').value,
+        alturaX: pauta.alturaX,
+        herramienta: $('#herramienta').value,
+        superficie: $('#superficie').value,
+        fecha: $('#fecha').value,
+        orden: $('#orden').value,
+        pauta: pauta.codigo,
+        origen: 'escaneo',
+      });
+    } catch (e) {
+      U.estado($('#estado'), e.message, 'error');
+      return;
+    }
+    b.bloque.imagen = img ? img.nombre : '';
+    b.bloque.marcas_px = marcas.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]);
+    const desde = numerar();
+    for (const r of resultados) {
+      if (r.vacia) continue;
+      const c = r.celda;
+      const gesto = filas[c.fila - 1].gesto;
+      const repeticion = desde[c.fila - 1] + c.columna - 1;
+      const e = {
+        id: N.idEnsayo({ persona: b.bloque.persona, sesion: b.bloque.sesion, condicion: b.bloque.condicion, gesto, repeticion }),
+        gesto,
+        repeticion,
+        calentamiento: false,
+        celda: { indice: c.indice, fila: c.fila, columna: c.columna },
+        trazos: r.polis.map((p) => ({ puntos: p })),
+        grosor_mm: Math.round((r.res.grosor / PX_POR_MM) * 100) / 100,
+        componentes: r.res.componentes,
+        toca_borde: r.res.tocaBorde || undefined,
+      };
+      Object.assign(e, pngTinta(r) || {});
+      b.ensayos.push(e);
+    }
+    const nombre = N.nombreArchivoBloque(b);
+    U.descargar(nombre, JSON.stringify(b));
+    setTimeout(() => U.descargar(nombre.replace(/\.json$/, '_registro.csv'), N.aCSV(N.filasRegistro(b, nombre)), 'text/csv'), 400);
+    U.estado($('#estado'), 'Descargado ' + nombre + ' con ' + b.ensayos.length + ' repeticiones, y sus filas para el registro.', 'ok');
+    paso(4);
+    window.APulso.ultimoBloque = b; // para pruebas
+  });
+
+  window.APulso.digitalizar = { marcas: () => marcas, procesar };
+})();
+</script>
+</body>
+</html>

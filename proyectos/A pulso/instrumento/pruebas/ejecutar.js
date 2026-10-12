@@ -199,7 +199,10 @@ prueba('las dos condiciones sintéticas se distinguen', () => {
   assert.ok(base.mediano.length >= 1, 'hay mediano');
   assert.ok(muro.resumen.ancho_h.media > base.resumen.ancho_h.media, 'más ancho en el muro');
   assert.ok(muro.resumen.dispersion_mm.media > base.resumen.dispersion_mm.media, 'más disperso en el muro');
-  assert.ok(muro.resumen.eje_grados.media > base.resumen.eje_grados.media, 'más inclinado en el muro');
+  assert.ok(muro.resumen.inclinacion_grados.media > base.resumen.inclinacion_grados.media + 2, 'más inclinado en el muro');
+  assert.strictEqual(base.resumen.eje_grados, null, 'una n no tiene eje de forma alargada');
+  const astas = M.resumenGrupo(juntar('BASE', 'G1'), 30);
+  assert.ok(Math.abs(astas.resumen.eje_grados.media - astas.resumen.inclinacion_grados.media) < 1.5, 'en un asta, eje e inclinación coinciden');
   assert.ok(muro.resumen.velocidad_mm_s.media > base.resumen.velocidad_mm_s.media, 'más rápido en el muro');
   assert.strictEqual(base.resumen.levantamientos.media, 0);
   const largoMed = base.mediano.reduce((s, p) => s + G.longitud(p), 0);

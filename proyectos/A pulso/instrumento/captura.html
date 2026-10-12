@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Captura · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  body.escribiendo { overflow: hidden; overscroll-behavior: none; }
+  body.escribiendo header.barra, body.escribiendo #config { display: none; }
+  #escritura { display: none; position: fixed; inset: 0; background: #fff; flex-direction: column; }
+  body.escribiendo #escritura { display: flex; }
+  #barra-escritura {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 12px;
+    border-bottom: 1px solid var(--linea); background: var(--papel); user-select: none; -webkit-user-select: none;
+  }
+  #indicacion { font-size: 17px; flex: 1 1 260px; }
+  #indicacion b { font-size: 20px; }
+  #indicacion .k { color: var(--alerta); }
+  #barra-escritura button { padding: 10px 16px; font-size: 15px; }
+  #lienzo { flex: 1; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; display: block; width: 100%; }
+  #calibracion { position: relative; height: 240px; background: #fff; border: 1px solid var(--linea); border-radius: 4px; overflow: hidden; }
+  #tarjeta { position: absolute; left: 16px; top: 16px; border: 2px solid var(--cian); border-radius: 3mm; background: var(--cian-claro); }
+  #tarjeta span { position: absolute; left: 8px; bottom: 6px; font-size: 12px; color: var(--tinta-suave); }
+  #recuperar { margin-top: 10px; }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html" aria-current="page">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main id="config">
+  <section class="panel">
+    <h2>Captura en tableta (M1)</h2>
+    <p class="ayuda">Registra cada repetición con posición, tiempo, presión e inclinación del lápiz. Una sesión de captura corresponde a un bloque: una condición escrita seguida. Al terminar se descarga un archivo <code>.json</code> que se abre en «Superponer». La superficie de la tableta es otra resistencia (variable D): no mezcles en una misma comparación trazas de tableta y de papel.</p>
+    <div class="fila">
+      <label class="campo">Persona <input id="persona" size="5" value="P00"></label>
+      <label class="campo">Sesión <input id="sesion" size="5" value="S01"></label>
+      <label class="campo">Orden en la sesión <input id="orden" type="number" min="1" value="1"></label>
+      <label class="campo">Condición <input id="condicion" size="8" value="BASE"></label>
+      <label class="campo">Altura x (mm) <input id="alturaX" type="number" min="5" max="200" step="1" value="30"></label>
+      <label class="campo">Herramienta <input id="herramienta" size="16" value="lápiz digital"></label>
+      <label class="campo">Superficie <input id="superficie" size="16" value="vidrio de la tableta"></label>
+    </div>
+    <p id="desc-condicion" class="ayuda"></p>
+    <div class="fila">
+      <label class="campo">Plan (gesto:repeticiones) <input id="plan" size="22" value="G1:5, G2:5, G5:5"></label>
+      <label class="campo">Calentamiento por gesto <input id="calentamiento" type="number" min="0" max="10" value="3"></label>
+      <label class="campo">Numerar desde <input id="desde" type="number" min="1" value="1"></label>
+      <label class="check"><input id="soloLapiz" type="checkbox" checked> Aceptar solo el lápiz (ignora la palma)</label>
+    </div>
+    <p id="sugerencia" class="ayuda"></p>
+    <p id="estado-config" class="estado" hidden></p>
+  </section>
+
+  <section class="panel">
+    <h2>Calibración de la pantalla</h2>
+    <p class="ayuda">Apoya una tarjeta bancaria o una credencial (85,6 × 54 mm) sobre el rectángulo y ajusta hasta que coincidan. La calibración se recuerda en este navegador.</p>
+    <div class="fila">
+      <label class="campo">Píxeles por mm <input id="pxmm" type="number" min="1" max="20" step="0.01"></label>
+      <input id="pxmm-rango" type="range" min="2" max="12" step="0.01" style="flex:1;min-width:200px">
+    </div>
+    <div id="calibracion"><div id="tarjeta"><span>85,6 × 54 mm</span></div></div>
+  </section>
+
+  <section class="panel">
+    <div class="fila">
+      <button id="empezar">Empezar el bloque</button>
+    </div>
+    <div id="recuperar" hidden></div>
+  </section>
+</main>
+
+<section id="escritura" aria-label="Área de escritura">
+  <div id="barra-escritura">
+    <div id="indicacion"></div>
+    <button id="borrar" class="secundario" title="Borrar la repetición actual (Retroceso)">Borrar</button>
+    <button id="deshacer" class="secundario" title="Descartar la repetición guardada anterior">Deshacer anterior</button>
+    <button id="siguiente" title="Guardar y pasar a la siguiente (Espacio)">Guardar y seguir ▸</button>
+    <button id="terminar" class="secundario">Terminar y descargar</button>
+  </div>
+  <canvas id="lienzo"></canvas>
+</section>
+
+<script src="lib/nucleo.js"></script>
+<script src="lib/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { nucleo: N, ui: U } = window.APulso;
+  const $ = U.$;
+  const CIAN = '#6cc5ee';
+
+  // ---------- configuración ----------
+  const pxmmDefecto = 96 / 25.4;
+  let pxPorMm = U.leerLocal('captura.pxPorMm', pxmmDefecto);
+  const conf = U.leerLocal('captura.config', null);
+  if (conf) for (const k of ['persona', 'sesion', 'condicion', 'alturaX', 'herramienta', 'superficie', 'plan', 'calentamiento']) if (conf[k] != null) $('#' + k).value = conf[k];
+
+  function pintarTarjeta() {
+    $('#pxmm').value = pxPorMm.toFixed(2);
+    $('#pxmm-rango').value = pxPorMm;
+    $('#tarjeta').style.width = 85.6 * pxPorMm + 'px';
+    $('#tarjeta').style.height = 53.98 * pxPorMm + 'px';
+    $('#calibracion').style.height = Math.max(120, 53.98 * pxPorMm + 32) + 'px';
+  }
+  function fijarPxMm(v) {
+    if (!(v > 0)) return;
+    pxPorMm = v;
+    U.guardarLocal('captura.pxPorMm', pxPorMm);
+    pintarTarjeta();
+  }
+  $('#pxmm').addEventListener('input', (e) => fijarPxMm(parseFloat(e.target.value)));
+  $('#pxmm-rango').addEventListener('input', (e) => fijarPxMm(parseFloat(e.target.value)));
+  pintarTarjeta();
+
+  function leerPlan(texto) {
+    const plan = [];
+    for (const parte of texto.split(/[,;]+/)) {
+      const t = parte.trim();
+      if (!t) continue;
+      const m = t.match(/^(G?\d)\s*[:x×]\s*(\d+)$/i);
+      if (!m) throw new Error('Plan no válido en «' + t + '». Ejemplo: G1:5, G2:5, G5:5');
+      plan.push({ gesto: N.normalizarGesto(m[1]), reps: parseInt(m[2], 10) });
+    }
+    if (!plan.length) throw new Error('El plan está vacío.');
+    return plan;
+  }
+
+  // Memoria de numeración: cuántas repeticiones hay ya de cada gesto en esta persona, sesión y condición.
+  function claveNumeracion() {
+    try {
+      return [N.normalizarPersona($('#persona').value), N.normalizarSesion($('#sesion').value), N.parsearCondicion($('#condicion').value).codigo].join('-');
+    } catch (e) {
+      return null;
+    }
+  }
+  function revisarConfig() {
+    const est = $('#estado-config');
+    try {
+      const c = N.parsearCondicion($('#condicion').value);
+      $('#desc-condicion').textContent = c.codigo + ' — ' + N.describirCondicion(c.codigo);
+      leerPlan($('#plan').value);
+      N.normalizarPersona($('#persona').value);
+      N.normalizarSesion($('#sesion').value);
+      U.estado(est, '');
+      const memoria = U.leerLocal('captura.numeracion', {});
+      const k = claveNumeracion();
+      const hechas = k && memoria[k];
+      if (hechas) {
+        const max = Math.max(...Object.values(hechas));
+        $('#sugerencia').textContent = 'En este navegador ya hay repeticiones de ' + k + ' (hasta R' + N.dosDigitos(max) + '). Si este es el segundo bloque de la condición, numera desde ' + (max + 1) + '.';
+      } else $('#sugerencia').textContent = '';
+      return true;
+    } catch (e) {
+      U.estado(est, e.message, 'error');
+      return false;
+    }
+  }
+  document.querySelectorAll('#config input').forEach((i) => i.addEventListener('input', revisarConfig));
+  revisarConfig();
+
+  // ---------- bloque y secuencia ----------
+  let bloque = null;
+  let secuencia = [];
+  let paso = 0;
+  let trazos = [];
+  let trazo = null;
+  let t0 = null;
+  let inicioISO = null;
+  let tipoPuntero = '';
+
+  function construirSecuencia(plan, calent, desde) {
+    const s = [];
+    for (const p of plan) for (let k = 1; k <= calent; k++) s.push({ gesto: p.gesto, repeticion: k, calentamiento: true });
+    for (const p of plan) for (let r = 0; r < p.reps; r++) s.push({ gesto: p.gesto, repeticion: desde + r, calentamiento: false });
+    return s;
+  }
+
+  function guardarRespaldo() {
+    U.guardarLocal('captura.bloqueActual', { bloque, secuencia, paso });
+  }
+
+  function empezar(recuperado) {
+    if (!recuperado) {
+      if (!revisarConfig()) return;
+      const plan = leerPlan($('#plan').value);
+      bloque = N.nuevoBloque({
+        persona: $('#persona').value,
+        sesion: $('#sesion').value,
+        condicion: $('#condicion').value,
+        alturaX: parseFloat($('#alturaX').value),
+        herramienta: $('#herramienta').value,
+        superficie: $('#superficie').value,
+        orden: $('#orden').value,
+        origen: 'tableta',
+      });
+      bloque.bloque.pantalla = { px_por_mm: pxPorMm, agente: navigator.userAgent };
+      secuencia = construirSecuencia(plan, parseInt($('#calentamiento').value, 10) || 0, parseInt($('#desde').value, 10) || 1);
+      paso = 0;
+      const c = {};
+      for (const k of ['persona', 'sesion', 'condicion', 'alturaX', 'herramienta', 'superficie', 'plan', 'calentamiento']) c[k] = $('#' + k).value;
+      U.guardarLocal('captura.config', c);
+    } else {
+      bloque = recuperado.bloque;
+      secuencia = recuperado.secuencia;
+      paso = recuperado.paso;
+      if (bloque.bloque.pantalla && bloque.bloque.pantalla.px_por_mm) fijarPxMm(bloque.bloque.pantalla.px_por_mm);
+    }
+    trazos = [];
+    document.body.classList.add('escribiendo');
+    if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+    redimensionar();
+    indicar();
+  }
+
+  $('#empezar').addEventListener('click', () => empezar(null));
+
+  const pendiente = U.leerLocal('captura.bloqueActual', null);
+  if (pendiente && pendiente.bloque && pendiente.bloque.ensayos && pendiente.bloque.ensayos.length) {
+    const r = $('#recuperar');
+    r.hidden = false;
+    r.append(
+      U.el('p', { class: 'estado', texto: 'Hay un bloque sin descargar en este navegador: ' + N.nombreArchivoBloque(pendiente.bloque) + ' con ' + pendiente.bloque.ensayos.length + ' repeticiones.' }),
+      U.el('div', { class: 'fila' }, [
+        U.el('button', { texto: 'Continuar ese bloque', onclick: () => empezar(pendiente) }),
+        U.el('button', { class: 'secundario', texto: 'Descargarlo', onclick: () => descargarBloque(pendiente.bloque) }),
+        U.el('button', { class: 'secundario', texto: 'Descartarlo', onclick: () => { U.guardarLocal('captura.bloqueActual', null); r.hidden = true; } }),
+      ])
+    );
+  }
+
+  function indicar() {
+    const ind = $('#indicacion');
+    if (paso >= secuencia.length) {
+      ind.innerHTML = '<b>Bloque completo.</b> ' + bloque.ensayos.filter((e) => !e.calentamiento).length + ' repeticiones registradas. Pulsa «Terminar y descargar».';
+      $('#siguiente').disabled = true;
+    } else {
+      const s = secuencia[paso];
+      const total = secuencia.filter((x) => x.gesto === s.gesto && x.calentamiento === s.calentamiento).length;
+      const n = secuencia.slice(0, paso + 1).filter((x) => x.gesto === s.gesto && x.calentamiento === s.calentamiento).length;
+      ind.innerHTML =
+        bloque.bloque.condicion + ' · <b>' + s.gesto + '</b> ' + N.GESTOS[s.gesto] + ' · ' +
+        (s.calentamiento ? '<span class="k">calentamiento ' + n + ' de ' + total + ' (se descarta)</span>' : 'repetición ' + n + ' de ' + total + ' (R' + N.dosDigitos(s.repeticion) + ')');
+      $('#siguiente').disabled = false;
+    }
+    $('#deshacer').disabled = paso === 0;
+    dibujar();
+  }
+
+  // ---------- lienzo ----------
+  const lienzo = $('#lienzo');
+  const ctx = lienzo.getContext('2d');
+  let celda = null; // en píxeles CSS: { x, base, w, hTop, hBottom }
+
+  function redimensionar() {
+    const r = lienzo.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    lienzo.width = Math.round(r.width * dpr);
+    lienzo.height = Math.round(r.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    dibujar();
+  }
+  window.addEventListener('resize', redimensionar);
+
+  function geometriaCelda() {
+    const h = bloque.bloque.altura_x_mm;
+    const s = secuencia[Math.min(paso, secuencia.length - 1)];
+    const palabra = s && s.gesto === 'G6';
+    const wMm = palabra ? 7 * h : 2.6 * h;
+    const r = lienzo.getBoundingClientRect();
+    const w = wMm * pxPorMm;
+    const base = r.height / 2 + (palabra ? 0.35 : 0.5) * h * pxPorMm;
+    return { x: (r.width - w) / 2, base, w, h: h * pxPorMm, palabra };
+  }
+
+  function dibujar() {
+    if (!bloque) return;
+    const r = lienzo.getBoundingClientRect();
+    ctx.clearRect(0, 0, r.width, r.height);
+    celda = geometriaCelda();
+    const c = celda;
+    ctx.save();
+    ctx.strokeStyle = CIAN;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(c.x - 20, c.base);
+    ctx.lineTo(c.x + c.w + 20, c.base);
+    ctx.stroke();
+    ctx.setLineDash([8, 5]);
+    ctx.beginPath();
+    ctx.moveTo(c.x - 20, c.base - c.h);
+    ctx.lineTo(c.x + c.w + 20, c.base - c.h);
+    ctx.stroke();
+    if (c.palabra) {
+      ctx.setLineDash([2, 5]);
+      ctx.beginPath();
+      ctx.moveTo(c.x - 20, c.base - 1.75 * c.h);
+      ctx.lineTo(c.x + c.w + 20, c.base - 1.75 * c.h);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    ctx.fillStyle = CIAN;
+    ctx.font = '12px system-ui, sans-serif';
+    ctx.fillText('altura x ' + bloque.bloque.altura_x_mm + ' mm', c.x - 20, c.base + 18);
+    ctx.restore();
+    // tinta de la repetición actual
+    ctx.save();
+    ctx.strokeStyle = '#2b2a28';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (const t of trazos.concat(trazo ? [trazo] : [])) {
+      const p = t.puntos;
+      for (let i = 1; i < p.length; i++) {
+        const presion = p[i][3] > 0 ? p[i][3] : 0.5;
+        ctx.lineWidth = 0.4 * pxPorMm + 1.4 * pxPorMm * presion;
+        ctx.beginPath();
+        ctx.moveTo(c.x + p[i - 1][0] * pxPorMm, c.base - p[i - 1][1] * pxPorMm);
+        ctx.lineTo(c.x + p[i][0] * pxPorMm, c.base - p[i][1] * pxPorMm);
+        ctx.stroke();
+      }
+      if (p.length === 1) {
+        ctx.beginPath();
+        ctx.arc(c.x + p[0][0] * pxPorMm, c.base - p[0][1] * pxPorMm, 0.8 * pxPorMm, 0, 2 * Math.PI);
+        ctx.fillStyle = '#2b2a28';
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  function punto(e) {
+    const r = lienzo.getBoundingClientRect();
+    const x = (e.clientX - r.left - celda.x) / pxPorMm;
+    const y = (celda.base - (e.clientY - r.top)) / pxPorMm;
+    const r2 = (v) => Math.round(v * 100) / 100;
+    return [r2(x), r2(y), r2(e.timeStamp - t0), r2(e.pressure || 0), Math.round(e.tiltX || 0), Math.round(e.tiltY || 0)];
+  }
+
+  function aceptar(e) {
+    if (paso >= secuencia.length) return false;
+    if ($('#soloLapiz').checked && e.pointerType !== 'pen') {
+      // Sin lápiz detectado: se acepta el ratón para probar en una computadora.
+      return e.pointerType === 'mouse';
+    }
+    return true;
+  }
+
+  lienzo.addEventListener('pointerdown', (e) => {
+    if (!aceptar(e)) return;
+    e.preventDefault();
+    lienzo.setPointerCapture(e.pointerId);
+    if (t0 == null) {
+      t0 = e.timeStamp;
+      inicioISO = new Date().toISOString();
+    }
+    tipoPuntero = e.pointerType;
+    trazo = { puntos: [punto(e)], id: e.pointerId };
+    dibujar();
+  });
+  lienzo.addEventListener('pointermove', (e) => {
+    if (!trazo || e.pointerId !== trazo.id) return;
+    e.preventDefault();
+    const eventos = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+    for (const ev of eventos.length ? eventos : [e]) trazo.puntos.push(punto(ev));
+    dibujar();
+  });
+  function terminarTrazo(e) {
+    if (!trazo || e.pointerId !== trazo.id) return;
+    trazos.push({ puntos: trazo.puntos });
+    trazo = null;
+    dibujar();
+  }
+  lienzo.addEventListener('pointerup', terminarTrazo);
+  lienzo.addEventListener('pointercancel', terminarTrazo);
+  lienzo.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  function borrar() {
+    trazos = [];
+    trazo = null;
+    t0 = null;
+    dibujar();
+  }
+
+  function siguiente() {
+    if (paso >= secuencia.length) return;
+    if (!trazos.length) {
+      $('#indicacion').innerHTML += ' <span class="k">— no hay trazo para guardar</span>';
+      return;
+    }
+    const s = secuencia[paso];
+    const b = bloque.bloque;
+    bloque.ensayos.push({
+      id: N.idEnsayo({ persona: b.persona, sesion: b.sesion, condicion: b.condicion, gesto: s.gesto, repeticion: s.repeticion, calentamiento: s.calentamiento }),
+      gesto: s.gesto,
+      repeticion: s.repeticion,
+      calentamiento: s.calentamiento,
+      inicio: inicioISO,
+      puntero: tipoPuntero,
+      trazos,
+    });
+    if (!s.calentamiento) {
+      const memoria = U.leerLocal('captura.numeracion', {});
+      const k = [b.persona, b.sesion, b.condicion].join('-');
+      memoria[k] = memoria[k] || {};
+      memoria[k][s.gesto] = Math.max(memoria[k][s.gesto] || 0, s.repeticion);
+      U.guardarLocal('captura.numeracion', memoria);
+    }
+    paso++;
+    guardarRespaldo();
+    borrar();
+    indicar();
+  }
+
+  function deshacer() {
+    if (paso === 0) return;
+    if (!confirm('¿Descartar la repetición guardada anterior y repetirla?')) return;
+    bloque.ensayos.pop();
+    paso--;
+    guardarRespaldo();
+    borrar();
+    indicar();
+  }
+
+  function descargarBloque(b) {
+    const nombre = N.nombreArchivoBloque(b);
+    U.descargar(nombre, JSON.stringify(b));
+    const filas = N.filasRegistro(b, nombre);
+    if (filas.length) setTimeout(() => U.descargar(nombre.replace(/\.json$/, '_registro.csv'), N.aCSV(filas, null, true), 'text/csv'), 400);
+  }
+
+  function terminar() {
+    if (trazos.length && paso < secuencia.length && confirm('La repetición actual no está guardada. ¿Guardarla antes de terminar?')) siguiente();
+    if (bloque.ensayos.length) descargarBloque(bloque);
+    if (paso < secuencia.length && !confirm('El bloque no está completo. Ya se descargó lo registrado. ¿Cerrar el área de escritura?')) return;
+    U.guardarLocal('captura.bloqueActual', null);
+    document.body.classList.remove('escribiendo');
+    if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(() => {});
+    bloque = null;
+    revisarConfig();
+  }
+
+  $('#borrar').addEventListener('click', borrar);
+  $('#siguiente').addEventListener('click', siguiente);
+  $('#deshacer').addEventListener('click', deshacer);
+  $('#terminar').addEventListener('click', terminar);
+  window.addEventListener('keydown', (e) => {
+    if (!document.body.classList.contains('escribiendo')) return;
+    if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); siguiente(); }
+    else if (e.key === 'Backspace') { e.preventDefault(); borrar(); }
+  });
+  window.APulso.captura = { estado: () => ({ bloque, paso, secuencia }) }; // para pruebas
+})();
+</script>
+</body>
+</html>

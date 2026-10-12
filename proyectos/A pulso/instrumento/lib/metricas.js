@@ -48,7 +48,8 @@
       bajo_base_mm: -c.y0, // cuánto baja por debajo de la línea base
       sobre_altura_x_mm: c.y1 - alturaX, // cuánto sobrepasa la altura x
       recorrido_mm: largo,
-      eje_grados: G().anguloEje(puntos),
+      inclinacion_grados: inclinacion(polis, alturaX),
+      eje_grados: alargamiento(puntos) >= 1.8 ? G().anguloEje(puntos) : null,
       piezas: polis.length,
     };
     if (ensayo.grosor_mm) m.grosor_mm = ensayo.grosor_mm;
@@ -81,6 +82,64 @@
       }
     }
     return m;
+  }
+
+  /**
+   * Inclinación de los tramos casi verticales (dentro de ±35°), ponderada por su largo: la medida
+   * tipográfica de la inclinación. Positiva si la parte superior va hacia la derecha.
+   * Devuelve null si los tramos casi verticales suman menos de 0,3 h.
+   */
+  function inclinacion(polis, alturaX) {
+    let sx = 0;
+    let sy = 0;
+    let largo = 0;
+    const limite = Math.cos((35 * Math.PI) / 180);
+    for (const poli of polis) {
+      const r = G().remuestrear(poli, 0.5);
+      for (let i = 1; i < r.length; i++) {
+        let dx = r[i][0] - r[i - 1][0];
+        let dy = r[i][1] - r[i - 1][1];
+        const l = Math.hypot(dx, dy);
+        if (!l) continue;
+        if (dy < 0) {
+          dx = -dx;
+          dy = -dy;
+        }
+        if (dy / l < limite) continue;
+        sx += dx;
+        sy += dy;
+        largo += l;
+      }
+    }
+    if (largo < 0.3 * alturaX) return null;
+    return (Math.atan2(sx, sy) * 180) / Math.PI;
+  }
+
+  /** Razón entre los ejes mayor y menor de la nube de puntos (1 = redonda). */
+  function alargamiento(puntos) {
+    const n = puntos.length;
+    if (n < 3) return 1;
+    let mx = 0;
+    let my = 0;
+    for (const p of puntos) {
+      mx += p[0];
+      my += p[1];
+    }
+    mx /= n;
+    my /= n;
+    let a = 0;
+    let b = 0;
+    let c = 0;
+    for (const p of puntos) {
+      a += (p[0] - mx) ** 2;
+      b += (p[0] - mx) * (p[1] - my);
+      c += (p[1] - my) ** 2;
+    }
+    const tr = a + c;
+    const disc = Math.sqrt(Math.max(0, ((a - c) / 2) ** 2 + b * b));
+    const l1 = tr / 2 + disc;
+    const l2 = Math.max(1e-9, tr / 2 - disc);
+    return Math.sqrt(l1 / l2);
   }
 
   /** Cuenta intervalos de al menos PAUSA_MIN_MS en que la velocidad suavizada queda bajo el umbral. */
@@ -215,7 +274,8 @@
     bajo_base_mm: 'Bajo la línea base (mm)',
     sobre_altura_x_mm: 'Sobre la altura x (mm)',
     recorrido_mm: 'Recorrido (mm)',
-    eje_grados: 'Eje (° desde la vertical)',
+    inclinacion_grados: 'Inclinación de los tramos verticales (°)',
+    eje_grados: 'Eje de la forma alargada (°)',
     piezas: 'Piezas del trazo',
     componentes: 'Manchas separadas',
     grosor_mm: 'Grosor estimado (mm)',
@@ -233,6 +293,8 @@
     polilineas,
     alinear,
     metricasEnsayo,
+    inclinacion,
+    alargamiento,
     contarPausas,
     densidad,
     trazoMediano,
