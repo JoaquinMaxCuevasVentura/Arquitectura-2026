@@ -8,7 +8,7 @@ La ficha de ensayo recoge lo que se recuerda enseguida. La entrevista de explici
 
 ## 1. Principios
 
-- **Un momento singular, no una generalidad.** No se pregunta «¿cómo escribes en el muro?», sino por una repetición concreta: «la tercera *n* del segundo bloque».
+- **Un momento singular, no una generalidad.** No se pregunta «¿cómo escribes en la pizarra?», sino por una repetición concreta: «la tercera R del segundo bloque».
 - **El cómo, no el por qué.** Las preguntas por el porqué llevan a explicaciones y teorías. Las preguntas por el qué y el cómo llevan de vuelta a la experiencia.
 - **Sin sugerir.** Se reutilizan las palabras de la persona y no se proponen términos («¿sentiste tensión?» sugiere; «¿qué sentiste?» no).
 - **Lentitud.** Se deja tiempo y se aceptan los silencios: la evocación tarda en llegar.

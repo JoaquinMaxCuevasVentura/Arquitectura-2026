@@ -1,19 +1,19 @@
 # Prueba de atribución
 
-**Responde a la subpregunta P4: ¿puede un lector reconocer en la letra terminada la condición que la originó? · Semana 17**
+**Responde a la subpregunta P4: ¿reconoce un lector en la letra terminada el puesto o el instrumento que la originó? · Semana 17**
 
-Es la prueba más directa de que la condición espacial quedó en la forma y no solo en el relato de quien escribió.
+Es la prueba más directa de que el puesto o el instrumento quedaron en la forma, y no solo en el relato de quien escribió.
 
 ## Diseño
 
-- **Elección forzada entre dos.** En cada ensayo se muestran dos muestras de la misma palabra, compuestas en dos estilos (por ejemplo *Mesa* y *Muro*). La pregunta es siempre la misma: «Una de estas dos se escribió de pie, ante un muro, con el brazo en el aire. ¿Cuál?» Se adapta a la pareja de condiciones que se pruebe.
-- **Estímulos:** 20 pares con palabras distintas, de 4 a 8 letras, que usen las letras dibujadas (por ejemplo *nada, mano, sonido, hondo, dadas, adhesión, sin, nido*). Mismo tamaño (36 pt), mismo interlineado, negro sobre blanco.
-- **Lado aleatorio:** en la mitad de los pares, el estilo «muro» va a la izquierda; el orden de los pares se baraja para cada lector.
+- **Elección forzada entre dos.** En cada ensayo se muestran dos versiones del mismo rótulo de plano, compuestas en dos estilos (por ejemplo *Tablero* y *Pizarra*, o *A pulso* y *Plantilla*). La pregunta es siempre la misma y se adapta a la pareja: «Una de estas dos se escribió de pie, en una pizarra. ¿Cuál?» o «Una de estas dos se trazó con plantilla. ¿Cuál?».
+- **Estímulos:** 20 pares con rótulos distintos y reales de un plano, que usen las letras dibujadas. Por ejemplo: *PLANTA ALTA, CORTE A-A, FACHADA NORTE, ESC. 1:100, DORMITORIO, COCINA, ESTAR, BAÑO, NPT +3.45, DETALLE 2*. Todos a la misma altura (5 mm impresos, como en un plano), negro sobre blanco.
+- **Lado aleatorio:** en la mitad de los pares, el estilo que se pregunta va a la izquierda; el orden de los pares se baraja para cada lector.
 - **Sin retroalimentación:** el lector no sabe si acertó hasta el final, para que no aprenda durante la prueba.
-- **Lectores:** de 10 a 15 personas que **no** hayan visto el proyecto. Se anota si diseñan tipografía o escriben a mano por oficio, porque puede cambiar el resultado.
+- **Lectores:** de 10 a 15 personas que **no** hayan visto el proyecto. Se anota si son arquitectos formados en tablero, formados con CAD, o de otro oficio, porque puede cambiar el resultado. Es una segunda forma de la pregunta P2: ¿reconoce mejor el instrumento quien lo usó?
 - **Duración:** unos 5 minutos por persona.
 
-**Antes de la fuente:** si en la semana 17 la tipografía no está lista, la prueba puede hacerse con palabras digitalizadas de G6 (*adhesión*) de dos condiciones. Así se prueba si la condición se reconoce en la escritura, todavía no en la letra diseñada. Conviene hacer las dos versiones y comparar.
+**Antes de la fuente:** si en la semana 17 la tipografía no está lista, la prueba puede hacerse con rótulos digitalizados de G6 (*PLANTA 1:50*) de dos condiciones. Así se prueba si la condición se reconoce en la escritura, todavía no en la letra diseñada. Conviene hacer las dos versiones y comparar.
 
 ## Cálculo
 
@@ -28,11 +28,11 @@ Esta cuenta trata cada respuesta como independiente. Como las de una misma perso
 
 ## Hoja de respuestas
 
-| Lector | Oficio | Par 1 | Par 2 | … | Par 20 | Aciertos |
+| Lector | Oficio (T, D u otro) | Par 1 | Par 2 | … | Par 20 | Aciertos |
 |---|---|---|---|---|---|---|
-| L01 | | I / D | | | | /20 |
+| L01 | | izq. / der. | | | | /20 |
 
-Las respuestas se guardan en `evaluacion/respuestas_atribucion.csv`, con las columnas `lector, oficio, par, palabra, lado_correcto, respuesta, acierto`.
+Las respuestas se guardan en `evaluacion/respuestas_atribucion.csv`, con las columnas `lector, oficio, par, rotulo, lado_correcto, respuesta, acierto`.
 
 ## Qué se hace con el resultado
 

@@ -130,7 +130,7 @@ function laminaTablero() {
   const hx = (T.ancho - h.ancho) / 2;
   const hy = T.alto - h.centroDesdeArriba - h.alto / 2;
   v.rect(hx, hy, h.ancho, h.alto, { dash: '1.5 1', stroke: '#1593c7', sw: 0.3 });
-  v.text(T.ancho / 2, hy + h.alto / 2, 'hoja A3 apaisada', { anchor: 'middle', fill: '#1593c7', size: 2.6 });
+  v.text(T.ancho / 2, hy + h.alto / 2, 'hoja A4 apaisada', { anchor: 'middle', fill: '#1593c7', size: 2.6 });
   v.line(T.ancho / 2 - 6, T.alto - h.centroDesdeArriba, T.ancho / 2 + 6, T.alto - h.centroDesdeArriba, { stroke: '#1593c7' });
   v.line(T.ancho / 2, T.alto - h.centroDesdeArriba - 6, T.ancho / 2, T.alto - h.centroDesdeArriba + 6, { stroke: '#1593c7' });
   v.text(T.ancho / 2, hy - 18, 'zona del antebrazo (A0)', { anchor: 'middle', size: 2.4, fill: '#555' });
@@ -139,7 +139,7 @@ function laminaTablero() {
   v.cotaV(0, T.alto, 0, -7);
   v.cotaV(T.alto - h.centroDesdeArriba, T.alto, T.ancho, 7, h.centroDesdeArriba);
   v.cotaH(0, hx, hy + h.alto, -4, Math.round(hx));
-  v.cotaV(hy + h.alto, T.alto, 0, -14, '51,5');
+  v.cotaV(hy + h.alto, T.alto, 0, -14, String(h.centroDesdeArriba - h.alto / 2).replace('.', ','));
 
   // dorso
   L.tituloVista(168, 24, 'Dorso (listones)', '1:5');
@@ -171,7 +171,7 @@ function laminaTablero() {
     '<tspan font-weight="bold">Material:</tspan> terciado o multilaminado de 18 mm, cara de escritura lisa, lijada (grano 180) y con un sellador mate.',
     'Sin tornillos ni marcas en la cara de escritura. Cantos redondeados (r ≈ 2 mm).',
     'La hoja se fija siempre en el mismo lugar: centro a 200 mm del borde superior y centrada en el ancho.',
-    'Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve.',
+    'Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve. Las pautas del proyecto son A4.',
     'Los dos listones son los apoyos del tablero en las cuatro posiciones:',
     '· B0, sobre la cuña de 15° (tablero de dibujo) y B3, sobre el atril de 45°: los listones descansan en las cartelas.',
     '· B1, sobre la mesa: el tablero queda plano y elevado 18 mm.',

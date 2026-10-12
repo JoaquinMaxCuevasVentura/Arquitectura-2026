@@ -11,7 +11,7 @@
     espesor: 18, // terciado o multilaminado
     tablero: { ancho: 600, alto: 600 },
     liston: { ancho: 42, margen: 20 }, // listones traseros: a 20 mm de los bordes; 42 = dos pasos de 25 menos los pasadores Ø8
-    hoja: { centroDesdeArriba: 200, ancho: 420, alto: 297 }, // A3 apaisada o A4, siempre centrada en el mismo punto del tablero
+    hoja: { centroDesdeArriba: 200, ancho: 297, alto: 210 }, // pauta A4 apaisada, siempre centrada en el mismo punto del tablero
     // bordeInferior: altura aproximada del borde inferior del tablero sobre la mesa
     cuna: { catetoH: 600, catetoV: 161, despunte: 20, angulo: 15, bordeInferior: 40 },
     atril: { cateto: 460, despunte: 30, angulo: 45, bordeInferior: 55 },

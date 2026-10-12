@@ -11,11 +11,11 @@
 <text x="22" y="24" font-size="3.4" font-weight="bold">Frente (cara de escritura)</text>
 <text x="22" y="28" font-size="2.4" fill="#555">escala 1:5</text>
 <rect x="30" y="40" width="120" height="120" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
-<rect x="48" y="50.3" width="84" height="59.4" fill="none" stroke="#1593c7" stroke-width="0.3" stroke-dasharray="1.5 1"/>
-<text x="90" y="80" font-size="2.6" text-anchor="middle" fill="#1593c7">hoja A3 apaisada</text>
+<rect x="60.3" y="59" width="59.4" height="42" fill="none" stroke="#1593c7" stroke-width="0.3" stroke-dasharray="1.5 1"/>
+<text x="90" y="80" font-size="2.6" text-anchor="middle" fill="#1593c7">hoja A4 apaisada</text>
 <line x1="88.8" y1="80" x2="91.2" y2="80" stroke="#1593c7" stroke-width="0.25"/>
 <line x1="90" y1="81.2" x2="90" y2="78.8" stroke="#1593c7" stroke-width="0.25"/>
-<text x="90" y="113.3" font-size="2.4" text-anchor="middle" fill="#555">zona del antebrazo (A0)</text>
+<text x="90" y="104.6" font-size="2.4" text-anchor="middle" fill="#555">zona del antebrazo (A0)</text>
 <text x="29.4" y="100" font-size="2.3" text-anchor="middle" fill="#555" transform="rotate(-90 29.4 100)">canto de la regla T</text>
 <line x1="30" y1="160" x2="30" y2="168.5" stroke="#555" stroke-width="0.15"/>
 <line x1="150" y1="160" x2="150" y2="168.5" stroke="#555" stroke-width="0.15"/>
@@ -35,18 +35,18 @@
 <line x1="156" y1="81" x2="158" y2="79" stroke="#111" stroke-width="0.4"/>
 <line x1="156" y1="41" x2="158" y2="39" stroke="#111" stroke-width="0.4"/>
 <text x="156" y="60" font-size="2.4" text-anchor="middle" transform="rotate(-90 156 60)">200</text>
-<line x1="30" y1="50.3" x2="30" y2="44.8" stroke="#555" stroke-width="0.15"/>
-<line x1="48" y1="50.3" x2="48" y2="44.8" stroke="#555" stroke-width="0.15"/>
-<line x1="28.5" y1="46.3" x2="49.5" y2="46.3" stroke="#555" stroke-width="0.18"/>
-<line x1="29" y1="47.3" x2="31" y2="45.3" stroke="#111" stroke-width="0.4"/>
-<line x1="47" y1="47.3" x2="49" y2="45.3" stroke="#111" stroke-width="0.4"/>
-<text x="39" y="45.4" font-size="2.4" text-anchor="middle">90</text>
-<line x1="30" y1="50.3" x2="14.5" y2="50.3" stroke="#555" stroke-width="0.15"/>
+<line x1="30" y1="59" x2="30" y2="53.5" stroke="#555" stroke-width="0.15"/>
+<line x1="60.3" y1="59" x2="60.3" y2="53.5" stroke="#555" stroke-width="0.15"/>
+<line x1="28.5" y1="55" x2="61.8" y2="55" stroke="#555" stroke-width="0.18"/>
+<line x1="29" y1="56" x2="31" y2="54" stroke="#111" stroke-width="0.4"/>
+<line x1="59.3" y1="56" x2="61.3" y2="54" stroke="#111" stroke-width="0.4"/>
+<text x="45.15" y="54.1" font-size="2.4" text-anchor="middle">152</text>
+<line x1="30" y1="59" x2="14.5" y2="59" stroke="#555" stroke-width="0.15"/>
 <line x1="30" y1="40" x2="14.5" y2="40" stroke="#555" stroke-width="0.15"/>
-<line x1="16" y1="51.8" x2="16" y2="38.5" stroke="#555" stroke-width="0.18"/>
-<line x1="15" y1="51.3" x2="17" y2="49.3" stroke="#111" stroke-width="0.4"/>
+<line x1="16" y1="60.5" x2="16" y2="38.5" stroke="#555" stroke-width="0.18"/>
+<line x1="15" y1="60" x2="17" y2="58" stroke="#111" stroke-width="0.4"/>
 <line x1="15" y1="41" x2="17" y2="39" stroke="#111" stroke-width="0.4"/>
-<text x="15" y="45.15" font-size="2.4" text-anchor="middle" transform="rotate(-90 15 45.15)">51,5</text>
+<text x="15" y="49.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 15 49.5)">95</text>
 <text x="168" y="24" font-size="3.4" font-weight="bold">Dorso (listones)</text>
 <text x="168" y="28" font-size="2.4" fill="#555">escala 1:5</text>
 <rect x="176" y="40" width="120" height="120" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
@@ -102,7 +102,7 @@
 <text x="22" y="205" font-size="2.6"><tspan font-weight="bold">Material:</tspan> terciado o multilaminado de 18 mm, cara de escritura lisa, lijada (grano 180) y con un sellador mate.</text>
 <text x="22" y="208.77" font-size="2.6">Sin tornillos ni marcas en la cara de escritura. Cantos redondeados (r ≈ 2 mm).</text>
 <text x="22" y="212.54" font-size="2.6">La hoja se fija siempre en el mismo lugar: centro a 200 mm del borde superior y centrada en el ancho.</text>
-<text x="22" y="216.31" font-size="2.6">Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve.</text>
+<text x="22" y="216.31" font-size="2.6">Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve. Las pautas del proyecto son A4.</text>
 <text x="22" y="220.08" font-size="2.6">Los dos listones son los apoyos del tablero en las cuatro posiciones:</text>
 <text x="22" y="223.85" font-size="2.6">· B0, sobre la cuña de 15° (tablero de dibujo) y B3, sobre el atril de 45°: los listones descansan en las cartelas.</text>
 <text x="22" y="227.62" font-size="2.6">· B1, sobre la mesa: el tablero queda plano y elevado 18 mm.</text>

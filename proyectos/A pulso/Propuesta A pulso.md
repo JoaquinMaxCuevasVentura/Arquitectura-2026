@@ -1,216 +1,241 @@
-# A pulso — El espacio que escribe la letra
+# A pulso — El tablero que escribe la letra
 
-**Propuesta de investigación proyectual · versión 2.1 · 12 de octubre de 2026**
+**Propuesta de investigación proyectual · versión 3 · 12 de octubre de 2026**
 Tipografía · arquitectura · saber corporal
 
-> Los materiales para empezar (protocolo, banco, pautas, fichas e instrumento) están en esta carpeta. El índice y el estado de cada fase están en [`README.md`](README.md).
+> Los materiales para empezar (protocolo, banco, pautas, fichas, guías de archivo y de entrevista, e instrumento) están en esta carpeta. El índice y el estado de cada fase están en [`README.md`](README.md). Esta versión ancla el proyecto en una situación propia, a partir de la lectura de *Perform—Produce* de Rebecca Wilkinson (sección 0).
 
-> **Resumen.** *A pulso* estudia cómo participan en la forma de los trazos las condiciones espaciales del puesto de escritura: el apoyo del brazo, la orientación y la altura del plano, los límites del recorrido y la resistencia de la superficie. También estudia cómo convertir esa participación en reglas para diseñar letras. El proyecto construye un **banco de escritura modular**, y cada configuración del banco es una condición de ensayo. Sobre ese banco se hace una serie de ensayos registrados en **tres canales: la traza, el cuerpo y el relato en primera persona**. De las diferencias que se repiten salen reglas, y las reglas se traducen a una **familia tipográfica experimental cuyos estilos corresponden a posturas, no a pesos**. Los entregables son el banco, un protocolo replicable, un archivo de ensayos, un atlas de gestos, una tipografía variable y un espécimen. Desde el espécimen se puede volver de cada letra a la condición, al gesto y a los ensayos que la originaron.
+> **Resumen.** Varias generaciones de arquitectos aprendieron a rotular sus planos a mano, sentados ante un tablero inclinado, con regla T, escuadras, plantillas de rotulación, portaminas y estilógrafo. Esos instrumentos no solo producían letras: **educaban un gesto**. Fijaban la postura, el apoyo, el orden y la dirección de los trazos, la altura y el grosor que dicta una norma. El dibujo asistido por computadora fue retirando ese saber de las aulas, pero en las manos de quienes lo aprendieron sigue activo. *A pulso* estudia esa educación por tres vías. Primero, lee los manuales y normas de rotulación como **partituras del cuerpo**. Segundo, conversa con arquitectos formados en tablero y con otros formados con CAD. Tercero, reconstruye el tablero como un **banco experimental** donde cada instrumento puede quitarse, cambiarse o exagerarse, mientras se registran la traza, el cuerpo y el relato. De las diferencias que se repiten salen reglas, y las reglas se traducen a una **tipografía técnica experimental cuyos estilos llevan el nombre de un puesto de trabajo**. El proyecto termina devolviendo la letra al instrumento: una **plantilla de rotulación** cortada con láser a partir de la fuente. Se hace público con un archivo, un atlas de gestos, unos ejercicios impresos y una sesión participativa, *La lámina*, en la que el tablero vuelve a usarse en público.
 >
-> Dibujar *a pulso* significa trazar sin apoyo ni instrumento. El título ya nombra la primera variable del proyecto.
+> Dibujar *a pulso* significa trazar sin instrumento. En el tablero de dibujo, esa expresión nombraba justamente lo contrario de lo que enseñaban la regla y la plantilla.
 
 ---
+
+## 0. Qué cambia en la versión 3
+
+La versión 2 preguntaba cómo las condiciones espaciales participan en la forma de la escritura. Era una pregunta sólida, pero general: «hacer letras con el cuerpo» podía pasar en cualquier lugar. La tesis de Rebecca Wilkinson, *Perform—Produce* (RISD, MFA en Diseño Gráfico, 2024), mostró dos cosas.
+
+1. **Una pregunta más precisa.** Wilkinson investiga el diseño como trabajo y usa restricciones, herramientas y performance para hacer visibles sus condiciones de producción. En *(New) Mechanick Exercises* parte del manual de Joseph Moxon (siglo XVII), que describe posturas y movimientos del oficio, y relaciona herramientas, organización del trabajo y disciplina del cuerpo. De ahí sale la pregunta de esta versión: **¿cómo educan y condicionan nuestros movimientos las herramientas con las que escribimos y construimos?**
+2. **La necesidad de una situación propia.** Para no repetir a Wilkinson, *A pulso* se ancla en el oficio de quien investiga, la arquitectura, y en su instrumento de escritura: **el tablero de dibujo y la letra técnica del arquitecto**.
+
+| | Versión 2 | Versión 3 |
+|---|---|---|
+| Pregunta | Cómo cambia una escritura cuando cambia la manera en que el cuerpo puede producirla | Cómo educaron los instrumentos del tablero de dibujo el gesto de la letra técnica, y qué letra aparece cuando se quitan, se cambian o se reconstruyen |
+| Situación | Un banco de escritura genérico | El tablero de dibujo del arquitecto, en La Paz, entre la formación en tablero y la formación con CAD |
+| Variables | Apoyo, plano, límite, resistencia | Apoyo, plano (tablero a 15° como base), **guía instrumental** (de a pulso a normógrafo), **herramienta** (portaminas, estilógrafo, calco) |
+| Repertorio | Minúsculas *n, o, v* y *adhesión* | Mayúsculas técnicas *I, —, O, A, R* y el rótulo *PLANTA 1:50* |
+| Personas | Quien investiga y 3–5 manos de contraste | Quien investiga y **dos generaciones**: arquitectos formados en tablero y formados con CAD |
+| Fuentes | Precedentes artísticos | Además, un **archivo**: manuales, normas, láminas, planos e instrumentos |
+| Difusión | Atlas, espécimen, texto | Además, **ejercicios impresos**, una **sesión participativa** y una **plantilla de rotulación** propia |
 
 ## 1. Planteamiento
 
-### 1.1 Problema
+### 1.1 Situación: el tablero de dibujo
 
-La tipografía suele explicar la forma de las letras por la herramienta (pluma ancha, pluma flexible, pincel, punzón) o por el modelo histórico. Se ha estudiado menos el **lugar donde ocurre el gesto**: la altura de la mesa, la inclinación del atril, el muro del rotulista, el antebrazo que se apoya o queda suspendido. Esas condiciones deciden qué articulación conduce el movimiento (dedos, muñeca, codo u hombro). De esa articulación dependen el radio de las curvas, la estabilidad de los ejes, la cantidad de correcciones y el lugar donde se encuentran los trazos.
+Durante buena parte del siglo XX, rotular un plano era un oficio que se aprendía con el cuerpo. Las condiciones eran fijas:
 
-La arquitectura conoce estas relaciones como dimensiones humanas: alcance, altura de trabajo, apoyo y holgura. Sin embargo, rara vez las estudia a partir de lo que se produce en ellas. *A pulso* las usa como **variables de diseño**: el puesto de escritura funciona como una pequeña arquitectura a escala del cuerpo, y la letra es su registro.
+- el tablero inclinado, a la altura del codo;
+- la regla T o la paralela, apoyada en el canto del tablero;
+- las escuadras sobre la regla;
+- líneas guía trazadas a lápiz;
+- letras de palo seco de alturas normalizadas, con plantilla de rotulación (normógrafo) o a pulso;
+- el portaminas para el borrador y el estilógrafo para la tinta.
 
-### 1.2 Marco: el manuaje como forma de conocimiento
+Las normas fijaban la forma y también el cuerpo que la produce. La **ISO 3098** establece alturas nominales en una serie de razón √2 (2,5 · 3,5 · 5 · 7 · 10 · 14 · 20 mm), grosores de trazo de h/14 (tipo A) o h/10 (tipo B, el preferido) y una inclinación opcional de 75° sobre la horizontal. Los manuales enseñaban el orden y la dirección de cada trazo: el de Reinhardt, de 1895–96, ya se presentaba como «un sistema práctico de rotulación a pulso para planos de obra».
 
-- **Manuaje (Mauricio Cárcamo).** Desde 2011, Cárcamo investiga la relación cognitiva y enactiva entre la acción manual y la inteligencia sensomotriz durante el proyectar. El proyecto toma de él una premisa: la mano descubre mientras opera sobre la materia, y ese descubrimiento forma parte del proyecto, no viene antes ni después. El banco de escritura sirve para que la mano opere bajo condiciones distintas y para registrar lo que encuentra.
-- **Reflexión en la acción (Donald Schön).** El proyectista mantiene una "conversación" con la situación: actúa, la situación responde y esa respuesta corrige la acción. El ciclo de trabajo de *A pulso* (ensayo → lectura → regla → glifo de prueba → vuelta al banco) formaliza esa conversación.
-- **El trazo (Gerrit Noordzij).** Noordzij explica el contraste de las letras por el comportamiento de la herramienta: traslación con pluma ancha y expansión con pluma flexible. *A pulso* trabaja la capa anterior a la herramienta: con la misma herramienta y otro espacio, ¿cambia la letra?
-- **El procedimiento modela la letra (Fred Smeijers, *Counterpunch*).** Smeijers muestra que en los tipos del siglo XVI la forma depende del proceso de fabricación. Aquí el procedimiento es postural y espacial.
-- **La línea como huella de un movimiento (Tim Ingold, *Lines*).** Toda línea guarda la memoria del gesto que la produjo, y el atlas de gestos se apoya en esa lectura.
-- **Dimensiones humanas (Panero y Zelnik).** De ellos sale el vocabulario arquitectónico para describir alturas, alcances y apoyos con relación al cuerpo y no en centímetros absolutos.
+Con el dibujo asistido por computadora (AutoCAD aparece en 1982), esa enseñanza se redujo o desapareció en muchas escuelas. **Cuándo y cómo ocurrió en las facultades de La Paz es una de las preguntas del archivo y de las entrevistas**, no un dato de partida. Lo que interesa es que en las manos de quienes se formaron en tablero ese saber sigue activo, como una partitura incorporada. En las manos formadas con CAD falta, o aparece de otra manera.
 
-### 1.3 Precedentes
+### 1.2 Problema
+
+La tipografía explica la forma de las letras por la herramienta: Noordzij distingue la traslación de la pluma ancha y la expansión de la pluma flexible. Los instrumentos del tablero son un caso extremo porque **no solo producen el trazo: lo prescriben**. La regla dirige los rectos. La plantilla sustituye el gesto. La norma fija la altura y el grosor. Entre la letra escrita a pulso y la letra calcada con normógrafo hay una **gradación de prescripción instrumental**, y esa gradación es una variable de diseño que puede ensayarse.
+
+Hay además un problema de visibilidad, el que Wilkinson señala para el diseño gráfico: el trabajo corporal del dibujo de arquitectura casi no deja registro. Los planos guardan la letra, no el gesto. *A pulso* registra ese gesto y lo hace público.
+
+### 1.3 Marco
+
+- **Manuaje (Mauricio Cárcamo).** Desde 2011, Cárcamo investiga la relación cognitiva y enactiva entre la acción manual y la inteligencia sensomotriz en el proyectar, y su vínculo con la representación arquitectónica. El tablero de dibujo es el lugar donde ese manuaje se enseñaba de manera explícita. El proyecto toma de él una premisa: la mano descubre mientras opera, y ese descubrimiento forma parte del proyecto.
+- **Técnicas del cuerpo (Marcel Mauss, 1934).** Los movimientos más elementales se aprenden y se transmiten socialmente, sobre todo por imitación de quien tiene autoridad. En el aula de dibujo, eso era el docente que rotulaba en la pizarra frente a estudiantes que copiaban en el tablero. La condición B2 del banco reconstruye esa posición.
+- **Ejercicios mecánicos (Joseph Moxon; Rebecca Wilkinson).** Los *Mechanick Exercises* de Moxon (1677–1680) describieron oficios de construcción: herrería, ebanistería, carpintería de obra y torno. Su volumen sobre la imprenta (1683–84) fue el primer manual de impresión. Ambos tratan el manual como una coreografía del trabajo. Wilkinson lo reactiva en *(New) Mechanick Exercises*, con láminas de investigación, video, publicación y una performance participativa. *A pulso* lee de la misma manera los manuales de rotulación: **instrucciones que disciplinan un cuerpo**.
+- **Estudio de movimientos (Frank Gilbreth, 1911).** Gilbreth registró las trayectorias de las manos de obreros, incluidos los albañiles, para hacerlas más eficientes. *A pulso* usa dispositivos emparentados (trayectorias, superposiciones, tiempos) con el fin contrario: **medir para mostrar, no para optimizar**.
+- **Reflexión en la acción (Donald Schön).** El ciclo de trabajo del proyecto (ensayo → lectura → regla → glifo → vuelta al banco) formaliza la conversación entre quien proyecta y la situación.
+- **El trazo y el procedimiento (Gerrit Noordzij; Fred Smeijers).** La forma de la letra depende de la herramienta y del proceso. Aquí, la herramienta incluye la regla, la plantilla y la norma.
+- **El dibujo como medio (Robin Evans, «Translations from Drawing to Building», 1986).** El arquitecto trabaja a través del dibujo, y la letra del plano es parte de ese medio. La línea como huella de un movimiento viene de Tim Ingold.
+
+### 1.4 Precedentes y diferencia
 
 | Precedente | Qué muestra | Qué toma *A pulso* |
 |---|---|---|
-| Puestos históricos de escritura: el atril inclinado del *scriptorium*, el escriba sentado con el soporte sobre las rodillas, la pizarra, el muro del rotulista | Cada oficio de la letra tiene su puesto | Una tipología de puestos que sirve de origen a las condiciones del banco |
-| El **tiento** del pintor, la varilla que sostiene la mano sobre el lienzo | Un apoyo portátil que cambia la articulación que trabaja | Una de las formas de construir la variable *apoyo* |
-| William Anastasi, *Subway Drawings* | Dibujos hechos en el metro sin mirar el papel, mientras el movimiento del vagón conduce las manos | La condición espacial como coautora del trazo |
-| Tony Orrico, *Penwald* | Dibujos de cuerpo entero con grafito en ambas manos, cuya forma sale del alcance del cuerpo | El alcance como medida de la forma |
-| Trisha Brown, *It's a Draw* | Una danza sobre el papel que deja registro | Registrar el cuerpo completo, no solo la mano |
-| Robert Morris, *Blind Time Drawings* | Dibujos con los ojos cerrados que acompañan cada hoja con la consigna y una estimación del error | La ficha de ensayo como parte de la obra |
-| LettError (Erik van Blokland y Just van Rossum), *Beowolf* | Una tipografía que altera su contorno cada vez que se imprime | La variabilidad entre repeticiones como propiedad del tipo |
-| **Contenida** (proyecto propio anterior) | *Completar: qué pregunta dejó abierta y qué método se conserva* | Según el borrador, *A pulso* da el paso siguiente: investigar las condiciones corporales que originan la forma |
+| Rebecca Wilkinson, *Perform—Produce* y *(New) Mechanick Exercises* (2024) | El diseño como trabajo corporal; manuales, posturas y herramientas como disciplina; láminas, video, publicación y performance participativa | La pregunta por la educación del cuerpo; el manual como partitura; un modelo de difusión con eventos en vivo, intercambio entre disciplinas y publicación propia |
+| Joseph Moxon, *Mechanick Exercises* (1677–84) | Oficios de construcción y de imprenta descritos como posturas y movimientos | El método de lectura: extraer de un manual el cuerpo que prescribe |
+| Manuales y normas de rotulación: Reinhardt (1895–96); French y Meiklejohn, *The Essentials of Lettering* (1912); Ching, *Architectural Graphics* (1975); ISO 3098 | Alturas, grosores, inclinación, guías, orden y dirección de los trazos | El archivo de partituras que se contrasta con lo que hacen las manos |
+| Frank Gilbreth, estudios de movimiento | El trazo de la mano como dato | Los dispositivos de registro, con una postura crítica sobre su uso |
+| Robert Morris, *Blind Time Drawings* | La consigna y la estimación del error escritas en la misma hoja | La ficha de ensayo como parte de la obra |
+| LettError, *Beowolf* (1990) | Variabilidad como propiedad del tipo | Alternativas tomadas de repeticiones reales |
+| **Contenida** (proyecto propio anterior) | *Completar: qué pregunta dejó abierta y qué método se conserva* | — |
 
----
+**En qué se diferencia de Wilkinson.**
+
+- **Oficio:** Wilkinson trabaja sobre la imprenta y el diseño gráfico; *A pulso*, sobre la **arquitectura**.
+- **Lugar y tiempo:** *A pulso* se sitúa en La Paz y en el paso del tablero al CAD.
+- **Método:** usa un **banco experimental con medición**, no solo performance.
+- **Resultado:** produce una **tipografía y una plantilla de rotulación**. La investigación termina fabricando un instrumento que a su vez educará otros gestos.
 
 ## 2. Preguntas, objetivos y conjeturas
 
 ### 2.1 Pregunta principal
 
-**¿Cómo participan las condiciones espaciales del puesto de escritura (apoyo, orientación y altura del plano, límite del recorrido y resistencia de la superficie) en la forma de los trazos, y cómo pueden convertirse esas participaciones en reglas para el diseño de letras?**
+**¿Cómo educaron los instrumentos del tablero de dibujo (el tablero inclinado, la regla T y las escuadras, la plantilla de rotulación, el portaminas y el estilógrafo) el gesto con que los arquitectos escriben, y qué letra aparece cuando esos instrumentos se quitan, se cambian o se reconstruyen?**
 
 ### 2.2 Subpreguntas
 
 | | Subpregunta | Se responde con |
 |---|---|---|
-| P1 · Traza | ¿Qué rasgos del trazo cambian de forma consistente al variar cada condición? | Superposiciones y descriptores (§4.6) |
-| P2 · Cuerpo | ¿Qué articulación conduce el movimiento en cada condición y qué ajustes percibe quien escribe? | Video y relato en primera persona (§4.5) |
-| P3 · Traducción | ¿Qué modos de traducción conservan mejor la relación entre una condición y la forma? | Modos de traducción registrados en cada glifo (§4.7) |
-| P4 · Lectura | ¿Puede un lector reconocer en la letra terminada la condición que la originó? | Prueba de atribución (§8) |
+| P1 · Archivo | ¿Qué cuerpo prescriben los manuales y las normas de rotulación: postura, apoyo, guías, orden y dirección de los trazos? | Lectura coreográfica del archivo (§4.3) |
+| P2 · Oficio | ¿Qué conserva la mano de quien se formó en el tablero y qué hace la mano formada con CAD ante los mismos instrumentos? | Entrevistas de oficio y sesiones de contraste (§4.4, §4.11) |
+| P3 · Condición | ¿Qué cambia en el trazo cuando cambia una condición del tablero: apoyo, plano, guía o herramienta? | Serie de ensayos en el banco (§4.5–4.9) |
+| P4 · Traducción y lectura | ¿Qué reglas tipográficas pueden derivarse, y reconoce un lector en la letra el instrumento o el puesto que la originó? | Tipografía y prueba de atribución (§4.10, §8) |
 
 ### 2.3 Objetivos
 
-**General.** Desarrollar un método para pasar del gesto, producido bajo condiciones espaciales controladas, a reglas tipográficas, y demostrarlo con una familia tipográfica experimental cuya procedencia se pueda rastrear.
+**General.** Comprender cómo los instrumentos del tablero de dibujo educaron la letra técnica del arquitecto, y convertir esa comprensión en reglas, en una tipografía y en un instrumento nuevo.
 
 **Específicos.**
-1. Diseñar y construir un banco de escritura con cuatro variables independientes y una condición base.
-2. Ejecutar y registrar una serie de ensayos con un protocolo replicable.
-3. Derivar un catálogo de reglas a partir de diferencias consistentes, con la evidencia enlazada.
-4. Traducir esas reglas a una tipografía variable cuyos ejes correspondan a condiciones espaciales.
-5. Publicar un atlas de gestos y un espécimen que conserven la procedencia de cada letra.
+1. Reunir y leer un archivo de manuales, normas, láminas, planos e instrumentos de rotulación, y extraer de él las prescripciones corporales.
+2. Registrar en entrevistas la experiencia de aprender a rotular, en dos generaciones de arquitectos.
+3. Reconstruir el tablero como un banco experimental con cuatro variables independientes y ejecutar una serie de ensayos con un protocolo replicable.
+4. Derivar un catálogo de reglas con evidencia enlazada y traducirlo a una tipografía técnica cuyos estilos correspondan a puestos de trabajo.
+5. Hacer público el proceso con un atlas, unos ejercicios impresos, una sesión participativa y una plantilla de rotulación propia.
 
 ### 2.4 Conjeturas de trabajo
 
-Son expectativas que hay que contrastar, no resultados. Sirven para saber qué mirar, y la investigación vale tanto por lo que confirme como por lo que las desmienta.
+Son expectativas que hay que contrastar.
 
-- **H1 · Sin apoyo y ante un plano vertical**, la conducción pasa de los dedos y la muñeca al codo y el hombro. Se esperan curvas de mayor radio, ejes más estables entre repeticiones y uniones más abiertas, a cambio de menos precisión en terminales y encuentros.
-- **H2 · Con el antebrazo apoyado** aumenta la precisión local, pero el recorrido se organiza en arcos alrededor del punto de apoyo. Se esperan trazos largos que se curvan y reposicionamientos frecuentes de la mano o del papel.
-- **H3 · Un límite físico del recorrido** produce compresión antes del borde, aplanamiento de la curva contra el tope y quiebres donde la trayectoria cambia de dirección.
-- **H4 · La resistencia de la superficie** introduce pausas, insistencias y cambios de presión. Una herramienta sensible a la presión los vuelve visibles como ritmo y textura.
+- **H1 · Partitura incorporada.** Quien se formó en el tablero conserva el orden y la dirección de los trazos que prescriben los manuales, aun sin instrumentos: astas de arriba abajo, horizontales de izquierda a derecha y la R en dos tiempos. Quien se formó con CAD no tiene una partitura estable.
+- **H2 · Gradación instrumental.** De a pulso a regla T y de regla T a normógrafo, la variación entre repeticiones disminuye y también la diferencia entre personas: **la letra pierde procedencia corporal**. Con la regla, los rectos ganan regularidad y las uniones pierden continuidad (más levantamientos).
+- **H3 · Plano.** Al pasar del tablero inclinado a la mesa plana cambian el eje y la inclinación de las astas. En la pizarra, el gesto pasa al hombro: curvas más amplias, mayor dispersión y otra partitura.
+- **H4 · Herramienta.** El estilógrafo exige sostenerse casi vertical y bajar la velocidad para que fluya la tinta. Se esperan trazos más lentos, terminaciones más redondas y menos inclinación que con el portaminas.
 
-Lo que la mano descubra fuera de estas conjeturas se anota en un **cuaderno de hallazgos no previstos** (§4.6). Probablemente ahí aparezca lo más valioso del proyecto.
-
----
+Lo que la mano descubra fuera de estas conjeturas va al **cuaderno de hallazgos no previstos** (§4.9).
 
 ## 3. Estrategia
 
-1. **Una variable a la vez; después, combinaciones.** Cada condición se compara con una base común. Solo cuando se sabe qué hace cada variable se combinan las más productivas.
-2. **El cuerpo antes que el código.** El proyecto empieza con papel, cinta, cartón y un teléfono. Una herramienta digital se construye cuando el trabajo manual se vuelve el cuello de botella, no antes.
-3. **Trazabilidad desde el primer ensayo.** Cada traza lleva un identificador desde el día 1 (Anexo D). El espécimen con procedencia de la fase final depende de esta decisión y no puede reconstruirse después.
-4. **Ciclos cortos.** Cada ensayo produce una lectura, cada lectura una regla candidata, y cada regla un glifo de prueba que vuelve al banco. No se espera a terminar la serie para empezar a dibujar letras.
-5. **Primera persona con contraste.** El cuerpo principal del estudio es el de quien investiga. Otras 3–5 personas repiten las condiciones clave para distinguir lo que hace el espacio de lo que hace un hábito propio.
-6. **Separar lo que hizo el cuerpo de lo que decidió el diseño.** Cada glifo declara su modo de traducción y las reglas que aplica (§4.7).
-7. **Decisiones explícitas.** Hay dos puntos en los que el proyecto se detiene y elige (§5.1).
-
----
+1. **Tres frentes que se cruzan.** El archivo da las partituras; las entrevistas fijan cómo era el puesto (ángulo, herramientas, rutinas); el banco las pone a prueba. Los resultados del banco vuelven a las entrevistas: cada participante ve sus propias superposiciones.
+2. **Una variable a la vez; después, combinaciones.** Cada condición se compara con la base, que es el puesto clásico: tablero a 15°, antebrazo apoyado, líneas guía y portaminas.
+3. **Dos generaciones de manos.** El contraste entre formación en tablero y formación con CAD es parte de la pregunta, no un control.
+4. **Medir para mostrar, no para optimizar.** Las métricas sostienen la lectura y se publican como parte del proceso.
+5. **Trazabilidad desde el primer ensayo.** Cada traza lleva su identificador (Anexo D), y cada glifo, su procedencia.
+6. **Hacer público el trabajo.** Como en Wilkinson, la difusión forma parte del método: una sesión participativa, una publicación propia e intercambio con docentes, dibujantes y estudiantes.
+7. **Decisiones explícitas.** Dos puntos de decisión (§5.1).
 
 ## 4. Metodología
 
 ### 4.1 Enfoque
 
-Es una **investigación a través del diseño** (*research through design*, según Frayling): el conocimiento se produce haciendo, y los artefactos son a la vez instrumento y resultado. Tiene carácter exploratorio y combina tres registros:
+El proyecto es una **investigación a través del diseño** (Frayling) que combina cinco registros:
 
-- un **estudio de condiciones controladas** sobre el banco;
-- un **registro en primera persona** del saber corporal, apoyado en la entrevista de explicitación (Vermersch; Petitmengin);
-- **métricas simples** extraídas de las trazas, que sostienen la lectura cualitativa sin reemplazarla.
+- un **estudio de archivo**: lectura coreográfica de manuales y normas;
+- **historia oral del oficio**: entrevistas semiestructuradas;
+- un **estudio de condiciones controladas** en el banco;
+- **registro en primera persona**: fichas y entrevista de explicitación;
+- **métricas simples** de las trazas.
 
-### 4.2 Variables: un banco, cuatro ejes
+### 4.2 Cómo se cruzan los frentes
 
-El borrador proponía cuatro dispositivos, y dos de ellos mezclaban variables: "brazo libre ante un plano vertical" cambia a la vez el apoyo y el plano. La versión 2 los reemplaza por **un banco modular con cuatro variables independientes**. Así cada diferencia puede atribuirse a una sola causa.
+| Frente | Produce | Alimenta a |
+|---|---|---|
+| Archivo | Partituras prescritas: postura, apoyo, guías, orden y dirección de los trazos | Las conjeturas, la lectura de los ensayos y los ejercicios impresos |
+| Oficio | Relatos, objetos, el ángulo y las herramientas de cada puesto, partituras declaradas | El montaje del banco (por ejemplo, el ángulo de B0) y la selección de condiciones |
+| Banco | Trazas, partituras observadas, reglas | La tipografía, el atlas y la vuelta a las entrevistas |
 
-| Variable | Niveles | Qué cambia en el cuerpo | Cómo se construye |
+### 4.3 Archivo del tablero
+
+**Fuentes:**
+- manuales de rotulación y de dibujo técnico, internacionales y los usados en las facultades de La Paz;
+- normas: ISO 3098 y las normas nacionales que se hayan usado;
+- láminas de rotulación de estudiantes;
+- planos rotulados a mano, de los participantes y de archivos accesibles;
+- los instrumentos mismos: normógrafos, estilógrafos, reglas T y escuadras.
+
+**Lectura coreográfica:** de cada fuente se extraen, en una ficha, las **prescripciones sobre el cuerpo**: postura, apoyo, instrumento, guías, orden y dirección de cada trazo, ritmo, correcciones y castigos. Cada orden de trazos prescrito se dibuja como **partitura** (flechas numeradas sobre la letra), para compararla después con las partituras observadas. La guía y la ficha están en `archivo/Archivo del tablero.md`.
+
+### 4.4 Entrevistas de oficio
+
+- **Quiénes:**
+  - 4–6 arquitectos que aprendieron a rotular a mano y lo practicaron en su trabajo;
+  - 2–3 que se formaron con CAD;
+  - un docente de dibujo técnico, si es posible.
+- **Formato:** conversación semiestructurada de unos 30 minutos, grabada en audio, con los objetos de cada participante sobre la mesa: láminas, planos e instrumentos. Al final, el participante escribe en el banco (§4.11).
+- **Temas:** dónde y con quién aprendió; manual o docente; la postura que le exigían; los instrumentos; las correcciones; cuándo dejó de rotular a mano; qué le queda en la mano.
+- **Ética:** consentimiento informado, códigos anónimos, autorización aparte para publicar imágenes y citas con nombre. La guía está en `protocolo/Guía de entrevista de oficio.md`.
+
+### 4.5 Variables: el tablero reconstruido
+
+**Condición base: A0 · B0 · C0 · D0, con letra de 10 mm.** Es el puesto clásico: sentado ante el tablero a 15°, antebrazo apoyado, líneas guía y portaminas.
+
+| Variable | Niveles | Qué cambia | Cómo se arma |
 |---|---|---|---|
-| **A · Apoyo** | A0 antebrazo apoyado · A1 solo el canto de la mano · A2 brazo suspendido | La articulación que conduce y el punto de giro | El tablero mismo (A0); tiento como variante de A1; nada (A2) |
-| **B · Plano** | B0 horizontal a la altura del codo, sentado · B1 inclinado a 45° (atril) · B2 vertical a la altura del hombro, de pie | La relación del gesto con la gravedad y el alcance | Un solo tablero con tres apoyos: la mesa, un atril de 45° y montantes de muro con pasadores |
-| **C · Límite** | C0 libre · C1 topes en la línea base y la altura x · C2 canal 25% más bajo que la letra · C3 ventana de 0,6 h de ancho que limita el avance | Lo que la mano hace al encontrar un borde | Plantillas de MDF de 5 mm cortadas con láser, apoyadas sobre la hoja |
-| **D · Resistencia** | D0 papel liso sobre tablero rígido · D1 superficie áspera (lija fina o cartón) · D2 base blanda (goma eva de 3–5 mm bajo el papel) · D3 *(opcional, tardía)* incisión sobre arcilla o cera | Pausas, presión y agarre | Bases intercambiables bajo la hoja |
-| **E · Escala** *(serie aparte)* | Altura x de 10 · 30 · 120 mm | Qué articulación puede intervenir | Pautas impresas |
+| **A · Apoyo** | A0 antebrazo apoyado · A1 solo el canto de la mano · A2 brazo suspendido | La articulación que conduce | El tablero mismo |
+| **B · Plano** | B0 tablero de dibujo a 15° · B1 mesa horizontal · B2 pizarra vertical a la altura del hombro, de pie · B3 atril a 45° (opcional) | Relación con la gravedad y el alcance; tablero del estudiante frente a pizarra del docente | Un tablero con cuatro apoyos: cuña, mesa, montantes y atril |
+| **C · Guía** | C0 líneas guía, a pulso · C1 sin líneas guía · C2 regla T y escuadra · C3 plantilla de rotulación (normógrafo) | El grado de prescripción instrumental | Pauta con y sin guías; regla T sobre el canto del tablero; normógrafo ISO de 10 mm |
+| **D · Herramienta** | D0 portaminas 0,5 HB sobre bond · D1 estilógrafo sobre bond · D2 portaminas sobre papel vegetal (calco) | Agarre, velocidad, presión | Herramientas comerciales; el papel vegetal sobre la pauta, con las marcas calcadas |
+| **E · Escala** *(serie aparte)* | Letra de 5 · 10 · 20 mm (alturas ISO 3098) | Qué articulación interviene: texto de plano frente a título | Pautas A4 por altura |
 
-**Condición base: A0 · B0 · C0 · D0, con una altura x de 30 mm.** Es escribir en una mesa común. Todas las condiciones se comparan con ella.
+**Las alturas del banco se fijan respecto del cuerpo** de quien escribe (calculadora `instrumento/banco.html`). En C3, el normógrafo exige su estilógrafo (en el tipo B, de grosor h/10); se anota como excepción a la herramienta constante.
 
-**Las alturas se fijan con relación al cuerpo** (por ejemplo, plano a la altura del codo menos 5 cm), no en centímetros absolutos. Al empezar se registran las medidas de quien escribe: altura del codo sentado y de pie, altura del hombro y alcance. Así el protocolo puede trasladarse a otros cuerpos.
+**Plan de condiciones.** La serie empieza con un factor a la vez: BASE, A1, A2, B1, B2, C1, C2, C3, D1 y D2, es decir, 10 condiciones. B3, las combinaciones (por ejemplo A2B2, «la pizarra del docente») y la serie de escala se deciden en la **Decisión 2**.
 
-**Lo que no varía en la serie principal:** la herramienta (lápiz 2B o marcador de punta redonda de 0,8–1 mm, monolineal), un mismo lote de papel, la iluminación, una franja horaria parecida, la mano dominante y el modelo de letra.
+### 4.6 Repertorio: la letra técnica
 
-**Plan de condiciones.** La serie empieza con un factor a la vez a partir de la base: base, A1, A2, B1, B2, C1, C2, C3, D1 y D2, es decir, **10 condiciones**. Después de la Decisión 2 se ensayan 2–3 combinaciones (por ejemplo A2 · B2, "el muro del rotulista") y la serie de escala. No se intenta el diseño factorial completo: con 3 × 3 × 4 × 3 niveles serían más de cien condiciones.
-
-### 4.3 Repertorio: qué se escribe
-
-Antes de empezar se dibuja un **modelo esqueleto propio**: una minúscula humanista simple y monolineal. El modelo se observa al comienzo de cada sesión, pero no se calca, para que la escritura salga de la memoria motriz.
+La letra de los planos se escribe sobre todo en mayúsculas de palo seco. Por eso el repertorio se arma con mayúsculas y con un rótulo real. Antes de la serie, cada persona dibuja su **modelo de referencia**: las mayúsculas que aprendió, o las del manual que se tome como base.
 
 | Código | Gesto | Por qué |
 |---|---|---|
-| G1 | Asta vertical descendente | El trazo más simple; muestra el eje y la estabilidad |
-| G2 | Arco que sale del asta (hombro de la *n*) | Muestra la curvatura y el punto de salida |
-| G3 | Óvalo (*o*) | Muestra el eje de la curva cerrada y el cierre |
-| G4 | Diagonal (*v*) | Muestra un cambio de dirección en el vértice |
-| G5 | *n* completa (asta + arco + asta) | La unión: el encuentro donde más difieren las condiciones |
-| G6 | Palabra *adhesión* | La palabra de prueba clásica del diseño tipográfico, que además existe en español y lleva tilde |
+| G1 | Asta vertical **I** | Eje e inclinación; el primer ejercicio de casi todos los manuales |
+| G2 | Trazo horizontal | La dirección que la regla T disciplina |
+| G3 | **O** | La curva cerrada, el sentido de giro y el punto de inicio |
+| G4 | **A** | Las diagonales y el travesaño |
+| G5 | **R** | Asta, bucle y pierna: uniones y orden de los trazos |
+| G6 | Rótulo **PLANTA 1:50** | Letras, cifras y signos en el orden real de un plano |
 
-### 4.4 Protocolo de sesión
+### 4.7 Sesión
 
-- **Duración:** 40–50 minutos de ensayos, como máximo dos condiciones por sesión.
-- **Control de deriva:** cada sesión empieza y termina con 5 repeticiones de G5 en la condición base. Si la base cambia a lo largo de la sesión, ese cambio no puede atribuirse a la condición.
-- **Calentamiento:** 3 repeticiones descartadas al comenzar cada condición.
-- **Repeticiones:** 10 por gesto y por condición.
-- **Orden contrabalanceado:** bloques ABBA dentro de la sesión y orden alternado entre sesiones, para que el aprendizaje y la fatiga no se confundan con la condición.
-- **Notas inmediatas:** después de cada bloque, dos minutos para responder las tres preguntas fijas (§4.5).
-- **Registro:** foto del banco configurado, video lateral y cenital, escaneo a 600 ppp y una ficha por bloque (Anexo B).
-- **Volumen:** la primera pasada suma ≈600 trazas (10 condiciones × 6 gestos × 10 repeticiones). Una pasada de confirmación, solo con los gestos en que apareció una diferencia, suma ≈300 más. En total son 10–14 sesiones.
+Las sesiones duran 40–50 minutos, con dos condiciones como máximo; empiezan y terminan con cinco R en la base para medir la deriva. Cada condición tiene tres repeticiones de calentamiento por gesto y diez registradas. El orden se alterna entre sesiones. El detalle y el calendario de diez sesiones están en `protocolo/Protocolo de ensayo.md`.
 
-### 4.5 Registro en tres canales
+### 4.8 Registro
 
-| Canal | Qué registra | Con qué | Producto |
-|---|---|---|---|
-| **Traza** | Forma, recorrido y, si hay tableta, presión, inclinación y tiempo | Papel escaneado, o tableta con lápiz digital | SVG y JSON por traza |
-| **Cuerpo** | Articulación dominante, postura, cambios de agarre, reposicionamientos | Dos teléfonos (vista lateral y cenital); como opción, estimación de pose sobre el video | Clips marcados con el identificador del bloque |
-| **Relato** | Dónde estuvo el esfuerzo, qué hubo que corregir, qué sorprendió | Notas inmediatas y, una vez por fase, una entrevista de explicitación con otra persona | Notas fechadas |
+| Canal | Qué registra | Con qué |
+|---|---|---|
+| **Traza** | Forma y, en tableta, tiempo, presión y **partitura** (orden y dirección de cada trazo) | Pautas A4 escaneadas a 600 ppp o tableta con lápiz |
+| **Cuerpo** | Articulación dominante, postura, agarre, uso del instrumento | Video lateral y cenital |
+| **Relato** | Lo que se sintió, se corrigió o sorprendió; en participantes, la memoria del aprendizaje | Fichas, entrevista de explicitación y entrevista de oficio |
+| **Objetos** | Láminas, planos e instrumentos de cada participante | Fotografía con escala y ficha de archivo |
 
-**Tres preguntas fijas después de cada bloque:**
-1. ¿Qué articulación sentí que conducía el trazo?
-2. ¿Dónde y en qué momento tuve que corregir?
-3. ¿Qué hizo la mano que yo no había planeado?
+### 4.9 Análisis
 
-### 4.6 Análisis: de la traza a la regla
+1. **Superponer** las repeticiones de cada condición: densidad, trazo mediano y comparación con la base.
+2. **Describir** con un vocabulario fijo: continuidad, precisión, curvatura, inclinación de las astas, proporción, uniones, terminales, ritmo, cuerpo y **partitura** (consistencia del orden de los trazos).
+3. **Comparar partituras.** La prescrita por los manuales, la declarada en la entrevista y la observada en la tableta: dónde coinciden, dónde se apartan y en qué generación.
+4. **Convertir diferencias en reglas** cuando son consistentes (7 de 10 repeticiones y dos sesiones), atribuibles, transferibles y legibles.
+5. **Anotar lo inesperado** en el cuaderno de hallazgos no previstos.
 
-1. **Superponer** las 10 repeticiones de cada gesto en cada condición. De ahí salen el **trazo medio** y la **envolvente**, que muestra cuánto se dispersan las repeticiones.
-2. **Comparar con la base** superponiendo el trazo medio de la condición sobre el de la base.
-3. **Describir con un vocabulario fijo:**
+### 4.10 Traducción: de la regla a la letra
 
-   | Descriptor | Qué se mira |
-   |---|---|
-   | Continuidad | Levantamientos de la herramienta; pausas (velocidad casi nula durante más de 100 ms) |
-   | Precisión | Dispersión entre repeticiones |
-   | Curvatura | Radio del arco; punto de máxima curvatura |
-   | Eje | Inclinación del asta; eje del óvalo |
-   | Proporción | Relación entre ancho y alto en *n* y *o* |
-   | Unión | Altura y ángulo con que el arco sale del asta |
-   | Terminales | Forma de entrada y de salida |
-   | Ritmo | Velocidad, aceleraciones, irregularidad |
-   | Cuerpo | Articulación dominante, ajustes de agarre, reposicionamientos |
+Cada glifo declara su modo de traducción.
 
-4. **Elegir qué diferencias se vuelven regla.** Una diferencia se convierte en regla cuando cumple cuatro criterios:
-   - **Consistente:** aparece en al menos 7 de 10 repeticiones y en dos sesiones distintas.
-   - **Atribuible:** no aparece, o aparece mucho menos, en la base del inicio y del final de la sesión.
-   - **Transferible:** puede aplicarse a otras letras con la misma estructura.
-   - **Legible:** sobrevive a tamaño de texto (9–12 pt) y a distancia.
-5. **Enunciar la regla con un formato fijo** (Anexo C): *En [condición], [rasgo] tiende a [cambio] (evidencia: ensayos…). En la letra: [decisión de diseño].*
-6. **Anotar lo inesperado.** Lo que no cumple los criterios pero sorprende va al **cuaderno de hallazgos no previstos**. Allí está la materia de las preguntas siguientes.
+| Modo | Qué se hace | Qué conserva |
+|---|---|---|
+| **Calco** | Vectorizar una traza seleccionada | La singularidad del gesto |
+| **Esqueleto + herramienta** | Tomar la línea central del trazo mediano y aplicarle una herramienta. Aquí la herramienta natural es el **estilógrafo de la norma**: trazo monolineal de grosor h/10 | El recorrido, con el contraste del instrumento técnico |
+| **Regla** | Aplicar una regla del catálogo a todas las letras de igual estructura | La lógica de la condición |
+| **Interpolación** | Usar dos puestos extremos como maestros de una fuente variable | La transición entre puestos |
 
-### 4.7 Traducción: de la regla a la letra
+**La familia** es una fuente variable de dos ejes, elegidos en la Decisión 2. Sus instancias llevan el nombre de un puesto: *A pulso Tablero*, *Mesa*, *Pizarra*, *Regla*, *Plantilla*. Un eje posible es `GUIA`, que va de a pulso a plantilla: la gradación de prescripción hecha tipografía.
 
-El borrador dejaba abierta la frase "después decidirías cómo traducir", y es el paso más delicado. La versión 2 define **cuatro modos de traducción**. Cada glifo declara cuál usa.
+**El regreso al instrumento.** Con la fuente terminada se corta con láser una **plantilla de rotulación A pulso**: un normógrafo cuya letra viene de las manos estudiadas. Es un instrumento nuevo que educará otros gestos, y cierra la pregunta del proyecto.
 
-| Modo | Qué se hace | Qué conserva | Riesgo |
-|---|---|---|---|
-| **Calco** | Vectorizar una traza seleccionada con una limpieza mínima | La singularidad del gesto | Una letra irrepetible y difícil de sistematizar |
-| **Esqueleto + herramienta** | Tomar la línea central del trazo medio y aplicarle un modelo de contraste (traslación o expansión) | El recorrido | El contraste lo decide el diseño, no el cuerpo |
-| **Regla** | Aplicar una regla del catálogo a todas las letras de igual estructura | La lógica de la condición | Que la letra se aleje del registro |
-| **Interpolación** | Usar dos condiciones extremas como maestros de una fuente variable | La transición entre condiciones | Exige contornos compatibles, con el mismo número y orden de puntos, así que los maestros se redibujan |
+### 4.11 Dos generaciones de manos
 
-**La familia.** La propuesta es una **fuente variable de dos ejes** cuyas instancias llevan el nombre de un puesto de escritura en lugar de un peso: *A pulso Mesa*, *Atril*, *Muro*, *Canal*, *Roce*. Los dos ejes se eligen en la Decisión 2, entre las variables que produjeron las reglas más consistentes. Por ejemplo, `APOY` iría del antebrazo apoyado al brazo suspendido, y `ROCE` de la superficie lisa a la áspera. En OpenType, las etiquetas de los ejes propios llevan cuatro letras mayúsculas.
-
-**La variabilidad como recurso.** Cada letra frecuente puede tener entre 3 y 5 alternativas tomadas de repeticiones reales, que se alternan en el texto mediante alternativas contextuales (`calt`). Así la composición conserva la dispersión de la mano, como en *Beowolf*.
-
-### 4.8 Contraste con otras manos
-
-Entre 3 y 5 personas, de preferencia con oficios distintos, repiten la base y las 2–3 condiciones más productivas con el mismo protocolo, en unos 45 minutos cada una. Por ejemplo: alguien de arquitectura, alguien que escriba letras por oficio (rotulista o calígrafo), alguien sin práctica de dibujo y alguien de danza o de una práctica corporal.
-
-- **Para qué sirve:** distinguir lo que hace el espacio de lo que hace un hábito propio. Si una regla aparece en varias manos, se refiere al espacio. Si aparece en una sola, describe a esa persona, lo cual también vale, pero es otro hallazgo.
-- **Ética:** consentimiento informado para el video y códigos anónimos (P01–P05; quien investiga es P00).
-- **Puente:** esta etapa sirve de piloto para *De mano en mano* (§10).
-
----
+Cada participante de las entrevistas hace una sesión corta en el banco. Escribe la base, las tres guías (C1, C2 y C3) y el estilógrafo, solo con la R y el rótulo, diez repeticiones cada uno, en unos 45 minutos y en tableta si es posible, para registrar la partitura. Así se distingue lo que hace el instrumento de lo que hace la formación.
 
 ## 5. Ejecución
 
@@ -218,194 +243,113 @@ Entre 3 y 5 personas, de preferencia con oficios distintos, repiten la base y la
 
 | Fase | Semanas | Actividades | Producto | Decisión |
 |---|---|---|---|---|
-| **F0 · Preparación** | S1–S2 | Lecturas clave (Cárcamo, Noordzij, Schön). Modelo esqueleto. Ficha e identificadores. Medidas del cuerpo. Maqueta del banco en cartón a escala 1:1 | Modelo, ficha, registro CSV, maqueta | — |
-| **F1 · Piloto** | S2–S3 | Protocolo del Anexo A: mesa con antebrazo apoyado frente a muro con brazo libre | Lámina piloto; protocolo ajustado | **Decisión 1:** ¿la diferencia se ve? Si no se ve, se intensifican las condiciones (altura x de 60 mm, muro a brazo extendido) antes de construir |
-| **F2 · Banco e instrumento** | S3–S6 | Banco en madera con sus módulos. Instrumento v1: captura y superposición | Banco y planos; instrumento v1 | — |
-| **F3 · Serie de ensayos** | S6–S11 | Primera pasada con 10 condiciones; confirmación; contraste con otras manos en S10–S11 | Archivo de ensayos | — |
-| **F4 · Lectura y reglas** | S9–S13 | Superposiciones, descriptores, catálogo de reglas, borrador del atlas. **Crítica 1** en S12 | Catálogo de reglas; atlas en borrador | **Decisión 2:** qué dos variables pasan a ser ejes, qué combinaciones se ensayan y si la serie de escala se hace |
-| **F5 · Diseño tipográfico** | S12–S18 | Maestros; minúsculas, *ñ*, vocales con tilde y puntuación española; pruebas de texto en cada iteración; vuelta al banco para las letras que falten; alternativas. **Prueba de atribución** en S17. **Crítica 2** en S18 | Fuente variable | — |
-| **F6 · Edición y difusión** | S17–S20 | Espécimen con procedencia, atlas, texto, instalación o taller | Entregables finales | — |
-
-Las fases se superponen a propósito: los primeros glifos de prueba aparecen en F4, mientras la serie todavía corre. Cada semana se dedica **una hora a releer los ensayos** y se escribe una entrada en la bitácora.
+| **F0 · Preparación** | S1–S2 | Lecturas (Cárcamo, Wilkinson, Moxon, Mauss); primer barrido del archivo; contacto con participantes; modelo de referencia; medidas; maqueta | Lista de fuentes y participantes, modelo, maqueta | — |
+| **F1 · Piloto** | S2–S3 | Tablero frente a pizarra con I, O y R a 10 mm (Anexo A) | Lámina piloto; protocolo ajustado | **Decisión 1:** ¿se ve la diferencia? Si no, se pasa a 20 mm |
+| **F2 · Banco y entrevistas** | S3–S6 | Construir el banco; entrevistas de oficio; lectura coreográfica de las primeras fuentes | Banco; entrevistas transcritas; primeras partituras prescritas | Ángulo de B0 según las entrevistas |
+| **F3 · Serie** | S6–S11 | Primera pasada y confirmación; sesiones de contraste con las dos generaciones | Archivo de ensayos | — |
+| **F4 · Lectura y reglas** | S9–S13 | Superposiciones, partituras comparadas, catálogo de reglas, atlas en borrador. **Crítica 1** en S12 | Reglas; atlas en borrador | **Decisión 2:** ejes, combinaciones y escala |
+| **F5 · Tipografía** | S12–S18 | Maestros; mayúsculas, cifras y signos de plano; pruebas en rótulos reales; prototipo de plantilla. **Prueba de atribución** en S17. **Crítica 2** en S18 | Fuente variable; plantilla de prueba | — |
+| **F6 · Edición y difusión** | S17–S20 | Atlas, *Ejercicios del tablero*, espécimen, texto y la sesión participativa *La lámina* | Entregables finales | — |
 
 ### 5.2 Dedicación
 
-Se calculan unas **12 horas semanales, ≈240 horas en total**, con esta distribución aproximada: ensayos 20%, lectura y análisis 20%, diseño tipográfico 30%, herramientas digitales 15% y edición y difusión 15%. **El software no debe superar el 20%.** Si lo supera, el instrumento se está comiendo el proyecto.
+Se calculan unas **12 horas semanales, ≈ 240 horas en total**, repartidas así:
+
+| Frente | Porcentaje |
+|---|---|
+| Ensayos | 18 % |
+| Archivo y entrevistas | 14 % |
+| Lectura y análisis | 16 % |
+| Tipografía y plantilla | 25 % |
+| Herramientas digitales (ya construidas; solo mantenimiento) | 8 % |
+| Edición y difusión, con la sesión participativa | 19 % |
 
 ### 5.3 Recursos
 
-- **Banco:** medio tablero de terciado de 18 mm (tablero, atril y montantes), cuatro pasadores de acero, plantillas de topes en MDF de 5 mm, lija de grano 150, goma eva y un tiento. El diseño, los planos y el despiece están en `banco/`.
-- **Escritura:** la misma herramienta durante toda la serie principal y papel A3 de un mismo lote.
-- **Registro:** dos teléfonos con soportes, escáner de 600 ppp o una toma cenital fija. Como opción, una tableta con lápiz sensible a la presión.
-- **Software:** un editor tipográfico (Glyphs, FontLab o RoboFont; como alternativa libre, FontForge o Fontra con fontmake), un navegador para el instrumento y una hoja de cálculo.
-- **Personas:** 3–5 participantes para el contraste y 2–3 críticos (tipografía, arquitectura y una práctica corporal: danza, kinesiología o terapia ocupacional).
-
-### 5.4 Instrumento digital (con Claude Code)
-
-Cada módulo se construye cuando el trabajo manual lo pide. El **registro de ensayos** (`registro_ensayos.csv`) une todos los módulos.
-
-**Estado (octubre de 2026):** M1–M4 ya funcionan, con pruebas y datos sintéticos de ejemplo, en `instrumento/`. M5 queda para F6. Los módulos se adelantaron a la fase prevista porque no dependen de los ensayos. El tope del 20 % del tiempo sigue rigiendo para mantenerlos y ajustarlos.
-
-| Módulo | Qué hace | Cuándo |
-|---|---|---|
-| **M1 · Captura** | Página web que registra x, y, tiempo, presión e inclinación del lápiz en una tableta (Pointer Events) y guarda un JSON con el identificador del ensayo | F2, si se dispone de tableta |
-| **M2 · Digitalización del papel** | Escaneo → umbral → línea central → SVG | F2 |
-| **M3 · Superposición y métricas** | Superpone repeticiones; calcula trazo medio, envolvente, levantamientos, duración y pausas; filtra por condición y gesto | F2–F4 |
-| **M4 · Exportación** | Pasa la traza o el esqueleto elegido a SVG o UFO para el editor tipográfico | F5 |
-| **M5 · Espécimen con procedencia** | Al tocar una letra muestra su modo de traducción, las reglas que aplica, la condición (foto del banco), la superposición de ensayos, un fragmento de video y la nota en primera persona | F6 |
-
-**Modelo de datos mínimo:**
-- **Ensayo:** identificador, fecha, persona, sesión, condición (A, B, C, D, E), gesto, repetición, herramienta, archivos y nota.
-- **Regla:** identificador, enunciado, ensayos que la sostienen y criterios que cumple.
-- **Glifo:** nombre, maestro o estilo, modo de traducción, reglas y ensayos de origen.
-
----
+- **Banco:** medio tablero de terciado de 18 mm (tablero, cuña de 15°, atril de 45° y montantes), cuatro pasadores, fieltro. El diseño está en `banco/`.
+- **Instrumentos:** regla T de 60 cm, escuadras de 45° y 30/60°, plantilla de rotulación ISO 3098 de 10 mm con su estilógrafo, estilógrafos de 0,35 y 0,5, portaminas 0,5 HB, papel bond y vegetal A4. Conviene pedir prestados instrumentos a los participantes: también son archivo.
+- **Registro:** escáner A4 a 600 ppp, dos teléfonos con soporte, grabadora o teléfono para las entrevistas; tableta con lápiz si la hay.
+- **Personas:** 6–9 participantes; 2–3 críticos (tipografía, arquitectura, docencia de dibujo).
+- **Instrumento digital** (`instrumento/`, M1–M4 hechos y probados): pautas A4 con alturas ISO y versión sin líneas guía, captura con partitura, digitalización, superposición, métricas, láminas y exportación al editor. M5 (espécimen) queda para F6.
 
 ## 6. Resultados esperados: conocimiento
 
-El borrador mezclaba resultados y entregables. Un **resultado** es lo que se sabe al terminar. Un **entregable** es el objeto que lo contiene.
-
-- **R1.** Un mapa de cómo cada condición desplaza la articulación dominante y los rasgos del trazo.
-- **R2.** Un catálogo de **8–12 reglas** que cumplan los cuatro criterios de §4.6, cada una enlazada con su evidencia.
-- **R3.** Un método replicable para pasar del gesto a la forma tipográfica: el protocolo y los modos de traducción.
-- **R4.** Evidencia sobre si un lector reconoce las condiciones en la letra terminada.
-- **R5.** Un cuaderno de hallazgos no previstos, que puede dar las preguntas del proyecto siguiente.
+- **R1.** Un inventario de las prescripciones corporales del archivo: qué cuerpo pedían los manuales y las normas.
+- **R2.** La comparación entre partituras prescritas, declaradas y observadas, por generación.
+- **R3.** Un mapa de cómo cada condición del tablero desplaza la articulación, la forma y la partitura, incluida la gradación de a pulso a plantilla.
+- **R4.** Un catálogo de **8–12 reglas** con evidencia enlazada.
+- **R5.** Evidencia sobre si un lector reconoce el puesto o el instrumento en la letra terminada.
+- **R6.** Un cuaderno de hallazgos no previstos.
 
 ## 7. Entregables: artefactos
 
-Cada entregable tiene una **versión mínima**, que asegura un proyecto completo aunque el tiempo se acorte, y una **versión extendida**.
-
 | | Entregable | Versión mínima | Versión extendida |
 |---|---|---|---|
-| E1 | **Banco de escritura** | Banco funcional con sus módulos y planos de fabricación | Versión de exposición |
-| E2 | **Protocolo** | Documento replicable de 6–8 páginas con ficha y convenciones | Versión para docencia |
-| E3 | **Archivo de ensayos** | ≥600 trazas indexadas, videos, notas y registro CSV | Archivo abierto en línea |
-| E4 | **Instrumento** | M2 + M3 + M4 | M1 + M5; código abierto |
-| E5 | **Atlas de gestos** | PDF de 48–64 páginas: una lámina por condición con foto del banco, diagrama postural, superposiciones, descriptores, nota y regla | Edición impresa |
-| E6 | **Tipografía *A pulso*** | Fuente variable de 2 ejes y ≈60 glifos por maestro: minúsculas, *ñ*, vocales con tilde, *ü* y puntuación española (¿ ¡ « ») | ≈200 glifos: mayúsculas, cifras y alternativas contextuales |
-| E7 | **Espécimen con procedencia** | Web donde cada letra lleva a sus reglas, condiciones y ensayos | Versión impresa con códigos que enlazan al archivo |
-| E8 | **Texto** | Memoria o artículo de 6.000–8.000 palabras | Envío a una revista o congreso |
-| E9 | **Taller** | — | Sesión de 3 horas para 8–12 personas en el banco |
+| E1 | **Banco de escritura** | Tablero, cuña, montantes y planos | Atril de 45° y versión de exposición |
+| E2 | **Protocolo** | Documento replicable | Versión para docencia |
+| E3 | **Archivo de ensayos** | Trazas indexadas, videos y registro | Archivo abierto en línea |
+| E4 | **Instrumento** | M1–M4 | M5 y código abierto |
+| E5 | **Atlas de gestos** | PDF de 48–64 páginas | Edición impresa |
+| E6 | **Tipografía técnica *A pulso*** | Fuente variable de 2 ejes: mayúsculas, cifras y signos de plano (≈ 70 glifos por maestro) | Minúsculas y alternativas contextuales |
+| E7 | **Espécimen con procedencia** | Web | Impreso con códigos al archivo |
+| E8 | **Texto** | Memoria o artículo de 6.000–8.000 palabras | Envío a revista o congreso |
+| E9 | ***La lámina*, sesión participativa** | Una sesión pública de 90 minutos | Itinerancia por escuelas de arquitectura |
+| E10 | **Archivo del tablero** | Fichas de fuentes, entrevistas transcritas, fotografías de láminas e instrumentos | Archivo en línea con autorización de los participantes |
+| E11 | ***Ejercicios del tablero*** | Cuadernillo PDF con las partituras de los manuales, las observadas y los ejercicios del protocolo | Publicación impresa (autoedición) |
+| E12 | **Plantilla de rotulación *A pulso*** | Prototipo cortado con láser a partir de la fuente | Edición pequeña para la sesión participativa |
 
-**Licencias (decisión estratégica):** publicar la fuente con licencia OFL (SIL Open Font License) y el instrumento como código abierto aumenta el alcance del proyecto y facilita usarlo en docencia.
+**Licencias:** se recomienda publicar la fuente con licencia OFL, y el instrumento y los ejercicios con licencias abiertas. El archivo se publica solo con autorización de cada participante.
 
 ## 8. Cómo se evaluará
 
 | Qué se evalúa | Cómo | Cuándo | Umbral |
 |---|---|---|---|
-| Consistencia | Los cuatro criterios de §4.6 | F4 | 8–12 reglas que los cumplan |
-| Perceptibilidad (P4) | **Prueba de atribución**: 20 pares de palabras compuestas en dos estilos; 10–15 lectores indican cuál se escribió en el muro (o en la condición que se pruebe) | S17 | Aciertos claramente por encima del azar (≥70% en una prueba informal) |
-| Uso tipográfico | Texto a 10, 24 y 72 pt; afiche leído a 5 m | Cada iteración de F5 | Al menos un estilo legible a 10 pt |
+| Consistencia | Criterios de §4.9 | F4 | 8–12 reglas que los cumplan |
+| Partituras | Coincidencia entre la prescrita, la declarada y la observada, por generación | F4 | Reportar el porcentaje de repeticiones que siguen la prescrita, en cada grupo |
+| Perceptibilidad (P4) | Prueba de atribución con rótulos de plano (`evaluacion/`) | S17 | ≥ 70 % de aciertos para hablar de «claramente perceptible» |
+| Uso tipográfico | Rótulos y cotas reales a 3,5, 5 y 10 mm; título a 20 mm | F5 | Legible a 3,5 mm |
 | Replicabilidad | Otra persona aplica el protocolo solo con el documento | F6 | Completa una sesión sin ayuda |
-| Crítica de pares | Dos sesiones con tipografía, arquitectura y práctica corporal | S12 y S18 | Observaciones registradas e incorporadas |
+| Crítica de pares | Dos sesiones con tipografía, arquitectura y docencia de dibujo | S12 y S18 | Observaciones incorporadas |
 
 ## 9. Riesgos y mitigación
 
 | Riesgo | Mitigación |
 |---|---|
-| Las diferencias entre condiciones no se ven | La Decisión 1 llega antes de construir el banco: si no se ven, se intensifican las condiciones, se sube la escala o se mide con tableta |
-| El hábito propio pesa más que la condición | Contraste con otras manos; base al inicio y al final de cada sesión |
-| El aprendizaje y la fatiga se confunden con la condición | Orden contrabalanceado, sesiones de 50 minutos como máximo y calentamiento descartado |
-| Sobrecarga física en las condiciones exigentes (brazo suspendido, muro) | Bloques cortos, pausas y registro del cansancio en la nota |
-| El instrumento se come el proyecto | Tope del 20% del tiempo; cada módulo se construye solo cuando se necesita |
-| Traducción arbitraria: la letra ilustra en vez de derivar | Cada glifo declara su modo y sus reglas; se separa lo que hizo el cuerpo de lo que decidió el diseño |
-| Expresividad contra legibilidad | Pruebas de texto en cada iteración desde F5 |
-| La interpolación falla porque las trazas son demasiado distintas | Maestros redibujados con estructura compatible; si aun así falla, estilos estáticos |
+| No se encuentran participantes formados en tablero | Contactar colegios de arquitectos, docentes jubilados y estudios antiguos desde F0; aceptar entrevistas cortas |
+| El archivo local es escaso o inaccesible | Empezar por los objetos de los participantes; complementar con manuales internacionales digitalizados |
+| Las entrevistas producen nostalgia más que descripción | Preguntar por momentos concretos y objetos, no por opiniones (guía de entrevista); contrastar con la tableta |
+| Faltan instrumentos (normógrafos, estilógrafos) | Pedirlos prestados a los participantes, comprar uno de cada uno, o fabricar un normógrafo de prueba |
+| Las diferencias entre condiciones no se ven | Decisión 1: subir a 20 mm |
+| El hábito propio pesa más que la condición | El contraste generacional es parte del diseño |
+| El aprendizaje y la fatiga se confunden con la condición | Orden alternado, deriva al inicio y al final, sesiones cortas |
+| La medición se lee como optimización | Declarar la postura (§1.3) y publicar las métricas junto a los relatos |
+| Traducción arbitraria | Modo de traducción y reglas declarados en cada glifo |
 | El alcance se desborda | Versiones mínimas definidas (§7) |
 
-## 10. Una línea de investigación: *Juntura* y *De mano en mano*
+## 10. Una línea de investigación
 
-Los tres proyectos del borrador hacen la misma pregunta a tres escalas: **cuerpo y espacio** (*A pulso*), **cuerpo y materia** (*Juntura*) y **cuerpo y cuerpo** (*De mano en mano*). Hacerlos en ese orden permite reutilizar lo que *A pulso* deja: el protocolo en tres canales, la ficha, los identificadores, el formato de regla, el instrumento y el espécimen con procedencia.
+La pregunta por cómo las herramientas educan los movimientos con que **escribimos y construimos** abre la línea completa:
 
-**Juntura — cómo mejorarlo cuando llegue su turno**
-- Acotar el proyecto a **un solo sistema constructivo** (por ejemplo listón, cuña y tensor) y a pocas letras de prueba: *n, o, a, e*.
-- La pregunta trata del conocimiento que aparece al construir, así que hay que **medir el aprendizaje**: tiempo de montaje, número de ajustes y fallas en cada repetición.
-- Comparar la letra dibujada con la letra construida, con la misma estructura.
-- Riesgo: que termine en un juego de piezas sin pregunta. La pregunta se responde con el registro de los ajustes, no con la caja.
-
-**De mano en mano — cómo mejorarlo cuando llegue su turno**
-- Organizar **cadenas de transmisión** de 4–6 personas en las que cada una aprende de la anterior.
-- La variable principal es una **demostración muda frente a una demostración explicada**.
-- El análisis sigue qué rasgos se conservan y cuáles derivan a lo largo de la cadena.
-- Consentimiento y anonimato, como en §4.8. El contraste con otras manos de *A pulso* (F3) sirve de primera prueba.
+- ***A pulso*: escribir.** El tablero y la letra técnica.
+- ***Juntura*: construir.** Los ensambles de los oficios de obra que Moxon describió (carpintería, ebanistería), estudiados como prescripción corporal, con piezas que se aprenden armando.
+- ***De mano en mano*: transmitir.** Cómo se enseña un gesto de oficio por demostración. La pizarra de *A pulso* (B2) y la sesión *La lámina* son su primer ensayo.
 
 ---
 
-## Anexo A. Protocolo del piloto (primera sesión)
+## Anexo A. Piloto (primera sesión)
 
-**Objetivo.** Comprobar si la diferencia entre escribir con el antebrazo apoyado en la mesa y con el brazo libre en el muro se ve y se puede registrar, y ajustar la ficha antes de construir el banco.
+**Objetivo.** Comprobar si la diferencia entre escribir en el tablero (la base) y en la pizarra con el brazo libre (A2B2) se ve y se puede registrar, y ajustar la ficha antes de construir el banco.
 
-> En el piloto se combinan a propósito dos variables (apoyo y plano) para obtener el mayor contraste posible. La serie principal las separa.
+- **Materiales:** cuatro pautas `pauta_piloto_A4H-h10-L-3x5.pdf` (filas I, O, R); portaminas 0,5 HB; tablero apoyado sobre la cuña o, en la maqueta, sobre un libro de unos 16 cm de alto en su borde trasero; cinta; teléfono para el video lateral; escáner o teléfono para las hojas.
+- **Secuencia ABBA (≈ 45 min):** calentamiento → **Tablero** (R01–R05) → calentamiento → **Pizarra** (R01–R05) → **Pizarra** (R06–R10) → **Tablero** (R06–R10). Después de cada bloque, dos minutos de notas con las tres preguntas fijas y **el orden en que trazaste cada letra**.
+- **Lectura (≈ 30 min):** escanear; digitalizar (condición BASE o A2B2, «Desde» 1 o 6); superponer; medir dónde se cierra el bucle de la R y la inclinación de las astas; imprimir la lámina con tres observaciones, una regla candidata y una R dibujada con esa regla.
+- **Decisión 1:** si el tablero y la pizarra no se distinguen a simple vista, se repite a 20 mm (`pauta_escala_A4H-h20-L-3x4.pdf`). Si se distinguen, se pasa a la serie, empezando por las guías (C1–C3).
 
-**Materiales**
-- 8 hojas A3 del mismo papel.
-- Una sola herramienta durante toda la sesión: lápiz 2B o marcador de punta redonda de 0,8–1 mm.
-- Cinta de papel, regla, cronómetro.
-- Un teléfono con soporte para el video lateral.
-- Una mesa de altura normal y una pared despejada.
+La lista para imprimir está en `imprimibles/lista_del_piloto.pdf`.
 
-**Preparación**
-- En cada hoja se trazan con lápiz muy suave la línea base y la altura x (30 mm), en 6 renglones.
-- En el muro, la hoja se pega con su centro a la altura del hombro.
-- Se anotan la altura del codo sentado, la altura del hombro de pie y la altura de la mesa.
+## Anexo B. Ficha de ensayo
 
-**Condiciones**
-- **BASE:** sentado ante la mesa, con el antebrazo apoyado.
-- **MURO:** de pie ante el plano vertical, a la altura del hombro, sin apoyo.
-
-**Gestos:** G1 (asta), G2 (arco) y G5 (*n*).
-
-**Secuencia (≈45 minutos)**
-1. Tres repeticiones de calentamiento por gesto en BASE, que se descartan.
-2. **Bloque 1, BASE:** 5 repeticiones de G1, G2 y G5. Dos minutos de notas con las tres preguntas fijas.
-3. Tres repeticiones de calentamiento en MURO, que se descartan.
-4. **Bloque 2, MURO:** igual que el bloque 1, con sus notas.
-5. **Bloque 3, MURO:** igual, con sus notas.
-6. **Bloque 4, BASE:** igual, con sus notas.
-
-El orden ABBA reparte el aprendizaje y la fatiga entre las dos condiciones. Resultado: 10 repeticiones por gesto y por condición, 60 trazas en total.
-
-**Lectura (≈30 minutos)**
-- Fotografiar o escanear las hojas.
-- Superponer las 10 repeticiones de cada gesto: en capas con 20% de opacidad en cualquier editor de imagen, o con papel vegetal sobre una ventana.
-- Marcar en cada superposición la altura de la unión, el radio del arco, la inclinación del asta y la dispersión.
-
-**Producto: una lámina** con
-- una foto de cada postura;
-- 6 superposiciones (3 gestos × 2 condiciones);
-- 3 observaciones;
-- 1 regla candidata con el formato del Anexo C;
-- 1 *n* dibujada aplicando esa regla.
-
-**Decisión 1**
-- Si las superposiciones de BASE y MURO no se distinguen a simple vista, se repite el piloto con una altura x de 60 mm o con el muro a brazo extendido.
-- Si se distinguen, se pasa a la serie con las variables separadas. La pregunta siguiente es si la diferencia la produce el apoyo o el plano.
-
-## Anexo B. Ficha de ensayo (una por bloque)
-
-```
-ID DEL BLOQUE ........ AP-P00-S__-____-G_      FECHA / HORA ..............
-PERSONA .............. P__                     SESIÓN ......... ORDEN ....
-CONDICIÓN   A __   B __   C __   D __   E (altura x) ____ mm
-CONFIGURACIÓN FÍSICA   plano ____ cm (= codo ± __)   inclinación ___°
-                       asiento ____ cm   de pie / sentado
-HERRAMIENTA / PAPEL ......................................................
-GESTOS Y REPETICIONES  G1 __  G2 __  G3 __  G4 __  G5 __  G6 __
-ARCHIVOS   escaneo .............  video lateral ..........  cenital ........
-
-ARTICULACIÓN DOMINANTE   □ dedos  □ muñeca  □ codo  □ hombro
-AJUSTES OBSERVADOS (agarre, reposicionamientos, postura) .................
-
-1. ¿Qué articulación sentí que conducía el trazo? ..........................
-2. ¿Dónde y en qué momento tuve que corregir? ..............................
-3. ¿Qué hizo la mano que no había planeado? ................................
-HALLAZGO NO PREVISTO ......................................................
-CANSANCIO (0–5) __
-
-— lectura posterior —
-RASGOS QUE CAMBIAN FRENTE A LA BASE ......................................
-REGLA CANDIDATA ..........................................................
-```
+Se usa `imprimibles/ficha_de_ensayo.pdf`, una por bloque. Además de las tres preguntas, registra el ajuste del asiento o del agujero, el ángulo medido y la partitura declarada.
 
 ## Anexo C. Formato de regla
 
@@ -414,57 +358,59 @@ REGLA CANDIDATA ..........................................................
 > **Rasgo y tendencia:** En [condición], [rasgo] tiende a [cambio].
 > **Evidencia:** ensayos …; aparece en __ de 10 repeticiones y en las sesiones …
 > **Criterios:** consistente □ · atribuible □ · transferible □ · legible □
+> **Partitura:** prescrita … · declarada … · observada …
 > **En la letra:** [decisión de diseño] · **Modo de traducción:** calco / esqueleto + herramienta / regla / interpolación
 > **Se aplica a:** [letras]
 
 **Ejemplo inventado, solo para mostrar el formato:**
 
-> **R-03 · Unión baja en el muro**
-> **Condición:** A2 · B2 (brazo suspendido ante el plano vertical).
-> **Rasgo y tendencia:** El arco de la *n* sale del asta más abajo (≈45% de la altura x, frente a ≈60% en la base) y se abre con un radio mayor.
-> **Evidencia:** AP-P00-S04-A2B2-G5-R01…R10; 8 de 10 repeticiones; sesiones S04 y S07.
-> **En la letra:** unión baja con salida tangente y contraforma superior más amplia · **Modo:** regla.
-> **Se aplica a:** *m, h, r* y la *u* (por simetría).
+> **R-02 · El bucle baja en la pizarra**
+> **Condición:** A2B2 (de pie ante el plano vertical, brazo suspendido).
+> **Rasgo y tendencia:** El bucle de la R se cierra más abajo (≈ 44 % de h, frente a ≈ 50 % en el tablero) y la pierna sale más cerca del asta.
+> **Evidencia:** AP-P00-S04-A2B2-G5-R01…R10; 8 de 10; sesiones S04 y S07.
+> **Partitura:** prescrita «↓ ↘» · declarada «↓ ↘» · observada «↓ ↘» en 7 de 10 y «↓ ↻ ↘» en 3 de 10.
+> **En la letra:** bucle bajo y pierna desde el asta en el estilo *Pizarra*. **Modo:** regla.
+> **Se aplica a:** *R, P, B*.
 
 ## Anexo D. Identificadores y registro
 
-**Formato:** `AP-{persona}-{sesión}-{condición}-{gesto}-{repetición}`
+**Formato:** `AP-{persona}-{sesión}-{condición}-{gesto}-{repetición}`, por ejemplo `AP-P00-S03-C2-G5-R07`.
 
-- Ejemplo: `AP-P00-S03-B2-G5-R07` es la séptima *n* que P00 escribió en el plano vertical durante la sesión 3.
 - Las condiciones combinadas se escriben juntas (`A2B2`) y la base se escribe `BASE`.
-- El archivo `registro_ensayos.csv`, en esta misma carpeta, es la plantilla del registro. Cada traza ocupa una fila, y el espécimen final se construirá a partir de ese archivo.
+- `registro_ensayos.csv` tiene una fila por traza. El instrumento genera las filas al digitalizar o al capturar.
 
-## Anexo E. Qué cambió respecto al borrador
+## Anexo E. Qué cambió de la versión 2 a la 3
 
-| Borrador | Versión 2 | Por qué |
+| Versión 2 | Versión 3 | Por qué |
 |---|---|---|
-| Cuatro dispositivos separados | Un banco con cuatro variables independientes y una condición base | Dos dispositivos mezclaban variables y, sin una base, no había con qué comparar |
-| "Una escritura" sin definir | Modelo esqueleto, herramienta constante y seis gestos | Para que la variación venga de la condición |
-| Observar sin protocolo | Tres canales, ficha, identificadores, 10 repeticiones y orden contrabalanceado | Para que una diferencia pueda distinguirse del azar, del cansancio y del aprendizaje |
-| "Después decidirías cómo traducir" | Criterios para convertir diferencias en reglas y cuatro modos de traducción declarados en cada glifo | Era el paso más débil y el que más define el aporte |
-| "Familia tipográfica experimental" | Fuente variable con ejes nombrados por condiciones y una versión mínima de ≈60 glifos | Alcance realista y una idea propia: estilos que son posturas |
-| Sin calendario ni decisiones | 20 semanas, 6 fases y 2 decisiones | Para saber cuándo cambiar de rumbo |
-| Sin evaluación | Atribución, legibilidad, replicabilidad y crítica | Para que los resultados puedan discutirse |
-| Solo la primera persona | Contraste con 3–5 manos | Para distinguir el espacio del hábito |
-| Claude Code en términos generales | Cinco módulos, cada uno con su momento y un tope de dedicación | Para que la herramienta sirva a la investigación y no la reemplace |
-| Tres proyectos en paralelo | Una línea con orden, en la que *A pulso* sirve de piloto a los otros dos | Para reutilizar el método |
+| Pregunta general sobre el cuerpo y el espacio | Pregunta por cómo los instrumentos del tablero educaron la letra técnica | Diferenciarse de Wilkinson con una situación propia |
+| La base era una mesa común | La base es el tablero a 15° | Es el puesto que se estudia; la mesa (B1) es el puesto de la generación CAD |
+| C: topes y canales en MDF | C: líneas guía, sin guías, regla T y escuadra, normógrafo | Instrumentos históricos en lugar de restricciones arbitrarias |
+| D: lija y goma eva | D: portaminas, estilógrafo, calco | Las herramientas reales del oficio |
+| Minúsculas y *adhesión*, a 30 mm | Mayúsculas técnicas y *PLANTA 1:50*, a 10 mm (ISO) en A4 | Escala y repertorio del plano; A4 se escanea en cualquier lugar |
+| 3–5 manos de contraste | Dos generaciones con entrevistas de oficio | El contraste es parte de la pregunta |
+| Sin archivo | Archivo del tablero con lectura coreográfica | Las partituras prescritas son el término de comparación |
+| Difusión: atlas y espécimen | Además, sesión participativa, ejercicios impresos y plantilla propia | Hacer público el trabajo y devolver la letra al instrumento |
 
 ---
 
 ## Referencias
 
-- «Acerca del "lenguaje" de las manos (manuaje). Una conversación con Mauricio Cárcamo» (2021). *Arte, Individuo y Sociedad*, 33(4), 1481–1487. https://doi.org/10.5209/aris.76611 (repositorio UPM: https://oa.upm.es/82667/)
+- «Acerca del "lenguaje" de las manos (manuaje). Una conversación con Mauricio Cárcamo» (2021). *Arte, Individuo y Sociedad*, 33(4), 1481–1487. https://doi.org/10.5209/aris.76611
+- Ching, F. D. K. (1975). *Architectural Graphics*. Van Nostrand Reinhold. [*Manual de dibujo arquitectónico*, Gustavo Gili].
+- Evans, R. (1986). Translations from Drawing to Building. *AA Files*, 12, 3–18. [*Traducciones*, Pre-Textos, 2005].
 - Frayling, C. (1993). *Research in Art and Design*. Royal College of Art Research Papers, 1(1).
-- Ingold, T. (2007). *Lines: A Brief History*. Routledge. [*Líneas. Una breve historia*. Gedisa, 2015].
-- Johnston, E. (1906). *Writing & Illuminating, & Lettering*. John Hogg.
-- Laban, R. (1950). *The Mastery of Movement*. Macdonald & Evans. Útil para describir cualidades del movimiento: peso, tiempo, espacio y flujo.
-- Noordzij, G. (2005). *The Stroke: Theory of Writing*. Hyphen Press. [*El trazo. Teoría de la escritura*. Campgràfic].
-- Pallasmaa, J. (2009). *The Thinking Hand*. Wiley. [*La mano que piensa*. Gustavo Gili, 2012].
-- Panero, J. y Zelnik, M. (1979). *Human Dimension & Interior Space*. Whitney Library of Design. [*Las dimensiones humanas en los espacios interiores*. Gustavo Gili].
-- Petitmengin, C. (2006). Describing one's subjective experience in the second person: An interview method for the science of consciousness. *Phenomenology and the Cognitive Sciences*, 5(3–4), 229–269.
-- Schön, D. A. (1983). *The Reflective Practitioner*. Basic Books. [*El profesional reflexivo*. Paidós, 1998].
-- Sennett, R. (2008). *The Craftsman*. Yale University Press. [*El artesano*. Anagrama, 2009].
-- Smeijers, F. (1996). *Counterpunch: Making Type in the Sixteenth Century, Designing Typefaces Now*. Hyphen Press.
-- Vermersch, P. (1994). *L'entretien d'explicitation*. ESF.
+- French, T. E. y Meiklejohn, R. (1912). *The Essentials of Lettering*. McGraw-Hill.
+- Gilbreth, F. B. (1911). *Motion Study*. D. Van Nostrand.
+- Ingold, T. (2007). *Lines: A Brief History*. Routledge.
+- ISO 3098 (partes 0 y 2). *Documentación técnica de productos. Escritura.* Ver un resumen en https://en.wikipedia.org/wiki/Technical_lettering
+- Mauss, M. (1936). Les techniques du corps. *Journal de Psychologie*, 32(3–4). [«Técnicas y movimientos corporales», en *Sociología y antropología*, Tecnos].
+- Moxon, J. (1677–1680). *Mechanick Exercises, or the Doctrine of Handy-Works*; (1683–84) *Mechanick Exercises on the Whole Art of Printing*. Edición digital: https://www.gutenberg.org/ebooks/72217
+- Noordzij, G. (2005). *The Stroke: Theory of Writing*. Hyphen Press.
+- Petitmengin, C. (2006). Describing one's subjective experience in the second person. *Phenomenology and the Cognitive Sciences*, 5(3–4), 229–269.
+- Reinhardt, C. W. (1895–96). *Lettering for Draftsmen, Engineers and Students: A Practical System of Free-Hand Lettering for Working Drawings*. D. Van Nostrand.
+- Schön, D. A. (1983). *The Reflective Practitioner*. Basic Books.
+- Smeijers, F. (1996). *Counterpunch*. Hyphen Press.
+- Wilkinson, R. (2024). *Perform—Produce*. Tesis de MFA en Diseño Gráfico, Rhode Island School of Design. Publicada por Draw-Down. Página de la muestra: https://publications.risd.edu/grad-show-2024-graphic-design/rebecca-wilkinson · Proyecto *(New) Mechanick Exercises*: https://rebeccawilkinson.me/New-Mechanick-Exercises
 
-*Pendiente: confirmar los datos de las ediciones en español antes de citarlas formalmente, y leer completa la entrevista a Cárcamo para precisar la definición de manuaje con sus palabras.*
+*Pendiente: leer completas la entrevista a Cárcamo, la tesis de Wilkinson y el manual de Reinhardt; confirmar ediciones en español; buscar los manuales y normas usados en las facultades de La Paz.*

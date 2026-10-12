@@ -1,92 +1,99 @@
 # Protocolo de ensayo
 
-**Entregable E2 de *A pulso* · versión 1 · octubre de 2026**
+**Entregable E2 de *A pulso* · versión 2 (tablero de dibujo) · octubre de 2026**
 
-Este documento basta para repetir los ensayos sin leer la propuesta. Si algo se cambia durante el proyecto, se anota en la sección 10 con la fecha y el motivo, y se sube la versión.
+Este documento basta para repetir los ensayos sin leer la propuesta. Si algo se cambia durante el proyecto, se anota en la sección 11 con la fecha y el motivo, y se sube la versión.
 
 ## 1. Propósito
 
-Registrar cómo cambian los trazos de una persona cuando cambia **una** condición del puesto de escritura, manteniendo constante todo lo demás. Cada traza debe poder rastrearse hasta su condición, su sesión y lo que la persona dijo de ella.
+Registrar cómo cambia la letra técnica de una persona cuando cambia **una** condición del tablero de dibujo (apoyo, plano, guía instrumental o herramienta), manteniendo constante todo lo demás. Cada traza debe poder rastrearse hasta su condición, su sesión, su partitura (orden y dirección de los trazos) y lo que la persona dijo de ella.
 
 ## 2. Materiales
 
 | Qué | Especificación |
 |---|---|
-| Banco | Tablero, atril y montantes según `banco/Banco de escritura.md` |
-| Herramienta | **Una sola en toda la serie**: lápiz 2B o marcador negro de punta redonda de 0,8–1 mm. No usar tinta azul (desaparece al digitalizar). Anotar marca y modelo. |
-| Papel | Bond o similar de 75–90 g/m², A3, de un mismo lote |
-| Pautas | Impresas a tamaño real desde `imprimibles/` o `instrumento/pautas.html`. Verificar la regla de 100 mm. |
-| Plantillas de topes | MDF de 5 mm (C1–C3), dos prensas |
-| Bases | D1: lija de grano 150; D2: goma eva de 3–5 mm |
-| Registro | Dos teléfonos con soporte (vista lateral y cenital), escáner o cámara para las hojas, cronómetro |
-| Papelería | Fichas de ensayo, hoja de sesión, hoja de medidas, consentimiento (`imprimibles/`) |
+| Banco | Tablero con cuña de 15°, montantes y, si se usa, atril de 45°, según `banco/Banco de escritura.md` |
+| Herramienta base | Portaminas 0,5 mm con mina HB, el mismo en toda la serie. Anotar marca y modelo |
+| Otras herramientas | Estilógrafo 0,35 o 0,5 (D1). Estilógrafo de 1,0 para el normógrafo de 10 mm (C3, tipo B: grosor h/10). Papel vegetal A4 (D2) |
+| Instrumentos | Regla T de 60 cm que corre por el canto izquierdo del tablero; escuadras de 45° y 30/60°; plantilla de rotulación ISO 3098 de 10 mm (normógrafo) |
+| Papel | Bond de 75–90 g/m², A4, de un mismo lote |
+| Pautas | `imprimibles/` o `instrumento/pautas.html`, a tamaño real; verificar la regla de 100 mm. **No usar tinta azul**: desaparece al digitalizar |
+| Registro | Escáner A4 a 600 ppp, o teléfono para fotos cenitales cercanas; dos teléfonos con soporte para video (lateral y cenital); tableta con lápiz si la hay (registra la partitura) |
+| Papelería | Fichas de ensayo, hoja de sesión, hoja de medidas, consentimiento |
 
 ## 3. Personas
 
-- **P00** es quien investiga y escribe en toda la serie. **P01–P05** participan en el contraste (sección 8).
-- Antes de la primera sesión de cada persona se toman sus medidas (hoja «Medidas y montaje») y se calculan las alturas con `instrumento/banco.html`.
-- Cada participante externo firma el consentimiento antes de empezar.
-- Se escribe siempre con la mano dominante. Si alguien se cansa (cansancio 4 o 5 en la ficha), se hace una pausa; si persiste, se suspende el bloque y se anota.
+- **P00** es quien investiga y escribe toda la serie.
+- **P01–P09** son los participantes de las entrevistas de oficio, de dos grupos:
+  - **T** (tablero): aprendieron a rotular a mano y lo practicaron en su trabajo;
+  - **D** (digital): se formaron con CAD.
+
+  El grupo se anota en la hoja de medidas y en el registro (columna `nota`, por ejemplo «grupo T»).
+- Antes de la primera sesión de cada persona se toman sus medidas y se calculan las alturas con `instrumento/banco.html`.
+- Los participantes firman el consentimiento antes de la entrevista.
+- Se escribe con la mano dominante. Si el cansancio llega a 4 o 5, se hace una pausa; si persiste, se suspende el bloque y se anota.
 
 ## 4. Condiciones
 
-La **condición base** es A0 · B0 · C0 · D0, con una altura x de 30 mm: escribir en una mesa común con el antebrazo apoyado. Las demás cambian **un solo nivel** respecto de la base.
+La **condición base** es A0 · B0 · C0 · D0, con letra de 10 mm: sentado ante el tablero a 15°, antebrazo apoyado, líneas guía y portaminas. Las demás cambian **un solo nivel** respecto de la base.
 
 | Código | Variable | Cómo se arma |
 |---|---|---|
-| BASE | — | Tablero plano en la mesa, antebrazo apoyado, papel directo sobre el tablero |
-| A1 | Apoyo | Igual que la base, pero solo el canto de la mano toca el papel: el antebrazo no toca el tablero |
-| A2 | Apoyo | Igual que la base, pero nada toca el tablero salvo la herramienta |
-| B1 | Plano | Tablero en el atril de 45°; antebrazo apoyado en la pendiente |
-| B2 | Plano | Tablero en los montantes, de pie; antebrazo apoyado en el tablero bajo la hoja |
-| C1 | Límite | Base con la plantilla C1 (canal entre la línea base y la altura x) |
-| C2 | Límite | Base con la plantilla C2 (canal de 0,75 h desde la línea base) |
-| C3 | Límite | Base con la plantilla C3 (ventana de 0,6 h de ancho por celda) |
-| D1 | Resistencia | Base con lija de grano 150 bajo la hoja |
-| D2 | Resistencia | Base con goma eva bajo la hoja |
+| BASE | — | Tablero sobre la cuña de 15°; pauta con líneas guía; portaminas; antebrazo apoyado |
+| A1 | Apoyo | Como la base, pero solo el canto de la mano toca el papel |
+| A2 | Apoyo | Como la base, pero nada toca el tablero salvo la herramienta |
+| B1 | Plano | Tablero plano sobre la mesa (el puesto de la generación CAD) |
+| B2 | Plano | Tablero en los montantes, de pie (la pizarra del docente); antebrazo apoyado en el tablero bajo la hoja |
+| C1 | Guía | Pauta **sin líneas guía**: la altura se estima con la barra de referencia |
+| C2 | Guía | Regla T apoyada en el canto izquierdo y escuadra sobre ella: los trazos rectos se hacen contra el instrumento; las curvas, a pulso |
+| C3 | Guía | Plantilla de rotulación de 10 mm sobre la regla T, con su estilógrafo |
+| D1 | Herramienta | Estilógrafo 0,35 o 0,5 en lugar del portaminas |
+| D2 | Herramienta | Papel vegetal fijado sobre la pauta; **antes de escribir se calcan y rellenan las cuatro marcas negras** con el portaminas, para poder digitalizar |
 
-Las combinaciones (por ejemplo A2B2, «el muro del rotulista») y la serie de escala (altura x de 10, 30 y 120 mm) se definen en la Decisión 2, después de la primera pasada.
+B3 (atril a 45°), las combinaciones (por ejemplo A2B2, la pizarra con el brazo en el aire) y la serie de escala (5, 10 y 20 mm) se deciden en la Decisión 2, después de la primera pasada.
+
+**El ángulo de B0** es de 15° por defecto. Si las entrevistas muestran que el grupo T usaba otro ángulo de forma habitual, se cambia la cuña **antes** de la serie (lámina B-02) y se anota aquí.
 
 ## 5. Repertorio
 
-Antes de la serie se dibuja un **modelo esqueleto** propio: una minúscula humanista simple y monolineal, a 30 mm de altura x, de *a* a *z*. Se fotografía y se guarda en `protocolo/modelo_esqueleto/`. Al comienzo de cada sesión se observa durante un minuto y se guarda: **no se calca ni se tiene a la vista mientras se escribe**.
+Antes de la serie, cada persona dibuja su **modelo de referencia**: las mayúsculas de palo seco que aprendió, o las del manual que se tome como base (para P00, una lámina con *A–Z* y *0–9* a 10 mm). Se fotografía y se guarda en `protocolo/modelo/`. Al comienzo de cada sesión se observa durante un minuto y se guarda: **no se calca ni se tiene a la vista mientras se escribe**.
 
 | Código | Gesto | Cómo se escribe |
 |---|---|---|
-| G1 | Asta vertical descendente | De la altura x a la línea base, sin levantar |
-| G2 | Arco que sale del asta | El hombro de la *n*: desde un punto del asta, arriba y a la derecha, y abajo hasta la línea base |
-| G3 | Óvalo | Una *o*, empezando arriba |
-| G4 | Diagonal | Una *v* |
-| G5 | *n* completa | Asta, retroceso y arco, sin levantar si es posible |
-| G6 | *adhesión* | La palabra completa, con tilde |
+| G1 | Asta vertical **I** | A la altura de la letra, en el orden y la dirección habituales de quien escribe |
+| G2 | Trazo horizontal | De la longitud de la letra, a media altura |
+| G3 | **O** | Empezando donde se acostumbre |
+| G4 | **A** | Completa |
+| G5 | **R** | Completa |
+| G6 | **PLANTA 1:50** | El rótulo entero, con los dos puntos |
 
-Siempre en ese orden dentro de un bloque. Cada repetición va en su propia celda de la pauta.
+**No se indica el orden de los trazos.** El orden y la dirección son lo que se observa: la tableta los registra, y en papel quien escribe los anota en la ficha (por ejemplo, «R: ↓ y luego bucle y pierna»).
 
 ## 6. Sesión
 
-**Duración:** 40–50 minutos de escritura. **Máximo dos condiciones por sesión.**
+**Duración:** 40–50 minutos de escritura, **dos condiciones como máximo** por sesión.
 
-1. **Preparación (10 min).** Armar la primera condición y verificarla con la lista de `banco/Banco de escritura.md`. Encuadrar los videos: el lateral debe mostrar del hombro a la mano; el cenital, la hoja completa. Llenar el encabezado de las pautas.
-2. **Deriva inicial.** En la base, 5 repeticiones de G5 (pauta propia, marcada «deriva»).
-3. **Bloque 1.** Tres repeticiones de calentamiento por gesto en hoja suelta (se descartan). Después, 10 repeticiones de cada gesto, de G1 a G6. Notas inmediatas: dos minutos con las tres preguntas de la ficha.
+1. **Preparación (10 min).** Armar la primera condición y verificarla con la lista de `banco/Banco de escritura.md`. Encuadrar los videos: el lateral, del hombro a la mano; el cenital, la hoja y el instrumento. Llenar el encabezado de las pautas.
+2. **Deriva inicial.** En la base, 5 R en una fila de la pauta, marcada «deriva».
+3. **Bloque 1.** Tres repeticiones de calentamiento por gesto en hoja suelta (se descartan). Luego 10 repeticiones de cada gesto, de G1 a G6. Después, dos minutos de notas con las tres preguntas de la ficha y la partitura de la R.
 4. **Pausa (5 min).** Cambio de condición.
 5. **Bloque 2.** Igual que el bloque 1, con la segunda condición.
-6. **Deriva final.** En la base, 5 repeticiones de G5.
+6. **Deriva final.** En la base, 5 R.
 7. **Cierre (5 min).** Hoja de sesión: imprevistos y primera impresión.
 
-**Pautas por bloque:** tres hojas A3H-h30-L-4x5 para G1–G5 (dos filas de 5 por gesto) y cuatro hojas A3H-h30-P-3x1 para G6. Si el tiempo no alcanza, G6 se reduce a 5 repeticiones y se anota.
+**Pautas por bloque:** tres hojas `A4H-h10-L-4x5` para G1–G5, con dos filas de 5 por gesto, y una hoja `A4H-h10-L-5x2` para G6. En C1 se usan las versiones sin líneas guía. Si el tiempo no alcanza, G6 baja a 5 repeticiones y se anota.
 
-**Las tres preguntas fijas, después de cada bloque:**
+**Las tres preguntas fijas después de cada bloque:**
 1. ¿Qué articulación sentí que conducía el trazo?
 2. ¿Dónde y en qué momento tuve que corregir?
 3. ¿Qué hizo la mano que yo no había planeado?
 
 Se responden con frases cortas y concretas, describiendo lo que pasó y no por qué pasó.
 
-## 7. Calendario de la serie
+## 7. Calendario de la serie (P00)
 
 **Primera pasada (S01–S05).** Cada condición, una vez y completa.
-**Confirmación (S06–S10).** Cada condición otra vez, en la otra posición de la sesión y con otra pareja, para separar el efecto de la condición del orden y del cansancio. En la confirmación pueden escribirse solo los gestos en que apareció una diferencia (mínimo G5 y G6).
+**Confirmación (S06–S10).** Cada condición otra vez, en la otra posición de la sesión y con otra pareja. En la confirmación pueden escribirse solo los gestos en que apareció una diferencia (como mínimo G5 y G6).
 
 | Sesión | Bloque 1 | Bloque 2 |
 |---|---|---|
@@ -101,23 +108,25 @@ Se responden con frases cortas y concretas, describiendo lo que pasó y no por q
 | S09 | A1 | C2 |
 | S10 | C3 | B2 |
 
-Dos o tres sesiones por semana, con al menos un día entre ellas, en una franja horaria parecida.
+Dos o tres sesiones por semana, con al menos un día entre ellas y en una franja horaria parecida.
 
-## 8. Contraste con otras manos
+## 8. Sesión de los participantes (dos generaciones)
 
-Cada participante hace **una sesión de unos 45 minutos**:
+Después de la entrevista de oficio, cada participante hace **una sesión de unos 45 minutos**:
 
-- medidas y consentimiento;
+- medidas (si no se tomaron antes);
 - deriva inicial;
-- BASE y las 2–3 condiciones más productivas de la primera pasada, solo con G5 y G6 y 10 repeticiones cada uno;
+- BASE, C1, C2, C3 y D1, solo con G5 (R) y G6 (rótulo), 10 repeticiones cada uno, en el orden que fije la tabla de alternancia;
 - deriva final;
-- una entrevista de explicitación breve, de unos 10 minutos (ver la guía).
+- dos minutos de notas por bloque.
 
-El orden de las condiciones se alterna entre participantes.
+**Con tableta, si es posible**, para registrar la partitura. Si no hay tableta, la persona dicta su orden de trazos y se anota.
+
+Para alternar el orden, cada participante empieza por una condición distinta de la lista (BASE, C1, C2, C3, D1) y sigue en ciclo: P01 empieza por BASE, P02 por C1, y así.
 
 ## 9. Registro y archivos
 
-**Identificador de cada traza:** `AP-{persona}-{sesión}-{condición}-{gesto}-R{repetición}` (por ejemplo `AP-P00-S03-B2-G5-R07`). El calentamiento usa `K` en lugar de `R` y no se registra.
+**Identificador de cada traza:** `AP-{persona}-{sesión}-{condición}-{gesto}-R{repetición}`, por ejemplo `AP-P00-S04-C2-G5-R07`. El calentamiento usa `K` en lugar de `R` y no se registra.
 
 **Carpetas** (fuera del repositorio si los videos son pesados):
 
@@ -125,17 +134,19 @@ El orden de las condiciones se alterna entre participantes.
 datos/
   P00/
     S01/
-      hojas/        fotos o escaneos: AP-P00-S01-O1-BASE_hoja1.jpg …
+      hojas/        escaneos: AP-P00-S01-O1-BASE_hoja1.png …
       bloques/      AP-P00-S01-O01-BASE.json (de digitalizar o de la tableta)
       videos/       AP-P00-S01-O1-BASE_lateral.mp4, …_cenital.mp4
       fichas/       fotos de las fichas llenas
+  P03/
+    entrevista/     audio y transcripción, fotos de láminas e instrumentos
 registro_ensayos.csv   una fila por traza (las filas las genera el instrumento)
 ```
 
 **Digitalización** (`instrumento/digitalizar.html`), el mismo día:
 
-- foto cenital con luz pareja o escaneo a 300–600 ppp;
-- registrar las cuatro marcas y comprobar que los contornos azules coinciden con las celdas;
+- escanear a 600 ppp o fotografiar de cerca, desde arriba y con luz pareja;
+- registrar las cuatro marcas (en D2, las calcadas) y comprobar que los contornos azules coinciden con las celdas;
 - revisar cada celda y marcar como vacía cualquier repetición fallida, anotándolo en la ficha;
 - descargar el bloque y sus filas del registro.
 
@@ -145,15 +156,17 @@ registro_ensayos.csv   una fila por traza (las filas las genera el instrumento)
 
 Se hace en `instrumento/superponer.html`, comparando cada condición con la base de la misma persona:
 
-1. Superponer las 10 repeticiones, con su densidad y su trazo mediano.
-2. Comparar con la base: medianos superpuestos y tabla de métricas.
-3. Describir con el vocabulario fijo: continuidad, precisión, curvatura, eje e inclinación, proporción, unión, terminales, ritmo y cuerpo.
-4. Una diferencia pasa a ser **regla** si es consistente (7 de 10 repeticiones y en dos sesiones), atribuible (no aparece en la deriva de la base), transferible (vale para otras letras de igual estructura) y legible (sobrevive a 9–12 pt).
-5. Las reglas van a `analisis/Catálogo de reglas.md` con su formato fijo. Lo que sorprende pero no es regla va a `analisis/Hallazgos no previstos.md`.
-6. Imprimir la lámina y completar la lectura posterior de la ficha.
+1. Superponer las 10 repeticiones, con densidad y trazo mediano. La tolerancia por defecto es el 5 % de h.
+2. Comparar con la base: medianos superpuestos y tabla de métricas, incluida la **partitura más frecuente** y su consistencia.
+3. Describir con el vocabulario fijo: continuidad, precisión, curvatura, inclinación de las astas, proporción, uniones, terminales, ritmo, cuerpo y partitura.
+4. Comparar la partitura observada con la **prescrita** por el archivo (`archivo/`) y con la **declarada** en la entrevista.
+5. Una diferencia pasa a ser **regla** si es consistente (7 de 10 repeticiones y en dos sesiones), atribuible (no aparece en la deriva), transferible y legible (a 3,5–5 mm en un rótulo).
+6. Las reglas van a `analisis/Catálogo de reglas.md` y lo que sorprende va a `analisis/Hallazgos no previstos.md`.
+7. Imprimir la lámina y completar la lectura posterior de la ficha.
 
 ## 11. Cambios al protocolo
 
 | Fecha | Versión | Cambio | Motivo |
 |---|---|---|---|
-| 2026-10-12 | 1 | Primera versión | — |
+| 2026-10-12 | 1 | Primera versión (banco genérico, minúsculas a 30 mm) | — |
+| 2026-10-12 | 2 | Tablero de dibujo: base a 15°, guías instrumentales, herramientas del oficio, mayúsculas técnicas a 10 mm en A4, dos generaciones de participantes | Anclar el proyecto en una situación propia (propuesta v3) |

@@ -55,7 +55,7 @@
       <label class="campo">Sesión <input id="e-sesion" size="5" placeholder="S01"></label>
       <label class="campo">Orden <input id="e-orden" size="3"></label>
       <label class="campo">Condición <input id="e-condicion" size="8" placeholder="BASE"></label>
-      <label class="campo">Herramienta <input id="e-herramienta" size="14" placeholder="lápiz 2B"></label>
+      <label class="campo">Herramienta <input id="e-herramienta" size="14" placeholder="portaminas 0,5 HB"></label>
     </div>
     <p id="estado" class="estado" hidden></p>
     <div class="fila" style="margin-top:12px">
@@ -122,7 +122,7 @@
       const cambio = !pauta || nueva.codigo !== pauta.codigo;
       pauta = nueva;
       if (cambio || recrearFilas) dibujarSelectoresFila();
-      U.estado(est, pauta.papel + (pauta.orientacion === 'H' ? ' horizontal' : ' vertical') + ' · ' + pauta.celdas.length + ' celdas · altura x ' + pauta.alturaX + ' mm');
+      U.estado(est, pauta.papel + (pauta.orientacion === 'H' ? ' horizontal' : ' vertical') + ' · ' + pauta.celdas.length + ' celdas · letra de ' + pauta.alturaX + ' mm');
     } catch (e) {
       U.estado(est, e.message, 'error');
       pauta = null;

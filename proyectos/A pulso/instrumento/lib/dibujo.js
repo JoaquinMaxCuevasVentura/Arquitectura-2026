@@ -76,10 +76,14 @@
     );
     if (!guias) {
       // barra de referencia de la altura de la letra, en el margen superior derecho
+      // debajo del código de la pauta y por encima de la grilla
       const bx = e.x + e.w - 2;
-      const by = e.y + 12.5;
-      p.push('<line x1="' + bx + '" y1="' + by + '" x2="' + bx + '" y2="' + n(by - Math.min(pauta.alturaX, 12)) + '" stroke="' + GRIS + '" stroke-width="0.3"/>');
-      p.push('<text x="' + (bx - 1.5) + '" y="' + by + '" font-size="2.4" fill="' + CIAN + '" text-anchor="end">' + (pauta.alturaX > 12 ? 'h/' + n(pauta.alturaX / 12) + ' ' : '') + 'h</text>');
+      const alto = Math.min(pauta.alturaX, 10);
+      const by = e.y + 8 + alto;
+      p.push('<line x1="' + bx + '" y1="' + n(by) + '" x2="' + bx + '" y2="' + n(by - alto) + '" stroke="' + GRIS + '" stroke-width="0.3"/>');
+      p.push('<line x1="' + (bx - 1) + '" y1="' + n(by) + '" x2="' + (bx + 1) + '" y2="' + n(by) + '" stroke="' + GRIS + '" stroke-width="0.3"/>');
+      p.push('<line x1="' + (bx - 1) + '" y1="' + n(by - alto) + '" x2="' + (bx + 1) + '" y2="' + n(by - alto) + '" stroke="' + GRIS + '" stroke-width="0.3"/>');
+      p.push('<text x="' + (bx - 2) + '" y="' + n(by - alto / 2 + 0.9) + '" font-size="2.4" fill="' + CIAN + '" text-anchor="end">' + (pauta.alturaX > 10 ? 'h × ' + n(10 / pauta.alturaX) : 'h') + '</text>');
     }
 
     // celdas

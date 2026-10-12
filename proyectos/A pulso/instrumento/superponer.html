@@ -252,7 +252,7 @@
     };
   }
 
-  /** Grupos (uno por condición) para una persona y un gesto. Normaliza a la altura x de referencia si difiere. */
+  /** Grupos (uno por condición) para una persona y un gesto. Normaliza a la altura de letra de referencia si difiere. */
   function calcularGrupos(persona, gesto, condiciones, op) {
     const todas = ordenCondiciones([...new Set(datos.ensayos.map((e) => e._bloque.condicion))]);
     const conCal = $('#calentamiento').checked;
