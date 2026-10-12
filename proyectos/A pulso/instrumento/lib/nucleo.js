@@ -3,6 +3,7 @@
  * Funciona en el navegador (window.APulso) y en node (module.exports).
  * Unidades: milímetros. En la página, origen arriba a la izquierda y y hacia abajo.
  * En los ensayos, origen en el borde izquierdo de la celda sobre la línea base y y hacia arriba.
+ * h («altura_x_mm» en los datos) es la altura de la letra de referencia: la mayúscula en la letra técnica.
  */
 (function (raiz) {
   'use strict';
@@ -11,6 +12,9 @@
   const FORMATO = 'a-pulso.bloque';
   const VERSION_FORMATO = 1;
 
+  // Situación: el tablero de dibujo y la letra técnica del arquitecto.
+  // La condición base (todos los niveles en 0) es el puesto clásico: tablero a 15°, antebrazo apoyado,
+  // líneas guía y portaminas.
   const VARIABLES = {
     A: {
       nombre: 'Apoyo',
@@ -23,43 +27,48 @@
     B: {
       nombre: 'Plano',
       niveles: {
-        B0: 'horizontal, altura del codo, sentado',
-        B1: 'inclinado 45° (atril)',
-        B2: 'vertical, altura del hombro, de pie',
+        B0: 'tablero de dibujo a 15°, sentado',
+        B1: 'mesa horizontal, sentado',
+        B2: 'pizarra vertical a la altura del hombro, de pie',
+        B3: 'atril a 45°, sentado (opcional)',
       },
     },
     C: {
-      nombre: 'Límite',
+      nombre: 'Guía',
       niveles: {
-        C0: 'libre',
-        C1: 'topes en la línea base y la altura x',
-        C2: 'canal 25 % más bajo que la letra',
-        C3: 'ventana lateral de 0,6 h',
+        C0: 'líneas guía, a pulso',
+        C1: 'sin líneas guía',
+        C2: 'regla T y escuadra',
+        C3: 'plantilla de rotulación (normógrafo)',
       },
     },
     D: {
-      nombre: 'Resistencia',
+      nombre: 'Herramienta',
       niveles: {
-        D0: 'papel liso sobre tablero rígido',
-        D1: 'superficie áspera',
-        D2: 'base blanda',
-        D3: 'incisión (opcional)',
+        D0: 'portaminas 0,5 HB sobre bond',
+        D1: 'estilógrafo sobre bond',
+        D2: 'portaminas sobre papel vegetal (calco)',
       },
     },
   };
 
+  // Repertorio de la letra técnica: mayúsculas de palo seco y un rótulo de plano.
+  // En este repertorio, h es la altura de la mayúscula.
   const GESTOS = {
-    G1: 'asta vertical descendente',
-    G2: 'arco que sale del asta (hombro de la n)',
-    G3: 'óvalo (o)',
-    G4: 'diagonal (v)',
-    G5: 'n completa',
-    G6: 'palabra «adhesión»',
+    G1: 'asta vertical (I)',
+    G2: 'trazo horizontal',
+    G3: 'O',
+    G4: 'A',
+    G5: 'R',
+    G6: 'rótulo «PLANTA 1:50»',
   };
 
-  const GESTOS_CORTOS = { G1: 'asta', G2: 'arco', G3: 'óvalo', G4: 'diagonal', G5: 'n', G6: 'adhesión' };
+  const GESTOS_CORTOS = { G1: 'I', G2: 'horizontal', G3: 'O', G4: 'A', G5: 'R', G6: 'PLANTA 1:50' };
 
   const CONDICIONES_SERIE = ['BASE', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'C3', 'D1', 'D2'];
+
+  // Alturas nominales de la norma ISO 3098 (mm).
+  const ALTURAS_ISO = [2.5, 3.5, 5, 7, 10, 14, 20];
 
   // ---------- condiciones ----------
 
@@ -173,14 +182,12 @@
   };
 
   const PRESETS = [
-    { codigo: 'A3H-h30-L-3x5', nombre: 'Piloto · A3 · 3 gestos × 5 repeticiones', filas: ['G1', 'G2', 'G5'] },
-    { codigo: 'A3H-h60-L-2x3', nombre: 'Piloto intensificado · A3 · altura x 60 mm' },
-    { codigo: 'A3H-h30-L-4x5', nombre: 'Serie · A3 · letras · 20 celdas' },
-    { codigo: 'A3H-h30-P-3x1', nombre: 'Serie · A3 · palabra «adhesión» · 3 renglones' },
-    { codigo: 'A4H-h30-L-2x4', nombre: 'A4 horizontal · letras · 8 celdas' },
-    { codigo: 'A4V-h30-L-4x3', nombre: 'A4 vertical · letras · 12 celdas' },
-    { codigo: 'A3H-h10-L-6x10', nombre: 'Escala · altura x 10 mm · 60 celdas' },
-    { codigo: 'A3V-h120-L-1x1', nombre: 'Escala · altura x 120 mm · 1 celda' },
+    { codigo: 'A4H-h10-L-3x5', nombre: 'Piloto · A4 · I, O, R × 5 · h 10 mm', filas: ['G1', 'G3', 'G5'] },
+    { codigo: 'A4H-h10-L-4x5', nombre: 'Serie · A4 · letras · 20 celdas · h 10 mm' },
+    { codigo: 'A4H-h10-L-5x2', nombre: 'Serie · A4 · rótulo «PLANTA 1:50» · 10 celdas', filas: ['G6', 'G6', 'G6', 'G6', 'G6'] },
+    { codigo: 'A4H-h5-L-6x8', nombre: 'Escala · A4 · h 5 mm · 48 celdas' },
+    { codigo: 'A4H-h20-L-3x4', nombre: 'Escala · A4 · h 20 mm · 12 celdas' },
+    { codigo: 'A3H-h30-L-3x5', nombre: 'Títulos · A3 · h 30 mm · 15 celdas' },
   ];
 
   const RE_PAUTA = /^(A3|A4)([HV])-H(\d+(?:[.,]\d+)?)-([LP])-(\d+)X(\d+)$/;
@@ -268,35 +275,6 @@
   /** Distancia de la parte superior de la celda a la línea base, en mm. */
   function baseEnCelda(celda) {
     return celda.base - celda.y;
-  }
-
-  /**
-   * Ventanas de la plantilla de topes para las condiciones C1–C3, en coordenadas de página.
-   * C1: canal entre la línea base y la altura x a lo largo de cada fila.
-   * C2: canal desde la línea base hasta 0,75 h.
-   * C3: una ventana de 0,6 h de ancho centrada en cada celda.
-   */
-  function ventanasTopes(pauta, nivel) {
-    const h = pauta.alturaX;
-    const ventanas = [];
-    const porFila = {};
-    for (const c of pauta.celdas) (porFila[c.fila] = porFila[c.fila] || []).push(c);
-    if (nivel === 'C1' || nivel === 'C2') {
-      const alto = nivel === 'C1' ? h : 0.75 * h;
-      for (const fila of Object.values(porFila)) {
-        const x0 = fila[0].x;
-        const x1 = fila[fila.length - 1].x + fila[fila.length - 1].w;
-        ventanas.push({ x: x0, y: fila[0].base - alto, w: x1 - x0, h: alto });
-      }
-    } else if (nivel === 'C3') {
-      const ancho = 0.6 * h;
-      for (const c of pauta.celdas) {
-        ventanas.push({ x: c.x + (c.w - ancho) / 2, y: c.y, w: ancho, h: c.h });
-      }
-    } else {
-      throw new Error('La plantilla de topes existe solo para C1, C2 y C3');
-    }
-    return ventanas;
   }
 
   function fmt(n) {
@@ -428,6 +406,7 @@
     GESTOS,
     GESTOS_CORTOS,
     CONDICIONES_SERIE,
+    ALTURAS_ISO,
     PRESETS,
     COLUMNAS_REGISTRO,
     parsearCondicion,
@@ -441,7 +420,6 @@
     parsearId,
     pautaDesdeCodigo,
     baseEnCelda,
-    ventanasTopes,
     nuevoBloque,
     validarBloque,
     nombreArchivoBloque,

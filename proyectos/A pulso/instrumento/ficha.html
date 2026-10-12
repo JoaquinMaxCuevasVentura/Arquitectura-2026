@@ -27,6 +27,10 @@
   .nota { font-size: 8.5pt; color: #555; }
   table.bloques { border-collapse: collapse; width: 100%; font-size: 9.5pt; }
   table.bloques td, table.bloques th { border: 0.3mm solid #999; padding: 1.5mm 2mm; text-align: left; vertical-align: top; }
+  #piloto { font-size: 9.8pt; }
+  #piloto .lista li { margin: 0.6mm 0; }
+  #piloto h3 { margin: 3.5mm 0 1.5mm; }
+  #piloto table.bloques td, #piloto table.bloques th { padding: 1mm 2mm; }
   .firma { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; margin-top: 14mm; }
   .firma div { border-top: 0.3mm solid #333; padding-top: 1mm; font-size: 9pt; }
   @media print {
@@ -75,8 +79,8 @@
       <div class="c"><span>Condición (código)</span></div>
       <div class="c"><span>A apoyo</span></div>
       <div class="c"><span>B plano</span></div>
-      <div class="c"><span>C límite · D resistencia</span></div>
-      <div class="c"><span>Altura x (mm)</span></div>
+      <div class="c"><span>C guía · D herramienta</span></div>
+      <div class="c"><span>Altura de la letra (mm)</span></div>
       <div class="c"><span>Pauta</span></div>
       <div class="c"><span>Herramienta</span></div>
       <div class="c"><span>Papel / superficie</span></div>
@@ -141,9 +145,10 @@
     <h3>Montaje calculado</h3>
     <table class="bloques">
       <tr><th style="width:18%">Plano</th><th style="width:45%">Criterio</th><th>Ajuste (asiento o agujero)</th></tr>
-      <tr><td>B0</td><td>Codo 30 mm sobre el plano, antebrazo apoyado.</td><td></td></tr>
-      <tr><td>B1</td><td>Codo 20 mm sobre el borde inferior del tablero a 45°.</td><td></td></tr>
-      <tr><td>B2</td><td>Centro de la hoja a la altura del hombro, de pie.</td><td></td></tr>
+      <tr><td>B0 · tablero 15°</td><td>Codo 30 mm sobre el borde inferior del tablero, antebrazo apoyado.</td><td></td></tr>
+      <tr><td>B1 · mesa</td><td>Codo 30 mm sobre el plano de la mesa.</td><td></td></tr>
+      <tr><td>B2 · pizarra</td><td>Centro de la hoja a la altura del hombro, de pie.</td><td></td></tr>
+      <tr><td>B3 · atril 45°</td><td>Codo 20 mm sobre el borde inferior del tablero.</td><td></td></tr>
     </table>
     <h3>Observaciones (lesiones, molestias, anteojos, costumbres de escritura)</h3>
     <div class="renglones"></div><div class="renglones"></div><div class="renglones"></div>
@@ -152,46 +157,47 @@
   <!-- LISTA DEL PILOTO -->
   <article class="hoja" id="piloto">
     <h2>A pulso · Lista del piloto</h2>
-    <div class="sub">BASE (mesa, antebrazo apoyado) frente a MURO (de pie, plano vertical a la altura del hombro, brazo libre). Gestos G1, G2 y G5. Altura x 30 mm. ≈45 min de ensayo y 30 min de lectura.</div>
+    <div class="sub">TABLERO (base: tablero de dibujo a 15°, antebrazo apoyado, líneas guía, portaminas) frente a PIZARRA (A2B2: de pie, plano vertical a la altura del hombro, brazo libre). Gestos I, O y R. Letra de 10 mm. ≈45 min de ensayo y 30 min de lectura.</div>
     <h3>Materiales</h3>
     <ul class="lista">
-      <li>Cuatro pautas A3H-h30-L-3x5 impresas a tamaño real (filas G1, G2, G5) y hojas sueltas para el calentamiento.</li>
-      <li>Una sola herramienta: lápiz 2B o marcador negro de punta redonda de 0,8–1 mm. No usar tinta azul.</li>
+      <li>Cuatro pautas A4H-h10-L-3x5 impresas a tamaño real (filas G1 I, G3 O, G5 R) y hojas sueltas para el calentamiento.</li>
+      <li>Una sola herramienta: portaminas 0,5 HB. No usar tinta azul.</li>
       <li>Cuatro fichas de ensayo y la hoja de medidas.</li>
-      <li>Cinta de papel, regla, cronómetro.</li>
+      <li>El tablero sobre la cuña de 15° (o, en la maqueta, un tablero apoyado en un libro de unos 16 cm), cinta de papel, cronómetro.</li>
       <li>Teléfono con soporte para el video lateral (y otro para el cenital, si hay).</li>
-      <li>Mesa, asiento y una pared despejada.</li>
+      <li>Escáner a 600 ppp, o el teléfono para fotografiar cada hoja de cerca y desde arriba.</li>
     </ul>
     <h3>Preparación</h3>
     <ul class="lista">
       <li>Verificar la regla de 100 mm de una pauta impresa.</li>
-      <li>Tomar y anotar las medidas del cuerpo, la mesa y el asiento.</li>
-      <li>Marcar en la pared el centro de la hoja a la altura del hombro.</li>
+      <li>Tomar y anotar las medidas del cuerpo, la mesa y el asiento; ajustar el asiento para el tablero a 15°.</li>
+      <li>Marcar en la pared el centro de la hoja a la altura del hombro (la pizarra).</li>
       <li>Escribir en el encabezado de cada pauta: bloque, persona, sesión, orden y condición.</li>
       <li>Probar el encuadre del video: debe verse del hombro a la mano.</li>
     </ul>
     <h3>Secuencia (orden ABBA)</h3>
     <table class="bloques">
       <tr><th>Paso</th><th>Condición</th><th>Qué se hace</th><th>Hecho</th></tr>
-      <tr><td>0</td><td>BASE</td><td>3 repeticiones de calentamiento por gesto, en hoja suelta</td><td></td></tr>
-      <tr><td>1</td><td>BASE</td><td>Bloque 1: 5 × G1, 5 × G2, 5 × G5 (R01–R05). Dos minutos de notas.</td><td></td></tr>
-      <tr><td>2</td><td>MURO</td><td>3 repeticiones de calentamiento por gesto</td><td></td></tr>
-      <tr><td>3</td><td>MURO</td><td>Bloque 2: 5 × cada gesto (R01–R05). Notas.</td><td></td></tr>
-      <tr><td>4</td><td>MURO</td><td>Bloque 3: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
-      <tr><td>5</td><td>BASE</td><td>Bloque 4: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
+      <tr><td>0</td><td>TABLERO</td><td>3 repeticiones de calentamiento por gesto, en hoja suelta</td><td></td></tr>
+      <tr><td>1</td><td>TABLERO</td><td>Bloque 1: 5 × I, 5 × O, 5 × R (R01–R05). Dos minutos de notas.</td><td></td></tr>
+      <tr><td>2</td><td>PIZARRA</td><td>3 repeticiones de calentamiento por gesto</td><td></td></tr>
+      <tr><td>3</td><td>PIZARRA</td><td>Bloque 2: 5 × cada gesto (R01–R05). Notas.</td><td></td></tr>
+      <tr><td>4</td><td>PIZARRA</td><td>Bloque 3: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
+      <tr><td>5</td><td>TABLERO</td><td>Bloque 4: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
     </table>
+    <p class="nota">Anotar también el orden y la dirección en que trazaste cada letra (por ejemplo, la R: primero el asta hacia abajo, después el bucle y la pierna). Es la partitura que luego se compara con la de los manuales.</p>
     <h3>Lectura</h3>
     <ul class="lista">
-      <li>Fotografiar o escanear las cuatro hojas.</li>
+      <li>Escanear o fotografiar las cuatro hojas.</li>
       <li>Digitalizar cada hoja (condición BASE o A2B2, orden 1–4, «Desde» 1 o 6).</li>
-      <li>Superponer BASE y A2B2 para cada gesto; medir la altura de la unión de la n.</li>
+      <li>Superponer BASE y A2B2 para cada gesto; medir dónde se cierra el bucle de la R y la inclinación de las astas.</li>
       <li>Imprimir la lámina y escribir tres observaciones, una regla candidata y la ficha de lectura.</li>
-      <li>Dibujar una n aplicando la regla.</li>
+      <li>Dibujar una R aplicando la regla.</li>
     </ul>
     <h3>Decisión 1</h3>
     <ul class="lista">
-      <li>¿Se distinguen a simple vista las superposiciones de BASE y MURO? Si no: repetir con la pauta A3H-h60-L-2x3 o con el muro a brazo extendido.</li>
-      <li>Si se distinguen: pasar a la serie con las variables separadas (¿la diferencia viene del apoyo o del plano?).</li>
+      <li>¿Se distinguen a simple vista las superposiciones del tablero y la pizarra? Si no: repetir a 20 mm (pauta A4H-h20-L-3x4).</li>
+      <li>Si se distinguen: pasar a la serie con las variables separadas, empezando por las guías y los instrumentos (C1–C3).</li>
     </ul>
   </article>
 
@@ -228,15 +234,17 @@
   <!-- CONSENTIMIENTO -->
   <article class="hoja" id="consentimiento">
     <h2>A pulso · Consentimiento informado</h2>
-    <div class="sub">Modelo para las personas que participan en el contraste con otras manos. Si el proyecto se desarrolla en una institución, revísalo con su comité de ética antes de usarlo.</div>
-    <p><b>Qué es el proyecto.</b> <i>A pulso</i> es una investigación de diseño que estudia cómo las condiciones del lugar donde se escribe (el apoyo del brazo, la inclinación del plano, los bordes y la superficie) cambian la forma de los trazos. Los resultados se usarán para diseñar una tipografía experimental y publicar un atlas de gestos.</p>
-    <p><b>Qué te pedimos.</b> Una sesión de unos 45 minutos en la que escribirás trazos simples y letras en un banco de escritura, en tres o cuatro posiciones. Después de cada serie te haremos tres preguntas breves sobre lo que sentiste. Registraremos las hojas escritas y un video de tu brazo y tu mano; el encuadre evita el rostro.</p>
+    <div class="sub">Modelo para las personas que participan en las entrevistas de oficio y en el contraste con otras manos. Si el proyecto se desarrolla en una institución, revísalo con su comité de ética antes de usarlo.</div>
+    <p><b>Qué es el proyecto.</b> <i>A pulso</i> es una investigación de diseño sobre cómo los instrumentos del tablero de dibujo (el tablero inclinado, la regla T, las escuadras, la plantilla de rotulación, el portaminas y el estilógrafo) educaron la letra con que los arquitectos rotulan sus planos, y qué pasa con esa letra cuando los instrumentos cambian o desaparecen. Los resultados se usarán para diseñar una tipografía experimental y publicar un archivo, un atlas de gestos y unos ejercicios.</p>
+    <p><b>Qué te pedimos.</b> Una conversación grabada en audio sobre cómo aprendiste a rotular (unos 30 minutos) y una sesión de unos 45 minutos en la que escribirás trazos, letras y un rótulo en un banco de escritura, en tres o cuatro posiciones y con distintos instrumentos. Después de cada serie te haremos tres preguntas breves sobre lo que sentiste. Registraremos las hojas escritas y un video de tu brazo y tu mano; el encuadre evita el rostro. Si conservas láminas, planos o instrumentos de tu formación, te pediremos fotografiarlos; los originales no salen de tus manos.</p>
     <p><b>Tu participación es voluntaria.</b> Puedes hacer pausas, saltarte una posición incómoda o retirarte en cualquier momento, sin dar razones. Si te retiras, puedes pedir que se borren tus registros.</p>
     <p><b>Cómo se cuidan tus datos.</b> Tus registros llevan un código (P01, P02…), no tu nombre. Los videos se guardan en un lugar privado y solo los ve el equipo del proyecto. Las trazas escritas pueden publicarse sin identificarte. Las imágenes de tu mano o tu brazo se publican solo si lo autorizas abajo.</p>
     <p><b>Riesgos.</b> Puede haber cansancio leve del hombro en las posiciones de pie. No hay otros riesgos conocidos.</p>
     <div style="margin-top:4mm">
       <div><span class="caja"></span>Acepto participar en la sesión y que se registren mis hojas y un video de mi brazo y mano.</div>
+      <div style="margin-top:2mm"><span class="caja"></span>Acepto que la conversación se grabe en audio y se transcriba; las citas se publican sin mi nombre salvo que lo autorice abajo.</div>
       <div style="margin-top:2mm"><span class="caja"></span>Autorizo publicar imágenes de mi mano o brazo (sin rostro) en el atlas, la exposición y textos del proyecto.</div>
+      <div style="margin-top:2mm"><span class="caja"></span>Autorizo publicar fotografías de mis láminas, planos o instrumentos, con mi nombre como autor o autora.</div>
       <div style="margin-top:2mm"><span class="caja"></span>Quiero que mi nombre aparezca en los agradecimientos.</div>
     </div>
     <div class="campos dos" style="margin-top:6mm">

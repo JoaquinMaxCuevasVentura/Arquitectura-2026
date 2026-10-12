@@ -1,5 +1,6 @@
 /* A pulso · datos sintéticos (solo node)
- * Genera trazas inventadas para probar el instrumento. NO son ensayos: no deben usarse como evidencia.
+ * Genera trazas inventadas de letra técnica (I, —, O, R) para probar el instrumento.
+ * NO son ensayos: no deben usarse como evidencia.
  */
 'use strict';
 const AP = require('../lib/nucleo.js');
@@ -16,73 +17,80 @@ function mulberry32(semilla) {
   };
 }
 
-function bezier(p0, p1, p2, p3, n) {
-  const out = [];
-  for (let i = 0; i <= n; i++) {
-    const t = i / n;
-    const u = 1 - t;
-    out.push([
-      u * u * u * p0[0] + 3 * u * u * t * p1[0] + 3 * u * t * t * p2[0] + t * t * t * p3[0],
-      u * u * u * p0[1] + 3 * u * u * t * p1[1] + 3 * u * t * t * p2[1] + t * t * t * p3[1],
-    ]);
-  }
-  return out;
-}
-
 function linea(a, b, n) {
   const out = [];
   for (let i = 0; i <= n; i++) out.push([a[0] + ((b[0] - a[0]) * i) / n, a[1] + ((b[1] - a[1]) * i) / n]);
   return out;
 }
 
-/** Recorrido idealizado de un gesto (mm, y hacia arriba desde la línea base). */
-function recorrido(gesto, h, p) {
+function elipse(cx, cy, rx, ry, desde, sentido, n) {
+  const out = [];
+  for (let i = 0; i <= n; i++) {
+    const t = desde + (sentido * 2 * Math.PI * i) / n;
+    out.push([cx + rx * Math.cos(t), cy + ry * Math.sin(t)]);
+  }
+  return out;
+}
+
+/**
+ * Recorrido idealizado de un gesto: una lista de trazos (mm, y hacia arriba desde la línea base).
+ * p: parámetros de la repetición (ver PERFILES).
+ */
+function recorrido(gesto, h, p, azar) {
   const x0 = p.x0;
-  const j = p.union * h;
   const w = p.ancho * h;
-  const arco = () =>
-    bezier([x0, j], [x0 + 0.1 * w, h * (1 + 0.04 * p.radio)], [x0 + w * (0.55 + 0.25 * p.radio), h * 1.04], [x0 + w, 0.62 * h], 40).concat(
-      linea([x0 + w, 0.62 * h], [x0 + w, 0], 20).slice(1)
-    );
   switch (gesto) {
     case 'G1':
-      return linea([x0, h], [x0, 0], 40);
+      return [linea([x0, h], [x0, 0], 40)];
     case 'G2':
-      return arco();
-    case 'G5':
-      return linea([x0, h], [x0, 0], 30).concat(linea([x0, 0], [x0, j], 15).slice(1), arco().slice(1));
+      return [linea([x0, 0.5 * h], [x0 + 1.2 * h, 0.5 * h], 40)];
+    case 'G3': {
+      // O: empieza arriba; antihorario salvo que el perfil diga lo contrario
+      const sentido = azar() < p.horario ? -1 : 1;
+      return [elipse(x0 + w / 2, h / 2, w / 2, h / 2, Math.PI / 2, sentido, 80)];
+    }
+    case 'G5': {
+      // R: asta descendente; después bucle y pierna (en uno o dos trazos)
+      const asta = linea([x0, h], [x0, 0], 30);
+      const j = (1 - p.bucle) * h; // altura del cierre del bucle
+      const r = (h - j) / 2;
+      const bucle = linea([x0, h], [x0 + w - r, h], 12).concat(
+        elipse(x0 + w - r, j + r, r, r, Math.PI / 2, -1, 24).slice(1, 13),
+        linea([x0 + w - r, j], [x0, j], 12).slice(1)
+      );
+      const pierna = linea([x0 + p.salida * w, j], [x0 + w, 0], 16);
+      if (azar() < p.piernaAparte) return [asta, bucle, pierna];
+      return [asta, bucle.concat(pierna.slice(1))];
+    }
     default:
       throw new Error('Sin modelo sintético para ' + gesto);
   }
 }
 
-/** Aplica inclinación, ruido suave y tiempos de tableta. */
-function deformar(puntos, p, azar, conTiempo) {
+/** Aplica inclinación y ruido suave; con tiempo, agrega velocidad, presión y pausas entre trazos. */
+function deformar(trazos, p, h, azar, conTiempo) {
   const G = AP.geometria;
-  const base = G.remuestrear(puntos, 0.25);
-  const fases = [azar() * 6.28, azar() * 6.28, azar() * 6.28];
   const tan = Math.tan((p.inclinacion * Math.PI) / 180);
-  let s = 0;
+  const ruido = p.ruido * h;
+  const fases = [azar() * 6.28, azar() * 6.28, azar() * 6.28];
   let t = 0;
-  const out = [];
-  for (let i = 0; i < base.length; i++) {
-    if (i > 0) s += G.dist(base[i - 1], base[i]);
-    const ruido = p.ruido * (Math.sin(s / 7 + fases[0]) * 0.6 + Math.sin(s / 2.3 + fases[1]) * 0.4);
-    const ruidoY = p.ruido * 0.6 * Math.sin(s / 5 + fases[2]);
-    const x = base[i][0] + base[i][1] * tan + ruido;
-    const y = base[i][1] + ruidoY;
-    if (!conTiempo) {
-      out.push([round(x), round(y)]);
-      continue;
-    }
-    if (i > 0) {
-      const v = p.velocidad * (0.75 + 0.25 * Math.sin(s / 6 + fases[1]));
-      t += (G.dist(base[i - 1], base[i]) / v) * 1000;
-    }
-    const presion = Math.min(1, Math.max(0.05, p.presion + 0.08 * Math.sin(s / 4 + fases[2])));
-    out.push([round(x), round(y), round(t), round(presion), 0, 0]);
-  }
-  return out;
+  return trazos.map((tr, k) => {
+    if (k > 0) t += 120 + azar() * 120; // levantamiento
+    const base = G.remuestrear(tr, Math.max(0.05, h / 120));
+    let s = 0;
+    return base.map((q, i) => {
+      if (i > 0) s += G.dist(base[i - 1], q);
+      const x = q[0] + q[1] * tan + ruido * (Math.sin(s / (0.25 * h) + fases[0]) * 0.6 + Math.sin(s / (0.08 * h) + fases[1]) * 0.4);
+      const y = q[1] + ruido * 0.6 * Math.sin(s / (0.17 * h) + fases[2]);
+      if (!conTiempo) return [round(x), round(y)];
+      if (i > 0) {
+        const v = p.velocidad * h * (0.75 + 0.25 * Math.sin(s / (0.2 * h) + fases[1]));
+        t += (G.dist(base[i - 1], q) / v) * 1000;
+      }
+      const presion = Math.min(1, Math.max(0.05, p.presion + 0.08 * Math.sin(s / (0.13 * h) + fases[2])));
+      return [round(x), round(y), round(t), round(presion), 0, 0];
+    });
+  });
 }
 
 function round(v) {
@@ -90,9 +98,10 @@ function round(v) {
 }
 
 const PERFILES = {
-  // Parámetros inventados para que las dos condiciones se distingan en las pruebas.
-  BASE: { union: 0.62, ancho: 0.78, radio: 0.2, inclinacion: 2, ruido: 0.25, jitter: 0.03, velocidad: 70, presion: 0.55 },
-  A2B2: { union: 0.45, ancho: 0.95, radio: 0.8, inclinacion: 6, ruido: 0.6, jitter: 0.07, velocidad: 120, presion: 0.4 },
+  // Parámetros inventados para que el tablero (BASE) y la pizarra (A2B2) se distingan en las pruebas.
+  // ruido en fracciones de h; velocidad en alturas de letra por segundo.
+  BASE: { ancho: 0.62, bucle: 0.5, salida: 0.45, inclinacion: 1, ruido: 0.012, jitter: 0.03, velocidad: 2.5, presion: 0.55, horario: 0, piernaAparte: 0 },
+  A2B2: { ancho: 0.78, bucle: 0.56, salida: 0.35, inclinacion: 6, ruido: 0.03, jitter: 0.07, velocidad: 4.5, presion: 0.4, horario: 0.3, piernaAparte: 0.4 },
 };
 
 function parametros(condicion, azar, x0) {
@@ -100,20 +109,24 @@ function parametros(condicion, azar, x0) {
   const j = () => 1 + (azar() * 2 - 1) * b.jitter;
   return {
     x0,
-    union: b.union * j(),
     ancho: b.ancho * j(),
-    radio: b.radio * j(),
-    inclinacion: b.inclinacion + (azar() * 2 - 1) * 3 * b.jitter * 20,
+    bucle: b.bucle * j(),
+    salida: b.salida * j(),
+    inclinacion: b.inclinacion + (azar() * 2 - 1) * 60 * b.jitter,
     ruido: b.ruido,
     velocidad: b.velocidad * j(),
     presion: b.presion * j(),
+    horario: b.horario,
+    piernaAparte: b.piernaAparte,
   };
 }
 
 const AVISO = 'SINTÉTICO: trazas inventadas para probar el instrumento. No son ensayos ni evidencia.';
+const GESTOS_PILOTO = ['G1', 'G3', 'G5'];
 
-/** Bloques de tableta con el orden ABBA del piloto. */
-function bloquesPiloto(semilla) {
+/** Bloques de tableta con el orden ABBA del piloto: tablero (BASE) y pizarra (A2B2). */
+function bloquesPiloto(semilla, alturaX) {
+  const h = alturaX || 10;
   const azar = mulberry32(semilla || 7);
   const orden = ['BASE', 'A2B2', 'A2B2', 'BASE'];
   const contador = {};
@@ -122,24 +135,24 @@ function bloquesPiloto(semilla) {
       persona: 'P00',
       sesion: 'S00',
       condicion: cond,
-      alturaX: 30,
+      alturaX: h,
       herramienta: 'sintético',
       fecha: '2026-10-12',
       orden: k + 1,
       origen: 'sintetico',
       aviso: AVISO,
     });
-    for (const gesto of ['G1', 'G2', 'G5']) {
+    for (const gesto of GESTOS_PILOTO) {
       for (let r = 0; r < 5; r++) {
         const clave = cond + gesto;
         contador[clave] = (contador[clave] || 0) + 1;
-        const p = parametros(cond, azar, 12 + azar() * 4);
+        const p = parametros(cond, azar, 0.4 * h + azar() * 0.15 * h);
         b.ensayos.push({
           id: AP.nucleo.idEnsayo({ persona: 'P00', sesion: 'S00', condicion: cond, gesto, repeticion: contador[clave] }),
           gesto,
           repeticion: contador[clave],
           calentamiento: false,
-          trazos: [{ puntos: deformar(recorrido(gesto, 30, p), p, azar, true) }],
+          trazos: deformar(recorrido(gesto, h, p, azar), p, h, azar, true).map((puntos) => ({ puntos })),
         });
       }
     }
@@ -148,13 +161,14 @@ function bloquesPiloto(semilla) {
 }
 
 /**
- * Hoja escaneada sintética: pauta en cian, marcas negras y trazas de grafito,
+ * Hoja escaneada sintética: pauta en cian, marcas negras y trazas de portaminas,
  * vista con perspectiva como una foto de teléfono. Devuelve la imagen y la verdad de terreno.
  */
 function hojaFotografiada(opciones) {
-  const o = Object.assign({ codigo: 'A3H-h30-L-3x5', semilla: 11, pxPorMm: 6, condicion: 'BASE', ancho: 2600, alto: 1900 }, opciones || {});
+  const o = Object.assign({ codigo: 'A4H-h10-L-3x5', semilla: 11, pxPorMm: 12, condicion: 'BASE', ancho: 2600, alto: 1900, radioTrazo: 0.25 }, opciones || {});
   const G = AP.geometria;
   const pauta = AP.nucleo.pautaDesdeCodigo(o.codigo);
+  const h = pauta.alturaX;
   const azar = mulberry32(o.semilla);
   const W = Math.round(pauta.W * o.pxPorMm);
   const H = Math.round(pauta.H * o.pxPorMm);
@@ -189,23 +203,24 @@ function hojaFotografiada(opciones) {
   for (const [mx, my] of pauta.marcas) pintar(mx, my, pauta.marcaDiametro / 2, [0, 0, 0]);
 
   const verdad = [];
-  const gestos = ['G1', 'G2', 'G5'];
+  const pre = AP.nucleo.PRESETS.find((x) => x.codigo === pauta.codigo);
+  const gestos = (pre && pre.filas) || GESTOS_PILOTO;
   for (const c of pauta.celdas) {
     const gesto = gestos[(c.fila - 1) % gestos.length];
-    const p = parametros(o.condicion, azar, c.w * 0.3 + azar() * 6);
-    const pts = deformar(recorrido(gesto, pauta.alturaX, p), p, azar, false);
-    verdad.push({ celda: c.indice, gesto, puntos: pts });
-    // coordenadas de la traza (y hacia arriba) → página
+    const p = parametros(o.condicion, azar, 0.3 * c.w + azar() * 0.1 * c.w);
+    const trazos = deformar(recorrido(gesto, h, p, azar), p, h, azar, false);
+    verdad.push({ celda: c.indice, gesto, trazos });
     const aPagina = (q) => [c.x + q[0], c.base - q[1]];
-    for (let k = 1; k < pts.length; k++) segmento(aPagina(pts[k - 1]), aPagina(pts[k]), 0.35, [75, 75, 80]);
+    for (const pts of trazos) for (let k = 1; k < pts.length; k++) segmento(aPagina(pts[k - 1]), aPagina(pts[k]), o.radioTrazo, [75, 75, 80]);
   }
 
   // Foto: las esquinas de la hoja caen en un cuadrilátero de la imagen.
+  const m = Math.round(o.ancho * 0.05);
   const esquinasFoto = [
-    [140, 120],
-    [o.ancho - 110, 170],
-    [o.ancho - 170, o.alto - 90],
-    [90, o.alto - 150],
+    [m + 20, m],
+    [o.ancho - m, m + 40],
+    [o.ancho - m - 50, o.alto - m + 10],
+    [m - 20, o.alto - m - 30],
   ];
   const Hpag = G.homografia(
     [
@@ -224,7 +239,6 @@ function hojaFotografiada(opciones) {
       const i = (y * o.ancho + x) * 4;
       const sx = Math.floor(xm * o.pxPorMm);
       const sy = Math.floor(ym * o.pxPorMm);
-      // iluminación despareja y ruido de cámara
       const luz = 0.86 + 0.12 * (x / o.ancho) - 0.05 * (y / o.alto);
       const ruido = (azar() - 0.5) * 14;
       if (sx < 0 || sy < 0 || sx >= W || sy >= H) {
@@ -243,4 +257,4 @@ function hojaFotografiada(opciones) {
   return { pauta, foto, ancho: o.ancho, alto: o.alto, marcasFoto, verdad, aviso: AVISO };
 }
 
-module.exports = { mulberry32, recorrido, bloquesPiloto, hojaFotografiada, PERFILES, AVISO };
+module.exports = { mulberry32, recorrido, bloquesPiloto, hojaFotografiada, PERFILES, AVISO, GESTOS_PILOTO };

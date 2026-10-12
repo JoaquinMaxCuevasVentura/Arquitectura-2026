@@ -27,6 +27,7 @@ function cargarPlaywright() {
 
 (async () => {
   fs.mkdirSync(SALIDA, { recursive: true });
+  for (const f of fs.readdirSync(SALIDA)) if (f.startsWith('SINTETICO_')) fs.unlinkSync(path.join(SALIDA, f));
   const bloques = S.bloquesPiloto(7);
   for (const b of bloques) {
     const nombre = 'SINTETICO_' + AP.nucleo.nombreArchivoBloque(b);
@@ -39,8 +40,9 @@ function cargarPlaywright() {
   const pagina = await navegador.newPage();
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'apulso-'));
   const marcas = {};
+  const tamanos = {};
   for (const [cond, semilla] of [['BASE', 21], ['A2B2', 22]]) {
-    const f = S.hojaFotografiada({ condicion: cond, semilla, ancho: 2200, alto: 1600 });
+    const f = S.hojaFotografiada({ condicion: cond, semilla, ancho: 2600, alto: 1900 });
     const png = path.join(tmp, cond + '.png');
     fs.writeFileSync(png, codificarPNG(f.foto, f.ancho, f.alto));
     await pagina.goto(pathToFileURL(png).href);
@@ -55,9 +57,10 @@ function cargarPlaywright() {
     const nombre = 'SINTETICO_hoja_' + f.pauta.codigo + '_' + cond + '.jpg';
     fs.writeFileSync(path.join(SALIDA, nombre), Buffer.from(datos.split(',')[1], 'base64'));
     marcas[nombre] = f.marcasFoto.map(([x, y]) => [Math.round(x * 10) / 10, Math.round(y * 10) / 10]);
+    tamanos[nombre] = [f.ancho, f.alto];
     console.log('foto', nombre);
   }
-  fs.writeFileSync(path.join(SALIDA, 'SINTETICO_marcas.json'), JSON.stringify({ aviso: S.AVISO, marcas_px: marcas }, null, 1));
+  fs.writeFileSync(path.join(SALIDA, 'SINTETICO_marcas.json'), JSON.stringify({ aviso: S.AVISO, marcas_px: marcas, tamano_px: tamanos }, null, 1));
   await navegador.close();
   fs.rmSync(tmp, { recursive: true, force: true });
 })().catch((e) => {

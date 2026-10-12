@@ -35,7 +35,7 @@
 <main>
   <section class="panel">
     <h2>Pauta de escritura</h2>
-    <p class="ayuda">La pauta se imprime en cian claro, que desaparece al digitalizar. Las cuatro marcas negras permiten corregir la perspectiva de una foto. Imprime a tamaño real (100 %, sin «ajustar a la página») y verifica la regla de 100 mm.</p>
+    <p class="ayuda">La pauta se imprime en cian claro, que desaparece al digitalizar. Las cuatro marcas negras permiten corregir la perspectiva de una foto. Imprime a tamaño real (100 %, sin «ajustar a la página») y verifica la regla de 100 mm. Para la condición C1 (sin líneas guía) marca «Pauta sin líneas guía»: quedan solo las esquinas de las celdas.</p>
     <div class="fila">
       <label class="campo">Pauta predefinida
         <select id="preset"></select>
@@ -43,6 +43,7 @@
       <label class="campo">Código
         <input id="codigo" size="18" spellcheck="false">
       </label>
+      <label class="check"><input id="sin-guias" type="checkbox"> Pauta sin líneas guía (C1)</label>
     </div>
     <h3>Gesto de cada fila</h3>
     <div id="filas" class="filas-gesto"></div>
@@ -67,15 +68,6 @@
     <div id="vista"></div>
   </section>
 
-  <section class="panel">
-    <h2>Plantillas de topes (condiciones C1–C3)</h2>
-    <p class="ayuda">Para corte láser en MDF o acrílico de 5–6 mm. Rojo = corte; azul = grabado. Se apoyan sobre la pauta haciendo coincidir los agujeros con las marcas. Cada plantilla corresponde al código de pauta elegido arriba.</p>
-    <div class="fila">
-      <button class="secundario" data-tope="C1">C1 · topes en la línea base y la altura x</button>
-      <button class="secundario" data-tope="C2">C2 · canal de 0,75 h</button>
-      <button class="secundario" data-tope="C3">C3 · ventana de 0,6 h</button>
-    </div>
-  </section>
 </main>
 <div id="impresion"></div>
 
@@ -137,7 +129,7 @@
       $('#vista').innerHTML = '';
       return;
     }
-    const svg = D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado() });
+    const svg = D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado(), guias: !$('#sin-guias').checked });
     $('#vista').innerHTML = svg;
     $('#impresion').innerHTML = svg;
     $('#pagina-impresion').textContent = '@page { size: ' + pauta.W + 'mm ' + pauta.H + 'mm; margin: 0; }';
@@ -154,15 +146,9 @@
     actualizar();
   });
   document.querySelectorAll('[id^="e-"]').forEach((i) => i.addEventListener('input', () => actualizar()));
+  $('#sin-guias').addEventListener('change', () => actualizar());
   $('#imprimir').addEventListener('click', () => pauta && window.print());
-  $('#svg').addEventListener('click', () => pauta && U.descargar('pauta_' + pauta.codigo + '.svg', D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado() }), 'image/svg+xml'));
-  document.querySelectorAll('[data-tope]').forEach((b) =>
-    b.addEventListener('click', () => {
-      if (!pauta) return;
-      const nivel = b.dataset.tope;
-      U.descargar('topes_' + nivel + '_' + pauta.codigo + '.svg', D.svgPlantillaTopes(pauta, nivel), 'image/svg+xml');
-    })
-  );
+  $('#svg').addEventListener('click', () => pauta && U.descargar('pauta_' + pauta.codigo + ($('#sin-guias').checked ? '_sin-guias' : '') + '.svg', D.svgPauta(pauta, { filas: filasGesto, encabezado: encabezado(), guias: !$('#sin-guias').checked }), 'image/svg+xml'));
   actualizar(true);
 })();
 </script>

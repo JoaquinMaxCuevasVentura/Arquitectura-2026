@@ -32,6 +32,8 @@ prueba('condiciones', () => {
   assert.strictEqual(N.parsearCondicion('b2 a2').codigo, 'A2B2');
   assert.strictEqual(N.parsearCondicion('A0B0').codigo, 'BASE');
   assert.strictEqual(N.parsearCondicion('C3').C, 'C3');
+  assert.strictEqual(N.parsearCondicion('B3').codigo, 'B3');
+  assert.ok(/tablero de dibujo/.test(N.describirCondicion('BASE')), 'la base es el tablero de dibujo');
   assert.throws(() => N.parsearCondicion('A7'));
   assert.throws(() => N.parsearCondicion('muro'));
 });
@@ -58,9 +60,6 @@ prueba('todas las pautas predefinidas son válidas y sus celdas no se tocan', ()
         const separadas = a.x + a.w <= b.x || b.x + b.w <= a.x || a.y + a.h <= b.y || b.y + b.h <= a.y;
         assert.ok(separadas, pre.codigo + ' celdas superpuestas');
       }
-    for (const nivel of ['C1', 'C2', 'C3']) {
-      for (const v of N.ventanasTopes(p, nivel)) assert.ok(v.x >= 0 && v.y >= 0 && v.x + v.w <= p.W && v.y + v.h <= p.H);
-    }
   }
   assert.throws(() => N.pautaDesdeCodigo('A4H-h30-L-5x5'));
   assert.throws(() => N.pautaDesdeCodigo('A5H-h30-L-1x1'));
@@ -151,7 +150,7 @@ prueba('esqueleto de una o: un lazo cerrado', () => {
 });
 
 console.log('Digitalización de una foto sintética');
-prueba('rectificar, umbral y esqueleto recuperan las trazas (error < 0,35 mm)', () => {
+prueba('rectificar, umbral y esqueleto recuperan letras de 10 mm (error < 0,15 mm)', () => {
   const foto = S.hojaFotografiada({ semilla: 5 });
   const gris = I.canal(foto.foto, foto.ancho, foto.alto, 'luminancia');
   // clics imprecisos, afinados sobre las marcas
@@ -163,14 +162,15 @@ prueba('rectificar, umbral y esqueleto recuperan las trazas (error < 0,35 mm)', 
     return r;
   });
   const H = G.homografia(foto.pauta.marcas, marcas);
-  const r = 8;
+  const r = 16;
   let peor = 0;
   for (const c of foto.pauta.celdas) {
     const img = I.rectificar(foto.foto, foto.ancho, foto.alto, H, c, r);
-    const res = I.procesarCelda(img.data, img.w, img.h, { largoEspolon: 1.5 * r, areaMin: 1 * r * r });
+    const res = I.procesarCelda(img.data, img.w, img.h, { largoEspolon: 1.2 * r, areaMin: 0.1 * r * r });
     const base = N.baseEnCelda(c);
     const polis = res.polis.map((poli) => G.simplificar(G.suavizar(poli, 5), 0.8).map(([px, py]) => [px / r, base - py / r]));
-    const verdad = foto.verdad.find((v) => v.celda === c.indice).puntos;
+    const trazosVerdad = foto.verdad.find((v) => v.celda === c.indice).trazos;
+    const verdad = [].concat(...trazosVerdad);
     // de la verdad a lo recuperado
     let s = 0;
     for (const p of verdad) s += G.distPuntoPolilineas(p, polis);
@@ -180,13 +180,13 @@ prueba('rectificar, umbral y esqueleto recuperan las trazas (error < 0,35 mm)', 
     let n2 = 0;
     for (const poli of polis)
       for (const p of G.remuestrear(poli, 0.5)) {
-        s2 += G.distPuntoPolilineas(p, [verdad]);
+        s2 += G.distPuntoPolilineas(p, trazosVerdad);
         n2++;
       }
     peor = Math.max(peor, media, s2 / n2);
-    assert.ok(res.grosor / r > 0.4 && res.grosor / r < 1.2, 'grosor ' + (res.grosor / r).toFixed(2));
+    assert.ok(res.grosor / r > 0.3 && res.grosor / r < 0.9, 'grosor ' + (res.grosor / r).toFixed(2));
   }
-  assert.ok(peor < 0.35, 'error medio máximo ' + peor.toFixed(3) + ' mm');
+  assert.ok(peor < 0.15, 'error medio máximo ' + peor.toFixed(3) + ' mm');
   console.log('        error medio máximo: ' + peor.toFixed(3) + ' mm');
 });
 
@@ -194,25 +194,47 @@ console.log('Métricas');
 prueba('las dos condiciones sintéticas se distinguen', () => {
   const bloques = S.bloquesPiloto(9);
   const juntar = (cond, gesto) => [].concat(...bloques.filter((b) => b.bloque.condicion === cond).map((b) => b.ensayos.filter((e) => e.gesto === gesto)));
-  const base = M.resumenGrupo(juntar('BASE', 'G5'), 30);
-  const muro = M.resumenGrupo(juntar('A2B2', 'G5'), 30);
+  const base = M.resumenGrupo(juntar('BASE', 'G5'), 10);
+  const muro = M.resumenGrupo(juntar('A2B2', 'G5'), 10);
   assert.strictEqual(base.n, 10);
   assert.ok(base.mediano.length >= 1, 'hay mediano');
   assert.ok(muro.resumen.ancho_h.media > base.resumen.ancho_h.media, 'más ancho en el muro');
   assert.ok(muro.resumen.dispersion_mm.media > base.resumen.dispersion_mm.media, 'más disperso en el muro');
-  assert.ok(muro.resumen.inclinacion_grados.media > base.resumen.inclinacion_grados.media + 2, 'más inclinado en el muro');
-  assert.strictEqual(base.resumen.eje_grados, null, 'una n no tiene eje de forma alargada');
-  const astas = M.resumenGrupo(juntar('BASE', 'G1'), 30);
+  assert.ok(muro.resumen.inclinacion_grados.media > base.resumen.inclinacion_grados.media + 2, 'más inclinado en la pizarra');
+  assert.strictEqual(base.resumen.eje_grados, null, 'una R no tiene eje de forma alargada');
+  const astas = M.resumenGrupo(juntar('BASE', 'G1'), 10);
   assert.ok(Math.abs(astas.resumen.eje_grados.media - astas.resumen.inclinacion_grados.media) < 1.5, 'en un asta, eje e inclinación coinciden');
   assert.ok(muro.resumen.velocidad_mm_s.media > base.resumen.velocidad_mm_s.media, 'más rápido en el muro');
-  assert.strictEqual(base.resumen.levantamientos.media, 0);
+  assert.strictEqual(base.resumen.levantamientos.media, 1, 'la R del tablero se escribe en dos trazos');
+  assert.ok(Math.abs(base.resumen.inclinacion_grados.media - 1) < 2, 'la pierna de la R no arrastra la inclinación: ' + base.resumen.inclinacion_grados.media.toFixed(1));
+  assert.ok(Math.abs(muro.resumen.inclinacion_grados.media - 6) < 2.5, 'inclinación en la pizarra: ' + muro.resumen.inclinacion_grados.media.toFixed(1));
+  assert.strictEqual(base.corte.cortado, false, 'el mediano de la R no está cortado');
+  const estrecho = M.resumenGrupo(juntar('A2B2', 'G5'), 10, { tolerancia: 0.12, pxPorMm: 20 });
+  assert.strictEqual(estrecho.corte.cortado, true, 'con una tolerancia mínima el mediano se corta');
   const largoMed = base.mediano.reduce((s, p) => s + G.longitud(p), 0);
-  assert.ok(largoMed > 60, 'el mediano recorre la n: ' + largoMed.toFixed(1));
+  assert.ok(largoMed > 20, 'el mediano recorre la R: ' + largoMed.toFixed(1));
+});
+prueba('partitura: orden y dirección de los trazos', () => {
+  assert.strictEqual(M.direccionTrazo([[0, 10], [0, 0]]), '↓');
+  assert.strictEqual(M.direccionTrazo([[0, 5], [10, 5]]), '→');
+  assert.strictEqual(M.direccionTrazo([[0, 10], [7, 0]]), '↘');
+  const o = [];
+  for (let k = 0; k <= 40; k++) o.push([5 * Math.cos(Math.PI / 2 + (2 * Math.PI * k) / 40), 5 * Math.sin(Math.PI / 2 + (2 * Math.PI * k) / 40)]);
+  assert.strictEqual(M.direccionTrazo(o), '↺', 'antihorario con y hacia arriba');
+  assert.strictEqual(M.direccionTrazo(o.slice().reverse()), '↻');
+  const bloques = S.bloquesPiloto(9);
+  const juntar = (cond) => [].concat(...bloques.filter((b) => b.bloque.condicion === cond).map((b) => b.ensayos.filter((e) => e.gesto === 'G5')));
+  const base = M.resumenGrupo(juntar('BASE'), 10);
+  assert.deepStrictEqual(base.partituras, [{ secuencia: '↓ ↘', n: 10 }]);
+  assert.strictEqual(base.resumen.consistencia_partitura.media, 100);
+  const muro = M.resumenGrupo(juntar('A2B2'), 10);
+  assert.ok(muro.resumen.consistencia_partitura.media < 100, 'en la pizarra la partitura varía');
+  assert.strictEqual(M.partitura({ trazos: [{ puntos: [[0, 0], [1, 1]] }] }), null, 'sin tiempo no hay partitura');
 });
 prueba('una repetición vacía no rompe el grupo', () => {
   const [b] = S.bloquesPiloto(4);
   const ens = b.ensayos.filter((e) => e.gesto === 'G1');
-  const r = M.resumenGrupo(ens.concat([{ id: 'x', gesto: 'G1', trazos: [] }]), 30);
+  const r = M.resumenGrupo(ens.concat([{ id: 'x', gesto: 'G1', trazos: [] }]), 10);
   assert.strictEqual(r.n, ens.length);
   assert.ok(Number.isFinite(r.resumen.ancho_mm.media));
   assert.strictEqual(M.resumenGrupo([], 30).n, 0);
@@ -229,9 +251,12 @@ prueba('pausas', () => {
 console.log('Banco');
 prueba('montaje: criterios de altura y rango de los montantes', () => {
   const r = AP.banco.calcularMontaje({ codoSobreAsiento: 230, hombroDePie: 1350, mesa: 720, asiento: 450 });
-  cerca(r.B0.codoObjetivo - r.B0.plano, 30, 1e-9);
+  cerca(r.B0.codoObjetivo - r.B0.bordeInferior, 30, 1e-9);
   cerca(r.B0.asientoNecesario + 230, r.B0.codoObjetivo, 1e-9);
-  cerca(r.B1.codoObjetivo - r.B1.bordeInferior, 20, 1e-9);
+  assert.strictEqual(r.B0.angulo, 15);
+  cerca(r.B1.codoObjetivo - r.B1.plano, 30, 1e-9);
+  cerca(r.B3.codoObjetivo - r.B3.bordeInferior, 20, 1e-9);
+  assert.ok(r.B3.centroHoja > r.B0.centroHoja, 'a 45° la hoja queda más alta que a 15°');
   assert.ok(Math.abs(r.B2.error) <= 12.5, 'error B2 ' + r.B2.error);
   assert.strictEqual(r.B2.agujeroTraba, r.B2.agujero + 2);
   const bajo = AP.banco.calcularMontaje({ hombroDePie: 1166 });

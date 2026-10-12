@@ -5,9 +5,9 @@
 <line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
 <line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
 <text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
-<text x="292" y="278.5" font-size="3.2">Montantes de muro (condición B2)</text>
+<text x="292" y="278.5" font-size="3.2">Montantes de muro · pizarra (condición B2)</text>
 <text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:10 y 1:2 en A3 · 2026-10</text>
-<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-03</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-04</text>
 <text x="22" y="24" font-size="3.4" font-weight="bold">Alzado del muro</text>
 <text x="22" y="28" font-size="2.4" fill="#555">escala 1:10</text>
 <line x1="45" y1="270" x2="150" y2="270" stroke="#111" stroke-width="0.6"/>

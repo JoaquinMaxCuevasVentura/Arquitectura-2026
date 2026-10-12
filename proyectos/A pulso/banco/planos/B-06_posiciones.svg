@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="297" fill="#fff"/>
+<rect x="10" y="10" width="400" height="277" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="290" y="265" width="120" height="22" fill="#fff" stroke="#111" stroke-width="0.35"/>
+<line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
+<line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
+<text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
+<text x="292" y="278.5" font-size="3.2">Las cuatro posiciones del plano (B0–B3)</text>
+<text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:25 en A3 · 2026-10</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-06</text>
+<text x="22" y="30" font-size="3.4" font-weight="bold">B0 · tablero a 15° (base)</text>
+<text x="22" y="34" font-size="2.4" fill="#555">escala 1:25</text>
+<text x="120" y="30" font-size="3.4" font-weight="bold">B1 · mesa horizontal</text>
+<text x="120" y="34" font-size="2.4" fill="#555">escala 1:25</text>
+<text x="218" y="30" font-size="3.4" font-weight="bold">B2 · pizarra, de pie</text>
+<text x="218" y="34" font-size="2.4" fill="#555">escala 1:25</text>
+<text x="316" y="30" font-size="3.4" font-weight="bold">B3 · atril a 45°</text>
+<text x="316" y="34" font-size="2.4" fill="#555">escala 1:25</text>
+<line x1="18" y1="250" x2="106" y2="250" stroke="#111" stroke-width="0.5"/>
+<rect x="58" y="221.2" width="32" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="60" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="86.8" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="34" y="227.6" width="16" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<line x1="42" y1="250" x2="42" y2="228.8" stroke="#111" stroke-width="0.5"/>
+<line x1="34" y1="250" x2="28.5" y2="250" stroke="#555" stroke-width="0.15"/>
+<line x1="34" y1="227.6" x2="28.5" y2="227.6" stroke="#555" stroke-width="0.15"/>
+<line x1="30" y1="251.5" x2="30" y2="226.1" stroke="#555" stroke-width="0.18"/>
+<line x1="29" y1="251" x2="31" y2="249" stroke="#111" stroke-width="0.4"/>
+<line x1="29" y1="228.6" x2="31" y2="226.6" stroke="#111" stroke-width="0.4"/>
+<text x="29" y="238.8" font-size="2.4" text-anchor="middle" transform="rotate(-90 29 238.8)">560</text>
+<polygon points="62.8,221.2 86,221.2 86,214.76" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<polygon points="62,219.6 85.18,213.39 84.81,212 61.63,218.21" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.35"/>
+<line x1="22" y1="218.4" x2="98" y2="218.4" stroke="#c8433a" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="22" y="217.6" font-size="2.1" text-anchor="start" fill="#c8433a">codo 790</text>
+<line x1="22" y1="215.46" x2="98" y2="215.46" stroke="#1593c7" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="22" y="214.66" font-size="2.1" text-anchor="start" fill="#1593c7">centro de la hoja 864</text>
+<line x1="116" y1="250" x2="204" y2="250" stroke="#111" stroke-width="0.5"/>
+<rect x="156" y="221.2" width="32" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="158" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="184.8" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="132" y="227.76" width="16" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<line x1="140" y1="250" x2="140" y2="228.96" stroke="#111" stroke-width="0.5"/>
+<line x1="132" y1="250" x2="126.5" y2="250" stroke="#555" stroke-width="0.15"/>
+<line x1="132" y1="227.76" x2="126.5" y2="227.76" stroke="#555" stroke-width="0.15"/>
+<line x1="128" y1="251.5" x2="128" y2="226.26" stroke="#555" stroke-width="0.18"/>
+<line x1="127" y1="251" x2="129" y2="249" stroke="#111" stroke-width="0.4"/>
+<line x1="127" y1="228.76" x2="129" y2="226.76" stroke="#111" stroke-width="0.4"/>
+<text x="127" y="238.88" font-size="2.4" text-anchor="middle" transform="rotate(-90 127 238.88)">556</text>
+<rect x="160" y="219.76" width="24" height="1.44" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.35"/>
+<line x1="120" y1="218.56" x2="196" y2="218.56" stroke="#c8433a" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="120" y="217.76" font-size="2.1" text-anchor="start" fill="#c8433a">codo 786</text>
+<line x1="214" y1="250" x2="294" y2="250" stroke="#111" stroke-width="0.5"/>
+<rect x="274" y="166" width="2.4" height="84" fill="#ddd" stroke="#111" stroke-width="0.3"/>
+<rect x="273.28" y="170" width="0.72" height="30" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="271.84" y="188.36" width="1.44" height="24" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.35"/>
+<line x1="218" y1="196" x2="294" y2="196" stroke="#c8433a" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="218" y="195.2" font-size="2.1" text-anchor="start" fill="#c8433a">hombro 1350</text>
+<line x1="274" y1="250" x2="279.5" y2="250" stroke="#555" stroke-width="0.15"/>
+<line x1="274" y1="191" x2="279.5" y2="191" stroke="#555" stroke-width="0.15"/>
+<line x1="278" y1="251.5" x2="278" y2="189.5" stroke="#555" stroke-width="0.18"/>
+<line x1="277" y1="251" x2="279" y2="249" stroke="#111" stroke-width="0.4"/>
+<line x1="277" y1="192" x2="279" y2="190" stroke="#111" stroke-width="0.4"/>
+<text x="277" y="220.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 277 220.5)">1475</text>
+<line x1="312" y1="250" x2="400" y2="250" stroke="#111" stroke-width="0.5"/>
+<rect x="352" y="221.2" width="32" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="354" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="380.8" y="222.4" width="1.2" height="27.6" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<rect x="328" y="227.4" width="16" height="1.2" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<line x1="336" y1="250" x2="336" y2="228.6" stroke="#111" stroke-width="0.5"/>
+<line x1="328" y1="250" x2="322.5" y2="250" stroke="#555" stroke-width="0.15"/>
+<line x1="328" y1="227.4" x2="322.5" y2="227.4" stroke="#555" stroke-width="0.15"/>
+<line x1="324" y1="251.5" x2="324" y2="225.9" stroke="#555" stroke-width="0.18"/>
+<line x1="323" y1="251" x2="325" y2="249" stroke="#111" stroke-width="0.4"/>
+<line x1="323" y1="228.4" x2="325" y2="226.4" stroke="#111" stroke-width="0.4"/>
+<text x="323" y="238.7" font-size="2.4" text-anchor="middle" transform="rotate(-90 323 238.7)">565</text>
+<polygon points="356.8,221.2 374.4,221.2 374.4,202.8" fill="#e8e3d7" stroke="#111" stroke-width="0.35"/>
+<polygon points="356,219 372.97,202.03 371.95,201.01 354.98,217.98" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.35"/>
+<line x1="316" y1="218.2" x2="392" y2="218.2" stroke="#c8433a" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="316" y="217.4" font-size="2.1" text-anchor="start" fill="#c8433a">codo 795</text>
+<line x1="316" y1="207.69" x2="392" y2="207.69" stroke="#1593c7" stroke-width="0.25" stroke-dasharray="1.2 0.8"/>
+<text x="316" y="206.89" font-size="2.1" text-anchor="start" fill="#1593c7">centro de la hoja 1058</text>
+<text x="22" y="262" font-size="2.6">Ejemplo con codo sobre el asiento 230, hombro de pie 1350 y mesa 720. Para cada persona, usar la calculadora del banco (instrumento/banco.html).</text>
+<text x="22" y="265.77" font-size="2.6">Criterios del proyecto: B0, codo 30 mm sobre el borde inferior del tablero a 15°; B1, codo 30 mm sobre la mesa; B2, centro de la hoja a la altura del hombro;</text>
+<text x="22" y="269.54" font-size="2.6">B3, codo 20 mm sobre el borde inferior del tablero a 45°.</text>
+</svg>

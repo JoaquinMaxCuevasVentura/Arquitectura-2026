@@ -89,7 +89,7 @@
             </select>
           </label>
           <label class="campo">Contraste mínimo <input id="delta" type="number" min="5" max="200" value="50"></label>
-          <label class="campo">Mancha mínima (mm²) <input id="areaMin" type="number" min="0" step="0.5" value="1"></label>
+          <label class="campo">Mancha mínima (mm²) <input id="areaMin" type="number" min="0" step="0.05" value="0.1"></label>
         </div>
         <div class="fila" style="margin-top:12px">
           <button id="procesar" disabled>Procesar celdas</button>
@@ -115,7 +115,13 @@
   'use strict';
   const { nucleo: N, geometria: G, imagen: I, ui: U } = window.APulso;
   const $ = U.$;
-  const PX_POR_MM = 8; // resolución de cada celda rectificada
+  // Resolución de cada celda rectificada: más fina para la letra técnica pequeña (h ≤ 12 mm).
+  let PX_POR_MM = 16;
+  let areaManual = false;
+  function ajustarAPauta() {
+    PX_POR_MM = pauta.alturaX <= 12 ? 16 : 8;
+    if (!areaManual) $('#areaMin').value = pauta.alturaX <= 12 ? 0.1 : 1;
+  }
 
   const selPauta = $('#pauta');
   for (const p of N.PRESETS) selPauta.append(U.el('option', { value: p.codigo, texto: p.codigo + ' · ' + p.nombre }));
@@ -124,6 +130,7 @@
   let img = null; // { rgba, w, h, gris }
   let marcas = [];
   let pauta = N.pautaDesdeCodigo(selPauta.value);
+  ajustarAPauta();
   let resultados = []; // por celda
   let H = null;
 
@@ -181,6 +188,7 @@
 
   selPauta.addEventListener('change', () => {
     pauta = N.pautaDesdeCodigo(selPauta.value);
+    ajustarAPauta();
     filas = filasPorDefecto();
     dibujarFilas();
     resultados = [];
@@ -319,7 +327,7 @@
       delta: parseFloat($('#delta').value) || 50,
       desenfoque: 1,
       areaMin: (parseFloat($('#areaMin').value) || 0) * PX_POR_MM * PX_POR_MM,
-      largoEspolon: 1.5 * PX_POR_MM,
+      largoEspolon: Math.min(1.5, 0.12 * pauta.alturaX) * PX_POR_MM,
     };
     const anterior = resultados;
     resultados = pauta.celdas.map((c, i) => {
@@ -328,7 +336,7 @@
       const base = N.baseEnCelda(c);
       const aMm = ([px, py]) => [Math.round((px / PX_POR_MM) * 100) / 100, Math.round((base - py / PX_POR_MM) * 100) / 100];
       const polis = res.polis.map((poli) => (poli.length > 2 ? G.simplificar(G.suavizar(poli, 5), 0.8) : poli).map(aMm));
-      const vaciaAuto = res.areaTinta < 4 * PX_POR_MM * PX_POR_MM;
+      const vaciaAuto = res.areaTinta < 0.1 * pauta.alturaX * PX_POR_MM * PX_POR_MM;
       return {
         celda: c,
         rect,
@@ -344,6 +352,7 @@
   }
   $('#procesar').addEventListener('click', procesar);
   ['canal', 'delta', 'areaMin'].forEach((id) => $('#' + id).addEventListener('change', () => resultados.length && procesar()));
+  $('#areaMin').addEventListener('input', () => (areaManual = true));
 
   function dibujarCeldas() {
     const cont = $('#celdas');

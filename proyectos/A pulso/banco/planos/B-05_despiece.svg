@@ -7,7 +7,7 @@
 <text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
 <text x="292" y="278.5" font-size="3.2">Despiece en medio tablero de 1220 × 1220 × 18</text>
 <text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:10 en A3 · 2026-10</text>
-<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-04</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-05</text>
 <rect x="30" y="30" width="122" height="122" fill="#f7f4ec" stroke="#111" stroke-width="0.5"/>
 <rect x="30" y="30" width="60" height="60" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
 <text x="60" y="60.8" font-size="2.1" text-anchor="middle" fill="#111">1 · tablero 600 × 600</text>
@@ -15,7 +15,14 @@
 <polygon points="90.4,30 90.4,76 136.4,76" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
 <text x="124" y="41" font-size="2.3" text-anchor="start" fill="#111">3a</text>
 <text x="100" y="68" font-size="2.3" text-anchor="start" fill="#111">3b</text>
-<text x="113.4" y="27.5" font-size="2.1" text-anchor="middle" fill="#111">3 · cartelas: cuadrado 460 × 460 cortado en diagonal</text>
+<text x="113.4" y="27.5" font-size="2.1" text-anchor="middle" fill="#111">3 · cartelas del atril: cuadrado 460 × 460 en diagonal</text>
+<polygon points="30,117.8 90,117.8 90,133.9" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<polygon points="30,117.8 30,133.9 90,133.9" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<text x="60" y="126.6" font-size="2.1" text-anchor="middle" fill="#111">7 · cartelas de la cuña: 600 × 161 en diagonal</text>
+<rect x="30" y="134.3" width="56.4" height="7" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<text x="58.2" y="138.6" font-size="2.1" text-anchor="middle" fill="#111">8 · travesaño de la cuña 564 × 70</text>
+<rect x="30" y="141.7" width="60" height="3" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<text x="60" y="144" font-size="2.1" text-anchor="middle" fill="#111">9 · tope de la cuña 600 × 30</text>
 <rect x="30" y="90.4" width="60" height="4.2" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
 <text x="60" y="93.3" font-size="2.1" text-anchor="middle" fill="#111">2 · listón 600 × 42</text>
 <rect x="30" y="95" width="60" height="4.2" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
@@ -53,31 +60,31 @@
 <text x="196" y="42" font-size="2.6">Tablero de escritura</text>
 <text x="240" y="42" font-size="2.6">1</text>
 <text x="254" y="42" font-size="2.6">600 × 600 × 18</text>
-<text x="300" y="42" font-size="2.6">B0, B1, B2</text>
+<text x="300" y="42" font-size="2.6">todas</text>
 <line x1="185" y1="43.6" x2="400" y2="43.6" stroke="#999" stroke-width="0.15"/>
 <text x="185" y="48" font-size="2.6">2</text>
 <text x="196" y="48" font-size="2.6">Listón del tablero</text>
 <text x="240" y="48" font-size="2.6">2</text>
 <text x="254" y="48" font-size="2.6">600 × 42 × 18</text>
-<text x="300" y="48" font-size="2.6">apoyo en las tres posiciones</text>
+<text x="300" y="48" font-size="2.6">apoyo en todas</text>
 <line x1="185" y1="49.6" x2="400" y2="49.6" stroke="#999" stroke-width="0.15"/>
 <text x="185" y="54" font-size="2.6">3</text>
 <text x="196" y="54" font-size="2.6">Cartela del atril</text>
 <text x="240" y="54" font-size="2.6">2</text>
 <text x="254" y="54" font-size="2.6">triángulo 460 × 460, despunte 30</text>
-<text x="300" y="54" font-size="2.6">B1</text>
+<text x="300" y="54" font-size="2.6">B3</text>
 <line x1="185" y1="55.6" x2="400" y2="55.6" stroke="#999" stroke-width="0.15"/>
 <text x="185" y="60" font-size="2.6">4</text>
 <text x="196" y="60" font-size="2.6">Travesaño del atril</text>
 <text x="240" y="60" font-size="2.6">2</text>
 <text x="254" y="60" font-size="2.6">564 × 70 × 18</text>
-<text x="300" y="60" font-size="2.6">B1</text>
+<text x="300" y="60" font-size="2.6">B3</text>
 <line x1="185" y1="61.6" x2="400" y2="61.6" stroke="#999" stroke-width="0.15"/>
 <text x="185" y="66" font-size="2.6">5</text>
-<text x="196" y="66" font-size="2.6">Tope transversal</text>
+<text x="196" y="66" font-size="2.6">Tope del atril</text>
 <text x="240" y="66" font-size="2.6">1</text>
 <text x="254" y="66" font-size="2.6">600 × 30 × 18</text>
-<text x="300" y="66" font-size="2.6">B1</text>
+<text x="300" y="66" font-size="2.6">B3</text>
 <line x1="185" y1="67.6" x2="400" y2="67.6" stroke="#999" stroke-width="0.15"/>
 <text x="185" y="72" font-size="2.6">6</text>
 <text x="196" y="72" font-size="2.6">Montante de muro</text>
@@ -85,17 +92,34 @@
 <text x="254" y="72" font-size="2.6">90 × 750 × 18</text>
 <text x="300" y="72" font-size="2.6">B2</text>
 <line x1="185" y1="73.6" x2="400" y2="73.6" stroke="#999" stroke-width="0.15"/>
-<text x="185" y="84" font-size="3.4" font-weight="bold">Herrajes y materiales</text>
-<text x="185" y="91" font-size="2.6">· Medio tablero de terciado o multilaminado de 18 mm (1220 × 1220), una cara lisa.</text>
-<text x="185" y="94.77" font-size="2.6">· 4 pasadores: varilla lisa de acero Ø8 × 32 (dos de apoyo y dos de traba).</text>
-<text x="185" y="98.54" font-size="2.6">· 6 tarugos Ø8 y 6 tornillos 5 × 60 (montantes al muro).</text>
-<text x="185" y="102.31" font-size="2.6">· 30 tornillos para madera 4 × 30 y cola vinílica.</text>
-<text x="185" y="106.08" font-size="2.6">· 4 prensas pequeñas (sargentos de 10 cm) para las plantillas de topes.</text>
-<text x="185" y="109.85" font-size="2.6">· Tiento: varilla de madera Ø15 × 600 con una punta de espuma forrada en tela.</text>
-<text x="185" y="113.62" font-size="2.6">· Plantillas de topes C1–C3: MDF de 5 mm cortado con láser (ver banco/plantillas).</text>
-<text x="185" y="117.39" font-size="2.6">· D1: 4 hojas de lija de grano 150. D2: goma eva de 3–5 mm, tamaño A3 o mayor.</text>
-<text x="185" y="121.16" font-size="2.6">· Cinta de papel, fieltro antideslizante, inclinómetro (aplicación del teléfono).</text>
-<text x="185" y="124.93" font-size="2.6"></text>
-<text x="185" y="128.7" font-size="2.6">Ancho de corte supuesto: 4 mm. Verificar las medidas reales del tablero</text>
-<text x="185" y="132.47" font-size="2.6">antes de cortar; las piezas 2, 4 y 5 pueden salir de recortes.</text>
+<text x="185" y="78" font-size="2.6">7</text>
+<text x="196" y="78" font-size="2.6">Cartela de la cuña</text>
+<text x="240" y="78" font-size="2.6">2</text>
+<text x="254" y="78" font-size="2.6">triángulo 600 × 161, despunte 20</text>
+<text x="300" y="78" font-size="2.6">B0</text>
+<line x1="185" y1="79.6" x2="400" y2="79.6" stroke="#999" stroke-width="0.15"/>
+<text x="185" y="84" font-size="2.6">8</text>
+<text x="196" y="84" font-size="2.6">Travesaño de la cuña</text>
+<text x="240" y="84" font-size="2.6">1</text>
+<text x="254" y="84" font-size="2.6">564 × 70 × 18</text>
+<text x="300" y="84" font-size="2.6">B0</text>
+<line x1="185" y1="85.6" x2="400" y2="85.6" stroke="#999" stroke-width="0.15"/>
+<text x="185" y="90" font-size="2.6">9</text>
+<text x="196" y="90" font-size="2.6">Tope de la cuña</text>
+<text x="240" y="90" font-size="2.6">1</text>
+<text x="254" y="90" font-size="2.6">600 × 30 × 18</text>
+<text x="300" y="90" font-size="2.6">B0</text>
+<line x1="185" y1="91.6" x2="400" y2="91.6" stroke="#999" stroke-width="0.15"/>
+<text x="185" y="102" font-size="3.4" font-weight="bold">Herrajes y materiales</text>
+<text x="185" y="109" font-size="2.6">· Medio tablero de terciado o multilaminado de 18 mm (1220 × 1220), una cara lisa.</text>
+<text x="185" y="112.77" font-size="2.6">· 4 pasadores: varilla lisa de acero Ø8 × 32 (dos de apoyo y dos de traba).</text>
+<text x="185" y="116.54" font-size="2.6">· 6 tarugos Ø8 y 6 tornillos 5 × 60 (montantes al muro).</text>
+<text x="185" y="120.31" font-size="2.6">· 30 tornillos para madera 4 × 30 y cola vinílica.</text>
+<text x="185" y="124.08" font-size="2.6">· Instrumentos de dibujo (C2, C3): regla T de 60 cm, escuadras de 45° y de 30/60°,</text>
+<text x="185" y="127.85" font-size="2.6">  plantilla de rotulación ISO 3098 de 10 mm y estilógrafo de 1,0 (tipo B: trazo = h/10).</text>
+<text x="185" y="131.62" font-size="2.6">· Herramientas (D): portaminas 0,5 HB (base), estilógrafo 0,35 o 0,5, papel vegetal A4.</text>
+<text x="185" y="135.39" font-size="2.6">· Cinta de papel, fieltro antideslizante, inclinómetro (aplicación del teléfono).</text>
+<text x="185" y="139.16" font-size="2.6"></text>
+<text x="185" y="142.93" font-size="2.6">Ancho de corte supuesto: 4 mm. Verificar las medidas reales del tablero</text>
+<text x="185" y="146.7" font-size="2.6">antes de cortar; listones, travesaños y topes pueden salir de recortes.</text>
 </svg>

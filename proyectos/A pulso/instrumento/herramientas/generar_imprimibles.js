@@ -24,15 +24,17 @@ function cargarPlaywright() {
   throw new Error('No encontré Playwright.');
 }
 
+const G6 = ['G6', 'G6', 'G6', 'G6', 'G6'];
+// [archivo, código, gestos por fila, con líneas guía]
 const PAUTAS = [
-  ['pauta_piloto_A3H-h30-L-3x5.pdf', 'A3H-h30-L-3x5', ['G1', 'G2', 'G5']],
-  ['pauta_piloto_intensificado_A3H-h60-L-2x3.pdf', 'A3H-h60-L-2x3', null],
-  ['pauta_serie_letras_A3H-h30-L-4x5.pdf', 'A3H-h30-L-4x5', null],
-  ['pauta_serie_palabra_A3H-h30-P-3x1.pdf', 'A3H-h30-P-3x1', ['G6', 'G6', 'G6']],
-  ['pauta_A4V-h30-L-4x3.pdf', 'A4V-h30-L-4x3', null],
-  ['pauta_A4H-h30-L-2x4.pdf', 'A4H-h30-L-2x4', null],
-  ['pauta_escala_A3H-h10-L-6x10.pdf', 'A3H-h10-L-6x10', null],
-  ['pauta_escala_A3V-h120-L-1x1.pdf', 'A3V-h120-L-1x1', null],
+  ['pauta_piloto_A4H-h10-L-3x5.pdf', 'A4H-h10-L-3x5', ['G1', 'G3', 'G5'], true],
+  ['pauta_serie_letras_A4H-h10-L-4x5.pdf', 'A4H-h10-L-4x5', null, true],
+  ['pauta_serie_letras_sin-guias_A4H-h10-L-4x5.pdf', 'A4H-h10-L-4x5', null, false],
+  ['pauta_serie_rotulo_A4H-h10-L-5x2.pdf', 'A4H-h10-L-5x2', G6, true],
+  ['pauta_serie_rotulo_sin-guias_A4H-h10-L-5x2.pdf', 'A4H-h10-L-5x2', G6, false],
+  ['pauta_escala_A4H-h5-L-6x8.pdf', 'A4H-h5-L-6x8', null, true],
+  ['pauta_escala_A4H-h20-L-3x4.pdf', 'A4H-h20-L-3x4', null, true],
+  ['pauta_titulos_A3H-h30-L-3x5.pdf', 'A3H-h30-L-3x5', null, true],
 ];
 
 const FICHAS = [
@@ -58,9 +60,10 @@ function paginaSVG(svgs, W, H) {
   const navegador = await chromium.launch();
   const pagina = await navegador.newPage();
 
-  for (const [nombre, codigo, filas] of PAUTAS) {
+  for (const f of fs.readdirSync(IMPRIMIBLES)) if (f.endsWith('.pdf')) fs.unlinkSync(path.join(IMPRIMIBLES, f));
+  for (const [nombre, codigo, filas, guias] of PAUTAS) {
     const pauta = AP.nucleo.pautaDesdeCodigo(codigo);
-    const svg = AP.dibujo.svgPauta(pauta, { filas });
+    const svg = AP.dibujo.svgPauta(pauta, { filas, guias });
     await pagina.setContent(paginaSVG([svg], pauta.W, pauta.H));
     await pagina.pdf({ path: path.join(IMPRIMIBLES, nombre), preferCSSPageSize: true, printBackground: true });
     console.log('pauta', nombre);

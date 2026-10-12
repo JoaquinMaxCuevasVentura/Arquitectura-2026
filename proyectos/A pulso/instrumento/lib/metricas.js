@@ -85,17 +85,17 @@
   }
 
   /**
-   * Inclinación de los tramos casi verticales (dentro de ±35°), ponderada por su largo: la medida
-   * tipográfica de la inclinación. Positiva si la parte superior va hacia la derecha.
+   * Inclinación tipográfica: dirección dominante de los tramos casi verticales (a menos de 30° de la
+   * vertical). Se toma el pico del histograma de ángulos ponderado por el largo, y se promedian los
+   * tramos a ±5° del pico; así las astas mandan y las diagonales (la pierna de la R, los lados de la A)
+   * no arrastran la medida. Positiva si la parte superior va hacia la derecha.
    * Devuelve null si los tramos casi verticales suman menos de 0,3 h.
    */
   function inclinacion(polis, alturaX) {
-    let sx = 0;
-    let sy = 0;
-    let largo = 0;
-    const limite = Math.cos((35 * Math.PI) / 180);
+    const tramos = [];
+    let total = 0;
     for (const poli of polis) {
-      const r = G().remuestrear(poli, 0.5);
+      const r = G().remuestrear(poli, Math.max(0.1, alturaX / 60));
       for (let i = 1; i < r.length; i++) {
         let dx = r[i][0] - r[i - 1][0];
         let dy = r[i][1] - r[i - 1][1];
@@ -105,14 +105,33 @@
           dx = -dx;
           dy = -dy;
         }
-        if (dy / l < limite) continue;
-        sx += dx;
-        sy += dy;
-        largo += l;
+        const ang = (Math.atan2(dx, dy) * 180) / Math.PI;
+        if (Math.abs(ang) > 30) continue;
+        tramos.push([ang, l]);
+        total += l;
       }
     }
-    if (largo < 0.3 * alturaX) return null;
-    return (Math.atan2(sx, sy) * 180) / Math.PI;
+    if (total < 0.3 * alturaX) return null;
+    const hist = new Float64Array(61);
+    for (const [a, l] of tramos) hist[Math.round(a) + 30] += l;
+    let pico = 0;
+    let mejor = -1;
+    for (let i = 0; i < 61; i++) {
+      let v = 0;
+      for (let k = -3; k <= 3; k++) if (i + k >= 0 && i + k < 61) v += hist[i + k];
+      if (v > mejor) {
+        mejor = v;
+        pico = i - 30;
+      }
+    }
+    let sa = 0;
+    let sl = 0;
+    for (const [a, l] of tramos)
+      if (Math.abs(a - pico) <= 5) {
+        sa += a * l;
+        sl += l;
+      }
+    return sl ? sa / sl : pico;
   }
 
   /** Razón entre los ejes mayor y menor de la nube de puntos (1 = redonda). */
@@ -140,6 +159,42 @@
     const l1 = tr / 2 + disc;
     const l2 = Math.max(1e-9, tr / 2 - disc);
     return Math.sqrt(l1 / l2);
+  }
+
+  const FLECHAS = ['→', '↗', '↑', '↖', '←', '↙', '↓', '↘'];
+
+  /**
+   * Dirección de un trazo (y hacia arriba): una de ocho flechas según la cuerda del primer al último
+   * punto, o un sentido de giro (↺ antihorario, ↻ horario) si el trazo vuelve cerca de donde empezó.
+   */
+  function direccionTrazo(puntos) {
+    const pts = puntos.map((p) => [p[0], p[1]]);
+    const largo = G().longitud(pts);
+    if (pts.length < 2 || largo < 0.3) return '·';
+    const a = pts[0];
+    const b = pts[pts.length - 1];
+    if (G().dist(a, b) < 0.35 * largo) {
+      let area = 0;
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        const q = pts[(i + 1) % pts.length];
+        area += p[0] * q[1] - q[0] * p[1];
+      }
+      return area > 0 ? '↺' : '↻';
+    }
+    const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
+    const k = ((Math.round(ang / (Math.PI / 4)) % 8) + 8) % 8;
+    return FLECHAS[k];
+  }
+
+  /**
+   * Partitura de una repetición: el orden y la dirección de sus trazos, por ejemplo «↓ ↺».
+   * Solo existe con datos de tableta, que conservan el orden de trazado.
+   */
+  function partitura(ensayo) {
+    const conTiempo = ensayo.trazos.length && ensayo.trazos.every((t) => t.puntos.length && t.puntos[0].length > 2);
+    if (!conTiempo) return null;
+    return ensayo.trazos.map((t) => direccionTrazo(t.puntos)).join(' ');
   }
 
   /** Cuenta intervalos de al menos PAUSA_MIN_MS en que la velocidad suavizada queda bajo el umbral. */
@@ -203,17 +258,23 @@
     return { conteo, w, h, x0, y1, pxPorMm: o.pxPorMm, n: listaPolis.length, tolerancia: o.tolerancia };
   }
 
-  /**
-   * Trazo mediano: esqueleto de la región por la que pasa al menos la mitad de las repeticiones.
-   * No necesita que las repeticiones tengan el mismo orden ni la misma dirección de trazado.
-   */
-  function trazoMediano(den, fraccion) {
+  /** Región por la que pasa al menos la fracción indicada de las repeticiones. */
+  function mascaraMediana(den, fraccion) {
     const f = fraccion == null ? 0.5 : fraccion;
     const minimo = Math.max(1, Math.ceil(den.n * f));
     const suave = I().desenfocar(den.conteo, den.w, den.h, 1);
     const mask = new Uint8Array(den.w * den.h);
     for (let i = 0; i < mask.length; i++) mask[i] = suave[i] >= minimo - 0.25 ? 1 : 0;
     I().quitarMotas(mask, den.w, den.h, Math.max(4, Math.round((den.tolerancia * den.pxPorMm) ** 2)));
+    return mask;
+  }
+
+  /**
+   * Trazo mediano: esqueleto de la región por la que pasa al menos la mitad de las repeticiones.
+   * No necesita que las repeticiones tengan el mismo orden ni la misma dirección de trazado.
+   */
+  function trazoMediano(den, fraccion) {
+    const mask = mascaraMediana(den, fraccion);
     const esq = I().limpiarEscalones(I().adelgazar(mask, den.w, den.h), den.w, den.h);
     const polisPx = I().esqueletoAPolilineas(esq, den.w, den.h, 2.5 * den.tolerancia * den.pxPorMm);
     const aMm = (p) => [den.x0 + p[0] / den.pxPorMm, den.y1 - p[1] / den.pxPorMm];
@@ -221,6 +282,23 @@
       .map((poli) => G().simplificar(G().suavizar(poli, 5), 0.3).map(aMm))
       .filter((poli) => poli.length > 1 && G().longitud(poli) > den.tolerancia);
     return polis;
+  }
+
+  /**
+   * ¿Se cortó el mediano? Compara las piezas de la región mediana con las piezas de una repetición típica
+   * (dibujadas con el mismo grosor de tolerancia). Una R tiene una pieza; «PLANTA 1:50», varias.
+   */
+  function piezasMediano(den, listaPolis) {
+    const piezas = I().etiquetar(mascaraMediana(den), den.w, den.h).componentes.length;
+    const aPx = (p) => [(p[0] - den.x0) * den.pxPorMm, (den.y1 - p[1]) * den.pxPorMm];
+    const porRep = listaPolis
+      .map((polis) => {
+        const m = I().rasterizarGrueso(polis.map((poli) => poli.map(aPx)), den.w, den.h, den.tolerancia * den.pxPorMm);
+        return I().etiquetar(m, den.w, den.h).componentes.length;
+      })
+      .sort((a, b) => a - b);
+    const tipicas = porRep.length ? porRep[Math.floor(porRep.length / 2)] : 0;
+    return { piezas, tipicas, cortado: piezas > tipicas };
   }
 
   /** Distancia media (mm) de una repetición al trazo mediano. */
@@ -260,24 +338,34 @@
       m.dispersion_mm = dispersion(lista[i], mediano);
       return m;
     });
+    // partituras: cuántas repeticiones siguen cada orden de trazos
+    const cuenta = new Map();
+    for (const e of ensayos) {
+      const p = partitura(e);
+      if (p != null) cuenta.set(p, (cuenta.get(p) || 0) + 1);
+    }
+    const partituras = [...cuenta.entries()].map(([secuencia, n]) => ({ secuencia, n })).sort((x, y) => y.n - x.n);
+    ensayos.forEach((e, i) => (porEnsayo[i].partitura = partitura(e)));
     const claves = new Set();
     for (const m of porEnsayo) for (const k of Object.keys(m)) claves.add(k);
     const resumen = {};
-    for (const k of claves) resumen[k] = mediaDE(porEnsayo.map((m) => m[k]));
-    const piezasMediano = mediano.length;
-    return { n: ensayos.length, ensayos, alineadas: lista, densidad: den, mediano, porEnsayo, resumen, piezasMediano };
+    for (const k of claves) if (k !== 'partitura') resumen[k] = mediaDE(porEnsayo.map((m) => m[k]));
+    const conPartitura = partituras.reduce((t, p) => t + p.n, 0);
+    resumen.consistencia_partitura = conPartitura ? { media: (100 * partituras[0].n) / conPartitura, de: 0, n: conPartitura } : null;
+    const corte = lista.length ? piezasMediano(den, lista) : { piezas: 0, tipicas: 0, cortado: false };
+    return { n: ensayos.length, ensayos, partituras, alineadas: lista, densidad: den, mediano, porEnsayo, resumen, corte };
   }
 
   /** Nombres legibles de las métricas para tablas y láminas. */
   const ETIQUETAS = {
     ancho_mm: 'Ancho (mm)',
     alto_mm: 'Alto (mm)',
-    ancho_h: 'Ancho / altura x',
-    alto_h: 'Alto / altura x',
+    ancho_h: 'Ancho / h',
+    alto_h: 'Alto / h',
     bajo_base_mm: 'Bajo la línea base (mm)',
-    sobre_altura_x_mm: 'Sobre la altura x (mm)',
+    sobre_altura_x_mm: 'Sobre la altura h (mm)',
     recorrido_mm: 'Recorrido (mm)',
-    inclinacion_grados: 'Inclinación de los tramos verticales (°)',
+    inclinacion_grados: 'Inclinación de las astas (°)',
     eje_grados: 'Eje de la forma alargada (°)',
     piezas: 'Piezas del trazo',
     componentes: 'Manchas separadas',
@@ -290,6 +378,7 @@
     presion_media: 'Presión media',
     presion_de: 'Variación de presión (DE)',
     dispersion_mm: 'Dispersión respecto del mediano (mm)',
+    consistencia_partitura: 'Repeticiones con la partitura más frecuente (%)',
   };
 
   AP.metricas = {
@@ -298,9 +387,12 @@
     metricasEnsayo,
     inclinacion,
     alargamiento,
+    direccionTrazo,
+    partitura,
     contarPausas,
     densidad,
     trazoMediano,
+    piezasMediano,
     dispersion,
     mediaDE,
     resumenGrupo,

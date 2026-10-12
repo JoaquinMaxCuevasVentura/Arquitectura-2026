@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="297" fill="#fff"/>
+<rect x="10" y="10" width="400" height="277" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="290" y="265" width="120" height="22" fill="#fff" stroke="#111" stroke-width="0.35"/>
+<line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
+<line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
+<text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
+<text x="292" y="278.5" font-size="3.2">Atril de 45° (condición B3, opcional)</text>
+<text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:5 en A3 · 2026-10</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-03</text>
+<text x="22" y="24" font-size="3.4" font-weight="bold">Alzado lateral con el tablero</text>
+<text x="22" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<polygon points="51,175 137,175 137,83 51,169" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
+<polygon points="51,169 55.24,164.76 52.7,162.21 48.45,166.45" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<polygon points="55.24,164.76 61.18,158.82 58.64,156.27 52.7,162.21" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<polygon points="49.87,165.04 134.72,80.19 132.18,77.64 47.32,162.49" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.5"/>
+<polygon points="128.5,91.5 134.44,85.56 131.89,83.02 125.95,88.96" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<rect x="133.4" y="161" width="3.6" height="14" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<line x1="41" y1="175" x2="145" y2="175" stroke="#111" stroke-width="0.6"/>
+<text x="145" y="174" font-size="2.4" text-anchor="end" fill="#111">mesa</text>
+<line x1="51" y1="175" x2="51" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="137" y1="175" x2="137" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="49.5" y1="183" x2="138.5" y2="183" stroke="#555" stroke-width="0.18"/>
+<line x1="50" y1="184" x2="52" y2="182" stroke="#111" stroke-width="0.4"/>
+<line x1="136" y1="184" x2="138" y2="182" stroke="#111" stroke-width="0.4"/>
+<text x="94" y="182.1" font-size="2.4" text-anchor="middle">430</text>
+<line x1="45" y1="175" x2="45" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="51" y1="175" x2="51" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="43.5" y1="183" x2="52.5" y2="183" stroke="#555" stroke-width="0.18"/>
+<line x1="44" y1="184" x2="46" y2="182" stroke="#111" stroke-width="0.4"/>
+<line x1="50" y1="184" x2="52" y2="182" stroke="#111" stroke-width="0.4"/>
+<text x="48" y="182.1" font-size="2.4" text-anchor="middle">30</text>
+<line x1="137" y1="175" x2="146.5" y2="175" stroke="#555" stroke-width="0.15"/>
+<line x1="137" y1="83" x2="146.5" y2="83" stroke="#555" stroke-width="0.15"/>
+<line x1="145" y1="176.5" x2="145" y2="81.5" stroke="#555" stroke-width="0.18"/>
+<line x1="144" y1="176" x2="146" y2="174" stroke="#111" stroke-width="0.4"/>
+<line x1="144" y1="84" x2="146" y2="82" stroke="#111" stroke-width="0.4"/>
+<text x="144" y="129" font-size="2.4" text-anchor="middle" transform="rotate(-90 144 129)">460</text>
+<circle cx="103.89" cy="105.93" r="0.9" fill="#1593c7" stroke="#1593c7" stroke-width="0.25"/>
+<text x="100.89" y="103.93" font-size="2.4" text-anchor="end" fill="#1593c7">centro de la hoja</text>
+<text x="69" y="173.4" font-size="3" text-anchor="start" fill="#111">45°</text>
+<line x1="47.32" y1="175" x2="35.82" y2="175" stroke="#555" stroke-width="0.15"/>
+<line x1="47.32" y1="162.49" x2="35.82" y2="162.49" stroke="#555" stroke-width="0.15"/>
+<line x1="37.32" y1="176.5" x2="37.32" y2="160.99" stroke="#555" stroke-width="0.18"/>
+<line x1="36.32" y1="176" x2="38.32" y2="174" stroke="#111" stroke-width="0.4"/>
+<line x1="36.32" y1="163.49" x2="38.32" y2="161.49" stroke="#111" stroke-width="0.4"/>
+<text x="36.32" y="168.75" font-size="2.4" text-anchor="middle" transform="rotate(-90 36.32 168.75)">≈ 63</text>
+<text x="250" y="24" font-size="3.4" font-weight="bold">Frente (sin tablero)</text>
+<text x="250" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<rect x="262" y="83" width="3.6" height="92" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="378.4" y="83" width="3.6" height="92" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="265.6" y="161" width="112.8" height="14" fill="#e9e4d8" stroke="#111" stroke-width="0.35" stroke-dasharray="1.5 1"/>
+<rect x="262" y="162.21" width="120" height="6.79" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<text x="322" y="162.41" font-size="2.3" text-anchor="middle" fill="#111">travesaño trasero 564 × 70 (detrás)</text>
+<text x="322" y="166.41" font-size="2.3" text-anchor="middle" fill="#111">tope transversal 600 × 30</text>
+<line x1="262" y1="175" x2="262" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="382" y1="175" x2="382" y2="184.5" stroke="#555" stroke-width="0.15"/>
+<line x1="260.5" y1="183" x2="383.5" y2="183" stroke="#555" stroke-width="0.18"/>
+<line x1="261" y1="184" x2="263" y2="182" stroke="#111" stroke-width="0.4"/>
+<line x1="381" y1="184" x2="383" y2="182" stroke="#111" stroke-width="0.4"/>
+<text x="322" y="182.1" font-size="2.4" text-anchor="middle">600</text>
+<line x1="382" y1="175" x2="391.5" y2="175" stroke="#555" stroke-width="0.15"/>
+<line x1="382" y1="83" x2="391.5" y2="83" stroke="#555" stroke-width="0.15"/>
+<line x1="390" y1="176.5" x2="390" y2="81.5" stroke="#555" stroke-width="0.18"/>
+<line x1="389" y1="176" x2="391" y2="174" stroke="#111" stroke-width="0.4"/>
+<line x1="389" y1="84" x2="391" y2="82" stroke="#111" stroke-width="0.4"/>
+<text x="389" y="129" font-size="2.4" text-anchor="middle" transform="rotate(-90 389 129)">460</text>
+<text x="22" y="205" font-size="2.6"><tspan font-weight="bold">Piezas:</tspan> 2 cartelas (triángulos rectángulos de catetos 460, despuntados 30), 1 travesaño trasero 564 × 70, 1 tope transversal 600 × 30.</text>
+<text x="22" y="208.77" font-size="2.6">Las dos cartelas salen de un cuadrado de 460 × 460 cortado en diagonal.</text>
+<text x="22" y="212.54" font-size="2.6">Es la condición extrema del plano inclinado: se ensaya solo si la Decisión 2 lo pide.</text>
+<text x="22" y="216.31" font-size="2.6">Verificar 45° ± 1° con un inclinómetro y anotarlo en la ficha.</text>
+</svg>

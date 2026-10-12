@@ -47,13 +47,13 @@
       <label class="campo">Sesión <input id="sesion" size="5" value="S01"></label>
       <label class="campo">Orden en la sesión <input id="orden" type="number" min="1" value="1"></label>
       <label class="campo">Condición <input id="condicion" size="8" value="BASE"></label>
-      <label class="campo">Altura x (mm) <input id="alturaX" type="number" min="5" max="200" step="1" value="30"></label>
+      <label class="campo">Altura de la letra (mm) <input id="alturaX" type="number" min="2.5" max="200" step="0.5" value="10"></label>
       <label class="campo">Herramienta <input id="herramienta" size="16" value="lápiz digital"></label>
       <label class="campo">Superficie <input id="superficie" size="16" value="vidrio de la tableta"></label>
     </div>
     <p id="desc-condicion" class="ayuda"></p>
     <div class="fila">
-      <label class="campo">Plan (gesto:repeticiones) <input id="plan" size="22" value="G1:5, G2:5, G5:5"></label>
+      <label class="campo">Plan (gesto:repeticiones) <input id="plan" size="22" value="G1:5, G3:5, G5:5"></label>
       <label class="campo">Calentamiento por gesto <input id="calentamiento" type="number" min="0" max="10" value="3"></label>
       <label class="campo">Numerar desde <input id="desde" type="number" min="1" value="1"></label>
       <label class="check"><input id="soloLapiz" type="checkbox" checked> Aceptar solo el lápiz (ignora la palma)</label>
@@ -276,7 +276,7 @@
     const h = bloque.bloque.altura_x_mm;
     const s = secuencia[Math.min(paso, secuencia.length - 1)];
     const palabra = s && s.gesto === 'G6';
-    const wMm = palabra ? 7 * h : 2.6 * h;
+    const wMm = palabra ? 10 * h : 2.6 * h;
     const r = lienzo.getBoundingClientRect();
     const w = wMm * pxPorMm;
     const base = r.height / 2 + (palabra ? 0.35 : 0.5) * h * pxPorMm;
@@ -301,17 +301,10 @@
     ctx.moveTo(c.x - 20, c.base - c.h);
     ctx.lineTo(c.x + c.w + 20, c.base - c.h);
     ctx.stroke();
-    if (c.palabra) {
-      ctx.setLineDash([2, 5]);
-      ctx.beginPath();
-      ctx.moveTo(c.x - 20, c.base - 1.75 * c.h);
-      ctx.lineTo(c.x + c.w + 20, c.base - 1.75 * c.h);
-      ctx.stroke();
-    }
     ctx.setLineDash([]);
     ctx.fillStyle = CIAN;
     ctx.font = '12px system-ui, sans-serif';
-    ctx.fillText('altura x ' + bloque.bloque.altura_x_mm + ' mm', c.x - 20, c.base + 18);
+    ctx.fillText('altura de la letra ' + bloque.bloque.altura_x_mm + ' mm', c.x - 20, c.base + 18);
     ctx.restore();
     // tinta de la repetición actual
     ctx.save();

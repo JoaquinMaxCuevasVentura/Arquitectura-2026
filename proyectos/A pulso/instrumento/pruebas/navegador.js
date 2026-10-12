@@ -64,13 +64,18 @@ async function descargaJSON(pagina, accion) {
     await p.waitForSelector('#vista svg');
     const celdas = await p.$$eval('#vista svg circle', (c) => c.length);
     assert.strictEqual(celdas, 4, 'cuatro marcas');
-    await p.selectOption('#preset', 'A3H-h30-P-3x1');
+    await p.selectOption('#preset', 'A4H-h10-L-5x2');
     const filas = await p.$$eval('#filas select', (s) => s.length);
-    assert.strictEqual(filas, 3);
+    assert.strictEqual(filas, 5);
+    const conGuias = await p.$$eval('#vista svg line[stroke-dasharray]', (l) => l.length);
+    await p.check('#sin-guias');
+    const sinGuias = await p.$$eval('#vista svg line[stroke-dasharray]', (l) => l.length);
+    assert.ok(conGuias >= 10 && sinGuias === 0, 'la pauta sin guías no dibuja la línea de altura: ' + conGuias + ' / ' + sinGuias);
+    await p.uncheck('#sin-guias');
     await p.fill('#codigo', 'A4H-h30-L-9x9');
     const err = await p.textContent('#estado');
     assert.ok(/Demasiadas/.test(err), 'muestra el error: ' + err);
-    await p.selectOption('#preset', 'A3H-h30-L-3x5');
+    await p.selectOption('#preset', 'A4H-h10-L-3x5');
     await captura(p, 'pautas');
     assert.deepStrictEqual(p.errores, []);
     await p.context().close();
@@ -112,15 +117,15 @@ async function descargaJSON(pagina, accion) {
   });
 
   await prueba('digitalizar: foto sintética → 15 repeticiones con identificador', async () => {
-    const marcas = JSON.parse(fs.readFileSync(path.join(EJEMPLOS, 'SINTETICO_marcas.json'), 'utf8')).marcas_px;
-    const nombreFoto = 'SINTETICO_hoja_A3H-h30-L-3x5_A2B2.jpg';
+    const datosMarcas = JSON.parse(fs.readFileSync(path.join(EJEMPLOS, 'SINTETICO_marcas.json'), 'utf8'));
+    const marcas = datosMarcas.marcas_px;
+    const nombreFoto = 'SINTETICO_hoja_A4H-h10-L-3x5_A2B2.jpg';
     const p = await nuevaPagina(navegador, 1500, 1100);
     await p.goto(url('digitalizar.html'));
     await p.setInputFiles('#archivo', path.join(EJEMPLOS, nombreFoto));
     await p.waitForFunction(() => /marca 1/.test(document.querySelector('#estado').textContent));
     const info = await p.$eval('#imagen', (c) => { const r = c.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height, cw: c.width }; });
-    // la imagen original mide 2200 px de ancho
-    const escala = info.w / 2200;
+    const escala = info.w / datosMarcas.tamano_px[nombreFoto][0];
     for (const [mx, my] of marcas[nombreFoto]) {
       await p.mouse.click(info.x + (mx + 3) * escala, info.y + (my - 2) * escala);
     }
@@ -137,11 +142,12 @@ async function descargaJSON(pagina, accion) {
     assert.strictEqual(datos.ensayos.length, 15);
     assert.strictEqual(datos.ensayos[0].id, 'AP-P00-S01-A2B2-G1-R01');
     assert.strictEqual(datos.ensayos[14].id, 'AP-P00-S01-A2B2-G5-R05');
+    assert.strictEqual(datos.ensayos[5].gesto, 'G3', 'la segunda fila del piloto es la O');
     assert.ok(datos.ensayos.every((e) => e.tinta && e.tinta.startsWith('data:image/png')));
     const g5 = datos.ensayos[14];
     const ys = [].concat(...g5.trazos.map((t) => t.puntos.map((q) => q[1])));
-    assert.ok(Math.min(...ys) > -2 && Math.min(...ys) < 2, 'la n se apoya en la línea base: ' + Math.min(...ys));
-    assert.ok(Math.max(...ys) > 28 && Math.max(...ys) < 34, 'y llega a la altura x: ' + Math.max(...ys));
+    assert.ok(Math.min(...ys) > -1 && Math.min(...ys) < 1, 'la R se apoya en la línea base: ' + Math.min(...ys));
+    assert.ok(Math.max(...ys) > 9 && Math.max(...ys) < 11.5, 'y llega a la altura de la letra: ' + Math.max(...ys));
     fs.writeFileSync(path.join(require('os').tmpdir(), 'apulso_digitalizado.json'), JSON.stringify(datos));
     assert.deepStrictEqual(p.errores, []);
     await p.context().close();
@@ -199,7 +205,7 @@ async function descargaJSON(pagina, accion) {
     const p = await nuevaPagina(navegador);
     await p.goto(url('banco.html'));
     await p.waitForSelector('#planos svg');
-    assert.strictEqual(await p.$$eval('#planos section', (s) => s.length), 3);
+    assert.strictEqual(await p.$$eval('#planos section', (s) => s.length), 4);
     await p.fill('#hombroDePie', '1500');
     const texto = await p.textContent('#planos');
     assert.ok(/agujero 14/.test(texto), 'agujero para un hombro de 1500');

@@ -1,5 +1,5 @@
-/* A pulso · dibujo de pautas y plantillas de topes como SVG (unidades: mm).
- * La misma geometría (nucleo.pautaDesdeCodigo) sirve para imprimir, cortar y digitalizar.
+/* A pulso · dibujo de pautas como SVG (unidades: mm).
+ * La misma geometría (nucleo.pautaDesdeCodigo) sirve para imprimir y para digitalizar.
  */
 (function (raiz) {
   'use strict';
@@ -17,10 +17,12 @@
   }
 
   /**
-   * opciones: { filas: ['G1', 'G2', 'G5'], encabezado: { bloque, fecha, persona, sesion, condicion, herramienta, orden } }
+   * opciones: { filas: ['G1', 'G3', 'G5'], guias: true, encabezado: { bloque, fecha, persona, sesion, condicion, herramienta, orden } }
+   * guias: false imprime la pauta «ciega» de la condición C1: solo esquinas de celda y una barra de referencia de h.
    */
   function svgPauta(pauta, opciones) {
     const o = opciones || {};
+    const guias = o.guias !== false;
     const G = AP.nucleo.GESTOS_CORTOS;
     const enc = o.encabezado || {};
     const p = [];
@@ -68,10 +70,17 @@
     }
     p.push('<text x="' + (e.x + e.w) + '" y="' + yTexto + '" font-size="3" fill="' + CIAN + '" text-anchor="end">pauta ' + esc(pauta.codigo) + '</text>');
     p.push(
-      '<text x="' + e.x + '" y="' + (e.y + 11) + '" font-size="2.6" fill="' + CIAN + '">Escribe con grafito o tinta negra. No escribas sobre las marcas negras ni fuera de las celdas. Altura x: ' +
+      '<text x="' + e.x + '" y="' + (e.y + 11) + '" font-size="2.6" fill="' + CIAN + '">Escribe con grafito o tinta negra. No escribas sobre las marcas negras ni fuera de las celdas. Altura de la letra: ' +
         pauta.alturaX +
-        ' mm.</text>'
+        ' mm' + (guias ? '.' : ' (sin líneas guía: usa la barra de referencia).') + '</text>'
     );
+    if (!guias) {
+      // barra de referencia de la altura de la letra, en el margen superior derecho
+      const bx = e.x + e.w - 2;
+      const by = e.y + 12.5;
+      p.push('<line x1="' + bx + '" y1="' + by + '" x2="' + bx + '" y2="' + n(by - Math.min(pauta.alturaX, 12)) + '" stroke="' + GRIS + '" stroke-width="0.3"/>');
+      p.push('<text x="' + (bx - 1.5) + '" y="' + by + '" font-size="2.4" fill="' + CIAN + '" text-anchor="end">' + (pauta.alturaX > 12 ? 'h/' + n(pauta.alturaX / 12) + ' ' : '') + 'h</text>');
+    }
 
     // celdas
     const filasEtiquetadas = {};
@@ -86,11 +95,13 @@
       lineaCorta(c.x, c.y + c.h - t, c.x, c.y + c.h);
       lineaCorta(c.x + c.w - t, c.y + c.h, c.x + c.w, c.y + c.h);
       lineaCorta(c.x + c.w, c.y + c.h - t, c.x + c.w, c.y + c.h);
-      p.push('<line x1="' + n(c.x) + '" y1="' + n(c.base) + '" x2="' + n(c.x + c.w) + '" y2="' + n(c.base) + '" stroke="' + CIAN + '" stroke-width="0.3"/>');
-      p.push(
-        '<line x1="' + n(c.x) + '" y1="' + n(c.alturaX) + '" x2="' + n(c.x + c.w) + '" y2="' + n(c.alturaX) + '" stroke="' + CIAN + '" stroke-width="0.25" stroke-dasharray="2 1.2"/>'
-      );
-      if (c.ascendente != null) {
+      if (guias) {
+        p.push('<line x1="' + n(c.x) + '" y1="' + n(c.base) + '" x2="' + n(c.x + c.w) + '" y2="' + n(c.base) + '" stroke="' + CIAN + '" stroke-width="0.3"/>');
+        p.push(
+          '<line x1="' + n(c.x) + '" y1="' + n(c.alturaX) + '" x2="' + n(c.x + c.w) + '" y2="' + n(c.alturaX) + '" stroke="' + CIAN + '" stroke-width="0.25" stroke-dasharray="2 1.2"/>'
+        );
+      }
+      if (guias && c.ascendente != null) {
         p.push(
           '<line x1="' + n(c.x) + '" y1="' + n(c.ascendente) + '" x2="' + n(c.x + c.w) + '" y2="' + n(c.ascendente) + '" stroke="' + CIAN + '" stroke-width="0.2" stroke-dasharray="0.4 1.2"/>'
         );
@@ -121,23 +132,6 @@
     return p.join('\n');
   }
 
-  /** Plantilla para corte láser: contorno y ventanas en rojo (corte), textos en azul (grabado). */
-  function svgPlantillaTopes(pauta, nivel) {
-    const ventanas = AP.nucleo.ventanasTopes(pauta, nivel);
-    const corte = 'fill="none" stroke="#ff0000" stroke-width="0.1"';
-    const p = [];
-    p.push('<svg xmlns="http://www.w3.org/2000/svg" width="' + pauta.W + 'mm" height="' + pauta.H + 'mm" viewBox="0 0 ' + pauta.W + ' ' + pauta.H + '" font-family="Helvetica, Arial, sans-serif">');
-    p.push('<rect x="0" y="0" width="' + pauta.W + '" height="' + pauta.H + '" ' + corte + '/>');
-    for (const [x, y] of pauta.marcas) p.push('<circle cx="' + x + '" cy="' + y + '" r="6" ' + corte + '/>');
-    for (const v of ventanas) p.push('<rect x="' + n(v.x) + '" y="' + n(v.y) + '" width="' + n(v.w) + '" height="' + n(v.h) + '" ' + corte + '/>');
-    const desc = AP.nucleo.VARIABLES.C.niveles[nivel];
-    p.push(
-      '<text x="' + pauta.W / 2 + '" y="' + (pauta.H - 8) + '" font-size="4" fill="#0000ff" text-anchor="middle">A PULSO · topes ' + nivel + ' (' + esc(desc) + ') · pauta ' + esc(pauta.codigo) + ' · esta cara hacia arriba</text>'
-    );
-    p.push('</svg>');
-    return p.join('\n');
-  }
-
-  AP.dibujo = { CIAN, svgPauta, svgPlantillaTopes };
+  AP.dibujo = { CIAN, svgPauta };
   if (typeof module !== 'undefined' && module.exports) module.exports = AP;
 })(typeof window !== 'undefined' ? window : globalThis);

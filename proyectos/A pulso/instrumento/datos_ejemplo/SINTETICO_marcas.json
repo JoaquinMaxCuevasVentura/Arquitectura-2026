@@ -1,41 +1,51 @@
 {
  "aviso": "SINTÉTICO: trazas inventadas para probar el instrumento. No son ensayos ni evidencia.",
  "marcas_px": {
-  "SINTETICO_hoja_A3H-h30-L-3x5_BASE.jpg": [
+  "SINTETICO_hoja_A4H-h10-L-3x5_BASE.jpg": [
    [
-    193.3,
-    175.4
+    241.4,
+    224
    ],
    [
-    2031.4,
-    222.9
+    2373.4,
+    260.8
    ],
    [
-    1976.6,
-    1454.4
+    2329.5,
+    1686.8
    ],
    [
-    147,
-    1398.2
+    205.6,
+    1650
    ]
   ],
-  "SINTETICO_hoja_A3H-h30-L-3x5_A2B2.jpg": [
+  "SINTETICO_hoja_A4H-h10-L-3x5_A2B2.jpg": [
    [
-    193.3,
-    175.4
+    241.4,
+    224
    ],
    [
-    2031.4,
-    222.9
+    2373.4,
+    260.8
    ],
    [
-    1976.6,
-    1454.4
+    2329.5,
+    1686.8
    ],
    [
-    147,
-    1398.2
+    205.6,
+    1650
    ]
+  ]
+ },
+ "tamano_px": {
+  "SINTETICO_hoja_A4H-h10-L-3x5_BASE.jpg": [
+   2600,
+   1900
+  ],
+  "SINTETICO_hoja_A4H-h10-L-3x5_A2B2.jpg": [
+   2600,
+   1900
   ]
  }
 }

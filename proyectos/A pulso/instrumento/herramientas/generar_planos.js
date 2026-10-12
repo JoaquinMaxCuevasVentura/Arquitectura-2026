@@ -1,5 +1,5 @@
 /* Genera los planos del banco de escritura (SVG, A3 apaisado, unidades en mm de papel).
- * Uso: node herramientas/generar_planos.js   → ../banco/planos/*.svg y ../banco/plantillas/*.svg
+ * Uso: node herramientas/generar_planos.js   → ../banco/planos/*.svg
  */
 'use strict';
 const fs = require('fs');
@@ -134,6 +134,7 @@ function laminaTablero() {
   v.line(T.ancho / 2 - 6, T.alto - h.centroDesdeArriba, T.ancho / 2 + 6, T.alto - h.centroDesdeArriba, { stroke: '#1593c7' });
   v.line(T.ancho / 2, T.alto - h.centroDesdeArriba - 6, T.ancho / 2, T.alto - h.centroDesdeArriba + 6, { stroke: '#1593c7' });
   v.text(T.ancho / 2, hy - 18, 'zona del antebrazo (A0)', { anchor: 'middle', size: 2.4, fill: '#555' });
+  v.text(-3, T.alto / 2, 'canto de la regla T', { rot: -90, anchor: 'middle', size: 2.3, fill: '#555' });
   v.cotaH(0, T.ancho, 0, 7);
   v.cotaV(0, T.alto, 0, -7);
   v.cotaV(T.alto - h.centroDesdeArriba, T.alto, T.ancho, 7, h.centroDesdeArriba);
@@ -171,79 +172,103 @@ function laminaTablero() {
     'Sin tornillos ni marcas en la cara de escritura. Cantos redondeados (r ≈ 2 mm).',
     'La hoja se fija siempre en el mismo lugar: centro a 200 mm del borde superior y centrada en el ancho.',
     'Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve.',
-    'Los dos listones son los apoyos del tablero en las tres posiciones:',
-    '· B0, sobre la mesa: el tablero queda plano y elevado 18 mm.',
-    '· B1, sobre el atril: los listones descansan en las hipotenusas de las cartelas.',
-    '· B2, en el muro: el listón superior se apoya en dos pasadores de los montantes.',
+    'Los dos listones son los apoyos del tablero en las cuatro posiciones:',
+    '· B0, sobre la cuña de 15° (tablero de dibujo) y B3, sobre el atril de 45°: los listones descansan en las cartelas.',
+    '· B1, sobre la mesa: el tablero queda plano y elevado 18 mm.',
+    '· B2, en el muro (pizarra): el listón superior queda trabado entre dos pares de pasadores.',
+    'El canto izquierdo del tablero debe quedar recto y liso: sobre él corre la regla T (condiciones C2 y C3).',
   ]);
   return L;
 }
 
-// ---------- B-02 · atril ----------
-function laminaAtril() {
-  const L = new Lamina('B-02', 'Atril de 45° (condición B1)', 'esc. 1:5');
+// ---------- B-02 y B-03 · cuña de 15° y atril de 45° ----------
+/**
+ * Lámina de un apoyo inclinado: dos cartelas triangulares (catetos lh × lv, despuntadas d en el vértice
+ * agudo) con el tablero apoyado por sus listones sobre las hipotenusas.
+ */
+function laminaApoyo(numero, titulo, apoyo, piezas, notas) {
+  const L = new Lamina(numero, titulo, 'esc. 1:5');
   const k = 1 / 5;
-  const a = B.atril;
-  const c = a.cateto;
-  const dp = a.despunte;
+  const ang = (apoyo.angulo * Math.PI) / 180;
+  const lh = apoyo.catetoH || apoyo.cateto;
+  const lv = apoyo.catetoV || apoyo.cateto;
+  const dp = apoyo.despunte;
   const T = B.tablero;
   const l = B.liston;
-  const r2 = Math.SQRT1_2;
+  const co = Math.cos(ang);
+  const si = Math.sin(ang);
+  const y0 = dp * Math.tan(ang);
+  const alturaTravesano = Math.min(70, Math.round(lv * 0.45));
 
   L.tituloVista(22, 24, 'Alzado lateral con el tablero', '1:5');
-  const v = L.vista(55, 40 + 130, k * 1.0);
-  // cartela despuntada
-  v.poly([[dp, 0], [c, 0], [c, c], [dp, dp]], { fill: HUECO, sw: 0.5 });
-  v.line(dp, 0, dp, dp, { sw: 0.5 });
-  // marco de la pendiente: s a lo largo de la hipotenusa desde (dp, dp); n normal hacia arriba-izquierda
-  const P = (s, n) => [dp + s * r2 - n * r2, dp + s * r2 + n * r2];
+  const v = L.vista(45, 40 + 135, k);
+  v.poly([[dp, 0], [lh, 0], [lh, lv], [dp, y0]], { fill: HUECO, sw: 0.5 });
+  // marco de la pendiente: s a lo largo de la hipotenusa desde (dp, y0); n normal hacia arriba
+  const P = (s, n) => [dp + s * co - n * si, y0 + s * si + n * co];
   const banda = (s0, s1, n0, n1, o) => v.poly([P(s0, n0), P(s1, n0), P(s1, n1), P(s0, n1)], o);
   banda(0, 30, 0, E, { fill: CORTE, sw: 0.4 }); // tope transversal
   banda(30, 30 + l.ancho, 0, E, { fill: CORTE, sw: 0.4 }); // listón inferior
   banda(30 - l.margen, 30 - l.margen + T.alto, E, 2 * E, { fill: '#cfe8f3', stroke: '#1593c7', sw: 0.5 }); // tablero
   const sSup = 30 - l.margen + T.alto - l.margen - l.ancho;
   banda(sSup, sSup + l.ancho, 0, E, { fill: CORTE, sw: 0.4 }); // listón superior
-  // travesaño trasero
-  v.rect(c - E, 0, E, 70, { fill: CORTE, sw: 0.4 });
-  v.line(-20, 0, c + 40, 0, { sw: 0.6 });
-  v.text(c + 40, 0, 'mesa', { dy: -1, size: 2.4, anchor: 'end' });
-  v.cotaH(dp, c, 0, 8, c - dp);
+  v.rect(lh - E, 0, E, alturaTravesano, { fill: CORTE, sw: 0.4 }); // travesaño trasero
+  v.line(-20, 0, lh + 40, 0, { sw: 0.6 });
+  v.text(lh + 40, 0, 'mesa', { dy: -1, size: 2.4, anchor: 'end' });
+  v.cotaH(dp, lh, 0, 8, lh - dp);
   v.cotaH(0, dp, 0, 8, dp);
-  v.cotaV(0, c, c, 8, c);
+  v.cotaV(0, lv, lh, 8, lv);
   const [tx, ty] = P(T.alto - 200 + 30 - l.margen, 2 * E);
   v.circle(tx, ty, 0, { rPapel: 0.9, fill: '#1593c7', stroke: '#1593c7' });
   v.text(tx, ty, 'centro de la hoja', { dx: -3, dy: -2, size: 2.4, anchor: 'end', fill: '#1593c7' });
-  v.text(c / 2 + 30, c / 2 - 20, '45°', { size: 3 });
+  v.text(dp + 90, 8, apoyo.angulo + '°', { size: 3 });
   const [bx, by] = P(30 - l.margen, 2 * E);
   v.cotaV(0, by, bx, -10, '≈ ' + Math.round(by));
 
-  L.tituloVista(225, 24, 'Frente del atril (sin tablero)', '1:5');
-  const f = L.vista(240, 40 + 130, k);
+  L.tituloVista(250, 24, 'Frente (sin tablero)', '1:5');
+  const f = L.vista(262, 40 + 135, k);
   const ancho = T.ancho;
-  f.rect(0, 0, E, c, { fill: CORTE, sw: 0.5 });
-  f.rect(ancho - E, 0, E, c, { fill: CORTE, sw: 0.5 });
-  f.rect(E, 0, ancho - 2 * E, 70, { fill: HUECO, sw: 0.35, dash: '1.5 1' });
-  f.rect(0, dp, ancho, 30 * r2 + E * r2, { fill: HUECO, sw: 0.4 });
-  f.text(ancho / 2, 12, 'travesaño trasero 564 × 70 (detrás)', { anchor: 'middle', size: 2.3 });
-  f.text(ancho / 2, dp + 17, 'tope transversal 600 × 30', { anchor: 'middle', size: 2.3, dy: 0.8 });
+  f.rect(0, 0, E, lv, { fill: CORTE, sw: 0.5 });
+  f.rect(ancho - E, 0, E, lv, { fill: CORTE, sw: 0.5 });
+  f.rect(E, 0, ancho - 2 * E, alturaTravesano, { fill: HUECO, sw: 0.35, dash: '1.5 1' });
+  f.rect(0, y0, ancho, 30 * si + E * co, { fill: HUECO, sw: 0.4 });
+  const topeArriba = y0 + 30 * si + E * co;
+  const yTravesano = topeArriba + 6 < alturaTravesano ? (topeArriba + alturaTravesano) / 2 : y0 / 2;
+  f.text(ancho / 2, yTravesano, 'travesaño trasero 564 × ' + alturaTravesano + ' (detrás)', { anchor: 'middle', size: 2.3, dy: 0.8 });
+  f.text(ancho / 2, y0 + (30 * si + E * co) / 2, 'tope transversal 600 × 30', { anchor: 'middle', size: 2.3, dy: 0.8 });
   f.cotaH(0, ancho, 0, 8);
-  f.cotaH(E, ancho - E, c, -6, ancho - 2 * E);
-  f.cotaV(0, c, ancho, 8, c);
+  f.cotaV(0, lv, ancho, 8, lv);
 
-  L.nota(22, 200, [
-    '<tspan font-weight="bold">Piezas:</tspan> 2 cartelas (triángulos rectángulos de catetos 460, despuntados 30 en el vértice agudo), 1 travesaño trasero 564 × 70,',
-    '1 travesaño superior 564 × 70 (opcional, en la parte alta del cateto vertical), 1 tope transversal 600 × 30 atornillado sobre las hipotenusas.',
-    'Las dos cartelas salen de un cuadrado de 460 × 460 cortado en diagonal: la hipotenusa queda sobre el corte, que debe ser recto y limpio.',
-    'El listón inferior del tablero apoya contra el tope; los dos listones descansan sobre las hipotenusas.',
-    'Verificar 45° ± 1° con un inclinómetro (aplicación del teléfono) sobre la cara del tablero y anotarlo en la ficha.',
-    'Antideslizante (fieltro o goma) bajo las cartelas.',
-  ]);
+  L.nota(22, 205, ['<tspan font-weight="bold">Piezas:</tspan> ' + piezas].concat(notas));
   return L;
 }
 
-// ---------- B-03 · muro ----------
+function laminaCuna() {
+  const c = B.cuna;
+  return laminaApoyo('B-02', 'Cuña de 15° · tablero de dibujo (condición base, B0)', c,
+    '2 cartelas (triángulos rectángulos de catetos ' + c.catetoH + ' × ' + c.catetoV + ', despuntados ' + c.despunte + '), 1 travesaño trasero 564 × 70, 1 tope transversal 600 × 30.',
+    [
+      'Las dos cartelas salen de un rectángulo de ' + c.catetoH + ' × ' + c.catetoV + ' cortado en diagonal: la hipotenusa es la superficie de apoyo y debe quedar recta.',
+      'El tablero inclinado a 15° es el puesto clásico del dibujo técnico: es la condición base de toda la serie.',
+      'Si las entrevistas muestran que los participantes formados en tablero usaban otro ángulo, se cambia el cateto vertical',
+      '(cateto = ' + c.catetoH + ' × tan del ángulo) antes de la serie y se anota en el protocolo.',
+      'Verificar el ángulo con un inclinómetro sobre la cara del tablero y anotarlo en la ficha. Fieltro antideslizante bajo las cartelas.',
+    ]);
+}
+
+function laminaAtril() {
+  const a = B.atril;
+  return laminaApoyo('B-03', 'Atril de 45° (condición B3, opcional)', a,
+    '2 cartelas (triángulos rectángulos de catetos ' + a.cateto + ', despuntados ' + a.despunte + '), 1 travesaño trasero 564 × 70, 1 tope transversal 600 × 30.',
+    [
+      'Las dos cartelas salen de un cuadrado de ' + a.cateto + ' × ' + a.cateto + ' cortado en diagonal.',
+      'Es la condición extrema del plano inclinado: se ensaya solo si la Decisión 2 lo pide.',
+      'Verificar 45° ± 1° con un inclinómetro y anotarlo en la ficha.',
+    ]);
+}
+
+// ---------- B-04 · muro ----------
 function laminaMuro() {
-  const L = new Lamina('B-03', 'Montantes de muro (condición B2)', 'esc. 1:10 y 1:2');
+  const L = new Lamina('B-04', 'Montantes de muro · pizarra (condición B2)', 'esc. 1:10 y 1:2');
   const k = 1 / 10;
   const mu = B.muro;
   const T = B.tablero;
@@ -317,9 +342,9 @@ function laminaMuro() {
   return L;
 }
 
-// ---------- B-04 · despiece ----------
+// ---------- B-05 · despiece ----------
 function laminaDespiece() {
-  const L = new Lamina('B-04', 'Despiece en medio tablero de 1220 × 1220 × 18', 'esc. 1:10');
+  const L = new Lamina('B-05', 'Despiece en medio tablero de 1220 × 1220 × 18', 'esc. 1:10');
   const k = 1 / 10;
   const v = L.vista(30, 30 + 122, k);
   v.rect(0, 0, 1220, 1220, { fill: '#f7f4ec', sw: 0.5 });
@@ -333,7 +358,13 @@ function laminaDespiece() {
   v.poly([[604, 1220], [604, 760], [1064, 760]], { fill: HUECO, sw: 0.4 });
   v.text(940, 1110, '3a', { size: 2.3 });
   v.text(700, 840, '3b', { size: 2.3 });
-  v.text(834, 1235, '3 · cartelas: cuadrado 460 × 460 cortado en diagonal', { anchor: 'middle', size: 2.1, dy: -1 });
+  v.text(834, 1235, '3 · cartelas del atril: cuadrado 460 × 460 en diagonal', { anchor: 'middle', size: 2.1, dy: -1 });
+  // cuña de 15°: rectángulo 600 × 161 cortado en diagonal
+  v.poly([[0, 1220 - 878], [600, 1220 - 878], [600, 1220 - 878 - 161]], { fill: HUECO, sw: 0.4 });
+  v.poly([[0, 1220 - 878], [0, 1220 - 878 - 161], [600, 1220 - 878 - 161]], { fill: HUECO, sw: 0.4 });
+  v.text(300, 1220 - 878 - 80, '7 · cartelas de la cuña: 600 × 161 en diagonal', { anchor: 'middle', size: 2.1, dy: 0.8 });
+  pieza(0, 1043, 564, 70, '8 · travesaño de la cuña 564 × 70');
+  pieza(0, 1117, 600, 30, '9 · tope de la cuña 600 × 30');
   pieza(0, 604, 600, 42, '2 · listón 600 × 42');
   pieza(0, 650, 600, 42, '2 · listón 600 × 42');
   pieza(0, 696, 600, 30, '5 · tope 600 × 30');
@@ -349,12 +380,15 @@ function laminaDespiece() {
   L.tituloVista(185, 24, 'Lista de piezas', null);
   const filas = [
     ['N.º', 'Pieza', 'Cant.', 'Medidas (mm)', 'Uso'],
-    ['1', 'Tablero de escritura', '1', '600 × 600 × 18', 'B0, B1, B2'],
-    ['2', 'Listón del tablero', '2', '600 × 42 × 18', 'apoyo en las tres posiciones'],
-    ['3', 'Cartela del atril', '2', 'triángulo 460 × 460, despunte 30', 'B1'],
-    ['4', 'Travesaño del atril', '2', '564 × 70 × 18', 'B1'],
-    ['5', 'Tope transversal', '1', '600 × 30 × 18', 'B1'],
+    ['1', 'Tablero de escritura', '1', '600 × 600 × 18', 'todas'],
+    ['2', 'Listón del tablero', '2', '600 × 42 × 18', 'apoyo en todas'],
+    ['3', 'Cartela del atril', '2', 'triángulo 460 × 460, despunte 30', 'B3'],
+    ['4', 'Travesaño del atril', '2', '564 × 70 × 18', 'B3'],
+    ['5', 'Tope del atril', '1', '600 × 30 × 18', 'B3'],
     ['6', 'Montante de muro', '2', '90 × 750 × 18', 'B2'],
+    ['7', 'Cartela de la cuña', '2', 'triángulo 600 × 161, despunte 20', 'B0'],
+    ['8', 'Travesaño de la cuña', '1', '564 × 70 × 18', 'B0'],
+    ['9', 'Tope de la cuña', '1', '600 × 30 × 18', 'B0'],
   ];
   let y = 36;
   const cols = [185, 196, 240, 254, 300];
@@ -369,102 +403,103 @@ function laminaDespiece() {
     '· 4 pasadores: varilla lisa de acero Ø8 × 32 (dos de apoyo y dos de traba).',
     '· 6 tarugos Ø8 y 6 tornillos 5 × 60 (montantes al muro).',
     '· 30 tornillos para madera 4 × 30 y cola vinílica.',
-    '· 4 prensas pequeñas (sargentos de 10 cm) para las plantillas de topes.',
-    '· Tiento: varilla de madera Ø15 × 600 con una punta de espuma forrada en tela.',
-    '· Plantillas de topes C1–C3: MDF de 5 mm cortado con láser (ver banco/plantillas).',
-    '· D1: 4 hojas de lija de grano 150. D2: goma eva de 3–5 mm, tamaño A3 o mayor.',
+    '· Instrumentos de dibujo (C2, C3): regla T de 60 cm, escuadras de 45° y de 30/60°,',
+    '  plantilla de rotulación ISO 3098 de 10 mm y estilógrafo de 1,0 (tipo B: trazo = h/10).',
+    '· Herramientas (D): portaminas 0,5 HB (base), estilógrafo 0,35 o 0,5, papel vegetal A4.',
     '· Cinta de papel, fieltro antideslizante, inclinómetro (aplicación del teléfono).',
     '',
     'Ancho de corte supuesto: 4 mm. Verificar las medidas reales del tablero',
-    'antes de cortar; las piezas 2, 4 y 5 pueden salir de recortes.',
+    'antes de cortar; listones, travesaños y topes pueden salir de recortes.',
   ]);
   return L;
 }
 
-// ---------- B-05 · tres posiciones ----------
+// ---------- B-06 · cuatro posiciones ----------
 function laminaPosiciones() {
-  const L = new Lamina('B-05', 'Las tres posiciones del plano (B0, B1, B2)', 'esc. 1:20');
-  const k = 1 / 20;
+  const L = new Lamina('B-06', 'Las cuatro posiciones del plano (B0–B3)', 'esc. 1:25');
+  const k = 1 / 25;
   const m = { codoSobreAsiento: 230, hombroDePie: 1350, mesa: 720, asiento: 450 };
   const r = AP.banco.calcularMontaje(m);
   const piso = 250;
   const marcos = [
-    ['B0 · plano horizontal, sentado', 30],
-    ['B1 · atril a 45°, sentado', 160],
-    ['B2 · plano vertical, de pie', 290],
+    ['B0 · tablero a 15° (base)', 22],
+    ['B1 · mesa horizontal', 120],
+    ['B2 · pizarra, de pie', 218],
+    ['B3 · atril a 45°', 316],
   ];
-  marcos.forEach(([t, x]) => L.tituloVista(x, 30, t, '1:20'));
+  marcos.forEach(([t, x]) => L.tituloVista(x, 30, t, '1:25'));
+  const mesaYasiento = (v, asiento) => {
+    v.line(-100, 0, 2100, 0, { sw: 0.5 });
+    v.rect(900, m.mesa - 30, 800, 30, { fill: '#e8e3d7' });
+    v.rect(950, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
+    v.rect(1620, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
+    v.rect(300, asiento - 30, 400, 30, { fill: '#e8e3d7' });
+    v.line(500, 0, 500, asiento - 30, { sw: 0.5 });
+    v.cotaV(0, asiento, 300, -4, Math.round(asiento));
+  };
+  const lineaCota = (v, h, texto, color) => {
+    v.line(0, h, 1900, h, { stroke: color, dash: '1.2 0.8' });
+    v.text(0, h, texto + ' ' + Math.round(h), { dy: -0.8, size: 2.1, fill: color });
+  };
+  const inclinado = (v, apoyo, rb) => {
+    const a = (apoyo.angulo * Math.PI) / 180;
+    const lh = apoyo.catetoH || apoyo.cateto;
+    const lv = apoyo.catetoV || apoyo.cateto;
+    const xa = 1000;
+    v.poly([[xa + 20, m.mesa], [xa + lh, m.mesa], [xa + lh, m.mesa + lv]], { fill: '#e8e3d7' });
+    const b = [xa, rb.bordeInferior];
+    const t = [xa + 600 * Math.cos(a), rb.bordeInferior + 600 * Math.sin(a)];
+    const n = [-36 * Math.sin(a), 36 * Math.cos(a)];
+    v.poly([b, t, [t[0] + n[0], t[1] + n[1]], [b[0] + n[0], b[1] + n[1]]], { fill: '#cfe8f3', stroke: '#1593c7' });
+    lineaCota(v, rb.codoObjetivo, 'codo', '#c8433a');
+    lineaCota(v, rb.centroHoja, 'centro de la hoja', '#1593c7');
+  };
   // B0
-  let v = L.vista(40, piso, k);
-  v.line(-100, 0, 1900, 0, { sw: 0.5 });
-  v.rect(900, m.mesa - 30, 800, 30, { fill: '#e8e3d7' });
-  v.rect(950, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
-  v.rect(1620, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
-  v.rect(1000, m.mesa, 600, 2 * E, { fill: '#cfe8f3', stroke: '#1593c7' });
-  v.rect(300, r.B0.asientoNecesario - 30, 400, 30, { fill: '#e8e3d7' });
-  v.line(500, 0, 500, r.B0.asientoNecesario - 30, { sw: 0.5 });
-  v.line(0, r.B0.codoObjetivo, 1800, r.B0.codoObjetivo, { stroke: '#c8433a', dash: '1.5 1' });
-  v.text(0, r.B0.codoObjetivo, 'codo ' + Math.round(r.B0.codoObjetivo), { dy: -1, size: 2.3, fill: '#c8433a' });
-  v.cotaV(0, r.B0.asientoNecesario, 300, -5, Math.round(r.B0.asientoNecesario));
-  v.cotaV(0, r.B0.plano, 1700, 6, Math.round(r.B0.plano));
+  let v = L.vista(22, piso, k);
+  mesaYasiento(v, r.B0.asientoNecesario);
+  inclinado(v, B.cuna, r.B0);
   // B1
-  v = L.vista(170, piso, k);
-  v.line(-100, 0, 1900, 0, { sw: 0.5 });
-  v.rect(900, m.mesa - 30, 800, 30, { fill: '#e8e3d7' });
-  v.rect(950, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
-  v.rect(1620, 0, 30, m.mesa - 30, { fill: '#e8e3d7' });
-  const xa = 1000;
-  v.poly([[xa + 30, m.mesa], [xa + 460, m.mesa], [xa + 460, m.mesa + 460]], { fill: '#e8e3d7' });
-  const r2 = Math.SQRT1_2;
-  v.poly([[xa + 30 - 36 * r2, m.mesa + 30 + 36 * r2], [xa + 30 + 600 * r2 - 36 * r2, m.mesa + 30 + 600 * r2 + 36 * r2], [xa + 30 + 600 * r2, m.mesa + 30 + 600 * r2], [xa + 30, m.mesa + 30]], { fill: '#cfe8f3', stroke: '#1593c7' });
-  v.rect(300, r.B1.asientoNecesario - 30, 400, 30, { fill: '#e8e3d7' });
-  v.line(500, 0, 500, r.B1.asientoNecesario - 30, { sw: 0.5 });
-  v.line(0, r.B1.codoObjetivo, 1800, r.B1.codoObjetivo, { stroke: '#c8433a', dash: '1.5 1' });
-  v.text(0, r.B1.codoObjetivo, 'codo ' + Math.round(r.B1.codoObjetivo), { dy: -1, size: 2.3, fill: '#c8433a' });
-  v.line(0, r.B1.centroHoja, 1800, r.B1.centroHoja, { stroke: '#1593c7', dash: '1.5 1' });
-  v.text(0, r.B1.centroHoja, 'centro de la hoja ' + Math.round(r.B1.centroHoja), { dy: -1, size: 2.3, fill: '#1593c7' });
-  v.cotaV(0, r.B1.asientoNecesario, 300, -5, Math.round(r.B1.asientoNecesario));
+  v = L.vista(120, piso, k);
+  mesaYasiento(v, r.B1.asientoNecesario);
+  v.rect(1000, m.mesa, 600, 2 * E, { fill: '#cfe8f3', stroke: '#1593c7' });
+  lineaCota(v, r.B1.codoObjetivo, 'codo', '#c8433a');
   // B2
-  v = L.vista(300, piso, k);
+  v = L.vista(218, piso, k);
   v.line(-100, 0, 1900, 0, { sw: 0.5 });
   v.rect(1400, 0, 60, 2100, { fill: '#ddd', sw: 0.3 });
   const mu = B.muro;
   v.rect(1400 - E, mu.bordeInferior, E, mu.montanteLargo, { fill: '#e8e3d7' });
-  const top = r.B2.pasador + B.liston.margen + B.liston.ancho;
+  const top = r.B2.pasador + mu.pasador[0] / 2 + B.liston.ancho + B.liston.margen;
   v.rect(1400 - 3 * E, top - 600, 2 * E, 600, { fill: '#cfe8f3', stroke: '#1593c7' });
-  v.line(0, m.hombroDePie, 1500, m.hombroDePie, { stroke: '#c8433a', dash: '1.5 1' });
-  v.text(0, m.hombroDePie, 'hombro ' + m.hombroDePie, { dy: -1, size: 2.3, fill: '#c8433a' });
-  v.cotaV(0, r.B2.pasador, 1400, 6, Math.round(r.B2.pasador));
-  v.text(1400 - 3 * E, r.B2.centroHoja, '+', { size: 4, anchor: 'middle', dy: 1.3, fill: '#1593c7' });
+  lineaCota(v, m.hombroDePie, 'hombro', '#c8433a');
+  v.cotaV(0, r.B2.pasador, 1400, 4, Math.round(r.B2.pasador));
+  // B3
+  v = L.vista(316, piso, k);
+  mesaYasiento(v, r.B3.asientoNecesario);
+  inclinado(v, B.atril, r.B3);
 
-  L.nota(30, 268, [
-    'Ejemplo con codo sobre el asiento 230, hombro de pie 1350, mesa 720. Para cada persona, usar la calculadora del banco (instrumento/banco.html).',
-    'Criterios del proyecto: B0, codo 30 mm sobre el plano; B1, codo 20 mm sobre el borde inferior del tablero; B2, centro de la hoja a la altura del hombro.',
+  L.nota(22, 262, [
+    'Ejemplo con codo sobre el asiento 230, hombro de pie 1350 y mesa 720. Para cada persona, usar la calculadora del banco (instrumento/banco.html).',
+    'Criterios del proyecto: B0, codo 30 mm sobre el borde inferior del tablero a 15°; B1, codo 30 mm sobre la mesa; B2, centro de la hoja a la altura del hombro;',
+    'B3, codo 20 mm sobre el borde inferior del tablero a 45°.',
   ]);
   return L;
 }
 
 function main() {
   fs.mkdirSync(path.join(SALIDA, 'planos'), { recursive: true });
-  fs.mkdirSync(path.join(SALIDA, 'plantillas'), { recursive: true });
+  for (const f of fs.readdirSync(path.join(SALIDA, 'planos'))) if (f.endsWith('.svg')) fs.unlinkSync(path.join(SALIDA, 'planos', f));
   const laminas = [
     ['B-01_tablero.svg', laminaTablero()],
-    ['B-02_atril.svg', laminaAtril()],
-    ['B-03_muro.svg', laminaMuro()],
-    ['B-04_despiece.svg', laminaDespiece()],
-    ['B-05_posiciones.svg', laminaPosiciones()],
+    ['B-02_cuna_15.svg', laminaCuna()],
+    ['B-03_atril_45.svg', laminaAtril()],
+    ['B-04_muro.svg', laminaMuro()],
+    ['B-05_despiece.svg', laminaDespiece()],
+    ['B-06_posiciones.svg', laminaPosiciones()],
   ];
   for (const [nombre, L] of laminas) {
     fs.writeFileSync(path.join(SALIDA, 'planos', nombre), L.svg());
     console.log('plano', nombre);
-  }
-  for (const codigo of ['A3H-h30-L-3x5', 'A3H-h30-L-4x5']) {
-    const pauta = AP.nucleo.pautaDesdeCodigo(codigo);
-    for (const nivel of ['C1', 'C2', 'C3']) {
-      const nombre = 'topes_' + nivel + '_' + codigo + '.svg';
-      fs.writeFileSync(path.join(SALIDA, 'plantillas', nombre), AP.dibujo.svgPlantillaTopes(pauta, nivel));
-      console.log('plantilla', nombre);
-    }
   }
 }
 

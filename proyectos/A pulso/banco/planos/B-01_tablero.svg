@@ -16,6 +16,7 @@
 <line x1="88.8" y1="80" x2="91.2" y2="80" stroke="#1593c7" stroke-width="0.25"/>
 <line x1="90" y1="81.2" x2="90" y2="78.8" stroke="#1593c7" stroke-width="0.25"/>
 <text x="90" y="113.3" font-size="2.4" text-anchor="middle" fill="#555">zona del antebrazo (A0)</text>
+<text x="29.4" y="100" font-size="2.3" text-anchor="middle" fill="#555" transform="rotate(-90 29.4 100)">canto de la regla T</text>
 <line x1="30" y1="160" x2="30" y2="168.5" stroke="#555" stroke-width="0.15"/>
 <line x1="150" y1="160" x2="150" y2="168.5" stroke="#555" stroke-width="0.15"/>
 <line x1="28.5" y1="167" x2="151.5" y2="167" stroke="#555" stroke-width="0.18"/>
@@ -102,8 +103,9 @@
 <text x="22" y="208.77" font-size="2.6">Sin tornillos ni marcas en la cara de escritura. Cantos redondeados (r ≈ 2 mm).</text>
 <text x="22" y="212.54" font-size="2.6">La hoja se fija siempre en el mismo lugar: centro a 200 mm del borde superior y centrada en el ancho.</text>
 <text x="22" y="216.31" font-size="2.6">Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve.</text>
-<text x="22" y="220.08" font-size="2.6">Los dos listones son los apoyos del tablero en las tres posiciones:</text>
-<text x="22" y="223.85" font-size="2.6">· B0, sobre la mesa: el tablero queda plano y elevado 18 mm.</text>
-<text x="22" y="227.62" font-size="2.6">· B1, sobre el atril: los listones descansan en las hipotenusas de las cartelas.</text>
-<text x="22" y="231.39" font-size="2.6">· B2, en el muro: el listón superior se apoya en dos pasadores de los montantes.</text>
+<text x="22" y="220.08" font-size="2.6">Los dos listones son los apoyos del tablero en las cuatro posiciones:</text>
+<text x="22" y="223.85" font-size="2.6">· B0, sobre la cuña de 15° (tablero de dibujo) y B3, sobre el atril de 45°: los listones descansan en las cartelas.</text>
+<text x="22" y="227.62" font-size="2.6">· B1, sobre la mesa: el tablero queda plano y elevado 18 mm.</text>
+<text x="22" y="231.39" font-size="2.6">· B2, en el muro (pizarra): el listón superior queda trabado entre dos pares de pasadores.</text>
+<text x="22" y="235.16" font-size="2.6">El canto izquierdo del tablero debe quedar recto y liso: sobre él corre la regla T (condiciones C2 y C3).</text>
 </svg>
