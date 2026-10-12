@@ -195,6 +195,21 @@ async function descargaJSON(pagina, accion) {
     await p.context().close();
   });
 
+  await prueba('banco y fichas se dibujan sin errores', async () => {
+    const p = await nuevaPagina(navegador);
+    await p.goto(url('banco.html'));
+    await p.waitForSelector('#planos svg');
+    assert.strictEqual(await p.$$eval('#planos section', (s) => s.length), 3);
+    await p.fill('#hombroDePie', '1500');
+    const texto = await p.textContent('#planos');
+    assert.ok(/agujero 14/.test(texto), 'agujero para un hombro de 1500');
+    await captura(p, 'banco');
+    await p.goto(url('ficha.html'));
+    assert.strictEqual(await p.$$eval('.hoja', (h) => h.length), 5);
+    assert.deepStrictEqual(p.errores, []);
+    await p.context().close();
+  });
+
   await navegador.close();
   console.log(fallas ? '\n' + fallas + ' prueba(s) fallaron' : '\nTodas las pruebas del navegador pasaron');
   process.exit(fallas ? 1 : 0);

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="297" fill="#fff"/>
+<rect x="10" y="10" width="400" height="277" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="290" y="265" width="120" height="22" fill="#fff" stroke="#111" stroke-width="0.35"/>
+<line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
+<line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
+<text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
+<text x="292" y="278.5" font-size="3.2">Tablero de escritura</text>
+<text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:5 en A3 · 2026-10</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-01</text>
+<text x="22" y="24" font-size="3.4" font-weight="bold">Frente (cara de escritura)</text>
+<text x="22" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<rect x="30" y="40" width="120" height="120" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
+<rect x="48" y="50.3" width="84" height="59.4" fill="none" stroke="#1593c7" stroke-width="0.3" stroke-dasharray="1.5 1"/>
+<text x="90" y="80" font-size="2.6" text-anchor="middle" fill="#1593c7">hoja A3 apaisada</text>
+<line x1="88.8" y1="80" x2="91.2" y2="80" stroke="#1593c7" stroke-width="0.25"/>
+<line x1="90" y1="81.2" x2="90" y2="78.8" stroke="#1593c7" stroke-width="0.25"/>
+<text x="90" y="113.3" font-size="2.4" text-anchor="middle" fill="#555">zona del antebrazo (A0)</text>
+<line x1="30" y1="160" x2="30" y2="168.5" stroke="#555" stroke-width="0.15"/>
+<line x1="150" y1="160" x2="150" y2="168.5" stroke="#555" stroke-width="0.15"/>
+<line x1="28.5" y1="167" x2="151.5" y2="167" stroke="#555" stroke-width="0.18"/>
+<line x1="29" y1="168" x2="31" y2="166" stroke="#111" stroke-width="0.4"/>
+<line x1="149" y1="168" x2="151" y2="166" stroke="#111" stroke-width="0.4"/>
+<text x="90" y="166.1" font-size="2.4" text-anchor="middle">600</text>
+<line x1="30" y1="160" x2="21.5" y2="160" stroke="#555" stroke-width="0.15"/>
+<line x1="30" y1="40" x2="21.5" y2="40" stroke="#555" stroke-width="0.15"/>
+<line x1="23" y1="161.5" x2="23" y2="38.5" stroke="#555" stroke-width="0.18"/>
+<line x1="22" y1="161" x2="24" y2="159" stroke="#111" stroke-width="0.4"/>
+<line x1="22" y1="41" x2="24" y2="39" stroke="#111" stroke-width="0.4"/>
+<text x="22" y="100" font-size="2.4" text-anchor="middle" transform="rotate(-90 22 100)">600</text>
+<line x1="150" y1="80" x2="158.5" y2="80" stroke="#555" stroke-width="0.15"/>
+<line x1="150" y1="40" x2="158.5" y2="40" stroke="#555" stroke-width="0.15"/>
+<line x1="157" y1="81.5" x2="157" y2="38.5" stroke="#555" stroke-width="0.18"/>
+<line x1="156" y1="81" x2="158" y2="79" stroke="#111" stroke-width="0.4"/>
+<line x1="156" y1="41" x2="158" y2="39" stroke="#111" stroke-width="0.4"/>
+<text x="156" y="60" font-size="2.4" text-anchor="middle" transform="rotate(-90 156 60)">200</text>
+<line x1="30" y1="50.3" x2="30" y2="44.8" stroke="#555" stroke-width="0.15"/>
+<line x1="48" y1="50.3" x2="48" y2="44.8" stroke="#555" stroke-width="0.15"/>
+<line x1="28.5" y1="46.3" x2="49.5" y2="46.3" stroke="#555" stroke-width="0.18"/>
+<line x1="29" y1="47.3" x2="31" y2="45.3" stroke="#111" stroke-width="0.4"/>
+<line x1="47" y1="47.3" x2="49" y2="45.3" stroke="#111" stroke-width="0.4"/>
+<text x="39" y="45.4" font-size="2.4" text-anchor="middle">90</text>
+<line x1="30" y1="50.3" x2="14.5" y2="50.3" stroke="#555" stroke-width="0.15"/>
+<line x1="30" y1="40" x2="14.5" y2="40" stroke="#555" stroke-width="0.15"/>
+<line x1="16" y1="51.8" x2="16" y2="38.5" stroke="#555" stroke-width="0.18"/>
+<line x1="15" y1="51.3" x2="17" y2="49.3" stroke="#111" stroke-width="0.4"/>
+<line x1="15" y1="41" x2="17" y2="39" stroke="#111" stroke-width="0.4"/>
+<text x="15" y="45.15" font-size="2.4" text-anchor="middle" transform="rotate(-90 15 45.15)">51,5</text>
+<text x="168" y="24" font-size="3.4" font-weight="bold">Dorso (listones)</text>
+<text x="168" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<rect x="176" y="40" width="120" height="120" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
+<rect x="176" y="44" width="120" height="8.4" fill="#c9bfa8" stroke="#111" stroke-width="0.35"/>
+<rect x="176" y="147.6" width="120" height="8.4" fill="#c9bfa8" stroke="#111" stroke-width="0.35"/>
+<circle cx="184" cy="48.2" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="206" cy="48.2" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="266" cy="48.2" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="288" cy="48.2" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="184" cy="151.8" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="206" cy="151.8" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="266" cy="151.8" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="288" cy="151.8" r="0.5" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="236" y="49.1" font-size="2.4" text-anchor="middle" fill="#111">listón superior 600 × 42 × 18</text>
+<text x="236" y="152.7" font-size="2.4" text-anchor="middle" fill="#111">listón inferior 600 × 42 × 18</text>
+<line x1="296" y1="44" x2="304.5" y2="44" stroke="#555" stroke-width="0.15"/>
+<line x1="296" y1="40" x2="304.5" y2="40" stroke="#555" stroke-width="0.15"/>
+<line x1="303" y1="45.5" x2="303" y2="38.5" stroke="#555" stroke-width="0.18"/>
+<line x1="302" y1="45" x2="304" y2="43" stroke="#111" stroke-width="0.4"/>
+<line x1="302" y1="41" x2="304" y2="39" stroke="#111" stroke-width="0.4"/>
+<text x="302" y="42" font-size="2.4" text-anchor="middle" transform="rotate(-90 302 42)">20</text>
+<line x1="296" y1="52.4" x2="304.5" y2="52.4" stroke="#555" stroke-width="0.15"/>
+<line x1="296" y1="44" x2="304.5" y2="44" stroke="#555" stroke-width="0.15"/>
+<line x1="303" y1="53.9" x2="303" y2="42.5" stroke="#555" stroke-width="0.18"/>
+<line x1="302" y1="53.4" x2="304" y2="51.4" stroke="#111" stroke-width="0.4"/>
+<line x1="302" y1="45" x2="304" y2="43" stroke="#111" stroke-width="0.4"/>
+<text x="302" y="48.2" font-size="2.4" text-anchor="middle" transform="rotate(-90 302 48.2)">42</text>
+<line x1="296" y1="160" x2="304.5" y2="160" stroke="#555" stroke-width="0.15"/>
+<line x1="296" y1="156" x2="304.5" y2="156" stroke="#555" stroke-width="0.15"/>
+<line x1="303" y1="161.5" x2="303" y2="154.5" stroke="#555" stroke-width="0.18"/>
+<line x1="302" y1="161" x2="304" y2="159" stroke="#111" stroke-width="0.4"/>
+<line x1="302" y1="157" x2="304" y2="155" stroke="#111" stroke-width="0.4"/>
+<text x="302" y="158" font-size="2.4" text-anchor="middle" transform="rotate(-90 302 158)">20</text>
+<text x="236" y="100" font-size="2.3" text-anchor="middle" fill="#555">tornillos 4 × 30 desde los listones; cola vinílica</text>
+<text x="318" y="24" font-size="3.4" font-weight="bold">Sección A–A</text>
+<text x="318" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<rect x="345" y="40" width="3.6" height="120" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="348.6" y="44" width="3.6" height="8.4" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="348.6" y="147.6" width="3.6" height="8.4" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<text x="344.4" y="100" font-size="2.3" text-anchor="middle" fill="#111" transform="rotate(-90 344.4 100)">cara de escritura</text>
+<line x1="345" y1="160" x2="345" y2="168.5" stroke="#555" stroke-width="0.15"/>
+<line x1="352.2" y1="160" x2="352.2" y2="168.5" stroke="#555" stroke-width="0.15"/>
+<line x1="343.5" y1="167" x2="353.7" y2="167" stroke="#555" stroke-width="0.18"/>
+<line x1="344" y1="168" x2="346" y2="166" stroke="#111" stroke-width="0.4"/>
+<line x1="351.2" y1="168" x2="353.2" y2="166" stroke="#111" stroke-width="0.4"/>
+<text x="348.6" y="166.1" font-size="2.4" text-anchor="middle">36</text>
+<line x1="345" y1="40" x2="345" y2="32.5" stroke="#555" stroke-width="0.15"/>
+<line x1="348.6" y1="40" x2="348.6" y2="32.5" stroke="#555" stroke-width="0.15"/>
+<line x1="343.5" y1="34" x2="350.1" y2="34" stroke="#555" stroke-width="0.18"/>
+<line x1="344" y1="35" x2="346" y2="33" stroke="#111" stroke-width="0.4"/>
+<line x1="347.6" y1="35" x2="349.6" y2="33" stroke="#111" stroke-width="0.4"/>
+<text x="346.8" y="33.1" font-size="2.4" text-anchor="middle">18</text>
+<text x="22" y="205" font-size="2.6"><tspan font-weight="bold">Material:</tspan> terciado o multilaminado de 18 mm, cara de escritura lisa, lijada (grano 180) y con un sellador mate.</text>
+<text x="22" y="208.77" font-size="2.6">Sin tornillos ni marcas en la cara de escritura. Cantos redondeados (r ≈ 2 mm).</text>
+<text x="22" y="212.54" font-size="2.6">La hoja se fija siempre en el mismo lugar: centro a 200 mm del borde superior y centrada en el ancho.</text>
+<text x="22" y="216.31" font-size="2.6">Marcar sus cuatro esquinas en la cara con lápiz suave o un grabado muy leve.</text>
+<text x="22" y="220.08" font-size="2.6">Los dos listones son los apoyos del tablero en las tres posiciones:</text>
+<text x="22" y="223.85" font-size="2.6">· B0, sobre la mesa: el tablero queda plano y elevado 18 mm.</text>
+<text x="22" y="227.62" font-size="2.6">· B1, sobre el atril: los listones descansan en las hipotenusas de las cartelas.</text>
+<text x="22" y="231.39" font-size="2.6">· B2, en el muro: el listón superior se apoya en dos pasadores de los montantes.</text>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="297" fill="#fff"/>
+<rect x="10" y="10" width="400" height="277" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="290" y="265" width="120" height="22" fill="#fff" stroke="#111" stroke-width="0.35"/>
+<line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
+<line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
+<text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
+<text x="292" y="278.5" font-size="3.2">Atril de 45° (condición B1)</text>
+<text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:5 en A3 · 2026-10</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-02</text>
+<text x="22" y="24" font-size="3.4" font-weight="bold">Alzado lateral con el tablero</text>
+<text x="22" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<polygon points="61,170 147,170 147,78 61,164" fill="#e9e4d8" stroke="#111" stroke-width="0.5"/>
+<line x1="61" y1="170" x2="61" y2="164" stroke="#111" stroke-width="0.5"/>
+<polygon points="61,164 65.24,159.76 62.7,157.21 58.45,161.45" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<polygon points="65.24,159.76 71.18,153.82 68.64,151.27 62.7,157.21" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<polygon points="59.87,160.04 144.72,75.19 142.18,72.64 57.32,157.49" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.5"/>
+<polygon points="138.5,86.5 144.44,80.56 141.89,78.02 135.95,83.96" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<rect x="143.4" y="156" width="3.6" height="14" fill="#c9bfa8" stroke="#111" stroke-width="0.4"/>
+<line x1="51" y1="170" x2="155" y2="170" stroke="#111" stroke-width="0.6"/>
+<text x="155" y="169" font-size="2.4" text-anchor="end" fill="#111">mesa</text>
+<line x1="61" y1="170" x2="61" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="147" y1="170" x2="147" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="59.5" y1="178" x2="148.5" y2="178" stroke="#555" stroke-width="0.18"/>
+<line x1="60" y1="179" x2="62" y2="177" stroke="#111" stroke-width="0.4"/>
+<line x1="146" y1="179" x2="148" y2="177" stroke="#111" stroke-width="0.4"/>
+<text x="104" y="177.1" font-size="2.4" text-anchor="middle">430</text>
+<line x1="55" y1="170" x2="55" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="61" y1="170" x2="61" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="53.5" y1="178" x2="62.5" y2="178" stroke="#555" stroke-width="0.18"/>
+<line x1="54" y1="179" x2="56" y2="177" stroke="#111" stroke-width="0.4"/>
+<line x1="60" y1="179" x2="62" y2="177" stroke="#111" stroke-width="0.4"/>
+<text x="58" y="177.1" font-size="2.4" text-anchor="middle">30</text>
+<line x1="147" y1="170" x2="156.5" y2="170" stroke="#555" stroke-width="0.15"/>
+<line x1="147" y1="78" x2="156.5" y2="78" stroke="#555" stroke-width="0.15"/>
+<line x1="155" y1="171.5" x2="155" y2="76.5" stroke="#555" stroke-width="0.18"/>
+<line x1="154" y1="171" x2="156" y2="169" stroke="#111" stroke-width="0.4"/>
+<line x1="154" y1="79" x2="156" y2="77" stroke="#111" stroke-width="0.4"/>
+<text x="154" y="124" font-size="2.4" text-anchor="middle" transform="rotate(-90 154 124)">460</text>
+<circle cx="113.89" cy="100.93" r="0.9" fill="#1593c7" stroke="#1593c7" stroke-width="0.25"/>
+<text x="110.89" y="98.93" font-size="2.4" text-anchor="end" fill="#1593c7">centro de la hoja</text>
+<text x="107" y="128" font-size="3" text-anchor="start" fill="#111">45°</text>
+<line x1="57.32" y1="170" x2="45.82" y2="170" stroke="#555" stroke-width="0.15"/>
+<line x1="57.32" y1="157.49" x2="45.82" y2="157.49" stroke="#555" stroke-width="0.15"/>
+<line x1="47.32" y1="171.5" x2="47.32" y2="155.99" stroke="#555" stroke-width="0.18"/>
+<line x1="46.32" y1="171" x2="48.32" y2="169" stroke="#111" stroke-width="0.4"/>
+<line x1="46.32" y1="158.49" x2="48.32" y2="156.49" stroke="#111" stroke-width="0.4"/>
+<text x="46.32" y="163.75" font-size="2.4" text-anchor="middle" transform="rotate(-90 46.32 163.75)">≈ 63</text>
+<text x="225" y="24" font-size="3.4" font-weight="bold">Frente del atril (sin tablero)</text>
+<text x="225" y="28" font-size="2.4" fill="#555">escala 1:5</text>
+<rect x="240" y="78" width="3.6" height="92" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="356.4" y="78" width="3.6" height="92" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<rect x="243.6" y="156" width="112.8" height="14" fill="#e9e4d8" stroke="#111" stroke-width="0.35" stroke-dasharray="1.5 1"/>
+<rect x="240" y="157.21" width="120" height="6.79" fill="#e9e4d8" stroke="#111" stroke-width="0.4"/>
+<text x="300" y="167.6" font-size="2.3" text-anchor="middle" fill="#111">travesaño trasero 564 × 70 (detrás)</text>
+<text x="300" y="161.4" font-size="2.3" text-anchor="middle" fill="#111">tope transversal 600 × 30</text>
+<line x1="240" y1="170" x2="240" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="360" y1="170" x2="360" y2="179.5" stroke="#555" stroke-width="0.15"/>
+<line x1="238.5" y1="178" x2="361.5" y2="178" stroke="#555" stroke-width="0.18"/>
+<line x1="239" y1="179" x2="241" y2="177" stroke="#111" stroke-width="0.4"/>
+<line x1="359" y1="179" x2="361" y2="177" stroke="#111" stroke-width="0.4"/>
+<text x="300" y="177.1" font-size="2.4" text-anchor="middle">600</text>
+<line x1="243.6" y1="78" x2="243.6" y2="70.5" stroke="#555" stroke-width="0.15"/>
+<line x1="356.4" y1="78" x2="356.4" y2="70.5" stroke="#555" stroke-width="0.15"/>
+<line x1="242.1" y1="72" x2="357.9" y2="72" stroke="#555" stroke-width="0.18"/>
+<line x1="242.6" y1="73" x2="244.6" y2="71" stroke="#111" stroke-width="0.4"/>
+<line x1="355.4" y1="73" x2="357.4" y2="71" stroke="#111" stroke-width="0.4"/>
+<text x="300" y="71.1" font-size="2.4" text-anchor="middle">564</text>
+<line x1="360" y1="170" x2="369.5" y2="170" stroke="#555" stroke-width="0.15"/>
+<line x1="360" y1="78" x2="369.5" y2="78" stroke="#555" stroke-width="0.15"/>
+<line x1="368" y1="171.5" x2="368" y2="76.5" stroke="#555" stroke-width="0.18"/>
+<line x1="367" y1="171" x2="369" y2="169" stroke="#111" stroke-width="0.4"/>
+<line x1="367" y1="79" x2="369" y2="77" stroke="#111" stroke-width="0.4"/>
+<text x="367" y="124" font-size="2.4" text-anchor="middle" transform="rotate(-90 367 124)">460</text>
+<text x="22" y="200" font-size="2.6"><tspan font-weight="bold">Piezas:</tspan> 2 cartelas (triángulos rectángulos de catetos 460, despuntados 30 en el vértice agudo), 1 travesaño trasero 564 × 70,</text>
+<text x="22" y="203.77" font-size="2.6">1 travesaño superior 564 × 70 (opcional, en la parte alta del cateto vertical), 1 tope transversal 600 × 30 atornillado sobre las hipotenusas.</text>
+<text x="22" y="207.54" font-size="2.6">Las dos cartelas salen de un cuadrado de 460 × 460 cortado en diagonal: la hipotenusa queda sobre el corte, que debe ser recto y limpio.</text>
+<text x="22" y="211.31" font-size="2.6">El listón inferior del tablero apoya contra el tope; los dos listones descansan sobre las hipotenusas.</text>
+<text x="22" y="215.08" font-size="2.6">Verificar 45° ± 1° con un inclinómetro (aplicación del teléfono) sobre la cara del tablero y anotarlo en la ficha.</text>
+<text x="22" y="218.85" font-size="2.6">Antideslizante (fieltro o goma) bajo las cartelas.</text>
+</svg>

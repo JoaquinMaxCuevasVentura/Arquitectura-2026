@@ -21,7 +21,7 @@
    */
   function svgPauta(pauta, opciones) {
     const o = opciones || {};
-    const G = AP.nucleo.GESTOS;
+    const G = AP.nucleo.GESTOS_CORTOS;
     const enc = o.encabezado || {};
     const p = [];
     p.push(

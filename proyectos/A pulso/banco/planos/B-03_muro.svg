@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297" font-family="Helvetica, Arial, sans-serif">
+<rect width="420" height="297" fill="#fff"/>
+<rect x="10" y="10" width="400" height="277" fill="none" stroke="#111" stroke-width="0.5"/>
+<rect x="290" y="265" width="120" height="22" fill="#fff" stroke="#111" stroke-width="0.35"/>
+<line x1="290" y1="273" x2="410" y2="273" stroke="#111" stroke-width="0.2"/>
+<line x1="385" y1="265" x2="385" y2="287" stroke="#111" stroke-width="0.2"/>
+<text x="292" y="270.5" font-size="3.6" font-weight="bold">A PULSO · banco de escritura</text>
+<text x="292" y="278.5" font-size="3.2">Montantes de muro (condición B2)</text>
+<text x="292" y="284" font-size="2.3" fill="#555">medidas en mm · esc. 1:10 y 1:2 en A3 · 2026-10</text>
+<text x="397.5" y="281" font-size="9" font-weight="bold" text-anchor="middle">B-03</text>
+<text x="22" y="24" font-size="3.4" font-weight="bold">Alzado del muro</text>
+<text x="22" y="28" font-size="2.4" fill="#555">escala 1:10</text>
+<line x1="45" y1="270" x2="150" y2="270" stroke="#111" stroke-width="0.6"/>
+<text x="45" y="269" font-size="2.4" text-anchor="start" fill="#111">piso</text>
+<rect x="65.5" y="70" width="9" height="75" fill="#e9e4d8" stroke="#111" stroke-width="0.45"/>
+<circle cx="70" cy="140" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="140.8" font-size="2" text-anchor="end" fill="#111">1</text>
+<circle cx="70" cy="137.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="135" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="132.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="130" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="130.8" font-size="2" text-anchor="end" fill="#111">5</text>
+<circle cx="70" cy="127.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="125" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="122.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="120" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="117.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="118.3" font-size="2" text-anchor="end" fill="#111">10</text>
+<circle cx="70" cy="115" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="112.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="110" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="107.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="105" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="105.8" font-size="2" text-anchor="end" fill="#111">15</text>
+<circle cx="70" cy="102.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="100" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="97.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="95" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="92.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="93.3" font-size="2" text-anchor="end" fill="#111">20</text>
+<circle cx="70" cy="90" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="87.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="85" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="82.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="80" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<text x="64" y="80.8" font-size="2" text-anchor="end" fill="#111">25</text>
+<circle cx="70" cy="77.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="70" cy="75" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<rect x="107.5" y="70" width="9" height="75" fill="#e9e4d8" stroke="#111" stroke-width="0.45"/>
+<circle cx="112" cy="140" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="137.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="135" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="132.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="130" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="127.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="125" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="122.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="120" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="117.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="115" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="112.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="110" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="107.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="105" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="102.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="100" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="97.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="95" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="92.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="90" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="87.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="85" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="82.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="80" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="77.5" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<circle cx="112" cy="75" r="0.35" fill="#111" stroke="#111" stroke-width="0.25"/>
+<rect x="61" y="115.9" width="60" height="60" fill="none" stroke="#1593c7" stroke-width="0.4" stroke-dasharray="2 1.2"/>
+<circle cx="70" cy="122.5" r="0.9" fill="#c8433a" stroke="#c8433a" stroke-width="0.25"/>
+<circle cx="70" cy="117.5" r="0.9" fill="#c8433a" stroke="#c8433a" stroke-width="0.25"/>
+<circle cx="112" cy="122.5" r="0.9" fill="#c8433a" stroke="#c8433a" stroke-width="0.25"/>
+<circle cx="112" cy="117.5" r="0.9" fill="#c8433a" stroke="#c8433a" stroke-width="0.25"/>
+<line x1="57" y1="135" x2="125" y2="135" stroke="#c8433a" stroke-width="0.25" stroke-dasharray="2 1"/>
+<text x="125.2" y="135.8" font-size="2.3" text-anchor="start" fill="#c8433a">hombro 1350 (ejemplo)</text>
+<text x="125.2" y="123.3" font-size="2.3" text-anchor="start" fill="#c8433a">pasadores en los agujeros 8 y 10</text>
+<line x1="116.5" y1="270" x2="128" y2="270" stroke="#555" stroke-width="0.15"/>
+<line x1="116.5" y1="145" x2="128" y2="145" stroke="#555" stroke-width="0.15"/>
+<line x1="126.5" y1="271.5" x2="126.5" y2="143.5" stroke="#555" stroke-width="0.18"/>
+<line x1="125.5" y1="271" x2="127.5" y2="269" stroke="#111" stroke-width="0.4"/>
+<line x1="125.5" y1="146" x2="127.5" y2="144" stroke="#111" stroke-width="0.4"/>
+<text x="125.5" y="207.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 125.5 207.5)">1250</text>
+<line x1="116.5" y1="145" x2="128" y2="145" stroke="#555" stroke-width="0.15"/>
+<line x1="116.5" y1="70" x2="128" y2="70" stroke="#555" stroke-width="0.15"/>
+<line x1="126.5" y1="146.5" x2="126.5" y2="68.5" stroke="#555" stroke-width="0.18"/>
+<line x1="125.5" y1="146" x2="127.5" y2="144" stroke="#111" stroke-width="0.4"/>
+<line x1="125.5" y1="71" x2="127.5" y2="69" stroke="#111" stroke-width="0.4"/>
+<text x="125.5" y="107.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 125.5 107.5)">750</text>
+<line x1="70" y1="70" x2="70" y2="62.5" stroke="#555" stroke-width="0.15"/>
+<line x1="112" y1="70" x2="112" y2="62.5" stroke="#555" stroke-width="0.15"/>
+<line x1="68.5" y1="64" x2="113.5" y2="64" stroke="#555" stroke-width="0.18"/>
+<line x1="69" y1="65" x2="71" y2="63" stroke="#111" stroke-width="0.4"/>
+<line x1="111" y1="65" x2="113" y2="63" stroke="#111" stroke-width="0.4"/>
+<text x="91" y="63.1" font-size="2.4" text-anchor="middle">420</text>
+<line x1="65.5" y1="145" x2="52" y2="145" stroke="#555" stroke-width="0.15"/>
+<line x1="65.5" y1="140" x2="52" y2="140" stroke="#555" stroke-width="0.15"/>
+<line x1="53.5" y1="146.5" x2="53.5" y2="138.5" stroke="#555" stroke-width="0.18"/>
+<line x1="52.5" y1="146" x2="54.5" y2="144" stroke="#111" stroke-width="0.4"/>
+<line x1="52.5" y1="141" x2="54.5" y2="139" stroke="#111" stroke-width="0.4"/>
+<text x="52.5" y="142.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 52.5 142.5)">50</text>
+<text x="225" y="24" font-size="3.4" font-weight="bold">Detalle: pasador y listón superior</text>
+<text x="225" y="28" font-size="2.4" fill="#555">escala 1:2</text>
+<rect x="240" y="90" width="15" height="80" fill="#ddd" stroke="#111" stroke-width="0.4"/>
+<text x="247.5" y="87.5" font-size="2.4" text-anchor="middle" fill="#111">muro</text>
+<rect x="255" y="90" width="9" height="80" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<text x="259.5" y="173" font-size="2.3" text-anchor="middle" fill="#111">montante</text>
+<rect x="256.5" y="138" width="16" height="4" fill="#888" stroke="#111" stroke-width="0.3"/>
+<text x="294.5" y="148" font-size="2.3" text-anchor="start" fill="#111">pasador Ø8 × 32</text>
+<line x1="268" y1="140" x2="292.5" y2="148" stroke="#111" stroke-width="0.15"/>
+<rect x="264" y="117" width="9" height="21" fill="#c9bfa8" stroke="#111" stroke-width="0.5"/>
+<text x="268.5" y="127.5" font-size="2.2" text-anchor="middle" fill="#111" transform="rotate(-90 268.5 127.5)">listón</text>
+<rect x="256.5" y="113" width="16" height="4" fill="#888" stroke="#111" stroke-width="0.3"/>
+<text x="294.5" y="107" font-size="2.3" text-anchor="start" fill="#111">pasador de traba (2 agujeros más arriba)</text>
+<line x1="268" y1="115" x2="292.5" y2="107" stroke="#111" stroke-width="0.15"/>
+<line x1="240" y1="140" x2="232.5" y2="140" stroke="#555" stroke-width="0.15"/>
+<line x1="240" y1="115" x2="232.5" y2="115" stroke="#555" stroke-width="0.15"/>
+<line x1="234" y1="141.5" x2="234" y2="113.5" stroke="#555" stroke-width="0.18"/>
+<line x1="233" y1="141" x2="235" y2="139" stroke="#111" stroke-width="0.4"/>
+<line x1="233" y1="116" x2="235" y2="114" stroke="#111" stroke-width="0.4"/>
+<text x="233" y="127.5" font-size="2.4" text-anchor="middle" transform="rotate(-90 233 127.5)">50</text>
+<rect x="273" y="90" width="9" height="75" fill="#cfe8f3" stroke="#1593c7" stroke-width="0.5"/>
+<text x="281.5" y="125" font-size="2.3" text-anchor="middle" fill="#111" transform="rotate(-90 281.5 125)">tablero</text>
+<line x1="256.5" y1="142" x2="256.5" y2="151.5" stroke="#555" stroke-width="0.15"/>
+<line x1="264" y1="142" x2="264" y2="151.5" stroke="#555" stroke-width="0.15"/>
+<line x1="255" y1="150" x2="265.5" y2="150" stroke="#555" stroke-width="0.18"/>
+<line x1="255.5" y1="151" x2="257.5" y2="149" stroke="#111" stroke-width="0.4"/>
+<line x1="263" y1="151" x2="265" y2="149" stroke="#111" stroke-width="0.4"/>
+<text x="260.25" y="149.1" font-size="2.4" text-anchor="middle">15</text>
+<line x1="264" y1="142" x2="264" y2="151.5" stroke="#555" stroke-width="0.15"/>
+<line x1="272.5" y1="142" x2="272.5" y2="151.5" stroke="#555" stroke-width="0.15"/>
+<line x1="262.5" y1="150" x2="274" y2="150" stroke="#555" stroke-width="0.18"/>
+<line x1="263" y1="151" x2="265" y2="149" stroke="#111" stroke-width="0.4"/>
+<line x1="271.5" y1="151" x2="273.5" y2="149" stroke="#111" stroke-width="0.4"/>
+<text x="268.25" y="149.1" font-size="2.4" text-anchor="middle">17</text>
+<text x="225" y="200" font-size="2.6"><tspan font-weight="bold">Montantes:</tspan> 2 piezas de 90 × 750 × 18, a plomo, con 420 mm entre ejes</text>
+<text x="225" y="203.77" font-size="2.6">y el borde inferior a 1250 mm del piso. Fijación: 3 tornillos 5 × 60 con tarugos Ø8 por montante.</text>
+<text x="225" y="207.54" font-size="2.6">Agujeros Ø8,5 de 15 mm de profundidad cada 25 mm sobre el eje: 27 agujeros, del 1 (abajo) al 27.</text>
+<text x="225" y="211.31" font-size="2.6">Numerar con lápiz cada 5 agujeros. Pasadores: varilla lisa de acero Ø8 × 32 (15 mm dentro, 17 mm fuera),</text>
+<text x="225" y="215.08" font-size="2.6">así no tocan el dorso del tablero. El listón superior (42 mm) se apoya en dos pasadores y queda atrapado por otros dos</text>
+<text x="225" y="218.85" font-size="2.6">puestos dos agujeros más arriba: el tablero no se levanta con los trazos ascendentes. El listón inferior toca los montantes.</text>
+<text x="225" y="222.62" font-size="2.6">Elegir el agujero con la calculadora del banco: el centro de la hoja queda a la altura del hombro (±12 mm).</text>
+<text x="225" y="226.39" font-size="2.6">Si no se puede perforar el muro: atornillar los montantes a un tablero de 600 × 1200 apoyado en el muro</text>
+<text x="225" y="230.16" font-size="2.6">y trabado al piso con un listón.</text>
+</svg>

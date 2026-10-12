@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fichas · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  @page { size: A4 portrait; margin: 14mm 14mm 12mm; }
+  .hoja { background: #fff; border: 1px solid var(--linea); border-radius: 4px; padding: 14mm; margin: 0 auto 16px; max-width: 210mm; font-size: 10.5pt; line-height: 1.35; color: #111; }
+  .hoja h2 { font-size: 15pt; margin: 0 0 1mm; }
+  .hoja .sub { color: #555; font-size: 9pt; margin-bottom: 5mm; }
+  .hoja h3 { font-size: 11pt; margin: 5mm 0 2mm; border-bottom: 1px solid #999; padding-bottom: 1mm; }
+  .campos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm 5mm; }
+  .campos.dos { grid-template-columns: repeat(2, 1fr); }
+  .campos.tres { grid-template-columns: repeat(3, 1fr); }
+  .c { font-size: 8.5pt; color: #444; border-bottom: 0.3mm solid #777; padding-top: 5mm; position: relative; }
+  .c span { position: absolute; top: 0; left: 0; }
+  .ancho { grid-column: 1 / -1; }
+  .renglones { border-bottom: 0.3mm solid #999; height: 7mm; }
+  .caja { display: inline-block; width: 3.6mm; height: 3.6mm; border: 0.3mm solid #333; vertical-align: -0.6mm; margin: 0 1.5mm 0 4mm; }
+  .caja:first-child { margin-left: 0; }
+  .pregunta { margin-top: 3mm; font-weight: 600; font-size: 10pt; }
+  .lista li { margin: 1.2mm 0; list-style: none; position: relative; padding-left: 6mm; }
+  .lista li::before { content: ''; position: absolute; left: 0; top: 0.8mm; width: 3.4mm; height: 3.4mm; border: 0.3mm solid #333; }
+  .lista { padding-left: 0; }
+  .nota { font-size: 8.5pt; color: #555; }
+  table.bloques { border-collapse: collapse; width: 100%; font-size: 9.5pt; }
+  table.bloques td, table.bloques th { border: 0.3mm solid #999; padding: 1.5mm 2mm; text-align: left; vertical-align: top; }
+  .firma { display: grid; grid-template-columns: 1fr 1fr; gap: 12mm; margin-top: 14mm; }
+  .firma div { border-top: 0.3mm solid #333; padding-top: 1mm; font-size: 9pt; }
+  @media print {
+    .hoja { border: none; padding: 0; margin: 0; max-width: none; page-break-after: always; break-after: page; }
+    .hoja:last-child { page-break-after: auto; }
+    .hoja.oculta { display: none; }
+  }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html">Banco</a>
+    <a href="ficha.html" aria-current="page">Fichas</a>
+  </nav>
+</header>
+<main>
+  <section class="panel no-imprimir">
+    <h2>Fichas y hojas de sesión</h2>
+    <p class="ayuda">Elige qué imprimir (A4 vertical). Imprime una ficha de ensayo por bloque: en el piloto son cuatro.</p>
+    <div class="fila">
+      <label class="check"><input type="checkbox" data-hoja="ficha" checked> Ficha de ensayo</label>
+      <label class="check"><input type="checkbox" data-hoja="medidas" checked> Medidas y montaje</label>
+      <label class="check"><input type="checkbox" data-hoja="piloto" checked> Lista del piloto</label>
+      <label class="check"><input type="checkbox" data-hoja="sesion" checked> Hoja de sesión</label>
+      <label class="check"><input type="checkbox" data-hoja="consentimiento" checked> Consentimiento</label>
+      <button id="imprimir">Imprimir</button>
+    </div>
+  </section>
+
+  <!-- FICHA DE ENSAYO -->
+  <article class="hoja" id="ficha">
+    <h2>A pulso · Ficha de ensayo</h2>
+    <div class="sub">Una por bloque. Identificador: AP-persona-sesión-condición-gesto-repetición (p. ej., AP-P00-S03-B2-G5-R07).</div>
+    <div class="campos">
+      <div class="c"><span>Persona</span></div>
+      <div class="c"><span>Sesión</span></div>
+      <div class="c"><span>Orden en la sesión</span></div>
+      <div class="c"><span>Fecha y hora</span></div>
+      <div class="c"><span>Condición (código)</span></div>
+      <div class="c"><span>A apoyo</span></div>
+      <div class="c"><span>B plano</span></div>
+      <div class="c"><span>C límite · D resistencia</span></div>
+      <div class="c"><span>Altura x (mm)</span></div>
+      <div class="c"><span>Pauta</span></div>
+      <div class="c"><span>Herramienta</span></div>
+      <div class="c"><span>Papel / superficie</span></div>
+    </div>
+    <h3>Configuración física</h3>
+    <div class="campos">
+      <div class="c"><span>Asiento (mm)</span></div>
+      <div class="c"><span>Plano (mm) o agujero</span></div>
+      <div class="c"><span>Inclinación medida (°)</span></div>
+      <div class="c"><span>De pie / sentado</span></div>
+    </div>
+    <h3>Gestos y archivos</h3>
+    <div class="campos">
+      <div class="c"><span>Gestos × repeticiones</span></div>
+      <div class="c"><span>Calentamiento descartado</span></div>
+      <div class="c"><span>Archivo de la hoja / bloque</span></div>
+      <div class="c"><span>Videos (lateral · cenital)</span></div>
+    </div>
+    <h3>Durante el bloque</h3>
+    <div style="margin-top:2mm">Articulación dominante:
+      <span class="caja"></span>dedos <span class="caja"></span>muñeca <span class="caja"></span>codo <span class="caja"></span>hombro
+    </div>
+    <div style="margin-top:3mm">Cansancio (0–5): <span class="caja"></span>0 <span class="caja"></span>1 <span class="caja"></span>2 <span class="caja"></span>3 <span class="caja"></span>4 <span class="caja"></span>5</div>
+    <div class="pregunta">Ajustes observados (agarre, reposicionamientos, postura)</div>
+    <div class="renglones"></div><div class="renglones"></div>
+    <div class="pregunta">1. ¿Qué articulación sentí que conducía el trazo?</div>
+    <div class="renglones"></div><div class="renglones"></div>
+    <div class="pregunta">2. ¿Dónde y en qué momento tuve que corregir?</div>
+    <div class="renglones"></div><div class="renglones"></div>
+    <div class="pregunta">3. ¿Qué hizo la mano que yo no había planeado?</div>
+    <div class="renglones"></div><div class="renglones"></div>
+    <div class="pregunta">Hallazgo no previsto</div>
+    <div class="renglones"></div>
+    <h3>Lectura posterior</h3>
+    <div class="pregunta">Rasgos que cambian frente a la base</div>
+    <div class="renglones"></div><div class="renglones"></div>
+    <div class="pregunta">Regla candidata: En [condición], [rasgo] tiende a [cambio]. En la letra: …</div>
+    <div class="renglones"></div><div class="renglones"></div>
+  </article>
+
+  <!-- MEDIDAS -->
+  <article class="hoja" id="medidas">
+    <h2>A pulso · Medidas corporales y montaje</h2>
+    <div class="sub">Una por persona. Las alturas del banco se fijan respecto de estas medidas (ver la calculadora del banco).</div>
+    <div class="campos">
+      <div class="c"><span>Persona</span></div>
+      <div class="c"><span>Fecha</span></div>
+      <div class="c"><span>Mano dominante</span></div>
+      <div class="c"><span>Calzado de la sesión</span></div>
+    </div>
+    <h3>Medidas (mm)</h3>
+    <table class="bloques">
+      <tr><th style="width:38%">Medida</th><th style="width:40%">Cómo se toma</th><th>Valor</th></tr>
+      <tr><td>Codo sobre el asiento</td><td>Sentado erguido, brazo colgando y antebrazo horizontal: del asiento a la parte inferior del codo.</td><td></td></tr>
+      <tr><td>Hombro de pie</td><td>De pie, del piso al acromion (punto más alto y lateral del hombro).</td><td></td></tr>
+      <tr><td>Codo a punta de los dedos</td><td>Antebrazo horizontal, mano extendida: del codo a la punta del dedo medio.</td><td></td></tr>
+      <tr><td>Codo de pie (referencia)</td><td>De pie, brazo colgando y antebrazo horizontal: del piso al codo.</td><td></td></tr>
+      <tr><td>Alcance del brazo (referencia)</td><td>De pie frente al muro, brazo extendido al frente: del muro (hombro apoyado de lado) a la punta de los dedos.</td><td></td></tr>
+      <tr><td>Mesa de ensayo</td><td>Del piso a la cubierta.</td><td></td></tr>
+      <tr><td>Asiento de ensayo</td><td>Del piso a la superficie del asiento, sin cojín.</td><td></td></tr>
+    </table>
+    <h3>Montaje calculado</h3>
+    <table class="bloques">
+      <tr><th style="width:18%">Plano</th><th style="width:45%">Criterio</th><th>Ajuste (asiento o agujero)</th></tr>
+      <tr><td>B0</td><td>Codo 30 mm sobre el plano, antebrazo apoyado.</td><td></td></tr>
+      <tr><td>B1</td><td>Codo 20 mm sobre el borde inferior del tablero a 45°.</td><td></td></tr>
+      <tr><td>B2</td><td>Centro de la hoja a la altura del hombro, de pie.</td><td></td></tr>
+    </table>
+    <h3>Observaciones (lesiones, molestias, anteojos, costumbres de escritura)</h3>
+    <div class="renglones"></div><div class="renglones"></div><div class="renglones"></div>
+  </article>
+
+  <!-- LISTA DEL PILOTO -->
+  <article class="hoja" id="piloto">
+    <h2>A pulso · Lista del piloto</h2>
+    <div class="sub">BASE (mesa, antebrazo apoyado) frente a MURO (de pie, plano vertical a la altura del hombro, brazo libre). Gestos G1, G2 y G5. Altura x 30 mm. ≈45 min de ensayo y 30 min de lectura.</div>
+    <h3>Materiales</h3>
+    <ul class="lista">
+      <li>Cuatro pautas A3H-h30-L-3x5 impresas a tamaño real (filas G1, G2, G5) y hojas sueltas para el calentamiento.</li>
+      <li>Una sola herramienta: lápiz 2B o marcador negro de punta redonda de 0,8–1 mm. No usar tinta azul.</li>
+      <li>Cuatro fichas de ensayo y la hoja de medidas.</li>
+      <li>Cinta de papel, regla, cronómetro.</li>
+      <li>Teléfono con soporte para el video lateral (y otro para el cenital, si hay).</li>
+      <li>Mesa, asiento y una pared despejada.</li>
+    </ul>
+    <h3>Preparación</h3>
+    <ul class="lista">
+      <li>Verificar la regla de 100 mm de una pauta impresa.</li>
+      <li>Tomar y anotar las medidas del cuerpo, la mesa y el asiento.</li>
+      <li>Marcar en la pared el centro de la hoja a la altura del hombro.</li>
+      <li>Escribir en el encabezado de cada pauta: bloque, persona, sesión, orden y condición.</li>
+      <li>Probar el encuadre del video: debe verse del hombro a la mano.</li>
+    </ul>
+    <h3>Secuencia (orden ABBA)</h3>
+    <table class="bloques">
+      <tr><th>Paso</th><th>Condición</th><th>Qué se hace</th><th>Hecho</th></tr>
+      <tr><td>0</td><td>BASE</td><td>3 repeticiones de calentamiento por gesto, en hoja suelta</td><td></td></tr>
+      <tr><td>1</td><td>BASE</td><td>Bloque 1: 5 × G1, 5 × G2, 5 × G5 (R01–R05). Dos minutos de notas.</td><td></td></tr>
+      <tr><td>2</td><td>MURO</td><td>3 repeticiones de calentamiento por gesto</td><td></td></tr>
+      <tr><td>3</td><td>MURO</td><td>Bloque 2: 5 × cada gesto (R01–R05). Notas.</td><td></td></tr>
+      <tr><td>4</td><td>MURO</td><td>Bloque 3: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
+      <tr><td>5</td><td>BASE</td><td>Bloque 4: 5 × cada gesto (R06–R10). Notas.</td><td></td></tr>
+    </table>
+    <h3>Lectura</h3>
+    <ul class="lista">
+      <li>Fotografiar o escanear las cuatro hojas.</li>
+      <li>Digitalizar cada hoja (condición BASE o A2B2, orden 1–4, «Desde» 1 o 6).</li>
+      <li>Superponer BASE y A2B2 para cada gesto; medir la altura de la unión de la n.</li>
+      <li>Imprimir la lámina y escribir tres observaciones, una regla candidata y la ficha de lectura.</li>
+      <li>Dibujar una n aplicando la regla.</li>
+    </ul>
+    <h3>Decisión 1</h3>
+    <ul class="lista">
+      <li>¿Se distinguen a simple vista las superposiciones de BASE y MURO? Si no: repetir con la pauta A3H-h60-L-2x3 o con el muro a brazo extendido.</li>
+      <li>Si se distinguen: pasar a la serie con las variables separadas (¿la diferencia viene del apoyo o del plano?).</li>
+    </ul>
+  </article>
+
+  <!-- HOJA DE SESIÓN -->
+  <article class="hoja" id="sesion">
+    <h2>A pulso · Hoja de sesión</h2>
+    <div class="sub">Una por sesión. Cada sesión empieza y termina con 5 repeticiones de G5 en la base (control de deriva). Máximo dos condiciones por sesión, 40–50 minutos de ensayo.</div>
+    <div class="campos">
+      <div class="c"><span>Persona</span></div>
+      <div class="c"><span>Sesión</span></div>
+      <div class="c"><span>Fecha</span></div>
+      <div class="c"><span>Hora de inicio · fin</span></div>
+      <div class="c"><span>Lugar</span></div>
+      <div class="c"><span>Luz (natural / artificial)</span></div>
+      <div class="c"><span>Cansancio al empezar (0–5)</span></div>
+      <div class="c"><span>Herramienta y lote de papel</span></div>
+    </div>
+    <h3>Bloques en orden</h3>
+    <table class="bloques">
+      <tr><th style="width:8%">Orden</th><th style="width:16%">Condición</th><th style="width:22%">Gestos × rep.</th><th style="width:14%">Desde</th><th>Archivo / hoja</th><th style="width:16%">Ficha llena</th></tr>
+      <tr><td>1</td><td>BASE (deriva)</td><td>G5 × 5</td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>6</td><td>BASE (deriva)</td><td>G5 × 5</td><td></td><td></td><td></td></tr>
+    </table>
+    <h3>Imprevistos y cambios al protocolo</h3>
+    <div class="renglones"></div><div class="renglones"></div><div class="renglones"></div>
+    <h3>Primera impresión al terminar</h3>
+    <div class="renglones"></div><div class="renglones"></div><div class="renglones"></div>
+  </article>
+
+  <!-- CONSENTIMIENTO -->
+  <article class="hoja" id="consentimiento">
+    <h2>A pulso · Consentimiento informado</h2>
+    <div class="sub">Modelo para las personas que participan en el contraste con otras manos. Si el proyecto se desarrolla en una institución, revísalo con su comité de ética antes de usarlo.</div>
+    <p><b>Qué es el proyecto.</b> <i>A pulso</i> es una investigación de diseño que estudia cómo las condiciones del lugar donde se escribe (el apoyo del brazo, la inclinación del plano, los bordes y la superficie) cambian la forma de los trazos. Los resultados se usarán para diseñar una tipografía experimental y publicar un atlas de gestos.</p>
+    <p><b>Qué te pedimos.</b> Una sesión de unos 45 minutos en la que escribirás trazos simples y letras en un banco de escritura, en tres o cuatro posiciones. Después de cada serie te haremos tres preguntas breves sobre lo que sentiste. Registraremos las hojas escritas y un video de tu brazo y tu mano; el encuadre evita el rostro.</p>
+    <p><b>Tu participación es voluntaria.</b> Puedes hacer pausas, saltarte una posición incómoda o retirarte en cualquier momento, sin dar razones. Si te retiras, puedes pedir que se borren tus registros.</p>
+    <p><b>Cómo se cuidan tus datos.</b> Tus registros llevan un código (P01, P02…), no tu nombre. Los videos se guardan en un lugar privado y solo los ve el equipo del proyecto. Las trazas escritas pueden publicarse sin identificarte. Las imágenes de tu mano o tu brazo se publican solo si lo autorizas abajo.</p>
+    <p><b>Riesgos.</b> Puede haber cansancio leve del hombro en las posiciones de pie. No hay otros riesgos conocidos.</p>
+    <div style="margin-top:4mm">
+      <div><span class="caja"></span>Acepto participar en la sesión y que se registren mis hojas y un video de mi brazo y mano.</div>
+      <div style="margin-top:2mm"><span class="caja"></span>Autorizo publicar imágenes de mi mano o brazo (sin rostro) en el atlas, la exposición y textos del proyecto.</div>
+      <div style="margin-top:2mm"><span class="caja"></span>Quiero que mi nombre aparezca en los agradecimientos.</div>
+    </div>
+    <div class="campos dos" style="margin-top:6mm">
+      <div class="c"><span>Nombre</span></div>
+      <div class="c"><span>Código asignado</span></div>
+      <div class="c"><span>Contacto (opcional)</span></div>
+      <div class="c"><span>Fecha</span></div>
+    </div>
+    <div class="firma"><div>Firma de la persona participante</div><div>Firma de quien investiga</div></div>
+    <p class="nota" style="margin-top:8mm">Contacto del proyecto: ______________________________________. Se entrega una copia firmada a cada parte.</p>
+  </article>
+</main>
+<script>
+(function () {
+  'use strict';
+  document.querySelectorAll('[data-hoja]').forEach((c) =>
+    c.addEventListener('change', () => document.getElementById(c.dataset.hoja).classList.toggle('oculta', !c.checked))
+  );
+  document.getElementById('imprimir').addEventListener('click', () => window.print());
+})();
+</script>
+</body>
+</html>

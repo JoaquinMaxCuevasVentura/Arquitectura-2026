@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banco · A pulso</title>
+<link rel="stylesheet" href="estilos.css">
+<style>
+  .tres { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .plano svg { width: 100%; height: auto; display: block; background: #fff; border: 1px solid var(--linea); border-radius: 4px; }
+  .plano h3 { margin-top: 0; }
+  .plano dl { display: grid; grid-template-columns: auto auto; gap: 2px 12px; font-size: 13.5px; margin: 8px 0; }
+  .plano dt { color: var(--tinta-suave); }
+  .plano dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .aviso { color: var(--alerta); font-size: 13px; }
+</style>
+</head>
+<body>
+<header class="barra">
+  <h1>A pulso <span>· instrumento</span></h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="pautas.html">Pautas</a>
+    <a href="captura.html">Captura</a>
+    <a href="digitalizar.html">Digitalizar</a>
+    <a href="superponer.html">Superponer</a>
+    <a href="banco.html" aria-current="page">Banco</a>
+    <a href="ficha.html">Fichas</a>
+  </nav>
+</header>
+<main>
+  <section class="panel">
+    <h2>Alturas de montaje para cada cuerpo</h2>
+    <p class="ayuda">El banco es un solo tablero con tres apoyos: la mesa (B0), el atril de 45° (B1) y los montantes del muro (B2). La hoja ocupa siempre el mismo lugar del tablero (centro a 200 mm del borde superior); lo que cambia es la orientación y la altura. Las alturas se fijan respecto del cuerpo de quien escribe, para que la condición sea la misma en otras personas. Mide descalzo o con el calzado de la sesión y anota las medidas en la hoja de medidas.</p>
+    <div class="fila">
+      <label class="campo">Persona <input id="persona" size="5" value="P00"></label>
+      <label class="campo">Codo sobre el asiento (mm) <input id="codoSobreAsiento" type="number" value="230"></label>
+      <label class="campo">Hombro de pie (mm) <input id="hombroDePie" type="number" value="1350"></label>
+      <label class="campo">Codo a punta de los dedos (mm) <input id="codoDedos" type="number" value="450"></label>
+      <label class="campo">Mesa (mm) <input id="mesa" type="number" value="720"></label>
+      <label class="campo">Asiento (mm) <input id="asiento" type="number" value="450"></label>
+      <button id="imprimir" class="secundario">Imprimir</button>
+    </div>
+  </section>
+  <div class="tres" id="planos"></div>
+  <section class="panel" style="margin-top:16px">
+    <h2>Variables que no dependen de la altura</h2>
+    <table class="datos">
+      <tr><th>Nivel</th><th style="text-align:left">Cómo se arma</th></tr>
+      <tr><td>A0</td><td style="text-align:left">El antebrazo descansa sobre el tablero, debajo de la hoja.</td></tr>
+      <tr><td>A1</td><td style="text-align:left">Solo el canto de la mano toca el papel; el antebrazo no toca el tablero. Variante con tiento: la mano se apoya en la varilla.</td></tr>
+      <tr><td>A2</td><td style="text-align:left">Nada toca el tablero salvo la herramienta. Se verifica en el video lateral.</td></tr>
+      <tr><td>C1–C3</td><td style="text-align:left">Plantilla de topes (MDF de 5 mm) sobre la hoja, con los agujeros sobre las marcas; dos prensas en los bordes del tablero.</td></tr>
+      <tr><td>D1</td><td style="text-align:left">Cuatro hojas de lija de grano 150 unidas por detrás con cinta, bajo la hoja de ensayo.</td></tr>
+      <tr><td>D2</td><td style="text-align:left">Lámina de goma eva de 3–5 mm bajo la hoja de ensayo.</td></tr>
+    </table>
+  </section>
+</main>
+<script src="lib/banco.js"></script>
+<script src="lib/ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  const { banco: B, ui: U } = window.APulso;
+  const $ = U.$;
+  const campos = ['codoSobreAsiento', 'hombroDePie', 'codoDedos', 'mesa', 'asiento'];
+  const guardado = U.leerLocal('banco.medidas', null);
+  if (guardado) for (const k of campos.concat(['persona'])) if (guardado[k] != null) $('#' + k).value = guardado[k];
+
+  const mm = (v) => Math.round(v) + ' mm';
+  const ajuste = (v) => (Math.abs(v) < 5 ? 'ninguno' : (v > 0 ? 'subir ' : 'bajar ') + Math.round(Math.abs(v)) + ' mm');
+
+  // Elevación esquemática (mm → px a escala 1:12). y crece hacia abajo desde el piso + 1900 mm.
+  function elevacion(tipo, m, r) {
+    const k = 1 / 12;
+    const W = 1100 * k;
+    const H = 1950 * k;
+    const Y = (h) => H - h * k - 6;
+    const s = ['<svg viewBox="0 0 ' + W.toFixed(1) + ' ' + H.toFixed(1) + '" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, sans-serif" font-size="3.2">'];
+    s.push('<line x1="0" y1="' + Y(0) + '" x2="' + W + '" y2="' + Y(0) + '" stroke="#222" stroke-width="0.8"/>');
+    const linea = (h, texto, color, abajo) => {
+      s.push('<line x1="4" y1="' + Y(h) + '" x2="' + (W - 4) + '" y2="' + Y(h) + '" stroke="' + color + '" stroke-width="0.3" stroke-dasharray="2 1.5"/>');
+      s.push('<text x="5" y="' + (Y(h) + (abajo ? 3.6 : -1.2)) + '" fill="' + color + '">' + texto + ' ' + Math.round(h) + '</text>');
+    };
+    const xMesa = 520 * k;
+    const anchoMesa = 520 * k;
+    if (tipo !== 'B2') {
+      // mesa y asiento
+      s.push('<rect x="' + xMesa + '" y="' + Y(m.mesa) + '" width="' + anchoMesa + '" height="' + (25 * k).toFixed(2) + '" fill="#d8d2c4"/>');
+      s.push('<line x1="' + (xMesa + 30 * k) + '" y1="' + Y(m.mesa) + '" x2="' + (xMesa + 30 * k) + '" y2="' + Y(0) + '" stroke="#b9b1a0" stroke-width="1.2"/>');
+      s.push('<line x1="' + (xMesa + anchoMesa - 30 * k) + '" y1="' + Y(m.mesa) + '" x2="' + (xMesa + anchoMesa - 30 * k) + '" y2="' + Y(0) + '" stroke="#b9b1a0" stroke-width="1.2"/>');
+      const asiento = r.asientoNecesario;
+      s.push('<rect x="' + 200 * k + '" y="' + Y(asiento) + '" width="' + 400 * k + '" height="' + 30 * k + '" fill="#e8e3d7" stroke="#b9b1a0" stroke-width="0.4"/>');
+      s.push('<text x="' + 200 * k + '" y="' + (Y(asiento) + 6) + '" fill="#5e5b55">asiento ' + Math.round(asiento) + '</text>');
+      if (tipo === 'B0') {
+        s.push('<rect x="' + xMesa + '" y="' + Y(r.plano) + '" width="' + 600 * k + '" height="' + 36 * k + '" fill="#1593c7"/>');
+        linea(r.codoObjetivo, 'codo', '#c8433a');
+        linea(r.plano, 'plano', '#1593c7', true);
+      } else {
+        const x0 = xMesa;
+        const y0 = r.bordeInferior;
+        const largo = 600;
+        s.push('<line x1="' + x0 + '" y1="' + Y(y0) + '" x2="' + (x0 + largo * Math.cos(Math.PI / 4) * k) + '" y2="' + Y(y0 + largo * Math.sin(Math.PI / 4)) + '" stroke="#1593c7" stroke-width="' + 18 * k * 2 + '"/>');
+        s.push('<polygon points="' + [[x0 + 20 * k, Y(m.mesa)], [x0 + 480 * k, Y(m.mesa)], [x0 + 480 * k, Y(m.mesa + 460)]].map((p) => p.join(',')).join(' ') + '" fill="none" stroke="#b9b1a0" stroke-width="0.6"/>');
+        linea(r.codoObjetivo, 'codo', '#c8433a');
+        linea(r.centroHoja, 'centro de la hoja', '#1593c7', true);
+      }
+    } else {
+      // muro con montantes, pasador y tablero
+      const xm = 650 * k;
+      const mu = B.BANCO.muro;
+      s.push('<rect x="' + (xm + 40 * k) + '" y="' + Y(mu.bordeInferior + mu.montanteLargo) + '" width="' + 18 * k * 2 + '" height="' + mu.montanteLargo * k + '" fill="#d8d2c4"/>');
+      s.push('<line x1="' + (xm + 76 * k) + '" y1="' + Y(0) + '" x2="' + (xm + 76 * k) + '" y2="0" stroke="#222" stroke-width="1.2"/>');
+      const top = r.pasador + 4 + B.BANCO.liston.ancho + B.BANCO.liston.margen;
+      s.push('<rect x="' + (xm - 10 * k) + '" y="' + Y(top) + '" width="' + 36 * k + '" height="' + 600 * k + '" fill="#1593c7"/>');
+      s.push('<circle cx="' + (xm + 40 * k) + '" cy="' + Y(r.pasador) + '" r="1.4" fill="#222"/>');
+      linea(m.hombroDePie, 'hombro', '#c8433a', true);
+      linea(r.pasador, 'pasadores (agujero ' + r.agujero + ')', '#222');
+    }
+    s.push('</svg>');
+    return s.join('');
+  }
+
+  function actualizar() {
+    const m = {};
+    for (const k of campos) m[k] = parseFloat($('#' + k).value) || 0;
+    U.guardarLocal('banco.medidas', Object.assign({ persona: $('#persona').value }, m));
+    const r = B.calcularMontaje(m);
+    const cont = $('#planos');
+    cont.innerHTML = '';
+    const tarjetas = [
+      ['B0', 'Plano horizontal, sentado', [
+        ['Plano de escritura', mm(r.B0.plano)],
+        ['Codo (ahora)', mm(r.B0.codoActual)],
+        ['Codo (objetivo)', mm(r.B0.codoObjetivo)],
+        ['Asiento necesario', mm(r.B0.asientoNecesario)],
+        ['Ajuste del asiento', ajuste(r.B0.ajusteAsiento)],
+      ]],
+      ['B1', 'Atril a 45°, sentado', [
+        ['Borde inferior del tablero', mm(r.B1.bordeInferior)],
+        ['Centro de la hoja', mm(r.B1.centroHoja)],
+        ['Codo (objetivo)', mm(r.B1.codoObjetivo)],
+        ['Asiento necesario', mm(r.B1.asientoNecesario)],
+        ['Ajuste del asiento', ajuste(r.B1.ajusteAsiento)],
+      ]],
+      ['B2', 'Plano vertical, de pie', [
+        ['Pasadores de apoyo', 'agujero ' + r.B2.agujero + ' (desde abajo)'],
+        ['Pasadores de traba', 'agujero ' + r.B2.agujeroTraba],
+        ['Altura de los pasadores', mm(r.B2.pasador)],
+        ['Centro de la hoja', mm(r.B2.centroHoja)],
+        ['Diferencia con el hombro', (r.B2.error >= 0 ? '+' : '') + Math.round(r.B2.error) + ' mm'],
+      ]],
+    ];
+    for (const [b, titulo, filas] of tarjetas) {
+      const dl = U.el('dl');
+      for (const [k, v] of filas) dl.append(U.el('dt', { texto: k }), U.el('dd', { texto: v }));
+      const fig = U.el('div');
+      fig.innerHTML = elevacion(b, m, r[b]);
+      cont.append(U.el('section', { class: 'panel plano' }, [
+        U.el('h3', { texto: b + ' · ' + titulo }),
+        U.el('p', { class: 'ayuda', texto: 'Criterio: ' + B.CRITERIOS[b] + '.' }),
+        dl,
+        ...r[b].avisos.map((a) => U.el('p', { class: 'aviso', texto: a })),
+        fig,
+      ]));
+    }
+  }
+  document.querySelectorAll('main input').forEach((i) => i.addEventListener('input', actualizar));
+  $('#imprimir').addEventListener('click', () => window.print());
+  actualizar();
+})();
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@ const AP = require('../lib/nucleo.js');
 require('../lib/geometria.js');
 require('../lib/imagen.js');
 require('../lib/metricas.js');
+require('../lib/banco.js');
 const S = require('../herramientas/sinteticos.js');
 
 const N = AP.nucleo;
@@ -215,6 +216,24 @@ prueba('pausas', () => {
   for (let i = 0; i < 20; i++) p.push([25, 0, (t += 10)]); // 200 ms quieto
   for (let i = 0; i < 50; i++) p.push([25 + i * 0.5, 0, (t += 10)]);
   assert.strictEqual(M.contarPausas(p), 1);
+});
+
+console.log('Banco');
+prueba('montaje: criterios de altura y rango de los montantes', () => {
+  const r = AP.banco.calcularMontaje({ codoSobreAsiento: 230, hombroDePie: 1350, mesa: 720, asiento: 450 });
+  cerca(r.B0.codoObjetivo - r.B0.plano, 30, 1e-9);
+  cerca(r.B0.asientoNecesario + 230, r.B0.codoObjetivo, 1e-9);
+  cerca(r.B1.codoObjetivo - r.B1.bordeInferior, 20, 1e-9);
+  assert.ok(Math.abs(r.B2.error) <= 12.5, 'error B2 ' + r.B2.error);
+  assert.strictEqual(r.B2.agujeroTraba, r.B2.agujero + 2);
+  const bajo = AP.banco.calcularMontaje({ hombroDePie: 1166 });
+  assert.deepStrictEqual(bajo.B2.avisos, []);
+  assert.ok(AP.banco.calcularMontaje({ hombroDePie: 1100 }).B2.avisos.length, 'fuera de rango por abajo');
+  assert.ok(AP.banco.calcularMontaje({ hombroDePie: 1800 }).B2.avisos.length, 'fuera de rango por arriba');
+  assert.ok(AP.banco.calcularMontaje({ hombroDePie: 1766 }).B2.avisos.length === 0, 'límite superior');
+  // el listón queda atrapado: dos pasos de 25 = pasador + listón + pasador
+  const B = AP.banco.BANCO;
+  assert.strictEqual(2 * B.muro.paso, B.muro.pasador[0] + B.liston.ancho);
 });
 
 console.log(fallas ? '\n' + fallas + ' prueba(s) fallaron' : '\nTodas las pruebas pasaron');

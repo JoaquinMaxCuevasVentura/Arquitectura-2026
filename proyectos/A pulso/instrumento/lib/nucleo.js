@@ -57,6 +57,8 @@
     G6: 'palabra «adhesión»',
   };
 
+  const GESTOS_CORTOS = { G1: 'asta', G2: 'arco', G3: 'óvalo', G4: 'diagonal', G5: 'n', G6: 'adhesión' };
+
   const CONDICIONES_SERIE = ['BASE', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2', 'C3', 'D1', 'D2'];
 
   // ---------- condiciones ----------
@@ -424,6 +426,7 @@
     VERSION_FORMATO,
     VARIABLES,
     GESTOS,
+    GESTOS_CORTOS,
     CONDICIONES_SERIE,
     PRESETS,
     COLUMNAS_REGISTRO,
