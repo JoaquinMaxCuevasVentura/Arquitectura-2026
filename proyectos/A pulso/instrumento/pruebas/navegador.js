@@ -173,7 +173,7 @@ async function descargaJSON(pagina, accion) {
     const b = await c.boundingBox();
     await p.mouse.click(b.x + b.width * 0.3, b.y + b.height * 0.4);
     const lectura = await p.textContent('#lectura');
-    assert.ok(/altura x/.test(lectura), lectura);
+    assert.ok(/altura de la letra/.test(lectura), lectura);
     await p.fill('#nombre-medida', 'unión');
     await p.click('#guardar-medida');
     assert.strictEqual(await p.$$eval('#medidas tr', (t) => t.length), 2);
