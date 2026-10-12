@@ -1,0 +1,3 @@
+id,fecha,persona,sesion,orden_en_sesion,condicion,apoyo,plano,limite,resistencia,altura_x_mm,gesto,repeticion,herramienta,archivo_traza,archivo_video,articulacion_dominante,levantamientos,duracion_s,seleccionada,regla,nota
+AP-P00-S01-BASE-G5-R01,2026-10-__,P00,S01,1,BASE,A0,B0,C0,D0,30,G5,R01,lapiz 2B,S01/BASE_G5_R01.svg,S01/bloque1_lateral.mp4,muneca,,,no,,EJEMPLO - borrar esta fila
+AP-P00-S01-A2B2-G5-R01,2026-10-__,P00,S01,2,A2B2,A2,B2,C0,D0,30,G5,R01,lapiz 2B,S01/A2B2_G5_R01.svg,S01/bloque2_lateral.mp4,hombro,,,no,,EJEMPLO - borrar esta fila
