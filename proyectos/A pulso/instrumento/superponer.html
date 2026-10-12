@@ -256,12 +256,13 @@
       const k = hRef / h;
       const escaladas = k === 1 ? ens : ens.map((e) => Object.assign({}, e, { trazos: e.trazos.map((t) => ({ puntos: t.puntos.map((p) => [p[0] * k, p[1] * k].concat(p.slice(2))) })), _escala: k }));
       const resumen = M.resumenGrupo(escaladas, hRef, { alineacion: op.alineacion, tolerancia: op.tolerancia, pxPorMm: 5 });
-      const desplaz = escaladas.map((e, i) => {
+      if (!resumen.n) continue;
+      const desplaz = resumen.ensayos.map((e, i) => {
         const orig = M.polilineas(e);
         const al = resumen.alineadas[i];
         return orig.length && orig[0].length ? al[0][0][0] - orig[0][0][0] : 0;
       });
-      grupos.push({ cond, color: colorDe(cond, todas), ensayos: escaladas, resumen, desplaz, h, normalizado: k !== 1 });
+      grupos.push({ cond, color: colorDe(cond, todas), ensayos: resumen.ensayos, resumen, desplaz, h, normalizado: k !== 1 });
     }
     return { grupos, hRef };
   }

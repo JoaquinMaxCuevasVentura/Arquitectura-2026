@@ -181,7 +181,8 @@
    */
   function densidad(listaPolis, opciones) {
     const o = Object.assign({ pxPorMm: 5, tolerancia: 1.5, margen: 4, caja: null }, opciones || {});
-    const c = o.caja || G().caja([].concat(...listaPolis));
+    let c = o.caja || G().caja([].concat(...listaPolis));
+    if (!Number.isFinite(c.x0)) c = { x0: 0, y0: 0, x1: 1, y1: 1 };
     const x0 = Math.floor(c.x0 - o.margen - o.tolerancia);
     const y0 = Math.floor(c.y0 - o.margen - o.tolerancia);
     const x1 = Math.ceil(c.x1 + o.margen + o.tolerancia);
@@ -247,8 +248,10 @@
    * Resumen de un grupo de repeticiones (una condición y un gesto).
    * opciones: { alineacion, tolerancia, pxPorMm, caja }
    */
-  function resumenGrupo(ensayos, alturaX, opciones) {
+  function resumenGrupo(todos, alturaX, opciones) {
     const o = Object.assign({ alineacion: 'centroide', tolerancia: 1.5, pxPorMm: 5 }, opciones || {});
+    // una repetición sin puntos no aporta forma: se deja fuera del grupo
+    const ensayos = todos.filter((e) => e.trazos && e.trazos.some((t) => t.puntos && t.puntos.length));
     const lista = ensayos.map((e) => alinear(polilineas(e), o.alineacion));
     const den = densidad(lista, { tolerancia: o.tolerancia, pxPorMm: o.pxPorMm, caja: o.caja });
     const mediano = lista.length ? trazoMediano(den) : [];
@@ -261,8 +264,8 @@
     for (const m of porEnsayo) for (const k of Object.keys(m)) claves.add(k);
     const resumen = {};
     for (const k of claves) resumen[k] = mediaDE(porEnsayo.map((m) => m[k]));
-    let piezasMediano = mediano.length;
-    return { n: ensayos.length, alineadas: lista, densidad: den, mediano, porEnsayo, resumen, piezasMediano };
+    const piezasMediano = mediano.length;
+    return { n: ensayos.length, ensayos, alineadas: lista, densidad: den, mediano, porEnsayo, resumen, piezasMediano };
   }
 
   /** Nombres legibles de las métricas para tablas y láminas. */

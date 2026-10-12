@@ -1,7 +1,9 @@
 # A pulso — El espacio que escribe la letra
 
-**Propuesta de investigación proyectual · versión 2 · 12 de octubre de 2026**
+**Propuesta de investigación proyectual · versión 2.1 · 12 de octubre de 2026**
 Tipografía · arquitectura · saber corporal
+
+> Los materiales para empezar (protocolo, banco, pautas, fichas e instrumento) están en esta carpeta. El índice y el estado de cada fase están en [`README.md`](README.md).
 
 > **Resumen.** *A pulso* estudia cómo participan en la forma de los trazos las condiciones espaciales del puesto de escritura: el apoyo del brazo, la orientación y la altura del plano, los límites del recorrido y la resistencia de la superficie. También estudia cómo convertir esa participación en reglas para diseñar letras. El proyecto construye un **banco de escritura modular**, y cada configuración del banco es una condición de ensayo. Sobre ese banco se hace una serie de ensayos registrados en **tres canales: la traza, el cuerpo y el relato en primera persona**. De las diferencias que se repiten salen reglas, y las reglas se traducen a una **familia tipográfica experimental cuyos estilos corresponden a posturas, no a pesos**. Los entregables son el banco, un protocolo replicable, un archivo de ensayos, un atlas de gestos, una tipografía variable y un espécimen. Desde el espécimen se puede volver de cada letra a la condición, al gesto y a los ensayos que la originaron.
 >
@@ -108,10 +110,10 @@ El borrador proponía cuatro dispositivos, y dos de ellos mezclaban variables: "
 
 | Variable | Niveles | Qué cambia en el cuerpo | Cómo se construye |
 |---|---|---|---|
-| **A · Apoyo** | A0 antebrazo apoyado · A1 solo el canto de la mano · A2 brazo suspendido | La articulación que conduce y el punto de giro | Reposabrazos desmontable; tiento para A1; nada para A2 |
-| **B · Plano** | B0 horizontal a la altura del codo, sentado · B1 inclinado a 45° (atril) · B2 vertical a la altura del hombro, de pie | La relación del gesto con la gravedad y el alcance | Tablero con bisagra y pasadores de inclinación; montaje en muro |
-| **C · Límite** | C0 libre · C1 topes en la línea base y la altura x · C2 canal 25% más bajo que la letra · C3 tope lateral que limita el avance | Lo que la mano hace al encontrar un borde | Listones o reglas atornillables sobre rieles |
-| **D · Resistencia** | D0 papel liso sobre tablero rígido · D1 superficie áspera (lija fina o cartón) · D2 base blanda (goma eva de 3–5 mm bajo el papel) · D3 *(opcional, tardía)* incisión sobre arcilla o cera | Pausas, presión y agarre | Superficies intercambiables con el mismo marco |
+| **A · Apoyo** | A0 antebrazo apoyado · A1 solo el canto de la mano · A2 brazo suspendido | La articulación que conduce y el punto de giro | El tablero mismo (A0); tiento como variante de A1; nada (A2) |
+| **B · Plano** | B0 horizontal a la altura del codo, sentado · B1 inclinado a 45° (atril) · B2 vertical a la altura del hombro, de pie | La relación del gesto con la gravedad y el alcance | Un solo tablero con tres apoyos: la mesa, un atril de 45° y montantes de muro con pasadores |
+| **C · Límite** | C0 libre · C1 topes en la línea base y la altura x · C2 canal 25% más bajo que la letra · C3 ventana de 0,6 h de ancho que limita el avance | Lo que la mano hace al encontrar un borde | Plantillas de MDF de 5 mm cortadas con láser, apoyadas sobre la hoja |
+| **D · Resistencia** | D0 papel liso sobre tablero rígido · D1 superficie áspera (lija fina o cartón) · D2 base blanda (goma eva de 3–5 mm bajo el papel) · D3 *(opcional, tardía)* incisión sobre arcilla o cera | Pausas, presión y agarre | Bases intercambiables bajo la hoja |
 | **E · Escala** *(serie aparte)* | Altura x de 10 · 30 · 120 mm | Qué articulación puede intervenir | Pautas impresas |
 
 **Condición base: A0 · B0 · C0 · D0, con una altura x de 30 mm.** Es escribir en una mesa común. Todas las condiciones se comparan con ella.
@@ -232,7 +234,7 @@ Se calculan unas **12 horas semanales, ≈240 horas en total**, con esta distrib
 
 ### 5.3 Recursos
 
-- **Banco:** tablero de terciado o MDF de 18 mm, bisagra de piano, pasadores o escuadras para fijar la inclinación, listones sobre rieles para los topes, prensas, superficies intercambiables (lija fina, cartón, goma eva) y un tiento (varilla con punta acolchada).
+- **Banco:** medio tablero de terciado de 18 mm (tablero, atril y montantes), cuatro pasadores de acero, plantillas de topes en MDF de 5 mm, lija de grano 150, goma eva y un tiento. El diseño, los planos y el despiece están en `banco/`.
 - **Escritura:** la misma herramienta durante toda la serie principal y papel A3 de un mismo lote.
 - **Registro:** dos teléfonos con soportes, escáner de 600 ppp o una toma cenital fija. Como opción, una tableta con lápiz sensible a la presión.
 - **Software:** un editor tipográfico (Glyphs, FontLab o RoboFont; como alternativa libre, FontForge o Fontra con fontmake), un navegador para el instrumento y una hoja de cálculo.
@@ -241,6 +243,8 @@ Se calculan unas **12 horas semanales, ≈240 horas en total**, con esta distrib
 ### 5.4 Instrumento digital (con Claude Code)
 
 Cada módulo se construye cuando el trabajo manual lo pide. El **registro de ensayos** (`registro_ensayos.csv`) une todos los módulos.
+
+**Estado (octubre de 2026):** M1–M4 ya funcionan, con pruebas y datos sintéticos de ejemplo, en `instrumento/`. M5 queda para F6. Los módulos se adelantaron a la fase prevista porque no dependen de los ensayos. El tope del 20 % del tiempo sigue rigiendo para mantenerlos y ajustarlos.
 
 | Módulo | Qué hace | Cuándo |
 |---|---|---|

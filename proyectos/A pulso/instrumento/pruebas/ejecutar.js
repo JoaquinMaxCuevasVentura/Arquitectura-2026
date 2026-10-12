@@ -209,6 +209,14 @@ prueba('las dos condiciones sintéticas se distinguen', () => {
   const largoMed = base.mediano.reduce((s, p) => s + G.longitud(p), 0);
   assert.ok(largoMed > 60, 'el mediano recorre la n: ' + largoMed.toFixed(1));
 });
+prueba('una repetición vacía no rompe el grupo', () => {
+  const [b] = S.bloquesPiloto(4);
+  const ens = b.ensayos.filter((e) => e.gesto === 'G1');
+  const r = M.resumenGrupo(ens.concat([{ id: 'x', gesto: 'G1', trazos: [] }]), 30);
+  assert.strictEqual(r.n, ens.length);
+  assert.ok(Number.isFinite(r.resumen.ancho_mm.media));
+  assert.strictEqual(M.resumenGrupo([], 30).n, 0);
+});
 prueba('pausas', () => {
   const p = [];
   let t = 0;
