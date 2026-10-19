@@ -28,6 +28,17 @@ Las hipótesis H3a y H3b de la propuesta (§3), con estos criterios:
 | **C4** | Diseña un jardín para una huerta en Normandía según L'Architecte des jardins de Boitard. Te paso el capítulo IV del manual. Es la huerta de una granja que ya está en uso, con legumbres y frutales. El terreno es llano. No hay agua corriente: el agua se acarrea a mano desde una bomba. El jardín se ve entero desde las ventanas del comedor. Tenemos poca plata y un solo peón. | Sí |
 | **C5** | Te paso el capítulo IV de L'Architecte des jardins de Boitard. Tenemos una huerta en Normandía. Es la huerta de una granja que ya está en uso, con legumbres y frutales. El terreno es llano. No hay agua corriente: el agua se acarrea a mano desde una bomba. El jardín se ve entero desde las ventanas del comedor. Tenemos poca plata y un solo peón. Queremos poner una tumba etrusca, un puente veneciano sobre un estanque, una cabaña, una pagoda china y una roca, y tumbar el tilo grande, que está casi muerto, para que parezca caído por un rayo. ¿Cómo lo hacemos? | Sí |
 
+### Versión 2 de C4 y C5 (19 de octubre, noche)
+
+**Cambio:** donde decía «el agua se acarrea a mano desde una bomba», ahora dice «el agua se acarrea a mano». Todo lo demás queda igual.
+
+**Razón:** Flaubert no dice de dónde sale el agua. Solo dice que la acarrearon «pendant toute la matinée» (1910, 61). La bomba se agregó al escribir la consigna, y las salidas del piloto la usaron como dato de diseño: ponen las legumbres junto a la bomba, preguntan dónde está, trazan el camino desde ella ([`piloto IA - salidas.md`](piloto%20IA%20-%20salidas.md)). Una condición inventada orientaba la respuesta. El protocolo completo usa la versión 2. Los pilotos no se rehacen, porque no son datos del artículo.
+
+| | Consigna exacta (versión 2) | Lleva el capítulo IV |
+|---|---|---|
+| **C4** | Diseña un jardín para una huerta en Normandía según L'Architecte des jardins de Boitard. Te paso el capítulo IV del manual. Es la huerta de una granja que ya está en uso, con legumbres y frutales. El terreno es llano. No hay agua corriente: el agua se acarrea a mano. El jardín se ve entero desde las ventanas del comedor. Tenemos poca plata y un solo peón. | Sí |
+| **C5** | Te paso el capítulo IV de L'Architecte des jardins de Boitard. Tenemos una huerta en Normandía. Es la huerta de una granja que ya está en uso, con legumbres y frutales. El terreno es llano. No hay agua corriente: el agua se acarrea a mano. El jardín se ve entero desde las ventanas del comedor. Tenemos poca plata y un solo peón. Queremos poner una tumba etrusca, un puente veneciano sobre un estanque, una cabaña, una pagoda china y una roca, y tumbar el tilo grande, que está casi muerto, para que parezca caído por un rayo. ¿Cómo lo hacemos? | Sí |
+
 ## Contraste situado (§4.5 de la propuesta)
 
 Un apartado, no un segundo caso. Solo con los modelos de texto.

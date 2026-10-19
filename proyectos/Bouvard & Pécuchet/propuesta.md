@@ -156,7 +156,7 @@ Está hecha y verificada. Usa letras de evidencia adaptadas de *Remiendos*: **F*
 
 **Dificultad que resuelve:** decir «Flaubert copia a Boitard» no muestra nada. Hay que ver la copia, y ver también lo que quedó fuera.
 
-Es la parte de diseño gráfico del artículo. Los textos van alineados en tres columnas: Boitard, Flaubert y la máquina. El texto de origen va en gris, lo cambiado en negro y entre [corchetes], y la condición que la copia dejó va al margen, tachada con una línea fina. Así se ve de un golpe qué se tomó, qué cambió y qué no se tomó. El mismo recurso sirve para las salidas de los modelos.
+Es la parte de diseño gráfico del artículo. Los textos van alineados en tres columnas: Boitard, Flaubert y la máquina. El texto de origen va en gris, lo cambiado en negro y entre [corchetes], y la condición que la copia dejó va al margen, tachada con una línea fina. Así se ve de un golpe qué se tomó, qué cambió y qué no se tomó. El mismo recurso sirve para las salidas de los modelos. Las columnas se alinean por fila, elemento por elemento, como las columnas de datos del *Naturgemälde* de Humboldt (1807).
 
 Cada imagen del artículo lleva en el pie qué es: propia, de dominio público (Boitard, Flaubert), propuesta de la máquina o pendiente de permiso. Esto ayuda a cumplir lo que pide la revista sobre derechos de figuras.
 
@@ -168,6 +168,7 @@ Cada imagen del artículo lleva en el pie qué es: propia, de dominio público (
 - **Visuales.** Desde las ventanas del comedor, que es desde donde los invitados ven el jardín al abrirse la cortina, se trazan las líneas de vista. Así se comprueba la regla de la tumba, que no debía verse «d'aucune partie du bâtiment» (Boitard s. f., 69).
 - Al lado, a la misma escala, el **jardín de Wissous** de la lámina 18 de Boitard. Es su modelo para un terreno de no más de un arpent, junto a la casa modesta de un hombre de letras, con la huerta «masqué de manière à n'être pas aperçu» (116). Es la respuesta del manual para un caso como este.
 - **Primero a mano.** La planta se dibuja a mano. Una versión digital se hace solo si agrega algo, por ejemplo para medir.
+- **Convenciones gráficas** ([`analisis/referencias graficas.md`](analisis/referencias%20graficas.md)): el agua como circuito que no cierra, a la manera de los dibujos de Luis F. Benedit para el Fitotrón (1972); la vista que se revela, como en las solapas de Repton (1816); lo que se ve desde el comedor, trazado como isovista (Benedikt 1979); los dos jardines redibujados a una sola escala, como en Durand (1799–1801); cada fuente en su color (F negro, B sepia, I rojo) y en amarillo lo que la regla pedía y la copia no hizo. Benedit es referencia de método: su obra tiene derechos y no va como figura.
 - **Regla de decisión, fijada antes.** La planta entra al artículo si al menos 4 de las 9 fallas dependen de la posición o de la escala según los dos lectores de H2. Si quedan menos, se reduce a una figura chica. **Resultado:** 5 de 9, con acuerdo de los dos lectores en las nueve (la roca, la tumba, el árbol, el eco y el conjunto). La planta queda. Además, la lámina tiene que mostrar de un vistazo qué recomendaba el manual y qué se hizo; si no lo muestra mejor que la tabla, se descarta.
 
 ### 4.4 El protocolo de generación
