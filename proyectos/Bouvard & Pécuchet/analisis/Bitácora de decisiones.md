@@ -66,6 +66,43 @@ Joaco pidió (19 oct, 18:25) mirar el proyecto desde la arquitectura y el diseñ
 - **Si aparecen en otra edición de Boitard** (1854, o los libros de Audot de 1823 y 1825), Flaubert usó otra edición. Eso pesa en P2.
 - **Si no aparecen**, son agregado de Flaubert u otra fuente, y la tabla de géneros lo dice.
 
+### P8. La forma de pedir (segundo piloto)
+
+El piloto P5 dejó una duda: con el capítulo IV en la mano, el modelo aplicó las reglas. Pero la consigna C3 pregunta como el manual («diseña un jardín según Boitard»), no como Bouvard y Pécuchet. Ellos no pidieron un jardín: eligieron objetos del catálogo y preguntaron qué era posible con su plata y su terreno. Antes de rehacer H3 hay que saber si el recorte depende de la pregunta.
+
+Dos consignas nuevas, con el capítulo IV pegado en las dos:
+
+- **C4.** C3 más las condiciones del sitio que da Flaubert: huerta en uso, terreno llano, el agua se acarrea a mano, el jardín se ve entero desde el comedor, poca plata y un solo peón. Es la C4 que ya estaba en la propuesta.
+- **C5. Pedir como ellos.** Las mismas condiciones, y además la lista de lo que quieren: una tumba etrusca, un puente veneciano sobre un estanque, una cabaña, una pagoda china, una roca, y tumbar el tilo grande para que parezca caído por un rayo. La pregunta es «¿cómo lo hacemos?».
+
+Dos códigos nuevos para todas las salidas, que salen de lo imprevisto en P5:
+
+- **pide_datos_sitio:** pide información del lugar antes de cerrar el diseño.
+- **duda_declarada:** dice qué no sabe o qué no puede asegurar.
+
+Y dos códigos para ver si ejecuta o juzga, que se pueden marcar sin saber la consigna:
+
+- **ejecuta_lista:** da instrucciones para construir al menos tres de estos objetos: tumba, puente, cabaña, pagoda, roca, árbol tumbado.
+- **objeta_con_regla:** desaconseja, cambia de lugar o quita un elemento concreto con una razón de lugar, de tiempo o de costumbres (las conveniencias), o de terreno, agua o vista.
+
+Criterios:
+
+- **La forma de pedir explica el recorte** si las dos salidas de C5 tienen ejecuta_lista y ninguna objeta con al menos dos reglas del capítulo (llano y rocas, tumba a la vista, agua). Entonces H3 se reescribe así: la regla no se pierde por falta de información, sino por la pregunta.
+- **La máquina hace de cura** si las dos salidas de C5 objetan con al menos dos reglas. Entonces H3 cae en su forma fuerte, y el apartado 5 se reescribe: la máquina no copia a los copistas, responde con las reglas.
+- **Resultado mixto** (una y una): no decide nada. Se lleva al protocolo completo como pregunta abierta.
+- **C4 confirma C3** si las dos salidas aplican al menos dos reglas al sitio.
+- **Qué no demuestra.** Lo mismo que P5: un solo tipo de modelo, el mismo entorno con memoria del proyecto y dos salidas por consigna. Sirve para decidir qué consignas lleva el protocolo completo, no para el artículo.
+
+### P9. Borrador 0 del artículo: ¿la estructura aguanta?
+
+Joaco pidió (19 oct, 18:43) avanzar en todo lo posible. El plan pone la redacción en abril de 2027, pero un borrador temprano es la prueba más chica de una duda que ya existe: si la estructura de §5 de la propuesta se sostiene con lo que hoy está verificado.
+
+- **Cada apartado** se escribe solo con citas verificadas. Si un apartado no se puede escribir sin datos que faltan, queda como esqueleto y dice qué le falta.
+- **Señal de alarma** (riesgo «metáfora» de la propuesta): si el apartado 5 se puede escribir entero sin la tabla de códigos, se reescribe desde los datos o se achica.
+- **Extensión.** Si los apartados 1 a 4 superan en más de un 20 % las palabras que les da la propuesta, se recortan antes de seguir.
+- **Qué decide.** Si la estructura de siete apartados se mantiene, o si algún apartado se funde o se mueve.
+- **Qué no es.** No es el texto que se envía. La voz final es la de Joaco, y la redacción con IA se declara (§7 de la propuesta).
+
 ## Registro
 
 | Fecha | Prueba | Resultado | Decisión | Razón | Siguiente acción |
@@ -76,6 +113,11 @@ Joaco pidió (19 oct, 18:25) mirar el proyecto desde la arquitectura y el diseñ
 | 19 oct | P4. Segunda lectura de las fallas | Los dos lectores marcan como advertidas las mismas 6 fallas que yo. Dejan dos como dudosas (el muro y la puerta de las pipas) y una como no advertida (el eco). Coinciden conmigo exactamente en 7 de 9. | **Conservar** H2: «6 de 9, en tres lecturas». | El criterio de cambio era menos de 7 coincidencias o menos de 5 advertidas. Ninguno se cumplió. | Pedir una lectura humana antes de D1. |
 | 19 oct | P6. «grave», «mystérieux», «rêveur» | «Mystérieux» sale de la caverna de Boitard (p. 229, y ya en 1825, pp. 108–109), donde la regla dice que la caverna no se construye. «Grave» sale de la leyenda del plano de Ermenonville (p. 109). «Rêveur» solo tiene una fuente débil: las «rêveuses méditations» junto al arroyo (p. 213). | **Modificar** la tabla de géneros: seis de ocho tienen fuente clara. | Ninguna de las tres apunta a otra edición: están en esta. | Ninguna. |
 | 19 oct | P7. ¿Qué fallas se pueden dibujar? | Los dos lectores coinciden en las 9 fallas: 5 dependen de la posición o la escala (la roca, la tumba, el árbol, el eco y el conjunto). | **Conservar** la planta como prueba del artículo, no como ilustración. | El umbral fijado era 4 de 9. | Dibujar la planta a mano en la fase Proponer, con las visuales desde el comedor. |
+| 19 oct | P5. Piloto de consignas | Los dos codificadores coinciden en 79 de 80 códigos. **C1, sin la fuente (2 salidas):** ninguna menciona las conveniencias ni el rechazo de los géneros. Las dos le atribuyen a Boitard una clasificación por géneros, pero la sacan de la tradición del siglo XVIII (Hirschfeld, Morel, Watelet), no de Flaubert, y avisan que no tienen el texto delante. **C2, sin la fuente (1 salida):** ya pide estudiar el sitio y descarta las «pagodas de catálogo». **C3, con el capítulo IV (2 salidas):** aplican 6 y 8 reglas (sitio, conveniencias, llano, agua, tumba lejos de la casa, nada de rocas) y descartan las escenas terrible, exótica y fantástica. **Imprevisto:** todas las salidas con diseño piden datos del sitio y dicen qué no saben. **Contaminación:** los modelos que generaron vieron la memoria del proyecto. Lo muestran al decir «tu nota sobre arquitectura y diseño gráfico». | **H3a: conservar, modificada.** No cae, pero lo plausible no es la versión de Flaubert: es la media de la tradición. Las dos copias llegan al mismo error por caminos distintos. **H3b: cae en el piloto.** **Protocolo: modificar.** | Por el criterio fijado, H3b cae: las dos salidas de C3 conservan reglas. Pero no son datos limpios. El entorno tenía contexto del usuario, que incluye su método de trabajo con fuentes, y el modelo es de la misma familia que ayudó a escribir la tesis. | Hacer el protocolo completo en sesiones limpias (API o cuentas nuevas, sin memoria ni instrucciones), y registrar el contexto del sistema de cada sesión. Sumar los códigos pide_datos_sitio y duda_declarada. Antes, probar la forma de pedir (P8). |
+| 19 oct | P8. La forma de pedir | Los codificadores coinciden en 174 de 180 códigos, sobre las nueve salidas de los dos pilotos mezcladas. **C5, pedido como ellos (2 salidas):** ninguna ejecuta la lista. Las dos dicen que no a la roca, la tumba, el puente, la pagoda y el tilo, con las reglas del capítulo (llano, agua, tumba a la vista), y que sí a la cabaña. Una cierra: «La decisión es de ustedes». **C4, con las condiciones del sitio (2 salidas):** las dos dejan la huerta como está y la tratan como escena rústica. **Ninguna de las nueve salidas nombra a Flaubert**, ni siquiera ante la lista de Bouvard y Pécuchet. Ocho de nueve dicen qué no saben. Esta vez las salidas no muestran rastros de la memoria del proyecto, pero el entorno era el mismo. | **H3: modificar.** Con la fuente en la mano, el modelo no repite el recorte de los copistas: hace de cura. Sin la fuente, describe a Boitard con los géneros de la tradición, que él rechazaba. La pregunta del artículo no cambia; cambia lo que se espera encontrar. | Se cumplió el criterio «la máquina hace de cura». Pero es un piloto: un solo tipo de modelo, de la misma familia que ayudó a escribir la tesis, trabajando como agente y no como chat, en un entorno con memoria del proyecto que incluye un método de trabajo con fuentes. | Reescribir H3 en la propuesta con criterios nuevos para D2. Correr el protocolo completo en sesiones limpias y con modelos de otras empresas antes de escribir el apartado 5. |
+| 19 oct | P3 (cierre). Las tres citas que faltaban | Están en la imagen, palabra por palabra: pp. 75, 239 y 267 (hojas 106, 270 y 298 del facsímil). En la 239 aparece además la regla del puente: accesos fáciles, sin pendiente fuerte. | **Conservar** las tres citas. | Coinciden con lo citado. | Ninguna. |
+| 19 oct | P7 (preparación). Datos para la planta | Se reunieron todas las posiciones que da Flaubert y la lámina 18 de Boitard (hoja 68 del atlas, sin escala gráfica). El tilo tumbado va «dans toute la longueur du jardin» (56) o «transversalement de la charmille à la tonnelle» (61): es la única medida del jardín. En una dirección, el jardín mide lo que un árbol, muy por debajo del *arpent* para el que Boitard ya prohíbe tumbas y ruinas (114). | **Conservar** la planta y sumar el tilo como medida, en punteado. | La medida es inferencia, pero aun dividida por dos deja el jardín lejos del *arpent*. | Joaco dibuja a mano con `analisis/planta - datos del texto.md`. |
+| 19 oct | P9. Borrador 0 del artículo | Apartados 1 a 4 escritos solo con citas verificadas: 662, 1.170, 850 y 1.176 palabras, dentro de lo previsto. El 5 no se puede escribir sin la tabla de códigos y queda como esqueleto. El 6 tiene la parte textual y le falta la consigna de contraste. El 7 depende del 5. Total con los huecos: unas 5.400 palabras. Al escribir apareció un pasaje útil para el 6: la escena exótica se compone con plantas tomadas «sans distinction dans plusieurs parties de la terre» y una sola «physionomie indienne» (63). | **Conservar** los siete apartados. | Ninguno se pasa de su presupuesto, y el 5 no se deja escribir sin datos, que era la señal buscada. El 3 queda corto (850 de 1.300) porque la lámina de cotejo hará parte del trabajo. | Pasar unas 300 palabras del 3 al 5 si los resultados lo piden. Que Joaco lo lea con su voz. |
 | 19 oct | Pedido de Joaco: sus áreas | Mandó *Contenida* y *Cosecha de piedras* como ejemplo de sus líneas. Aclaró que no hay que forzar áreas, solo usar arquitectura y diseño gráfico si benefician. | **Conservar** la planta (P7) y la lámina de cotejo. **Descartar** sumar el manuaje como hipótesis. | Una hipótesis H4 («la copia guarda lo que se hace con las manos y deja lo que pide estar en el sitio») repetía H1 con otras palabras: no se podía contradecir aparte. | Ninguna. |
 
 ## Anexo. Libro de códigos de la prueba piloto
@@ -105,3 +147,9 @@ Marca cada código como presente (true) o ausente (false). Presente quiere decir
 
 ### Objeción anticipada
 - obj_anticipada: defiende una mezcla de escenas o un elemento discutible con un argumento preparado contra una objeción posible.
+
+### Agregados después del piloto P5 (para P8 y el protocolo completo)
+- pide_datos_sitio: pide información del lugar (superficie, orientación, suelo, agua, quién vive ahí) antes de cerrar el diseño.
+- duda_declarada: dice qué no sabe, qué no puede asegurar o qué habría que comprobar en la fuente.
+- ejecuta_lista: da instrucciones para construir al menos tres de estos objetos: tumba, puente, cabaña, pagoda, roca, árbol tumbado.
+- objeta_con_regla: desaconseja, cambia de lugar o quita un elemento concreto con una razón de lugar, de tiempo o de costumbres (las conveniencias), o de terreno, agua o vista.
