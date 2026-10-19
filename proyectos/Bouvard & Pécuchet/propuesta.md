@@ -2,7 +2,7 @@
 
 ## El jardín de Bouvard y Pécuchet, su manual y la respuesta plausible
 
-*Propuesta de artículo para* Astrágalo *A44 (2027), «Bouvard & Pécuchet. Arquitectura y desencanto: de la Enciclopedia a la inteligencia artificial». Borrador 2, 19 de octubre de 2026. Reemplaza al borrador 1.*
+*Propuesta de artículo para* Astrágalo *A44 (2027), «Bouvard & Pécuchet. Arquitectura y desencanto: de la Enciclopedia a la inteligencia artificial». Borrador 3, 19 de octubre de 2026. Reemplaza al borrador 2, que queda en `/mnt/project-files/propuesta/archivo/` y en el historial de la rama.*
 
 > **Convocatoria.** Editor: José Enrique López Canti (Universidad de Sevilla). Envío hasta el **15 de junio de 2027**; publicación prevista en septiembre de 2027. Plantilla oficial y ficha de evaluación en `/mnt/project-files/convocatoria/`.
 >
@@ -10,25 +10,29 @@
 
 ---
 
-## 0. Qué cambió desde el borrador 1
+## 0. Qué cambió desde el borrador 2
 
-El borrador 1 proponía una prueba: comparar el jardín que describe Flaubert con el manual que sus personajes leen. Esa prueba ya se hizo en una primera pasada (ficha completa en [`analisis/concordancias Flaubert-Boitard.md`](analisis/concordancias%20Flaubert-Boitard.md)). El resultado cambió la tesis.
+Las pruebas y sus criterios, escritos antes de hacerlas, están en [`analisis/Bitácora de decisiones.md`](analisis/Bitácora%20de%20decisiones.md).
 
-El borrador 1 suponía que el manual ordenaba el saber por efectos y **omitía** las condiciones del sitio. No es así. El manual pide estudiar el terreno antes que nada, pone las «conveniencias» como regla de todo el libro y advierte, una por una, casi todas las fallas que después narra Flaubert. Incluso rechaza la clasificación de los jardines por géneros que Flaubert le atribuye. Lo que pierde las condiciones no es el manual. Es **la copia**.
-
-La propuesta queda más clara y más fácil de poner a prueba. Además, este borrador está escrito en un lenguaje más simple y ya no se apoya en otros proyectos del autor.
+1. **Ya había estudios sobre el manual.** Stéphanie Dord-Crouslé (2003) siguió las notas de lectura de Flaubert sobre Boitard a través de los borradores. Patrick Feyler (2006) escribió que la novela omite las precauciones con que Boitard acompañaba sus consejos. Jeffrey Thomas (2019) comparó el ex-voto con el manual. La idea central del borrador 2, que la copia se queda con el catálogo y deja las reglas, **ya no es el hallazgo del artículo. Pasa a ser su punto de partida, citado.** El aporte se mueve a lo que esos estudios no hacen: medirlo elemento por elemento, dibujarlo como proyecto y llevar la copia hasta una máquina.
+2. **La edición está fechada.** El ejemplar de Sevilla no es de 1834. Es una segunda edición vendida hacia 1859. Las reglas que importan, como las conveniencias, el rechazo de los géneros y Chambers como contraejemplo, ya estaban en el primer libro de jardines de Boitard, de 1825. El riesgo mayor del borrador 2, que Flaubert hubiera leído un Boitard sin reglas, queda muy reducido.
+3. **Las páginas están verificadas** en el facsímil. Cambiaron seis.
+4. **Dos hallazgos nuevos en el cotejo.** El ex-voto copia un pasaje que Thomas no cita, y la copia deja su condición: «Dans un site très-pittoresque, montagneux». El género «mystérieux», que parecía inventado, sale de una caverna de Boitard, que según él no se puede construir.
+5. **Arquitectura y diseño gráfico, donde ayudan.** La planta a escala pasa de figura a prueba: dice qué fallas son de sitio. La copia anotada se vuelve una lámina de cotejo. Cada imagen dice de dónde viene.
+6. **H2 pasó la segunda lectura.** Dos lectores que no vieron la primera clasificación marcan como advertidas las mismas 6 de 9 fallas. Además coinciden en que 5 de las 9 dependen de la posición o la escala, así que la planta queda como prueba.
+7. *(Prueba piloto de las consignas: ver §3, H3.)*
 
 ---
 
 ## 1. La idea en tres frases
 
 1. En el capítulo II de *Bouvard et Pécuchet*, dos copistas jubilados arman un jardín con un manual en la mano, y el jardín fracasa delante de sus invitados.
-2. El manual advertía casi todas esas fallas, pero ellos copiaron la lista de objetos y dejaron las reglas que decían dónde, cuándo y para quién sirve cada objeto.
-3. Una respuesta generada por inteligencia artificial puede hacer el mismo recorte, y este artículo lo pone a prueba con el mismo manual.
+2. El manual advertía casi todas esas fallas, pero la copia se quedó con la lista de objetos y dejó las reglas que decían dónde, cuándo y para quién sirve cada uno. Eso ya lo vieron los estudios sobre la novela.
+3. Este artículo lo mira como arquitecto: dibuja el jardín a escala para ver qué reglas eran de sitio, y le pide el mismo jardín a una máquina para ver si repite el recorte.
 
-### Resumen provisional (unas 200 palabras)
+### Resumen provisional (unas 220 palabras)
 
-En el capítulo II de *Bouvard et Pécuchet*, los dos copistas transforman su huerta de Normandía siguiendo *L'Architecte des jardins* de Pierre Boitard, un manual práctico de la colección Roret. Levantan una tumba etrusca de yeso, un Rialto sobre un estanque sin agua, una pagoda y una roca de piedras pegadas con cemento. Ante sus invitados, el jardín fracasa. Este artículo compara pasaje por pasaje la novela con el manual y muestra que el libro advertía casi todas esas fallas: pedía estudiar el terreno, prohibía las rocas artificiales en un terreno llano, mandaba esconder las tumbas de la vista de la casa y declaraba que la huerta burguesa adornada no tenía reglas. Los copistas tomaron el catálogo de objetos y dejaron las reglas, que Boitard llama «conveniencias». Se preguntaron qué era posible y no qué era conveniente. El artículo extiende la prueba a dos modelos generativos de texto y uno de imagen, con consignas fijas, para ver si la respuesta plausible repite ese recorte, con y sin el texto del manual a la vista. La conclusión discute qué le falta a una respuesta posible para convertirse en una decisión de proyecto, y por qué el propio manual dejaba la última palabra a quien está en el sitio.
+En el capítulo II de *Bouvard et Pécuchet*, los dos copistas transforman su huerta de Normandía siguiendo *L'Architecte des jardins* de Pierre Boitard, un manual práctico de la colección Roret. Levantan una tumba etrusca de yeso, un Rialto sobre un estanque sin agua, una pagoda y una roca de piedras pegadas con cemento. Ante sus invitados, el jardín fracasa. Los estudios de la novela ya mostraron que Flaubert resume el manual dejando sus precauciones. Este artículo lo lee desde la arquitectura. Compara la novela con el manual elemento por elemento y muestra que el libro advertía casi todas las fallas. Pedía estudiar el terreno, prohibía las rocas artificiales en un terreno llano, mandaba esconder las tumbas de la vista de la casa y declaraba que la huerta burguesa adornada no tenía reglas. Después dibuja el jardín a escala junto al modelo que el manual daba para un caso igual, y ve cuáles de esas reglas eran de sitio. Los copistas se preguntaron qué era posible; el manual, qué era conveniente. Por último, pide el mismo jardín a modelos generativos, con y sin el texto del manual, para ver si la respuesta plausible repite ese recorte. La conclusión discute qué le falta a una respuesta posible para ser una decisión de proyecto, y por qué el manual dejaba la última palabra a quien está en el sitio.
 
 **Palabras clave (provisionales):** jardines, manuales, copia, inteligencia artificial, Flaubert. *(Contrastar con el Tesauro de la UNESCO.)*
 
@@ -48,33 +52,45 @@ Después invitan a cenar a los notables del pueblo. A los postres se abren las c
 
 ### 2.2 El libro
 
-El manual existe. Es el *Nouveau manuel complet de l'architecte des jardins* de Pierre Boitard, de la *Librairie encyclopédique de Roret*, una colección de manuales prácticos para todos los oficios. Está digitalizado en Internet Archive, texto y atlas de láminas, y el ejemplar digitalizado es **de la Biblioteca de la Universidad de Sevilla** (A 039(a)/018–019), la misma universidad que publica *Astrágalo*.
+El manual existe. Es el *Nouveau manuel complet de l'architecte des jardins* de Pierre Boitard, de la *Librairie encyclopédique de Roret*, una colección de manuales prácticos para todos los oficios. Está digitalizado en Internet Archive, texto y atlas de láminas. El ejemplar es **de la Biblioteca de la Universidad de Sevilla** (A 039(a)/018–019), la misma universidad que publica *Astrágalo*.
+
+El catálogo de Sevilla le pone «[1834?]», que es el año de la primera edición. El libro se presenta como «seconde édition», y lleva encuadernados catálogos de Roret de junio de 1859. Es, entonces, una segunda edición vendida hacia 1859. Flaubert leyó el manual entre 1872 y 1874. Las reglas que este artículo cita ya estaban en el primer libro de jardines de Boitard (1825, 5–6), así que cualquier edición a su alcance las traía.
 
 El manual Roret es un eslabón entre la *Encyclopédie* y el manual técnico moderno. Ordena un saber en capítulos, láminas y recetas, y lo vende barato para que cualquiera lo aplique. Es, en pequeño, la promesa de la que habla la convocatoria: que más información disponible mejore la capacidad de decidir y construir.
 
 ### 2.3 Lo que mostró el cotejo
 
-Flaubert copia a Boitard casi literalmente, con cambios pequeños que se pueden marcar. Entre [corchetes], lo que la copia cambió:
+Flaubert copia a Boitard casi literalmente, con cambios pequeños que se pueden marcar. Entre [corchetes], lo que la copia cambió. En la última columna, lo que la copia dejó.
 
-| Boitard (s. f.) | Flaubert (1910) |
-|---|---|
-| «un ex-voto marquant la place où un chevalier est tombé sous le fer d'un assassin» (72) | «un ex-voto [à la vierge], [indiquant] la place où un [seigneur] est tombé sous le fer d'un assassin» (54) |
-| «pour but de faire naître d'agréables souvenirs à un colon ou à un voyageur» (63) | «[pour] faire naître [des] souvenirs à un colon ou à un voyageur» (54) |
-| «ces jeux bizarres, ou si l'on aime mieux de ces jeux d'enfans» (73) | «[le plus beau spécimen] se voyait naguère dans un jardin wurtembergeois» (54) |
-| un templo del amor y, en una gruta, un «fauteuil gothique» que dispara «vingt jets d'eau» (75) | «un [boudoir] où des jets d'eau vous inondaient quand on se posait sur le [sofa]» (54) |
-| «C'est sur le principe erroné de l'unité de genre, que les auteurs ont échafaudé leur classification des jardins» (55) | «L'auteur les divise en une infinité de genres» (54) |
+| Boitard (s. f.) | Flaubert (1910) | Lo que quedó fuera |
+|---|---|---|
+| «un ex-voto marquant la place où un chevalier est tombé sous le fer d'un assassin» (72) | «un ex-voto [à la vierge], [indiquant] la place où un [seigneur] est tombé sous le fer d'un assassin» (54) | «Dans un site très-pittoresque, montagneux» (72) |
+| «faire naître d'agréables souvenirs à un colon ou à un voyageur» (63) | «[pour] faire naître [des] souvenirs à un colon ou à un voyageur» (54) | En Francia, la escena dura «quatre ou cinq mois de l'année au plus» (65) |
+| «caractérisent le genre terrible et mystérieux de ces voûtes effrayantes», con musgos (229) | «de la mousse et des grottes, le genre [mystérieux]» (54) | La caverna no se construye: la regla es para quien ya tiene una (229; 1825, 108–109) |
+| «ces jeux bizarres, ou si l'on aime mieux de ces jeux d'enfans» (73) | «[le plus beau spécimen] se voyait naguère dans un jardin wurtembergeois» (54) | «Sous ce titre, qui n'est pas trop convenable» (73) |
+| «C'est sur le principe erroné de l'unité de genre, que les auteurs ont échafaudé leur classification des jardins» (55) | «L'auteur les divise en une infinité de genres» (54) | Todo el párrafo: Boitard rechaza los géneros (55–57) |
 
-El cotejo completo mostró tres cosas *(primera lectura, a confirmar)*:
+El cotejo completo está en [`analisis/concordancias Flaubert-Boitard.md`](analisis/concordancias%20Flaubert-Boitard.md). Muestra tres cosas:
 
 1. **La copia se queda con el catálogo.** De 13 elementos del jardín, 9 tienen correspondencia directa en el manual: la tumba, la cabaña, la pagoda, la roca, el laberinto y otros. Lo que no pasa al jardín son las reglas que acompañan a cada uno.
-2. **Las fallas están donde estaba la regla.** De 9 fallas narradas, 6 ocurren justo donde el manual había advertido. Sobre el terreno llano, Boitard escribe: «Gardez-vous bien de ces roches factices, monceaux de pierres ridicules, qui semblent tombées du ciel au milieu d'un gazon» (50). La tumba debe quedar donde no se la vea «d'aucune partie du bâtiment» (69). Y el «genre terrible» que copian, con árboles fulminados y cabañas quemadas, viene de un pasaje de Chambers que Boitard cita como ejemplo de lo absurdo: «Je demande si des hommes de bon sens peuvent donner de telles absurdités pour les règles» (20).
-3. **El manual tenía una entrada para su caso, y estaba vacía.** Boitard llama «potager pittoresque» a la huerta burguesa adornada, que «appartient le plus souvent à des négocians retirés» (29). Al llegar a ella escribe: «Nous n'indiquerons aucune règle pour tracer une composition qui n'en a point» (116).
+2. **Las fallas están donde estaba la regla.** Sobre el terreno llano, Boitard escribe: «Gardez-vous bien de ces roches factices, monceaux de pierres ridicules, qui semblent tombées du ciel au milieu d'un gazon» (50). La tumba debe quedar donde no se la vea «d'aucune partie du bâtiment» (69). Y el «genre terrible» que copian, con árboles fulminados y cabañas quemadas, viene de un pasaje de Chambers que Boitard cita como ejemplo de lo absurdo: «Je demande si des hommes de bon sens peuvent donner de telles absurdités pour les règles» (20).
+3. **El manual tenía una entrada para su caso, y estaba vacía.** Boitard llama «potager pittoresque» a la huerta burguesa adornada, que «appartient le plus souvent à des négocians retirés» (29). Al llegar a ella escribe que es «le produit du caprice et du mauvais goût» y que «Nous n'indiquerons aucune règle pour tracer une composition qui n'en a point» (116).
 
-### 2.4 Lo posible y lo conveniente
+### 2.4 Lo que ya se sabe y lo que falta
 
-Antes de construir, Bouvard y Pécuchet revisan los géneros del manual uno por uno. El fantástico les parece «réservé aux princes», el templo sería «encombrant» y las plantas americanas cuestan demasiado. «Mais les rocs étaient possibles» (55). Su filtro es **lo posible**: lo que alcanza con la plata, el trabajo y el espacio que tienen.
+| Estudio | Qué hace | Qué se toma | Qué no hace |
+|---|---|---|---|
+| Dord-Crouslé 2003 | Sigue las notas de lectura de Flaubert sobre Boitard (Carnet 18 bis) en cinco etapas de borradores. Muestra que la «cita» es una paráfrasis engañosa, hecha para denunciar el manual y su uso. | Las notas y la cronología. Dicen en qué etapa se pierde cada regla. | Leer el jardín como proyecto, a escala. |
+| Feyler 2006 | Dice que el resumen de Flaubert omite las precauciones de Boitard. | La observación, como premisa citada. | Contar qué se pierde y dónde falla. |
+| Thomas 2019 | Compara el ex-voto con un pasaje de Boitard que no es el más cercano. Nota que los vidrios de color no vienen del manual. | La idea de una sugerencia leída como obligación. | Ver la condición que la copia deja. |
 
-El filtro del manual es otro: **lo conveniente**. Boitard llama «convenances» a la regla sin la cual «on ne créera que des compositions ridicules ou absurdes» (49). Son tres: que la obra vaya con el lugar, con su tiempo y con las costumbres de quienes la habitan. En este artículo se traduce como **conveniencia**, en el sentido antiguo de decoro: lo que conviene a un lugar, a un tiempo y a una gente.
+Ninguno de los estudios encontrados dibuja el jardín, ni sigue la copia hasta una máquina. Ese es el lugar del artículo. *(Dord-Crouslé y Feyler se conocen por resúmenes y citas: falta leerlos completos, ver §11.)*
+
+### 2.5 Lo posible y lo conveniente
+
+Antes de construir, Bouvard y Pécuchet revisan los géneros del manual uno por uno. El fantástico les parece «réservé aux princes», el templo sería «encombrant» y las plantas americanas cuestan demasiado. «Mais les rocs étaient possibles» (Flaubert 1910, 55). Su filtro es **lo posible**: lo que alcanza con la plata, el trabajo y el espacio que tienen.
+
+El filtro del manual es otro: **lo conveniente**. Boitard llama «convenances» a la regla sin la cual «on ne créera que des compositions ridicules ou absurdes» (49). Son tres: que la obra vaya con el lugar, con su tiempo y con las costumbres de quienes la habitan. Para el jardín chico de una casa modesta lo dice así: hay que ponerlo en armonía con la casa y «avec les goûts et la fortune du propriétaire, convenances qui sont de première considération» (116). En este artículo se traduce como **conveniencia**, en el sentido antiguo de decoro: lo que conviene a un lugar, a un tiempo y a una gente.
 
 El cura, al despedirse, juzga el jardín con la palabra del manual. Es la escena en pocas líneas: los copistas preguntaron qué era posible y los vecinos respondieron con lo que era conveniente.
 
@@ -86,24 +102,25 @@ La inteligencia artificial generativa vuelve actual esta diferencia. Un modelo s
 
 **Pregunta.** Cuando un saber de proyecto pasa de un manual a sus lectores, y de ahí a una máquina que genera respuestas, ¿qué se conserva y qué se pierde? ¿Se pierde siempre lo mismo?
 
-Como en *Remiendos*, cada hipótesis dice antes de la prueba qué resultado la haría caer. Lo que no vale es mover los criterios después de ver los datos.
+Cada hipótesis dice antes de la prueba qué resultado la haría caer. Lo que no vale es mover los criterios después de ver los datos.
 
-**H1. La copia se queda con el catálogo.** Bouvard y Pécuchet copian los objetos y los efectos del manual, y dejan las reglas que los acompañan.
+**H1. La copia se queda con el catálogo** *(premisa, ya señalada por Feyler 2006 y Dord-Crouslé 2003; aquí se mide)*. Bouvard y Pécuchet copian los objetos y los efectos del manual, y dejan las reglas que los acompañan.
 
-- *Cómo se prueba:* la ficha de concordancias. Para cada elemento del jardín se separa en Boitard lo que es catálogo (objeto, efecto) y lo que es regla (condición, advertencia, duda del autor), y se ve qué pasa a la novela y al jardín.
-- *Cae si:* las reglas pasan a la copia tanto como los objetos; o si la edición que usó Flaubert no traía esas reglas. En este segundo caso el manual sí las omitía y vuelve la tesis del borrador 1.
-- *Estado:* la primera lectura la sostiene. Falta fijar la edición y una segunda lectura.
+- *Cómo se prueba:* la ficha de concordancias, con páginas verificadas.
+- *Cae si:* las reglas pasan a la copia tanto como los objetos, o si la edición que usó Flaubert no traía esas reglas.
+- *Estado:* se sostiene. La edición ya no es un riesgo serio, porque las reglas están en 1825 y en la segunda edición. Falta ver la primera edición del *Manuel* (1834) y las notas de Flaubert.
 
 **H2. Las fallas están donde estaba la regla.** Las fallas del jardín ocurren donde el manual había puesto una advertencia que la copia no tomó.
 
-- *Cómo se prueba:* se clasifican todas las fallas que narra Flaubert según su origen (sitio, conveniencia, contraejemplo ejecutado, ejecución, azar) y se busca si el manual las advertía.
-- *Cae si:* menos de la mitad de las fallas tienen una advertencia previa en la edición que usó Flaubert, según dos lecturas independientes.
-- *Estado:* 6 de 9 en primera lectura.
+- *Cómo se prueba:* se clasifican las 9 fallas que narra Flaubert y se busca si el manual las advertía, con dos lecturas independientes. Después, la planta a escala (§4.3) muestra cuáles son de sitio.
+- *Cae si:* menos de la mitad de las fallas tienen una advertencia previa según las dos lecturas.
+- *Estado:* se sostiene. Las tres lecturas (la mía y dos lectores automáticos que no vieron la mía) dan las mismas 6 de 9 advertidas. Hay 7 de 9 coincidencias exactas; las diferencias son dos fallas que ellos dejan como dudosas. Falta una lectura humana antes de D1.
 
 **H3. La respuesta plausible copia la copia.** Un modelo generativo hace el mismo recorte que Bouvard y Pécuchet. Tiene dos partes:
 
 - **H3a, sin la fuente.** Si se le pregunta por el manual de Boitard sin dárselo, el modelo responde con la versión de Flaubert: un catálogo de géneros. La novela se copió y se comentó mucho más que el manual, así que lo plausible es la copia. *Cae si* la mayoría de las respuestas mencionan las conveniencias o el rechazo de los géneros.
-- **H3b, con la fuente.** Si se le da el capítulo completo de Boitard y se le pide un jardín para la huerta de Chavignolles, el modelo igual entrega el catálogo y deja las reglas. Esto prueba la pregunta de la convocatoria: si más información, por sí sola, mejora la decisión. *Cae si* la mayoría de las salidas aplican por su cuenta al menos dos reglas del manual al sitio (terreno llano, falta de agua, jardín chico, tumba a la vista).
+- **H3b, con la fuente.** Si se le da el capítulo IV de Boitard y se le pide un jardín para una huerta en Normandía, el modelo igual entrega el catálogo y deja las reglas. Esto prueba la pregunta de la convocatoria: si más información, por sí sola, mejora la decisión. *Cae si* la mayoría de las salidas aplican por su cuenta al menos dos reglas del manual al sitio (terreno llano, falta de agua, jardín chico, tumba a la vista).
+- *Estado:* *(prueba piloto: pendiente de cerrar en esta versión).*
 
 Las tres hipótesis valen aunque caigan. Si cae H3, el artículo dirá que el modelo no repite el recorte, y en qué condiciones.
 
@@ -111,6 +128,7 @@ Las tres hipótesis valen aunque caigan. Si cae H3, el artículo dirá que el mo
 
 - No afirma que una máquina «piense» como Bouvard y Pécuchet. Compara **procedimientos**: tomar un repertorio y usarlo sin las reglas de su uso.
 - No juzga a Boitard. Al contrario: muestra que el manual era más lúcido que sus lectores.
+- No pretende haber descubierto que Flaubert recorta a Boitard. Eso ya está dicho. Lo mide, lo dibuja y lo prueba con otra clase de copista.
 - No mide el costo ambiental de los modelos. El eje 6 de la convocatoria aparece en una sola frase, si el caso la pide (§5).
 - No habla de «la IA» en general. Los resultados del protocolo valen para esos modelos, con esas consignas, en esa fecha.
 
@@ -118,32 +136,31 @@ Las tres hipótesis valen aunque caigan. Si cae H3, el artículo dirá que el mo
 
 ## 4. Método
 
-El método es el habitual del autor (reunir, desarmar, proponer, ensayar, contrastar, decidir), con contrastes elegidos para un artículo de teoría con un ensayo proyectual. Cada instrumento existe porque resuelve una dificultad concreta, y se dice cuál.
+El método es el habitual del autor (reunir, desarmar, proponer, ensayar, contrastar, decidir), con contrastes elegidos para un artículo de teoría con un ensayo proyectual. Cada instrumento existe porque resuelve una dificultad concreta, y se dice cuál. Lo que viene de la arquitectura y del diseño gráfico entra solo donde resuelve algo.
 
 ### 4.1 La ficha de concordancias
 
 **Dificultad que resuelve:** sin ella, la relación entre Flaubert y Boitard se queda en una cita suelta, y H1 y H2 no se pueden probar.
 
-La primera pasada está hecha. Usa letras de evidencia adaptadas de *Remiendos*: **F** (está en Flaubert), **B** (está en Boitard), **C** (Chambers citado por Boitard), **I** (inferencia) y, más adelante, **G** (generado por un modelo). Falta:
+Está hecha y verificada. Usa letras de evidencia adaptadas de *Remiendos*: **F** (está en Flaubert), **B** (está en Boitard), **C** (Chambers citado por Boitard), **I** (inferencia) y, más adelante, **G** (generado por un modelo). Falta leer las notas de Flaubert que transcribe Dord-Crouslé (2003, 101–103), para saber si la regla se pierde al tomar notas o al redactar.
 
-- fijar la fecha de la edición digitalizada, que se presenta como «seconde édition» y no tiene año, y averiguar qué edición tuvo Flaubert;
-- verificar cada página en el facsímil, porque el OCR confunde cifras;
-- buscar el origen de tres géneros que no están en Boitard: «grave», «mystérieux» y «rêveur»;
-- una segunda lectura, hecha por otra persona sin ver la primera clasificación.
+### 4.2 La copia anotada, como lámina de cotejo
 
-### 4.2 Los corchetes: la copia anotada
+**Dificultad que resuelve:** decir «Flaubert copia a Boitard» no muestra nada. Hay que ver la copia, y ver también lo que quedó fuera.
 
-**Dificultad que resuelve:** decir «Flaubert copia a Boitard» no muestra nada. Hay que ver la copia.
+Es la parte de diseño gráfico del artículo. Los textos van alineados en tres columnas: Boitard, Flaubert y la máquina. El texto de origen va en gris, lo cambiado en negro y entre [corchetes], y la condición que la copia dejó va al margen, tachada con una línea fina. Así se ve de un golpe qué se tomó, qué cambió y qué no se tomó. El mismo recurso sirve para las salidas de los modelos.
 
-El artículo pone los textos uno al lado del otro y marca entre corchetes lo que cambió, como en §2.3. Es un recurso tipográfico simple, y el mismo sirve para las salidas de los modelos: Boitard, Flaubert y la máquina, alineados, con los cambios a la vista. En las figuras puede ir en dos tintas, el texto de origen en gris y lo cambiado en negro.
+Cada imagen del artículo lleva en el pie qué es: propia, de dominio público (Boitard, Flaubert), propuesta de la máquina o pendiente de permiso. Esto ayuda a cumplir lo que pide la revista sobre derechos de figuras.
 
-### 4.3 La lámina: dos jardines a la misma escala
+### 4.3 La planta: dos jardines a la misma escala
 
-**Dificultad que resuelve:** la novela describe el jardín como una serie de efectos. Para ver que las fallas son de sitio hay que **dibujar el sitio**.
+**Dificultad que resuelve:** la tabla de fallas dice *que* el manual advertía, pero no dice si la falla es de sitio. Algunas solo se ven en planta: la tumba a la vista de la casa, la roca en un terreno llano, el laberinto en un jardín chico. Para verlas hay que **dibujar el sitio**.
 
-- **Planta reconstruida** del jardín de Chavignolles con todo lo que el capítulo dice de posiciones: la cruz de alamedas, la «charmille» (el seto alto de carpes), la espaldera, el «vigneau» (un montículo), la «tonnelle» (el emparrado), la escalinata, la celosía al fondo, el granero. Cada trazo lleva su letra de evidencia y lo inferido va en línea discontinua.
-- Al lado, a la misma escala, el **jardín de Wissous** de la lámina 18 de Boitard. Es su modelo para un terreno de no más de un arpent, junto a la casa modesta de un hombre de letras, con la huerta «masqué de manière à n'être pas aperçu» (Boitard s. f., 115–116). Es la respuesta del manual para un caso como este.
-- La lámina tiene que mostrar de un vistazo qué recomendaba el manual y qué se hizo. Si no lo muestra mejor que el texto, se descarta.
+- **Planta reconstruida** del jardín de Chavignolles con todo lo que el capítulo dice de posiciones: la cruz de alamedas, la «charmille» (el seto alto de carpes), la espaldera, el «vigneau» (un montículo), la «tonnelle» (el emparrado), la escalinata, la celosía al fondo, el granero. Lo que da el texto va en línea continua y lo que hubo que suponer, en punteado, con su letra de evidencia.
+- **Visuales.** Desde las ventanas del comedor, que es desde donde los invitados ven el jardín al abrirse la cortina, se trazan las líneas de vista. Así se comprueba la regla de la tumba, que no debía verse «d'aucune partie du bâtiment» (Boitard s. f., 69).
+- Al lado, a la misma escala, el **jardín de Wissous** de la lámina 18 de Boitard. Es su modelo para un terreno de no más de un arpent, junto a la casa modesta de un hombre de letras, con la huerta «masqué de manière à n'être pas aperçu» (116). Es la respuesta del manual para un caso como este.
+- **Primero a mano.** La planta se dibuja a mano. Una versión digital se hace solo si agrega algo, por ejemplo para medir.
+- **Regla de decisión, fijada antes.** La planta entra al artículo si al menos 4 de las 9 fallas dependen de la posición o de la escala según los dos lectores de H2. Si quedan menos, se reduce a una figura chica. **Resultado:** 5 de 9, con acuerdo de los dos lectores en las nueve (la roca, la tumba, el árbol, el eco y el conjunto). La planta queda. Además, la lámina tiene que mostrar de un vistazo qué recomendaba el manual y qué se hizo; si no lo muestra mejor que la tabla, se descarta.
 
 ### 4.4 El protocolo de generación
 
@@ -155,17 +172,19 @@ El artículo pone los textos uno al lado del otro y marca entre corchetes lo que
 |---|---|---|
 | C1 | «¿Cómo clasifica Pierre Boitard los jardines en *L'Architecte des jardins*?» | H3a |
 | C2 | «Diseña un jardín para una huerta en Normandía según *L'Architecte des jardins* de Boitard.» | H3a, y base de comparación para H3b |
-| C3 | La consigna C2 más el texto completo del capítulo IV de Boitard (conveniencias y escenas) pegado en la consigna. | H3b |
+| C3 | La consigna C2 más el texto del capítulo IV de Boitard, «Des convenances et des scènes» (49–75), pegado en la consigna. | H3b |
 | C4 | La consigna C3 más las condiciones del sitio que da Flaubert: huerta en uso, terreno llano, agua acarreada, casa a la vista, poca plata. | H3b |
 
 **Modelos:** dos modelos de texto de empresas distintas y un modelo de imagen (este último solo para C2 y C4), con nombre, versión y fecha registrados. Diez salidas por consigna y por modelo, todas, sin elegir.
 
-**Códigos**, la misma lista para todas las salidas:
+**Códigos**, la misma lista para todas las salidas. El libro de códigos completo está en la bitácora.
 
 - *Catálogo:* géneros nombrados, fábricas propuestas (tumba, puente, pagoda, roca, ruina, cabaña…), efectos prometidos.
-- *Regla:* estudio del sitio; conveniencias; terreno llano; agua; tamaño del jardín; tumba lejos de la casa; nada de rocas artificiales; el «potager pittoresque» sin reglas.
+- *Regla:* estudio del sitio; conveniencias; terreno llano; agua; tamaño del jardín; tumba lejos de la casa; nada de rocas artificiales; el «potager pittoresque» sin reglas; el rechazo de los géneros.
 - *Atribución:* le atribuye a Boitard la clasificación por géneros; le atribuye el «genre terrible» de Chambers; nombra a Flaubert sin que se lo pidan.
 - *Objeción anticipada:* defiende una mezcla incoherente con un argumento listo, como hace Boitard cuando aconseja responder con el jardín botánico de Calcutta a quien objete su escena exótica (65).
+
+**Codificación ciega.** Dos personas codifican sin saber qué consigna produjo cada salida. Se informa el acuerdo entre ellas.
 
 **Qué demuestra y qué no.** El protocolo muestra cómo responden estos modelos a estas consignas en esta fecha. No demuestra nada sobre la inteligencia artificial en general, y el artículo lo dice así. Si C3 y C4 cambian mucho los resultados, también es un hallazgo: querría decir que la regla no se pierde por falta de información, sino por la forma de pedir.
 
@@ -181,7 +200,7 @@ El contraste es una sola consigna más a los mismos modelos: «una escena exóti
 
 ### 4.6 Decidir
 
-Hay dos puntos de decisión con fecha (§8). En cada uno se anota qué se conserva, qué se cambia, qué se descarta y si la pregunta cambia, con la razón.
+Hay dos puntos de decisión con fecha (§8). En cada uno se anota en la bitácora qué se conserva, qué se cambia, qué se descarta y si la pregunta cambia, con la razón.
 
 ---
 
@@ -192,15 +211,15 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 | § | Apartado | Pregunta que lo abre | Palabras | Ejes |
 |---|---|---|---|---|
 | 1 | **Un acento circunflejo.** La cortina se abre. El jardín, los invitados y el veredicto. | ¿Qué vieron los invitados? | 700 | — |
-| 2 | **El manual.** Boitard, los manuales Roret y el lugar del manual entre la *Encyclopédie* y el manual técnico. Las conveniencias. | ¿Qué decía de verdad el libro? | 1.200 | 1 |
-| 3 | **La copia anotada.** Boitard y Flaubert lado a lado, con corchetes. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.500 | 2 |
-| 4 | **Lo que la tierra se bebe.** Las fallas según su origen y la lámina de los dos jardines. La entrada vacía del «potager pittoresque». | ¿Dónde falló el jardín, y por qué ahí? | 1.300 | 3, 7 |
+| 2 | **El manual.** Boitard, los manuales Roret, la edición y el lugar del manual entre la *Encyclopédie* y el manual técnico. Las conveniencias. Lo que ya dijeron los estudios. | ¿Qué decía de verdad el libro? | 1.200 | 1 |
+| 3 | **La copia anotada.** La lámina de cotejo. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.300 | 2 |
+| 4 | **Lo que la tierra se bebe.** Las fallas según su origen y la planta de los dos jardines. La entrada vacía del «potager pittoresque». | ¿Dónde falló el jardín, y por qué ahí? | 1.500 | 3, 7 |
 | 5 | **El quinto copista.** Protocolo y resultados. ¿La máquina copia a Boitard o a Flaubert? | ¿Qué copia una máquina cuando le pedimos «un jardín según Boitard»? | 1.400 | 2, 3, 5 |
 | 6 | **Exótico para quién.** El tahitiano, el bananero y el «cierge du Pérou». | ¿Desde dónde es exótico lo exótico? | 600 | 1, 4 |
 | 7 | **El que está en el sitio.** Lo posible y lo conveniente. Qué le falta a una respuesta posible para ser una decisión de proyecto, y qué significa para la enseñanza. Vuelta al acento circunflejo. | ¿Quién decide lo que conviene? | 900 | 3, 5 |
 | — | Notas y referencias (Chicago autor-fecha 17.ª) | | ~700 | |
 
-**Figuras (6–8):** el frontispicio exótico de Boitard; una o dos láminas de fábricas (tumbas, pagodas, puentes), de dominio público; la copia anotada con corchetes; la lámina de los dos jardines a la misma escala; la tabla de fallas; un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna.
+**Figuras (6–8):** el frontispicio exótico de Boitard; una o dos láminas de fábricas (tumbas, pagodas, puentes), de dominio público; la lámina de cotejo; la planta de los dos jardines a la misma escala; la tabla de fallas; un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna.
 
 **Sobre el eje 6.** Si entra, entra en una frase del apartado 7: en Chavignolles el agua del estanque se acarrea a mano y se pierde; en una respuesta generada el agua no se ve, porque está en otra parte, en la refrigeración de los centros de datos (Crawford 2021). Si la frase se siente forzada, se quita.
 
@@ -212,7 +231,7 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 
 **Epígrafe.** Se propone el de la señora Bordin: «Mon Dieu ! quelle bêtise que cet arbre !» (Flaubert 1910, 65). Es corto, está verificado, es la voz de una mujer y es el veredicto del jardín dicho por una vecina. La alternativa sería Boitard, «Nous n'indiquerons aucune règle pour tracer une composition qui n'en a point» (s. f., 116), pero esa frase trabaja mejor dentro del texto, en el apartado 4.
 
-**Una figura que lleva el argumento.** El artículo abre y cierra con el **acento circunflejo**. Al abrirse la cortina, el Rialto de Chavignolles se ve como «un accent circonflexe par-dessus les haricots» (Flaubert 1910, 61): un puente reducido a un signo tipográfico. Es la figura del artículo, porque la copia guarda el signo y pierde la condición. Se puede contar en cuatro Rialtos, en un párrafo cada uno o menos:
+**Una figura que lleva el argumento.** El artículo abre y cierra con el **acento circunflejo**. Al abrirse la cortina, el Rialto de Chavignolles se ve como «un accent circonflexe par-dessus les haricots» (Flaubert 1910, 61): un puente reducido a un signo tipográfico. Es la figura del artículo, porque la copia guarda el signo y pierde la condición. Para quien viene del diseño gráfico es también una pregunta de oficio: un diacrítico solo tiene sentido sobre la letra que lo lleva. Se puede contar en cuatro Rialtos, en un párrafo cada uno o menos:
 
 1. El de Venecia, que cruza un canal real en una ciudad hecha sobre el agua.
 2. El de Chavignolles, sobre un estanque que «la terre buvait» (55), en un jardín que el manual no habría aprobado. Flaubert lo inventa: en Boitard no hay ningún Rialto. La palabra «vénitienne» aparece en el manual solo para una góndola (239–240).
@@ -221,9 +240,9 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 
 El cierre vuelve al acento. Una respuesta generada puede poner el acento sobre cualquier palabra. Saber si esa palabra lo lleva sigue siendo trabajo de quien conoce la lengua, como el jardín lo era de quien está en el sitio.
 
-**Los corchetes.** Son el recurso visual del artículo (§4.2). Muestran la copia en vez de describirla.
+**Los corchetes y la lámina de cotejo.** Son el recurso visual del artículo (§4.2). Muestran la copia en vez de describirla.
 
-**Lo que no se usa.** Nada de *Cosecha de piedras* ni de los trabajos del Altiplano: son otro proyecto. Tampoco la fórmula ni las expresiones propias de Cárcamo Pino: de sus artículos se aprende la construcción, pero la voz tiene que ser la del autor.
+**Lo que no se usa.** Nada del contenido de *Cosecha de piedras* ni de los trabajos del Altiplano: son otro proyecto. De ellos solo se toma la manera de trabajar. Tampoco la fórmula ni las expresiones propias de Cárcamo Pino: de sus artículos se aprende la construcción, pero la voz tiene que ser la del autor.
 
 **Relación con las propuestas anteriores.** De *Remiendos* vienen las letras de evidencia y la costumbre de fijar antes qué resultado haría caer una hipótesis. De *A pulso* viene leer un manual como partitura: Boitard prescribe qué debe sentir quien mira. En la versión anónima estas referencias se citan como (XXXXX año, pág.) y salen de la lista final. El artículo tiene que sostenerse sin ellas.
 
@@ -231,13 +250,10 @@ El cierre vuelve al acento. Una respuesta generada puede poner el acento sobre c
 
 ## 7. Política de IA y transparencia
 
-El artículo usa modelos generativos **como objeto de estudio**, no para redactar. Para cumplir la política de *Astrágalo*:
+La política de *Astrágalo* pide que los autores declaren «el uso de cualquier herramienta de IA en la redacción o análisis de sus manuscritos», y que especifiquen «el software utilizado, las funciones aplicadas y las secciones del manuscrito donde se ha empleado» (§3.1). Las herramientas de IA no pueden ser autoras. El autor responde por la originalidad y por revisar sesgos, errores o inexactitudes en lo generado (§3.2–3.3). La política no dice nada de la IA como objeto de estudio. Aquí se lee de la manera más segura: todo se declara.
 
-- se declaran los modelos, las versiones, las fechas, las consignas y el número de salidas;
-- las salidas se archivan completas y se ponen a disposición si la revista lo pide;
-- se aclara qué figuras son generadas y bajo qué condiciones de uso se publican.
-
-**Esta propuesta.** El cotejo de fuentes y la redacción de este borrador se hicieron con ayuda de Claude (Anthropic). Si algo de este trabajo queda en el artículo, va en la declaración de uso de IA.
+- **Como objeto de estudio:** se declaran los modelos, las versiones, las fechas, las consignas y el número de salidas. Las salidas se archivan completas y se ponen a disposición si la revista lo pide. Se aclara qué figuras son generadas y bajo qué condiciones de uso se publican.
+- **Como ayuda en el análisis y la redacción de esta propuesta:** Claude (Anthropic) hizo el cotejo de fuentes, la verificación de páginas con programas propios y la prueba piloto de las consignas, y redactó los borradores. Si algo de este trabajo queda en el artículo, va en la declaración, con las secciones donde se usó.
 
 ---
 
@@ -245,10 +261,10 @@ El artículo usa modelos generativos **como objeto de estudio**, no para redacta
 
 | Fase | Fechas | Trabajo | Entregable | Punto de decisión |
 |---|---|---|---|---|
-| **Reunir** | nov 2026 | Edición crítica de la novela. Fecha de la edición de Boitard y qué edición tuvo Flaubert (dosieres de lectura). Estudios previos sobre el capítulo II. Política de IA y plantilla. | Corpus y bibliografía. | — |
-| **Desarmar** | nov–dic 2026 | Verificar páginas en el facsímil. Segunda lectura de la ficha. Origen de «grave», «mystérieux» y «rêveur». | Ficha verificada. | **D1 (fin de diciembre): H1 y H2.** ¿Se sostienen con la edición correcta y dos lecturas? Si no, se reformula la tesis antes de generar nada. |
-| **Proponer** | ene 2027 | Planta reconstruida y lámina de los dos jardines. Copia anotada con corchetes. | 2 láminas y una figura. | ¿La lámina muestra algo que la tabla no muestra? |
-| **Ensayar** | feb–mar 2027 | Protocolo de generación, codificación y contraste situado. | Archivo de salidas y tabla de códigos. | **D2 (fin de marzo): H3.** ¿Se sostiene, cambia o cae? |
+| **Reunir** | nov 2026 | Leer a Dord-Crouslé (2003) y Feyler (2006) completos. Edición crítica de la novela. Buscar la primera edición del *Manuel* (1834). | Corpus y bibliografía. | — |
+| **Desarmar** | nov–dic 2026 | Cotejar la ficha con las notas de Flaubert (Carnet 18 bis). Segunda lectura humana de las fallas. Ver en la imagen las citas que el OCR no encontró. | Ficha cerrada. | **D1 (fin de diciembre): H1 y H2.** ¿Se sostienen con las notas de Flaubert y dos lecturas? Si no, se reformula la tesis antes de generar nada. |
+| **Proponer** | ene 2027 | Planta a mano y lámina de los dos jardines. Lámina de cotejo. | 2 láminas y una figura. | ¿La planta muestra algo que la tabla no muestra? |
+| **Ensayar** | feb–mar 2027 | Protocolo de generación completo, codificación ciega y contraste situado. | Archivo de salidas y tabla de códigos. | **D2 (fin de marzo): H3.** ¿Se sostiene, cambia o cae? |
 | **Redactar** | abr–may 2027 | Versión completa. Lectura de una o dos personas de confianza. Figuras y derechos. | Borrador completo. | ¿Queda una objeción seria sin responder? |
 | **Consolidar** | 1–15 jun 2027 | Pasar a la plantilla. Chicago autor-fecha. Resúmenes en inglés y portugués. Versión anónima y metadatos. Declaración de IA. Envío. | Dos archivos `.docx` y envío. | — |
 
@@ -258,8 +274,9 @@ El artículo usa modelos generativos **como objeto de estudio**, no para redacta
 
 | Riesgo | Señal | Respuesta |
 |---|---|---|
-| **Flaubert usó otra edición**, sin las reglas que se citan | Las citas de Flaubert no coinciden con esta edición, o los dosieres nombran otra | Comparar ediciones Roret en Gallica e Internet Archive. Si las reglas no estaban, H1 cae y vuelve la tesis del borrador 1, que también es publicable. |
-| **Alguien ya hizo este cotejo** | Aparece un estudio de fuentes del capítulo II | Se cita, y el aporte pasa a la lectura de proyecto (lo posible y lo conveniente), la lámina y el eslabón de la máquina. Se busca en la fase Reunir. |
+| **El aporte se parece demasiado a lo ya dicho** | Al leer a Dord-Crouslé o a Feyler aparece un recuento parecido de fallas | El aporte se apoya en lo que ellos no hacen: la planta a escala y la máquina. Si también eso apareciera, la pregunta cambia hacia la máquina sola. |
+| **Flaubert usó una edición sin las reglas** | La primera edición (1834) no trae las conveniencias, o las notas de Flaubert citan otra cosa | Muy poco probable: las reglas están en 1825 y en la segunda edición. Si pasara, H1 cae para esas reglas y se dice. |
+| **La planta no agrega nada** | Menos de 4 fallas dependen de la posición, o la lámina dice lo mismo que la tabla | Se reduce a una figura chica o se quita (regla de §4.3). |
 | **La máquina sí conoce a Boitard** | En C1 los modelos describen las conveniencias | Es un resultado: H3a cae y el apartado 5 cuenta eso. |
 | **El paralelo con la IA se vuelve metáfora** | El apartado 5 se puede escribir sin los datos | Volver al protocolo: el apartado se escribe desde la tabla de códigos. |
 | **Expansión** (más episodios, más manuales, más modelos) | Aparece un segundo caso | Regla: un episodio, un manual. Lo demás va a una lista de continuaciones. |
@@ -270,29 +287,36 @@ El artículo usa modelos generativos **como objeto de estudio**, no para redacta
 
 ## 10. Referencias de partida
 
-*Las de la convocatoria van marcadas (C). Las demás se verifican en la fase Reunir antes de citarlas.*
+*Las de la convocatoria van marcadas (C). Las marcadas con \* se conocen por resúmenes o citas y hay que leerlas antes de citarlas.*
 
 **Fuentes primarias**
 
 - Flaubert, Gustave. 1910. *Bouvard et Pécuchet*. En *Œuvres complètes de Gustave Flaubert*, t. I. París: Louis Conard. Primera edición: París: Lemerre, 1881. (C) *(Para el artículo, pasar a una edición crítica: Pléiade 2021 o GF Flammarion, ed. de Stéphanie Dord-Crouslé, 1999.)*
-- Boitard, Pierre. S. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Nouvelle édition. 2 vols. París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019, digitalizado en Internet Archive (`A039a018`, `A039a019`). *(Fechar la edición. El catálogo le pone «[1834?]».)*
+- Boitard, Pierre. S. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Nouvelle édition [segunda edición]. 2 vols. París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019, con catálogos de Roret de 1859; digitalizado en Internet Archive (`A039a018`, `A039a019`).
+- Boitard, Pierre. 1825. *Traité de la composition et de l'ornement des jardins*. París: Audot. Internet Archive (`TraiteYdelacomp00Boit`).
 - Chambers, William. 1772. *A Dissertation on Oriental Gardening*. Londres. *(Solo en el pasaje que Boitard cita.)*
+
+**Sobre el manual en la novela**
+
+- Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. \*
+- Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin…*, editado por Gérard Peylet, 229–242. Pessac: Presses universitaires de Bordeaux. \* *(Completar el título del libro.)*
+- Thomas, Jeffrey. 2019. «Le jardin face à *Bouvard et Pécuchet*». *Revue Flaubert* 18.
 
 **Convocatoria y marco**
 
 - Diderot, Denis, y Jean Le Rond d'Alembert, eds. 1751–1772. *Encyclopédie*. (C)
-- Calatrava Escobar, Juan Antonio. 1988. Tesis doctoral sobre la *Encyclopédie*. (C) *(Verificar título.)*
+- Calatrava Escobar, Juan Antonio. 1988. «Las ideas estéticas en la *Encyclopédie* de Diderot y D'Alembert». Tesis doctoral, Universidad de Granada. (C)
 - Carpo, Mario. 2011. *The Alphabet and the Algorithm*. Cambridge, MA: MIT Press. (C)
 - Carpo, Mario. 2023. *Beyond Digital: Design and Automation at the End of Modernity*. Cambridge, MA: MIT Press. (C)
 - Crawford, Kate. 2021. *Atlas of AI*. New Haven: Yale University Press. (C)
 - Pasquinelli, Matteo. 2023. *The Eye of the Master: A Social History of Artificial Intelligence*. Londres: Verso. (C)
-- Bender, Emily M., Timnit Gebru, Angelina McMillan-Major y Shmargaret Shmitchell. 2021. «On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?». En *FAccT '21*, 610–623. Nueva York: ACM. (C)
+- Bender, Emily M., Timnit Gebru, Angelina McMillan-Major y Shmargaret Shmitchell. 2021. «On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?». En *FAccT '21*, 610–623. Nueva York: ACM. (C) *(La frase del «stochastic parrot» está en las pp. 616–617.)*
 - Barnes, Julian. 1984. *Flaubert's Parrot*. Londres: Jonathan Cape. (C)
 
-**Sobre la novela** *(a completar con la búsqueda de estudios previos)*
+**Sobre la novela**
 
-- Foucault, Michel. «Un "fantastique" de bibliothèque». *(Verificar año y edición.)*
-- Queneau, Raymond. Prefacio a *Bouvard et Pécuchet*. *(Verificar año y editorial.)*
+- Foucault, Michel. 1967. «Un "fantastique" de bibliothèque». *Cahiers de la Compagnie Madeleine Renaud–Jean-Louis Barrault*, n.º 59: 7–30. Publicado antes en alemán (1964). Reeditado en *Dits et écrits* I, texto n.º 20.
+- Queneau, Raymond. 1947. Prefacio a *Bouvard et Pécuchet*. París: Éditions du Point du Jour.
 
 **Para la figura del acento circunflejo**
 
@@ -300,10 +324,10 @@ El artículo usa modelos generativos **como objeto de estudio**, no para redacta
 
 ---
 
-## 11. Próximos pasos (dos semanas)
+## 11. Próximos pasos
 
-1. **Fechar la edición de Boitard.** Comparar la edición de Sevilla con otras ediciones Roret en Gallica, y buscar en los dosieres de lectura de Flaubert cuál usó. Es lo que más puede cambiar la tesis.
-2. **Verificar en el facsímil** las páginas de las 20 citas de Boitard que usa la ficha.
-3. **Pedir una segunda lectura** de la tabla de fallas (§4 de la ficha) a alguien que no haya visto la primera.
-4. **Leer la política de IA de *Astrágalo*** completa, para ver qué pide declarar cuando la IA es el objeto de estudio.
+1. **Leer a Dord-Crouslé (2003) y a Feyler (2006) completos.** Están en acceso abierto (OpenEdition; Dord-Crouslé también en HAL, `halshs-00102668`), pero esos sitios bloquean la descarga automática. Hay que bajarlos desde un navegador. Son lo que más puede mover el aporte.
+2. **Leer las notas de Flaubert** (Carnet 18 bis, ff. 8–9) en la transcripción de Dord-Crouslé, y agregar a la ficha una columna para la etapa de la nota.
+3. **Ver en la imagen** las tres citas que el OCR no encontró y las páginas del libro de 1825.
+4. **Segunda lectura humana** de la tabla de fallas.
 5. **Elegir el título.** Opciones: *Lo posible y lo conveniente*; *Un acento circunflejo sobre los porotos*; *El jardín de Chavignolles: lo que la copia deja fuera*.
