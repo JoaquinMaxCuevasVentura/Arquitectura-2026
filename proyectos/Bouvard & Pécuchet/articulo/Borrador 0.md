@@ -89,7 +89,7 @@ Tres de los géneros de Flaubert vienen de pasajes que el manual cita para criti
 
 ### 3.4 Un adjetivo que se vuelve género
 
-Dos géneros de Flaubert no existen en Boitard como escenas. El «grave», que debe ofrecer «comme Ermenonville, un temple à la philosophie» (Flaubert 1910, 54), sale de la leyenda de una lámina: el plano de Ermenonville, donde figura el templo (Boitard s. f., 109). El «mystérieux», con su musgo y sus grutas, sale de una caverna. Boitard pide estrechar su entrada para conservar «ces épaisses ténèbres qui […] caractérisent le genre terrible et mystérieux de ces voûtes effrayantes» (229). Pero la regla es solo para quien ya tiene una caverna. En su libro de 1825, Boitard lo había dicho con todas las letras: la caverna «on ne peut la construire» (Boitard 1825, 108–109). La copia toma el adjetivo y deja la condición: una caverna no se fabrica, se tiene o no se tiene.
+Dos géneros de Flaubert no existen en Boitard como escenas. El «grave», que debe ofrecer «comme Ermenonville, un temple à la philosophie» (Flaubert 1910, 54), sale de la leyenda de una lámina: el plano de Ermenonville, donde figura el templo (Boitard s. f., 109). El «mystérieux», con su musgo y sus grutas, sale de una caverna. Boitard pide estrechar su entrada para conservar «ces épaisses ténèbres qui […] caractérisent le genre terrible et mystérieux de ces voûtes effrayantes» (229). Pero la regla es solo para quien ya tiene una caverna. En su libro de 1825, Boitard lo había dicho con todas las letras: la caverna «on ne peut la construire» (Boitard 1825, 109). La copia toma el adjetivo y deja la condición: una caverna no se fabrica, se tiene o no se tiene.
 
 ### 3.5 Lo posible
 
@@ -190,6 +190,8 @@ En el jardín de Chavignolles, lo único que queda de lo exótico es «un tourne
 ## 7. El que está en el sitio
 
 Bouvard y Pécuchet tenían un manual bueno. Advertía casi todo lo que les iba a salir mal, explicaba por qué y, para su caso, se negaba a dar reglas. Lo leyeron con atención y lo aplicaron con esfuerzo. El jardín fracasó igual, y no por falta de información. Fracasó porque usaron el libro para responder una pregunta que el libro no hacía. Ellos preguntaron qué era posible con lo que tenían. El manual preguntaba qué convenía a ese lugar, a ese tiempo y a esa gente.
+
+Boitard no estaba contra la copia. En su libro de 1825, para el caso en que no queda más remedio que levantar una roca, pide que el artista haga todo lo posible por «copier servilement un modèle qu'il aura choisi et dessiné d'après nature» (Boitard 1825, 108). La copia que acepta es la que se hace mirando un sitio y dibujándolo, y solo donde «le caractère rocailleux du site peut les autoriser» (109). Bouvard y Pécuchet también copiaron con esmero: partieron los granitos, los numeraron y los apilaron (Flaubert 1910, 56). Pero copiaron un libro, no un lugar.
 
 La diferencia entre las dos preguntas es una diferencia de oficio. Lo posible se puede calcular desde afuera: una lista de objetos, un presupuesto, un peón, unas piedras en la orilla del río. Lo conveniente no. Necesita a alguien que esté en el sitio, que mire desde el comedor, que sepa que el agua se va entre las piedras y que el vecino se va a reír. Por eso Boitard, después de cientos de páginas de reglas, le deja la última palabra a «l'artiste placé sur les localités» (Boitard s. f., 226).
 

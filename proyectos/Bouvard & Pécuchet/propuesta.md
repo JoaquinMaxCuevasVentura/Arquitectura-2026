@@ -68,7 +68,7 @@ Flaubert copia a Boitard casi literalmente, con cambios pequeños que se pueden 
 |---|---|---|
 | «un ex-voto marquant la place où un chevalier est tombé sous le fer d'un assassin» (72) | «un ex-voto [à la vierge], [indiquant] la place où un [seigneur] est tombé sous le fer d'un assassin» (54) | «Dans un site très-pittoresque, montagneux» (72) |
 | «faire naître d'agréables souvenirs à un colon ou à un voyageur» (63) | «[pour] faire naître [des] souvenirs à un colon ou à un voyageur» (54) | En Francia, la escena dura «quatre ou cinq mois de l'année au plus» (65) |
-| «caractérisent le genre terrible et mystérieux de ces voûtes effrayantes», con musgos (229) | «de la mousse et des grottes, le genre [mystérieux]» (54) | La caverna no se construye: la regla es para quien ya tiene una (229; 1825, 108–109) |
+| «caractérisent le genre terrible et mystérieux de ces voûtes effrayantes», con musgos (229) | «de la mousse et des grottes, le genre [mystérieux]» (54) | La caverna no se construye: la regla es para quien ya tiene una (229; 1825, 109) |
 | «ces jeux bizarres, ou si l'on aime mieux de ces jeux d'enfans» (73) | «[le plus beau spécimen] se voyait naguère dans un jardin wurtembergeois» (54) | «Sous ce titre, qui n'est pas trop convenable» (73) |
 | «C'est sur le principe erroné de l'unité de genre, que les auteurs ont échafaudé leur classification des jardins» (55) | «L'auteur les divise en une infinité de genres» (54) | Todo el párrafo: Boitard rechaza los géneros (55–57) |
 
