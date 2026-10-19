@@ -103,6 +103,23 @@ Joaco pidió (19 oct, 18:43) avanzar en todo lo posible. El plan pone la redacci
 - **Qué decide.** Si la estructura de siete apartados se mantiene, o si algún apartado se funde o se mueve.
 - **Qué no es.** No es el texto que se envía. La voz final es la de Joaco, y la redacción con IA se declara (§7 de la propuesta).
 
+### P10. Referencias gráficas para la planta y las láminas
+
+Joaco mandó (19 oct, 19:31) los dibujos «Artificial Habitat» de Luis Fernando Benedit (1970–72) y pidió buscar referencias así para las plantas y para todo el proyecto. Antes de juntar referencias, las dificultades que tienen que resolver:
+
+1. **El agua.** La falla del estanque no es un objeto: es un recorrido (la bomba, los baldes, el estanque, la fuga entre las piedras). La tabla lo dice en una frase.
+2. **Lo inferido.** Casi toda la planta es reconstrucción: hay que ver de un vistazo qué da el texto y qué se supuso.
+3. **La regla al margen.** La regla de Boitard tiene que estar en la lámina, junto al objeto que la rompe, con su página.
+4. **Las visuales** desde el comedor, que deciden la regla de la tumba.
+5. **Dos jardines a la misma escala**, Chavignolles y Wissous.
+
+Criterios:
+
+- **Una referencia entra** si resuelve al menos una de las cinco, y se dice cuál. Si solo se parece, se descarta.
+- **Lo que no se reproduce:** obra con derechos (Benedit murió en 2011). Se cita como referencia de método gráfico y no va como figura sin permiso.
+- **Prueba más chica:** dibujar una sola falla, el estanque, con las convenciones elegidas. **Sirve** si muestra algo que la fila de la tabla no muestra (de dónde viene el agua, a qué distancia, por dónde se va). **No sirve** si repite la frase de la tabla con dibujos; en ese caso la referencia queda para el estilo y no para el argumento.
+- **Qué no demuestra:** que la planta completa funcione. Solo decide si las convenciones valen el trabajo de dibujarla.
+
 ## Registro
 
 | Fecha | Prueba | Resultado | Decisión | Razón | Siguiente acción |
