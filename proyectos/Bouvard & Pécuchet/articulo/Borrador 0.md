@@ -1,6 +1,6 @@
 # Lo posible y lo conveniente. El jardín de Bouvard y Pécuchet, su manual y la respuesta plausible
 
-*Borrador 0, 19 de octubre de 2026. Es una prueba de estructura (bitácora, P9), no el texto que se envía. Las citas están verificadas con su página; lo que falta se marca entre corchetes y en gris en la versión final: [FALTA …]. Redactado con ayuda de Claude (Anthropic); ver la declaración al final.*
+*Borrador 0, 19 de octubre de 2026 (revisado esa noche con la nota de Flaubert, los borradores y los estudios). Es una prueba de estructura (bitácora, P9), no el texto que se envía. Las citas están verificadas con su página; las de Dord-Crouslé y Feyler van por párrafo hasta cotejarlas con el PDF; lo que falta se marca entre corchetes y en gris en la versión final: [FALTA …]. Redactado con ayuda de Claude (Anthropic); ver la declaración al final.*
 
 > «Mon Dieu ! quelle bêtise que cet arbre !»
 > — Madame Bordin, en Flaubert (1910, 65)
@@ -61,9 +61,9 @@ Este pasaje es la fuente del «genre terrible» de Flaubert: «On compose le gen
 
 ### 2.4 Lo que ya se sabe
 
-Tres estudios trabajaron antes la relación entre el capítulo II y el manual. Stéphanie Dord-Crouslé (2003) siguió las notas de lectura de Flaubert sobre Boitard a través de las etapas de los borradores, y mostró que la «cita» de la novela es una paráfrasis hecha para denunciar el manual y el uso que se hace de él. Patrick Feyler (2006) observó que el resumen de Flaubert omite las precauciones con que Boitard acompañaba sus consejos. Jeffrey Thomas (2019) comparó el exvoto de la novela con un pasaje del manual y notó que algunos objetos del jardín, como los vidrios de colores de la cabaña, no vienen de Boitard. [FALTA: leer completos a Dord-Crouslé y a Feyler, y ajustar este párrafo.]
+Varios estudios trabajaron antes la relación entre el capítulo II y el manual. Stéphanie Dord-Crouslé (2003) comparó las notas de lectura de Flaubert con el libro de Boitard, pasaje por pasaje, y siguió el párrafo de los géneros por cinco etapas de borradores. Su conclusión es que la toma de notas ya está orientada (párr. 28): «Flaubert passe sous silence l'insistance constante de Boitard sur les convenances» (párr. 19), y con esos consejos los personajes «n'auraient jamais enfanté le monstrueux jardin paysager que décrit Flaubert» (párr. 20). Patrick Feyler (2006, párr. 49) observó que el resumen de la novela «omet les précautions dont Boitard assortissait son propos». Jeffrey Thomas (2019) comparó el exvoto con un pasaje del manual y notó que algunos objetos del jardín, como los vidrios de colores de la cabaña, no vienen de Boitard. Y Yvan Leclerc (2019) siguió los fracasos agrícolas del mismo capítulo por las notas y los borradores hasta su causa. [FALTA: pasar los párrafos de Dord-Crouslé y Feyler a páginas impresas al cotejar con el PDF.]
 
-La idea de que la copia deja las reglas, entonces, ya está dicha. Lo que no se encontró en esos estudios es un recuento de qué se pierde y dónde falla, ni una lectura del jardín como proyecto, a escala. Tampoco una que siga la copia hasta las máquinas de hoy. Ese es el lugar de este artículo.
+La idea de que la copia deja las reglas, entonces, ya está dicha, y Dord-Crouslé la dijo en una frase sobre el jardín entero. Lo que no se encontró es la prueba de esa frase falla por falla, ni una lectura del jardín como proyecto, a escala, ni una que siga la copia hasta las máquinas de hoy. Ese es el lugar de este artículo.
 
 ## 3. La copia anotada
 
@@ -73,15 +73,17 @@ Flaubert copia a Boitard casi literalmente, con cambios pequeños. Para verlos s
 
 [FALTA: Fig. 1. Lámina de cotejo. Tres columnas: Boitard, Flaubert y la máquina. El texto de origen en gris, lo cambiado en negro y entre corchetes, la condición que la copia dejó al margen, tachada con una línea fina. Fuente: elaboración propia sobre Boitard (s. f.) y Flaubert (1910), de dominio público.]
 
+Entre el manual y la novela hay dos copias más: la nota de lectura de Flaubert y los borradores. La nota es una lista. Empieza «Boitard "architecte des jardins" on a inventé des genres» y sigue con los géneros, las escenas y las plantas (Carnet 18 bis, f. 8, en Dord-Crouslé 2003). Guarda una distancia, la del «on», porque Boitard atribuye los géneros a otros autores (Boitard s. f., 21). Pero no copia ninguna conveniencia ni ninguna condición. En los borradores el «on» se vuelve «L'auteur les divise par genres, ou scènes» (Ms g 225-2, f. 169), y los géneros pasan a ser de Boitard. La regla, entonces, no se pierde al redactar. Ya falta al leer.
+
 La página 54 de la novela tiene ocho géneros. Seis tienen fuente clara en el manual y uno, una fuente débil. Lo que interesa es qué clase de fuente.
 
 ### 3.2 La condición que queda afuera
 
-El género «mélancolique et romantique» de Flaubert se distingue, entre otras cosas, por «un ex-voto [à la vierge], [indiquant] la place où un [seigneur] est tombé sous le fer d'un assassin» (Flaubert 1910, 54). En Boitard, la frase está en la escena romántica: «un ex-voto marquant la place où un chevalier est tombé sous le fer d'un assassin» (Boitard s. f., 72). La virgen viene del ítem vecino de la misma lista, una fuente dedicada a una madona. La copia cambia tres palabras y junta dos objetos contiguos.
+El género «mélancolique et romantique» de Flaubert se distingue, entre otras cosas, por «un ex-voto [à la vierge], [indiquant] la place où un [seigneur] est tombé sous le fer d'un assassin» (Flaubert 1910, 54). En Boitard, la frase está en la escena romántica: «un ex-voto marquant la place où un chevalier est tombé sous le fer d'un assassin» (Boitard s. f., 72). La virgen viene del ítem vecino de la misma lista, una fuente dedicada a una madona. La copia cambia tres palabras y junta dos objetos contiguos. La mezcla ya está en la nota de lectura, que dice «exvoto à une madone marquant la place où un chevalier est tombé sous le fer d'un assassin» (Carnet 18 bis, f. 8v); el caballero y el verbo cambian después.
 
 Lo que no pasa a la novela es lo que abre el párrafo de Boitard: «Dans un site très-pittoresque, montagneux» (72). El exvoto es para un sitio de montaña, donde la historia de un asesinato en el camino tiene sentido. Bouvard y Pécuchet lo descartan, pero no por eso. Lo descartan porque «n'aurait pas de signification, vu le manque d'assassins» (Flaubert 1910, 55). Ven que falta algo, pero no lo que el manual pedía.
 
-Lo mismo pasa con el género exótico. Flaubert copia que sirve «[pour] faire naître [des] souvenirs à un colon ou à un voyageur» (54). En Boitard eran «d'agréables souvenirs» (Boitard s. f., 63), y la escena tenía un límite: en Francia, ese cuadro «ne peut exister chez nous que pendant quatre ou cinq mois de l'année au plus» (65), porque se arma con plantas de invernadero.
+Lo mismo pasa con el género exótico. Flaubert copia que sirve «[pour] faire naître [des] souvenirs à un colon ou à un voyageur» (54). En Boitard eran «d'agréables souvenirs» (Boitard s. f., 63), y así siguen en la nota de Flaubert, y la escena tenía un límite: en Francia, ese cuadro «ne peut exister chez nous que pendant quatre ou cinq mois de l'année au plus» (65), porque se arma con plantas de invernadero.
 
 ### 3.3 El contraejemplo tomado como receta
 
@@ -89,15 +91,17 @@ Tres de los géneros de Flaubert vienen de pasajes que el manual cita para criti
 
 ### 3.4 Un adjetivo que se vuelve género
 
-Dos géneros de Flaubert no existen en Boitard como escenas. El «grave», que debe ofrecer «comme Ermenonville, un temple à la philosophie» (Flaubert 1910, 54), sale de la leyenda de una lámina: el plano de Ermenonville, donde figura el templo (Boitard s. f., 109). El «mystérieux», con su musgo y sus grutas, sale de una caverna. Boitard pide estrechar su entrada para conservar «ces épaisses ténèbres qui […] caractérisent le genre terrible et mystérieux de ces voûtes effrayantes» (229). Pero la regla es solo para quien ya tiene una caverna. En su libro de 1825, Boitard lo había dicho con todas las letras: la caverna «on ne peut la construire» (Boitard 1825, 109). La copia toma el adjetivo y deja la condición: una caverna no se fabrica, se tiene o no se tiene.
+Dos géneros de Flaubert no existen en Boitard como escenas. El «grave», que debe ofrecer «comme Ermenonville, un temple à la philosophie» (Flaubert 1910, 54), sale de la leyenda de una lámina: el plano de Ermenonville, donde figura el templo (Boitard s. f., 109). El «mystérieux», con su musgo y sus grutas, sale con toda probabilidad de una caverna. Boitard pide estrechar su entrada para conservar «ces épaisses ténèbres qui […] caractérisent le genre terrible et mystérieux de ces voûtes effrayantes» (229). Pero la regla es solo para quien ya tiene una caverna. En su libro de 1825, Boitard lo había dicho con todas las letras: la caverna «on ne peut la construire» (Boitard 1825, 109). La copia toma el adjetivo y deja la condición: una caverna no se fabrica, se tiene o no se tiene.
 
 ### 3.5 Lo posible
 
-Bouvard y Pécuchet no copian todo el catálogo. Lo filtran. El fantástico les parece «réservé aux princes». El templo a la filosofía sería «encombrant». Las plantas americanas cuestan demasiado. «Mais les rocs étaient possibles, comme les arbres fracassés, les immortelles et la mousse» (Flaubert 1910, 55). Con un solo peón y poca plata, se ponen a construir.
+Bouvard y Pécuchet no copian todo el catálogo. Lo filtran. El fantástico les parece «réservé aux princes». El templo a la filosofía sería «encombrant». Las plantas americanas cuestan demasiado. «Mais les rocs étaient possibles, comme les arbres fracassés, les immortelles et la mousse» (Flaubert 1910, 55). Con un solo peón y poca plata, se ponen a construir. Ese filtro está desde el primer borrador del episodio, antes que cualquier objeto: los copistas buscan «dans Chambers & dans Boitard», encuentran «bien des choses impossibles» y «se résignent à faire» (Ms g 225-2, f. 171).
 
 Su filtro es **lo posible**: lo que alcanza con la plata, el trabajo y el espacio que tienen. El del manual es **lo conveniente**: lo que corresponde al lugar, al tiempo y a quienes viven ahí. Los dos filtros eligen cosas distintas. El primero deja pasar la roca, porque las piedras están cerca, en las orillas del Orne. El segundo la habría prohibido, porque el terreno es llano.
 
 El cura, al despedirse, juzga el jardín con la palabra del manual. No dice que la tumba sea fea ni cara. Dice que no es «convenable» (Flaubert 1910, 64). La escena cabe en esa distancia: los copistas preguntaron qué era posible y los vecinos respondieron con lo que era conveniente.
+
+En un borrador de la cena, Bouvard le contesta al cura con la misma palabra, dada vuelta: «une inconvenance ! prquoi cela inconvenance ? […] est-ce qu'on n'a pas le droit de bâtir dans son domaine ce qui vous plaît ? si celui-là ne vous convient pas tant pis» (Ms g 225-2, f. 190). Aquí, lo que conviene es lo que le gusta a cada uno. En la novela queda solo la pregunta (Flaubert 1910, 65). La palabra del manual llega al final de la cadena, pero en boca de un invitado, y el dueño del jardín la oye como una cuestión de gusto.
 
 ## 4. Lo que la tierra se bebe
 
@@ -151,7 +155,7 @@ Antes de construir, el texto describe la huerta que heredaron con dos alamedas e
 
 ### 5.1 La cadena
 
-La copia del jardín tiene eslabones. Boitard copia a Chambers para criticarlo. Flaubert toma notas de Boitard, y sus notas pasan por varios borradores (Dord-Crouslé 2003). La novela pone el resumen en la página 54. Bouvard y Pécuchet lo aplican en su huerta. Después, durante siglo y medio, la novela se lee, se comenta y se cita mucho más que el manual. Un modelo de lenguaje aprende de ese archivo. Cuando se le pregunta por Boitard, ¿qué responde?
+La copia del jardín tiene eslabones. Boitard copia a Chambers para criticarlo. Flaubert toma notas de Boitard, y en la nota ya no hay conveniencias (Dord-Crouslé 2003, párr. 28). La nota pasa por varios borradores. La novela pone el resumen en la página 54. Bouvard y Pécuchet lo aplican en su huerta. Después, durante siglo y medio, la novela se lee, se comenta y se cita mucho más que el manual. Un modelo de lenguaje aprende de ese archivo. Cuando se le pregunta por Boitard, ¿qué responde?
 
 Los modelos de lenguaje se describieron como sistemas que juntan secuencias de formas vistas en sus datos, según la probabilidad con que se combinan, sin referencia al significado (Bender et al. 2021, 616–617). La comparación con los dos copistas está a la mano, y por eso conviene desconfiar de ella. El artículo no afirma que una máquina «piense» como Bouvard y Pécuchet. Compara procedimientos: tomar un repertorio y usarlo sin las reglas de su uso. Y lo pone a prueba con consignas escritas antes de generar.
 
@@ -179,7 +183,7 @@ Los modelos de lenguaje se describieron como sistemas que juntan secuencias de f
 
 Para explicar la escena exótica, Boitard cuenta una historia. Un tahitiano llevado a París mira los monumentos sin entusiasmo y el lujo con indiferencia. Lo llevan al Jardin des Plantes. Entre mil follajes ve el de un bananero, rompe la empalizada que lo separa del árbol, lo abraza y lo cubre de lágrimas: «c'est mon pays, s'écrie-t-il, c'est ma cabane, c'est mon père, c'est ma mère !» (Boitard s. f., 62). Para Boitard, quien no entienda esa emoción debe «renoncez à devenir artiste et restez jardinier» (63).
 
-La historia dice algo que el manual sabe y que la copia pierde. Lo exótico es la casa de alguien. Pero el manual usa esa emoción como efecto para otros: la escena exótica sirve para dar «d'agréables souvenirs à un colon ou à un voyageur» (63), es decir, a quien estuvo allá, no a quien es de allá. En el frontispicio, Boitard dibujó una escena exótica con plantas que dice haber tomado «sans distinction dans plusieurs parties de la terre», a las que dio, sin embargo, «une physionomie indienne» (63). En el borde de la lámina puso un cactus, el «cierge du Pérou» (63), y junto a la cabaña, un girasol «apporté du Pérou» (64). Y en el fondo de la escena, escribe, «rien ne doit rappeler l'Europe» (64).
+La historia dice algo que el manual sabe y que la copia pierde. La anécdota ya falta en la nota de lectura de Flaubert (Dord-Crouslé 2003, párr. 22). Lo exótico es la casa de alguien. Pero el manual usa esa emoción como efecto para otros: la escena exótica sirve para dar «d'agréables souvenirs à un colon ou à un voyageur» (63), es decir, a quien estuvo allá, no a quien es de allá. En el frontispicio, Boitard dibujó una escena exótica con plantas que dice haber tomado «sans distinction dans plusieurs parties de la terre», a las que dio, sin embargo, «une physionomie indienne» (63). En el borde de la lámina puso un cactus, el «cierge du Pérou» (63), y junto a la cabaña, un girasol «apporté du Pérou» (64). Y en el fondo de la escena, escribe, «rien ne doit rappeler l'Europe» (64).
 
 Es una manera de componer que hoy reconocemos. Juntar elementos de muchos lugares, sin distinción, y darles una sola fisonomía creíble. Es lo que hace una respuesta plausible. La pregunta es qué pasa cuando el lugar del que vienen esas plantas es el propio. Desde La Paz, el cactus del Perú no es exótico, y el girasol tampoco.
 
@@ -194,6 +198,8 @@ Bouvard y Pécuchet tenían un manual bueno. Advertía casi todo lo que les iba 
 Boitard no estaba contra la copia. En su libro de 1825, para el caso en que no queda más remedio que levantar una roca, pide que el artista haga todo lo posible por «copier servilement un modèle qu'il aura choisi et dessiné d'après nature» (Boitard 1825, 108). La copia que acepta es la que se hace mirando un sitio y dibujándolo, y solo donde «le caractère rocailleux du site peut les autoriser» (109). Bouvard y Pécuchet también copiaron con esmero: partieron los granitos, los numeraron y los apilaron (Flaubert 1910, 56). Pero copiaron un libro, no un lugar.
 
 La diferencia entre las dos preguntas es una diferencia de oficio. Lo posible se puede calcular desde afuera: una lista de objetos, un presupuesto, un peón, unas piedras en la orilla del río. Lo conveniente no. Necesita a alguien que esté en el sitio, que mire desde el comedor, que sepa que el agua se va entre las piedras y que el vecino se va a reír. Por eso Boitard, después de cientos de páginas de reglas, le deja la última palabra a «l'artiste placé sur les localités» (Boitard s. f., 226).
+
+[POSIBLE, cotejar en la *Correspondance*: cuando Flaubert pidió que el hijo de George Sand le contara sus errores de agricultor, la respuesta fue que «chaque faute est spéciale au milieu où l'on opère» (Sand a Flaubert, 5 de febrero de 1873, citada en Leclerc 2019). No le sirvió: buscaba fracasos para contar, y Maurice le contestó con una regla de sitio.]
 
 [FALTA: un párrafo desde los resultados del apartado 5. Si se confirman los pilotos: la máquina con el libro hace de cura y pide el sitio, pero no puede ir. Lo que le falta a una respuesta posible para ser una decisión no es información, es alguien en el lugar. El riesgo ya no es que la máquina copie a los copistas, sino que quien la usa haga lo que hicieron ellos con el manual: quedarse con lo posible de la respuesta y saltarse lo conveniente.]
 
@@ -215,10 +221,16 @@ Boitard, Pierre. 1825. *Traité de la composition et de l'ornement des jardins*.
 
 Boitard, Pierre. S. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Segunda edición. 2 vols. París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019.
 
-Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. [FALTA: leer completo.]
+Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. https://doi.org/10.4000/books.pul.6576.
 
-Feyler, Patrick. 2006. [FALTA: título exacto y libro.] Pessac: Presses universitaires de Bordeaux. [FALTA: leer completo.]
+Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin de l'Antiquité à la fin du XIXe siècle*, editado por Gérard Peylet, 229–242. Eidôlon 74. Pessac: Presses universitaires de Bordeaux. https://doi.org/10.4000/books.pub.27431.
+
+Flaubert, Gustave. S. f. *Bouvard et Pécuchet*, borradores. Ms g 225-2. Bibliothèque municipale de Rouen. Transcripción en «Les manuscrits de *Bouvard et Pécuchet*», Université de Rouen Normandie. https://flaubert.univ-rouen.fr/manuscrits/.
+
+Flaubert, Gustave. S. f. Carnet de travail 18 bis. Bibliothèque historique de la Ville de Paris. [Visto en Dord-Crouslé 2003.]
 
 Flaubert, Gustave. 1910. *Bouvard et Pécuchet*. En *Œuvres complètes de Gustave Flaubert*, t. I. París: Louis Conard. [FALTA: pasar a una edición crítica.]
+
+Leclerc, Yvan. 2019. «Bouvard et Pécuchet sur leur terre : comment bien rater sans savoir pourquoi». *Revue Flaubert* 18. Centre Flaubert, Université de Rouen.
 
 Thomas, Jeffrey. 2019. «Le jardin face à *Bouvard et Pécuchet*». *Revue Flaubert* 18.

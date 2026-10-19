@@ -2,7 +2,7 @@
 
 ## El jardín de Bouvard y Pécuchet, su manual y la respuesta plausible
 
-*Propuesta de artículo para* Astrágalo *A44 (2027), «Bouvard & Pécuchet. Arquitectura y desencanto: de la Enciclopedia a la inteligencia artificial». Borrador 3, 19 de octubre de 2026 (revisado esa noche con las pruebas piloto). Reemplaza al borrador 2, que queda en `/mnt/project-files/propuesta/archivo/` y en el historial de la rama.*
+*Propuesta de artículo para* Astrágalo *A44 (2027), «Bouvard & Pécuchet. Arquitectura y desencanto: de la Enciclopedia a la inteligencia artificial». Borrador 3, 19 de octubre de 2026 (revisado esa noche con las pruebas piloto, la nota de lectura de Flaubert y la lectura de los estudios previos). Reemplaza al borrador 2, que queda en `/mnt/project-files/propuesta/archivo/` y en el historial de la rama.*
 
 > **Convocatoria.** Editor: José Enrique López Canti (Universidad de Sevilla). Envío hasta el **15 de junio de 2027**; publicación prevista en septiembre de 2027. Plantilla oficial y ficha de evaluación en `/mnt/project-files/convocatoria/`.
 >
@@ -17,12 +17,13 @@ Las pruebas y sus criterios, escritos antes de hacerlas, están en [`analisis/Bi
 1. **Ya había estudios sobre el manual.** Stéphanie Dord-Crouslé (2003) siguió las notas de lectura de Flaubert sobre Boitard a través de los borradores. Patrick Feyler (2006) escribió que la novela omite las precauciones con que Boitard acompañaba sus consejos. Jeffrey Thomas (2019) comparó el ex-voto con el manual. La idea central del borrador 2, que la copia se queda con el catálogo y deja las reglas, **ya no es el hallazgo del artículo. Pasa a ser su punto de partida, citado.** El aporte se mueve a lo que esos estudios no hacen: medirlo elemento por elemento, dibujarlo como proyecto y llevar la copia hasta una máquina.
 2. **La edición está fechada.** El ejemplar de Sevilla no es de 1834. Es una segunda edición vendida hacia 1859. Las reglas que importan, como las conveniencias, el rechazo de los géneros y Chambers como contraejemplo, ya estaban en el primer libro de jardines de Boitard, de 1825. El riesgo mayor del borrador 2, que Flaubert hubiera leído un Boitard sin reglas, queda muy reducido.
 3. **Las páginas están verificadas** en el facsímil. Cambiaron seis.
-4. **Dos hallazgos nuevos en el cotejo.** El ex-voto copia un pasaje que Thomas no cita, y la copia deja su condición: «Dans un site très-pittoresque, montagneux». El género «mystérieux», que parecía inventado, sale de una caverna de Boitard, que según él no se puede construir.
+4. **Dos hallazgos nuevos en el cotejo.** El ex-voto copia un pasaje que Thomas no cita, y la copia deja su condición: «Dans un site très-pittoresque, montagneux». El género «mystérieux», que parecía inventado, sale con toda probabilidad de una caverna de Boitard, que según él no se puede construir.
 5. **Arquitectura y diseño gráfico, donde ayudan.** La planta a escala pasa de figura a prueba: dice qué fallas son de sitio. La copia anotada se vuelve una lámina de cotejo. Cada imagen dice de dónde viene.
 6. **H2 pasó la segunda lectura.** Dos lectores que no vieron la primera clasificación marcan como advertidas las mismas 6 de 9 fallas. Además coinciden en que 5 de las 9 dependen de la posición o la escala, así que la planta queda como prueba.
 7. **Las pruebas piloto con IA cambiaron H3.** Con el capítulo IV en la mano, el modelo no repite el recorte de los copistas: hace de cura, aun cuando se le pide la lista de Bouvard y Pécuchet. Sin el libro, le atribuye a Boitard los géneros que él rechazaba, sacados de la tradición y no de Flaubert. H3 se reescribe (§3). Como los modelos que generaron veían la memoria del proyecto, el protocolo completo se hará en sesiones limpias, con una consigna nueva: pedir como ellos (§4.4).
 8. **Hay un borrador 0 del artículo** ([`articulo/Borrador 0.md`](articulo/Borrador%200.md)), escrito como prueba de la estructura. Los apartados 1 a 4 se sostienen con citas verificadas y entran en su extensión. El 5 queda como esqueleto hasta tener datos, que es lo que debía pasar.
 9. **La planta tiene sus datos** ([`analisis/planta - datos del texto.md`](analisis/planta%20-%20datos%20del%20texto.md)): todas las posiciones que da Flaubert, la lámina 18 de Boitard y una medida. El tilo tumbado ocupa «toute la longueur du jardin» (Flaubert 1910, 56), así que el jardín mide, en una dirección, lo que un árbol.
+10. **La nota de Flaubert y los estudios, leídos** (bitácora, P1 cierre). La nota de lectura (Carnet 18 bis) ya es catálogo, sin conveniencias ni condiciones: la regla se pierde al leer, como había mostrado Dord-Crouslé (2003). Los borradores agregan dos cosas que los estudios leídos no señalan: el filtro de lo posible está desde el primero (f. 171), y en el de la cena Bouvard le responde al cura convirtiendo la conveniencia en gusto (f. 190). Ningún estudio cuenta las fallas del jardín ni lo dibuja. Leclerc (2019) hace algo vecino con los fracasos agrícolas y queda como antecedente de método.
 
 ---
 
@@ -34,7 +35,7 @@ Las pruebas y sus criterios, escritos antes de hacerlas, están en [`analisis/Bi
 
 ### Resumen provisional (unas 220 palabras)
 
-En el capítulo II de *Bouvard et Pécuchet*, los dos copistas transforman su huerta de Normandía siguiendo *L'Architecte des jardins* de Pierre Boitard, un manual práctico de la colección Roret. Levantan una tumba etrusca de yeso, un Rialto sobre un estanque sin agua, una pagoda y una roca de piedras pegadas con cemento. Ante sus invitados, el jardín fracasa. Los estudios de la novela ya mostraron que Flaubert resume el manual dejando sus precauciones. Este artículo lo lee desde la arquitectura. Compara la novela con el manual elemento por elemento y muestra que el libro advertía casi todas las fallas. Pedía estudiar el terreno, prohibía las rocas artificiales en un terreno llano, mandaba esconder las tumbas de la vista de la casa y declaraba que la huerta burguesa adornada no tenía reglas. Después dibuja el jardín a escala junto al modelo que el manual daba para un caso igual, y ve cuáles de esas reglas eran de sitio. Los copistas se preguntaron qué era posible; el manual, qué era conveniente. Por último, pide el mismo jardín a modelos generativos, con y sin el texto del manual, para ver si la respuesta plausible repite ese recorte. La conclusión discute qué le falta a una respuesta posible para ser una decisión de proyecto, y por qué el manual dejaba la última palabra a quien está en el sitio.
+En el capítulo II de *Bouvard et Pécuchet*, los dos copistas transforman su huerta de Normandía siguiendo *L'Architecte des jardins* de Pierre Boitard, un manual práctico de la colección Roret. Levantan una tumba etrusca de yeso, un Rialto sobre un estanque sin agua, una pagoda y una roca de piedras pegadas con cemento. Ante sus invitados, el jardín fracasa. Los estudios de la novela ya mostraron que Flaubert, desde sus notas de lectura, dejó fuera las precauciones del manual. Este artículo lo lee desde la arquitectura. Compara la novela con el manual elemento por elemento y muestra que el libro advertía casi todas las fallas. Pedía estudiar el terreno, prohibía las rocas artificiales en un terreno llano, mandaba esconder las tumbas de la vista de la casa y declaraba que la huerta burguesa adornada no tenía reglas. Después dibuja el jardín a escala junto al modelo que el manual daba para un caso igual, y ve cuáles de esas reglas eran de sitio. Los copistas se preguntaron qué era posible; el manual, qué era conveniente. Por último, pide el mismo jardín a modelos generativos, con y sin el texto del manual, para ver si la respuesta plausible repite ese recorte. La conclusión discute qué le falta a una respuesta posible para ser una decisión de proyecto, y por qué el manual dejaba la última palabra a quien está en el sitio.
 
 **Palabras clave (provisionales):** jardines, manuales, copia, inteligencia artificial, Flaubert. *(Contrastar con el Tesauro de la UNESCO.)*
 
@@ -82,11 +83,14 @@ El cotejo completo está en [`analisis/concordancias Flaubert-Boitard.md`](anali
 
 | Estudio | Qué hace | Qué se toma | Qué no hace |
 |---|---|---|---|
-| Dord-Crouslé 2003 | Sigue las notas de lectura de Flaubert sobre Boitard (Carnet 18 bis) en cinco etapas de borradores. Muestra que la «cita» es una paráfrasis engañosa, hecha para denunciar el manual y su uso. | Las notas y la cronología. Dicen en qué etapa se pierde cada regla. | Leer el jardín como proyecto, a escala. |
-| Feyler 2006 | Dice que el resumen de Flaubert omite las precauciones de Boitard. | La observación, como premisa citada. | Contar qué se pierde y dónde falla. |
+| Dord-Crouslé 2003 | Compara la nota de lectura de Flaubert (Carnet 18 bis) con Boitard, pasaje por pasaje, y sigue el párrafo de los géneros por cinco etapas de borradores. Dice que Flaubert calla las conveniencias y que, con los consejos del manual, los personajes no habrían hecho ese jardín (párr. 19–20). | H1 entera, como premisa. La nota: la regla ya falta ahí. | Probar su frase falla por falla y dibujar el jardín. |
+| Feyler 2006 | Dice que el resumen de Flaubert omite las precauciones de Boitard (párr. 49). Describe la cruz de alamedas del jardín que encuentran (7–8). | La observación, como premisa citada. La cruz, para la planta. | Dar medidas y contar qué se pierde y dónde falla. |
 | Thomas 2019 | Compara el ex-voto con un pasaje de Boitard que no es el más cercano. Nota que los vidrios de color no vienen del manual. | La idea de una sugerencia leída como obligación. | Ver la condición que la copia deja. |
+| Leclerc 2019 | Sigue los fracasos agrícolas del mismo capítulo por informantes, notas y borradores hasta su causa. | El método. Y la respuesta de Maurice Sand, que Flaubert no aprovechó: «chaque faute est spéciale au milieu où l'on opère». | El jardín y el manual. |
 
-Ninguno de los estudios encontrados dibuja el jardín, ni sigue la copia hasta una máquina. Ese es el lugar del artículo. *(Dord-Crouslé y Feyler se conocen por resúmenes y citas: falta leerlos completos, ver §11.)*
+Ninguno de los estudios encontrados cuenta las fallas del jardín, lo dibuja o sigue la copia hasta una máquina. Ese es el lugar del artículo. *(Dord-Crouslé y Feyler se leyeron en OpenEdition, por párrafos; antes de citarlos textual hay que cotejar con el PDF y dar la página impresa.)*
+
+**La cadena tiene más eslabones.** Entre el manual y la novela hay una nota de lectura y varios borradores ([ficha, §0](analisis/concordancias%20Flaubert-Boitard.md)). La nota ya es catálogo; del rechazo de los géneros queda un «on a inventé des genres» que los borradores vuelven «L'auteur les divise». El primer borrador ya filtra por lo posible: los copistas encuentran en Chambers y en Boitard «bien des choses impossibles» y «se résignent à faire» (Ms g 225-2, f. 171). Y en un borrador de la cena, Bouvard le responde al cura con la otra palabra: «est-ce qu'on n'a pas le droit de bâtir dans son domaine ce qui vous plaît ? si celui-là ne vous convient pas tant pis» (f. 190). La conveniencia llega al final de la cadena, pero como gusto.
 
 ### 2.5 Lo posible y lo conveniente
 
@@ -110,7 +114,7 @@ Cada hipótesis dice antes de la prueba qué resultado la haría caer. Lo que no
 
 - *Cómo se prueba:* la ficha de concordancias, con páginas verificadas.
 - *Cae si:* las reglas pasan a la copia tanto como los objetos, o si la edición que usó Flaubert no traía esas reglas.
-- *Estado:* se sostiene. La edición ya no es un riesgo serio, porque las reglas están en 1825 y en la segunda edición. Falta ver la primera edición del *Manuel* (1834) y las notas de Flaubert.
+- *Estado:* se sostiene. La edición ya no es un riesgo serio, porque las reglas están en 1825 y en la segunda edición. La nota de Flaubert ya no trae las reglas: el corte está en la lectura. Falta ver la primera edición del *Manuel* (1834), que no se encontró digitalizada.
 
 **H2. Las fallas están donde estaba la regla.** Las fallas del jardín ocurren donde el manual había puesto una advertencia que la copia no tomó.
 
@@ -146,7 +150,7 @@ El método es el habitual del autor (reunir, desarmar, proponer, ensayar, contra
 
 **Dificultad que resuelve:** sin ella, la relación entre Flaubert y Boitard se queda en una cita suelta, y H1 y H2 no se pueden probar.
 
-Está hecha y verificada. Usa letras de evidencia adaptadas de *Remiendos*: **F** (está en Flaubert), **B** (está en Boitard), **C** (Chambers citado por Boitard), **I** (inferencia) y, más adelante, **G** (generado por un modelo). Falta leer las notas de Flaubert que transcribe Dord-Crouslé (2003, 101–103), para saber si la regla se pierde al tomar notas o al redactar.
+Está hecha y verificada. Usa letras de evidencia adaptadas de *Remiendos*: **F** (está en Flaubert), **B** (está en Boitard), **C** (Chambers citado por Boitard), **I** (inferencia) y, más adelante, **G** (generado por un modelo). La ficha separa la nota de lectura, los borradores y el texto publicado (§0 de la ficha). La regla ya falta en la nota.
 
 ### 4.2 La copia anotada, como lámina de cotejo
 
@@ -221,7 +225,7 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 |---|---|---|---|---|
 | 1 | **Un acento circunflejo.** La cortina se abre. El jardín, los invitados y el veredicto. | ¿Qué vieron los invitados? | 700 | — |
 | 2 | **El manual.** Boitard, los manuales Roret, la edición y el lugar del manual entre la *Encyclopédie* y el manual técnico. Las conveniencias. Lo que ya dijeron los estudios. | ¿Qué decía de verdad el libro? | 1.200 | 1 |
-| 3 | **La copia anotada.** La lámina de cotejo. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.300 | 2 |
+| 3 | **La copia anotada.** La lámina de cotejo. La nota, los borradores y la novela. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.300 | 2 |
 | 4 | **Lo que la tierra se bebe.** Las fallas según su origen y la planta de los dos jardines. La entrada vacía del «potager pittoresque». | ¿Dónde falló el jardín, y por qué ahí? | 1.500 | 3, 7 |
 | 5 | **El quinto copista.** Protocolo y resultados. Sin el libro, ¿la máquina copia a Boitard, a Flaubert o a la tradición? Con el libro, ¿hace de copista o de cura? | ¿Qué copia una máquina cuando le pedimos «un jardín según Boitard»? | 1.400 | 2, 3, 5 |
 | 6 | **Exótico para quién.** El tahitiano, el bananero y el «cierge du Pérou». | ¿Desde dónde es exótico lo exótico? | 600 | 1, 4 |
@@ -270,8 +274,8 @@ La política de *Astrágalo* pide que los autores declaren «el uso de cualquier
 
 | Fase | Fechas | Trabajo | Entregable | Punto de decisión |
 |---|---|---|---|---|
-| **Reunir** | nov 2026 | Leer a Dord-Crouslé (2003) y Feyler (2006) completos. Edición crítica de la novela. Buscar la primera edición del *Manuel* (1834). | Corpus y bibliografía. | — |
-| **Desarmar** | nov–dic 2026 | Cotejar la ficha con las notas de Flaubert (Carnet 18 bis). Segunda lectura humana de las fallas. Ver en la imagen las citas que el OCR no encontró. | Ficha cerrada. | **D1 (fin de diciembre): H1 y H2.** ¿Se sostienen con las notas de Flaubert y dos lecturas? Si no, se reformula la tesis antes de generar nada. |
+| **Reunir** | nov 2026 | Cotejar con el PDF las citas de Dord-Crouslé (2003) y Feyler (2006). Ver en la *Correspondance* la carta de George Sand del 5 de febrero de 1873. Edición crítica de la novela. Buscar la primera edición del *Manuel* (1834). | Corpus y bibliografía. | — |
+| **Desarmar** | nov–dic 2026 | Segunda lectura humana de las fallas. *(La ficha ya está cotejada con la nota de Flaubert y con las imágenes.)* | Ficha cerrada. | **D1 (fin de diciembre): H1 y H2.** ¿Se sostienen con la lectura humana? Si no, se reformula la tesis antes de generar nada. |
 | **Proponer** | ene 2027 | Planta a mano y lámina de los dos jardines. Lámina de cotejo. | 2 láminas y una figura. | ¿La planta muestra algo que la tabla no muestra? |
 | **Ensayar** | feb–mar 2027 | Protocolo de generación completo, codificación ciega y contraste situado. | Archivo de salidas y tabla de códigos. | **D2 (fin de marzo): H3.** ¿Se sostiene, cambia o cae? |
 | **Redactar** | abr–may 2027 | Versión completa. Lectura de una o dos personas de confianza. Figuras y derechos. | Borrador completo. | ¿Queda una objeción seria sin responder? |
@@ -283,7 +287,7 @@ La política de *Astrágalo* pide que los autores declaren «el uso de cualquier
 
 | Riesgo | Señal | Respuesta |
 |---|---|---|
-| **El aporte se parece demasiado a lo ya dicho** | Al leer a Dord-Crouslé o a Feyler aparece un recuento parecido de fallas | El aporte se apoya en lo que ellos no hacen: la planta a escala y la máquina. Si también eso apareciera, la pregunta cambia hacia la máquina sola. |
+| **El aporte se parece demasiado a lo ya dicho** | Al leer a Dord-Crouslé o a Feyler aparece un recuento parecido de fallas | Leídos: ninguno cuenta las fallas del jardín ni lo dibuja, y Leclerc (2019) hace algo vecino con la agricultura (bitácora, P1 cierre). El aporte se apoya en el recuento, la planta a escala y la máquina. Si apareciera un recuento, la pregunta cambia hacia la planta y la máquina. |
 | **Flaubert usó una edición sin las reglas** | La primera edición (1834) no trae las conveniencias, o las notas de Flaubert citan otra cosa | Muy poco probable: las reglas están en 1825 y en la segunda edición. Si pasara, H1 cae para esas reglas y se dice. |
 | **La planta no agrega nada** | Menos de 4 fallas dependen de la posición, o la lámina dice lo mismo que la tabla | Se reduce a una figura chica o se quita (regla de §4.3). |
 | **La máquina sí conoce a Boitard** | En C1 los modelos describen las conveniencias | Es un resultado: H3a cae y el apartado 5 cuenta eso. |
@@ -306,11 +310,15 @@ La política de *Astrágalo* pide que los autores declaren «el uso de cualquier
 - Boitard, Pierre. S. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Nouvelle édition [segunda edición]. 2 vols. París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019, con catálogos de Roret de 1859; digitalizado en Internet Archive (`A039a018`, `A039a019`).
 - Boitard, Pierre. 1825. *Traité de la composition et de l'ornement des jardins*. París: Audot. Internet Archive (`TraiteYdelacomp00Boit`).
 - Chambers, William. 1772. *A Dissertation on Oriental Gardening*. Londres. *(Solo en el pasaje que Boitard cita.)*
+- Flaubert, Gustave. S. f. Carnet de travail 18 bis, ff. 8–9. Bibliothèque historique de la Ville de Paris. *(Visto en el facsímil y la transcripción de Dord-Crouslé 2003.)*
+- Flaubert, Gustave. S. f. *Bouvard et Pécuchet*, borradores. Ms g 225-2, ff. 152v, 169, 171, 190 y 194v. Bibliothèque municipale de Rouen. Transcripción en «Les manuscrits de *Bouvard et Pécuchet*», Université de Rouen Normandie, https://flaubert.univ-rouen.fr/manuscrits/.
+- Sand, George. 1873. Carta a Gustave Flaubert, 5 de febrero. En Gustave Flaubert, *Correspondance*, t. IV, editado por Jean Bruneau, 643. París: Gallimard, 1998. \* *(Citada por Leclerc 2019.)*
 
 **Sobre el manual en la novela**
 
-- Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. \*
-- Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin…*, editado por Gérard Peylet, 229–242. Pessac: Presses universitaires de Bordeaux. \* *(Completar el título del libro.)*
+- Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. https://doi.org/10.4000/books.pul.6576. *(Leído en OpenEdition; cotejar las citas con el PDF.)*
+- Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin de l'Antiquité à la fin du XIXe siècle*, editado por Gérard Peylet, 229–242. Eidôlon 74. Pessac: Presses universitaires de Bordeaux. https://doi.org/10.4000/books.pub.27431. *(Leído en OpenEdition; cotejar las citas con el PDF.)*
+- Leclerc, Yvan. 2019. «Bouvard et Pécuchet sur leur terre : comment bien rater sans savoir pourquoi». *Revue Flaubert* 18, «Bouvard et Pécuchet et l'agriculture», editado por Stéphanie Dord-Crouslé y Éric Le Calvez. Centre Flaubert, Université de Rouen.
 - Thomas, Jeffrey. 2019. «Le jardin face à *Bouvard et Pécuchet*». *Revue Flaubert* 18.
 
 **Convocatoria y marco**
@@ -337,9 +345,10 @@ La política de *Astrágalo* pide que los autores declaren «el uso de cualquier
 
 ## 11. Próximos pasos
 
-1. **Leer a Dord-Crouslé (2003) y a Feyler (2006) completos.** Están en acceso abierto (OpenEdition; Dord-Crouslé también en HAL, `halshs-00102668`), pero esos sitios bloquean la descarga automática. Hay que bajarlos desde un navegador. Son lo que más puede mover el aporte.
-2. **Leer las notas de Flaubert** (Carnet 18 bis, ff. 8–9) en la transcripción de Dord-Crouslé, y agregar a la ficha una columna para la etapa de la nota.
-3. ~~Ver en la imagen las tres citas que el OCR no encontró~~ (hecho: están, pp. 75, 239 y 267). Falta ver las páginas del libro de 1825.
+1. ~~Leer a Dord-Crouslé (2003) y a Feyler (2006) completos~~ (hecho en OpenEdition: no mueven el aporte; bitácora, P1 cierre). Queda **cotejar las citas con el PDF** para dar la página impresa: OpenEdition y HAL bloquean la descarga automática, así que hay que bajarlos desde un navegador.
+2. ~~Leer las notas de Flaubert~~ (hecho: la nota es catálogo; la ficha separa nota, borradores y texto, §0).
+3. ~~Ver en la imagen las tres citas que el OCR no encontró~~ (hecho: están, pp. 75, 239 y 267; y las páginas 5, 6, 108 y 109 del libro de 1825).
 4. **Segunda lectura humana** de la tabla de fallas.
 5. **Correr el protocolo en sesiones limpias.** Hace falta acceso por API a dos modelos de empresas distintas, o cuentas nuevas sin memoria. Las consignas ya están fijadas en [`analisis/protocolo - consignas.md`](analisis/protocolo%20-%20consignas.md). Es lo que más puede mover el apartado 5.
 6. **Elegir el título.** Opciones: *Lo posible y lo conveniente*; *Un acento circunflejo sobre los porotos*; *El jardín de Chavignolles: lo que la copia deja fuera*.
+7. **Leer a Le Calvez**, «Paysage mouvant, paysages décrits dans *Bouvard et Pécuchet*» (citado en el n.º 18 de la *Revue Flaubert*), por si dibuja o mide el jardín.
