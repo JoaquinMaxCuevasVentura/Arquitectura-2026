@@ -82,7 +82,7 @@ Cada objeción se clasificó en uno de tres niveles fijados antes de leer: **cam
 
 ### O6. Lo posible no siempre se calcula desde afuera
 
-- **Objeción.** §7 decía que lo posible se calcula desde afuera. Pero la primera falla de la Tabla 1 es de lo posible: el estanque no retiene el agua, y eso se sabe mirando el suelo.
+- **Objeción.** §7 decía que lo posible se calcula desde afuera. Pero la primera falla de la tabla de fallas (hoy Tabla 2) es de lo posible: el estanque no retiene el agua, y eso se sabe mirando el suelo.
 - **Fuente.** Boitard: solo algunas tierras «très-peu poreuses» retienen el agua (s. f., 37). Maturana: para predecir, «el observador debe conocer la estructura del sistema de que habla» (2004, 25).
 - **Nivel.** Obliga a precisar.
 - **Respuesta.** Hay dos posibles. El de los recursos (plata, trabajo, espacio) se calcula desde afuera. El del suelo, no. El estanque falló en el segundo, y lo conveniente queda todavía más lejos de la lista.

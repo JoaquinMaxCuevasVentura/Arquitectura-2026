@@ -16,6 +16,16 @@ PAPEL = "#ffffff"
 HALO = 'stroke="#ffffff" stroke-width="0.55" stroke-linejoin="round" paint-order="stroke"'
 MACIZO = "#eadfcb"   # macizos de Wissous
 
+# Número de cada lámina en el borrador, por orden de aparición. Si entra otra
+# figura antes, se cambia aquí y en los pies del borrador.
+NUMERO = {
+    "puentes": "Fig. 1",
+    "cotejo": "Tabla 1",
+    "dos-jardines": "Fig. 2",
+    "vistas-comedor": "Fig. 3",
+    "escena-exotica": "Fig. 4",
+}
+
 FUENTES = [
     ("Garamond", "normal", 400, "eb-garamond-latin-400-normal.woff2"),
     ("Garamond", "italic", 400, "eb-garamond-latin-400-italic.woff2"),

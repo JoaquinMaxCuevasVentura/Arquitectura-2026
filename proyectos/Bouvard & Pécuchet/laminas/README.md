@@ -8,20 +8,20 @@ Borradores de la máquina (Claude, Anthropic), hechos el 24 de octubre de 2026 a
 
 | Archivo | En el borrador | Qué muestra | Fuentes |
 |---|---|---|---|
-| `fig1-puentes.svg` | Fig. 1, §1 | Las seis láminas de puentes del atlas de Boitard (27–32): 32 puentes, todos sobre agua dibujada. Abajo, la regla de la p. 238 («rien n'est plus ridicule qu'un pont sans eau») y lo que hizo la copia (Flaubert 1910, 55, 61–62). | B, F |
-| `fig2-cotejo.html` | Fig. 2, §3.1 | Seis frases del párrafo de los géneros (Flaubert 1910, 54) frente a sus fuentes en Boitard. La columna de la máquina queda vacía hasta el protocolo limpio. | B, F, G |
-| `fig3-dos-jardines.svg` | Fig. 3, §4.2 | Wissous (lám. 18 de Boitard) y Chavignolles reconstruido, a la misma escala supuesta. | B, F, I |
-| `fig4-vistas-comedor.svg` | Fig. 4, §4.2 | Lo que se ve desde los dos lugares posibles del comedor, un corte de la ventana al bosquete y el recorrido del agua del estanque. | F, B, I |
-| `fig5-escena-exotica.svg` | Fig. 5, §6 | La lámina «Jardin exotique» (Pl. 1ère) con las plantas numeradas en el orden en que Boitard las describe (63–65), los dos frontispicios y lo que pasó a la novela. | B, F, I |
+| `puentes.svg` | Fig. 1, §1 | Las seis láminas de puentes del atlas de Boitard (27–32): 32 puentes, todos sobre agua dibujada. Abajo, la regla de la p. 238 («rien n'est plus ridicule qu'un pont sans eau») y lo que hizo la copia (Flaubert 1910, 55, 61–62). | B, F |
+| `cotejo.html` | Tabla 1, §3.1 (hoja de trabajo) | Seis frases del párrafo de los géneros (Flaubert 1910, 54) frente a sus fuentes en Boitard. Lleva la columna de la máquina, vacía hasta el protocolo limpio, y los pasos intermedios de Flaubert. | B, F, G |
+| `dos-jardines.svg` | Fig. 2, §4.2 | Wissous (lám. 18 de Boitard) y Chavignolles reconstruido, a la misma escala supuesta. | B, F, I |
+| `vistas-comedor.svg` | Fig. 3, §4.2 | Lo que se ve desde los dos lugares posibles del comedor, un corte de la ventana al bosquete y el recorrido del agua del estanque. | F, B, I |
+| `escena-exotica.svg` | Fig. 4, §6 | La lámina «Jardin exotique» (Pl. 1ère) con las plantas numeradas en el orden en que Boitard las describe (63–65), los dos frontispicios y lo que pasó a la novela. | B, F, I |
 
-Si el mosaico de imágenes generadas entra en el apartado 5, la escena exótica pasa a ser la Fig. 6. La tabla de fallas no es una lámina: es la Tabla 1 del borrador, con el número de cada falla en la planta.
+Los archivos no llevan número: el número de cada lámina en el borrador está en `fuente/svg.py` (`NUMERO`), y si entra otra figura antes se cambia ahí y en los pies del borrador. Si el mosaico de imágenes generadas entra en el apartado 5, la escena exótica pasa a ser la Fig. 5.
 
-La Fig. 2 es un HTML de una página (A4 apaisado) porque es una tabla de texto; se abre en el navegador o se pasa a PDF con `render.js`.
+El cotejo era la Fig. 2. A 16 × 10 cm no se leía, y Joaco decidió el 24 de octubre que pase a ser una tabla del texto: es la Tabla 1 del borrador, y `python3 fuente/cotejo.py --tabla` la escribe en Markdown, en cursiva lo que en la hoja va en gris. `cotejo.html` queda como hoja de trabajo, de una página A4 apaisada; se abre en el navegador o se pasa a PDF con `render.js`. La tabla de fallas es la Tabla 2 del borrador, con el número de cada falla en la planta.
 
 ## Cómo leerlas
 
 - **Color por fuente:** negro, Flaubert (F); sepia, Boitard (B); rojo, lo inferido (I); azul, la máquina (G).
-- **Amarillo:** dónde la copia se aparta de la regla. En las Fig. 1, 4 y 5 es lo que la regla pedía y la copia no hizo; en la Fig. 3, lo que Boitard excluye en un jardín chico y la copia construyó. Cada leyenda lo dice.
+- **Amarillo:** dónde la copia se aparta de la regla. En las Fig. 1, 3 y 4 es lo que la regla pedía y la copia no hizo; en la Fig. 2, lo que Boitard excluye en un jardín chico y la copia construyó. Cada leyenda lo dice.
 - **Líneas:** continua, lo da el texto, también el lugar; discontinua negra, lo da el texto pero el lugar o la medida es supuesto; discontinua roja, supuesto.
 - **Números:** Wissous conserva los de Boitard (1–19, en cursiva). En Chavignolles, un círculo abierto tiene equivalente en Wissous; uno lleno (20–29), no.
 - **Rótulos** con letra y página: [F 56], [B 68], [I].
@@ -40,10 +40,11 @@ No van en el repositorio, y hay que bajarlos aparte:
 cd fuente
 node medir_anchos.js FUENTES anchos.json                    # anchos de letra (ya está en el repositorio)
 python3 trazar_wissous.py hoja68.jpg wissous_trazado.json   # caminos de la lám. 18 (ya está)
-python3 planta.py FUENTES wissous_trazado.json SALIDA       # Fig. 3 y Fig. 4
-python3 boitard.py FUENTES ATLAS SALIDA                     # Fig. 1 y Fig. 5
-python3 cotejo.py FUENTES SALIDA/fig2-cotejo.html           # Fig. 2
-node render.js SALIDA/fig1-puentes.svg SALIDA/fig1-puentes 297 210   # PDF y PNG (escala 3 por defecto)
+python3 planta.py FUENTES wissous_trazado.json SALIDA       # dos-jardines.svg y vistas-comedor.svg
+python3 boitard.py FUENTES ATLAS SALIDA                     # puentes.svg y escena-exotica.svg
+python3 cotejo.py FUENTES SALIDA/cotejo.html                # hoja de trabajo de la Tabla 1
+python3 cotejo.py --tabla                                   # la Tabla 1 en Markdown, para el borrador
+node render.js SALIDA/puentes.svg SALIDA/puentes 297 210    # PDF y PNG (escala 3 por defecto)
 ```
 
 `chavignolles.py` tiene la reconstrucción del jardín (lugares, alturas y el cálculo de lo que se ve desde cada ventana) y lo usa `planta.py`; `svg.py` tiene las ayudas comunes.

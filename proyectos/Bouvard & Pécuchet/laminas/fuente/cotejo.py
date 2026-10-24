@@ -1,21 +1,26 @@
-"""Lámina de cotejo: Fig. 2, el párrafo de los géneros frase por frase.
+"""Cotejo: la Tabla 1 del borrador, el párrafo de los géneros frase por frase.
 
-Uso: python3 cotejo.py carpeta_fuentes salida.html
+Uso: python3 cotejo.py carpeta_fuentes salida.html   (hoja de trabajo)
+     python3 cotejo.py --tabla                       (la tabla del borrador, en Markdown)
 
-Sale un HTML de una página A4 apaisada, con las fuentes incrustadas; render.js
-lo pasa a PDF. Las citas de Boitard están verificadas en la imagen del facsímil
-(Internet Archive, A039a018); las de Flaubert, en la edición de 1910.
-En la columna de Flaubert: «c» son palabras de Boitard (gris), «n» las de
-Flaubert (negro), «x» lo que reemplaza o agrega dentro de una frase copiada
-(negro y entre corchetes) y «e» un corte ([…], en gris).
+La hoja de trabajo es un HTML de una página A4 apaisada, con las fuentes
+incrustadas; render.js lo pasa a PDF. Lleva además la columna de la máquina y
+los pasos intermedios de Flaubert (nota de lectura y borrador), que la tabla
+del borrador deja para el texto. Las citas de Boitard están verificadas en la
+imagen del facsímil (Internet Archive, A039a018); las de Flaubert, en la
+edición de 1910.
+En la columna de Flaubert: «c» son palabras de Boitard (gris en la hoja,
+cursiva en la tabla), «n» las de Flaubert, «x» lo que reemplaza o agrega dentro
+de una frase copiada (entre corchetes) y «e» un corte ([…]).
 """
 import os
+import re
 import sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 
-from svg import B, F, G, esc, estilo_fuentes  # noqa: E402
+from svg import B, F, G, NUMERO, esc, estilo_fuentes  # noqa: E402
 
 GRIS_COPIA = "#8f8f8f"
 
@@ -31,7 +36,7 @@ FILAS = [
     {
         "genero": "El exvoto",
         "pags": "F 54 · B 72",
-        "boitard": "«une fontaine dédiée à une madone (pl. 107, fig. 3), un ex-voto marquant la place où "
+        "boitard": "«une fontaine dédiée à une madone […], un ex-voto marquant la place où "
                    "un chevalier est tombé sous le fer d'un assassin» (72).",
         "flaubert": [("[…]", "e"), (" et un « ", "n"), ("ex-voto", "c"), (" ", "n"), ("à la vierge", "x"), (", ", "n"),
                      ("indiquant", "x"), (" ", "n"), ("la place où un", "c"), (" ", "n"), ("seigneur", "x"),
@@ -43,8 +48,7 @@ FILAS = [
         "genero": "El exótico",
         "pags": "F 54 · B 63, 65",
         "boitard": "«La scène exotique peut donc avoir pour but de faire naître d'agréables souvenirs "
-                   "à un colon ou à un voyageur» (63). «Tout-à-fait sur le bord du tableau est un cierge "
-                   "du Pérou» (63).",
+                   "à un colon ou à un voyageur»; en el borde de la lámina, «un cierge du Pérou» (63).",
         "flaubert": [("[…]", "e"), (" le genre ", "n"), ("exotique", "c"), (", en plantant des ", "n"), ("cierges du Pérou", "c"),
                      (" « ", "n"), ("pour", "x"), (" ", "n"), ("faire naître", "c"), (" ", "n"), ("des", "x"),
                      (" ", "n"), ("souvenirs à un colon ou à un voyageur", "c"), (" ».", "n")],
@@ -81,10 +85,11 @@ FILAS = [
     {
         "genero": "El fantástico",
         "pags": "F 54 · B 73–75",
-        "boitard": "«ces jeux bizarres, ou si l'on aime mieux de ces jeux d'enfans, et nous les prendrons "
-                   "dans un jardin des environs de Stuttgard, qui existait en 1791» (73): un sanglier de "
-                   "mármol, un ermitaño autómata, «la barque enchantée» hacia un «temple de l'amour» (74) "
-                   "y, en una gruta, «un fauteuil gothique» con «vingt jets d'eau» (75).",
+        "boitard": "«ces jeux bizarres, ou si l'on aime mieux de ces jeux d'enfans», tomados de «un jardin "
+                   "des environs de Stuttgard, qui existait en 1791» (73): un jabalí de mármol, «le monstre "
+                   "de marbre» (73); un ermitaño que resulta ser «un automate»; «la barque enchantée», que "
+                   "lleva al «temple de l'amour» (74), y, en una gruta, «un fauteuil gothique» donde, al "
+                   "sentarse, «vingt jets d'eau […] l'inondent» (75).",
         "flaubert": [("Il y a même le genre ", "n"), ("fantastique", "c"), (", dont ", "n"),
                      ("le plus beau spécimen", "x"), (" se voyait ", "n"), ("naguère", "x"), (" ", "n"),
                      ("dans un jardin", "c"), (" ", "n"), ("wurtembergeois", "x"),
@@ -158,10 +163,11 @@ td.maquina{{color:{G};font-family:'Plex',sans-serif;font-size:2.2mm;line-height:
             f'<td class="boitard">{esc(f["boitard"])}</td>'
             f'<td>{flaubert_html(f["flaubert"])}{cadena}</td>'
             f'{maquina}<td class="afuera">{esc(f["afuera"])}</td></tr>')
+    etiqueta = NUMERO["cotejo"]
     cuerpo = f"""
 <div class="hoja">
 <div class="titulo">La copia, frase por frase</div>
-<div class="fig">Fig. 2</div>
+<div class="fig">{etiqueta}</div>
 <div class="sub">Seis frases del párrafo de los géneros (Flaubert 1910, 54) frente a sus fuentes en el manual
 (Boitard s. f.). En gris, las palabras de Boitard que Flaubert conserva; en negro, las suyas; entre [corchetes],
 lo que reemplaza o agrega dentro de una frase copiada. A la derecha, tachado, lo que la copia dejó afuera.</div>
@@ -177,13 +183,45 @@ copiada · <span style="text-decoration:line-through">tachado</span>, lo que no 
 <span style="color:{G}">en azul, la máquina</span>.<br>
 Las notas grises bajo Flaubert son los pasos intermedios: la nota de lectura (Carnet 18 bis, en
 Dord-Crouslé 2003) y el borrador (Ms g 225-2).</div>
-<div class="pie">Textos: Boitard (s. f.), facsímil de Internet Archive (A039a018), páginas verificadas en
-la imagen; Flaubert (1910), cap. II. Montaje: borrador de la máquina (Claude, Anthropic), a pedido del autor,
-para verificar. Los dos textos son de dominio público.</div>
+<div class="pie">Hoja de trabajo de la {etiqueta}: en el artículo va como tabla de texto, sin la columna
+de la máquina ni los pasos intermedios. Textos: Boitard (s. f.), facsímil de Internet Archive (A039a018),
+páginas verificadas en la imagen; Flaubert (1910), cap. II. Montaje: borrador de la máquina (Claude,
+Anthropic), a pedido del autor, para verificar. Los dos textos son de dominio público.</div>
 </div>"""
-    return f'<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Fig. 2</title><style>{css}</style></head><body>{cuerpo}</body></html>\n'
+    return f'<!doctype html><html lang="es"><head><meta charset="utf-8"><title>{etiqueta}</title><style>{css}</style></head><body>{cuerpo}</body></html>\n'
+
+
+def flaubert_md(segmentos):
+    out = []
+    for t, tipo in segmentos:
+        # comillas a la española, sin espacio por dentro, como en el resto del borrador
+        t = t.replace(" « ", " «").replace("« ", "«").replace(" »", "»")
+        if tipo == "c":
+            out.append(f"*{t}*")
+        elif tipo == "x":
+            out.append(f"[{t}]")
+        else:
+            out.append(t)
+    return "".join(out)
+
+
+def tachar(t):
+    """Tacha las citas y deja las páginas sin tachar."""
+    return re.sub(r"«[^»]*»", lambda m: f"~~{m.group(0)}~~", t)
+
+
+def tabla_md():
+    """La tabla del borrador: sin la columna de la máquina ni los pasos intermedios."""
+    lineas = ["| Frase | Boitard (s. f.) | Flaubert (1910, 54) | Lo que la copia dejó afuera (Boitard s. f.) |",
+              "|---|---|---|---|"]
+    for f in FILAS:
+        lineas.append(f'| {f["genero"]} | {f["boitard"]} | {flaubert_md(f["flaubert"])} | {tachar(f["afuera"])} |')
+    return "\n".join(lineas) + "\n"
 
 
 if __name__ == "__main__":
-    carpeta_fuentes, salida = sys.argv[1:3]
-    open(salida, "w", encoding="utf-8").write(html(carpeta_fuentes))
+    if sys.argv[1:2] == ["--tabla"]:
+        sys.stdout.write(tabla_md())
+    else:
+        carpeta_fuentes, salida = sys.argv[1:3]
+        open(salida, "w", encoding="utf-8").write(html(carpeta_fuentes))

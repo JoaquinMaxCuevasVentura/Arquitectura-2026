@@ -18,7 +18,7 @@ Las pruebas y sus criterios, escritos antes de hacerlas, están en [`analisis/Bi
 2. **La edición está fechada.** El ejemplar de Sevilla no es de 1834. Es una segunda edición vendida hacia 1859. Las reglas que importan, como las conveniencias, el rechazo de los géneros y Chambers como contraejemplo, ya estaban en el primer libro de jardines de Boitard, de 1825. El riesgo mayor del borrador 2, que Flaubert hubiera leído un Boitard sin reglas, queda muy reducido.
 3. **Las páginas están verificadas** en el facsímil. Cambiaron seis.
 4. **Dos hallazgos nuevos en el cotejo.** El ex-voto copia un pasaje que Thomas no cita, y la copia deja su condición: «Dans un site très-pittoresque, montagneux». El género «mystérieux», que parecía inventado, sale con toda probabilidad de una caverna de Boitard, que según él no se puede construir.
-5. **Arquitectura y diseño gráfico, donde ayudan.** La planta a escala pasa de figura a prueba: dice qué fallas son de sitio. La copia anotada se vuelve una lámina de cotejo. Cada imagen dice de dónde viene.
+5. **Arquitectura y diseño gráfico, donde ayudan.** La planta a escala pasa de figura a prueba: dice qué fallas son de sitio. La copia anotada se vuelve una tabla de cotejo. Cada imagen dice de dónde viene.
 6. **H2 pasó la segunda lectura.** Dos lectores que no vieron la primera clasificación marcan como advertidas las mismas 6 de 9 fallas. Además coinciden en que 5 de las 9 dependen de la posición o la escala, así que la planta queda como prueba.
 7. **Las pruebas piloto con IA cambiaron H3.** Con el capítulo IV en la mano, el modelo no repite el recorte de los copistas: habla como el cura, aun cuando se le pide la lista de Bouvard y Pécuchet. Sin el libro, le atribuye a Boitard los géneros que él rechazaba, sacados de la tradición y no de Flaubert. H3 se reescribe (§3). Como los modelos que generaron veían la memoria del proyecto, el protocolo completo se hará en sesiones limpias, con una consigna nueva: pedir como ellos (§4.4).
 8. **Hay un borrador 0 del artículo** ([`articulo/Borrador 0.md`](articulo/Borrador%200.md)), escrito como prueba de la estructura. Los apartados 1 a 4 se sostienen con citas verificadas y entran en su extensión. El 5 queda como esqueleto hasta tener datos, que es lo que debía pasar.
@@ -153,11 +153,13 @@ El método es el habitual del autor (reunir, desarmar, proponer, ensayar, contra
 
 Está hecha y verificada. Usa letras de evidencia adaptadas de *Remiendos*: **F** (está en Flaubert), **B** (está en Boitard), **C** (Chambers citado por Boitard), **I** (inferencia) y, más adelante, **G** (generado por un modelo). La ficha separa la nota de lectura, los borradores y el texto publicado (§0 de la ficha). La regla ya falta en la nota.
 
-### 4.2 La copia anotada, como lámina de cotejo
+### 4.2 La copia anotada, como tabla de cotejo
 
 **Dificultad que resuelve:** decir «Flaubert copia a Boitard» no muestra nada. Hay que ver la copia, y ver también lo que quedó fuera.
 
 Es la parte de diseño gráfico del artículo. Los textos van alineados en tres columnas: Boitard, Flaubert y la máquina. El texto de origen va en gris, lo cambiado en negro y entre [corchetes], y la condición que la copia dejó va al margen, tachada con una línea fina. Así se ve de un golpe qué se tomó, qué cambió y qué no se tomó. El mismo recurso sirve para las salidas de los modelos. Las columnas se alinean por fila, elemento por elemento, como las columnas de datos del *Naturgemälde* de Humboldt (1807).
+
+(24 oct) Se dibujó como lámina, pero a 16 × 10 cm no se leía, y Joaco decidió que pase a ser una tabla del texto: es la Tabla 1 del borrador. Ahí las palabras de Boitard van en cursiva; la hoja de trabajo (`laminas/cotejo.html`) conserva el gris, la columna de la máquina y los pasos intermedios.
 
 Cada imagen del artículo lleva en el pie qué es: propia, de dominio público (Boitard, Flaubert), propuesta de la máquina o pendiente de permiso. Esto ayuda a cumplir lo que pide la revista sobre derechos de figuras.
 
@@ -227,14 +229,14 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 |---|---|---|---|---|
 | 1 | **Un acento circunflejo.** La cortina se abre. El jardín, los invitados y el veredicto. | ¿Qué vieron los invitados? | 700 | — |
 | 2 | **El manual.** Boitard, los manuales Roret, la edición y el lugar del manual entre la *Encyclopédie* y el manual técnico. Las conveniencias. Lo que ya dijeron los estudios. | ¿Qué decía de verdad el libro? | 1.200 | 1 |
-| 3 | **La copia anotada.** La lámina de cotejo. La nota, los borradores y la novela. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.300 | 2 |
+| 3 | **La copia anotada.** La tabla de cotejo (Tabla 1). La nota, los borradores y la novela. El catálogo y la regla. | ¿Qué se llevó la copia y qué dejó? | 1.300 | 2 |
 | 4 | **Lo que la tierra se bebe.** Las fallas según su origen y la planta de los dos jardines. La entrada vacía del «potager pittoresque». | ¿Dónde falló el jardín, y por qué ahí? | 1.500 | 3, 7 |
 | 5 | **El quinto copista.** Protocolo y resultados. Sin el libro, ¿la máquina copia a Boitard, a Flaubert o a la tradición? Con el libro, ¿habla como los copistas o como el cura? | ¿Qué copia una máquina cuando le pedimos «un jardín según Boitard»? | 1.400 | 2, 3, 5 |
 | 6 | **Exótico para quién.** El tahitiano, el bananero y el «cierge du Pérou». | ¿Desde dónde es exótico lo exótico? | 600 | 1, 4 |
 | 7 | **El que mira el sitio.** Lo posible y lo conveniente. Qué le falta a una respuesta posible para ser una decisión de proyecto, y qué significa para la enseñanza. Vuelta al acento circunflejo. | ¿Quién decide lo que conviene? | 900 | 3, 5 |
 | — | Notas y referencias (Chicago autor-fecha 17.ª) | | ~700 | |
 
-**Figuras (cinco o seis, más la Tabla 1):** las seis láminas de puentes del atlas de Boitard (Fig. 1); la lámina de cotejo (Fig. 2); la planta de los dos jardines a la misma escala (Fig. 3); lo que se ve desde el comedor (Fig. 4); la lámina del jardín exótico de Boitard (Fig. 5); y, si el protocolo limpio lo permite, un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna, que entraría en el apartado 5 y correría la escena exótica a Fig. 6. La tabla de fallas queda como Tabla 1, con el número de cada falla en la planta. La revista admite hasta diez figuras y tablas, de 16 × 10 cm como máximo (normas, §6): las láminas de `laminas/` son de trabajo y se rehacen a ese tamaño (bitácora, P12).
+**Figuras y tablas (cuatro o cinco figuras, dos tablas):** las seis láminas de puentes del atlas de Boitard (Fig. 1); la tabla de cotejo (Tabla 1, en el texto: como lámina no se leía a 16 × 10 cm); la planta de los dos jardines a la misma escala (Fig. 2); lo que se ve desde el comedor (Fig. 3); la lámina del jardín exótico de Boitard (Fig. 4); y, si el protocolo limpio lo permite, un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna, que entraría en el apartado 5 y correría la escena exótica a Fig. 5. La tabla de fallas es la Tabla 2, con el número de cada falla en la planta. La revista admite hasta diez figuras y tablas, de 16 × 10 cm como máximo (normas, §6): las láminas de `laminas/` son de trabajo y se rehacen a ese tamaño (bitácora, P12).
 
 **Sobre el eje 6.** Si entra, entra en una frase del apartado 7: en Chavignolles el agua del estanque se acarrea a mano y se pierde; en una respuesta generada el agua no se ve, porque está en otra parte, en la refrigeración de los centros de datos (Crawford 2021). Si la frase se siente forzada, se quita.
 
@@ -255,7 +257,7 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 
 El cierre vuelve al acento. En la escritura, saber qué palabra lleva acento es cosa de la lengua, y eso una máquina de lenguaje suele hacerlo bien. En un jardín, la letra es el terreno, y el terreno no está en ninguna página: ni en la del manual, ni en la de la novela, ni en la de la respuesta.
 
-**Los corchetes y la lámina de cotejo.** Son el recurso visual del artículo (§4.2). Muestran la copia en vez de describirla.
+**Los corchetes y la tabla de cotejo.** Son el recurso visual del artículo (§4.2). Muestran la copia en vez de describirla.
 
 **Lo que no se usa.** Nada del contenido de *Cosecha de piedras* ni de los trabajos del Altiplano: son otro proyecto. De ellos solo se toma la manera de trabajar. Tampoco la fórmula ni las expresiones propias de Cárcamo Pino: de sus artículos se aprende la construcción, pero la voz tiene que ser la del autor.
 

@@ -1,4 +1,4 @@
-"""Láminas de planta: Fig. 3 (dos jardines a la misma escala) y Fig. 4 (vistas).
+"""Láminas de planta: dos jardines a la misma escala y lo que se ve desde el comedor.
 
 Uso: python3 planta.py carpeta_fuentes wissous_trazado.json carpeta_salida
 
@@ -16,7 +16,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 
 import chavignolles as ch  # noqa: E402
-from svg import (AMARILLO, B, F, GRIS, HALO, I, MACIZO, PAPEL, Hoja, Vista,  # noqa: E402
+from svg import (AMARILLO, B, F, GRIS, HALO, I, MACIZO, NUMERO, PAPEL, Hoja, Vista,  # noqa: E402
                  barra_escala, esc, numero, texto, texto_lineas, trazo)
 from trazar_wissous import enlazar, marching_squares, simplificar_lazo  # noqa: E402
 
@@ -367,7 +367,7 @@ def pie(h, x, y, lineas, tam=2.0):
 
 
 # ============================================================================
-# Fig. 3: los dos jardines a la misma escala
+# Dos jardines a la misma escala
 # ============================================================================
 def convenciones(h, x, y, filas, ancho_col=88, por_col=3, tam=2.0):
     """Leyenda corta de líneas y colores; filas = [(tipo, color, guion, texto)]."""
@@ -386,13 +386,13 @@ def convenciones(h, x, y, filas, ancho_col=88, por_col=3, tam=2.0):
         h.add(texto(cx + 11, cy + 0.7, t, tam))
 
 
-def fig3(carpeta_fuentes, traza, salida):
+def dos_jardines(carpeta_fuentes, traza, salida):
     h = Hoja(297, 210, carpeta_fuentes)
     patrones(h)
     h.add(texto(14, 16.0, "Dos jardines a la misma escala", 4.4, F, clase="g", peso=600))
     h.add(texto(14, 21.6, "El jardín que Boitard da como ejemplo para una casa modesta, "
                 "y el que Bouvard y Pécuchet arman en Chavignolles.", 2.4, F, clase="g"))
-    h.add(texto(287, 14.0, "Fig. 3", 3.4, F, clase="g", ancla="end", peso=600))
+    h.add(texto(287, 14.0, NUMERO["dos-jardines"], 3.4, F, clase="g", ancla="end", peso=600))
 
     # --- Wissous, como la lámina (B); la escala es supuesta (I)
     vw = Vista(x_mm=14.0, y_mm=122.0, escala=500)
@@ -453,16 +453,16 @@ def fig3(carpeta_fuentes, traza, salida):
 
 
 # ============================================================================
-# Fig. 4: lo que se ve desde el comedor
+# Lo que se ve desde el comedor
 # ============================================================================
-def fig4(carpeta_fuentes, salida):
+def vistas_comedor(carpeta_fuentes, salida):
     h = Hoja(297, 210, carpeta_fuentes)
     patrones(h)
     h.add(texto(14, 16.0, "Lo que se ve desde el comedor", 4.4, F, clase="g", peso=600))
     h.add(texto(14, 21.6, "Chavignolles la noche de la cena (Flaubert 1910, 59–62), reconstruido. En amarillo, "
                 "lo que no se habría visto desde el comedor, con el jardín como lo encontraron (26–38).",
                 2.4, F, clase="g"))
-    h.add(texto(287, 14.0, "Fig. 4", 3.4, F, clase="g", ancla="end", peso=600))
+    h.add(texto(287, 14.0, NUMERO["vistas-comedor"], 3.4, F, clase="g", ancla="end", peso=600))
     v = Vista(x_mm=16.0, y_mm=170.0, escala=300, x0=-3.0, y0=-10.0)
 
     # --- prueba: dónde no se ve una tumba de seis pies desde ninguna de las
@@ -636,5 +636,5 @@ if __name__ == "__main__":
     carpeta_fuentes, traza_json, salida = sys.argv[1:4]
     traza = json.load(open(traza_json, encoding="utf-8"))
     os.makedirs(salida, exist_ok=True)
-    fig3(carpeta_fuentes, traza, os.path.join(salida, "fig3-dos-jardines.svg"))
-    fig4(carpeta_fuentes, os.path.join(salida, "fig4-vistas-comedor.svg"))
+    dos_jardines(carpeta_fuentes, traza, os.path.join(salida, "dos-jardines.svg"))
+    vistas_comedor(carpeta_fuentes, os.path.join(salida, "vistas-comedor.svg"))

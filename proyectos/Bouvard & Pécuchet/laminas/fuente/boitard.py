@@ -1,4 +1,4 @@
-"""Láminas con grabados de Boitard: Fig. 1 (puentes) y Fig. 5 (escena exótica).
+"""Láminas con grabados de Boitard: los puentes del atlas y la escena exótica.
 
 Uso: python3 boitard.py carpeta_fuentes carpeta_atlas carpeta_salida
 
@@ -19,7 +19,7 @@ from PIL import Image
 AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, AQUI)
 
-from svg import (AMARILLO, B, F, GRIS, Hoja, ancho, esc, numero, partir,  # noqa: E402
+from svg import (AMARILLO, B, F, GRIS, NUMERO, Hoja, ancho, esc, numero, partir,  # noqa: E402
                  texto, texto_lineas)
 
 GRIS_TX = "#6e6e6e"
@@ -59,17 +59,17 @@ def resaltar(h, x, y, linea, frase, tam=2.2, fuente="g400"):
           f'height="{tam * 1.02:.2f}" fill="{AMARILLO}" fill-opacity="0.75"/>')
 
 
-def encabezado(h, n, titulo, sub):
+def encabezado(h, etiqueta, titulo, sub):
     h.add(texto(14, 16.0, titulo, 4.4, F, clase="g", peso=600))
     y = 21.6
     for ln in sub:
         h.add(texto(14, y, ln, 2.4, F, clase="g"))
         y += 3.2
-    h.add(texto(287, 14.0, f"Fig. {n}", 3.4, F, clase="g", ancla="end", peso=600))
+    h.add(texto(287, 14.0, etiqueta, 3.4, F, clase="g", ancla="end", peso=600))
 
 
 # ============================================================================
-# Fig. 1: los puentes del atlas
+# Los puentes del atlas
 # ============================================================================
 # Hoja del atlas, lámina, título, figuras (todas sobre agua dibujada) y recorte
 # en píxeles de la hoja (el grabado con su número y su título, más un margen).
@@ -83,9 +83,9 @@ PUENTES = [
 ]
 
 
-def fig1(carpeta_fuentes, atlas, salida):
+def puentes(carpeta_fuentes, atlas, salida):
     h = Hoja(297, 210, carpeta_fuentes)
-    encabezado(h, 1, "Treinta y dos puentes, todos sobre agua", [
+    encabezado(h, NUMERO["puentes"], "Treinta y dos puentes, todos sobre agua", [
         "Las seis láminas de puentes del atlas de Boitard (27–32). En cada figura, el puente cruza "
         "agua dibujada: un río, un canal, un torrente o una cascada."])
 
@@ -149,7 +149,7 @@ def fig1(carpeta_fuentes, atlas, salida):
 
 
 # ============================================================================
-# Fig. 5: la escena exótica (Pl. 1ère)
+# La escena exótica (Pl. 1ère)
 # ============================================================================
 EXO_HOJA = "n34_full.jpg"
 EXO_CAJA = (500, 160, 3045, 1945)     # píxeles de la hoja a resolución completa
@@ -184,9 +184,9 @@ def marca(h, x, y, n, tipo, r=1.55):
     h.add(texto(round(x, 2), round(y + 0.68, 2), n, 1.9, col, clase="gi", ancla="middle", peso=600))
 
 
-def fig5(carpeta_fuentes, atlas, salida):
+def escena_exotica(carpeta_fuentes, atlas, salida):
     h = Hoja(297, 210, carpeta_fuentes)
-    encabezado(h, 5, "La escena exótica de Boitard", [
+    encabezado(h, NUMERO["escena-exotica"], "La escena exótica de Boitard", [
         "Pl. 1ère del atlas, «Jardin exotique», firmada por Boitard. Los números siguen el orden "
         "en que él la describe, desde «A la droite du lecteur» (s. f., 63–65)."])
 
@@ -269,5 +269,5 @@ def fig5(carpeta_fuentes, atlas, salida):
 if __name__ == "__main__":
     carpeta_fuentes, atlas, salida = sys.argv[1:4]
     os.makedirs(salida, exist_ok=True)
-    fig1(carpeta_fuentes, atlas, os.path.join(salida, "fig1-puentes.svg"))
-    fig5(carpeta_fuentes, atlas, os.path.join(salida, "fig5-escena-exotica.svg"))
+    puentes(carpeta_fuentes, atlas, os.path.join(salida, "puentes.svg"))
+    escena_exotica(carpeta_fuentes, atlas, os.path.join(salida, "escena-exotica.svg"))
