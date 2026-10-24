@@ -54,7 +54,16 @@ Antes de dibujar la planta entera, dibujar solo dos cosas, en borrador:
 1. **El estanque con sus convenciones** (circuito y corte). **Sirve** si muestra algo que la fila de la tabla no dice. **No sirve** si repite la frase de la tabla; entonces Benedit queda para el estilo y no para el argumento.
 2. **Lo que se ve desde la ventana del comedor** en Chavignolles y desde el salón (n.º 7) en Wissous. Se anota qué elementos numerados caen dentro de cada vista y se compara con la regla de la tumba (que no se la vea «d'aucune partie du bâtiment», s. f., 69) y con las huertas de Wissous, «masqué[es] de manière à n'être pas aperçu[es]» (116). Se repite con dos posiciones posibles de la ventana. Si el resultado cambia según la posición, eso se dice y se dibuja en discontinuo.
 
-## 5. Sin verificar
+**Hecha en borrador de la máquina** (bitácora, P12; `laminas/fig4-vistas-comedor.svg`). El estanque sirve: muestra que el texto no da el origen del agua, cosa que la fila de la tabla no dice. Desde las dos posiciones del comedor, el bosquete y el huerto quedan ocultos y la tumba cabía ahí. La vista desde el salón de Wissous no se dibujó: la leyenda de Boitard ya dice que las huertas están escondidas (116). Falta hacerla a mano.
+
+## 5. Aplicadas en las láminas (P12)
+
+Las cinco láminas de [`laminas/`](../laminas/README.md) usan estas convenciones: color por fuente (F negro, B sepia, I rojo, G azul), números de Wissous en cursiva y de Chavignolles en círculos (abiertos si tienen equivalente en Wissous, llenos si no), y rótulos con letra y página.
+
+- **Qué cambió al dibujar.** El amarillo marca, en todas, dónde la copia se aparta de la regla, pero no siempre lo mismo: en las Fig. 1, 4 y 5 es lo que la regla pedía y la copia no hizo; en la Fig. 3, lo que Boitard excluye en un jardín chico y la copia construyó. Cada leyenda dice qué marca.
+- **El tamaño.** Las normas de la revista (§6) piden figuras de 16 × 10 cm como máximo. Las láminas están en A4 apaisado y son de trabajo: para el envío se rehacen a ese tamaño, con lo explicativo en el pie y rótulos de unos 7 pt o más.
+
+## 6. Sin verificar
 
 - Que Flaubert anotara las páginas en otras notas de lectura para este capítulo (por ejemplo, sobre el manual de jardinero de Bailly de Merlieux, Ms g 226 (1), f. 11, según dossiers-flaubert.fr). La página dio 403. Si se confirma, contrasta con la nota sobre Boitard, que no da páginas.
 - Dónde está hoy el Fitotrón (¿en comodato en el MALBA?).

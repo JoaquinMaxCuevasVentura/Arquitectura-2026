@@ -207,7 +207,7 @@ Cada imagen del artículo lleva en el pie qué es: propia, de dominio público (
 
 **Dificultad que resuelve:** el eje 4 de la convocatoria pide pensar cómo viajan los modelos generales y qué pasa con los saberes del lugar. El manual trae su propia entrada.
 
-La escena exótica de Boitard sirve para dar «d'agréables souvenirs» a un colono o a un viajero (63). Para explicarla, cuenta la historia de un tahitiano llevado a París que, en el Jardin des Plantes, rompe una empalizada para abrazar un bananero: «c'est mon pays, […] c'est ma cabane» (62–63). El manual sabe que lo exótico es la casa de alguien, y usa esa emoción como efecto para otros. En el frontispicio pone un «cierge du Pérou» en el borde de la lámina (63).
+La escena exótica de Boitard sirve para dar «d'agréables souvenirs» a un colono o a un viajero (63). Para explicarla, cuenta la historia de un tahitiano llevado a París que, en el Jardin des Plantes, rompe una empalizada para abrazar un bananero: «c'est mon pays, […] c'est ma cabane» (62–63). El manual sabe que lo exótico es la casa de alguien, y usa esa emoción como efecto para otros. En la lámina del jardín exótico pone un «cierge du Pérou» en el borde (63).
 
 El contraste es una sola consigna más a los mismos modelos: «una escena exótica según Boitard» y «un jardín en La Paz según Boitard», para comparar qué repertorio sacan para cada caso.
 
@@ -234,7 +234,7 @@ Cada apartado se abre con una pregunta simple, que es la que responde. Quedan un
 | 7 | **El que mira el sitio.** Lo posible y lo conveniente. Qué le falta a una respuesta posible para ser una decisión de proyecto, y qué significa para la enseñanza. Vuelta al acento circunflejo. | ¿Quién decide lo que conviene? | 900 | 3, 5 |
 | — | Notas y referencias (Chicago autor-fecha 17.ª) | | ~700 | |
 
-**Figuras (6–8):** el frontispicio exótico de Boitard; una o dos láminas de fábricas (tumbas, pagodas, puentes), de dominio público; la lámina de cotejo; la planta de los dos jardines a la misma escala; la tabla de fallas; un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna.
+**Figuras (cinco o seis, más la Tabla 1):** las seis láminas de puentes del atlas de Boitard (Fig. 1); la lámina de cotejo (Fig. 2); la planta de los dos jardines a la misma escala (Fig. 3); lo que se ve desde el comedor (Fig. 4); la lámina del jardín exótico de Boitard (Fig. 5); y, si el protocolo limpio lo permite, un mosaico **sin elegir** de las diez salidas de imagen de una misma consigna, que entraría en el apartado 5 y correría la escena exótica a Fig. 6. La tabla de fallas queda como Tabla 1, con el número de cada falla en la planta. La revista admite hasta diez figuras y tablas, de 16 × 10 cm como máximo (normas, §6): las láminas de `laminas/` son de trabajo y se rehacen a ese tamaño (bitácora, P12).
 
 **Sobre el eje 6.** Si entra, entra en una frase del apartado 7: en Chavignolles el agua del estanque se acarrea a mano y se pierde; en una respuesta generada el agua no se ve, porque está en otra parte, en la refrigeración de los centros de datos (Crawford 2021). Si la frase se siente forzada, se quita.
 

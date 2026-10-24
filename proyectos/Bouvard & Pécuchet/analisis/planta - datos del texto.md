@@ -49,7 +49,7 @@ Visto desde la ventana del cuarto, la primera mañana (26):
 
 Los invitados están en el comedor, con las cortinas cerradas. «Les rideaux s'ouvrirent et le jardin apparut» (61). Desde ahí ven, en este orden: la roca en el césped, la tumba «au milieu des épinards», el puente «par-dessus les haricots», la cabaña negra «au delà», los tejos hasta el árbol caído, el árbol de la *charmille* al emparrado, los girasoles, la pagoda roja «comme un phare» sobre el *vigneau*, los picos de los pavos reales y, al fondo, la celosía abierta y la campiña plana.
 
-Todo está a la vista desde la casa. Para la regla de Boitard sobre la tumba, que no debía verse «d'aucune partie du bâtiment» (69), las visuales se trazan desde las ventanas del comedor. **No hace falta suponer nada para saber que la tumba se ve: Flaubert lo dice.** La planta sirve para mostrar *por qué* no había dónde esconderla.
+Casi todo está a la vista desde la casa. Para la regla de Boitard sobre la tumba, que no debía verse «d'aucune partie du bâtiment» (69), las visuales se trazan desde las ventanas del comedor. **No hace falta suponer nada para saber que la tumba se ve: Flaubert lo dice.** Se esperaba que la planta mostrara por qué no había dónde esconderla. Mostró lo contrario (bitácora, P12; `laminas/fig4-vistas-comedor.svg`): con el muro y la *charmille* enteros, el bosquete y el huerto no se ven desde ninguno de los dos lugares posibles del comedor, y la tumba cabía en cualquiera de los dos. Desde el piso alto depende de la altura de la *charmille*, que el texto no da (I).
 
 ## 4. El tamaño: el tilo como regla de medir (I)
 

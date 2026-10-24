@@ -1,6 +1,6 @@
 # Lo posible y lo conveniente. El jardín de Bouvard y Pécuchet, su manual y la respuesta plausible
 
-*Borrador 0, 19 de octubre de 2026 (revisado esa noche con la nota de Flaubert, los borradores y los estudios, y el 24 de octubre con el cruce de la biblioteca: bitácora, P11, y `analisis/cruce con la biblioteca.md`). Es una prueba de estructura (bitácora, P9), no el texto que se envía. Las citas están verificadas con su página; las de Dord-Crouslé y Feyler van por párrafo hasta cotejarlas con el PDF, y las cartas y el plan que cita Carrico (2019) van marcados hasta verlos en la fuente; lo que falta se marca entre corchetes y en gris en la versión final: [FALTA …]. Redactado con ayuda de Claude (Anthropic); ver la declaración al final.*
+*Borrador 0, 19 de octubre de 2026 (revisado esa noche con la nota de Flaubert, los borradores y los estudios, el 24 de octubre con el cruce de la biblioteca: bitácora, P11, y `analisis/cruce con la biblioteca.md`; y ese mismo día con las láminas: bitácora, P12, y `laminas/`). Es una prueba de estructura (bitácora, P9), no el texto que se envía. Las citas están verificadas con su página; las de Dord-Crouslé y Feyler van por párrafo hasta cotejarlas con el PDF, y las cartas y el plan que cita Carrico (2019) van marcados hasta verlos en la fuente; lo que falta se marca entre corchetes y en gris en la versión final: [FALTA …]. Redactado con ayuda de Claude (Anthropic); ver la declaración al final.*
 
 > «Mon Dieu ! quelle bêtise que cet arbre !»
 > — Madame Bordin, en Flaubert (1910, 65)
@@ -25,7 +25,9 @@ La escena se suele leer como una burla a la tontería burguesa, o como una prueb
 
 Que Flaubert resume el manual dejando sus precauciones no es una idea nueva. Los estudios sobre la novela ya lo señalaron (Dord-Crouslé 2003; Feyler 2006; Thomas 2019). Lo que este artículo agrega viene de la arquitectura y del diseño gráfico. Mide el recorte elemento por elemento, con las páginas de las dos fuentes a la vista. Dibuja el jardín a escala, para ver qué reglas eran de sitio y solo se ven en planta. Y sigue la cadena de copias un paso más: le pide el mismo jardín a una máquina que genera respuestas, para ver si repite el recorte.
 
-La figura que organiza el artículo es ese acento circunflejo. Un puente que cruza un canal se vuelve, en un jardín sin agua, un signo tipográfico. Para quien viene del diseño gráfico, la imagen es también una pregunta de oficio. Un diacrítico solo tiene sentido sobre la letra que lo lleva. Puesto sobre cualquier otra, se sigue viendo, pero ya no dice nada. La copia de Bouvard y Pécuchet guardó el signo y perdió la letra.
+La figura que organiza el artículo es ese acento circunflejo. Un puente que cruza un canal se vuelve, en un jardín sin agua, un signo tipográfico. Para quien viene del diseño gráfico, la imagen es también una pregunta de oficio. Un diacrítico solo tiene sentido sobre la letra que lo lleva. Puesto sobre cualquier otra, se sigue viendo, pero ya no dice nada. La copia de Bouvard y Pécuchet guardó el signo y perdió la letra. El manual lo había advertido: un puente tiene que estar «rigoureusement motivé», porque «rien n'est plus ridicule qu'un pont sans eau», salvo que haga falta para cruzar un precipicio o un barranco (Boitard s. f., 238). En las seis láminas de puentes del atlas, los treinta y dos puentes pasan sobre agua dibujada (Fig. 1).
+
+**Fig. 1** Treinta y dos puentes, todos sobre agua: las seis láminas de puentes del atlas de *L'Architecte des jardins* (lám. 27–32). Fuente: Boitard (s. f.), ejemplar de la Biblioteca de la Universidad de Sevilla en Internet Archive, dominio público; montaje propio. [FALTA: la lámina es de trabajo; rehacerla a 16 × 10 cm como máximo, que es lo que piden las normas (§6).]
 
 El apartado 2 presenta el manual y lo que dice antes de su catálogo. El 3 compara el resumen de Flaubert con el texto de Boitard, frase por frase. El 4 clasifica las fallas del jardín según su origen y las lleva a una planta. El 5 cuenta qué pasa cuando se le pide «un jardín según Boitard» a un modelo generativo. El 6 abre una pregunta que el propio manual deja planteada: exótico, ¿para quién? El 7 vuelve al acento.
 
@@ -73,9 +75,9 @@ La idea de que la copia deja las reglas ya está dicha, entonces, en una frase s
 
 ### 3.1 Cómo se compara
 
-Flaubert copia a Boitard casi literalmente, con cambios pequeños. Para verlos se pusieron los dos textos en columnas, frase por frase, con las páginas de los dos. Lo que la copia cambió va entre [corchetes]. Lo que la copia dejó afuera va al margen (Fig. 1).
+Flaubert copia a Boitard casi literalmente, con cambios pequeños. Para verlos se pusieron los dos textos en columnas, frase por frase, con las páginas de los dos. Lo que la copia cambió va entre [corchetes]. Lo que la copia dejó afuera va al margen, tachado (Fig. 2).
 
-[FALTA: Fig. 1. Lámina de cotejo. Tres columnas: Boitard, Flaubert y la máquina. El texto de origen en gris, lo cambiado en negro y entre corchetes, la condición que la copia dejó al margen, tachada con una línea fina. Fuente: elaboración propia sobre Boitard (s. f.) y Flaubert (1910), de dominio público.]
+**Fig. 2** La copia, frase por frase: seis frases del párrafo de los géneros (Flaubert 1910, 54) frente a sus fuentes en el manual. En gris, las palabras de Boitard que siguen en la copia; entre [corchetes], lo que la copia reemplaza o agrega; tachado, lo que deja afuera. Fuente: elaboración propia sobre Boitard (s. f.) y Flaubert (1910), de dominio público. [FALTA: llenar la columna de la máquina con el protocolo del apartado 5. A 16 × 10 cm las seis filas no se leen: decidir si pasa a una tabla del texto o se queda con tres filas.]
 
 Entre el manual y la novela hay dos copias más: la nota de lectura de Flaubert y los borradores. La nota es una lista. Empieza «Boitard "architecte des jardins" on a inventé des genres» y sigue con los géneros, las escenas y las plantas (Carnet 18 bis, f. 8, en Dord-Crouslé 2003). Guarda una distancia, la del «on», porque Boitard atribuye los géneros a otros autores (Boitard s. f., 21). Pero no copia ninguna conveniencia ni ninguna condición. En los borradores el «on» se vuelve «L'auteur les divise par genres, ou scènes» (Ms g 225-2, f. 169), y los géneros pasan a ser de Boitard. La regla, entonces, no se pierde al redactar. Ya falta al leer.
 
@@ -117,17 +119,17 @@ Flaubert narra nueve fallas del jardín. Para cada una se buscó si el manual la
 
 **Tabla 1.** Las fallas del jardín y lo que decía el manual.
 
-| Falla narrada (Flaubert 1910) | ¿La advertía el manual? (Boitard s. f.) |
-|---|---|
-| El agua se va del estanque (55, 61–62) | Sí. Solo algunas tierras «très-peu poreuses» retienen el agua sin un fondo construido (37). |
-| La roca en el césped, «comme une montagne» (56, 61) | Sí. Nada de «roches factices […] au milieu d'un gazon» en un terreno llano (50). |
-| La tumba que nadie entiende y que el cura no encuentra «convenable» (61, 64) | Sí. Que no se vea «d'aucune partie du bâtiment» (69). |
-| La cabaña con el techo quemado (55, 61) | Sí. Es el «genre terrible» de Chambers, que el manual cita como absurdo (20). |
-| El tilo tumbado: «quelle bêtise que cet arbre !» (56, 65) | Sí. Es Chambers otra vez (20), y el manual pide no talar (31). |
-| El conjunto, una huerta llena de fábricas (55–56) | Sí. En un jardín chico, ninguna tumba ni ruina (114); el «potager pittoresque» no tiene reglas (116). |
-| El muro en ruinas (55, 61) | Dudosa. El manual dice que la ruina de una casa común «n'inspire aucun intérêt» (271), pero no prevé un arco que se cae. |
-| La puerta de las pipas (57, 62) | Dudosa. Advertencias generales contra lo bizarro (60). |
-| El eco que desaparece (56, 62–63) | No. Es azar. |
+| Falla narrada (Flaubert 1910) | ¿La advertía el manual? (Boitard s. f.) | En la planta (Fig. 3) |
+|---|---|---|
+| El agua se va del estanque, y el puente queda sobre los porotos (55, 61–62) | Sí. Solo algunas tierras «très-peu poreuses» retienen el agua sin un fondo construido (37), y «rien n'est plus ridicule qu'un pont sans eau» (238). | 22 |
+| La roca en el césped, «comme une montagne» (56, 61) | Sí. Nada de «roches factices […] au milieu d'un gazon» en un terreno llano (50). | 20 |
+| La tumba que nadie entiende y que el cura no encuentra «convenable» (61, 64) | Sí. Que no se vea «d'aucune partie du bâtiment» (69). | 21 |
+| La cabaña con el techo quemado (55, 61) | Sí. Es el «genre terrible» de Chambers, que el manual cita como absurdo (20). | 23 |
+| El tilo tumbado: «quelle bêtise que cet arbre !» (56, 65) | Sí. Es Chambers otra vez (20), y el manual pide no talar (31). | 25 |
+| El conjunto, una huerta llena de fábricas (55–56) | Sí. En un jardín chico, ninguna tumba ni ruina (114); el «potager pittoresque» no tiene reglas (116). | 18, con 20 a 29 |
+| El muro en ruinas (55, 61) | Dudosa. El manual dice que la ruina de una casa común «n'inspire aucun intérêt» (271), pero no prevé un arco que se cae. | 27 |
+| La puerta de las pipas (57, 62) | Dudosa. Advertencias generales contra lo bizarro (60). | 29 |
+| El eco que desaparece (56, 62–63) | No. Es azar. | entre 5 y 26 |
 
 Las tres que no estaban advertidas no vienen del manual. El arco en el muro y la puerta de las pipas son invenciones de los copistas, y el eco es azar. El único éxito del jardín, los tejos en forma de pavo real, tampoco viene del manual: sale de unos moldes que les manda un amigo de París (Flaubert 1910, 57).
 
@@ -135,19 +137,21 @@ Las tres que no estaban advertidas no vienen del manual. El arco en el muro y la
 
 La tabla dice *que* el manual advertía. No dice si la falla es de sitio. Para saberlo, los mismos lectores marcaron en cada falla si dependía de la posición de algo en el terreno, de la escala del jardín o de lo que se ve desde un punto. Coincidieron en las nueve: cinco dependen de la posición o de la escala. Son la roca, la tumba, el árbol, el eco y el conjunto. Esas fallas no se entienden en una lista. Hay que dibujarlas.
 
-Flaubert da bastante para dibujar el jardín. La primera mañana, desde la ventana, los copistas ven al frente los campos, a la derecha un granero con el campanario de la iglesia y a la izquierda una cortina de álamos. Dos alamedas en cruz dividen el jardín en cuatro. De un lado, un emparrado termina en un montículo. Del otro, un muro sostiene las espalderas. Al fondo, una celosía da al campo (Flaubert 1910, 26). Con esos datos, más los de los capítulos siguientes, se puede trazar una planta (Fig. 2).
+Flaubert da bastante para dibujar el jardín. La primera mañana, desde la ventana, los copistas ven al frente los campos, a la derecha un granero con el campanario de la iglesia y a la izquierda una cortina de álamos. Dos alamedas en cruz dividen el jardín en cuatro. De un lado, un emparrado termina en un montículo. Del otro, un muro sostiene las espalderas. Al fondo, una celosía da al campo (Flaubert 1910, 26). Con esos datos, más los de los capítulos siguientes, se puede trazar una planta (Fig. 3).
 
 El terreno, además, Flaubert lo eligió así. Buscaba «un sot endroit au milieu d'une belle contrée» y puso a los copistas «sur un plateau stupide, entre Caen et Falaise» (cartas de junio de 1874, citadas en Carrico 2019). En un primer plan de la novela, se quedan con un campo «pas d'eau, pas de vue, pas de bois, rien que des champs, de quoi faire du jardinage et un peu d'agriculture» (Ms gg 10, f. 33, en Carrico 2019). [FALTA: ver las cartas en la *Correspondance*, t. IV, pp. 813 y 816, y el folio en el manuscrito.] Es el terreno para el que Boitard pedía conservar «à la plaine le caractère de la plaine» (Boitard s. f., 50). El catálogo que los copistas llevaron ahí pedía lo que el plan le había quitado: el puente pedía agua, y la roca, un sitio rocoso. [POSIBLE: la finca tenía un lugar pedregoso, la Butte, «un monticule couvert de cailloux» (Flaubert 1910, 36), pero en alto y lejos del jardín. Los copistas la mandaron despedregar para el trigo (36–37), y la roca la levantaron en el césped, con granitos traídos del río. Es una lectura: Flaubert no relaciona las dos escenas.]
 
-[FALTA: Fig. 2. Planta del jardín de Chavignolles, dibujada a mano. En línea continua lo que da el texto; en punteado lo que hubo que suponer, con su letra de evidencia. Las visuales desde el comedor. Al lado, a la misma escala, el jardín de Wissous de la lámina 18 de Boitard. Fuente: elaboración propia; lámina de Boitard (s. f.), dominio público. Los datos del texto están reunidos en el anexo de trabajo «Planta: datos del texto».]
+**Fig. 3** Dos jardines a la misma escala: Wissous, el ejemplo de Boitard para una casa modesta (lám. 18; 115–116), y Chavignolles, reconstruido con los datos de la novela (Flaubert 1910, cap. II). En punteado, lo supuesto; en amarillo, lo que Boitard excluye en un jardín de uno o dos *arpents* (114). Fuente: elaboración propia; lámina de Boitard (s. f.), dominio público. [FALTA: redibujar a mano, a 16 × 10 cm como máximo.]
 
 La planta muestra tres cosas que la tabla no muestra.
 
-La primera es que **todo se ve desde la casa**. Los invitados están en el comedor, con las cortinas cerradas. Cuando se abren, ven en un solo golpe la roca, la tumba, el puente, la cabaña, los tejos, el árbol caído, la pagoda y, al fondo, la llanura (Flaubert 1910, 61). La regla de la tumba no se incumplió por descuido. En ese jardín no había dónde esconderla.
+La primera es que **casi todo se ve desde la casa**. Los invitados están en el comedor, con las cortinas cerradas. Cuando se abren, ven en un solo golpe la roca, la tumba, el puente, la cabaña, los tejos, el árbol caído, la pagoda y, al fondo, la llanura (Flaubert 1910, 61). Pero la finca tenía dónde esconder. Detrás de la *charmille*, el seto alto, había un bosquete, y del otro lado del muro, un huerto (26). Trazadas las visuales desde el comedor, con el seto y el muro enteros, esos dos lugares no se ven, y en cualquiera de los dos cabe la tumba (Fig. 4). Desde el piso alto, depende de la altura del seto, que el texto no da. Los copistas hicieron lo contrario. Levantaron la tumba donde estaban los espárragos (55), a la vista del comedor (61). Abrieron la *charmille* «çà et là» sobre el bosquete, donde trazaron un laberinto, y quisieron abrir en el muro un arco «sous lequel on découvrirait la perspective» (55). La tumba no quedó a la vista por falta de lugar.
 
-La segunda es **el tamaño**. Flaubert no da medidas, pero da una pista. El tilo que tumban va «dans toute la longueur du jardin» (56), o «transversalement de la charmille à la tonnelle» (61). En una dirección, el jardín mide lo que mide un árbol. Un tilo grande puede medir veinte o treinta metros; aunque fuera la mitad, el jardín queda muy por debajo de un *arpent*. Para ese tamaño, el manual era claro: ninguna tumba, ninguna ruina, y una cabaña solo si el jardín tiene «au moins deux ou trois arpens» (Boitard s. f., 114). Esta medida es una inferencia, y en la planta va en punteado.
+**Fig. 4** Lo que se ve desde el comedor la noche de la cena (Flaubert 1910, 59–62), desde sus dos lugares posibles (28). En amarillo, lo que no se ve desde ninguno de los dos con el muro y la *charmille* enteros. Al lado, un corte con alturas supuestas y el recorrido del agua del estanque. Fuente: elaboración propia. [FALTA: redibujar a mano, a 16 × 10 cm como máximo.]
 
-La tercera es **la respuesta del manual**. En la lámina 18, Boitard dibuja el jardín de una casa modesta, levantado en Wissous, cerca de París: un terreno de «pas plus d'un arpent», junto a «la modeste maison d'un homme de lettres» (Boitard s. f., 115). Tiene cenadores, un pozo escondido entre arbustos, un colmenar y dos huertas, cada una «masqué de manière à n'être pas aperçu» (116). No tiene tumba, ni roca, ni puente, ni pagoda. Boitard explica que el jardín está en armonía con la casa y «avec les goûts et la fortune du propriétaire, convenances qui sont de première considération» (116). Puestos uno al lado del otro y a la misma escala, los dos jardines muestran la diferencia entre lo posible y lo conveniente sin necesidad de explicarla.
+La segunda es **el tamaño**. Flaubert no da medidas, pero da una pista. El tilo que tumban va «dans toute la longueur du jardin» (56), o «transversalement de la charmille à la tonnelle» (61). En una dirección, el jardín mide lo que mide un árbol. Un tilo grande puede medir veinte o treinta metros; aunque fuera la mitad, el jardín queda muy por debajo de un *arpent*. Para ese tamaño, el manual era claro: ninguna tumba, ninguna ruina, y una cabaña solo si el jardín tiene «au moins deux ou trois arpens» (Boitard s. f., 114). Dibujado con veinticinco metros de lado, tiene unos 625 m², contra los 3.400 de un *arpent* (Fig. 3). Esta medida es una inferencia, y en la planta va en punteado.
+
+La tercera es **la respuesta del manual**. En la lámina 18, Boitard dibuja el jardín de una casa modesta, levantado en Wissous, cerca de París: un terreno de «pas plus d'un arpent», junto a «la modeste maison d'un homme de lettres» (Boitard s. f., 115). Tiene cenadores, un pozo escondido entre arbustos, un colmenar y dos huertas, cada una «masqué de manière à n'être pas aperçu» (116). No tiene tumba, ni roca, ni puente, ni pagoda. Boitard explica que el jardín está en armonía con la casa y «avec les goûts et la fortune du propriétaire, convenances qui sont de première considération» (116). Puestos uno al lado del otro y a la misma escala (Fig. 3), los dos jardines muestran la diferencia entre lo posible y lo conveniente sin necesidad de explicarla.
 
 ### 4.3 La entrada vacía
 
@@ -204,13 +208,15 @@ Hay una objeción que conviene atender desde ahora. Para Mario Carpo, la abundan
 
 Para explicar la escena exótica, Boitard cuenta una historia. Un tahitiano llevado a París mira los monumentos sin entusiasmo y el lujo con indiferencia. Lo llevan al Jardin des Plantes. Entre mil follajes ve el de un bananero, rompe la empalizada que lo separa del árbol, lo abraza y lo cubre de lágrimas: «c'est mon pays, s'écrie-t-il, c'est ma cabane, c'est mon père, c'est ma mère !» (Boitard s. f., 62). Para Boitard, quien no entienda esa emoción debe «renoncez à devenir artiste et restez jardinier» (63).
 
-La historia dice algo que el manual sabe y que la copia pierde. La anécdota ya falta en la nota de lectura de Flaubert (Dord-Crouslé 2003, párr. 22). Lo exótico es la casa de alguien. Pero el manual usa esa emoción como efecto para otros: la escena exótica sirve para dar «d'agréables souvenirs à un colon ou à un voyageur» (63), es decir, a quien estuvo allá, no a quien es de allá. En el frontispicio, Boitard dibujó una escena exótica con plantas que dice haber tomado «sans distinction dans plusieurs parties de la terre», a las que dio, sin embargo, «une physionomie indienne» (63). En el borde de la lámina puso un cactus, el «cierge du Pérou» (63), y junto a la cabaña, un girasol «apporté du Pérou» (64). Y en el fondo de la escena, escribe, «rien ne doit rappeler l'Europe» (64).
+La historia dice algo que el manual sabe y que la copia pierde. La anécdota ya falta en la nota de lectura de Flaubert (Dord-Crouslé 2003, párr. 22). Lo exótico es la casa de alguien. Pero el manual usa esa emoción como efecto para otros: la escena exótica sirve para dar «d'agréables souvenirs à un colon ou à un voyageur» (63), es decir, a quien estuvo allá, no a quien es de allá. En la lámina del jardín exótico (Fig. 5), Boitard dibujó una escena con plantas que dice haber tomado «sans distinction dans plusieurs parties de la terre», a las que dio, sin embargo, «une physionomie indienne» (63). De trece plantas, da el origen de ocho: el Perú, América, Berbería, las Indias y China (63–64). En el borde de la lámina puso un cactus, el «cierge du Pérou» (63), y al pie del bananero, un girasol «apporté du Pérou» (64). Y en el fondo de la escena, escribe, «rien ne doit rappeler l'Europe» (64).
+
+**Fig. 5** La escena exótica de Boitard, «Jardin exotique» (lám. 1), con las plantas numeradas en el orden en que él las describe (63–65). Fuente: Boitard (s. f.), ejemplar de la Biblioteca de la Universidad de Sevilla en Internet Archive, dominio público; números propios. [FALTA: rehacer a 16 × 10 cm como máximo, con la leyenda en este pie.]
 
 Es una manera de componer que hoy reconocemos. Juntar elementos de muchos lugares, sin distinción, y darles una sola fisonomía creíble. Es lo que hace una respuesta plausible. La pregunta es qué pasa cuando el lugar del que vienen esas plantas es el propio. Desde La Paz, el cactus del Perú no es exótico, y el girasol tampoco.
 
 [FALTA: el contraste. La misma consigna a los mismos modelos, «una escena exótica según Boitard» y «un jardín en La Paz según Boitard», para comparar qué repertorio sacan para cada caso. Límite fijado de antemano: un apartado, no un segundo caso.]
 
-En el jardín de Chavignolles, lo único que queda de lo exótico es «un tournesol, çà et là» (Flaubert 1910, 61). Las plantas americanas, dicen los copistas, «coûtaient trop cher» (55). El girasol es lo exótico en su versión más barata: lo posible.
+En el jardín de Chavignolles, lo más cerca de lo exótico es «un tournesol, çà et là» (Flaubert 1910, 61). Pero ese girasol no salió del manual. Los copistas descartaron las plantas americanas porque «coûtaient trop cher» (55), y Pécuchet ya había plantado girasoles en la huerta, como adorno, antes de abrir el libro (38). La planta que Boitard da como «apporté du Pérou», para una escena donde nada debe recordar a Europa, en Chavignolles era una flor de huerta.
 
 ## 7. El que mira el sitio
 
@@ -238,7 +244,7 @@ Al abrirse la cortina, el puente veneciano era un acento circunflejo sobre los p
 
 ## Declaración de uso de inteligencia artificial
 
-[Según la política de *Astrágalo* (§3.1). Como objeto de estudio: modelos, versiones, fechas, consignas y número de salidas del apartado 5. Como ayuda: Claude (Anthropic) hizo el cotejo de fuentes, la verificación de páginas con programas propios, las pruebas piloto y la redacción de los borradores de trabajo. El autor revisó cada cita contra las fuentes y responde por el texto. Precisar las secciones antes de enviar.]
+[Según la política de *Astrágalo* (§3.1). Como objeto de estudio: modelos, versiones, fechas, consignas y número de salidas del apartado 5. Como ayuda: Claude (Anthropic) hizo el cotejo de fuentes, la verificación de páginas con programas propios, las pruebas piloto, la redacción de los borradores de trabajo y los borradores de las láminas (el montaje de las Fig. 1, 2 y 5, y el trazado y las visuales calculadas de las Fig. 3 y 4), que el autor verifica y redibuja. El autor revisó cada cita contra las fuentes y responde por el texto. Precisar las secciones antes de enviar.]
 
 ## Referencias
 
