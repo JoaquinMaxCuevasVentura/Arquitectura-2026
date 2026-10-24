@@ -83,3 +83,24 @@ Imagen: [`img/Boitard lamina 18 - Wissous.jpg`](img/Boitard%20lamina%2018%20-%20
 6. En Wissous, las huertas en gris, para que se vea que están escondidas.
 
 **Pregunta de control, fijada antes (§4.3 de la propuesta):** ¿la lámina muestra algo que la tabla de fallas no muestra? Si la respuesta es no, la planta se reduce a una figura chica o se quita.
+
+## 7. El sitio que eligió Flaubert (a cotejar)
+
+*Agregado el 24 de octubre (bitácora, P11). Las tres primeras citas están tomadas de Carrico (2019) y falta verlas en la* Correspondance *y en el manuscrito. No cambian el dibujo: dicen por qué el terreno es como es.*
+
+| Qué | Dónde lo dice | Ev. |
+|---|---|---|
+| «J'ai besoin d'un sot endroit au milieu d'une belle contrée» | Carta a Edma Roger des Genettes, 17 de junio de 1874 (*Corr.* IV, 813, según Carrico) | F, a cotejar |
+| «sur un plateau stupide, entre Caen et Falaise», entre el valle del Orne y el valle de Auge | Carta a su sobrina Caroline, 24 de junio de 1874 (*Corr.* IV, 816, según Carrico) | F, a cotejar |
+| Un campo «pas d'eau, pas de vue, pas de bois, rien que des champs, de quoi faire du jardinage et un peu d'agriculture» | Primer plan de la novela, Ms gg 10, f. 33 (según Carrico) | F, a cotejar |
+| La finca tiene «cinq [hectares] en friches situées sur un monticule couvert de cailloux et qu'on appelait la Butte» | Flaubert 1910, 36 | F |
+| La mandan despedregar para el trigo: todo un año, un carro sube y baja la colina | 36–37 | F |
+| Ya despedregada, la Butte «donnait moins qu'autrefois» | 42 | F |
+| Para llegar a la Butte, el camino sube; desde arriba se ve «la plaine dénudée» | 45 | F |
+| El Orne corre por la región, pero el texto no lo pone junto a la finca | Carrico 2019 | I de Carrico |
+| Las piedras de la roca se van a buscar a las orillas del Orne y se traen en una carreta | 56 | F |
+| El agua del estanque se acarrea a mano | 61–62 | F |
+
+**Lo imprevisto (I).** La finca sí tenía un lugar pedregoso, la Butte, pero lejos del jardín y en alto. Los copistas lo trataron como campo y lo despedregaron; la roca la levantaron en el césped, con granitos traídos del río. Es una lectura: Flaubert no relaciona las dos escenas, y unos *cailloux* no son una roca. Lo que sí muestra es que el «caractère rocailleux du site» que pedía Boitard (1825, 109) estaba en la finca y no en el jardín.
+
+**Uso.** En la planta, nada por ahora: la Butte queda fuera del dibujo, que es del jardín. En el texto, apoya §4.2 del borrador (el sitio fue elegido sin agua y sin vista) y queda como [POSIBLE] lo de la Butte.
