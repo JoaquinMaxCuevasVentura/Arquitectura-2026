@@ -131,6 +131,16 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
 - **E10a**: primer plano de la junta entre tablas en tres estados (0,75 mm, 3 mm y 4,8 mm, que son húmedo, de fabricación y seco). Pregunta: «¿la junta se lee como defecto o como intención?». Si 3 de 5 dicen defecto, se revisa cómo se muestra la junta (por ejemplo, una lengüeta a ras o un canto achaflanado).
 - **Qué no demuestran**: el peso en la mano, el montaje, el astillado, el aspecto del mármol real, ni migas y líquidos. Eso queda para E6 y E10 físicos. **Un render no reemplaza a la maqueta.**
 
+## E11 · ¿Puede una piedra en cuña tensar el caballete por su propio peso? · *prerregistro*
+- **Origen**: la propuesta de materiales bolivianos (26-10-2026) plantea una «síntesis operativa». La piedra, con un rebaje cónico de 15°, baja por gravedad, abre dos tirantes del caballete y deja la estructura bloqueada «sin un solo tornillo», apoyada sobre una banda de fieltro o elastómero.
+- **Pregunta**: (a) ¿cuánto empuje horizontal da una piedra en cuña por su peso, con rozamiento entre 0 y 0,5? ¿Alcanza la tracción que pide el balanceo (E4: T ≈ 1020 N en el modelo b, 2045 N en el a)? (b) ¿Cuánto sube y baja la piedra entre estaciones si el asiento es de madera (anchura 150 mm, coeficiente tangencial, humedad de 4 a 13 %)?
+- **Tipo**: cálculo (equilibrio de una cuña con rozamiento de Coulomb, cambio dimensional del FPL).
+- **Nota de honestidad**: antes de escribir esto hice una cuenta a mano (empuje de unos 200-500 N con 29 kg de piedra). Se prerregistra igual, y los umbrales no dependen de esa cuenta: son los de E4 y E2.
+- **Prerregistro**:
+  - (a) Si el empuje con la piedra más pesada razonable (29 kg, la barra de V0) **no llega a T del modelo b**, el «bloqueo por gravedad» **queda descartado otra vez**, y se calcula qué masa haría falta.
+  - (b) Si la piedra se desplaza **más de 2 mm** entre estaciones, el asiento en cuña sobre madera no es compatible con «sin holguras»: la piedra se mueve a la vista.
+- **Qué no demuestra**: el crujido, el comportamiento del fieltro en el tiempo (fluencia) y la rigidez real de los tirantes.
+
 ## E7 · Originalidad · *hecho* ([precedentes](../01_reunir/precedentes.md))
 - **Resultado**:
   - 2026 es la primera edición del Porada Award dedicada a la mesa de comedor; en 2017 fueron mesas pequeñas. Ningún ganador usó caballetes, tablas sueltas ni uniones de piedra.
