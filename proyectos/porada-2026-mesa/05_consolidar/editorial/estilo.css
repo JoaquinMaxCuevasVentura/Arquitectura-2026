@@ -49,6 +49,7 @@
   background: #f4f2ec;
   @top-left {
     content: string(capitulo, first);
+    width: 80mm;
     font: 400 6.2pt/1 "IBM Plex Mono";
     color: #1d1c1a;
     padding-left: 18mm;
@@ -56,9 +57,11 @@
     padding-top: 12.5mm;
     text-align: left;
   }
+  @top-center { content: none; width: 0; }
   @top-right {
     content: string(seccion, first);
-    width: 124mm;
+    width: 142mm;
+    padding-right: 18mm;
     font: 400 6.2pt/1 "IBM Plex Mono";
     color: #77736b;
     text-align: left;
@@ -124,7 +127,7 @@ code, .mono {
 
 /* ------------------------------------------------------------------ el texto corrido */
 
-.capitulo { break-before: right; string-set: capitulo attr(data-corrida), seccion ""; }
+.capitulo { break-before: page; string-set: capitulo attr(data-corrida), seccion ""; }
 .texto { orphans: 2; widows: 2; }
 .texto p { margin-bottom: var(--media); text-align: left; }
 .texto p.entrada { font-size: 11.6pt; line-height: 5.2240mm; margin-bottom: var(--linea); }
@@ -321,8 +324,7 @@ figure.simulacion .marco { outline: 0.25mm dashed var(--tinta); outline-offset: 
   height: 200mm;
   overflow: hidden;
 }
-.plana.izquierda { break-before: left; }
-.plana.derecha { break-before: right; }
+.marca-pl { position: absolute; left: 0.3mm; top: 0.3mm; font: 1.2pt/1 var(--mono); color: var(--papel); white-space: nowrap; hyphens: none; }
 .plana > * { position: absolute; box-sizing: border-box; }
 .plana .junta { left: 0; width: 240mm; height: 0.6mm; background: var(--papel); z-index: 3; }
 .plana .gigante {
@@ -357,13 +359,13 @@ figure.simulacion .marco { outline: 0.25mm dashed var(--tinta); outline-offset: 
 .plana .texto-plana p + p { margin-top: var(--media); }
 .plana .indice-cap { font: 400 6.4pt/3.343mm var(--mono); }
 .plana .indice-cap a { color: inherit; text-decoration: none; display: block; padding-left: 9mm; text-indent: -9mm; margin-bottom: 0.4mm; }
-.plana .indice-cap a::before { content: target-counter(attr(href), page, decimal-leading-zero); display: inline-block; width: 9mm; text-indent: 0; }
+.plana .indice-cap a .pg { display: inline-block; width: 9mm; text-indent: 0; }
 .plana .epigrafe { font: 400 6.6pt/3.343mm var(--mono); }
 .plana .epigrafe .trad { font: 300 italic 10.4pt/5.014mm "Newsreader"; margin-top: 1.4mm; display: block; }
 .plana .epigrafe .de { color: var(--gris); display: block; margin-top: 1.4mm; }
 .plana figcaption, .plana .pie { font: 400 6.2pt/3.1344mm var(--mono); color: var(--grafito); }
 .plana img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.plana .contener img { object-fit: contain; }
+.plana .contener img { object-fit: contain; object-position: 0 0; }
 .plana .grande { font: 300 34pt/1 "Newsreader"; letter-spacing: -0.01em; }
 .plana .numero { font: 200 120pt/0.8 "Newsreader"; font-variant-numeric: lining-nums; }
 
@@ -394,12 +396,10 @@ figure.simulacion .marco { outline: 0.25mm dashed var(--tinta); outline-offset: 
 .indice-final .item { display: flex; break-inside: avoid; }
 .indice-final .item .pags { width: 17mm; flex: none; }
 .indice-final a { color: inherit; text-decoration: none; }
-.indice-final a.pag::after { content: target-counter(attr(href), page); }
 
 a.pag { color: inherit; text-decoration: none; }
-a.pag::before { content: target-counter(attr(href), page, decimal-leading-zero); }
 a.ref { color: inherit; text-decoration: none; }
-a.ref::after { content: " → " target-counter(attr(href), page, decimal-leading-zero); font: 400 0.72em var(--mono); color: var(--almagre); }
+a.ref .flecha { font: 400 0.72em var(--mono); color: var(--almagre); }
 
 .refs { columns: 2; column-gap: 6mm; font-size: 7.6pt; line-height: 3.6mm; }
 .refs p { padding-left: 4mm; text-indent: -4mm; margin-bottom: 1.5mm; break-inside: avoid; }
@@ -411,3 +411,8 @@ a.ref::after { content: " → " target-counter(attr(href), page, decimal-leading
 .lista-imagenes tr { break-inside: avoid; }
 .colofon { font-size: 8pt; line-height: 3.9mm; }
 .colofon p + p { margin-top: 2.2mm; }
+
+.texto h2 + .tabla, .texto h2 + .margen + .tabla, .texto h2 + figure { break-before: avoid; }
+.marca-id { position: absolute; left: -15mm; top: 4.4mm; font: 1pt/1 var(--mono); color: var(--papel); white-space: nowrap; hyphens: none; }
+figure, .texto h2, section.capitulo { position: relative; }
+.plana .marca-id, .plana > .marca-id { left: 0.3mm; top: 1.6mm; }

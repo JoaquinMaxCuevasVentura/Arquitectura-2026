@@ -121,20 +121,28 @@ class Dibujo:
         return f"url(#{pid})"
 
     def anillos(self, geom, fondo, color=TINTA, paso=0.7, sw=0.09):
-        """Testa: anillos concéntricos con centro bajo la pieza, recortados a su contorno."""
+        """Testa: anillos concéntricos con centro bajo la pieza, recortados a su contorno con geometría
+        (sin clipPath, que no todos los visores respetan). El paso es de papel, con un mínimo de 2,5 mm de modelo."""
         if geom.is_empty:
             return
-        cid = f"c{next(_IDS)}"
-        self.defs.append(f'<clipPath id="{cid}"><path d="{self._d(geom)}" clip-rule="evenodd"/></clipPath>')
-        x0, y0, x1, y1 = geom.bounds
-        cx, cy = self.P((x0 + x1) / 2 + (x1 - x0) * 0.17, y0 - (y1 - y0) * 0.9)
-        (px0, py0), (px1, py1) = self.P(x0, y0), self.P(x1, y1)
-        rmax = math.hypot(max(abs(px0 - cx), abs(px1 - cx)), max(abs(py0 - cy), abs(py1 - cy))) + paso
-        rmin = max(0.0, math.hypot(0, min(abs(py0 - cy), abs(py1 - cy))) - paso)
-        circ = "".join(f'<circle cx="{cx:.3f}" cy="{cy:.3f}" r="{r:.3f}"/>'
-                       for r in [rmin + paso * k for k in range(int((rmax - rmin) / paso) + 1)])
         self.area(geom, fondo, "none")
-        self.el.append(f'<g clip-path="url(#{cid})" fill="none" stroke="{color}" stroke-width="{sw}">{circ}</g>')
+        from shapely.geometry import Point
+        x0, y0, x1, y1 = geom.bounds
+        cx, cy = (x0 + x1) / 2 + (x1 - x0) * 0.17, y0 - (y1 - y0) * 0.9
+        paso_m = max(paso * self.e, 2.5)
+        esquinas = [(x0, y0), (x0, y1), (x1, y0), (x1, y1)]
+        rmax = max(math.hypot(x - cx, y - cy) for x, y in esquinas)
+        rmin = max(0.0, (y0 - cy) - paso_m)
+        lineas = []
+        r = rmin + paso_m
+        while r <= rmax:
+            c = Point(cx, cy).buffer(r, quad_segs=48).exterior
+            inter = c.intersection(geom)
+            if not inter.is_empty:
+                lineas.append(inter.simplify(0.02 * self.e))
+            r += paso_m
+        if lineas:
+            self.trazo(unary_union(lineas), color, sw)
 
     # --- cotas
     def cota_h(self, u1, u2, v, ref=None, txt=None, lado=1, ext=True):
