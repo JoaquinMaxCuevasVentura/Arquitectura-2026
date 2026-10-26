@@ -97,3 +97,16 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
   - → [`05_consolidar/propuesta_final.md`](05_consolidar/propuesta_final.md)
 - **Título y frase provisionales**: «Punto fermo»; «la madera se mueve y se arma; lo único fijo es la piedra donde se traba». Los decide el autor (O6).
 - **Siguiente acción**: planos técnicos de F1, renders finales, entregables del concurso y el libro del proyecto.
+
+### 26-10-2026 · 14 · Consolidar: planos, renders, entregables y el libro
+- **Hecho**:
+  - **Modelo constructivo de F1** (`construccion.py`): espigas, cajas, ranuras, horquilla y cuñas pasantes, con un control de que cada parte que entra en otra pieza quepa en un vacío (72 ensambles, 0 errores).
+  - **Dibujante de planos** (`planos.py`): cortes con trama según la fibra, la piedra en negro, ocultas a trazos.
+  - **Juego de planos acotado** (`laminas_f1.py`).
+  - **Renders finales de F1** en Blender, con dos parámetros nuevos (la cuña en el cabezal y el largo del cabezal).
+  - **Entregables del concurso**: tres láminas A3 de 0,9 MB, un informe de 2565 caracteres y la vista previa, en inglés y sin autor en los metadatos.
+  - **El libro del proyecto** (82 páginas), con un sistema editorial derivado de la mesa: la doble página es el tablero a 1:5.
+- **Hallazgo al dibujar** (registrado en E12): la clavija de la tabla exterior asomaba 3 mm por la testa del cabezal de 850 → **modificar**: cabezal de 900 mm.
+- **Hallazgo de herramienta**: con referencias de página hacia adelante, Vivliostyle recompone y a veces pierde la página con nombre. Se resolvió leyendo las páginas en el PDF y escribiendo los números en una pasada final ([README del sistema editorial](05_consolidar/editorial/README.md)).
+- **Honestidad de las imágenes**: el render de la testa no dibuja los anillos, y su pie se corrigió para no prometerlos. Las referencias visuales del borrador no se reproducen, porque su autoría está sin verificar. Los lugares de las maquetas quedan en almagre.
+- **Siguiente acción** (del autor): visibilidad del repositorio; E6a y E10a; maquetas E6 y E10; registro y plantilla; título y frase.

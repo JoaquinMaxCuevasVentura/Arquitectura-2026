@@ -1,5 +1,15 @@
 # Consolidar: entregables, dependencias y calendario
 
+> **Estado al 26-10-2026**: hay un primer armado completo de los entregables, sobre la propuesta final F1 (iteración 1): [`concurso/boards_CODICE.pdf`](concurso/boards_CODICE.pdf), [`concurso/report_CODICE.pdf`](concurso/report_CODICE.pdf), [`concurso/preview_CODICE.jpg`](concurso/preview_CODICE.jpg) y el libro del proyecto, [`editorial/punto_fermo_libro.pdf`](editorial/punto_fermo_libro.pdf). Se arman con `editorial/armar.py` ([README](editorial/README.md)).
+>
+> Siguen pendientes:
+> - la plantilla oficial (al registrarse) y el código del participante;
+> - las fotos de maqueta de la lámina 3 (E6, E10);
+> - la decisión sobre el título y la frase;
+> - la visibilidad del repositorio.
+>
+> La tabla de abajo es el plan original; lo que ya está hecho se marca con ✓.
+
 Cierre: **31-01-2027, 24:00**. Hoy es 26-10-2026: quedan unas 14 semanas. Bases en [`../00_encargo/bases.md`](../00_encargo/bases.md).
 
 ## De dónde sale cada entregable
@@ -8,7 +18,7 @@ Cierre: **31-01-2027, 24:00**. Hoy es 26-10-2026: quedan unas 14 semanas. Bases 
 |---|---|---|---|
 | **Informe** (A4, ≤ 3000 caracteres, IT/EN, sin imágenes) | motivaciones, concepto, materiales | la regla de [`../03_proponer/sintesis.md`](../03_proponer/sintesis.md), el fichero (F01, F08, F09, F11) y los resultados de los ensayos | elegir versión y frase; nombre (O6); traducción al italiano |
 | **Lámina 1** | panorama, escenarios, modos de uso, mood board, concepto, fuentes | capturas de dominio público ([`../01_reunir/capturas/`](../01_reunir/capturas/)): Viollet-le-Duc (mesa que se arma), Semper (*Gestell*), Squier (Tiwanaku), Bertonio (*chhakhua*); escenarios: armar, reparar, la junta que cambia con la estación | ⚠️ las 5 referencias visuales tienen **autoría sin verificar**: no usarlas sin averiguarla; mejor fotos propias de las maquetas |
-| **Lámina 2** | plantas, alzados, secciones, axonometrías, despieces, planos acotados, detalles de material | láminas SVG del instrumento ([`../03_proponer/laminas/`](../03_proponer/laminas/)), redibujadas sobre la plantilla oficial | **despiece axonométrico**; cotas de construcción finales; detalle 1:1 de clavija y cuña y de collar y llave |
+| **Lámina 2** | plantas, alzados, secciones, axonometrías, despieces, planos acotados, detalles de material | ✓ el modelo constructivo de F1 y su juego de planos ([`planos/`](planos/), `instrumentos/mesa/laminas_f1.py`) | ✓ despiece axonométrico, cotas, detalles 1:5 y el nodo a 1:1 (en el libro); falta pasarla a la plantilla oficial |
 | **Lámina 3** | renders y fotos de maqueta | **modelo paramétrico de Blender** ([`blender/`](blender/), [`renders/`](renders/), generado por [`../instrumentos/blender/`](../instrumentos/blender/README.md), también en GitHub Actions); fotos de las maquetas de E6 y E10 | renders finales a 128 muestras o más, con ambiente interior (como las láminas ganadoras, E7); detalle de las espigas en el modelo |
 | **Vista previa** (JPG ≤ 1 MB) | imagen síntesis | el mejor render o la foto del nodo | — |
 

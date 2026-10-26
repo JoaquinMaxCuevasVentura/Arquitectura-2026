@@ -559,7 +559,7 @@ def componer(lb, laminas=None, informe=None):
     if informe:
         texto, n = informe
         c.add(p(f"**El informe** tiene {n} caracteres de los 3000 permitidos. Va completo:"),
-              f'<div class="cita" style="font-size:6.6pt">{md(texto)}</div>')
+              '<div class="cita" style="font-size:6.6pt">' + "".join(f'<p style="margin-bottom:1.6mm">{md(x)}</p>' for x in texto.split("\n") if x.strip()) + "</div>")
     c.sec(2, "Control final, antes de subir")
     c.add(lista(["Código de seis cifras con el prefijo P o S; nombres de archivo `report_`, `boards_`, `preview_`.",
                  "**Ningún nombre** en los materiales: textos, rótulos y metadatos (PDF y EXIF).",

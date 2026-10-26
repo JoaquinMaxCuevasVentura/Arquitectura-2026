@@ -4,23 +4,36 @@ Proyecto de mesa de madera maciza para la XIV edición del concurso Porada, dedi
 
 > ⚠️ **Antes de nada**: el concurso exige proyectos **inéditos y anónimos**, y este repositorio es **público**. Ver [`00_encargo/bases.md`](00_encargo/bases.md#️-condiciones-que-afectan-a-cómo-usamos-github).
 
-## Estado al 26-10-2026
+## Estado al 26-10-2026: propuesta final, iteración 1
 
-- **La pregunta cambió.** El borrador decía: «la gravedad de la piedra sostiene la ligereza del armazón». Bertonio (1612) distingue *chakhua* (montón) de *chhakhua* (piedra hincada donde se atan los palos). Los ensayos mostraron que la piedra no puede ser viga (E1), que no puede ser llave (E4) y que su peso ni traba ni hace falta para estabilizar (E3, E4, E11). La pregunta vigente es **cómo se une la madera a una piedra fija**, y la propuesta B agrega otra: **cómo se muestra que la madera se mueve**.
-- **Dos propuestas y una síntesis** ([`03_proponer/sintesis.md`](03_proponer/sintesis.md)):
-  - **A · V4 Collar**, desde el concepto del autor: la espiga atraviesa un bloque de mármol que trabaja solo a compresión. Cumple K1-K4 y falla K5 (tablero de 59 kg).
-  - **B · B2 Tablas clavijadas**, propuesta propia desde la bibliografía, sin la premisa de la piedra: 6 tablas sueltas, clavijadas y acuñadas; la junta muestra la estación. Cumple todo lo aplicable, sin piedra.
-  - **AB**: el tablero de B2 con el collar de V4. Cumple K1-K5. Regla común: **la madera se mueve y se arma; lo único fijo es la piedra donde se traba**.
-  - **B3**: B2 con una **tabla de servicio intercambiable** con mármol asentado. Cumple K1-K5. Nace de los precedentes.
-- **Precedentes (E7)**: Porada ya junta madera y mármol (*Oswood*, *Osmose*), así que lo original tiene que ser **el modo del encuentro**. El jurado premia componentes con individualidad, intercambiabilidad y el detalle precioso de la unión. → [`01_reunir/precedentes.md`](01_reunir/precedentes.md)
-- **Materiales bolivianos** (entrada 12 de la bitácora): el nogal de los Yungas es *Juglans boliviana*, descrito primero como variedad del mismo nogal negro que el canaletta de Porada; la piedra de Comanche es **granito** según la ley de La Paz de 2012. Propuesta: nogal canaleta para producir, el vínculo andino en el relato y el **granito de Comanche apomazado** como piedra candidata del collar de AB. La piedra que bloquea por gravedad se descartó con E11. → [`01_reunir/materiales_bolivianos.md`](01_reunir/materiales_bolivianos.md)
-- **Lo que decide entre B2, AB y B3 no es un cálculo**: es E6 (¿el collar se lee como unión o como adorno?) y E10 (¿las juntas molestan en el uso?). Las dos son pruebas físicas, pendientes. Hay una versión previa con renders de Blender (E6a, E10a) que se puede hacer ya con la [hoja de prueba](04_ensayar/E6a_E10a_hoja.md).
+**F1 · «Punto fermo»** (título provisional): una mesa de caballetes de nogal canaleta macizo, con una piedra en la unión. → [`05_consolidar/propuesta_final.md`](05_consolidar/propuesta_final.md)
 
-![Ronda 5](03_proponer/laminas/comparativa_r5.svg)
+- **La regla**: «la madera se mueve y se arma; lo único fijo es la piedra donde se traba».
+- **La mesa**:
+  - Seis tablas sueltas de 2400 × 164 × 40 mm, clavijadas en su eje y trabadas por 12 cuñas de fresno que atraviesan los cabezales. La junta entre tablas pasa de 0,8 mm (húmedo) a 4,8 mm (seco).
+  - La espiga del travesaño atraviesa el montante y un collar de **Nero Sahara Noir** que trabaja solo a compresión (0,08 MPa); una llave de fresno lo aprieta.
+  - 48 piezas, 106,7 kg, ningún herraje; la pieza más pesada es un caballete encolado de 16,0 kg. ✓ K1-K5, 0 interferencias (E12).
+- **Cómo se llegó**:
+  - La pregunta cambió con Bertonio (*chhakhua*: la unión, no el lastre).
+  - La propuesta A (desde el concepto del autor) y la B (desde la bibliografía, sin la premisa) resultaron ser la misma regla vista desde dos lados.
+  - F1 es su síntesis, corregida por E12: al pasar AB a planos de construcción, la clavija de las tablas centrales caía dentro del montante, y la exterior asomaba por el cabezal.
+- **La decisión no está cerrada**: si E6 (el nodo 1:1) muestra que el collar se lee como adorno, la propuesta pasa a B2. Está prerregistrado.
 
-| AB · el collar | B2 · solo madera | B3 · tabla de servicio |
-|---|---|---|
-| ![AB](05_consolidar/renders/general_AB.png) | ![B2](05_consolidar/renders/general_B2.png) | ![B3](05_consolidar/renders/general_B3.png) |
+| | |
+|---|---|
+| ![F1](05_consolidar/renders/general_F1.png) | ![el nodo](05_consolidar/renders/nodo_F1.png) |
+
+**Entregables** (todos se arman con [`05_consolidar/editorial/armar.py`](05_consolidar/editorial/README.md)):
+
+| | |
+|---|---|
+| **El libro del proyecto** | [`punto_fermo_libro.pdf`](05_consolidar/editorial/punto_fermo_libro.pdf), 82 páginas: el método, las fuentes, los ensayos, la bitácora como guion, los planos, el nodo a 1:1 y lo que falta. La doble página es el tablero a 1:5 |
+| **Láminas del concurso** | [`boards_CODICE.pdf`](05_consolidar/concurso/boards_CODICE.pdf): 3 A3, 0,9 MB (máx. 5), en inglés y sin nombre |
+| **Informe** | [`report_CODICE.pdf`](05_consolidar/concurso/report_CODICE.pdf): 2565 caracteres (máx. 3000), una página A4 |
+| **Vista previa** | [`preview_CODICE.jpg`](05_consolidar/concurso/preview_CODICE.jpg): 0,1 MB (máx. 1) |
+| **Planos de construcción** | [`05_consolidar/planos/`](05_consolidar/planos/): planta, alzados, sección A-A, el nodo, tablas, axonometría, despiece y montaje, en SVG acotado |
+
+![El libro: la mesa a 1:5](05_consolidar/editorial/muestras/02_la_mesa_a_1-5.jpg)
 
 ## Mapa
 
@@ -33,8 +46,8 @@ Los números ordenan carpetas, no el tiempo.
 | [`02_desarmar/`](02_desarmar/) | desarmar | [referencias](02_desarmar/referencias.md) (qué se toma, cambia, deja y por qué), [problema](02_desarmar/problema.md) (partes, relaciones, acciones, conflictos, criterios K1-K10), [objeciones](02_desarmar/objeciones.md) |
 | [`03_proponer/`](03_proponer/) | proponer | [versiones A](03_proponer/versiones.md), [propuesta B](03_proponer/propuesta_B.md), [síntesis](03_proponer/sintesis.md), [láminas SVG A3](03_proponer/laminas/) |
 | [`04_ensayar/`](04_ensayar/) | ensayar · contrastar · decidir | [ensayos](04_ensayar/ensayos.md) con prerregistro, resultado, contraste y decisión; [resultados por ronda](04_ensayar/resultados/) |
-| [`05_consolidar/`](05_consolidar/) | consolidar | [entregables, dependencias y calendario](05_consolidar/entregables.md); [modelos 3D base](05_consolidar/modelos/) |
-| [`instrumentos/`](instrumentos/) | (todos) | instrumento paramétrico en Python: cálculo, láminas y OBJ ([README](instrumentos/README.md)); **modelo de Blender** con Geometry Nodes, materiales procedurales y renders que corren en la nube ([README](instrumentos/blender/README.md)) |
+| [`05_consolidar/`](05_consolidar/) | decidir · consolidar | [propuesta final](05_consolidar/propuesta_final.md); [entregables, dependencias y calendario](05_consolidar/entregables.md); [planos](05_consolidar/planos/); [concurso](05_consolidar/concurso/); [el libro y su sistema editorial](05_consolidar/editorial/README.md); [renders](05_consolidar/renders/); [modelos 3D base](05_consolidar/modelos/) |
+| [`instrumentos/`](instrumentos/) | (todos) | instrumento paramétrico en Python: cálculo, láminas, OBJ, **modelo constructivo y planos de F1** ([README](instrumentos/README.md)); **modelo de Blender** con Geometry Nodes, materiales procedurales y renders que corren en la nube ([README](instrumentos/blender/README.md)) |
 | [`bitacora.md`](bitacora.md) | decidir | cada decisión con su porqué y su siguiente acción |
 
 ## Cómo se aplicó el método
@@ -54,13 +67,17 @@ Los números ordenan carpetas, no el tiempo.
   - el exportador OBJ sirve para la lámina 3;
   - los renders de Blender sirven para E6a y E10a, que se pidieron antes de las maquetas.
   
+  - el modelo constructivo y los planos de F1 los pide la lámina 2; al hacerlos aparecieron los dos errores de E12;
+  - el libro reúne el proyecto para el autor y para quien lo siga en el taller; las láminas y el informe son lo que pide el bando.
+
   No se hizo atlas ni aplicación web, porque ninguna decisión depende de ellos.
 
 ## Decisiones pendientes del autor
 
-1. **Visibilidad del repositorio** hasta el fallo (26-02-2027).
-2. **Construir E6 y E10** (maquetas 1:1) y, con su resultado, elegir **B2 o AB**.
-3. **La frase del concepto** (candidatas en la [bitácora](bitacora.md), entradas 6 y 9) y **el nombre** (O6: usar una palabra aymara como nombre de producto).
-4. **La piedra**: de catálogo (Nero Sahara Noir) o **granito de Comanche** apomazado. Para Comanche hacen falta una muestra, su color y su ficha (SERGEOMIN; EN 1926, EN 12372). El bando la admite («preferibilmente», art. 1); lo que se puede consultar a los organizadores es si pesa en el criterio de identidad Porada. E6a, con las dos piedras ([renders](05_consolidar/renders/)).
-5. **Revisar Bertonio 2011, p. 330**, y corregir el artículo si corresponde (O1).
-6. **Cotejar de primera mano la cita de Galen Johnson** (F15): hoy tiene página, pero viene del cotejo hecho en *Contenida*.
+1. **Visibilidad del repositorio** hasta el fallo (26-02-2027). Hoy es público y ya contiene las láminas del concurso (O7).
+2. **Hacer E6a y E10a** con cinco personas ([hoja](04_ensayar/E6a_E10a_hoja.md)), y **construir E6 y E10** (maquetas 1:1). Si E6 dice «adorno», la propuesta final pasa a B2.
+3. **El título y la frase**: «Punto fermo» y «la madera se mueve y se arma; lo único fijo es la piedra donde se traba» son provisionales (O6).
+4. **La piedra**: se mantuvo el Nero Sahara Noir del catálogo. Falta pedir la muestra y la ficha (EN 12372). El granito de Comanche queda registrado como alternativa.
+5. **Registrarse** en el concurso para tener la plantilla de las láminas y el código del participante (`armar.py --codigo`).
+6. **Revisar Bertonio 2011, p. 330**, y corregir el artículo si corresponde (O1).
+7. **Cotejar de primera mano la cita de Galen Johnson** (F15): hoy tiene página, pero viene del cotejo hecho en *Contenida*.

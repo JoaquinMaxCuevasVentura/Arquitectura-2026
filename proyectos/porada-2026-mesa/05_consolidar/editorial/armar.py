@@ -199,8 +199,15 @@ def armar_libro(args, laminas=None, informe=None):
     return pdf
 
 
+MUESTRAS = [("tapa", None), ("la_mesa_a_1-5", "+1:2400 × 1000 × 750"), ("apertura", "capítulo 2 · reunir"),
+            ("las_fuentes", "lámina de referencias"), ("las_versiones", "las versiones, una al lado de otra"),
+            ("ensayos", "¿Puede una piedra en cuña tensar"), ("el_guion", "La bitácora, como un guion"),
+            ("planos", "F1, alzado"), ("el_nodo_a_1-1", "el nodo a tamaño real, en sección"),
+            ("simulacion", "F1, Cycles"), ("laminas", "Lámina 1 de 3")]
+
+
 def muestras(pdf, dpi=80):
-    """Algunas dobles páginas en JPG, para el README."""
+    """Algunas dobles páginas en JPG, para el README (muestras/)."""
     import pymupdf
     destino = AQUI / "muestras"
     shutil.rmtree(destino, ignore_errors=True)
@@ -211,18 +218,27 @@ def muestras(pdf, dpi=80):
         pix = d[i].get_pixmap(dpi=dpi)
         return Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
 
-    total = d.page_count
-    # la tapa sola; después, dobles páginas que empiezan en par (índice 1 = página 2)
-    pares = [(None, 0)] + [(i, i + 1) for i in range(1, total - 1, 2)]
-    for k, (a, b) in enumerate(pares):
-        ims = [imagen(i) if i is not None else None for i in (a, b)]
+    for k, (nombre, marca) in enumerate(MUESTRAS, 1):
+        if marca is None:
+            par = [None, 0]
+        else:
+            salto = 0
+            if marca.startswith("+1:"):                  # la página siguiente a la que tiene el texto
+                salto, marca = 1, marca[3:]
+            idx = next((p.number for p in d if marca in p.get_text().replace("\n", " ")), None)
+            if idx is None:
+                continue
+            idx += salto
+            izq = idx if (idx + 1) % 2 == 0 else idx - 1          # página par a la izquierda
+            par = [izq, izq + 1 if izq + 1 < d.page_count else None]
+        ims = [imagen(i) if i is not None else None for i in par]
         w, h = next(im for im in ims if im is not None).size
         s = Image.new("RGB", (2 * w + 6, h), (58, 58, 56))
         for j, im in enumerate(ims):
             if im is not None:
                 s.paste(im, (j * (w + 6), 0))
-        s.save(destino / f"doble_{k:02d}.jpg", quality=82, optimize=True, progressive=True)
-    print("muestras:", destino, len(pares))
+        s.save(destino / f"{k:02d}_{nombre}.jpg", quality=82, optimize=True, progressive=True)
+    print("muestras:", destino, len(list(destino.glob("*.jpg"))))
 
 
 def main():

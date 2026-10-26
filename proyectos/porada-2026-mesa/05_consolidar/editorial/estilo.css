@@ -47,21 +47,18 @@
   size: 240mm 200mm;
   margin: 33.433333mm 18mm 16.122mm 98mm;
   background: #f4f2ec;
-  @top-left {
+  /* las cajas de arriba solo cubren el ancho entre márgenes: el capítulo va en la esquina, sobre la columna de margen */
+  @top-left-corner {
     content: string(capitulo, first);
-    width: 80mm;
     font: 400 6.2pt/1 "IBM Plex Mono";
     color: #1d1c1a;
-    padding-left: 18mm;
-    vertical-align: top;
-    padding-top: 12.5mm;
     text-align: left;
+    vertical-align: top;
+    padding: 12.5mm 0 0 18mm;
   }
-  @top-center { content: none; width: 0; }
-  @top-right {
+  @top-left {
     content: string(seccion, first);
-    width: 142mm;
-    padding-right: 18mm;
+    width: 124mm;
     font: 400 6.2pt/1 "IBM Plex Mono";
     color: #77736b;
     text-align: left;
@@ -70,32 +67,32 @@
   }
 }
 @page :left {
-  @bottom-left { content: counter(page, decimal-leading-zero); font: 400 6.2pt/1 "IBM Plex Mono"; color: #1d1c1a;
-    padding-left: 18mm; vertical-align: bottom; padding-bottom: 8mm; text-align: left; }
+  @bottom-left-corner { content: counter(page, decimal-leading-zero); font: 400 6.2pt/1 "IBM Plex Mono"; color: #1d1c1a;
+    text-align: left; vertical-align: bottom; padding: 0 0 8mm 18mm; }
 }
 @page :right {
   @bottom-right { content: counter(page, decimal-leading-zero); font: 400 6.2pt/1 "IBM Plex Mono"; color: #1d1c1a;
-    padding-right: 18mm; vertical-align: bottom; padding-bottom: 8mm; text-align: right; }
+    width: 124mm; text-align: right; vertical-align: bottom; padding-bottom: 8mm; }
 }
 @page :blank {
+  @top-left-corner { content: none; }
   @top-left { content: none; }
-  @top-right { content: none; }
-  @bottom-left { content: none; }
+  @bottom-left-corner { content: none; }
   @bottom-right { content: none; }
 }
 /* las planas: páginas compuestas a sangre, sin cabeza ni folio */
 @page plana {
   margin: 0;
+  @top-left-corner { content: none; }
   @top-left { content: none; }
-  @top-right { content: none; }
-  @bottom-left { content: none; }
+  @bottom-left-corner { content: none; }
   @bottom-right { content: none; }
 }
 /* las páginas compuestas con folio (el guion, las fichas) */
 @page compuesta {
   margin: 0 0 16.122mm 0;
+  @top-left-corner { content: none; }
   @top-left { content: none; }
-  @top-right { content: none; }
 }
 
 /* ------------------------------------------------------------------ la letra */
