@@ -282,8 +282,8 @@ def _rampa(nodos, paradas):
     return r
 
 
-def material_madera(nombre, oscuro, medio, claro, veta=(0.25, 9.0, 9.0), rugosidad=0.42):
-    """Veta alargada en X: ondas (anillos) deformadas por ruido; el aceite deja una rugosidad satinada."""
+def material_madera(nombre, oscuro, medio, claro, veta=(0.6, 60.0, 60.0), rugosidad=0.42):
+    """Veta a lo largo del primer eje de la pieza: fibra fina + figura ancha; el aceite deja una rugosidad satinada."""
     mat = bpy.data.materials.new(nombre)
     nt = mat.node_tree
     nd, ln = nt.nodes, nt.links
@@ -311,29 +311,34 @@ def material_madera(nombre, oscuro, medio, claro, veta=(0.25, 9.0, 9.0), rugosid
         ln.new(vec, mx.inputs["A"])
         ln.new(eje, mx.inputs["B"])
         vec = mx.outputs["Result"]
+    # Fibra: vetas finas y largas (ruido muy estirado a lo largo de la fibra).
     mapa = nd.new("ShaderNodeMapping")
     mapa.inputs["Scale"].default_value = veta
     ln.new(vec, mapa.inputs["Vector"])
-    ruido = nd.new("ShaderNodeTexNoise")
-    ruido.inputs["Scale"].default_value, ruido.inputs["Detail"].default_value = 4.0, 8.0
-    ln.new(mapa.outputs["Vector"], ruido.inputs["Vector"])
-    onda = nd.new("ShaderNodeTexWave")
-    onda.wave_type, onda.bands_direction = "BANDS", "Y"
-    onda.inputs["Scale"].default_value, onda.inputs["Distortion"].default_value = 0.9, 6.0
-    onda.inputs["Detail"].default_value = 4.0
-    ln.new(mapa.outputs["Vector"], onda.inputs["Vector"])
+    fibra = nd.new("ShaderNodeTexNoise")
+    fibra.inputs["Scale"].default_value, fibra.inputs["Detail"].default_value = 1.0, 10.0
+    fibra.inputs["Roughness"].default_value = 0.65
+    ln.new(mapa.outputs["Vector"], fibra.inputs["Vector"])
+    # Figura: variación ancha de tono entre zonas de la tabla.
+    mapa_fig = nd.new("ShaderNodeMapping")
+    mapa_fig.inputs["Scale"].default_value = (veta[0], veta[1] / 12, veta[2] / 12)
+    ln.new(vec, mapa_fig.inputs["Vector"])
+    figura = nd.new("ShaderNodeTexNoise")
+    figura.inputs["Scale"].default_value, figura.inputs["Detail"].default_value = 1.5, 3.0
+    ln.new(mapa_fig.outputs["Vector"], figura.inputs["Vector"])
     mezcla = nd.new("ShaderNodeMix")
     mezcla.data_type, mezcla.blend_type = "FLOAT", "MIX"
-    mezcla.inputs["Factor"].default_value = 0.6
-    ln.new(onda.outputs["Fac"], mezcla.inputs["A"])
-    ln.new(ruido.outputs["Fac"], mezcla.inputs["B"])
-    rampa = _rampa(nd, [(0.25, oscuro), (0.55, medio), (0.85, claro)])
+    mezcla.inputs["Factor"].default_value = 0.4
+    ln.new(fibra.outputs["Fac"], mezcla.inputs["A"])
+    ln.new(figura.outputs["Fac"], mezcla.inputs["B"])
+    rampa = _rampa(nd, [(0.3, oscuro), (0.5, medio), (0.72, claro)])
     ln.new(mezcla.outputs["Result"], rampa.inputs["Fac"])
     ln.new(rampa.outputs["Color"], bsdf.inputs["Base Color"])
     bsdf.inputs["Roughness"].default_value = rugosidad
+    # Poro: el mismo ruido de la fibra da un relieve leve de superficie, sin ondular la tabla.
     relieve = nd.new("ShaderNodeBump")
-    relieve.inputs["Strength"].default_value, relieve.inputs["Distance"].default_value = 0.08, 0.0005
-    ln.new(mezcla.outputs["Result"], relieve.inputs["Height"])
+    relieve.inputs["Strength"].default_value, relieve.inputs["Distance"].default_value = 0.02, 0.0002
+    ln.new(fibra.outputs["Fac"], relieve.inputs["Height"])
     ln.new(relieve.outputs["Normal"], bsdf.inputs["Normal"])
     return mat
 
@@ -378,7 +383,7 @@ def materiales():
     return {
         "nogal": material_madera("Nogal canaleta", (0.022, 0.012, 0.008), (0.048, 0.027, 0.017), (0.085, 0.05, 0.031)),
         "fresno": material_madera("Fresno", (0.30, 0.22, 0.14), (0.42, 0.32, 0.21), (0.55, 0.44, 0.30),
-                                  veta=(0.3, 12.0, 12.0), rugosidad=0.5),
+                                  veta=(0.8, 80.0, 80.0), rugosidad=0.5),
         # Mármoles que ya usan las mesas de Porada (E7): aproximaciones procedurales, no muestras.
         "nero": material_marmol("Mármol Nero Sahara Noir", (0.012, 0.012, 0.013), (0.03, 0.028, 0.026), (0.75, 0.72, 0.66)),
         "emperador": material_marmol("Mármol Marrone Emperador Dark", (0.045, 0.026, 0.016), (0.09, 0.055, 0.035),
