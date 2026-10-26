@@ -39,7 +39,7 @@ Bouvard y Pécuchet encuentran el libro en su propia biblioteca, después de fra
 
 El libro existe. Es el *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*, de Pierre Boitard, publicado por la *Librairie encyclopédique de Roret*. Roret vendía manuales prácticos para casi todos los oficios: los catálogos encuadernados al final del ejemplar ofrecen el del tintorero, el del relojero y el del cazador. Eran libros chicos, con láminas, pensados para que cualquiera pudiera aplicar un saber sin maestro, y un tomo costaba por lo general entre uno y tres francos y medio. El de Boitard, con su atlas, era de los caros: «1 vol. avec Atlas de 146 planches. 15 fr» (Boitard s. f., catálogo encuadernado al final).
 
-El ejemplar que se usa aquí es el de la Biblioteca de la Universidad de Sevilla, digitalizado en Internet Archive con el atlas de láminas. El catálogo le pone «[1834?]», el año de la primera edición, pero el libro se presenta como «seconde édition» y lleva encuadernados catálogos de Roret de junio de 1859 (Boitard s. f., vi y hojas finales). Flaubert leyó el manual en la década de 1870, mientras preparaba la novela. Las reglas que cita este artículo ya estaban en el primer libro de jardines de Boitard, de 1825 (Boitard 1825, 5–6), así que cualquier edición a su alcance las traía. [FALTA: ver la primera edición, de 1834.]
+El ejemplar que se usa aquí es el de la Biblioteca de la Universidad de Sevilla, digitalizado en Internet Archive con el atlas de láminas. El catálogo le pone «[1834?]», el año de la primera edición, pero la portada dice «nouvelle édition», una nota habla de «cette seconde édition» y el ejemplar lleva encuadernados catálogos de Roret de junio de 1859 (Boitard s. f., portada, vi y hojas finales). Flaubert leyó el manual en la década de 1870, mientras preparaba la novela. Las reglas que cita este artículo ya estaban en el primer libro de jardines de Boitard, de 1825 (Boitard 1825, 5–6), así que cualquier edición a su alcance las traía. [FALTA: ver la primera edición, de 1834.]
 
 El manual Roret ocupa un lugar preciso en la historia que plantea este número de *Astrágalo*. Está entre la *Encyclopédie* y el manual técnico moderno. Es, en pequeño, la promesa de que más información disponible mejora la capacidad de decidir y de construir. Bouvard y Pécuchet son los lectores ideales de esa promesa: tienen tiempo, plata y fe en los libros.
 
@@ -90,7 +90,7 @@ Flaubert copia a Boitard casi literalmente, con cambios pequeños. Para verlos s
 
 [FALTA: sumar lo que escriban los modelos con el protocolo limpio (apartado 5), como columna o como tabla aparte; los pilotos no entran. En la maqueta, la cursiva puede pasar a gris, como en la hoja de trabajo (`laminas/cotejo.html`).]
 
-Entre el manual y la novela hay dos copias más: la nota de lectura de Flaubert y los borradores. La nota es una lista. Empieza «Boitard "architecte des jardins" on a inventé des genres» y sigue con los géneros, las escenas y las plantas (Carnet 18 bis, f. 8, en Dord-Crouslé 2003). Guarda una distancia, la del «on», porque Boitard atribuye los géneros a otros autores (Boitard s. f., 21). Pero no copia ninguna conveniencia ni ninguna condición. En los borradores el «on» se vuelve «L'auteur les divise par genres, ou scènes» (Ms g 225-2, f. 169), y los géneros pasan a ser de Boitard. La regla, entonces, no se pierde al redactar. Ya falta al leer.
+Entre el manual y la novela hay dos copias más: la nota de lectura de Flaubert y los borradores, que se citan por manuscrito y folio. La nota es una lista. Empieza «Boitard “architecte des jardins” on a inventé des genres» y sigue con los géneros, las escenas y las plantas (Carnet 18 bis, f. 8, en Dord-Crouslé 2003). Guarda una distancia, la del «on», porque Boitard atribuye los géneros a otros autores (Boitard s. f., 21). Pero no copia ninguna conveniencia ni ninguna condición. En los borradores el «on» se vuelve «L'auteur les divise par genres, ou scènes» (Ms g 225-2, f. 169), y los géneros pasan a ser de Boitard. La regla, entonces, no se pierde al redactar. Ya falta al leer.
 
 La página 54 de la novela tiene ocho géneros. Seis tienen fuente clara en el manual y uno, una fuente débil. Lo que interesa es qué clase de fuente.
 
@@ -152,7 +152,7 @@ Flaubert da bastante para dibujar el jardín. La primera mañana, desde la venta
 
 El terreno, además, Flaubert lo eligió así. Buscaba «un sot endroit au milieu d'une belle contrée» y puso a los copistas «sur un plateau stupide, entre Caen et Falaise» (cartas de junio de 1874, citadas en Carrico 2019). En un primer plan de la novela, se quedan con un campo «pas d'eau, pas de vue, pas de bois, rien que des champs, de quoi faire du jardinage et un peu d'agriculture» (Ms gg 10, f. 33, en Carrico 2019). [FALTA: ver las cartas en la *Correspondance*, t. IV, pp. 813 y 816, y el folio en el manuscrito.] Es el terreno para el que Boitard pedía conservar «à la plaine le caractère de la plaine» (Boitard s. f., 50). El catálogo que los copistas llevaron ahí pedía lo que el plan le había quitado: el puente pedía agua, y la roca, un sitio rocoso. [POSIBLE: la finca tenía un lugar pedregoso, la Butte, «un monticule couvert de cailloux» (Flaubert 1910, 36), pero en alto y lejos del jardín. Los copistas la mandaron despedregar para el trigo (36–37), y la roca la levantaron en el césped, con granitos traídos del río. Es una lectura: Flaubert no relaciona las dos escenas.]
 
-**Fig. 2** Dos jardines a la misma escala: Wissous, el ejemplo de Boitard para una casa modesta (lám. 18; 115–116), y Chavignolles, reconstruido con los datos de la novela (Flaubert 1910, cap. II). En punteado, lo supuesto; en amarillo, lo que Boitard excluye en un jardín de uno o dos *arpents* (114). Fuente: elaboración propia; lámina de Boitard (s. f.), dominio público. [FALTA: redibujar a mano, a 16 × 10 cm como máximo.]
+**Fig. 2** Dos jardines a la misma escala: Wissous, el ejemplo de Boitard para una casa modesta (lám. 18; 115–16), y Chavignolles, reconstruido con los datos de la novela (Flaubert 1910, cap. II). En punteado, lo supuesto; en amarillo, lo que Boitard excluye en un jardín de uno o dos *arpents* (114). Fuente: elaboración propia; lámina de Boitard (s. f.), dominio público. [FALTA: redibujar a mano, a 16 × 10 cm como máximo.]
 
 La planta muestra tres cosas que la tabla no muestra.
 
@@ -185,7 +185,7 @@ Antes de construir, el texto describe la huerta que heredaron con dos alamedas e
 
 La copia del jardín tiene eslabones. Boitard copia a Chambers para criticarlo. Flaubert toma notas de Boitard, y en la nota ya no hay conveniencias (Dord-Crouslé 2003, párr. 28). La nota pasa por varios borradores. La novela pone el resumen en la página 54. Bouvard y Pécuchet lo aplican en su huerta. Después, durante siglo y medio, la novela se lee, se comenta y se cita mucho más que el manual. Un modelo de lenguaje aprende de ese archivo. Cuando se le pregunta por Boitard, ¿qué responde?
 
-Los modelos de lenguaje se describieron como sistemas que juntan secuencias de formas vistas en sus datos, según la probabilidad con que se combinan, sin referencia al significado (Bender et al. 2021, 616–617). La comparación con los dos copistas está a la mano, y por eso conviene desconfiar de ella. El artículo no afirma que una máquina «piense» como Bouvard y Pécuchet. Compara procedimientos: tomar un repertorio y usarlo sin las reglas de su uso. Y lo pone a prueba con consignas escritas antes de generar.
+Los modelos de lenguaje se describieron como sistemas que juntan secuencias de formas vistas en sus datos, según la probabilidad con que se combinan, sin referencia al significado (Bender et al. 2021, 616–17). La comparación con los dos copistas está a la mano, y por eso conviene desconfiar de ella. El artículo no afirma que una máquina «piense» como Bouvard y Pécuchet. Compara procedimientos: tomar un repertorio y usarlo sin las reglas de su uso. Y lo pone a prueba con consignas escritas antes de generar.
 
 Que la cadena pierda la excepción tampoco es, en sí, algo propio de la máquina. Lev Manovich recuerda que todo resumen «is going to omit some details», y que las historias cualitativas de la cultura «are also summaries of information» (Manovich 2018, «The Limits of Statistical Reason»). La tradición de los tratados, las historias del jardín y la nota de Flaubert ya eran resúmenes, y dejaban afuera a Boitard. La pregunta del apartado es si la máquina es un eslabón más de esa cadena o hace algo distinto.
 
@@ -209,7 +209,7 @@ Hay una objeción que conviene atender desde ahora. Para Mario Carpo, la abundan
 
 ### 5.4 Lo que queda por saber
 
-[Si el protocolo limpio confirma los pilotos, el apartado cuenta otra historia que la prevista. La máquina no copia a los copistas. Sin el libro repite la tradición; con el libro habla como el cura. Pero el cura vio el jardín desde el comedor y lo recorrió, y el modelo habla de una lista que no vio. Cárcamo pregunta si no confundimos «hablar acerca de un edificio, con ver un edificio, o con hacer un edificio» (Salazar y Cárcamo Pino 2021, 1485). Lo que la salida reproduce es la forma del juicio, no la mirada. Maturana decía algo parecido de los primeros laboratorios de inteligencia artificial: imitaban «la apariencia» de los fenómenos «en el ámbito de su visión como observadores» (Maturana 2004, 13). Lo que se pierde en la cadena no es la regla sino la fuente, y lo que ninguna copia trae es el sitio.]
+[Si el protocolo limpio confirma los pilotos, el apartado cuenta otra historia que la prevista. La máquina no copia a los copistas. Sin el libro repite la tradición; con el libro habla como el cura. Pero el cura vio el jardín desde el comedor y lo recorrió, y el modelo habla de una lista que no vio. Cárcamo pregunta si no confundimos «hablar acerca de un edificio, con ver un edificio, o con hacer un edificio» (Salazar-Sánchez y Cárcamo-Pino 2021, 1485). Lo que la salida reproduce es la forma del juicio, no la mirada. Maturana decía algo parecido de los primeros laboratorios de inteligencia artificial: imitaban «la apariencia» de los fenómenos «en el ámbito de su visión como observadores» (Maturana 2004, 13). Lo que se pierde en la cadena no es la regla sino la fuente, y lo que ninguna copia trae es el sitio.]
 
 [Los resultados se dan con la dispersión de las diez salidas de cada consigna, no solo con la respuesta más común. Que lo plausible borre la excepción es algo que se observa en estos modelos, con estas consignas y en esta fecha, no una ley: Manovich deja abierta la pregunta de si la automatización reduce la diversidad (Manovich 2018, «Aesthetic AI»). Si el protocolo limpio no confirma los pilotos, se vuelve a la hipótesis anterior y se dice.]
 
@@ -259,54 +259,54 @@ Al abrirse la cortina, el puente veneciano era un acento circunflejo sobre los p
 
 ## Referencias
 
-Bender, Emily M., Timnit Gebru, Angelina McMillan-Major y Shmargaret Shmitchell. 2021. «On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?». En *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency*, 610–623. Nueva York: ACM.
+Bender, Emily M., Timnit Gebru, Angelina McMillan-Major y Shmargaret Shmitchell. 2021. «On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?». En *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency*, 610–23. Nueva York: Association for Computing Machinery. https://doi.org/10.1145/3442188.3445922.
 
-Blondel, Jacques-François. 1752. «Bienseance (terme d'Architecture)». En Diderot y d'Alembert 1751–1765, 2:245.
+Blondel, Jacques-François. 1752. «Bienseance (terme d'Architecture)». En Diderot y d'Alembert 1751–65, 2:245.
 
-Blondel, Jacques-François. 1754. «Convenance (terme d'Architecture)». En Diderot y d'Alembert 1751–1765, 4:161.
+Blondel, Jacques-François. 1754. «Convenance (terme d'Architecture)». En Diderot y d'Alembert 1751–65, 4:161.
 
 Boitard, Pierre. 1825. *Traité de la composition et de l'ornement des jardins*. París: Audot.
 
-Boitard, Pierre. S. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Segunda edición. 2 vols. París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019.
+Boitard, Pierre. s. f. *Nouveau manuel complet de l'architecte des jardins, ou l'art de les composer et de les décorer*. Nueva ed. 2 vols. (texto y atlas). París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019. https://archive.org/details/A039a018 y https://archive.org/details/A039a019.
 
-Cárcamo-Pino, Mauricio Arnoldo. 2025. «Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura». *Revista Chilena de Literatura* 112: 233–264.
+Cárcamo-Pino, Mauricio Arnoldo. 2025. «Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura». *Revista Chilena de Literatura*, n.º 112: 233–64.
 
-Carpo, Mario. 2018. «Big Data and the End of History». *International Journal for Digital Art History* 3. https://doi.org/10.11588/dah.2018.3.49913. [Leído solo el resumen.]
+Carpo, Mario. 2018. «Big Data and the End of History». *International Journal for Digital Art History*, n.º 3. https://doi.org/10.11588/dah.2018.3.49913. [FALTA: leer el artículo completo, o citar solo lo que dice el resumen.]
 
-Carrico, Abbey. 2019. «L'eau et l'agriculture dans *Bouvard et Pécuchet*». *Revue Flaubert* 18. Centre Flaubert, Université de Rouen. https://flaubert.univ-rouen.fr/labo-flaubert/revue-flaubert/revue-flaubert-n18-2019/leau-et-lagriculture-dans-bouvard-et-pecuchet/.
+Carrico, Abbey. 2019. «L'eau et l'agriculture dans *Bouvard et Pécuchet*». *Revue Flaubert*, n.º 18. https://flaubert.univ-rouen.fr/labo-flaubert/revue-flaubert/revue-flaubert-n18-2019/leau-et-lagriculture-dans-bouvard-et-pecuchet/.
 
-Diderot, Denis. 1754a. «Convenance (Gramm. & Morale)». En Diderot y d'Alembert 1751–1765, 4:160–161.
+Diderot, Denis. 1754a. «Convenance (Gramm. & Morale)». En Diderot y d'Alembert 1751–65, 4:160–61.
 
-Diderot, Denis. 1754b. «Copiste (Art méch.)». En Diderot y d'Alembert 1751–1765, 4:177.
+Diderot, Denis. 1754b. «Copiste (Art méch.)». En Diderot y d'Alembert 1751–65, 4:177.
 
-Diderot, Denis, y Jean le Rond d'Alembert, eds. 1751–1765. *Encyclopédie, ou Dictionnaire raisonné des sciences, des arts et des métiers*. 17 vols. París: Briasson, David, Le Breton y Durand; Neuchâtel: Faulche. Edición digital: ARTFL Encyclopédie, University of Chicago. https://encyclopedie.uchicago.edu/.
+Diderot, Denis, y Jean le Rond d'Alembert, eds. 1751–65. *Encyclopédie, ou Dictionnaire raisonné des sciences, des arts et des métiers*. 17 vols. París: Briasson, David, Le Breton y Durand. Edición digital: ARTFL Encyclopédie, University of Chicago. https://encyclopedie.uchicago.edu/.
 
-Dord-Crouslé, Stéphanie. 2003. «Flaubert et les Manuels Roret ou le paradoxe de la vulgarisation. L'art des jardins dans *Bouvard et Pécuchet*». En *Le Partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. https://doi.org/10.4000/books.pul.6576.
+Dord-Crouslé, Stéphanie. 2003. «Flaubert et les manuels Roret ou le paradoxe de la vulgarisation: L'art des jardins dans *Bouvard et Pécuchet*». En *Le partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. https://doi.org/10.4000/books.pul.6576.
 
-Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin de l'Antiquité à la fin du XIXe siècle*, editado por Gérard Peylet, 229–242. Eidôlon 74. Pessac: Presses universitaires de Bordeaux. https://doi.org/10.4000/books.pub.27431.
+Feyler, Patrick. 2006. «Bouvard et Pécuchet jardiniers». En *Les mythologies du jardin de l'Antiquité à la fin du XIXe siècle*, editado por Gérard Peylet, 229–42. Eidôlon 74. Pessac: Presses universitaires de Bordeaux. https://doi.org/10.4000/books.pub.27431.
 
-Flaubert, Gustave. S. f. *Bouvard et Pécuchet*, borradores. Ms g 225-2. Bibliothèque municipale de Rouen. Transcripción en «Les manuscrits de *Bouvard et Pécuchet*», Université de Rouen Normandie. https://flaubert.univ-rouen.fr/manuscrits/.
+Flaubert, Gustave. 1910. *Bouvard et Pécuchet*. Œuvres complètes de Gustave Flaubert. París: Louis Conard. [FALTA: Wikisource lo da como «tome I»; comprobar en el facsímil si el volumen lleva número. Pasar a una edición crítica.]
 
-Flaubert, Gustave. S. f. Carnet de travail 18 bis. Bibliothèque historique de la Ville de Paris. [Visto en Dord-Crouslé 2003.]
+Flaubert, Gustave. 1998. *Correspondance*. Vol. 4. Editado por Jean Bruneau. Bibliothèque de la Pléiade. París: Gallimard. Citado en Carrico 2019. [FALTA: ver las pp. 813 y 816.]
 
-Flaubert, Gustave. S. f. Plan de *Bouvard et Pécuchet*. Ms gg 10. Bibliothèque municipale de Rouen. [Citado por Carrico 2019; FALTA ver el f. 33.]
+Flaubert, Gustave. s. f. Borradores de *Bouvard et Pécuchet*. Ms g 225-2. Bibliothèque municipale de Rouen. Transcripción en «Les manuscrits de *Bouvard et Pécuchet*», Université de Rouen Normandie. https://flaubert.univ-rouen.fr/manuscrits/.
 
-Flaubert, Gustave. 1910. *Bouvard et Pécuchet*. En *Œuvres complètes de Gustave Flaubert*, t. I. París: Louis Conard. [FALTA: pasar a una edición crítica.]
+Flaubert, Gustave. s. f. Carnet de travail 18 bis. Bibliothèque historique de la Ville de Paris. Citado en Dord-Crouslé 2003.
 
-Flaubert, Gustave. 1998. *Correspondance*. T. IV. Editado por Jean Bruneau. Bibliothèque de la Pléiade. París: Gallimard. [Citada por Carrico 2019; FALTA ver las pp. 813 y 816.]
+Flaubert, Gustave. s. f. Plan de *Bouvard et Pécuchet*. Ms gg 10. Bibliothèque municipale de Rouen. Citado en Carrico 2019. [FALTA: ver el f. 33.]
 
-Leclerc, Yvan. 2019. «Bouvard et Pécuchet sur leur terre : comment bien rater sans savoir pourquoi». *Revue Flaubert* 18. Centre Flaubert, Université de Rouen.
+Leclerc, Yvan. 2019. «Bouvard et Pécuchet sur leur terre: comment bien rater sans savoir pourquoi». *Revue Flaubert*, n.º 18. [FALTA: URL; el sitio de la revista no respondió el 26 de octubre.]
 
 Manovich, Lev. 2001. «Post-media Aesthetics». Texto en el sitio del autor. https://manovich.net/content/04-projects/036-post-media-aesthetics/29_article_2001.pdf.
 
-Manovich, Lev. 2018. *AI Aesthetics*. Moscú: Strelka Press. [Sin páginas impresas: se cita por sección.]
+Manovich, Lev. 2018. *AI Aesthetics*. Moscú: Strelka Press.
 
-Maturana, Humberto. 2004. «Veinte años después. Prefacio de Humberto Maturana Romesín a la segunda edición». En Maturana y Varela (1973) 2004, 9–33.
+Maturana, Humberto. 2004. «Veinte años después: Prefacio de Humberto Maturana Romesín a la segunda edición». En Maturana y Varela (1973) 2004, 9–33.
 
-Maturana, Humberto, y Francisco J. Varela. (1973) 2004. *De máquinas y seres vivos. Autopoiesis: la organización de lo vivo*. 6.ª ed. Santiago de Chile: Editorial Universitaria; Buenos Aires: Lumen.
+Maturana, Humberto, y Francisco J. Varela. (1973) 2004. *De máquinas y seres vivos: Autopoiesis; la organización de lo vivo*. 6.ª ed. Santiago de Chile: Editorial Universitaria; Buenos Aires: Lumen.
 
-Salazar, Cristian G., y Mauricio A. Cárcamo Pino. 2021. «Acerca del “lenguaje” de las manos (manuaje). Una conversación con Mauricio Cárcamo». *Arte, Individuo y Sociedad* 33 (4): 1481–1487. https://doi.org/10.5209/aris.76611.
+Salazar-Sánchez, Cristian Gonzalo, y Mauricio Arnoldo Cárcamo-Pino. 2021. «Acerca del “lenguaje” de las manos (manuaje): Una conversación con Mauricio Cárcamo». *Arte, Individuo y Sociedad* 33 (4): 1481–87. https://doi.org/10.5209/aris.76611.
 
-Thomas, Jeffrey. 2019. «Le jardin face à *Bouvard et Pécuchet*». *Revue Flaubert* 18.
+Thomas, Jeffrey. 2019. «Le jardin face à *Bouvard et Pécuchet*». *Revue Flaubert*, n.º 18. [FALTA: URL.]
 
-Villagómez, Carlos. 2018. «Pensamientos e imágenes de la arquitectura de la incontinencia». *Astrágalo* 24: 69–86. https://doi.org/10.12795/astragalo.2018.i24.05.
+Villagómez, Carlos. 2018. «Pensamientos e imágenes de la arquitectura de la incontinencia». *Astrágalo*, n.º 24: 69–86. https://doi.org/10.12795/astragalo.2018.i24.05.
