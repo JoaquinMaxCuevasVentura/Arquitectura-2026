@@ -114,3 +114,17 @@ Cada incorporación tiene que resolver una dificultad ya identificada. La pregun
 | **14 de diciembre** | Cierre del campo. Si el artículo va al n.º 52 o espera al n.º 53 («Investigación en proyecto arquitectónico», cierre 22 de junio de 2027) | Si hay ciclos suficientes para sostener la sección 5 |
 | **4 de enero** | Borrador completo; recortes | Extensión de la sección elegida (`01`) |
 | **12 de enero** | Envío, con tres días de margen | Lista de envío (`01`) |
+
+## 9. Actualización del 26 de octubre (tarde)
+
+**Lo que entró, por pedido del autor.**
+
+| Incorporación | Dificultad que resuelve | Decisión que permite |
+|---|---|---|
+| Taxonomía visual en tres tableros (`taxonomia/`) | Ver si las seis categorías y los siete gestos alcanzan para ordenar puestos de otros tiempos y lugares (H2), y qué parte del ciclo no muestra el archivo | Qué observar con más cuidado: el **guardado**, que el archivo casi no muestra |
+| «Mano» y *manoaje* (Cárcamo Pino, 2025b) | Nombrar la secuencia con una palabra del castellano y sostener «se transmite» | Si la pregunta conserva «se transmite» además de «cómo se aprende» (sección 2) |
+| Motivo y motifema (Toro Henao, 2014) | Separar lo fijo de lo variable al comparar ciclos (H1) | Cómo se lee el registro: el verbo es el motivo; su realización, el motifema |
+
+**Lo que cambia en los contrastes.** H1 gana un nombre para su alternativa. Si la secuencia no es estable, la mano se inventa al jugarla («mientras hace, se inventa el “modo de hacer”»: Pareyson, cit. en Cárcamo Pino, 2025b: 246, n. 12). El umbral no se mueve.
+
+**Lo que sigue en espera:** la tipografía *Contenida* (falta el enlace), Semper como marco (solo la imagen está verificada) y la estructura con dos hipótesis (`05`, sección 2: decide el autor).

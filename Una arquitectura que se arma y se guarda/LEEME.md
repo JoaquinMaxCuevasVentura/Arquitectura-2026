@@ -20,6 +20,8 @@ En La Paz, muchos puestos de venta se construyen cada mañana y se guardan cada 
 | `campo/ficha_de_ciclo.md` | Plantilla para cada ciclo observado | — |
 | `campo/registro_de_operaciones.csv` | La tabla de operaciones (vacía): una fila por operación | — |
 | `campo/comparar_ciclos.py` | Compara los ciclos de cada puesto y dice si la secuencia es estable | Si se sostiene la hipótesis H1, o si «secuencia» pasa a «repertorio» |
+| `analisis/05_carcamo_toro_henao_y_donde_leer.md` | Lo que aportan los dos artículos que envió el autor (Cárcamo Pino, 2025b; Toro Henao, 2014), propuestas de estructura y epígrafe, y dónde leer cada libro del núcleo (Internet Archive y Monoskop) | Qué leer primero; si el artículo adopta dos hipótesis y dos conclusiones |
+| `taxonomia/` | Taxonomía visual: 32 imágenes de dominio público en tres tableros (el árbol, el mapa de fechas y el relato), con su catálogo y su `LEEME.md` | Qué parte del ciclo no muestra el archivo; si las seis categorías alcanzan (H2) |
 | `articulo/borrador_v0.md` | El artículo: título, resúmenes, secciones 1-4 y 7 escritas; 5, 6 y 8 como guías con lo que debe ir | — |
 
 Para comparar ciclos: `python3 campo/comparar_ciclos.py` (solo usa la biblioteca estándar).
@@ -30,7 +32,8 @@ Para comparar ciclos: `python3 campo/comparar_ciclos.py` (solo usa la biblioteca
 2. **Elegir tipología, lugar y los tres puestos** (criterios en `campo/protocolo.md`, sección 2).
 3. **Revisar la pregunta ajustada y los umbrales** de las hipótesis (`02`). Los umbrales se pueden cambiar ahora; después del campo, no.
 4. **La estética de las láminas:** la de Servino entra con cinco correcciones (`04`, sección 2). La primera lámina se pone a prueba el 23 de noviembre.
-5. ***Contenida*:** pasar el enlace a la tipografía. No está en los repositorios de GitHub ni en Drive, y los canales de Are.na que nombran las notas de *Altiplano* ya no aparecen en la cuenta. Queda «en espera» hasta verla (`02`, sección 7).
+5. **La estructura y el epígrafe:** dos hipótesis y dos conclusiones, como Cárcamo Pino, y un epígrafe con palabras de una vendedora (`05`, sección 2).
+6. ***Contenida*:** pasar el enlace a la tipografía. No está en los repositorios de GitHub ni en Drive, y los canales de Are.na que nombran las notas de *Altiplano* ya no aparecen en la cuenta. Queda «en espera» hasta verla (`02`, sección 7).
 
 ## Reglas de trabajo
 

@@ -92,3 +92,23 @@ Para que el artículo no se desborde, el núcleo tiene unas quince obras. El res
 7. Monteys y Fuertes (2001) y Fuão (2011): el dibujo y la collage.
 8. Una sola obra de notación: Tschumi (1981) o Halprin (1969).
 9. *La Prensa* (2026): el puesto que no se arma.
+
+## 6. Actualización del 26 de octubre (tarde)
+
+**Fuentes nuevas, cotejadas hoy [V].**
+
+| Fuente | Qué aporta | Dónde se usa |
+|---|---|---|
+| Wright, Marie Robinson (1907). *Bolivia, the Central Highway of South America*. Filadelfia: G. Barrie & Sons | Mercado de La Paz: «Groups of vendors sit along the edge of the curb, with their vegetables, fruits, and flowers spread in front of them on the ground» (p. 148). Fotos de mercados de Sucre y Cochabamba y de la calle del Comercio | Taxonomía (`taxonomia/`); posible antecedente histórico |
+| Marcoy, Paul (1875). *Travels in South America*, t. 1. Londres: Blackie | Cuzco: un puesto que es «a simple cloth spread on the ground, and held down by four stones» (p. 260); un bazar improvisado «of awnings and great umbrellas» (p. 222). Mirada despectiva del viajero en la misma página 260 | Taxonomía; relato |
+| Wiener, Charles (1880). *Pérou et Bolivie*. París: Hachette | La Paz: una «chichera installée au coin d'un carrefour» (p. 596) | Taxonomía |
+| Semper, Gottfried (1863). *Der Stil*, t. 2. Múnich | La cabaña caribe: «die Mattenumhegung als Raumabschluss oder Wand» (p. 276). Pasa de [P] a [V] para la imagen; la tesis general de Semper sigue sin leer | Taxonomía; hipótesis de `02`, sección 4 |
+| Gilbreth, Frank B. (1911). *Motion Study*. Nueva York: Van Nostrand | La secuencia prescrita: «the correct sequence [...] for the fewest, shortest, and most economical motions» (p. 12). Pasa de [P] a [V] | Taxonomía; advertencia de la sección 7 |
+| Cárcamo Pino (2025b), con el PDF del autor | Manuaje (p. 244), «mano» (p. 244, n. 10), *manoaje* (p. 259), manuaje como sistema de transmisión (p. 248) | Borrador, sección 3 (`05`) |
+| Toro Henao, Diana Carolina (2014). «Oralitura y tradición oral». *Lingüística y Literatura*, 65: 239-256 | Motivo y motifema (pp. 242-244) | Borrador, sección 4 (`05`) |
+
+**Fuentes citadas a través de otras [E]:** Ballón Aguirre (2006), por Toro Henao; Salazar Sánchez y Cárcamo Pino (2021), por Cárcamo Pino. Hay que cotejarlas en el original antes del envío.
+
+**Datos de edición confirmados en Monoskop [E]:** Leroi-Gourhan, *El gesto y la palabra*, trad. Felipe Carrera D., Caracas, Universidad Central de Venezuela; Mauss, «Techniques of the Body», *Economy and Society*, 2(1), 1973: 70-88. Siguen sin leerse.
+
+**Acceso:** *Hacer plata sin plata* está abierto en la colección de la biblioteca del PIEB en Internet Archive. Dónde leer el resto: `05`, sección 3.

@@ -68,6 +68,8 @@ El texto sigue este orden: los antecedentes (sección 2), las herramientas para 
 
 **Las manos.** Mauricio Cárcamo Pino llama *manuaje* a lo que hacen las manos cuando piensan y comunican (Cárcamo Pino, 2025b: 244). Recuerda que la misma mano tiene dos agarres: el de fuerza, como al tomar un martillo, y el de precisión, como al «sujetar un papel con dos yemas dactilares» (Cárcamo Pino, 2025a: 10). El montaje de un puesto alterna los dos: cargar y tensar, atar y ordenar. El registro anota cuál pide cada operación y quién la hace.
 
+**Una mano.** El castellano tiene una palabra para la secuencia entera. Además del órgano, «mano» nombra un «conjunto de acciones manuales relacionadas en un ámbito específico», como una mano de póker: «un set articulado de movimientos manuales (y sus resultados) desplegados en el ámbito del juego» (Salazar Sánchez y Cárcamo Pino, 2021: 1484, cit. en Cárcamo Pino, 2025b: 244, n. 10). Armar un puesto es una mano en los dos sentidos del habla corriente: la partida que se juega cada mañana y la «buena mano» de quien la juega. Cárcamo Pino propone llamar *manoaje* a «un subgrupo contextual de acciones manuales, un manoaje específico, por ejemplo, para un ámbito profesional» (Cárcamo Pino, 2025b: 259). El de armar y guardar un puesto es uno de ellos. Y como todo manuaje, no es solo una manera de hacer: es también «un conjunto/sistema de transmisión de esos conocimientos y experiencias» (ibid.: 248).
+
 **Aprender haciendo.** Las técnicas del cuerpo se aprenden imitando (Mauss, 1936 [VERIFICAR]), y quien aprende empieza por las tareas del borde, las que menos arriesgan (Lave y Wenger, 1991 [VERIFICAR]). Esto da un indicador que se puede observar: qué operaciones se dejan a quien ayuda y cuáles se reserva la persona responsable.
 
 **Una opinión no escrita.** Xavier Monteys y Pere Fuertes reconocen en quienes habitan una casa un saber sobre la arquitectura. Su acción sobre ella, «lenta y sistemática», expresa «una opinión no escrita pero de innegable valor» (Monteys y Fuertes, 2001: 26). Un puesto es esa opinión sobre la calle, rehecha cada mañana: dónde apoyarse, por dónde llega la lluvia, hasta dónde alcanza el brazo, cuánto se puede ocupar sin cerrar el paso.
@@ -95,7 +97,7 @@ Fuente: elaboración propia.
 
 **Registro.** De cada puesto se observan [n] ciclos completos, desde que llega el primer bulto hasta que se va el último, entre [fechas], en días comunes, en días de feria y [con lluvia]. Cada ciclo se registra de cuatro maneras: fotos a intervalo fijo desde un punto acordado; una lista de operaciones en orden, cada una con su hora, quién la hace y un verbo de un vocabulario fijo; mediciones con cinta (planta ocupada, alturas, alcance y bultos guardados); y un croquis de los apoyos prestados y de las huellas que el puesto deja en la ciudad.
 
-**Comparación.** Las listas de operaciones de cada ciclo se comparan entre sí para medir qué parte de la secuencia se repite en el mismo orden. [CAMPO: resultado.]
+**Comparación.** Las listas de operaciones de cada ciclo se comparan entre sí para medir qué parte de la secuencia se repite en el mismo orden. La lectura toma una distinción de los estudios de la tradición oral, otro saber que no se escribe: el *motivo*, una unidad en la que «una parte se mantiene estable y fija», y el *motifema*, su realización concreta «en una variante determinada» (Toro Henao, 2014: 243, a partir de Ballón Aguirre, 2006). En el puesto, el motivo es la operación (*cubrir*, *apilar*, *calzar*) y el motifema es cómo se hizo ese día: con qué tela, contra qué reja, a qué hora. Como en ese método, primero se registran las realizaciones, y los motivos estables aparecen al comparar (ibid.: 244). [CAMPO: resultado.]
 
 **Conversación.** Después de cada ciclo se conversa con la persona responsable sobre cómo aprendió, qué arma primero y por qué, qué cambia con el clima, qué acordó con los vecinos y dónde duerme el puesto.
 
@@ -171,6 +173,8 @@ La convocatoria pregunta por la intervención en arquitectura y urbanismo. El pu
 
 > Solo las obras citadas en este borrador. Las marcas [E] y [P] siguen el criterio de `analisis/03` y se quitan antes del envío, cuando todas estén verificadas. Ajustar el estilo a las normas de la revista.
 
+[E] Ballón Aguirre, Enrique (2006). *Tradición oral peruana*. Lima: Fondo Editorial de la Pontificia Universidad Católica del Perú. (Citado a través de Toro Henao, 2014.)
+
 Cárcamo Pino, Mauricio Arnoldo (2025a). «Madera, herramientas y manuaje. Notas para una ontología evolutiva del diseñar». *Revista Arteoficio*, 21: 5-12. https://doi.org/10.35588/nn3v3487
 
 Cárcamo Pino, Mauricio Arnoldo (2025b). «Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura». *Revista Chilena de Literatura*, 112: 233-264.
@@ -209,4 +213,8 @@ Pallasmaa, Juhani (2014 [2011]). *La imagen corpórea. Imaginación e imaginario
 
 [E] Pereira, René (s. f.). *Comercio popular en vía pública*. La Paz: GAMLP, PIEB y Observatorio La Paz Cómo Vamos.
 
+[E] Salazar Sánchez, Cristian Gonzalo y Cárcamo Pino, Mauricio Arnoldo (2021). «Acerca del “lenguaje” de las manos (manuaje). Una conversación con Mauricio Cárcamo». *Arte, Individuo y Sociedad*, 33(4): 1481-1487. (Citado a través de Cárcamo Pino, 2025b; cotejar en el original.)
+
 [E] Tassi, Nico; Medeiros, Carmen; Rodríguez-Carmona, Antonio y Ferrufino, Giovana (2013). *«Hacer plata sin plata»: el desborde de los comerciantes populares en Bolivia*. La Paz: PIEB.
+
+Toro Henao, Diana Carolina (2014). «Oralitura y tradición oral. Una propuesta de análisis de las formas artísticas orales». *Lingüística y Literatura*, 65: 239-256.
