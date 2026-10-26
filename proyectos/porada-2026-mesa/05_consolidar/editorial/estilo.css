@@ -1,0 +1,413 @@
+/* El libro de Punto fermo: el sistema editorial en CSS (Vivliostyle, CSS Paged Media).
+ *
+ * La doble página es el tablero a 1:5: 480 × 200 mm son 2400 × 1000 mm. Cada página mide 240 × 200.
+ * La retícula sale de la mesa:
+ *   filas: las seis tablas a 1:5, de 32,833 mm, con la junta de fabricación (3 mm → 0,6 mm) entre ellas.
+ *     r1 0 · r2 33,433 · r3 66,867 · r4 100,3 · r5 133,733 · r6 167,167 (mm)
+ *   la interlínea es la octava parte de una tabla y su junta: 4,179 mm (11,85 pt); 36 líneas de r2 al pie.
+ *   columnas, desde el borde de la izquierda:
+ *     aire 0–18 · margen 18–82 (64 mm) · cabezal 82–98 (el caballete a 1:5: 80 mm → 16) · texto 98–222 (124 mm) · aire 222–240.
+ *   el lomo es el apoyo central de la mesa.
+ * Como en Contenida, la retícula de las páginas de texto no se espeja: el margen va siempre a la izquierda.
+ * Las planas (páginas compuestas) sí son la mesa entera: en la doble, el caballete cae a 90 mm de cada borde.
+ *
+ * Dos letras: Newsreader (texto) e IBM Plex Mono (lo medido: datos, cotas, pies, índices).
+ * Dos tintas: tinta y almagre, el rojo del cordel de marcar: lo que se marca antes de cortar (lo prerregistrado).
+ * La piedra es negra y llena: el punto final de cada palabra de apertura, lo único que la junta no corta.
+ */
+
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-200-normal.woff2); font-weight: 200; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-300-normal.woff2); font-weight: 300; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-300-italic.woff2); font-weight: 300; font-style: italic; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-400-normal.woff2); font-weight: 400; font-style: normal; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-400-italic.woff2); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-500-normal.woff2); font-weight: 500; font-style: normal; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-400-normal.woff2); font-weight: 400; font-style: normal; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-400-italic.woff2); font-weight: 400; font-style: italic; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-500-normal.woff2); font-weight: 500; font-style: normal; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-600-normal.woff2); font-weight: 600; font-style: normal; }
+
+:root {
+  --papel: #f4f2ec;
+  --tinta: #1d1c1a;
+  --grafito: #4f4d48;
+  --gris: #77736b;
+  --gris2: #a19c92;
+  --filete: #d3cdc2;
+  --almagre: #9a3b22;
+  --linea: 4.179167mm;
+  --media: 2.089583mm;
+  --tabla: 33.433333mm;
+  --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace;
+}
+
+/* ------------------------------------------------------------------ las páginas */
+
+@page {
+  size: 240mm 200mm;
+  margin: 33.433333mm 18mm 16.122mm 98mm;
+  background: #f4f2ec;
+  @top-left {
+    content: string(capitulo, first);
+    font: 400 6.2pt/1 "IBM Plex Mono";
+    color: #1d1c1a;
+    padding-left: 18mm;
+    vertical-align: top;
+    padding-top: 12.5mm;
+    text-align: left;
+  }
+  @top-right {
+    content: string(seccion, first);
+    width: 124mm;
+    font: 400 6.2pt/1 "IBM Plex Mono";
+    color: #77736b;
+    text-align: left;
+    vertical-align: top;
+    padding-top: 12.5mm;
+  }
+}
+@page :left {
+  @bottom-left { content: counter(page, decimal-leading-zero); font: 400 6.2pt/1 "IBM Plex Mono"; color: #1d1c1a;
+    padding-left: 18mm; vertical-align: bottom; padding-bottom: 8mm; text-align: left; }
+}
+@page :right {
+  @bottom-right { content: counter(page, decimal-leading-zero); font: 400 6.2pt/1 "IBM Plex Mono"; color: #1d1c1a;
+    padding-right: 18mm; vertical-align: bottom; padding-bottom: 8mm; text-align: right; }
+}
+@page :blank {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+/* las planas: páginas compuestas a sangre, sin cabeza ni folio */
+@page plana {
+  margin: 0;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+/* las páginas compuestas con folio (el guion, las fichas) */
+@page compuesta {
+  margin: 0 0 16.122mm 0;
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+/* ------------------------------------------------------------------ la letra */
+
+html {
+  font-family: "Newsreader", serif;
+  font-size: 9.6pt;
+  line-height: var(--linea);
+  color: var(--tinta);
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  hyphens: auto;
+  -webkit-font-smoothing: antialiased;
+}
+body { margin: 0; }
+p, ul, ol, figure, h1, h2, h3, h4, blockquote, table { margin: 0; padding: 0; }
+em { font-style: italic; }
+strong { font-weight: 500; }
+code, .mono {
+  font-family: var(--mono);
+  font-size: 0.8em;
+  font-variant-numeric: normal;
+  hyphens: none;
+}
+.almagre { color: var(--almagre); }
+.gris { color: var(--gris); }
+.grafito { color: var(--grafito); }
+
+/* ------------------------------------------------------------------ el texto corrido */
+
+.capitulo { break-before: right; string-set: capitulo attr(data-corrida), seccion ""; }
+.texto { orphans: 2; widows: 2; }
+.texto p { margin-bottom: var(--media); text-align: left; }
+.texto p.entrada { font-size: 11.6pt; line-height: 5.2240mm; margin-bottom: var(--linea); }
+
+.texto h2 {
+  font-weight: 500;
+  font-size: 9.6pt;
+  line-height: var(--linea);
+  margin-top: calc(2 * var(--linea));
+  margin-bottom: var(--media);
+  break-after: avoid;
+  position: relative;
+  string-set: seccion attr(data-corrida);
+}
+.texto h2:first-child { margin-top: 0; }
+/* el número de la sección, en el canal del cabezal: la clavija que fija el texto */
+.texto h2 .n {
+  position: absolute;
+  left: -16mm;
+  width: 14mm;
+  font: 500 6.2pt/var(--linea) var(--mono);
+  color: var(--tinta);
+  top: 0.25mm;
+}
+.texto h3 {
+  font: 500 6.4pt/var(--linea) var(--mono);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--tinta);
+  margin-top: var(--linea);
+  break-after: avoid;
+}
+
+/* listas: la raya en almagre, los números a máquina */
+.texto ul, .texto ol { list-style: none; margin-bottom: var(--media); }
+.texto li { position: relative; padding-left: 5mm; margin-bottom: 0.7mm; }
+.texto ul > li::before { content: "–"; position: absolute; left: 0.6mm; color: var(--almagre); }
+.texto ol { counter-reset: n; }
+.texto ol > li { counter-increment: n; }
+.texto ol > li::before {
+  content: counter(n);
+  position: absolute;
+  left: 0;
+  font: 400 6.4pt/var(--linea) var(--mono);
+  color: var(--almagre);
+}
+/* lo que falta: un cuadrado de almagre, para tildar a mano */
+.texto ol.pendientes > li::before {
+  content: "";
+  top: 1mm;
+  width: 2.3mm;
+  height: 2.3mm;
+  border: 0.25mm solid var(--almagre);
+}
+
+/* la cita de una fuente: en su lengua, a máquina; la traducción, en el texto */
+.texto .cita {
+  font: 400 7.2pt/var(--linea) var(--mono);
+  margin: var(--media) 0 var(--linea) 0;
+  padding-left: 5mm;
+  border-left: 0.3mm solid var(--almagre);
+  hyphens: none;
+}
+.texto .cita .de { display: block; color: var(--gris); }
+.texto .regla {
+  font: 300 13.2pt/6.2688mm "Newsreader";
+  margin: var(--linea) 0 var(--linea) 0;
+  letter-spacing: -0.005em;
+}
+
+/* al margen (18–82 mm desde el borde): notas, llamadas, pies */
+.margen {
+  float: left;
+  clear: left;
+  margin-left: -80mm;
+  width: 64mm;
+  font: 400 6.2pt/3.1344mm var(--mono);
+  color: var(--grafito);
+  margin-top: 0.5mm;
+  hyphens: none;
+}
+.margen b { color: var(--tinta); font-weight: 500; }
+.margen .almagre { color: var(--almagre); }
+
+/* el prerregistro: el cordel de almagre a la izquierda */
+.prerregistro {
+  border-left: 0.6mm solid var(--almagre);
+  padding-left: 3.4mm;
+  margin: var(--media) 0 var(--linea) -4mm;
+}
+.prerregistro .titulo { font: 500 6.2pt/var(--linea) var(--mono); color: var(--almagre); text-transform: lowercase; }
+
+/* ------------------------------------------------------------------ los ensayos, como fichas a máquina */
+
+.ensayo { margin: calc(2 * var(--linea)) 0 var(--linea); break-inside: auto; }
+.ensayo .cab {
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.35mm solid var(--tinta);
+  padding-top: 1.2mm;
+  font: 500 6.4pt/var(--linea) var(--mono);
+  break-after: avoid;
+}
+.ensayo .cab .codigo { color: var(--gris); font-weight: 400; }
+.ensayo .pregunta { font: 400 11.6pt/5.224mm "Newsreader"; margin: 1mm 0 var(--media); break-after: avoid; }
+.ensayo dl { display: grid; grid-template-columns: 22mm 1fr; column-gap: 3mm; margin: 0; }
+.ensayo dt { font: 400 6.2pt/var(--linea) var(--mono); color: var(--gris); text-transform: lowercase; padding-top: 0.15mm; }
+.ensayo dd { margin: 0 0 var(--media); }
+.ensayo dt.almagre { color: var(--almagre); }
+.veredicto { font: 500 6.4pt/1 var(--mono); padding: 0.6mm 1.1mm 0.5mm; border: 0.25mm solid var(--tinta); margin-right: 1.4mm; }
+.veredicto.no { color: var(--almagre); border-color: var(--almagre); }
+
+/* ------------------------------------------------------------------ figuras */
+
+figure { break-inside: avoid; }
+figure img, figure svg { display: block; }
+figure img { width: 100%; height: auto; }
+figure.en-texto { margin: var(--linea) 0 var(--linea); }
+figure.ancha { width: 204mm; margin-left: -80mm; }
+figure.flota { float: top; float-reference: page; margin-bottom: 6mm; }
+figure.flota.abajo { float: bottom; margin-top: 6mm; margin-bottom: 0; }
+figure.al-margen { float: left; clear: left; margin-left: -80mm; width: 64mm; margin-top: 0.6mm; margin-bottom: var(--linea); }
+
+figcaption {
+  font: 400 6.2pt/3.1344mm var(--mono);
+  color: var(--grafito);
+  margin-top: 1.8mm;
+  hyphens: none;
+}
+figcaption .fn { color: var(--tinta); font-weight: 600; margin-right: 1.2mm; }
+figure.pie-al-lado { display: flex; justify-content: space-between; align-items: flex-end; }
+figure.pie-al-lado figcaption { width: 64mm; margin: 0; order: -1; }
+figure.pie-al-lado .marco { width: 124mm; }
+
+.etiqueta {
+  display: inline-block;
+  font: 400 5.6pt/1 var(--mono);
+  letter-spacing: 0.02em;
+  padding: 0.55mm 0.9mm 0.45mm;
+  margin-right: 1.3mm;
+  border: 0.2mm solid var(--tinta);
+  color: var(--tinta);
+  vertical-align: 0.1mm;
+}
+.etiqueta.simulacion { border-style: dashed; }
+.etiqueta.pendiente { color: var(--almagre); border-color: var(--almagre); border-style: dotted; }
+
+.marco { position: relative; }
+figure.simulacion .marco { outline: 0.25mm dashed var(--tinta); outline-offset: 1.2mm; }
+.vacio {
+  position: relative;
+  box-sizing: border-box;
+  border: 0.3mm dotted var(--almagre);
+  color: var(--almagre);
+  font: 400 6.2pt/3.1344mm var(--mono);
+  padding: 2mm;
+}
+
+/* ------------------------------------------------------------------ tablas */
+
+.tabla {
+  width: 124mm;
+  margin: var(--media) 0 var(--linea);
+  border-collapse: collapse;
+  font-size: 7.6pt;
+  line-height: 3.4mm;
+  hyphens: auto;
+}
+.tabla.ancha { width: 204mm; margin-left: -80mm; }
+.tabla th {
+  font: 400 5.8pt/3mm var(--mono);
+  color: var(--gris);
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 2.4mm 1.2mm 0;
+  border-bottom: 0.3mm solid var(--tinta);
+  text-transform: lowercase;
+}
+.tabla td { vertical-align: top; padding: 1.1mm 2.4mm 1.3mm 0; border-bottom: 0.15mm solid var(--filete); }
+.tabla tr { break-inside: avoid; }
+.tabla td.mono, .tabla td code { font: 400 6.4pt/3.4mm var(--mono); }
+.tabla td.d { text-align: right; font-variant-numeric: lining-nums tabular-nums; }
+.tabla td.si { color: var(--tinta); }
+.tabla td.no { color: var(--almagre); }
+.tabla tr.total td { border-top: 0.3mm solid var(--tinta); font-weight: 500; }
+
+/* ------------------------------------------------------------------ las planas */
+
+.plana {
+  page: plana;
+  break-before: page;
+  position: relative;
+  width: 240mm;
+  height: 200mm;
+  overflow: hidden;
+}
+.plana.izquierda { break-before: left; }
+.plana.derecha { break-before: right; }
+.plana > * { position: absolute; box-sizing: border-box; }
+.plana .junta { left: 0; width: 240mm; height: 0.6mm; background: var(--papel); z-index: 3; }
+.plana .gigante {
+  font: 200 72mm/1 "Newsreader";
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  font-variant-numeric: lining-nums;
+  z-index: 2;
+}
+.plana .gigante .punto {
+  display: inline-block;
+  width: 10.3mm;
+  height: 14.05mm;          /* 110 × 150: la proporción del collar */
+  background: var(--tinta);
+  margin-left: 2.5mm;
+  position: relative;
+  z-index: 4;
+}
+.plana .rotulo, .compuesta .rotulo {
+  font: 400 6.2pt/3.1344mm var(--mono);
+  color: var(--tinta);
+}
+.plana .rotulo .gris { color: var(--gris); }
+.plana .vertical {
+  writing-mode: sideways-lr;
+  font: 400 6.2pt/3.1344mm var(--mono);
+  color: var(--grafito);
+  white-space: nowrap;
+}
+.plana .lead { font: 300 13.2pt/6.2688mm "Newsreader"; letter-spacing: -0.004em; }
+.plana .texto-plana { font-size: 9.6pt; line-height: var(--linea); }
+.plana .texto-plana p + p { margin-top: var(--media); }
+.plana .indice-cap { font: 400 6.4pt/3.343mm var(--mono); }
+.plana .indice-cap a { color: inherit; text-decoration: none; display: block; padding-left: 9mm; text-indent: -9mm; margin-bottom: 0.4mm; }
+.plana .indice-cap a::before { content: target-counter(attr(href), page, decimal-leading-zero); display: inline-block; width: 9mm; text-indent: 0; }
+.plana .epigrafe { font: 400 6.6pt/3.343mm var(--mono); }
+.plana .epigrafe .trad { font: 300 italic 10.4pt/5.014mm "Newsreader"; margin-top: 1.4mm; display: block; }
+.plana .epigrafe .de { color: var(--gris); display: block; margin-top: 1.4mm; }
+.plana figcaption, .plana .pie { font: 400 6.2pt/3.1344mm var(--mono); color: var(--grafito); }
+.plana img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.plana .contener img { object-fit: contain; }
+.plana .grande { font: 300 34pt/1 "Newsreader"; letter-spacing: -0.01em; }
+.plana .numero { font: 200 120pt/0.8 "Newsreader"; font-variant-numeric: lining-nums; }
+
+/* el guion: la bitácora, a máquina, con su índice al margen */
+.compuesta { page: compuesta; break-before: page; position: relative; width: 240mm; height: 183.878mm; overflow: hidden; }
+.compuesta > * { position: absolute; box-sizing: border-box; }
+.guion { font: 400 7.2pt/3.582mm var(--mono); hyphens: none; }
+.guion .escena { font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; margin-top: 3.582mm; }
+.guion .escena:first-child { margin-top: 0; }
+.guion .quien { margin: 2mm 0 0 24mm; text-transform: uppercase; }
+.guion .dice { margin: 0 6mm 0 12mm; }
+.guion .accion { margin-top: 1.6mm; }
+.guion .tc { color: var(--gris); }
+.guion .decision { color: var(--almagre); }
+
+/* ------------------------------------------------------------------ índices */
+
+.indice-general { font: 400 9.6pt/var(--linea) "Newsreader"; }
+.indice-general a { color: inherit; text-decoration: none; }
+.indice-general .ent { display: flex; align-items: baseline; }
+.indice-general .ent .pag { width: 12mm; font: 400 6.4pt/var(--linea) var(--mono); }
+.indice-general .ent .num { width: 10mm; font: 400 6.4pt/var(--linea) var(--mono); color: var(--gris); }
+.indice-general .ent.cap { font-size: 11.6pt; line-height: 5.6mm; margin-top: 1.2mm; }
+.indice-general .ent.menor { font: 400 6.4pt/3.4mm var(--mono); color: var(--grafito); }
+
+.indice-final { columns: 3; column-gap: 6mm; font: 400 6.6pt/3.343mm var(--mono); }
+.indice-final .letra { font: 300 22pt/1 "Newsreader"; margin: 4mm 0 2mm; break-after: avoid; }
+.indice-final .item { display: flex; break-inside: avoid; }
+.indice-final .item .pags { width: 17mm; flex: none; }
+.indice-final a { color: inherit; text-decoration: none; }
+.indice-final a.pag::after { content: target-counter(attr(href), page); }
+
+a.pag { color: inherit; text-decoration: none; }
+a.pag::before { content: target-counter(attr(href), page, decimal-leading-zero); }
+a.ref { color: inherit; text-decoration: none; }
+a.ref::after { content: " → " target-counter(attr(href), page, decimal-leading-zero); font: 400 0.72em var(--mono); color: var(--almagre); }
+
+.refs { columns: 2; column-gap: 6mm; font-size: 7.6pt; line-height: 3.6mm; }
+.refs p { padding-left: 4mm; text-indent: -4mm; margin-bottom: 1.5mm; break-inside: avoid; }
+.refs h3 { font: 500 6.2pt/3.6mm var(--mono); text-transform: lowercase; margin: 4mm 0 1.2mm; break-after: avoid; }
+.lista-imagenes { width: 204mm; margin-left: -80mm; border-collapse: collapse; font: 400 5.8pt/2.9mm var(--mono); }
+.lista-imagenes th { text-align: left; font-weight: 400; color: var(--gris); border-bottom: 0.3mm solid var(--tinta); padding: 0 2mm 1mm 0; }
+.lista-imagenes td { padding: 0.7mm 2mm 0.7mm 0; border-bottom: 0.12mm solid var(--filete); vertical-align: top; }
+.lista-imagenes td.ruta { color: var(--grafito); overflow-wrap: anywhere; }
+.lista-imagenes tr { break-inside: avoid; }
+.colofon { font-size: 8pt; line-height: 3.9mm; }
+.colofon p + p { margin-top: 2.2mm; }

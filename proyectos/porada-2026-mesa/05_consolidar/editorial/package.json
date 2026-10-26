@@ -1,0 +1,14 @@
+{
+  "name": "punto-fermo-libro",
+  "private": true,
+  "description": "El libro de Punto fermo y los entregables del concurso: HTML y CSS compuestos en páginas con Vivliostyle.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "armar": "python3 armar.py"
+  },
+  "devDependencies": {
+    "@vivliostyle/cli": "11.3.3",
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "@fontsource/newsreader": "5.2.8"
+  }
+}

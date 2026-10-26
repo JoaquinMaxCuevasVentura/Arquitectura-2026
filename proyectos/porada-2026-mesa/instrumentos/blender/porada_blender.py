@@ -26,6 +26,9 @@ VERSIONES = {
     "B2": dict(COMUN, n_tablas=6, collar=False, servicio=False),
     "AB": dict(COMUN, n_tablas=6, collar=True, servicio=False),
     "B3": dict(COMUN, n_tablas=7, collar=False, servicio=True),
+    # Propuesta final, iteración 1 (05_consolidar/propuesta_final.md): AB con la cuña pasante en el cabezal (E12)
+    # y el cabezal de 900 mm.
+    "F1": dict(COMUN, n_tablas=6, collar=True, servicio=False, cuna_cabezal=True, cabezal=0.9),
 }
 # Familia del sistema B (E7, «assortment»): las tablas siguen ≤ 182 mm (E2b).
 FAMILIA = {
@@ -182,6 +185,8 @@ def arbol_mesa():
     a.parametro("Extremo a caballete", "NodeSocketFloat", 0.45, 0.1, 0.8, p_cab)
     a.parametro("Ancho del pie", "NodeSocketFloat", 0.18, 0.06, 0.3, p_cab)
     a.parametro("Apoyo central", "NodeSocketBool", True, panel=p_cab)
+    a.parametro("Cabezal / ancho", "NodeSocketFloat", 0.85, 0.5, 1.0, p_cab)
+    a.parametro("Cuña en el cabezal", "NodeSocketBool", False, panel=p_cab)
     p_uni = a.panel("Unión (propuesta A)")
     a.parametro("Collar de piedra", "NodeSocketBool", False, panel=p_uni)
     p_mat = a.panel("Materiales")
@@ -228,7 +233,7 @@ def arbol_mesa():
     pie = a.veta(a.cubo(a.vec(a["Ancho del pie"], a.mult(W, 0.8), 0.09), a.vec(0, 0, 0.045)), 1)
     montante = a.veta(a.cubo(a.vec(0.06, a.minimo(0.26, a.mult(W, 0.5)), a.resta(zc, 0.09)),
                              a.vec(0, 0, a.mult(a.suma(zc, 0.09), 0.5))), 2)
-    cabezal = a.veta(a.cubo(a.vec(0.08, a.mult(W, 0.85), 0.06), a.vec(0, 0, a.suma(zc, 0.03))), 1)
+    cabezal = a.veta(a.cubo(a.vec(0.08, a.mult(W, a["Cabezal / ancho"]), 0.06), a.vec(0, 0, a.suma(zc, 0.03))), 1)
     puntos_cab = a.linea(2, a.vec(a.mult(xc, -1), 0, 0), a.vec(a.mult(xc, 2), 0, 0))
     caballetes = a.instanciar(puntos_cab, a.unir(pie, montante, cabezal))
 
@@ -243,18 +248,21 @@ def arbol_mesa():
                             a.cubo(a.vec(0.07, 0.11, 0.15), a.vec(0, 0, 0)))
     collares = a.segun(a["Collar de piedra"], vacio, collares)
 
-    a.seccion("Clavijas y cuñas (E9)")
-    z_clav = a.resta(zc, 0.04)
+    a.seccion("Clavijas y cuñas (E9; F1: cuña en el cabezal, E12)")
+    en_cab = a["Cuña en el cabezal"]
+    z_clav = a.suma(a.resta(zc, 0.04), a.mult(en_cab, 0.05))          # bajo el cabezal (B2, AB) o dentro (F1)
     clavija = a.veta(a.cubo(a.vec(0.02, 0.02, a.resta(a.resta(H, 0.01), z_clav)),
                             a.vec(0, 0, a.mult(a.suma(a.resta(H, 0.01), z_clav), 0.5))), 2)
-    cuna = a.veta(a.cubo(a.vec(0.06, 0.008, 0.015), a.vec(0, 0, a.resta(zc, 0.0225))), 0)
+    cuna_bajo = a.veta(a.cubo(a.vec(0.06, 0.008, 0.015), a.vec(0, 0, a.resta(zc, 0.0225))), 0)
+    cuna_cab = a.veta(a.cubo(a.vec(0.10, 0.008, 0.015), a.vec(0, 0, a.suma(zc, 0.025))), 0)
+    cuna = a.segun(en_cab, cuna_bajo, cuna_cab)
     puntos_clav = a.unir(a.linea(n, a.vec(a.mult(xc, -1), y0, 0), paso_y), a.linea(n, a.vec(xc, y0, 0), paso_y))
     clavijas = a.instanciar(puntos_clav, a.unir(clavija, cuna))
 
     a.seccion("Apoyo central (E8)")
     z_bajo = a.suma(zs, 0.055)
     puntal = a.veta(a.cubo(a.vec(0.06, 0.10, a.resta(zc, z_bajo)), a.vec(0, 0, a.mult(a.suma(zc, z_bajo), 0.5))), 2)
-    cab_central = a.veta(a.cubo(a.vec(0.08, a.mult(W, 0.85), 0.06), a.vec(0, 0, a.suma(zc, 0.03))), 1)
+    cab_central = a.veta(a.cubo(a.vec(0.08, a.mult(W, a["Cabezal / ancho"]), 0.06), a.vec(0, 0, a.suma(zc, 0.03))), 1)
     central = a.segun(a["Apoyo central"], vacio, a.unir(puntal, cab_central))
 
     a.seccion("Materiales y salida")
@@ -442,12 +450,14 @@ def ajustar(ob, mats, params, piedra="nero"):
     ids = {it.name: it.identifier for it in mod.node_group.interface.items_tree if getattr(it, "in_out", "") == "INPUT"}
     nombres = {"largo": "Largo", "ancho": "Ancho", "alto": "Alto", "espesor": "Espesor", "n_tablas": "N tablas",
                "junta": "Junta", "servicio": "Tabla de servicio", "extremo": "Extremo a caballete",
-               "pie_x": "Ancho del pie", "apoyo_central": "Apoyo central", "collar": "Collar de piedra"}
+               "pie_x": "Ancho del pie", "apoyo_central": "Apoyo central", "collar": "Collar de piedra",
+               "cabezal": "Cabezal / ancho", "cuna_cabezal": "Cuña en el cabezal"}
     entradas = mod.properties.inputs                 # API de Blender 5: cada entrada tiene .value
 
     def poner(nombre, valor):
         getattr(entradas, ids[nombre]).value = valor
 
+    params = {"cabezal": 0.85, "cuna_cabezal": False, **params}
     for k, v in params.items():
         if k in nombres:
             poner(nombres[k], v)
@@ -528,6 +538,13 @@ TOMAS = {
     # Variante de material: el mismo collar en piedra ígnea gris mate (propuesta de materiales bolivianos).
     "nodo_AB_ignea": (dict(VERSIONES["AB"], piedra="ignea"), (XC + 0.42, -0.62, 0.42), (XC + 0.07, 0, 0.30), 60, (1200, 1200)),
     "general_AB_ignea": (dict(VERSIONES["AB"], piedra="ignea"), (3.1, -3.4, 1.75), (0, 0, 0.42), 45, (1600, 1000)),
+    # Propuesta final F1: para la lámina 3 y el libro.
+    "general_F1": ("F1", (3.1, -3.4, 1.75), (0, 0, 0.42), 45, (2000, 1250)),
+    "frente_F1": ("F1", (0.0, -5.2, 0.62), (0, 0, 0.40), 50, (2000, 900)),
+    "nodo_F1": ("F1", (XC + 0.42, -0.62, 0.42), (XC + 0.07, 0, 0.30), 60, (1400, 1400)),
+    "cabezal_F1": ("F1", (XC + 0.36, -0.78, 0.50), (XC, -0.25, 0.66), 55, (1600, 1100)),
+    "testa_F1": ("F1", (XC + 0.40, -0.30, 0.36), (XC + 0.12, 0, 0.30), 70, (1400, 1100)),
+    "planta_F1": ("F1", (0.0, -0.001, 6.5), (0, 0, 0.0), 40, (2000, 1100)),
 }
 
 
