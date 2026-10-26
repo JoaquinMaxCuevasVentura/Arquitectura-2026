@@ -5,7 +5,7 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 | Versión | Masa (kg) | Piedra (kg) | K1 madera | K2 piedra a compresión | K3 movimientos | K4 estable sin lastre | K5 ≤ 25 kg |
 |---|---|---|---|---|---|---|---|
 | **AB** Síntesis candidata | 106.3 | 4.6 | ✓ 99.0% | ✓ flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a) | ✓ | ✓ vuelco en extremo sin piedra 2329 N (2.33 × P) | ✓ más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg |
-| **F1** Propuesta final | 106.2 | 4.6 | ✓ 99.0% | ✓ flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a) | ✓ | ✓ vuelco en extremo sin piedra 2326 N (2.33 × P) | ✓ más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg · caballete izq armado 15.9 kg |
+| **F1** Propuesta final | 106.7 | 4.6 | ✓ 99.0% | ✓ flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a) | ✓ | ✓ vuelco en extremo sin piedra 2336 N (2.34 × P) | ✓ más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg · caballete izq armado 16.0 kg |
 
 ## E8 · E9 · E2b · Tablas (propuesta B)
 
@@ -15,7 +15,7 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 ## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)
 
 - **AB**: 52 cruces previstos (ensambles), **8 fuera de ensamble**: clavija 3 izq × montante izq (20 × 20 × 40 mm); cuña 3 izq × montante izq (60 × 8 × 15 mm); clavija 3 der × montante der (20 × 20 × 40 mm); cuña 3 der × montante der (60 × 8 × 15 mm); clavija 4 izq × montante izq (20 × 20 × 40 mm); cuña 4 izq × montante izq (60 × 8 × 15 mm); clavija 4 der × montante der (20 × 20 × 40 mm); cuña 4 der × montante der (60 × 8 × 15 mm).
-- **F1**: 64 cruces previstos (ensambles), **0 fuera de ensamble**. Piezas encoladas: caballete izq (pie, montante y cabezal encolados) 15.9 kg; caballete der (pie, montante y cabezal encolados) 15.9 kg; apoyo central (puntal y cabezal encolados) 3.6 kg.
+- **F1**: 64 cruces previstos (ensambles), **0 fuera de ensamble**. Piezas encoladas: caballete izq (pie, montante y cabezal encolados) 16.0 kg; caballete der (pie, montante y cabezal encolados) 16.0 kg; apoyo central (puntal y cabezal encolados) 3.8 kg.
 
 ## E1 · Piedra como viga
 
@@ -34,7 +34,7 @@ No aplica en esta ronda: ninguna versión usa la piedra como viga.
 | Versión | Extremo sin / con | Borde sin / con | Horizontal sin / con | ¿Desliza antes? | Aporte piedra | Caballete a ≤ (mm) | o alargar pie (mm) | ¿Retirar «estabiliza»? |
 |---|---|---|---|---|---|---|---|---|
 | AB | 2329 / 2434 | 3992 / 4173 | 532 / 556 | sí | +5% | 489 | 0 | sí |
-| F1 | 2326 / 2431 | 3988 / 4168 | 532 / 556 | sí | +5% | 489 | 0 | sí |
+| F1 | 2336 / 2442 | 4005 / 4186 | 534 / 558 | sí | +5% | 490 | 0 | sí |
 
 ## E4 · La unión (modelo b; entre paréntesis, modelo a, más conservador)
 

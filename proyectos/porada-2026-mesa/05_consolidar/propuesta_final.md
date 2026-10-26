@@ -9,7 +9,7 @@
 | **Versión** | **F1**: es AB (el tablero de tablas de B2 con el collar de piedra de V4), corregida por E12 |
 | **Regla** | «La madera se mueve y se arma; lo único fijo es la piedra donde se traba» ([síntesis](../03_proponer/sintesis.md)) |
 | **Materiales** | nogal canaleta macizo (tablas y caballetes), fresno (clavijas, cuñas, lengüetas y llaves) y mármol **Nero Sahara Noir** apomazado (collares). Los tres están en el catálogo de Porada (K8). El autor eligió mantener los materiales ya determinados (26-10-2026); el granito de Comanche queda registrado como alternativa ([materiales bolivianos](../01_reunir/materiales_bolivianos.md)) |
-| **Medidas** | 2400 × 1000 × 750 mm, 8 personas, 106 kg en 48 piezas. La más pesada es un caballete encolado de 15,9 kg; la piedra suma 4,6 kg |
+| **Medidas** | 2400 × 1000 × 750 mm, 8 personas, 107 kg en 48 piezas. La más pesada es un caballete encolado de 16,0 kg; la piedra suma 4,6 kg |
 | **Criterios** | ✓ K1-K5 ([ronda 6](../04_ensayar/resultados/ronda6.md)); 0 cruces de piezas fuera de ensamble (E12) |
 
 ### Por qué F1 y no B2 ni B3
@@ -32,7 +32,7 @@
 ## Qué cambió de AB a F1
 
 1. **La cuña de las tablas atraviesa el cabezal** (E12). En AB, la clavija asomaba 40 mm bajo el cabezal y la cuña la trababa ahí. En las dos tablas centrales eso caía dentro del montante, que mide 260 mm de ancho. En F1, la clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo. Hay 12 cuñas de fresno que asoman por los costados de los cabezales, una por tabla: **la cuña, el verbo común de la mesa (síntesis), queda a la vista.** E8, E9 y E2b no cambian.
-2. **El caballete se encola**: pie, montante y cabezal con espigas pasantes acuñadas, encoladas fibra con fibra. Pesa 15,9 kg (K5 ≤ 25). Lo desmontable es lo que se mueve: las tablas, el travesaño, el apoyo central y las piedras.
+2. **El caballete se encola**: pie, montante y cabezal con espigas pasantes acuñadas, encoladas fibra con fibra. Pesa 16,0 kg (K5 ≤ 25). El cabezal mide 900 mm (850 en AB): al dibujarlo, la clavija de la tabla exterior asomaba por su testa. Lo desmontable es lo que se mueve: las tablas, el travesaño, el apoyo central y las piedras.
 3. **El collar con aristas achaflanadas** de 3 mm y la piedra apomazada (E7: «la joya de la unión»; protege además la arista que E6 b va a golpear).
 4. **Acabado al aceite** en nogal y fresno: la superficie como «membrana táctil» (Johnson, p. 62, F15). **La testa de la espiga** queda a la vista más allá de la llave, con sus anillos (Johnson, pp. 63-64).
 
@@ -50,17 +50,17 @@ Generado por el instrumento (`mesa/despiece.py`).
 | cuña | fresno | 100 × 15 × 8 | 12 | — | 0,1 |
 | pie | nogal canaleta | 800 × 180 × 90 | 2 | 8,0 | 16,0 |
 | montante | nogal canaleta | 560 × 260 × 60 | 2 | 5,4 | 10,8 |
-| cabezal | nogal canaleta | 850 × 80 × 60 | 3 | 2,5 | 7,5 |
+| cabezal | nogal canaleta | 900 × 80 × 60 | 3 | 2,7 | 8,0 |
 | travesaño | nogal canaleta | 1840 × 110 × 45 | 1 | 5,6 | 5,6 |
 | puntal | nogal canaleta | 295 × 100 × 60 | 1 | 1,1 | 1,1 |
 | collar | Nero Sahara Noir | 150 × 110 × 70 | 2 | 2,3 | 4,6 |
 | llave | fresno | 170 × 28 × 20 | 2 | 0,1 | 0,1 |
-| **Total** | | | **48** | | **106,2** |
+| **Total** | | | **48** | | **106,7** |
 
 ## Escenarios de uso (para la lámina 1)
 
 1. **A la mesa**: 8 personas, tres por lado y una en cada cabecera (estimación de dibujo, no ensayada). Las cabeceras quedan libres para las rodillas, porque el caballete está a 450 mm del extremo (E3).
-2. **Armar y desarmar**, con un mazo y sin herrajes. Primero se paran los caballetes. Después el travesaño atraviesa los montantes, los collares entran en las espigas y las llaves de fresno aprietan la piedra contra el montante. Luego el apoyo central se monta a horcajadas del travesaño. Por último bajan las tablas con sus clavijas, se meten las lengüetas y las cuñas traban cada tabla. La pieza más pesada pesa 15,9 kg (K5).
+2. **Armar y desarmar**, con un mazo y sin herrajes. Primero se paran los caballetes. Después el travesaño atraviesa los montantes, los collares entran en las espigas y las llaves de fresno aprietan la piedra contra el montante. Luego el apoyo central se monta a horcajadas del travesaño. Por último bajan las tablas con sus clavijas, se meten las lengüetas y las cuñas traban cada tabla. La pieza más pesada pesa 16,0 kg (K5).
 3. **La estación**: la junta entre tablas pasa de 0,8 mm en tiempo húmedo a 4,8 mm en seco (E2b). El collar no se mueve: es el punto fijo.
 4. **Reparar**: una tabla se cambia sin desarmar la mesa. Se sacan sus dos cuñas, se desliza la lengüeta por la testa y la tabla sale.
 

@@ -63,7 +63,8 @@ LECTURA = {
     6: ["E12 · En AB (y en B2) la clavija y la cuña de las dos tablas centrales caen dentro del montante: 8 cruces fuera de ensamble.",
         "      El modelo de prismas no comparaba piezas entre sí; apareció al pasar AB a planos de construcción.",
         "F1 · La clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo: 0 cruces fuera de ensamble.",
-        "      E8, E9 y E2b no cambian (1,0 mm; trabadas; 0,8-4,8 mm). El caballete encolado pesa 15,9 kg: K5 sigue cumpliendo.",
+        "      E8, E9 y E2b no cambian (1,0 mm; trabadas; 0,8-4,8 mm). El caballete encolado pesa 16,0 kg: K5 sigue cumpliendo.",
+        "      Al dibujar, la clavija de la tabla exterior asomaba 3 mm por la testa del cabezal de 850: en F1 mide 900.",
         "      Las cuñas asoman por los costados del cabezal: la cuña, verbo común de la mesa, queda a la vista en cada tabla.",
         "→ F1 es la propuesta final, iteración 1. La cambian E6 (si el collar se lee como adorno: B2 con la misma corrección) y E10."],
 }

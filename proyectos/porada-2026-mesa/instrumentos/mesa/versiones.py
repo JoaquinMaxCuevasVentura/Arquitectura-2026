@@ -9,6 +9,7 @@ XC = L / 2 - A_EXTREMO                # eje del caballete: ±750
 PIE = (80, 800, 90)                   # x, y, z
 MONTANTE = (60, 260)                  # x, y
 CABEZAL = (80, 850, 60)
+CABEZAL_F1 = (80, 900, 60)            # F1: la clavija de la tabla exterior no cabía en 850 (E12, al dibujar)
 TRAV = (45, 110, 300)                 # espesor y, alto z, altura del eje
 ESPIGA = (45, 90, 110)                # espesor, alto, vuelo fuera del montante
 LLAVE = (28, 20, 170)                 # d (x), b (y), largo (z)
@@ -26,8 +27,9 @@ def configurar(a_extremo=450, pie_x=80):
     return {"a_extremo_mm": A_EXTREMO, "pie_mm": PIE}
 
 
-def _caballetes(pie_material=NOGAL, pie=None, z_montante=None):
+def _caballetes(pie_material=NOGAL, pie=None, z_montante=None, cabezal=None):
     pie = pie or PIE
+    cab = cabezal or CABEZAL
     piezas = []
     for s, lado in ((-1, "izq"), (1, "der")):
         xc = s * XC
@@ -36,8 +38,8 @@ def _caballetes(pie_material=NOGAL, pie=None, z_montante=None):
         z0 = pie[2] if z_montante is None else z_montante
         piezas.append(Pieza(f"montante {lado}", NOGAL, (xc - MONTANTE[0] / 2, xc + MONTANTE[0] / 2),
                             (-MONTANTE[1] / 2, MONTANTE[1] / 2), (z0, Z_CAB), "apoyo"))
-        piezas.append(Pieza(f"cabezal {lado}", NOGAL, (xc - CABEZAL[0] / 2, xc + CABEZAL[0] / 2),
-                            (-CABEZAL[1] / 2, CABEZAL[1] / 2), (Z_CAB, Z_TAB), "apoyo"))
+        piezas.append(Pieza(f"cabezal {lado}", NOGAL, (xc - cab[0] / 2, xc + cab[0] / 2),
+                            (-cab[1] / 2, cab[1] / 2), (Z_CAB, Z_TAB), "apoyo"))
     return piezas
 
 
@@ -177,10 +179,11 @@ def b1():
                 piezas, _nodo_tablas(n, junta, b, False, False, False), ronda=3)
 
 
-def _apoyo_central():
+def _apoyo_central(cabezal=None):
     z_trav = TRAV[2] + TRAV[1] / 2
+    cab = cabezal or CABEZAL
     return [Pieza("puntal central", NOGAL, (-30, 30), (-50, 50), (z_trav, Z_CAB), "apoyo"),
-            Pieza("cabezal central", NOGAL, (-CABEZAL[0] / 2, CABEZAL[0] / 2), (-CABEZAL[1] / 2, CABEZAL[1] / 2),
+            Pieza("cabezal central", NOGAL, (-cab[0] / 2, cab[0] / 2), (-cab[1] / 2, cab[1] / 2),
                   (Z_CAB, Z_TAB), "apoyo")]
 
 
@@ -242,14 +245,14 @@ def b3():
 
 
 def f1():
-    """Propuesta final, iteración 1: AB con la cuña pasante en el cabezal (E12) y el caballete encolado."""
+    """Propuesta final, iteración 1: AB con la cuña pasante en el cabezal (E12), cabezal de 900 mm y caballete encolado."""
     n, junta = 6, 3.0
     vuelo = 140
     collar = (70, 110, 150)
     agujero = (ESPIGA[0] + 2, ESPIGA[1] + 2)
     tablas, b = _tablas(n, junta, trabadas=True, cuna="cabezal")
-    piezas = (tablas + _lenguetas(n, junta, b) + _caballetes() + _travesano(vuelo)
-              + _llaves(FRESNO, X_CARA + collar[0]) + _apoyo_central())
+    piezas = (tablas + _lenguetas(n, junta, b) + _caballetes(cabezal=CABEZAL_F1) + _travesano(vuelo)
+              + _llaves(FRESNO, X_CARA + collar[0]) + _apoyo_central(cabezal=CABEZAL_F1))
     for s, lado in ((-1, "izq"), (1, "der")):
         piezas.append(Pieza(f"collar {lado}", MARMOL, tuple(sorted((s * X_CARA, s * (X_CARA + collar[0])))),
                             (-collar[1] / 2, collar[1] / 2), (TRAV[2] - collar[2] / 2, TRAV[2] + collar[2] / 2),

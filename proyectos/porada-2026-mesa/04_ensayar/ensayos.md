@@ -161,7 +161,8 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
 ### Resultado de E12 ([ronda 6](resultados/ronda6.md); el control corre en todas las rondas)
 - **AB y B2**: hay **8 cruces fuera de ensamble**. Son la clavija y la cuña de las tablas 3 y 4 dentro de cada montante, de 20 × 20 × 40 mm y 60 × 8 × 15 mm. **B3**: 4 del mismo tipo (su tabla central).
 - **F1**: la clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo (100 × 15 × 8 mm). Resultado: **0 cruces fuera de ensamble** y 64 previstos. E8 (1,0 mm), E9 (trabadas) y E2b (0,8-4,8 mm) se repitieron con la geometría nueva y no cambian.
-- **K5 por grupos**: caballete encolado de **15,9 kg**; apoyo central de 3,6 kg. ✓
+- **K5 por grupos**: caballete encolado de **16,0 kg**; apoyo central de 3,8 kg. ✓
+- **Segundo hallazgo, al dibujar la sección A-A** (fuera del control): la clavija de la tabla exterior (eje a 417,9 mm del centro) asomaba **3 mm por la testa del cabezal** de 850 mm. E12 no lo ve, porque el cruce clavija-cabezal es un ensamble previsto. En F1 el cabezal mide **900 mm**. Masa total: 106,7 kg. El control del modelo constructivo (`construccion.py`) verifica además que **cada parte que entra en otra pieza quepa en un vacío de esa pieza**: hay 72 ensambles y 0 errores.
 - **Límite de la lista prerregistrada**: el control marca además 3 cruces que son asientos de piedra modelados como vacío: V2 (montante en el pie de piedra), V0b (piedra en el canal) y B3 (mármol en la tabla de servicio). Son ensambles que la lista no nombró. Ninguna de esas versiones sigue. Se anota como límite de la lista y la lista no se corrige después de ver el resultado.
 - **Decisión**: **modificar** AB → **F1**, la propuesta final, iteración 1 ([`../05_consolidar/propuesta_final.md`](../05_consolidar/propuesta_final.md)). B2 recibe la misma corrección si vuelve a ser candidata.
 

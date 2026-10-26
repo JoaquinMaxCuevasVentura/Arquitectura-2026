@@ -256,8 +256,8 @@
    "accion": "posar / atravesar / acuñar",
    "relacion": "la madera se mueve y se arma; lo único fijo es la piedra donde se traba",
    "ronda": 6,
-   "masa_total_kg": 106.22364480000002,
-   "masa_piedra_kg": 4.602528000000007,
+   "masa_total_kg": 106.66716480000001,
+   "masa_piedra_kg": 4.602527999999992,
    "E1": null,
    "E2": {
     "juntas": [
@@ -286,32 +286,32 @@
    },
    "E3": {
     "con_piedra": {
-     "masa_kg": 106.22364480000002,
-     "vuelco_extremo_N": 2431.4592294720005,
-     "vuelco_borde_N": 4168.2158219520015,
-     "vuelco_horizontal_N": 555.7621095936001,
+     "masa_kg": 106.66716480000001,
+     "vuelco_extremo_N": 2441.611402272,
+     "vuelco_borde_N": 4185.619546752,
+     "vuelco_horizontal_N": 558.0826062336,
      "desliza_antes_de_volcar": true,
      "x_eje": 840.0,
-     "peso_N": 1042.0539554880002,
+     "peso_N": 1046.404886688,
      "xg": 0.0
     },
     "sin_piedra": {
-     "masa_kg": 101.62111680000001,
-     "vuelco_extremo_N": 2326.107363552,
-     "vuelco_borde_N": 3987.612623232001,
-     "vuelco_horizontal_N": 531.6816830976002,
+     "masa_kg": 102.06463680000002,
+     "vuelco_extremo_N": 2336.2595363520004,
+     "vuelco_borde_N": 4005.0163480320016,
+     "vuelco_horizontal_N": 534.0021797376002,
      "desliza_antes_de_volcar": true,
      "x_eje": 840.0,
-     "peso_N": 996.9031558080002,
+     "peso_N": 1001.2540870080002,
      "xg": 0.0
     },
     "aporte_piedra": {
-     "vuelco_extremo_N": 0.045291059033116365,
-     "vuelco_borde_N": 0.045291059033116365,
-     "vuelco_horizontal_N": 0.04529105903311614
+     "vuelco_extremo_N": 0.0450942475699867,
+     "vuelco_borde_N": 0.04509424756998648,
+     "vuelco_horizontal_N": 0.0450942475699867
     },
     "sin_piedra_ya_resiste_2x": true,
-    "a_max_para_2P_mm": 489.17332151731415,
+    "a_max_para_2P_mm": 490.33428346195115,
     "alargar_pie_para_2P_mm": 0.0,
     "retirar_frase_estabiliza": true
    },
@@ -386,15 +386,15 @@
     "errores": [],
     "cumple": true,
     "grupos_kg": {
-     "caballete izq (pie, montante y cabezal encolados)": 15.878016000000004,
-     "caballete der (pie, montante y cabezal encolados)": 15.878016000000004,
-     "apoyo central (puntal y cabezal encolados)": 3.603600000000001
+     "caballete izq (pie, montante y cabezal encolados)": 16.025856000000005,
+     "caballete der (pie, montante y cabezal encolados)": 16.025856000000005,
+     "apoyo central (puntal y cabezal encolados)": 3.7514400000000006
     },
     "grupos_cumplen": true
    },
    "K": {
     "K1": {
-     "valor": 0.989752630974005,
+     "valor": 0.9897967929904906,
      "cumple": true,
      "texto": "madera 99.0% del volumen"
     },
@@ -413,13 +413,13 @@
     },
     "K4": {
      "cumple": true,
-     "texto": "vuelco en extremo sin piedra 2326 N (2.33 × P)"
+     "texto": "vuelco en extremo sin piedra 2336 N (2.34 × P)"
     },
     "K5": {
      "valor": 9.708160000000001,
      "cumple": true,
      "piedra_cumple": true,
-     "texto": "más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg · caballete izq armado 15.9 kg"
+     "texto": "más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg · caballete izq armado 16.0 kg"
     }
    }
   }
