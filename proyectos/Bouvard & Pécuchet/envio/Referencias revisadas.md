@@ -1,60 +1,19 @@
 # Referencias revisadas (Chicago autor-fecha, 17.ª ed.)
 
-> 26 de octubre de 2026, sobre la lista del Borrador 0 del 24 de octubre. No cambié el borrador: los cambios están abajo, en «Qué cambió y por qué», para que el hilo de redacción los pase si está de acuerdo. El programa `armar_docx.py` usa la lista limpia que va entre las marcas ocultas (y no la del borrador), así que los .docx ya salen con ella.
+> 26 de octubre de 2026, sobre la lista del Borrador 0 del 24 de octubre. No cambié el borrador: los cambios están abajo, en «Qué cambió y por qué», para que el hilo de redacción los pase si está de acuerdo. Ver «Resultado»: la lista acordada ya está en el borrador.
 >
 > Datos comprobados hoy en Crossref y doi.org: páginas de Bender et al. (610–23), Dord-Crouslé (93–118) y Feyler (229–42); DOI de Bender et al., Carpo, Villagómez y Salazar-Sánchez y Cárcamo-Pino; autores de este último. Identificadores del ejemplar de Boitard en Internet Archive (A039a018, texto, 411 imágenes; A039a019, atlas, 295 imágenes; los dos con Public Domain Mark 1.0). Origen de la edición de Flaubert que se usa: Wikisource la transcribe del facsímil de Gallica (ark bpt6k208211x).
 
-## Lista limpia
+## Resultado
 
-<!-- referencias -->
-Bender, Emily M., Timnit Gebru, Angelina McMillan-Major y Shmargaret Shmitchell. 2021. “On the Dangers of Stochastic Parrots: Can Language Models Be Too Big?” En *Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency*, 610–23. Nueva York: Association for Computing Machinery. https://doi.org/10.1145/3442188.3445922.
+El hilo de redacción revisó esta lista el 26 de octubre (commit fc7a2bb de la rama del borrador) y pasó al borrador lo que se sostiene. **Desde entonces la lista vive solo en el borrador**, y `armar_docx.py` la toma de ahí: así no hay dos versiones que se separen.
 
-Blondel, Jacques-François. 1752. “Bienseance (terme d’Architecture)”. En Diderot y d’Alembert 1751–65, 2:245.
+- **Pasaron:** rangos abreviados (también 616–17 y 115–16 en el texto), 1751–65 sin Neuchâtel, DOI de Bender et al., «n.º», minúscula en los títulos franceses, Salazar-Sánchez y Cárcamo-Pino (también en el texto), subtítulos con dos puntos.
+- **Con otra forma:** Boitard lleva «Nueva ed.», porque la portada dice «Nouvelle édition» (hoja n8 del facsímil) y la «seconde édition» solo aparece en la nota de la p. vi. Flaubert 1910 queda sin número de volumen y con [FALTA] hasta ver el facsímil: ni el «tome I» de Wikisource ni mi «Vol. 1 de» están comprobados. Los borradores se explican con una cláusula en §3.1 («que se citan por manuscrito y folio») y no con una nota, porque las normas (§8) no quieren referencias en las notas. Las entradas sin fecha van después de las fechadas del mismo autor.
+- **No pasaron, y tenía razón el borrador:** Carnet 18 bis, Ms gg 10 y la *Correspondance* se quedan en la lista con «Citado en …». Chicago pide listar el original y la fuente secundaria cuando el original no se vio; mi propuesta de sacarlos era la regla de APA. Lumen se queda: el PDF dice «Coedición de Editorial Universitaria con Editorial Lumen SRL, 2004». Las comillas altas las pone solo el programa. El [1973] de Maturana y Varela entra cuando la nota de §7 pase a texto.
+- **Arreglado en el programa** a partir de la revisión: las “ ” que el borrador anida dentro de « » pasan a ‘ ’, y las notas [FALTA …] que llevan corchetes adentro se reconocen enteras.
 
-Blondel, Jacques-François. 1754. “Convenance (terme d’Architecture)”. En Diderot y d’Alembert 1751–65, 4:161.
-
-Boitard, Pierre. 1825. *Traité de la composition et de l’ornement des jardins*. París: Audot.
-
-Boitard, Pierre. s. f. *Nouveau manuel complet de l’architecte des jardins, ou l’art de les composer et de les décorer*. 2.ª ed. 2 vols. (texto y atlas). París: Roret. Ejemplar de la Biblioteca de la Universidad de Sevilla, A 039(a)/018–019. https://archive.org/details/A039a018 y https://archive.org/details/A039a019.
-
-Cárcamo-Pino, Mauricio Arnoldo. 2025. “Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura”. *Revista Chilena de Literatura*, n.º 112: 233–64.
-
-Carpo, Mario. 2018. “Big Data and the End of History”. *International Journal for Digital Art History*, n.º 3. https://doi.org/10.11588/dah.2018.3.49913.
-
-Carrico, Abbey. 2019. “L’eau et l’agriculture dans *Bouvard et Pécuchet*”. *Revue Flaubert*, n.º 18. https://flaubert.univ-rouen.fr/labo-flaubert/revue-flaubert/revue-flaubert-n18-2019/leau-et-lagriculture-dans-bouvard-et-pecuchet/.
-
-Diderot, Denis. 1754a. “Convenance (Gramm. & Morale)”. En Diderot y d’Alembert 1751–65, 4:160–61.
-
-Diderot, Denis. 1754b. “Copiste (Art méch.)”. En Diderot y d’Alembert 1751–65, 4:177.
-
-Diderot, Denis, y Jean le Rond d’Alembert, eds. 1751–65. *Encyclopédie, ou Dictionnaire raisonné des sciences, des arts et des métiers*. 17 vols. París: Briasson, David, Le Breton y Durand. Edición digital: ARTFL Encyclopédie, University of Chicago. https://encyclopedie.uchicago.edu/.
-
-Dord-Crouslé, Stéphanie. 2003. “Flaubert et les manuels Roret ou le paradoxe de la vulgarisation: L’art des jardins dans *Bouvard et Pécuchet*”. En *Le partage des savoirs (XVIIIe–XIXe siècles)*, editado por Lise Andries, 93–118. Lyon: Presses universitaires de Lyon. https://doi.org/10.4000/books.pul.6576.
-
-Feyler, Patrick. 2006. “Bouvard et Pécuchet jardiniers”. En *Les mythologies du jardin de l’Antiquité à la fin du XIXe siècle*, editado por Gérard Peylet, 229–42. Eidôlon 74. Pessac: Presses universitaires de Bordeaux. https://doi.org/10.4000/books.pub.27431.
-
-Flaubert, Gustave. s. f. Borradores de *Bouvard et Pécuchet*. Ms g 225-2. Bibliothèque municipale de Rouen. Transcripción en “Les manuscrits de *Bouvard et Pécuchet*”, Université de Rouen Normandie. https://flaubert.univ-rouen.fr/manuscrits/.
-
-Flaubert, Gustave. 1910. *Bouvard et Pécuchet*. Vol. 1 de *Œuvres complètes de Gustave Flaubert*. París: Louis Conard. https://gallica.bnf.fr/ark:/12148/bpt6k208211x.
-
-Leclerc, Yvan. 2019. “Bouvard et Pécuchet sur leur terre: comment bien rater sans savoir pourquoi”. *Revue Flaubert*, n.º 18. [FALTA: URL.]
-
-Manovich, Lev. 2001. “Post-media Aesthetics”. Texto en el sitio del autor. https://manovich.net/content/04-projects/036-post-media-aesthetics/29_article_2001.pdf.
-
-Manovich, Lev. 2018. *AI Aesthetics*. Moscú: Strelka Press.
-
-Maturana, Humberto. 2004. “Veinte años después: Prefacio de Humberto Maturana Romesín a la segunda edición”. En Maturana y Varela (1973) 2004, 9–33.
-
-Maturana, Humberto, y Francisco J. Varela. (1973) 2004. *De máquinas y seres vivos: Autopoiesis; la organización de lo vivo*. 6.ª ed. Santiago de Chile: Editorial Universitaria.
-
-Salazar-Sánchez, Cristian Gonzalo, y Mauricio Arnoldo Cárcamo-Pino. 2021. “Acerca del ‘lenguaje’ de las manos (manuaje): Una conversación con Mauricio Cárcamo”. *Arte, Individuo y Sociedad* 33 (4): 1481–87. https://doi.org/10.5209/aris.76611.
-
-Thomas, Jeffrey. 2019. “Le jardin face à *Bouvard et Pécuchet*”. *Revue Flaubert*, n.º 18. [FALTA: URL.]
-
-Villagómez, Carlos. 2018. “Pensamientos e imágenes de la arquitectura de la incontinencia”. *Astrágalo*, n.º 24: 69–86. https://doi.org/10.12795/astragalo.2018.i24.05.
-<!-- fin -->
-
-## Qué cambió y por qué
+## Lo que propuse (para el registro)
 
 | Entrada | Cambio | Por qué |
 |---|---|---|

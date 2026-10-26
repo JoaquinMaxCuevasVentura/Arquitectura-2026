@@ -41,13 +41,17 @@ def entre_marcas(ruta, marca):
 
 
 def comillas(texto):
-    """« » -> “ ”, y ‘ ’ para las comillas dentro de otras, como piden las normas (§7)."""
+    """« » -> “ ”, y ‘ ’ para las comillas dentro de otras, como piden las normas (§7).
+
+    El borrador anida al estilo español, «…“…”…»: las “ ” que están dentro de « » también bajan
+    de nivel. Fuera de « », las “ ” se dejan como están.
+    """
     salida, nivel = [], 0
     for c in texto:
-        if c == "«":
+        if c == "«" or (c == "“" and nivel > 0):
             salida.append("“" if nivel == 0 else "‘")
             nivel += 1
-        elif c == "»":
+        elif c == "»" or (c == "”" and nivel > 0):
             nivel = max(nivel - 1, 0)
             salida.append("”" if nivel == 0 else "’")
         else:
@@ -64,34 +68,56 @@ def limpiar(texto):
 
 # Trozos en línea: **negrita** (pasa a cursiva: las normas no admiten negritas), *cursiva*,
 # ~~tachado~~, `código`, [notas de trabajo] en gris y enlaces [texto](url).
-EN_LINEA = re.compile(r"(\*\*.+?\*\*|~~.+?~~|\*[^*\s][^*]*?\*|`[^`]+`|\[[^\]]*\]\([^)]*\)|\[(?:FALTA|POSIBLE|ESQUELETO)[^\]]*\])")
+EN_LINEA = re.compile(r"(\*\*.+?\*\*|~~.+?~~|\*[^*\s][^*]*?\*|`[^`]+`|\[[^\]]*\]\([^)]*\))")
+NOTA = re.compile(r"\[(?:FALTA|POSIBLE|ESQUELETO)")
+
+
+def notas_de_trabajo(texto):
+    """Separa las notas [FALTA …], [POSIBLE …] y [ESQUELETO …], contando corchetes, porque
+    una nota puede llevar otros adentro («[FALTA: … (Maturana y Varela [1973] 2004) …]»)."""
+    trozos, i = [], 0
+    for m in NOTA.finditer(texto):
+        if m.start() < i:
+            continue
+        nivel, j = 0, m.start()
+        while j < len(texto):
+            nivel += {"[": 1, "]": -1}.get(texto[j], 0)
+            j += 1
+            if nivel == 0:
+                break
+        trozos += [(texto[i:m.start()], False), (texto[m.start():j], True)]
+        i = j
+    trozos.append((texto[i:], False))
+    return [(s, nota) for s, nota in trozos if s]
 
 
 def runs(parrafo, texto, tam=10, gris=False, cursiva=False, negrita=False):
-    for trozo in EN_LINEA.split(limpiar(texto)):
-        if not trozo:
-            continue
-        estilo = dict(italic=cursiva, strike=False, gris=gris)
-        if trozo.startswith("**"):
-            trozo, estilo["italic"] = trozo[2:-2], True
-        elif trozo.startswith("~~"):
-            trozo, estilo["strike"] = trozo[2:-2], True
-        elif trozo.startswith("`"):
-            trozo = trozo[1:-1]
-        elif re.match(r"\[[^\]]*\]\(", trozo):
-            trozo = re.match(r"\[([^\]]*)\]", trozo).group(1)
-        elif trozo.startswith("[") and re.match(r"\[(FALTA|POSIBLE|ESQUELETO)", trozo):
-            estilo["gris"] = True
-        elif len(trozo) > 2 and trozo[0] == "*" and trozo[-1] == "*":
-            trozo, estilo["italic"] = trozo[1:-1], not cursiva
-        r = parrafo.add_run(trozo)
-        r.font.size = Pt(tam)
-        r.italic = estilo["italic"] or None
-        r.bold = negrita or None
-        r.font.strike = estilo["strike"] or None
-        if estilo["gris"]:
-            r.font.color.rgb = GRIS
+    for parte, nota in notas_de_trabajo(limpiar(texto)):
+        for trozo in EN_LINEA.split(parte):
+            if trozo:
+                run(parrafo, trozo, tam, gris or nota, cursiva, negrita)
     return parrafo
+
+
+def run(parrafo, trozo, tam, gris, cursiva, negrita):
+    estilo = dict(italic=cursiva, strike=False)
+    if trozo.startswith("**"):
+        trozo, estilo["italic"] = trozo[2:-2], True
+    elif trozo.startswith("~~"):
+        trozo, estilo["strike"] = trozo[2:-2], True
+    elif trozo.startswith("`"):
+        trozo = trozo[1:-1]
+    elif re.match(r"\[[^\]]*\]\(", trozo):
+        trozo = re.match(r"\[([^\]]*)\]", trozo).group(1)
+    elif len(trozo) > 2 and trozo[0] == "*" and trozo[-1] == "*":
+        trozo, estilo["italic"] = trozo[1:-1], not cursiva
+    r = parrafo.add_run(trozo)
+    r.font.size = Pt(tam)
+    r.italic = estilo["italic"] or None
+    r.bold = negrita or None
+    r.font.strike = estilo["strike"] or None
+    if gris:
+        r.font.color.rgb = GRIS
 
 
 def runs_con_notas(parrafo, texto, tam=10, **kw):
@@ -346,7 +372,7 @@ def armar(borrador, plantilla, laminas, salida, anonimo):
 
     # Referencias.
     art.titulo_apartado("Referencias")
-    for linea in entre_marcas(AQUI / "Referencias revisadas.md", "referencias").splitlines():
+    for linea in md.split("## Referencias", 1)[1].splitlines():
         if linea.strip():
             art.parrafo(linea.strip(), 8)
 

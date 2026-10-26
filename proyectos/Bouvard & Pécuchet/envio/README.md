@@ -10,7 +10,7 @@ Entregables del envío, armados el 26 de octubre de 2026 sobre el Borrador 0 del
 | `docx/Lo posible y lo_anonimo.docx` | Versión anónima para el doble ciego: sin nombre, filiación ni CV, pies sin «del autor», propiedades del archivo vacías | Ídem |
 | `Resúmenes.md` | Resumen, abstract y resumo, de 229 a 240 palabras, con palabras clave del Tesauro de la UNESCO | Falta la frase del resultado del apartado 5 |
 | `Declaración de uso de IA.md` | Declaración según la política de la revista (software, funciones, secciones), y una versión corta para OJS | Faltan versiones de modelos, fechas y qué reescribió el autor |
-| `Referencias revisadas.md` | Lista limpia en Chicago autor-fecha 17.ª y tabla de cambios frente al borrador | Dos URL y tres puntos a verificar |
+| `Referencias revisadas.md` | Revisión en Chicago autor-fecha 17.ª y lo que el borrador adoptó; la lista vive en el borrador | Faltan dos URL y ver el facsímil de Conard |
 | `referencias.ris` | La misma lista para Zotero (no es obligatorio) | — |
 | `Figuras - pies, créditos y permisos.md` | Pies según las normas, permisos y requisitos técnicos | Faltan las figuras redibujadas a 16 × 10 cm |
 | `Datos de autor.md` | Nombre, filiación, ORCID y breve CV en tres idiomas | Faltan filiación, correo, ORCID y dos frases del CV |
