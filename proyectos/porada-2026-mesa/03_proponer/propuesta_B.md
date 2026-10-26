@@ -46,7 +46,16 @@ La propuesta B vuelve a la bibliografía **sin esa premisa**. Usa las mismas fue
 - **K1-K5**: los mismos de A. Se espera que B **cumpla K5**, porque ninguna pieza llega a 25 kg, que es donde todas las versiones de A fallan.
 - **E10 · Uso (pendiente, prueba física)**: ¿las juntas abiertas molestan con migas, líquidos o un mantel? Se arma una maqueta 1:1 de **tres tablas de 600 mm** y se usa una semana. Si molesta, se cierra la junta por debajo con una lengüeta (las migas se quedan arriba y se limpian) o se cambia la relación.
 
+## Versión derivada (de E8, E9 y E2b)
+
+### B2 · Tablas clavijadas
+- **6 tablas** de 2400 × 164 × 40 mm con junta de 3 mm al 8 % de humedad. El ancho sale de E2b: con tablas de ≤ 182 mm, la junta queda entre 0,5 y 5 mm de 4 a 13 %.
+- Cada tabla lleva una **clavija de fresno** en su eje sobre cada cabezal. La clavija asoma por debajo del cabezal y se **acuña** (E9: la tabla no puede ir suelta). Como la clavija está en el eje, la tabla crece igual hacia los dos lados y la junta registra la humedad.
+- **Lengüetas sueltas** de fresno (8 × 30 mm) en ranuras entre tablas. Reparten la carga vertical (E8) sin impedir que la junta cambie, y la junta queda cerrada por debajo: las migas se quedan arriba. A confirmar en E10.
+- **Apoyo central**: un puntal sobre el travesaño y un cabezal central (E8). El travesaño, que en A solo trababa, aquí también carga. Es el *Gestell* de Semper: «Zusammenwirken des Stützwerkes mit dem Rahmenwerk» (F06).
+- **Estado**: ✓ en todos los criterios aplicables (K1, K3, K4, K5). Sin piedra.
+
 ## Qué podría salir de B
 
 - Si B2 (la versión derivada de E8 y E9) cumple K1-K5, **B es una propuesta completa sin piedra**. Entonces la piedra de A tiene que demostrar en E6 que aporta algo más que la madera.
-- Si A y B son compatibles, la síntesis no es una mezcla de imágenes: **la regla que ordena B (la madera se mueve) y la que ordena A (la piedra no se mueve) pueden ser la misma regla**. Ver [`sintesis.md`](sintesis.md), cuando exista.
+- Si A y B son compatibles, la síntesis no es una mezcla de imágenes: **la regla que ordena B (la madera se mueve) y la que ordena A (la piedra no se mueve) pueden ser la misma regla**. Ver [`sintesis.md`](sintesis.md).

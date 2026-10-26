@@ -94,10 +94,11 @@ def _rotulo(v, h, vv, dx, dy, texto, color=TINTA):
             + _texto(xt + (4 if dx >= 0 else -4), yt + 4, texto, 12, color, anc="start" if dx >= 0 else "end"))
 
 
-def _piedra_oculta(mesa, v):
-    """La piedra que otra pieza tapa se marca con contorno discontinuo (convención de línea oculta)."""
-    return "".join(v.rect(p, f'fill="none" stroke="{SIENA}" stroke-width="1.3" stroke-dasharray="4 3"')
-                   for p in mesa.piezas if p.material.es_piedra)
+def _piedra_oculta(mesa, v, uniones=False):
+    """La piedra (y en el detalle, las piezas de unión) que otra pieza tapa: contorno discontinuo, línea oculta."""
+    return "".join(v.rect(p, f'fill="none" stroke="{SIENA if p.material.es_piedra else TINTA}" stroke-width="1.2" '
+                             f'stroke-dasharray="4 3"')
+                   for p in mesa.piezas if p.material.es_piedra or (uniones and p.funcion == "union"))
 
 
 def alzado(mesa, v, rotulos=True):
@@ -113,7 +114,7 @@ def alzado(mesa, v, rotulos=True):
 def planta(mesa, v):
     out = []
     for p in sorted(mesa.piezas, key=lambda p: p.centro[2]):
-        if p.nombre.startswith("tablero"):
+        if p.funcion == "limite":
             out.append(v.rect(p, f'fill="{MADERA["nogal"]}" fill-opacity="0.35" stroke="{TINTA}" stroke-width="1.2"'))
         elif p.z[1] >= H - 0.1 or p.material.es_piedra and p.z[1] >= H - 0.1:
             out.append(v.rect(p, f'fill="{_fill(p)}" stroke="{TINTA}" stroke-width="1"'))
@@ -137,8 +138,9 @@ def seccion(mesa, v, x_corte=0.0):
 def _rotulos_alzado(mesa, v):
     out = []
     der = [p for p in mesa.piezas if p.centro[0] > 0]
-    tab = [p for p in mesa.piezas if p.nombre.startswith("tablero")][0]
-    out.append(_rotulo(v, -900, H - 20, 40, -26, f"{SIMBOLO['limite']} tablero, nogal macizo"))
+    tablas = mesa.nodo.get("tipo") == "tablas"
+    out.append(_rotulo(v, -900, H - 20, 40, -26,
+                       f"{SIMBOLO['limite']} {'tablas sueltas' if tablas else 'tablero'}, nogal macizo"))
     cab = [p for p in der if p.nombre.startswith("montante")][0]
     out.append(_rotulo(v, cab.centro[0], 560, 60, -20, f"{SIMBOLO['apoyo']} caballete (Gestell, F06)"))
     piedras = [p for p in der if p.material.es_piedra] or [p for p in mesa.piezas if p.material.es_piedra]
@@ -157,7 +159,7 @@ def detalle_nodo(mesa, v):
                f'height="{v.alto:.1f}"/></clipPath><g clip-path="url(#clip-{mesa.codigo})">')
     for p in sorted(mesa.piezas, key=lambda p: -p.y[0]):
         out.append(v.rect(p, f'fill="{_fill(p)}" stroke="{TINTA}" stroke-width="1.2"'))
-    out.append(_piedra_oculta(mesa, v))
+    out.append(_piedra_oculta(mesa, v, uniones=True))
     out.append("</g>")
     out += _rotulos_detalle(mesa, v)
     out.append(f'<rect x="{v.ox:.1f}" y="{v.oy:.1f}" width="{v.ancho:.1f}" height="{v.alto:.1f}" fill="none" '
@@ -167,7 +169,8 @@ def detalle_nodo(mesa, v):
 
 NOMBRES_DETALLE = {"montante": "⊥ montante", "travesaño": "⊥ travesaño y espiga pasante", "cabezal": "⊥ cabezal",
                    "tablero": "= tablero", "llave": "✕ llave", "collar": "✕ collar de piedra", "barra": "● barra de piedra",
-                   "pie": "⊥ pie"}
+                   "pie": "⊥ pie", "tabla": "= tabla suelta", "clavija": "✕ clavija (F08)", "cuña": "✕ cuña (F03)",
+                   "puntal": "⊥ puntal", "lengüeta": "✕ lengüeta suelta"}
 
 
 def _rotulos_detalle(mesa, v):
@@ -231,7 +234,7 @@ def lamina(mesa, r, notas):
     s.append(_texto(1100, 145, "SECCIÓN TRANSVERSAL x = 0, mirando al caballete", 12, peso="bold"))
     s.append(seccion(mesa, vs))
     s.append(_cota(vs, -W / 2, W / 2, H + 18, f"{W:.0f}"))
-    if mesa.nodo.get("tipo") == "viga":
+    if mesa.nodo.get("tipo") == "viga" or (mesa.nodo.get("tipo") == "tablas" and "tipo_union" not in mesa.nodo):
         rango_h, rango_v = (650, 950), (560, 790)
     else:
         rango_h, rango_v = (700, 960), (180, 420)

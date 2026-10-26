@@ -78,6 +78,9 @@ Nacen de los resultados de la ronda 1 ([`../04_ensayar/ensayos.md`](../04_ensaya
 | V3 Solo madera | ✓ control vigente | cumple K1-K4 sin piedra |
 | V0b Lastre asentado | ◐ viable, secundaria | cumple, pero su figura es el montón y no la unión |
 | V4 Collar | ◐ candidata de la propuesta A | cumple; la piedra debe justificarse en E6 |
+| B1 Tablas posadas | ✗ descartada | E8 flecha, E9 vuelco de tabla, E2b tabla ancha ([propuesta B](propuesta_B.md)) |
+| B2 Tablas clavijadas | ✓ candidata de la propuesta B | cumple todo lo aplicable, sin piedra |
+| AB Síntesis | ◐ candidata para iterar | cumple K1-K5; depende de E6 y E10 ([síntesis](sintesis.md)) |
 
 ## Lo que no se propuso, y por qué
 

@@ -7,7 +7,7 @@ no para dimensionar la pieza final (ver «qué no demuestra» en 04_ensayar/ensa
 from math import sqrt
 
 from .materiales import MARMOL, NOGAL
-from .versiones import H, L, W
+from .versiones import CABEZAL, H, L, W
 
 G = 9.81
 
@@ -20,6 +20,9 @@ JUNTA_MAX = 3.0         # mm por lado (K3)
 PESO_MAX = 25.0         # kg por pieza (K5)
 MADERA_MIN = 0.85       # fracción de volumen en madera (K1)
 LIM_PIEDRA = MARMOL.diseno(MARMOL.mor)   # 2,33 MPa (K2)
+FLECHA_MAX = 2.0        # mm bajo P sobre una tabla (E8, propuesta B)
+JUNTA_TABLAS = (0.5, 5.0)  # mm, rango admisible de la junta entre tablas (E2b)
+N_LENGUETAS = 3         # supuesto: con lengüetas, una carga la reparten tres tablas
 
 
 def e1_viga_piedra(mesa, P=P_REF):
@@ -110,7 +113,8 @@ def e4_union(mesa, Hh=H_REF, mu=MU_SUELO):
     apoyo = (largo - h_esp) / 2
     coef_m = (h_esp + apoyo) / 4 - h_esp / 8          # viga corta con carga repartida en el alto de la espiga
     S = b * d ** 2 / 6
-    x_llave = n["collar"][0] if n["tipo"] == "collar" else 0.0
+    union = n.get("tipo_union", n["tipo"])
+    x_llave = n["collar"][0] if union == "collar" else 0.0
     peso_llave = mat.densidad * d * b * largo * 1e-9 * G
     out = {"material_llave": mat.nombre, "limite_llave": lim, "modelos": {}}
     for modelo, T in _traccion_espiga(n, Hh).items():
@@ -121,7 +125,7 @@ def e4_union(mesa, Hh=H_REF, mu=MU_SUELO):
              "apoyo_llave_MPa": T / (2 * apoyo * b),
              "corte_cabeza_espiga_MPa": T / (2 * (vuelo - x_llave - d) * h_esp),
              "peso_llave_sobre_rozamiento": peso_llave / (mu * T)}
-        if n["tipo"] == "collar":
+        if union == "collar":
             cx, cy, cz = n["collar"]
             ax, az = n["agujero"]
             r["compresion_collar_MPa"] = T / (cy * cz - ax * az)
@@ -138,6 +142,61 @@ def e4_union(mesa, Hh=H_REF, mu=MU_SUELO):
     return out
 
 
+def e8_flecha_tablas(mesa, P=P_REF):
+    """Flecha de una tabla bajo P en el centro de su vano; con apoyo central, viga continua de dos vanos."""
+    n = mesa.nodo
+    if n.get("tipo") != "tablas":
+        return None
+    _, b, t = n["tablas"]
+    luz = n["luz"]
+    EI = NOGAL.moe * b * t ** 3 / 12
+    S = b * t ** 2 / 6
+    if n["apoyo_central"]:
+        l = luz / 2
+        flecha = 0.015 * P * l ** 3 / EI                    # dos vanos iguales, carga en el centro de uno
+        momento = 0.203 * P * l
+        R = 0.6875 * P                                      # reacción en el apoyo central
+        bt, ht = n["trav_seccion"]
+        asiento = R * luz ** 3 / (48 * NOGAL.moe * bt * ht ** 3 / 12)   # el travesaño cede bajo el puntal
+    else:
+        flecha, momento, asiento = P * luz ** 3 / (48 * EI), P * luz / 4, 0.0
+    reparto = N_LENGUETAS if n["lenguetas"] else 1
+    total = flecha / reparto + asiento
+    sig_trav = (R * luz / 4) / (bt * ht ** 2 / 6) if n["apoyo_central"] else 0.0
+    return {"flecha_tabla_sola_mm": flecha, "asiento_apoyo_central_mm": asiento, "reparto_lenguetas": reparto,
+            "sigma_travesano": sig_trav,
+            "flecha_total_mm": total, "escalon_entre_tablas_mm": 0.0 if n["lenguetas"] else flecha,
+            "sigma_tabla": momento / S, "limite_tabla": NOGAL.diseno(NOGAL.mor), "cumple": total <= FLECHA_MAX}
+
+
+def e9_vuelco_tabla(mesa, P=P_REF):
+    """Una tabla sola, sin trabar, como balancín sobre la arista exterior del cabezal."""
+    n = mesa.nodo
+    if n.get("tipo") != "tablas":
+        return None
+    tabla = mesa.piezas_de("tabla ")[0]
+    cab = max(p.x[1] for p in mesa.piezas_de("cabezal "))
+    f = tabla.masa_kg * G * (cab - tabla.centro[0]) / (L / 2 - cab)
+    return {"masa_tabla_kg": tabla.masa_kg, "vuelco_tabla_suelta_N": f, "trabadas": n["trabadas"],
+            "cumple": n["trabadas"] or f >= 2 * P}
+
+
+def e2b_juntas_tablas(mesa, ch=CH, coef=NOGAL.ct):
+    """Cada tabla, clavijada en su eje, crece hacia los dos lados: cada junta cambia b·C·ΔCH."""
+    n = mesa.nodo
+    if n.get("tipo") != "tablas":
+        return None
+    fab, mn, mx = ch
+    _, b, _ = n["tablas"]
+    g = n["junta"]
+    humeda, seca = g - b * coef * (mx - fab), g + b * coef * (fab - mn)
+    lo, hi = JUNTA_TABLAS
+    return {"ancho_tabla_mm": b, "junta_nominal_mm": g, "junta_humeda_mm": humeda, "junta_seca_mm": seca,
+            "estacional_6_11_mm": b * coef * 5, "ancho_tabla_max_mm": (hi - lo) / (coef * (mx - mn)),
+            "junta_nominal_admisible_mm": (lo + b * coef * (mx - fab), hi - b * coef * (fab - mn)),
+            "cumple": humeda >= lo and seca <= hi}
+
+
 def tension_max_piedra(mesa, e1, e4, modelo):
     """Mayor tensión de flexión en piezas de piedra (K2). Las piedras asentadas o a compresión dan ~0."""
     valores = [0.0]
@@ -152,7 +211,7 @@ def tension_max_piedra(mesa, e1, e4, modelo):
     return max(valores)
 
 
-def criterios(mesa, e1, e2, e3, e4):
+def criterios(mesa, e1, e2, e3, e4, e9=None, e2b=None):
     v_madera, v_piedra = mesa.volumen(False), mesa.volumen(True)
     frac = v_madera / (v_madera + v_piedra)
     pesada = mesa.pieza_mas_pesada()
@@ -166,12 +225,15 @@ def criterios(mesa, e1, e2, e3, e4):
                "robusto": (k2["a"] <= LIM_PIEDRA) if hay_piedra else None,
                "texto": (f"flexión máx. en piedra {k2['b']:.1f} MPa (modelo b) / {k2['a']:.1f} MPa (modelo a)"
                          if hay_piedra else "sin piedra")},
-        "K3": {"cumple": all(j["cumple"] for j in e2["juntas"]) and not e2["encolado_a_contraveta"],
-               "texto": (f"junta máx. {max(j['junta_maxima_por_lado'] for j in e2['juntas']):.1f} mm/lado"
-                         if e2["juntas"] else "sin juntas piedra-madera")},
-        "K4": {"cumple": e3["sin_piedra_ya_resiste_2x"],
+        "K3": {"cumple": (all(j["cumple"] for j in e2["juntas"]) and not e2["encolado_a_contraveta"]
+                          and (e2b is None or e2b["cumple"])),
+               "texto": ((f"junta máx. {max(j['junta_maxima_por_lado'] for j in e2['juntas']):.1f} mm/lado"
+                          if e2["juntas"] else "sin juntas piedra-madera")
+                         + (f" · entre tablas {e2b['junta_humeda_mm']:.1f}-{e2b['junta_seca_mm']:.1f} mm" if e2b else ""))},
+        "K4": {"cumple": e3["sin_piedra_ya_resiste_2x"] and (e9 is None or e9["cumple"]),
                "texto": f"vuelco en extremo sin piedra {e3['sin_piedra']['vuelco_extremo_N']:.0f} N "
-                        f"({e3['sin_piedra']['vuelco_extremo_N'] / P_REF:.2f} × P)"},
+                        f"({e3['sin_piedra']['vuelco_extremo_N'] / P_REF:.2f} × P)"
+                        + (f" · tabla suelta {e9['vuelco_tabla_suelta_N']:.0f} N" if e9 and not e9["trabadas"] else "")},
         "K5": {"valor": pesada.masa_kg, "cumple": pesada.masa_kg <= PESO_MAX,
                "piedra_cumple": piedra_pesada.masa_kg <= PESO_MAX if piedra_pesada else None,
                "texto": f"más pesada: {pesada.nombre} {pesada.masa_kg:.1f} kg"
@@ -184,6 +246,8 @@ def ensayar(mesa):
     e2 = e2_movimiento(mesa)
     e3 = e3_vuelco(mesa)
     e4 = e4_union(mesa)
+    e8, e9, e2b = e8_flecha_tablas(mesa), e9_vuelco_tabla(mesa), e2b_juntas_tablas(mesa)
     return {"codigo": mesa.codigo, "nombre": mesa.nombre, "accion": mesa.accion, "relacion": mesa.relacion,
             "ronda": mesa.ronda, "masa_total_kg": mesa.masa(), "masa_piedra_kg": mesa.masa() - mesa.masa(True),
-            "E1": e1, "E2": e2, "E3": e3, "E4": e4, "K": criterios(mesa, e1, e2, e3, e4)}
+            "E1": e1, "E2": e2, "E3": e3, "E4": e4, "E8": e8, "E9": e9, "E2b": e2b,
+            "K": criterios(mesa, e1, e2, e3, e4, e9, e2b)}

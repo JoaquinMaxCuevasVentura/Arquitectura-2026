@@ -4,7 +4,8 @@
     python3 -m mesa            # ronda 1 y ronda 2
     python3 -m mesa --ronda 1
 
-Escribe en ../04_ensayar/resultados/ (JSON y Markdown) y en ../03_proponer/laminas/ (SVG).
+Escribe en ../04_ensayar/resultados/ (JSON y Markdown), en ../03_proponer/laminas/ (SVG)
+y, para las candidatas vigentes, en ../05_consolidar/modelos/ (OBJ + MTL).
 """
 import argparse
 import json
@@ -13,10 +14,12 @@ from pathlib import Path
 from . import versiones
 from .calculos import CH, H_REF, LIM_PIEDRA, P_REF, ensayar
 from .dibujo import lamina, lamina_comparativa
+from .modelo3d import exportar_obj
 
 RAIZ = Path(__file__).resolve().parents[2]
 RESULTADOS = RAIZ / "04_ensayar" / "resultados"
 LAMINAS = RAIZ / "03_proponer" / "laminas"
+MODELOS = RAIZ / "05_consolidar" / "modelos"
 
 # Ronda 2: corrección común que pide E3 (ver 04_ensayar/ensayos.md). Se alarga el pie, no se mueve el caballete,
 # para no quitar sitio a las rodillas en las cabeceras.
@@ -40,6 +43,18 @@ LECTURA = {
         "      tiene que justificarse por lo que responda E6 (nodo a 1:1, percepción y montaje), o salir.",
         "K5 · Falla en todas por el tablero (59 kg en una pieza): es un problema común, no de la piedra.",
         "→ Siguiente: E6 con V4 y V3 lado a lado; E7 (ganadores 2017-2018); decidir el mármol y el nombre (O6)."],
+    3: ["E8 · B1: una tabla sola (196 × 40 mm, luz 1500) se flecha 5,8 mm bajo P. Es un escalón perceptible (límite: 2 mm).",
+        "E9 · Una tabla suelta vuelca con 219 N si alguien se sienta en su punta: no puede ir solo posada, hay que trabarla.",
+        "      La cuña vuelve, esta vez por el vuelco de la tabla y no por el concepto.",
+        "E2b · Con tablas de 196 mm, ninguna junta queda entre 0,5 y 5 mm de 4 a 13 % de humedad: la tabla debe medir ≤ 182 mm.",
+        "K5 · B1 sí cumple: la pieza más pesada es una tabla de 11,6 kg. En A, el tablero de 59 kg falla siempre.",
+        "→ Ronda 4: B2 = 6 tablas de 164 mm con junta de 3 mm, clavija acuñada bajo el cabezal, lengüetas sueltas y apoyo central sobre el travesaño."],
+    4: ["B2 · Cumple todos los criterios aplicables sin piedra: flecha de 1,0 mm, juntas de 0,8 a 4,8 mm, ninguna pieza de más de 9,7 kg.",
+        "V4 · Cumple K1-K4 con la piedra a compresión, pero falla K5 por el tablero de una sola pieza.",
+        "AB · El tablero de B2 con el collar de V4 cumple K1-K5. Las dos reglas no chocan: la madera se mueve y se arma; la piedra es lo único fijo.",
+        "El cálculo no decide: si el collar se lee como parte de la unión (E6), si las juntas abiertas molestan en el uso (E10)",
+        "      y si 4,6 kg de mármol justifican sumar un proveedor a la producción.",
+        "→ Siguiente: E6 y E10 con maquetas 1:1; elegir con el autor entre B2 (sin piedra) y AB (con piedra) según lo que muestren."],
 }
 
 
@@ -49,6 +64,18 @@ def _f(v, nd=1):
 
 def notas(r):
     n = []
+    if r["E8"]:
+        e = r["E8"]
+        n.append(f"E8 · flecha bajo P: {e['flecha_total_mm']:.1f} mm (tabla sola {e['flecha_tabla_sola_mm']:.1f}; "
+                 f"límite 2)")
+    if r["E9"]:
+        e = r["E9"]
+        n.append(f"E9 · una tabla suelta vuelca con {e['vuelco_tabla_suelta_N']:.0f} N"
+                 + (" → trabada con clavija y cuña" if e["trabadas"] else " → hay que trabarla"))
+    if r["E2b"]:
+        e = r["E2b"]
+        n.append(f"E2b · junta entre tablas {e['junta_humeda_mm']:.1f}-{e['junta_seca_mm']:.1f} mm "
+                 f"(tabla {e['ancho_tabla_mm']:.0f}; máx. {e['ancho_tabla_max_mm']:.0f})")
     if r["E1"]:
         e = r["E1"]
         n.append(f"E1 · barra a flexión: {e['sigma_total']:.1f} MPa (límite {e['limite_diseno']:.1f}); "
@@ -85,6 +112,23 @@ def tabla_md(resultados, titulo, geometria):
         lin.append(f"| **{r['codigo']}** {r['nombre']} | {r['masa_total_kg']:.1f} | {r['masa_piedra_kg']:.1f} | "
                    f"{m(k['K1'])} {k['K1']['valor']:.1%} | {m(k['K2'])} {k['K2']['texto']} | {m(k['K3'])} | "
                    f"{m(k['K4'])} {k['K4']['texto']} | {m(k['K5'])} {k['K5']['texto']} |")
+    if any(r["E8"] for r in resultados):
+        lin += ["", "## E8 · E9 · E2b · Tablas (propuesta B)", ""]
+        for r in resultados:
+            if not r["E8"]:
+                continue
+            e8, e9, e2b = r["E8"], r["E9"], r["E2b"]
+            lin.append(f"- **{r['codigo']}** · E8: flecha bajo P {e8['flecha_total_mm']:.2f} mm (tabla sola "
+                       f"{e8['flecha_tabla_sola_mm']:.2f}; asiento del apoyo central {e8['asiento_apoyo_central_mm']:.2f}; "
+                       f"reparto por lengüetas ÷{e8['reparto_lenguetas']}) → {'✓' if e8['cumple'] else '✗'}; "
+                       f"flexión en la tabla {e8['sigma_tabla']:.1f} MPa (límite {e8['limite_tabla']:.1f})"
+                       + (f"; en el travesaño {e8['sigma_travesano']:.1f} MPa" if e8["sigma_travesano"] else "") + ". "
+                       f"E9: una tabla suelta vuelca con {e9['vuelco_tabla_suelta_N']:.0f} N "
+                       f"({'trabada' if e9['trabadas'] else 'sin trabar'}) → {'✓' if e9['cumple'] else '✗'}. "
+                       f"E2b: tabla de {e2b['ancho_tabla_mm']:.0f} mm, junta {e2b['junta_nominal_mm']:.1f} mm al 8 % → "
+                       f"{e2b['junta_humeda_mm']:.2f} mm al 13 % y {e2b['junta_seca_mm']:.2f} mm al 4 % "
+                       f"(varía {e2b['estacional_6_11_mm']:.1f} mm entre 6 y 11 %); ancho máximo de tabla "
+                       f"{e2b['ancho_tabla_max_mm']:.0f} mm → {'✓' if e2b['cumple'] else '✗'}.")
     lin += ["", "## E1 · Piedra como viga", ""]
     if not any(r["E1"] for r in resultados):
         lin.append("No aplica en esta ronda: ninguna versión usa la piedra como viga.")
@@ -132,17 +176,23 @@ def tabla_md(resultados, titulo, geometria):
     return "\n".join(lin) + "\n"
 
 
+RONDAS = {
+    1: ("Ronda 1 · propuesta A, versiones iniciales", {}, lambda: versiones.RONDA_1),
+    2: ("Ronda 2 · propuesta A, derivadas, con la corrección común de E3", GEOMETRIA_RONDA_2,
+        lambda: (versiones.v3,) + versiones.RONDA_2),
+    3: ("Ronda 3 · propuesta B, versión inicial (con el control V3)", GEOMETRIA_RONDA_2,
+        lambda: (versiones.v3, versiones.b1)),
+    4: ("Ronda 4 · A frente a B, y síntesis candidata", GEOMETRIA_RONDA_2,
+        lambda: (versiones.v4, versiones.b2, versiones.ab, versiones.v3)),
+}
+
+
 def correr(ronda):
     RESULTADOS.mkdir(parents=True, exist_ok=True)
     LAMINAS.mkdir(parents=True, exist_ok=True)
-    if ronda == 1:
-        geometria = versiones.configurar()
-        fabricas = versiones.RONDA_1
-        titulo = "Ronda 1 · versiones iniciales"
-    else:
-        geometria = versiones.configurar(**GEOMETRIA_RONDA_2)
-        fabricas = (versiones.v3,) + versiones.RONDA_2
-        titulo = "Ronda 2 · control y versiones derivadas, con la corrección común de E3"
+    titulo, geo, fabricas = RONDAS[ronda]
+    geometria = versiones.configurar(**geo)
+    fabricas = fabricas()
     mesas = [f() for f in fabricas]
     for m in mesas:
         m.ronda = ronda
@@ -150,7 +200,9 @@ def correr(ronda):
     sufijo = f"r{ronda}"
     for m, r in zip(mesas, res):
         (LAMINAS / f"{m.codigo}_{sufijo}.svg").write_text(lamina(m, r, notas(r)), encoding="utf-8")
-    (LAMINAS / f"comparativa_{sufijo}.svg").write_text(lamina_comparativa(mesas, res, titulo, LECTURA[ronda]),
+        if ronda == max(RONDAS) and m.codigo in ("V4", "B2", "AB"):     # candidatas vigentes → modelo 3D base
+            exportar_obj(m, MODELOS)
+    (LAMINAS / f"comparativa_{sufijo}.svg").write_text(lamina_comparativa(mesas, res, titulo, LECTURA.get(ronda, ())),
                                                         encoding="utf-8")
     texto_geo = f"caballete a {geometria['a_extremo_mm']:.0f} mm del extremo, pie de {geometria['pie_mm'][0]:.0f} mm"
     (RESULTADOS / f"ronda{ronda}.md").write_text(tabla_md(res, titulo, texto_geo), encoding="utf-8")
@@ -162,11 +214,13 @@ def correr(ronda):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--ronda", type=int, choices=(1, 2))
+    ap.add_argument("--ronda", type=int, choices=tuple(RONDAS))
     args = ap.parse_args()
-    for ronda in ([args.ronda] if args.ronda else [1, 2]):
+    for ronda in ([args.ronda] if args.ronda else list(RONDAS)):
         res = correr(ronda)
-        print(f"ronda {ronda}: " + ", ".join(f"{r['codigo']} {sum(1 for k in r['K'].values() if k['cumple'])}/5" for r in res))
+        print(f"ronda {ronda}: " + ", ".join(
+            f"{r['codigo']} {sum(1 for k in r['K'].values() if k['cumple'])}/{sum(1 for k in r['K'].values() if k['cumple'] is not None)}"
+            for r in res) + "  (criterios cumplidos / aplicables)")
 
 
 if __name__ == "__main__":

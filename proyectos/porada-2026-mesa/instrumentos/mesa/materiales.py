@@ -18,6 +18,7 @@ class Material:
     fuente: str
     es_piedra: bool = False
     mor_alto: float | None = None   # extremo alto del rango, solo piedra
+    moe: float | None = None        # módulo de elasticidad (flexión), media
 
     def diseno(self, valor):
         return valor / FACTOR_DISENO
@@ -25,8 +26,10 @@ class Material:
 
 FPL = "FPL 2010 (FPL-GTR-190), tabla 5-3a p. 5-4 a 5-6 y tabla 13-5 p. 13-16"
 
-NOGAL = Material("nogal canaleta (Juglans nigra)", 0.55 * 1.12 * 1000, 101, 52.3, 7.0, 9.4, 0.00190, 0.00274, FPL)
-FRESNO = Material("fresno (Fraxinus americana)", 0.60 * 1.12 * 1000, 103, 51.1, 8.0, 13.2, 0.00169, 0.00274, FPL)
+NOGAL = Material("nogal canaleta (Juglans nigra)", 0.55 * 1.12 * 1000, 101, 52.3, 7.0, 9.4, 0.00190, 0.00274, FPL,
+                 moe=11600)
+FRESNO = Material("fresno (Fraxinus americana)", 0.60 * 1.12 * 1000, 103, 51.1, 8.0, 13.2, 0.00169, 0.00274, FPL,
+                  moe=12000)
 
 # Mármol: MOR típico 7-15 MPa (a confirmar con ficha EN 12372 del mármol elegido; Kessler 1919 tabla 6 pendiente).
 # Compresión: mínimo medido por Kessler 1919 p. 11 (7 850 psi ≈ 54 MPa). No se mueve con la humedad.

@@ -1,4 +1,4 @@
-# Ronda 1 · versiones iniciales
+# Ronda 1 · propuesta A, versiones iniciales
 
 Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N, CH 4-13 % (fabricación 8 %), límite de flexión de la piedra 2.33 MPa. Geometría común: caballete a 450 mm del extremo, pie de 80 mm.
 

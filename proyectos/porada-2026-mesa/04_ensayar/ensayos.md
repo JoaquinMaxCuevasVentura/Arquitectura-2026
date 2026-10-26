@@ -101,7 +101,27 @@ Cada ensayo tiene:
 - **Qué no demuestra**: la durabilidad, ni la mesa entera.
 
 ## E8, E9, E2b, E10 · Ensayos de la propuesta B
-El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propuesta_B.md#prerregistro-de-los-ensayos-propios-de-b-antes-de-calcular), escrito antes de calcular. Los resultados van más abajo, en la sección «Propuesta B».
+El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propuesta_B.md#prerregistro-de-los-ensayos-propios-de-b-antes-de-calcular), escrito antes de calcular (commit `38a6dc6`).
+
+### Ronda 3 · B1 Tablas posadas ([resultados](resultados/ronda3.md))
+- **E8**: una tabla de 196 × 40 sobre 1500 mm se flecha **5,8 mm** bajo P (✗, límite 2). Resiste bien (7,2 MPa frente a 33,7), pero la tabla se hunde frente a sus vecinas.
+- **E9**: una tabla suelta (11,6 kg) **vuelca con 219 N** si alguien se sienta en su punta (✗). No puede ir solo posada.
+- **E2b**: con tablas de 196 mm no hay junta nominal que quede entre 0,5 y 5 mm de 4 a 13 % de humedad (✗). **La tabla debe medir ≤ 182 mm.**
+- **K5**: ✓. La pieza más pesada es una tabla de 11,6 kg. Es lo que A no puede resolver con un tablero de 59 kg.
+- **Contraste**: se cumplen las tres ramas del prerregistro, y los resultados coinciden con las cuentas a mano anunciadas. Hay un hecho inesperado: **E9 trae de vuelta la cuña** (*cchacuru*, F03). En B no viene del concepto: viene de que una tabla suelta vuelca.
+- **Decisión**: modificar B1 → **B2**: 6 tablas de 164 mm con junta de 3 mm; clavija acuñada bajo el cabezal; lengüetas sueltas de fresno entre tablas; apoyo central (puntal y cabezal sobre el travesaño).
+
+### Ronda 4 · B2 Tablas clavijadas, y AB ([resultados](resultados/ronda4.md))
+- **B2**:
+  - E8: flecha de **1,0 mm** (✓). Se suman 0,6 mm de la tabla en dos vanos, repartidos entre tres tablas por las lengüetas, y 0,8 mm que cede el travesaño bajo el puntal. El travesaño trabaja a 2,8 MPa.
+  - E9: ✓, las tablas van trabadas.
+  - E2b: juntas de **0,75 a 4,8 mm** (✓). Cambian 2,2 mm entre 6 y 11 %: **la estación se ve en la junta**.
+  - K1-K5: ✓ en todos los aplicables (K2 no aplica).
+- **AB** (tablero de B2 + collar de V4): **✓ K1-K5**. El collar trabaja igual que en V4, a 0,08 MPa.
+- **Qué no demuestra**:
+  - El reparto entre tres tablas es un **supuesto** sobre cómo trabajan las lengüetas sueltas.
+  - El modelo no mira si las migas, los líquidos o el mantel conviven con juntas de hasta 4,8 mm. Eso es **E10**, una prueba física.
+- **Decisión**: B2 es **una propuesta completa sin piedra**. AB muestra que **A y B son compatibles**. Cuál seguir lo deciden E6, E10 y el autor (ver [`../03_proponer/sintesis.md`](../03_proponer/sintesis.md)).
 
 ## E7 · Originalidad · *pendiente*
 - **Pregunta**: ¿algún ganador de 2017-2018 o algún producto actual de Porada ya resuelve una mesa con unión de piedra?

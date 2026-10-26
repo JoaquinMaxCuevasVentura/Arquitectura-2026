@@ -43,3 +43,14 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
 - **Hecho**: el autor señala que, al fijar de antemano piedra + *chhaxwa*, el proceso pudo quedar inclinado hacia un resultado.
 - **Lectura**: los ensayos sí contradijeron el borrador (E1, E4, E5), pero todas las versiones seguían discutiendo **dónde va la piedra**. Ninguna podía proponer que el problema fuera otro.
 - **Decisión**: **abrir una propuesta B** con otra entrada al problema, sacada de la misma bibliografía, con su propio prerregistro y medida con el mismo instrumento y los mismos criterios. Después se comparan A y B, y se busca una síntesis si son compatibles. → [`03_proponer/propuesta_B.md`](03_proponer/propuesta_B.md)
+
+### 26-10-2026 · 8 · Proponer y ensayar B, ronda 3 → modificar
+- **Hecho**: el prerregistro de B se fijó antes de calcular (commit `38a6dc6`). B1, la lectura literal de Viollet-le-Duc (tablas posadas), falla E8 (flecha de 5,8 mm), E9 (una tabla suelta vuelca con 219 N) y E2b (la tabla debe medir ≤ 182 mm). Cumple K5, que en A falla siempre.
+- **Hallazgo no buscado**: la **cuña vuelve** en B por una razón propia (E9), no por el concepto.
+- **Decisión**: **modificar** → B2: 6 tablas de 164 mm, clavija acuñada, lengüetas sueltas y apoyo central.
+
+### 26-10-2026 · 9 · Ensayar, ronda 4 → A y B son compatibles
+- **Resultado**: B2 cumple todo lo aplicable sin piedra. AB (tablero de B2 + collar de V4) cumple K1-K5.
+- **Contraste**: las reglas de A y B son la misma vista desde dos lados: la madera se mueve; la piedra no. → [`03_proponer/sintesis.md`](03_proponer/sintesis.md)
+- **Decisión**: **no cerrar todavía**. La elección entre B2 y AB depende de lo que el cálculo no mide: E6 (¿el collar se lee como unión?) y E10 (¿las juntas molestan en el uso?). Además hacen falta E7 (originalidad) y las decisiones del autor sobre el mármol, el nombre (O6) y la frase del concepto.
+- **Siguiente acción**: construir las dos maquetas 1:1 (el nodo collar/llave y tres tablas de 600 mm) y revisar los compendios 2017-2018.

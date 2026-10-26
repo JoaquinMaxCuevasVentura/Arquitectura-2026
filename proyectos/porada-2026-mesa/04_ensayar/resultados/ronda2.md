@@ -1,4 +1,4 @@
-# Ronda 2 · control y versiones derivadas, con la corrección común de E3
+# Ronda 2 · propuesta A, derivadas, con la corrección común de E3
 
 Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N, CH 4-13 % (fabricación 8 %), límite de flexión de la piedra 2.33 MPa. Geometría común: caballete a 450 mm del extremo, pie de 180 mm.
 
