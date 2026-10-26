@@ -12,7 +12,7 @@ python3 -m unittest test_mesa   # comprobaciones contra cálculos a mano
 Escribe:
 - `../04_ensayar/resultados/rondaN.md` y `.json`: tablas de resultados.
 - `../03_proponer/laminas/*.svg`: láminas A3 por versión y comparativas por ronda. Se abren en el navegador o en Illustrator e Inkscape.
-- `../05_consolidar/modelos/*.obj`: modelo 3D base de las candidatas V4, B2 y AB.
+- `../05_consolidar/modelos/*.obj`: modelo 3D base de las candidatas V4, B2, AB y B3.
 
 ## Qué hay en cada archivo
 

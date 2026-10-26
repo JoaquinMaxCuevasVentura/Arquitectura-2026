@@ -60,3 +60,9 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
 - **Hallazgo**: Porada ya celebra «l'incontro tra legno e marmo» (*Oswood*, *Osmose*). El jurado premia el macizo trabajado, los arquetipos, los componentes con individualidad, la intercambiabilidad y el material de acento en la unión. → [`01_reunir/precedentes.md`](01_reunir/precedentes.md)
 - **Decisión**: **modificar el argumento**. Lo que distingue a A es que la piedra trabaja como unión, no la combinación de materiales. A B se le agrega **B3**, una tabla de servicio intercambiable con mármol asentado, y la **familia** banco-consola-mesa. Quedan dos síntesis posibles (AB y B3), que conviene no sumar en la misma mesa.
 - **Herramienta**: el autor pide **Blender en la nube** (Geometry Nodes, materiales procedurales) y descarta Rhino. El prerregistro de E6a y E10a (lectura visual con renders) se fija antes de renderizar.
+
+### 26-10-2026 · 11 · Consolidar una herramienta: Blender en la nube
+- **Pedido del autor**: modelar las pruebas en Blender, en la nube y desde su GitHub (Geometry Nodes, materiales procedurales); Rhino se descarta.
+- **Hecho**: `bpy` 5.2.3 corre sin pantalla en el contenedor. Un solo árbol de Geometry Nodes («Mesa Porada») genera B2, AB, B3 y la familia (banco, consola, mesa) a partir de los parámetros del instrumento. Cada pieza lleva un atributo de veta para orientar la fibra. Los mármoles procedurales son de catálogo (Nero Sahara Noir y Marrone Emperador Dark). Se agrega un workflow de GitHub Actions para renderizar en la nube. → [`instrumentos/blender/`](instrumentos/blender/README.md)
+- **Para qué sirve, y para qué no**: sirve para la lectura visual previa (E6a, E10a, con su [hoja de prueba](04_ensayar/E6a_E10a_hoja.md)) y para la base de la lámina 3. No sirve para medir peso, montaje ni uso: eso queda para las maquetas.
+- **Siguiente acción**: el autor hace E6a y E10a con 5 personas; después vienen E6 y E10 físicos.

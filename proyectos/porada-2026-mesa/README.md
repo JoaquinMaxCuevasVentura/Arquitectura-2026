@@ -11,9 +11,15 @@ Proyecto de mesa de madera maciza para la XIV edición del concurso Porada, dedi
   - **A · V4 Collar**, desde el concepto del autor: la espiga atraviesa un bloque de mármol que trabaja solo a compresión. Cumple K1-K4 y falla K5 (tablero de 59 kg).
   - **B · B2 Tablas clavijadas**, propuesta propia desde la bibliografía, sin la premisa de la piedra: 6 tablas sueltas, clavijadas y acuñadas; la junta muestra la estación. Cumple todo lo aplicable, sin piedra.
   - **AB**: el tablero de B2 con el collar de V4. Cumple K1-K5. Regla común: **la madera se mueve y se arma; lo único fijo es la piedra donde se traba**.
-- **Lo que decide entre B2 y AB no es un cálculo**: es E6 (¿el collar se lee como unión o como adorno?) y E10 (¿las juntas molestan en el uso?). Las dos son pruebas físicas, pendientes.
+  - **B3**: B2 con una **tabla de servicio intercambiable** con mármol asentado. Cumple K1-K5. Nace de los precedentes.
+- **Precedentes (E7)**: Porada ya junta madera y mármol (*Oswood*, *Osmose*), así que lo original tiene que ser **el modo del encuentro**. El jurado premia componentes con individualidad, intercambiabilidad y el detalle precioso de la unión. → [`01_reunir/precedentes.md`](01_reunir/precedentes.md)
+- **Lo que decide entre B2, AB y B3 no es un cálculo**: es E6 (¿el collar se lee como unión o como adorno?) y E10 (¿las juntas molestan en el uso?). Las dos son pruebas físicas, pendientes. Hay una versión previa con renders de Blender (E6a, E10a) que se puede hacer ya con la [hoja de prueba](04_ensayar/E6a_E10a_hoja.md).
 
-![Ronda 4](03_proponer/laminas/comparativa_r4.svg)
+![Ronda 5](03_proponer/laminas/comparativa_r5.svg)
+
+| AB · el collar | B2 · solo madera | B3 · tabla de servicio |
+|---|---|---|
+| ![AB](05_consolidar/renders/general_AB.png) | ![B2](05_consolidar/renders/general_B2.png) | ![B3](05_consolidar/renders/general_B3.png) |
 
 ## Mapa
 
@@ -27,7 +33,7 @@ Los números ordenan carpetas, no el tiempo.
 | [`03_proponer/`](03_proponer/) | proponer | [versiones A](03_proponer/versiones.md), [propuesta B](03_proponer/propuesta_B.md), [síntesis](03_proponer/sintesis.md), [láminas SVG A3](03_proponer/laminas/) |
 | [`04_ensayar/`](04_ensayar/) | ensayar · contrastar · decidir | [ensayos](04_ensayar/ensayos.md) con prerregistro, resultado, contraste y decisión; [resultados por ronda](04_ensayar/resultados/) |
 | [`05_consolidar/`](05_consolidar/) | consolidar | [entregables, dependencias y calendario](05_consolidar/entregables.md); [modelos 3D base](05_consolidar/modelos/) |
-| [`instrumentos/`](instrumentos/) | (todos) | instrumento paramétrico en Python: cálculo, láminas y OBJ ([README](instrumentos/README.md)) |
+| [`instrumentos/`](instrumentos/) | (todos) | instrumento paramétrico en Python: cálculo, láminas y OBJ ([README](instrumentos/README.md)); **modelo de Blender** con Geometry Nodes, materiales procedurales y renders que corren en la nube ([README](instrumentos/blender/README.md)) |
 | [`bitacora.md`](bitacora.md) | decidir | cada decisión con su porqué y su siguiente acción |
 
 ## Cómo se aplicó el método

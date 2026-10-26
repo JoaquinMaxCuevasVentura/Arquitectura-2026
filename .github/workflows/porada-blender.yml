@@ -1,0 +1,41 @@
+# Mesa Porada en Blender, en la nube de GitHub: construye el árbol de Geometry Nodes, renderiza con Cycles (CPU)
+# y deja los renders y el .blend como artefactos de la ejecución (pestaña Actions → la ejecución → Artifacts).
+name: Porada · Blender
+
+on:
+  workflow_dispatch:
+    inputs:
+      muestras:
+        description: "Muestras de Cycles por imagen (32 para pruebas, 128 para láminas)"
+        default: "48"
+      tomas:
+        description: "Tomas separadas por espacios (vacío = todas). Ej.: nodo_AB nodo_B2"
+        default: ""
+  push:
+    paths:
+      - "proyectos/porada-2026-mesa/instrumentos/blender/**"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Bibliotecas del sistema que pide bpy sin pantalla
+        run: sudo apt-get update && sudo apt-get install -y libxrender1 libxxf86vm1 libxfixes3 libxi6 libxkbcommon0 libsm6 libgl1 libegl1
+      - name: Blender como módulo de Python
+        run: pip install bpy==5.2.3
+      - name: Construir y renderizar
+        working-directory: proyectos/porada-2026-mesa/instrumentos/blender
+        run: |
+          TOMAS="${{ github.event.inputs.tomas }}"
+          python porada_blender.py --muestras "${{ github.event.inputs.muestras || '32' }}" ${TOMAS:+--tomas $TOMAS}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: porada-blender
+          path: |
+            proyectos/porada-2026-mesa/05_consolidar/renders/
+            proyectos/porada-2026-mesa/05_consolidar/blender/
