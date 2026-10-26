@@ -1,0 +1,62 @@
+/* Los entregables del concurso: tres láminas A3 horizontales y el informe A4.
+ * El mismo sistema que el libro (Newsreader, IBM Plex Mono, tinta y almagre, la piedra en negro), en inglés y sin nombre.
+ * Láminas: 420 × 297 mm; 12 columnas de 29,33 mm con 4 mm de calle, entre márgenes de 12 mm; seis filas, como seis tablas,
+ * separadas por la junta (0,6 mm). Arriba queda una franja de 12 mm para la plantilla oficial (se ve al registrarse).
+ */
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-200-normal.woff2); font-weight: 200; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-300-normal.woff2); font-weight: 300; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-300-italic.woff2); font-weight: 300; font-style: italic; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-400-normal.woff2); font-weight: 400; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-400-italic.woff2); font-weight: 400; font-style: italic; }
+@font-face { font-family: "Newsreader"; src: url(fuentes/newsreader-latin-500-normal.woff2); font-weight: 500; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-400-normal.woff2); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-500-normal.woff2); font-weight: 500; }
+@font-face { font-family: "IBM Plex Mono"; src: url(fuentes/ibm-plex-mono-latin-600-normal.woff2); font-weight: 600; }
+
+:root { --papel: #f4f2ec; --tinta: #1d1c1a; --grafito: #4f4d48; --gris: #77736b; --filete: #d3cdc2; --almagre: #9a3b22;
+        --mono: "IBM Plex Mono", "DejaVu Sans Mono", monospace; }
+
+@page lamina { size: 420mm 297mm; margin: 0; background: #f4f2ec; }
+@page informe { size: 210mm 297mm; margin: 26mm 24mm 24mm 24mm; background: #ffffff; }
+
+html { font-family: "Newsreader", serif; color: var(--tinta); font-kerning: normal; -webkit-font-smoothing: antialiased; hyphens: auto; }
+body { margin: 0; }
+p { margin: 0; }
+
+.lamina { page: lamina; break-before: page; position: relative; width: 420mm; height: 297mm; overflow: hidden; }
+.lamina > * { position: absolute; box-sizing: border-box; }
+.lamina .junta { left: 0; width: 420mm; height: 0.6mm; background: var(--papel); z-index: 3; }
+.lamina img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.lamina .contener img { object-fit: contain; object-position: 0 0; }
+.lamina svg { display: block; }
+
+.franja { font: 400 7pt/1 var(--mono); color: var(--gris); display: flex; justify-content: space-between; }
+.franja b { color: var(--tinta); font-weight: 500; }
+.titulo { font: 200 30mm/1 "Newsreader"; letter-spacing: -0.012em; white-space: nowrap; }
+.titulo .punto { display: inline-block; width: 4.3mm; height: 5.85mm; background: var(--tinta); margin-left: 1.2mm; }
+.sub { font: 400 8pt/4.2mm var(--mono); }
+.regla { font: 300 17pt/7.4mm "Newsreader"; letter-spacing: -0.006em; }
+.cuerpo { font: 400 9.6pt/4.5mm "Newsreader"; }
+.cuerpo p + p { margin-top: 2.2mm; }
+.cuerpo b, .cuerpo strong { font-weight: 500; }
+.rot { font: 500 7.2pt/3.6mm var(--mono); text-transform: lowercase; }
+.rot .n { color: var(--almagre); margin-right: 1.5mm; }
+.pie { font: 400 6.6pt/3.3mm var(--mono); color: var(--grafito); }
+.pie b { color: var(--tinta); font-weight: 500; }
+.claro { color: #f4f2ec; }
+.dato { font: 300 22pt/1 "Newsreader"; }
+.escala { font: 400 6.6pt/1 var(--mono); color: var(--gris); }
+.tabla-piezas { border-collapse: collapse; font: 400 6.5pt/3.1mm var(--mono); width: 100%; }
+.tabla-piezas th { text-align: left; font-weight: 400; color: var(--gris); border-bottom: 0.3mm solid var(--tinta); padding: 0 1.5mm 0.8mm 0; }
+.tabla-piezas td { border-bottom: 0.15mm solid var(--filete); padding: 0.55mm 1.5mm 0.55mm 0; }
+.tabla-piezas td.d { text-align: right; }
+.tabla-piezas tr.total td { border-top: 0.3mm solid var(--tinta); border-bottom: 0; font-weight: 500; }
+
+/* el informe: solo texto, una página */
+.informe { page: informe; font: 400 10.4pt/5.1mm "Newsreader"; hyphens: auto; }
+.informe .cabecera { font: 400 8pt/1 var(--mono); color: var(--grafito); margin-bottom: 9mm; display: flex; justify-content: space-between; }
+.informe h1 { font: 300 22pt/1 "Newsreader"; margin: 0 0 2mm; }
+.informe .bajada { font: 400 italic 11pt/5.4mm "Newsreader"; margin-bottom: 6mm; color: var(--grafito); }
+.informe p + p { margin-top: 2.6mm; }
+.informe b { font-weight: 500; }
+.etq { background: rgba(244, 242, 236, 0.88); padding: 0.9mm 1.6mm 0.7mm; width: auto !important; white-space: nowrap; color: var(--tinta); }

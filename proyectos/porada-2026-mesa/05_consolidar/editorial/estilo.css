@@ -383,16 +383,17 @@ figure.simulacion .marco { outline: 0.25mm dashed var(--tinta); outline-offset: 
 
 /* ------------------------------------------------------------------ índices */
 
-.indice-general { font: 400 9.6pt/var(--linea) "Newsreader"; }
+.indice-general { font: 400 9.6pt/var(--linea) "Newsreader"; columns: 2; column-gap: 8mm; column-fill: auto; height: 152mm; }
 .indice-general a { color: inherit; text-decoration: none; }
 .indice-general .ent { display: flex; align-items: baseline; }
 .indice-general .ent .pag { width: 12mm; font: 400 6.4pt/var(--linea) var(--mono); }
 .indice-general .ent .num { width: 10mm; font: 400 6.4pt/var(--linea) var(--mono); color: var(--gris); }
-.indice-general .ent.cap { font-size: 11.6pt; line-height: 5.6mm; margin-top: 1.2mm; }
-.indice-general .ent.menor { font: 400 6.4pt/3.4mm var(--mono); color: var(--grafito); }
+.indice-general .ent.cap { font-size: 10.4pt; line-height: 5mm; margin-top: 1.4mm; break-after: avoid; }
+.indice-general .ent.menor { font: 400 6pt/3.15mm var(--mono); color: var(--grafito); }
 
-.indice-final { columns: 3; column-gap: 6mm; font: 400 6.6pt/3.343mm var(--mono); }
-.indice-final .letra { font: 300 22pt/1 "Newsreader"; margin: 4mm 0 2mm; break-after: avoid; }
+.indice-final { columns: 2; column-gap: 8mm; font: 400 7pt/3.6mm var(--mono); }
+.indice-final .letra { font: 300 15pt/1 "Newsreader"; margin: 5mm 0 2mm; break-after: avoid; }
+.indice-final .letra:first-child { margin-top: 0; }
 .indice-final .item { display: flex; break-inside: avoid; }
 .indice-final .item .pags { width: 17mm; flex: none; }
 .indice-final a { color: inherit; text-decoration: none; }

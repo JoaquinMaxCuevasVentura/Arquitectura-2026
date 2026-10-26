@@ -166,7 +166,7 @@ def componer(lb, laminas=None, informe=None):
                  f'<div class="rotulo" style="{en(AIRE, 12.5, 100)}">índice</div>', "der", pid="indice-general"))
 
     # ---------------------------------------------------------- resumen
-    resumen_izq = (f'<div class="rotulo" id="resumen" style="{en(AIRE, 12.5, 100)}">resumen</div>'
+    resumen_izq = (f'<div class="rotulo" style="{en(AIRE, 12.5, 100)}">resumen</div>'
                    f'<div class="texto-plana" style="{en(TEXTO[0], fila(2), 124)}">'
                    + p("*Punto fermo* es una mesa de comedor de nogal macizo para el Porada International Design Award 2026. Es una **mesa de caballetes**, la forma más antigua del tipo: seis tablas sueltas, clavijadas y acuñadas sobre dos caballetes, que se mueven con la humedad y muestran la estación en sus juntas.", "entrada")
                    + p("Lo único que no se mueve es una piedra. La espiga del travesaño atraviesa un collar de mármol, y una llave de fresno lo aprieta contra el montante. La piedra trabaja solo a compresión, como pide la estereotomía; la madera se mueve y se arma, como pide la madera.")
@@ -176,12 +176,12 @@ def componer(lb, laminas=None, informe=None):
                ("106,7 kg", "en total; la pieza más pesada, 16,0 kg"), ("4,6 kg", "de piedra: dos collares de Nero Sahara Noir"),
                ("0,08 MPa", "la compresión en la piedra"), ("0,8 – 4,8 mm", "la junta entre tablas, de húmedo a seco"),
                ("12", "cuñas de fresno a la vista"), ("3", "errores que el propio proceso encontró")]
-    filas_num = "".join(f'<div style="display:flex;align-items:baseline;margin-bottom:2.6mm"><span class="grande" style="width:86mm">{esc(a)}</span>'
+    filas_num = "".join(f'<div style="display:flex;align-items:baseline;margin-bottom:2.2mm"><span class="grande" style="width:112mm;font-size:27pt;white-space:nowrap">{esc(a)}</span>'
                         f'<span class="rotulo" style="width:70mm">{esc(b)}</span></div>' for a, b in numeros)
     resumen_der = (f'<div style="{en(AIRE, fila(2) - 2, 204)}">{filas_num}</div>'
                    f'<div class="rotulo" style="{en(PAG_W - AIRE - 160, fila(6) + 16, 160)}">los tres errores: Bertonio da dos palabras donde el borrador '
                    f'leía una (E5); la clavija de las tablas centrales caía dentro del montante (E12); la de la tabla exterior asomaba por el cabezal (E12)</div>')
-    lb.add(plana(resumen_izq, "izq"), plana(resumen_der, "der"))
+    lb.add(plana(resumen_izq, "izq", pid="resumen"), plana(resumen_der, "der"))
 
     # ---------------------------------------------------------- la mesa a 1:5: la doble página es el tablero
     d = pl.Dibujo(5)
@@ -509,7 +509,7 @@ def componer(lb, laminas=None, informe=None):
     ]),
           p("**La testa queda a la vista**: más allá de la llave, la espiga del travesaño asoma 42 mm y muestra sus anillos (Johnson, pp. 63-64). Las cuñas asoman 10 mm por cada costado del cabezal. Lo que traba se ve; lo que se mueve, también."),
           fig(lb, ren(lb, "testa_F1.png", 124, 84), "la testa de la espiga", "05_consolidar/renders/testa_F1.png", "simulacion",
-              "La espiga atraviesa el montante y el collar; la llave de fresno aprieta la piedra; la testa queda a la vista."))
+              "La espiga atraviesa el montante y el collar; la llave de fresno aprieta la piedra; la testa queda a la vista. El material del render no dibuja los anillos: los mostrará la maqueta."))
     c.sec(3, "Escenarios de uso")
     c.add(lista(["**A la mesa**: ocho personas, tres por lado y una en cada cabecera (estimación de dibujo). Las cabeceras quedan libres para las rodillas: el caballete está a 450 mm del extremo (E3).",
                  "**Armar y desarmar**, con un mazo y sin herrajes, en siete pasos. La pieza más pesada, el caballete encolado, pesa 16,0 kg (K5).",
@@ -536,7 +536,7 @@ def componer(lb, laminas=None, informe=None):
         mat = f_["material"].split(" (")[0].replace("mármol", "Nero Sahara Noir").replace(", por elegir", "")
         filas_d.append([str(marca.get(f_["pieza"], "")), f_["pieza"], mat, dims, str(f_["cantidad"]),
                         f"{f_['masa_total_kg']:.1f}".replace(".", ",")])
-    c.add(fig(lb, svg_a(planos["despiece"][0].svg(1.5), 204), "F1, despiece axonométrico", "instrumentos/mesa/laminas_f1.py", "instrumento",
+    c.add(fig(lb, svg_a(planos["despiece"][0].svg(1.5), 150), "F1, despiece axonométrico", "instrumentos/mesa/laminas_f1.py", "instrumento",
               "Despiece axonométrico: las tablas, las lengüetas, el apoyo central, los collares, las llaves y las cuñas, separados de los caballetes.",
               clase="ancha flota"),
           tabla(["n.º", "pieza", "material", "medidas (mm)", "cant.", "kg"], filas_d, cols=["mono", "", "", "mono", "mono d", "mono d"],
@@ -624,7 +624,6 @@ def lamina_fuentes(lb):
                      f'<div class="pie" style="{en(x, fila(5) + 2, w)}"><b>{cod}</b> · fig. {n}<br>{md(pie)}</div>')
         if k == 2:
             # las cinco referencias visuales del borrador: autoría sin verificar
-            cont += f'<div id="refs-visuales" style="{en(AIRE + 2 * 51, fila(2), 98, filas(1))}"></div>'
             for i in range(5):
                 n, fid = lb.figura(f"referencia visual {i + 1:02d} del borrador", f"01_reunir/referencias_visuales/ref_0{i + 1}.jpg", "pendiente")
                 x = AIRE + 2 * 51 + (i % 2) * 51
@@ -634,9 +633,9 @@ def lamina_fuentes(lb):
         paginas.append((cont, rot))
     lado = ["izq", "der", "izq"]
     out = ""
-    for (cont, rot), l in zip(paginas, lado):
+    for k, ((cont, rot), l) in enumerate(zip(paginas, lado)):
         cab = f'<div class="rotulo" style="{en(AIRE, 12.5, 200)}">las fuentes, en sus páginas <span class="gris">· lámina de referencias</span></div>'
-        out += plana(cab + cont + juntas(color="var(--papel)"), l, rotulo=rot)
+        out += plana(cab + cont + juntas(color="var(--papel)"), l, rotulo=rot, pid="refs-visuales" if k == 2 else None)
     out += plana(f'<div class="texto-plana" style="{en(AIRE, fila(2), 124)}">'
                  + p("**La lámina de referencias** reúne solo lo que puede mostrarse: páginas de obras de dominio público, con su fuente y su página. Cada una hace un trabajo en el proyecto —ordenar, dar una técnica o abrir una pregunta— y su ficha está en el fichero (`01_reunir/fichero.md`).")
                  + p("Las cinco imágenes de referencia del borrador quedan como **lugares en almagre**: su autoría no está verificada. Se reemplazan cuando se sepa de quién son y se tenga permiso, o por fotos propias de las maquetas.")
