@@ -100,6 +100,9 @@ Cada ensayo tiene:
 - **Prerregistro**: (a) si 3 de 5 personas lo describen como adorno o perilla, la piedra **cambia de forma o de tamaño, o sale**; (b) si la arista se astilla con un golpe normal de mazo, chaflán o piedra más tenaz; (c) si hace falta herramienta para desmontar, se revisa el escenario «armar la mesa» (F09).
 - **Qué no demuestra**: la durabilidad, ni la mesa entera.
 
+## E8, E9, E2b, E10 · Ensayos de la propuesta B
+El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propuesta_B.md#prerregistro-de-los-ensayos-propios-de-b-antes-de-calcular), escrito antes de calcular. Los resultados van más abajo, en la sección «Propuesta B».
+
 ## E7 · Originalidad · *pendiente*
 - **Pregunta**: ¿algún ganador de 2017-2018 o algún producto actual de Porada ya resuelve una mesa con unión de piedra?
 - **Tipo**: contraste con antecedentes.
