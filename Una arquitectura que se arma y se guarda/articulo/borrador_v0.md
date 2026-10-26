@@ -2,14 +2,15 @@
 
 **An Architecture That Is Set Up and Put Away: Assembly and Disassembly Operations in Street Stalls of La Paz**
 
-*Borrador 0, 26 de octubre de 2026. Todavía no hay trabajo de campo.*
+*Borrador 0, 26 de octubre de 2026; antecedentes reescritos esa noche. Todavía no hay trabajo de campo.*
 
 > **Cómo leer este borrador.**
 > - Las secciones 1 a 4 y la 7 ya argumentan; se ajustan después del campo.
 > - Las secciones 5, 6 y 8 son guías: dicen qué va en cada parte y con qué datos.
 > - **[CAMPO]** marca lo que solo puede escribirse con lo observado. **[VERIFICAR]**, una fuente que no se ha leído entera (`analisis/03`): no se cita textualmente hasta leerla.
 > - Las citas textuales que hay ya están cotejadas.
-> - Al lado de cada sección va la extensión prevista. El total apunta a unas 5.500 palabras: la sección de teoría admite entre 4.000 y 6.000 (`analisis/01`).
+> - La hipótesis es una sola. H1 a H5, en `analisis/02`, son sus cinco partes.
+> - Al lado de cada sección va la extensión prevista. El total apunta a unas 5.700 palabras: la sección de teoría admite entre 4.000 y 6.000 (`analisis/01`).
 > - Antes del envío se quitan este recuadro, las marcas y las notas para el autor.
 
 **Otros títulos posibles:** «Dónde duerme el puesto»; «La forma está en la secuencia: montar y guardar un puesto en La Paz».
@@ -30,6 +31,8 @@ In La Paz, much street trade takes place in stalls that are built every morning 
 
 ---
 
+> [EPÍGRAFE, después del campo: una frase de una vendedora, dicha en el campo y citada con su permiso. Atribución sin nombre: «Vendedora de [rubro], [zona], [mes] de 2026». Si no aparece ninguna, el artículo va sin epígrafe (`analisis/02`, sección 10).]
+
 ## 1. Introducción: armar la calle cada mañana *(≈ 600 palabras)*
 
 [CAMPO: abrir con una escena observada, con hora y código de puesto. Por ejemplo: a las [hora], en [calle], todavía no hay mercado; hay una fachada, un poste, un bordillo y unos bultos amarrados. Una hora después hay [n] puestos y una calle angosta.]
@@ -44,21 +47,38 @@ En español, *guardar* significa dos cosas: meter algo en su sitio y conservarlo
 
 Este artículo pregunta qué conocimiento arquitectónico se produce en la secuencia de gestos con que se arma y se guarda un puesto de venta, cómo se aprende, y qué hace con ese conocimiento una intervención urbana. Para responder, observa una entrada concreta: [n] ciclos completos de tres puestos de [tipología] en [lugar]. [Respuesta, que se escribe después del campo. La hipótesis es que la forma del puesto está en el orden de sus operaciones más que en su objeto; que ese orden reúne decisiones constructivas aprendidas haciendo; y que una intervención que fija la forma sin leer la secuencia puede conservar el objeto y perder la arquitectura.]
 
-El aporte está en la escala. Los estudios del comercio en vía pública describen su economía, su organización y sus disputas con el Estado. La arquitectura y el urbanismo han dibujado mercados enteros y han mostrado que lo temporal es una forma de durar (Moatasim, 2019 [VERIFICAR]). Se ha descrito menos la operación misma: en qué orden se construye un puesto, qué apoyos toma prestados, cómo se aprende a armarlo, dónde duerme. El artículo propone esa descripción y la usa para leer la intervención.
+El aporte está en la escala. Los estudios del comercio en vía pública describen su economía, su organización y sus disputas con el Estado, y registran incluso las piezas del puesto, sus medidas y sus bordes. La arquitectura y el urbanismo han dibujado mercados enteros y han mostrado que lo temporal es una forma de durar (Heathcott, 2019; Moatasim, 2019). Se ha descrito menos la operación misma: en qué orden se construye un puesto, qué apoyos toma prestados, cómo se aprende a armarlo, dónde duerme. El artículo propone esa descripción y la usa para leer la intervención.
 
 El texto sigue este orden: los antecedentes (sección 2), las herramientas para mirar una secuencia (3), el método (4), las seis operaciones del puesto (5), cómo se aprende a armarlo (6), qué le hace la intervención (7) y las conclusiones con sus límites (8).
 
-## 2. Lo que se sabe del puesto *(≈ 700 palabras)*
+## 2. Lo que se sabe del puesto *(≈ 850 palabras)*
 
-> Nota para el autor: esta sección se reescribe después de leer completos a Moatasim (2019) y a Heathcott (2019). Las paráfrasis de abajo salen de resúmenes, no de los textos.
+> Nota para el autor: reescrita el 26 de octubre con las fuentes leídas (`analisis/03`, sección 7). Falta leer completo a Moatasim (2019) y revisar las tesis de la UMSA.
 
-**El puesto en Bolivia.** En Bolivia, el comercio popular no es un margen de la economía. Nico Tassi y sus colegas lo estudian como una regla, organizada por redes de parentesco y reciprocidad (Tassi et al., 2013 [VERIFICAR]). Daniel Goldstein siguió durante años a los vendedores de La Cancha, en Cochabamba, tanto a los de puesto fijo como a los ambulantes, y mostró cómo el abandono y la criminalización por parte del Estado los vuelven vulnerables (Goldstein, 2016 [VERIFICAR]). En La Paz, el municipio y el PIEB estudiaron el comercio en vía pública del macrodistrito Max Paredes (Pereira, s. f. [VERIFICAR]), y varias tesis de la UMSA analizan calles como Tumusla o Comercio [VERIFICAR: autores y años]. En todos estos trabajos, el puesto aparece como unidad económica, como parte de una organización o como objeto de una norma. Su construcción queda en el fondo [VERIFICAR que no exista una tesis de arquitectura que la describa].
+**El puesto en los estudios paceños.** El comercio en vía pública de La Paz está bien estudiado, casi siempre desde la economía, el territorio y la norma. Un estudio de 2009 clasificó los puestos en fijos, semifijos y ambulantes, y encontró que la forma más frecuente de ocupar el espacio público es el puesto semifijo, de 1,38 metros lineales en promedio (Pereira Morató *et al.*, 2009: 126). Los semifijos se definen así: «Sólo son movidos para sacarlos de su depósito al lugar de venta y viceversa» (ibid.: 7). La definición registra el traslado, no el montaje. Entre el depósito y la venta no anota nada, y de eso trata este artículo.
 
-**El puesto en la arquitectura.** La arquitectura y el urbanismo lo han mirado a otra escala. Annette Kim cartografió las veredas de Ho Chi Minh a lo largo del día (Kim, 2015 [VERIFICAR]). Joseph Heathcott leyó los tianguis de Ciudad de México como arquitectura temporal y modular y propuso una tipología de mercados (Heathcott, 2019 [VERIFICAR]). Peter Mörtenböck y Helge Mooshammer reunieron mercados informales de todo el mundo (Mörtenböck y Mooshammer, 2015 [VERIFICAR]). Rahul Mehrotra y Felipe Vera estudiaron, en la revista chilena *ARQ*, una ciudad entera que se monta y se desmonta: la Kumbh Mela (Mehrotra y Vera, 2015 [VERIFICAR]).
+**Las piezas, sueltas.** Las piezas del puesto aparecen en esos estudios, pero sueltas, como datos de otra cosa:
 
-**El antecedente más cercano.** Faiza Moatasim estudió a los vendedores ambulantes de Islamabad y sostuvo que la arquitectura de esa informalidad tiene una estética de lo temporal, moldeada por el montaje y el desmontaje diarios. Esa temporalidad, repetida cada día, es lo que permite durar; ella la llama «temporalidad de larga duración» (Moatasim, 2019 [VERIFICAR; traducción y página]).
+- **El borde se disputa.** Una funcionaria municipal cuenta pleitos entre asociaciones porque «se ha bajado la tarima unos cinco centímetros» (cit. en Pereira Morató *et al.*, 2009: 50). El aguayo con que se marcaba ese borde fue «sustituido recientemente por plástico o cartón» (ibid.: 90).
+- **El guardado depende de los vecinos.** Hay vecinos que «prestan los baños y también los depósitos» (cit. en ibid.: 65), y otros que hacen negocio con «el alquiler de garajes o depósitos» (Pereira Morató *et al.*, 2015: 71).
+- **El puesto se hereda.** Lo dice un dirigente de la calle Huyustus: «las tarimas se van desdoblando: de la mamá está en el rincón, otro puestito por si acaso ya la hija crece» (cit. en ibid.: 66).
+- **El puesto tiene sus ritos.** En la Feria 16 de Julio, en El Alto, se usan la ruda y la retama «para atraer bienestar a sus negocios», y se hacen *ch'allas* (Yampara *et al.*, 2007: 69).
 
-**Lo que este artículo añade.** Moatasim explica *por qué* dura lo temporal: porque sostiene un derecho de uso del espacio. Heathcott y Kim trabajan a la escala del mercado y de la vereda. Este artículo pregunta *cómo* se construye y se aprende lo temporal, a la escala de las manos, con categorías de arquitectura. Y lee la intervención institucional desde lo que le hace a esa secuencia. [Ajustar después de leer a Moatasim: si ella ya describe la secuencia, la contribución se redefine; `analisis/02`, contraste 1.]
+**Un saber económico.** Nico Tassi y sus colegas estudian el comercio popular boliviano como la regla y no como un margen, organizado por redes de parentesco y por gremios. Según Sian Lazar, en El Alto la federación de gremialistas se encarga incluso de «el mantenimiento y organización de los puestos» (cit. en Tassi *et al.*, 2013: 124). El libro reconoce en los comerciantes un «extenso conocimiento memorístico autodidacta de mercados, precios y flujos» (ibid.: 123) y una «trasmisión de los conocimientos empíricos de la gestión económica de padres a hijos» (ibid.: 160). Es un saber que se aprende y se transmite, pero es el del negocio. El de construir el puesto queda fuera.
+
+En suma, los estudios locales documentan el puesto como economía, territorio y norma. Describen sus piezas, sus medidas y sus disputas, pero no el orden en que se arma ni cómo se aprende ese orden [VERIFICAR en las tesis de la UMSA sobre las calles Tumusla y Comercio: el repositorio no respondió el 26 de octubre].
+
+**El puesto en la arquitectura.** Joseph Heathcott lee los tianguis de Ciudad de México como «temporary and modular architectural products» (Heathcott, 2019: 72), con una cualidad arquitectónica «grounded in a habitual and repetitive practice» (ibid.: 73). Describe su «kit of parts» (toldo, postes de aluminio, mesa, cajas y letreros) y las reglas que lo disponen: el lote estándar mide 1,8 por 1,2 metros, el toldo es obligatorio y los puestos se arman uno junto a otro, «with no spaces in between» (ibid.: 78). Con vistas aéreas dibujadas, clasifica los mercados en cinco tipos (ibid.: 80). Otros trabajos miran a escalas parecidas: las veredas de Ho Chi Minh a lo largo del día (Kim, 2015), los mercados informales del mundo (Mörtenböck y Mooshammer, 2015) y, en la revista chilena *ARQ*, una ciudad entera que se monta y se desmonta, la Kumbh Mela (Mehrotra y Vera, 2015) [VERIFICAR los tres]. Todos ellos trabajan a la escala del mercado o de la ciudad. El orden en que una persona arma su lote no aparece.
+
+**El antecedente más cercano.** Faiza Moatasim, arquitecta de formación, estudió a los vendedores ambulantes de Islamabad. Según ella, la arquitectura de la informalidad corriente sigue «an aesthetic and materiality of temporariness» y recurre a «design criteria based on the rituals of daily assembly and disassembly» (Moatasim, 2019: 271). Con el concepto de «long-term temporariness» sostiene que la venta ambulante dura porque mantiene, como rutina, la relación entre su temporalidad y su materialidad (ibid.) [VERIFICAR en el artículo completo]. En su libro posterior, según la reseña de Markus Daechsel, muestra que los materiales reutilizables pueden elegirse a propósito: así el puesto parece provisorio y es tolerado durante mucho tiempo (Daechsel, 2024: 196, sobre Moatasim, 2023). De ahí sale una cautela para este artículo. Guardar el puesto cada noche puede ser también una manera de seguir siendo tolerado. La sección 7 vuelve sobre esto.
+
+**Lo que este artículo añade.** Cada antecedente ya dejó algo establecido:
+
+- Moatasim mostró que el diseño del puesto sale del montaje y el desmontaje diarios, y que esa repetición lo hace durar.
+- Heathcott describió sus piezas y sus reglas.
+- Los estudios paceños documentaron sus medidas, sus bordes, su herencia y sus ritos.
+
+Falta la operación misma: en qué orden se arma un puesto, qué parte de ese orden se repite, cómo se aprende y qué le hace una intervención. Este artículo propone esa descripción, a la escala de las manos y con categorías de arquitectura. [Ajustar después de leer a Moatasim completa: si ella ya describe el orden, la contribución se redefine; `analisis/02`, contraste 1.]
 
 ## 3. Cómo mirar una secuencia *(≈ 700 palabras)*
 
@@ -95,7 +115,7 @@ Fuente: elaboración propia.
 
 **Casos.** Se eligen tres puestos de [tipología] en [lugar], que difieren en una condición: uno se apoya en una fachada, otro está exento y el tercero está en una esquina [CAMPO]. [Si existe: un cuarto puesto de la misma tipología en una caseta o un mercado construido por una intervención sirve de contraste.]
 
-**Registro.** De cada puesto se observan [n] ciclos completos, desde que llega el primer bulto hasta que se va el último, entre [fechas], en días comunes, en días de feria y [con lluvia]. Cada ciclo se registra de cuatro maneras: fotos a intervalo fijo desde un punto acordado; una lista de operaciones en orden, cada una con su hora, quién la hace y un verbo de un vocabulario fijo; mediciones con cinta (planta ocupada, alturas, alcance y bultos guardados); y un croquis de los apoyos prestados y de las huellas que el puesto deja en la ciudad.
+**Registro.** De cada puesto se observan [n] ciclos completos, desde que llega el primer bulto hasta que se va el último, entre [fechas], en días comunes, en días de feria y [con lluvia]. Cada ciclo se registra de cuatro maneras: fotos a intervalo fijo desde un punto acordado; una lista de operaciones en orden, cada una con su hora, quién la hace y un verbo de un vocabulario fijo; mediciones con cinta (planta ocupada, alturas, alcance y bultos guardados); y un croquis de los apoyos prestados y de las huellas que el puesto deja en la ciudad. El estudio de 2009 ordenó unas mil fotografías por tipo de puesto (Pereira Morató *et al.*, 2009: 6-7); aquí las fotos se ordenan por operación y por hora.
 
 **Comparación.** Las listas de operaciones de cada ciclo se comparan entre sí para medir qué parte de la secuencia se repite en el mismo orden. La lectura toma una distinción de los estudios de la tradición oral, otro saber que no se escribe: el *motivo*, una unidad en la que «una parte se mantiene estable y fija», y el *motifema*, su realización concreta «en una variante determinada» (Toro Henao, 2014: 243, a partir de Ballón Aguirre, 2006). En el puesto, el motivo es la operación (*cubrir*, *apilar*, *calzar*) y el motifema es cómo se hizo ese día: con qué tela, contra qué reja, a qué hora. Como en ese método, primero se registran las realizaciones, y los motivos estables aparecen al comparar (ibid.: 244). [CAMPO: resultado.]
 
@@ -105,13 +125,21 @@ Fuente: elaboración propia.
 
 **Devolución.** Cada lámina vuelve impresa a la persona que arma el puesto para que la reconozca y la corrija. Las correcciones se tratan como datos.
 
-**Ética.** Consentimiento oral registrado, códigos en lugar de nombres, ninguna cara y ningún dato sobre pagos o acuerdos con autoridades. [Si la revista lo pide: aval de un comité de ética.]
+**Prueba de las láminas.** Las láminas se ponen a prueba de tres maneras:
+
+- **Legibilidad:** un colega reconstruye el orden del ciclo sin texto.
+- **Reconocimiento:** quien arma el puesto se reconoce en la lámina y la corrige.
+- **Comparación:** dos ciclos juntos dejan ver lo fijo y lo variable.
+
+Si una tabla explica la secuencia mejor que la lámina, la tabla ocupa su lugar en el artículo (`analisis/02`, sección 4). Los resultados se informan en la sección 8.
+
+**Ética.** Consentimiento oral registrado, códigos en lugar de nombres, ninguna cara y ningún dato sobre pagos o acuerdos con autoridades. Las palabras textuales se citan solo con un permiso aparte, que se pide después de leerlas en voz alta a quien las dijo. [Si la revista lo pide: aval de un comité de ética.]
 
 **Límites del método.** Tres puestos no representan el comercio paceño. La presencia de quien observa cambia lo observado. Lo que la gente dice es su versión de lo que hace, y la diferencia también es un dato. Lo que la lámina compone es decisión del dibujante, y así se declara en cada pie.
 
 ## 5. Seis operaciones *(≈ 1.600 palabras)* [CAMPO]
 
-> Guía. Una subsección por categoría. En cada una: (a) qué se observó, con cifras y horas; (b) qué varía entre puestos y entre ciclos; (c) las razones que dan sus responsables, con palabras textuales si hay permiso; (d) una lámina o una parte de ella. Abrir con el Cuadro 2: la secuencia de cada puesto en una línea, con el núcleo común marcado.
+> Guía. Una subsección por categoría. En cada una: (a) qué se observó, con cifras y horas; (b) qué varía entre puestos y entre ciclos; (c) las razones que dan sus responsables, con palabras textuales si hay permiso; (d) una lámina o una parte de ella. Abrir con el Cuadro 2: la secuencia de cada puesto en una línea, con el núcleo común marcado. Si el rito (la ruda, la retama, la *ch'alla*) aparece como parte del ciclo en dos de los tres puestos, se añade una subsección 5.7, «Costumbre y rito» (`analisis/02`, sección 10).
 
 **Cuadro 2.** *Secuencia de montaje de los tres puestos* [CAMPO; sale de `campo/comparar_ciclos.py`]
 
@@ -121,7 +149,7 @@ Qué va: el inventario de apoyos de cada puesto; cuáles son de la ciudad; en qu
 
 ### 5.2. Cubierta: sol, lluvia, viento y granizo
 
-Qué va: cómo se tensa; cuántas personas hace falta; qué cambia con el clima. Si se pudo, comparar un ciclo con lluvia. Contraste con Semper: ¿la tela cierra o solo cubre? (`analisis/02`, sección 4.)
+Qué va: cómo se tensa; cuántas personas hace falta; qué cambia con el clima. Si se pudo, comparar un ciclo con lluvia. Contraste con Semper: ¿la tela cierra o solo cubre? (`analisis/02`, sección 4.) Dato de partida: en los mercados paceños la cubierta tiene nombre propio, la *chiwiña*, «sombrilla o toldo que los vendedores/as al aire libre usan en los mercados» (Pereira Morató *et al.*, 2009: 90).
 
 ### 5.3. Masa: apilar la mercancía
 
@@ -129,35 +157,46 @@ Qué va: en qué orden se levanta; qué se pone abajo y qué arriba; qué parte 
 
 ### 5.4. Boca: el alcance de las manos
 
-Qué va: la altura de la boca y el alcance medido; dónde está la caja del dinero y dónde la bolsa; qué agarre pide cada gesto.
+Qué va: la altura de la boca y el alcance medido; dónde está la caja del dinero y dónde la bolsa; qué agarre pide cada gesto. Dato de partida: según un dirigente, unas vendedoras ancianas que tienen tarima prefieren vender en el suelo, porque «la gente quiere del suelo, del pisito nos compran» (cit. en Pereira Morató *et al.*, 2015: 70). La altura de la boca no es solo alcance: también vende.
 
 ### 5.5. Borde: la calle, la tienda y los vecinos
 
-Qué va: cuánto ocupa el puesto y cuánto deja de paso; qué acuerdos hay con la tienda de atrás y con los vecinos, en la medida en que puedan contarse sin perjudicar a nadie; cómo se marca el borde.
+Qué va: cuánto ocupa el puesto y cuánto deja de paso; qué acuerdos hay con la tienda de atrás y con los vecinos, en la medida en que puedan contarse sin perjudicar a nadie; cómo se marca el borde. Datos de partida: un puesto ocupa en promedio 1,38 metros lineales (Pereira Morató *et al.*, 2009: 89); los bordes se disputan por centímetros (ibid.: 50, 89); el aguayo que marcaba el borde se cambió por plástico o cartón (ibid.: 90).
 
 ### 5.6. Guardado: dónde duerme el puesto
 
-Qué va: cuánto espacio sale de cuánto bulto; dónde pasa la noche cada cosa (depósito, casa, vehículo, cadena); en qué orden se guarda; si el desmontaje es el montaje al revés o tiene su propia lógica. **Esta subsección decide el título:** si la estructura se queda en la calle, el puesto no se guarda: se deja.
+Qué va: cuánto espacio sale de cuánto bulto; dónde pasa la noche cada cosa (depósito, casa, vehículo, cadena); en qué orden se guarda; si el desmontaje es el montaje al revés o tiene su propia lógica. **Esta subsección decide el título:** si la estructura se queda en la calle, el puesto no se guarda: se deja. Datos de partida: hay depósitos prestados por vecinos (Pereira Morató *et al.*, 2009: 65) y depósitos alquilados (Pereira Morató *et al.*, 2015: 71). La pregunta «¿Por qué no deja el puesto armado de noche?» separa el saber de la tolerancia (sección 7). Y la noche no siempre está vacía: hay puestos donde duermen los hijos de quienes venden (Pereira Morató *et al.*, 2009: 85).
 
 ## 6. Aprender a armar *(≈ 400 palabras)* [CAMPO]
 
-> Guía. Quién enseñó a cada persona responsable y qué hacía al principio; qué operaciones se dan a quien ayuda; si hay operaciones que solo hace la persona responsable. **Si no hay evidencia suficiente, esta sección se reduce a un párrafo dentro de la 5 y «cómo se aprende» sale de la pregunta (`analisis/02`, sección 2).**
+> Guía. Quién enseñó a cada persona responsable y qué hacía al principio; qué operaciones se dan a quien ayuda; si hay operaciones que solo hace la persona responsable. **Si no hay evidencia suficiente, esta sección se reduce a un párrafo dentro de la 5 y «cómo se aprende» sale de la pregunta (`analisis/02`, sección 2).** Punto de partida: en La Paz el puesto se hereda, por ejemplo de la madre a la hija (Pereira Morató *et al.*, 2015: 66; Tassi *et al.*, 2013: 135). Falta saber si, con el sitio, se hereda también la manera de armarlo: «¿Arma el puesto como lo armaba quien se lo dejó? ¿Qué cambió?».
 
-## 7. Intervenir una secuencia *(≈ 700 palabras)*
+## 7. Intervenir una secuencia *(≈ 800 palabras)*
 
 La convocatoria pregunta por la intervención en arquitectura y urbanismo. El puesto permite verla a dos escalas.
 
 **La primera escala es la del puesto mismo.** Cada mañana, alguien interviene la calle: ocupa una vereda, se apoya en una fachada ajena, cuelga una cubierta de un poste y, por la noche, se lleva casi todo. Es una intervención reversible, hecha con apoyos prestados, que deja pocas huellas [CAMPO: las huellas que sí deja]. No necesita permiso para cada gesto, pero sí acuerdos: con la tienda de atrás, con los vecinos, con la asociación, con el municipio.
 
-**La segunda escala es la institucional.** Los programas de reordenamiento, los módulos y casetas, los puestos numerados y los traslados a mercados construidos intervienen sobre el objeto: su sitio, su medida, su forma. [DOCUMENTAR: qué intervención concreta afecta al lugar elegido o al caso de contraste, con su fecha y su fuente; la norma municipal vigente sobre comercio en vía pública.]
+**La segunda escala es la institucional.** Los programas de reordenamiento, los módulos y casetas, los puestos numerados y los traslados a mercados construidos intervienen sobre el objeto: su sitio, su medida, su forma.
 
-**El cruce entre las dos.** Si la forma del puesto está en su secuencia, una intervención que fija el objeto actúa sobre la secuencia aunque no lo sepa. Puede quitarle operaciones: el apoyo prestado deja de hacer falta cuando hay una estructura fija. Puede moverlas: el guardado pasa a un depósito lejano, o el candado reemplaza al bulto. Y puede añadir operaciones nuevas. [CAMPO: lo que muestran el caso de contraste y las conversaciones sobre el antes y el después.] Que eso sea una pérdida o una liberación es una pregunta empírica. Una caseta puede ahorrar una hora de trabajo cada mañana o puede quitar el control sobre el borde, el horario y la cubierta. El artículo no lo decide de antemano (H5).
+En La Paz hay ejemplos documentados:
 
-**Una advertencia sobre el propio registro.** Registrar gestos y tiempos tiene una historia incómoda. Los estudios de movimientos de comienzos del siglo XX registraban el trabajo para eliminar los movimientos «inútiles» y estandarizarlo [VERIFICAR: Gilbreth]. Un registro como el de este artículo podría servir para lo mismo: diseñar el puesto «correcto» e imponerlo. La lectura que aquí se propone va en sentido contrario: intervenir el soporte y no el gesto. [Solo si los hallazgos lo sostienen, proponer criterios. Por ejemplo: puntos de anclaje en lugar de casetas cerradas; guardado cerca del puesto; cubiertas que una sola persona pueda tensar; alturas de boca que respeten el alcance medido.]
+- En agosto de 2005, la Alcaldía presentó un plan de reordenamiento y regulación del comercio en vía pública. Propuso «construir casetas definitivas sobre la base de un diseño único» y mercados de varios pisos para reubicar a los gremiales (Pereira Morató *et al.*, 2009: 56-57).
+- Los gremiales rechazaron las galerías con un precedente: las 460 casetas que ellos mismos habían construido con recursos propios en la calle Garcilaso de la Vega, y que fueron «una inversión insulsa, porque no venden y los compradores no entran a comprar» (*Jornada*, 9-8-2005, cit. en ibid.: 57).
+- En 2006, la reubicación desde El Prado se planteó por rubro, «en casetas cerradas y enumeradas» (ibid.: 61). Los comerciantes respondieron «no a la reubicación, sí a la modernización» (ibid.: 60).
+- En el estudio de 2015, un dirigente lo resume así: «por más que usted le ponga un edificio, el más bonito de acá del país, (la gente) no va a entrar» (cit. en Pereira Morató *et al.*, 2015: 70).
+
+La tendencia que describen Tassi y sus colegas es la contraria a la que esperan esos planes: los comerciantes se alejan «de los mercados cerrados hacia las calles», un fenómeno común en muchas ciudades, «desde La Paz» (Tassi *et al.*, 2013: 207, n. 82). [DOCUMENTAR: la norma municipal vigente y la intervención que afecte al lugar elegido o al caso de contraste.]
+
+**El cruce entre las dos.** Si la forma del puesto está en su secuencia, una intervención que fija el objeto actúa sobre la secuencia aunque no lo sepa. Puede quitarle operaciones: el apoyo prestado deja de hacer falta cuando hay una estructura fija. Puede moverlas: el guardado pasa a un depósito lejano, o el candado reemplaza al bulto. Y puede añadir operaciones nuevas. Basta una pieza tan pequeña como la tarima para cambiar la altura de la boca (sección 5.4). [CAMPO: lo que muestran el caso de contraste y las conversaciones sobre el antes y el después.] Que eso sea una pérdida o una liberación es una pregunta empírica. Una caseta puede ahorrar una hora de trabajo cada mañana o puede quitar el control sobre el borde, el horario y la cubierta. El artículo no lo decide de antemano (H5).
+
+Hay que sumar una cautela que viene de Islamabad: guardar el puesto cada noche puede ser también una manera de seguir siendo tolerado (Daechsel, 2024: 196). Si quienes arman el puesto dicen que lo guardan sobre todo para no perder el sitio, la secuencia responde tanto a la norma como al saber, y el artículo lo dice (H3).
+
+**Una advertencia sobre el propio registro.** Registrar gestos y tiempos tiene una historia incómoda. Los estudios de movimientos de comienzos del siglo XX registraban el trabajo para estandarizarlo. Frank Gilbreth numeraba, en el dibujo de un andamio, «the correct sequence of courses and tiers» de ladrillos: la que pedía «the fewest, shortest, and most economical motions» (Gilbreth, 1911: 12). Un registro como el de este artículo podría servir para lo mismo: diseñar el puesto «correcto» e imponerlo. La lectura que aquí se propone va en sentido contrario: intervenir el soporte y no el gesto. Moatasim ya mostró que los puestos de Islamabad siguen criterios de diseño propios, nacidos del montaje diario (Moatasim, 2019: 271). Si en La Paz ocurre lo mismo, lo que aquí se proponga tiene que partir de esos criterios, no reemplazarlos. [Solo si los hallazgos lo sostienen, proponer criterios. Por ejemplo: puntos de anclaje en lugar de casetas cerradas; guardado cerca del puesto; cubiertas que una sola persona pueda tensar; alturas de boca que respeten el alcance medido.]
 
 ## 8. Conclusiones y límites *(≈ 400 palabras)* [CAMPO]
 
-> Guía. Tres hallazgos como máximo, cada uno con su evidencia. Después, los límites: tres puestos; once semanas en temporada de lluvias y de fin de año; la presencia del observador; las razones contadas frente a las observadas; las láminas como decisiones del dibujante. Cerrar volviendo a los dos sentidos de *guardar*, solo si el campo lo sostiene (`analisis/02`, sección 4).
+> Guía. Una sola conclusión, que responde a la hipótesis: se sostiene, se reformula o cae, y por qué (`analisis/02`, sección 10). Tres hallazgos como máximo, cada uno con su evidencia. Después, los límites: tres puestos; once semanas en temporada de lluvias y de fin de año; la presencia del observador; las razones contadas frente a las observadas; las láminas como decisiones del dibujante, con el resultado de sus tres pruebas (sección 4). Cerrar volviendo a los dos sentidos de *guardar*, solo si el campo lo sostiene (`analisis/02`, sección 4).
 
 ---
 
@@ -167,7 +206,7 @@ La convocatoria pregunta por la intervención en arquitectura y urbanismo. El pu
 
 **Conflicto de intereses.** El autor declara no tener conflictos de intereses.
 
-**Uso de inteligencia artificial.** [Completar con la verdad al final. Hasta hoy: Claude (Anthropic) se usó para revisar las bases de la convocatoria, buscar y clasificar fuentes, proponer la estructura del artículo, el protocolo de campo y las reglas de notación, y redactar este borrador cero. El autor definió el tema, la pregunta inicial, el método y la referencia visual, y decide las interpretaciones.]
+**Uso de inteligencia artificial.** [Completar con la verdad al final. Hasta hoy: Claude (Anthropic) se usó para revisar las bases de la convocatoria, buscar y clasificar fuentes, proponer la estructura del artículo, el protocolo de campo y las reglas de notación, leer y cotejar las fuentes de los antecedentes, y redactar este borrador cero. El autor definió el tema, la pregunta inicial, el método y la referencia visual, y decide las interpretaciones.]
 
 ## Referencias
 
@@ -179,13 +218,15 @@ Cárcamo Pino, Mauricio Arnoldo (2025a). «Madera, herramientas y manuaje. Notas
 
 Cárcamo Pino, Mauricio Arnoldo (2025b). «Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura». *Revista Chilena de Literatura*, 112: 233-264.
 
+Daechsel, Markus (2024). Reseña de Faiza Moatasim, *Master Plans and Encroachments: The Architecture of Informality in Islamabad* (Filadelfia: University of Pennsylvania Press, 2023). *Critical Pakistan Studies*, 2: 195-197. https://doi.org/10.1017/cps.2024.10
+
 Frampton, Kenneth (1995). *Studies in Tectonic Culture: The Poetics of Construction in Nineteenth and Twentieth Century Architecture*. Ed. John Cava. Cambridge, MA: MIT Press.
 
 Fuão, Fernando Freitas (2011). *A collage como trajetória amorosa*. Porto Alegre: Editora da UFRGS.
 
-[E] Goldstein, Daniel M. (2016). *Owners of the Sidewalk: Security and Survival in the Informal City*. Durham: Duke University Press.
+Gilbreth, Frank B. (1911). *Motion Study: A Method for Increasing the Efficiency of the Workman*. Nueva York: D. Van Nostrand.
 
-[E] Heathcott, Joseph (2019). «Architecture, urban form, and assemblage aesthetics in Mexico City's street markets». *Archnet-IJAR: International Journal of Architectural Research*, 13(1): 72-[?]. https://doi.org/10.1108/ARCH-12-2018-0027
+Heathcott, Joseph (2019). «Architecture, urban form, and assemblage aesthetics in Mexico City's street markets». *Archnet-IJAR: International Journal of Architectural Research*, 13(1): 72-92. https://doi.org/10.1108/ARCH-12-2018-0027
 
 Ingold, Tim (2013). *Making: Anthropology, Archaeology, Art and Architecture*. Londres: Routledge.
 
@@ -195,6 +236,8 @@ La Prensa (2026, 8 de junio). «La feria más popular de El Alto pasó por días
 
 [P] Lave, Jean y Wenger, Etienne (1991). *Situated Learning: Legitimate Peripheral Participation*. Cambridge: Cambridge University Press.
 
+[E] Lazar, Sian (2008). *El Alto, Rebel City: Self and Citizenship in Andean Bolivia*. Durham: Duke University Press. (Citada a través de Tassi *et al.*, 2013; cotejar en el original.)
+
 [P] Lemonnier, Pierre (1992). *Elements for an Anthropology of Technology*. Ann Arbor: Museum of Anthropology, University of Michigan.
 
 [P] Leroi-Gourhan, André (1964-1965). *Le geste et la parole*. 2 vols. París: Albin Michel.
@@ -203,7 +246,9 @@ La Prensa (2026, 8 de junio). «La feria más popular de El Alto pasó por días
 
 [E] Mehrotra, Rahul y Vera, Felipe (2015). «Desmontando la mega-ciudad efímera más grande del mundo». *ARQ*, 90: [páginas].
 
-[E] Moatasim, Faiza (2019). «Informality Materialised: Long-term Temporariness as a Mode of Informal Urbanism». *Antipode*, 51(1): 271-294. https://doi.org/10.1111/anti.12434
+[E] Moatasim, Faiza (2019). «Informality Materialised: Long-term Temporariness as a Mode of Informal Urbanism». *Antipode*, 51(1): 271-294. https://doi.org/10.1111/anti.12434 (Solo se cita el resumen, cotejado en Crossref; el artículo está por leer.)
+
+[E] Moatasim, Faiza (2023). *Master Plans and Encroachments: The Architecture of Informality in Islamabad*. Filadelfia: University of Pennsylvania Press. (Citado a través de Daechsel, 2024.)
 
 Monteys, Xavier y Fuertes, Pere (2001). *Casa collage. Un ensayo sobre la arquitectura de la casa*. Barcelona: Gustavo Gili.
 
@@ -211,10 +256,14 @@ Monteys, Xavier y Fuertes, Pere (2001). *Casa collage. Un ensayo sobre la arquit
 
 Pallasmaa, Juhani (2014 [2011]). *La imagen corpórea. Imaginación e imaginario en la arquitectura*. Trad. Carles Muro. Barcelona: Gustavo Gili.
 
-[E] Pereira, René (s. f.). *Comercio popular en vía pública*. La Paz: GAMLP, PIEB y Observatorio La Paz Cómo Vamos.
+Pereira Morató, René; Bridikhina, Evgenia; Montaño García, Jaime y Blanco Torrez, Ramiro (2009). *Para escuchar las voces de la calle: el comercio en vía pública en La Paz*. La Paz: Fundación PIEB, Gobierno Municipal de La Paz y Federación de Asociaciones Municipales de Bolivia.
+
+Pereira Morató, René; Velasco Unzueta, Ana y Mendoza Mamani, René (2015). *Comercio popular en vía pública. Estudio en el Macrodistrito Max Paredes de La Paz*. La Paz: Gobierno Autónomo Municipal de La Paz y Fundación PIEB.
 
 [E] Salazar Sánchez, Cristian Gonzalo y Cárcamo Pino, Mauricio Arnoldo (2021). «Acerca del “lenguaje” de las manos (manuaje). Una conversación con Mauricio Cárcamo». *Arte, Individuo y Sociedad*, 33(4): 1481-1487. (Citado a través de Cárcamo Pino, 2025b; cotejar en el original.)
 
-[E] Tassi, Nico; Medeiros, Carmen; Rodríguez-Carmona, Antonio y Ferrufino, Giovana (2013). *«Hacer plata sin plata»: el desborde de los comerciantes populares en Bolivia*. La Paz: PIEB.
+Tassi, Nico; Medeiros, Carmen; Rodríguez-Carmona, Antonio y Ferrufino, Giovana (2013). *«Hacer plata sin plata»: el desborde de los comerciantes populares en Bolivia*. La Paz: Fundación PIEB.
 
 Toro Henao, Diana Carolina (2014). «Oralitura y tradición oral. Una propuesta de análisis de las formas artísticas orales». *Lingüística y Literatura*, 65: 239-256.
+
+Yampara Huarachi, Simón; Mamani Morales, Saúl y Calancha Layme, Norah (2007). *La cosmovisión y lógica en la dinámica socioeconómica del qhathu/feria 16 de Julio*. La Paz: Fundación PIEB.

@@ -8,7 +8,7 @@
 |---|---|
 | `tablero_1_arbol.jpg` y `.pdf` | **El árbol.** 31 imágenes. Seis materiales arriba y siete gestos abajo, **en el orden del ciclo diario**: cargar, desplegar, armar, cubrir, apilar, ofrecer y guardar. Cada imagen está en la columna de su gesto; una línea del color de su material la ata a él. Sigue el «Tree Diagram» de Kuma |
 | `tablero_2_fechas.jpg` y `.pdf` | **El mapa de fechas.** Las 32 imágenes por año, en una franja por categoría del Cuadro 1 del borrador (apoyo, cubierta, masa, boca, borde y guardado). Una línea discontinua une las imágenes de una misma obra. Escala partida: 1850-1920 se abre. Sigue el mapa de las vanguardias |
-| `tablero_3_relato.jpg` y `.pdf` | **El relato.** El argumento del borrador como un collage. Un hilo rojo recorre siete pasos en el orden de sus secciones, del puesto a medias (2026) a la intervención. Un hilo azul ata cada una de las cinco hipótesis de `analisis/02` a los pasos que la ponen a prueba. Aparte va lo que el archivo casi no muestra. Sigue «Doing a Duchamp» |
+| `tablero_3_relato.jpg` y `.pdf` | **El relato.** El argumento del borrador como un collage. Un hilo rojo recorre siete pasos en el orden de sus secciones, del puesto a medias (2026) a la intervención. Un hilo azul ata cada una de las cinco partes de la hipótesis de `analisis/02` a los pasos que la ponen a prueba. Aparte va lo que el archivo casi no muestra. Sigue «Doing a Duchamp» |
 | `catalogo.json` | La fuente de datos: la ficha de cada imagen, los materiales, los gestos, las categorías y el relato. Se edita a mano |
 | `catalogo.md` | La misma ficha en una tabla legible. La escribe el generador: no se edita |
 | `imagenes/` | Las 32 imágenes, reducidas a 900 px de lado como máximo |
@@ -18,7 +18,7 @@
 
 - **El material** es lo que la imagen muestra trabajado: **tela** (aguayo, toldo, paraguas, nailon), **armazón** (palo, caballete, cajón, carro, andamio), **fibra** (canasta, costal, cuerda), **mercancía**, **ciudad** (muro, portal, plaza, vereda, depósito) y **cuerpo**. La ciudad cuenta como material porque el puesto la usa como apoyo prestado (hipótesis H4).
 - **El gesto** es un verbo del vocabulario de `campo/protocolo.md`. Los siete van en el orden en que ocurren en un día: de la mañana a la noche.
-- **La categoría** es la del Cuadro 1 del borrador. El tablero 2 la usa para ver si las seis categorías alcanzan (hipótesis H2).
+- **La categoría** es la del Cuadro 1 del borrador. El tablero 2 la usa para ver si las seis categorías alcanzan (H2, una de las cinco partes de la hipótesis).
 - **Una casilla por imagen.** Muchas caben en dos; elegir obliga a decir qué se ve primero. Si una clasificación no convence, se cambia en `catalogo.json` y se regenera.
 - **La regla de la analogía.** Las imágenes no ilustran los puestos de La Paz: son analogías. Se adopta la condición de Fuão para juntar figuras lejanas: «con la condición de que haya una referencia explícita» (Fuão, 2011: 53).
   - **Con referencia (9).** Llevan una cita comprobada hoy en su fuente: Marcoy (1875), Wright (1907), Wiener (1880), Semper (1863), Gilbreth (1911), o un vínculo con el borrador: la tesis provisional o una cita ya cotejada (Frampton, Cárcamo Pino).

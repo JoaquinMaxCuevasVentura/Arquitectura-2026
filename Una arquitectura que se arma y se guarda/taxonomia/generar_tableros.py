@@ -7,7 +7,7 @@ Uso (desde la raíz del repositorio):
 Escribe en taxonomia/:
     tablero_1_arbol.jpg y .pdf   materiales arriba, gestos abajo, en el orden del ciclo (a la manera del «Tree Diagram» de Kuma)
     tablero_2_fechas.jpg y .pdf  las imágenes por año, en una franja por categoría del Cuadro 1 (a la manera del mapa de las vanguardias)
-    tablero_3_relato.jpg y .pdf  el argumento del borrador: hilo rojo para el desarrollo, azul para las hipótesis («Doing a Duchamp»)
+    tablero_3_relato.jpg y .pdf  el argumento del borrador: hilo rojo para el desarrollo, azul para las cinco partes de la hipótesis («Doing a Duchamp»)
     catalogo.md                  la ficha de cada imagen, en una tabla
 
 Sigue el sistema gráfico de los tableros de «Cosecha de piedras» (repositorio Altiplano). Necesita Chromium (ruta en la
@@ -285,8 +285,8 @@ def tablero_relato():
     giro = {"1": -1.2, "2": 1.0, "3": -0.8, "4": 1.3, "5": -1.0, "6": 1.1, "7": -1.3, "callado": 1.6}
     altoMax, anchoMax = 220, 560
     s = [texto(60, 84, "El relato: el argumento del borrador sobre las imágenes", 46, peso="bold"),
-         texto(60, 128, "Hilo rojo: el desarrollo, en el orden de las secciones del borrador. Hilo azul: las cinco "
-               "hipótesis que el trabajo de campo debe probar (analisis/02). Las imágenes son analogías.", 23, GRIS,
+         texto(60, 128, "Hilo rojo: el desarrollo, en el orden de las secciones del borrador. Hilo azul: las cinco partes "
+               "de la hipótesis, que el trabajo de campo debe probar (analisis/02). Las imágenes son analogías.", 23, GRIS,
                estilo="italic")]
     capas_hilo, capas_img, capas_txt = [], [], []
     ancla, pie_grupo = {}, {}
@@ -386,9 +386,9 @@ def tablero_relato():
     s.append(f'<line x1="2220" y1="{ly}" x2="2300" y2="{ly}" stroke="{ROJO}" stroke-width="3.5" stroke-dasharray="14 9"/>')
     s.append(texto(2315, ly + 7, "eco", 20, TINTA, SANS))
     s.append(f'<line x1="2420" y1="{ly}" x2="2500" y2="{ly}" stroke="{AZUL}" stroke-width="3"/>')
-    s.append(texto(2515, ly + 7, "hipótesis", 20, TINTA, SANS))
-    s.append(texto(60, H - 84, lineas("Las hipótesis no son hallazgos: son lo que el campo de noviembre y diciembre puede "
-                                      "confirmar o tumbar. Los números de colores son los de catalogo.md; el color es el de su material.",
+    s.append(texto(2515, ly + 7, "la hipótesis, en cinco partes", 20, TINTA, SANS))
+    s.append(texto(60, H - 84, lineas("Las cinco partes de la hipótesis no son hallazgos: el campo de noviembre y diciembre puede "
+                                      "confirmarlas o tumbarlas. Los números de colores son los de catalogo.md; el color es el de su material.",
                                       230), 18, TINTA, SANS))
     s.append(pie(H - 34, 240))
     return W, H, pagina(W, H, "\n".join(s + capas_hilo + capas_img + capas_txt))

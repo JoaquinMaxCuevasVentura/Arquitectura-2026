@@ -8,7 +8,7 @@ Registrar ciclos completos de montaje y desmontaje de tres puestos de una misma 
 
 ## 2. Elegir lugar, tipología y puestos (semana 1)
 
-**Lugares candidatos para recorrer** (ninguno decidido): calles del macrodistrito Max Paredes, la calle Tumusla, la calle Comercio y los alrededores del Mercado Rodríguez. Tienen a favor que ya hay tesis de la UMSA o estudios municipales sobre ellas (`analisis/03`), lo que da contexto y permite comparar. La Feria 16 de Julio está en El Alto: sirve como contraste, no como caso, porque el artículo habla de La Paz.
+**Lugares candidatos para recorrer** (ninguno decidido): calles del macrodistrito Max Paredes, la calle Tumusla, la calle Comercio y los alrededores del Mercado Rodríguez. Tienen a favor que ya hay tesis de la UMSA o estudios municipales sobre ellas (`analisis/03`), lo que da contexto y permite comparar. El estudio de 2015 describe los tramos de Max Paredes con su densidad de puestos (Pereira Morató *et al.*, 2015, cap. III). El plan de reordenamiento de 2005 incluía la calle Comercio, Max Paredes y la Graneros (Pereira Morató *et al.*, 2009: 57): ahí se puede preguntar por el antes y el después (H5). La Feria 16 de Julio está en El Alto: sirve como contraste, no como caso, porque el artículo habla de La Paz.
 
 **Criterios para la tipología:**
 
@@ -30,9 +30,10 @@ Registrar ciclos completos de montaje y desmontaje de tres puestos de una misma 
 
 - Presentarse antes de la hora de mayor venta, nunca durante.
 - Explicar en pocas palabras: «Estudio cómo se arma un puesto. Quiero mirar, tomar fotos de las manos y del puesto, sin caras, y conversar después. Su nombre no aparece. Le traigo los dibujos».
-- **Consentimiento oral**, anotado en la ficha con la fecha. Dejar una hoja con los datos del autor y para qué es el estudio.
+- **Consentimiento oral**, anotado en la ficha con la fecha. Dejar la hoja de información (`campo/imprimibles/hoja_de_informacion.pdf`), con el contacto del autor escrito a mano y lo acordado marcado en su recuadro.
 - Preguntar qué **no** quiere que se registre.
-- **Nunca se registran:** caras, nombres, cobros o pagos (sentaje, alquileres, «derecho de piso»), acuerdos o conflictos con autoridades o con la asociación, salvo que la persona lo pida expresamente y entienda que puede publicarse.
+- **Nunca se registran:** caras, nombres, montos o condiciones de cobros y pagos (sentaje, alquileres, «derecho de piso»), acuerdos o conflictos con autoridades o con la asociación, salvo que la persona lo pida expresamente y entienda que puede publicarse. Sí se anota si el depósito es propio, prestado o alquilado, sin montos ni nombres, porque dice dónde duerme el puesto.
+- **Permiso para citar palabras.** Si una frase puede ir al artículo o al epígrafe, se lee en voz alta a quien la dijo y se le pide permiso para publicarla con esas palabras. Ese permiso es aparte del consentimiento general y se anota en la ficha con su fecha. Sin él, la frase se parafrasea o no se usa (`analisis/02`, sección 10).
 - Cada puesto recibe un código (`P1`, `P2`, `P3`, `PX` para el caso de contraste) y cada persona otro (`R` para la persona responsable; `A1`, `A2`… para quienes ayudan).
 
 ## 4. Qué se registra en cada ciclo
@@ -73,6 +74,9 @@ Una fila del registro, un verbo. Si hace falta un verbo nuevo, se añade aquí c
 | enfardar | hacer bultos | guardado |
 | cargar | llevar los bultos al vehículo, la espalda o el depósito | guardado |
 | encadenar | asegurar lo que se queda en la calle | guardado |
+| ch'allar | rociar alcohol u otra bebida sobre el puesto o la mercancía, como ofrenda (añadido el 26 de octubre) | costumbre y rito |
+
+Poner ruda, retama u otra planta o amuleto se anota con el verbo que corresponda (*colgar*, *apoyar*) y el elemento («ruda»), con la categoría «costumbre y rito». Si una operación no cabe en ninguna categoría, se anota «otra» y se describe en la nota: cuenta para el umbral de H2. «Costumbre y rito» se anota aparte, para decidir si es la séptima categoría (`analisis/02`, sección 10).
 
 ## 6. Mediciones
 
@@ -90,19 +94,22 @@ Después del ciclo, nunca durante el trabajo. Sin grabar, salvo permiso expreso.
 
 Preguntas abiertas, en este orden:
 
-1. ¿Cómo aprendió a armar el puesto? ¿Quién le enseñó? ¿Qué hacía al principio?
+1. ¿Cómo aprendió a armar el puesto? ¿Quién le enseñó? ¿Qué hacía al principio? *(Si el puesto se heredó)* ¿Lo arma como lo armaba quien se lo dejó? ¿Qué cambió?
 2. ¿Qué es lo primero que arma? ¿Por qué eso primero?
 3. ¿Qué cambia cuando llueve, hay viento o hace mucho sol?
-4. **¿Dónde duerme el puesto?** ¿Dónde guarda las cosas de noche?
-5. ¿Qué acordó con la tienda de atrás o con los vecinos?
-6. ¿Ha cambiado el puesto desde que empezó? ¿Por qué?
-7. *(Si hubo intervención)* ¿Qué cambió con [la intervención]? ¿Qué hacía antes que ya no hace?
-8. Si pudiera cambiar algo del puesto, ¿qué cambiaría?
-9. ¿Hay algo que se hace siempre, aunque no haga falta? (costumbres, ritos, cuidados)
+4. **¿Dónde duerme el puesto?** ¿Dónde guarda las cosas de noche, y a qué distancia está?
+5. ¿Por qué no deja el puesto armado de noche? *(O, si lo deja, por qué lo deja.)*
+6. ¿Qué acordó con la tienda de atrás o con los vecinos?
+7. ¿Ha cambiado el puesto desde que empezó? ¿Por qué?
+8. *(Si hubo intervención)* ¿Qué cambió con [la intervención]? ¿Qué hacía antes que ya no hace?
+9. Si pudiera cambiar algo del puesto, ¿qué cambiaría?
+10. ¿Hay algo que se hace siempre, aunque no haga falta? (costumbres, ritos, cuidados) *(Si aparecen la ruda, la retama o la* ch'alla*)* ¿En qué momento del armado se hace?
+
+**El origen de cada razón (para H3).** Al pasar la conversación a la ficha, cada razón se marca según de dónde viene. **P:** propia o aprendida. **V:** acordada con vecinos. **M:** impuesta por el municipio. **A:** impuesta por la asociación.
 
 ## 8. La devolución
 
-A las dos semanas, llevar la primera lámina impresa a quien arma el puesto. Preguntar: ¿es así? ¿Qué falta? ¿Qué está mal? Anotar las correcciones textuales. **Las correcciones son datos:** muestran qué considera importante quien sabe hacerlo. Dejar una copia de regalo.
+A las dos semanas, llevar la primera lámina impresa a quien arma el puesto. Preguntar: ¿es así? ¿Qué falta? ¿Qué está mal? Anotar las correcciones textuales. **Las correcciones son datos:** muestran qué considera importante quien sabe hacerlo. Dejar una copia de regalo. Si en la devolución aparece una frase que podría ir al artículo, se pide el permiso de la sección 3.
 
 ## 9. Datos y privacidad
 
@@ -110,6 +117,7 @@ A las dos semanas, llevar la primera lámina impresa a quien arma el puesto. Pre
 
 - Las fotos, las fichas con notas de conversación y cualquier dato que identifique a una persona o un puesto **no se suben aquí**. Van a una carpeta privada (Drive) o a `campo/privado/`, que Git ignora (`campo/.gitignore`).
 - Al repositorio suben solo el registro de operaciones con códigos, las láminas aprobadas en la devolución y los resúmenes.
+- Las plantillas para imprimir están en `campo/imprimibles/`. Una vez llenas, van a `campo/privado/` o a Drive.
 - Si la ubicación exacta puede perjudicar a alguien, el artículo nombra la zona y no la calle.
 
 ## 10. Cuidado y seguridad
@@ -122,3 +130,11 @@ A las dos semanas, llevar la primera lámina impresa a quien arma el puesto. Pre
 ## Cambios
 
 *(Anotar aquí, con su fecha, lo que cambie después de la primera semana.)*
+
+- **26 de octubre de 2026 (noche), antes del campo.** Cambios que vienen de `analisis/02`, sección 10:
+  - permiso aparte para citar palabras (sección 3);
+  - se puede anotar si el depósito es propio, prestado o alquilado, sin montos (sección 3);
+  - verbo *ch'allar* y categoría «costumbre y rito» (sección 5);
+  - preguntas nuevas sobre la herencia del modo de armar, la noche y el momento del rito (sección 7);
+  - códigos del origen de cada razón (sección 7);
+  - hoja de información y ficha para imprimir (`campo/imprimibles/`).

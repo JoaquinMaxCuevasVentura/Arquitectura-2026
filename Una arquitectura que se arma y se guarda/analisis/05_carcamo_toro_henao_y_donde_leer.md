@@ -94,3 +94,20 @@ Búsqueda de hoy en Internet Archive y en Monoskop. Tres advertencias:
 | Kim (2015); Mörtenböck y Mooshammer (2015); Pallasmaa, *La mano que piensa*; Saenz (1979); Buechler y Buechler (1996) | No están | No hay página | Biblioteca o editorial |
 
 **Orden de lectura sugerido para las dos primeras semanas.** Moatasim, Heathcott y Tassi *et al.* primero, porque deciden la sección 2 y la contribución. Después un capítulo de Leroi-Gourhan (o Lemonnier) y Lave y Wenger. El resto, solo si el campo lo pide (`02`, sección 7).
+
+## 4. Actualización del 26 de octubre (noche): lo que decidió el autor
+
+| # | Propuesta | Decisión |
+|---|---|---|
+| 3 | Dos hipótesis y dos conclusiones | **Descartada.** «Que sea una hipótesis». H1 a H5 pasan a ser las cinco partes de esa hipótesis (`02`, sección 10). Las pruebas de la lámina siguen, pero ponen a prueba el instrumento: van al método y a los límites, no a una segunda conclusión |
+| 4 | Epígrafe con palabras de una vendedora | **Aceptada.** Las reglas (permiso aparte, atribución sin nombre, criterios de elección, fecha de decisión) están en `02`, sección 10. El borrador lleva un lugar reservado. Si no aparece una frase, el artículo va sin epígrafe |
+
+**Lo que se toma de Cárcamo Pino, entonces:** la «mano», el *manoaje* y el manuaje como sistema de transmisión (sección 3 del borrador), pero no su estructura en dos hipótesis. Igual que en *Altiplano*, se gana sencillez.
+
+**Lecturas de la tabla de la sección 3 que ya se hicieron:** Tassi *et al.* (2013) y Heathcott (2019) se leyeron en lo pertinente y pasan a [V]. Se sumaron tres estudios del PIEB que no estaban en la tabla. Los tres están abiertos en la misma colección de Internet Archive:
+
+- Pereira Morató *et al.* (2009);
+- Pereira Morató *et al.* (2015);
+- Yampara *et al.* (2007).
+
+Moatasim (2019) sigue sin leerse entero. Mientras tanto, su argumento se conoce por el resumen completo, que está en Crossref, y por la reseña de Daechsel (2024), en acceso abierto (`03`, sección 7).
