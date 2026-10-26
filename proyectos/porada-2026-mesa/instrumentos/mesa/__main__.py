@@ -55,6 +55,11 @@ LECTURA = {
         "El cálculo no decide: si el collar se lee como parte de la unión (E6), si las juntas abiertas molestan en el uso (E10)",
         "      y si 4,6 kg de mármol justifican sumar un proveedor a la producción.",
         "→ Siguiente: E6 y E10 con maquetas 1:1; elegir con el autor entre B2 (sin piedra) y AB (con piedra) según lo que muestren."],
+    5: ["E7 · Porada ya celebra «l'incontro tra legno e marmo» (Oswood, Osmose): lo original no es juntar madera y piedra, sino el modo del encuentro.",
+        "AB · La piedra en la unión: collar a compresión, en un mármol de las mesas del catálogo (Nero Sahara Noir o Marrone Emperador Dark).",
+        "B3 · La piedra en una tabla de servicio intercambiable: mármol asentado sin cola, junta de 1,2 mm por lado. 7 tablas de 140 mm para tener tabla central.",
+        "      Responde a lo que el jurado premió en Whirl y Odette: componentes con individualidad, intercambiables, personalizables.",
+        "→ Dos síntesis compatibles pero excluyentes en el argumento. Las juzgan E6 y E10 y el autor; los renders de Blender sirven como lectura visual previa."],
 }
 
 
@@ -184,6 +189,8 @@ RONDAS = {
         lambda: (versiones.v3, versiones.b1)),
     4: ("Ronda 4 · A frente a B, y síntesis candidata", GEOMETRIA_RONDA_2,
         lambda: (versiones.v4, versiones.b2, versiones.ab, versiones.v3)),
+    5: ("Ronda 5 · mejoras desde los precedentes (E7): las dos síntesis posibles", GEOMETRIA_RONDA_2,
+        lambda: (versiones.b2, versiones.ab, versiones.b3)),
 }
 
 
@@ -200,7 +207,7 @@ def correr(ronda):
     sufijo = f"r{ronda}"
     for m, r in zip(mesas, res):
         (LAMINAS / f"{m.codigo}_{sufijo}.svg").write_text(lamina(m, r, notas(r)), encoding="utf-8")
-        if ronda == max(RONDAS) and m.codigo in ("V4", "B2", "AB"):     # candidatas vigentes → modelo 3D base
+        if ronda >= 4 and m.codigo in ("V4", "B2", "AB", "B3"):         # candidatas vigentes → modelo 3D base
             exportar_obj(m, MODELOS)
     (LAMINAS / f"comparativa_{sufijo}.svg").write_text(lamina_comparativa(mesas, res, titulo, LECTURA.get(ronda, ())),
                                                         encoding="utf-8")

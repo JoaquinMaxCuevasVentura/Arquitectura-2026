@@ -123,7 +123,22 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
   - El modelo no mira si las migas, los líquidos o el mantel conviven con juntas de hasta 4,8 mm. Eso es **E10**, una prueba física.
 - **Decisión**: B2 es **una propuesta completa sin piedra**. AB muestra que **A y B son compatibles**. Cuál seguir lo deciden E6, E10 y el autor (ver [`../03_proponer/sintesis.md`](../03_proponer/sintesis.md)).
 
-## E7 · Originalidad · *pendiente*
+## E6a y E10a · Lectura visual con renders (antes de las maquetas) · *prerregistro*
+- **Para qué**: adelantar con imágenes lo que E6 y E10 preguntan sobre la vista, mientras se construyen las maquetas. Los renders son de Blender, con los mismos materiales, la misma luz y el mismo encuadre para las dos versiones.
+- **E6a**: dos primeros planos del nodo: (i) el collar de mármol con la llave de fresno (AB), (ii) solo la llave de fresno (B2). Se muestran a 5 personas sin explicar nada y se les pregunta: «¿qué hace cada pieza de esta unión?».
+  - Si 3 de 5 llaman a la piedra adorno, decoración o perilla, el collar **cambia de forma o tamaño** o AB baja frente a B3 o B2.
+  - Si 3 de 5 la describen como lo que traba, aprieta o sujeta, AB **pasa a E6** (maqueta física).
+- **E10a**: primer plano de la junta entre tablas en tres estados (0,75 mm, 3 mm y 4,8 mm, que son húmedo, de fabricación y seco). Pregunta: «¿la junta se lee como defecto o como intención?». Si 3 de 5 dicen defecto, se revisa cómo se muestra la junta (por ejemplo, una lengüeta a ras o un canto achaflanado).
+- **Qué no demuestran**: el peso en la mano, el montaje, el astillado, el aspecto del mármol real, ni migas y líquidos. Eso queda para E6 y E10 físicos. **Un render no reemplaza a la maqueta.**
+
+## E7 · Originalidad · *hecho* ([precedentes](../01_reunir/precedentes.md))
+- **Resultado**:
+  - 2026 es la primera edición del Porada Award dedicada a la mesa de comedor; en 2017 fueron mesas pequeñas. Ningún ganador usó caballetes, tablas sueltas ni uniones de piedra.
+  - **Pero el catálogo de Porada ya junta madera y mármol** (*Oswood*, *Osmose*), ya tiene bases de elementos encastrados (*Augusto*) y travesaños a la vista (*Beam*).
+  - El lenguaje de tablas ya fue premiado en otro concurso (*Planks*, de Max Lamb, Wood Awards 2016), con tablas fijas.
+- **Contraste con el prerregistro**: había que cambiar la unión o el argumento si existía un antecedente directo. **No hay antecedente directo de la unión** (collar de piedra a compresión, tablas sueltas que muestran la estación). **Sí lo hay del argumento «madera + mármol»**.
+- **Decisión**: **modificar el argumento, no la unión**. En A, la piedra no es material de lujo junto a la madera: es el punto fijo de la unión. En B, las tablas no son un lenguaje: son piezas sueltas que se mueven y se cambian. Además se deriva **B3** (tabla de servicio intercambiable con mármol asentado), que se calcula en la [ronda 5](resultados/ronda5.md): ✓ K1-K5, junta del mármol de 1,23 mm por lado.
+- **Limitación de B3 en el modelo**: la tabla central, rebajada por el canal, se calcula con la sección de una tabla entera. Su flecha real será mayor; con apoyo central y lengüetas se estima por debajo de 1,5 mm. Hay que verificarla antes de dar el detalle por cerrado.
 - **Pregunta**: ¿algún ganador de 2017-2018 o algún producto actual de Porada ya resuelve una mesa con unión de piedra?
 - **Tipo**: contraste con antecedentes.
 - **Prerregistro**: si existe un antecedente directo, **cambia la unión o el argumento**, no solo el aspecto.

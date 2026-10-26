@@ -209,5 +209,23 @@ def ab():
                  ("espiga en el agujero del collar (espesor, y)", ESPIGA[0], "agujero")], ronda=4)
 
 
+def b3():
+    """B2 con una tabla de servicio intercambiable: mármol asentado sin cola en la tabla central (de E7)."""
+    n, junta = 7, 3.0          # 7 tablas de 140 mm: hay tabla central y E2b sigue cumpliendo
+    canal = (1400, 100, 20)
+    tablas, b = _tablas(n, junta, trabadas=True)
+    central = [p for p in tablas if p.nombre == f"tabla {n // 2 + 1}"][0]
+    central.nombre += " (de servicio)"
+    central.vacio_mm3 = canal[0] * canal[1] * canal[2]
+    yc = central.centro[1]
+    piezas = tablas + _lenguetas(n, junta, b) + _caballetes() + _travesano() + _llaves(FRESNO, X_CARA) + _apoyo_central()
+    piezas.append(Pieza("mármol asentado", MARMOL, (-canal[0] / 2, canal[0] / 2), (yc - canal[1] / 2, yc + canal[1] / 2),
+                        (H - canal[2], H), "masa"))
+    return Mesa("B3", "Tablas con tabla de servicio", "posar / clavijar / asentar",
+                "cada tabla se mueve sola; una se cambia por otra según el uso", piezas,
+                _nodo_tablas(n, junta, b, True, True, True),
+                [("mármol asentado en el canal de la tabla central (ancho)", canal[1], "canal")], ronda=5)
+
+
 RONDA_1 = (v0, v1, v2, v3)
 RONDA_2 = (v0b, v4)

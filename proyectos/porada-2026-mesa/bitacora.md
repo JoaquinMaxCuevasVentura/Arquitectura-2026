@@ -54,3 +54,9 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
 - **Contraste**: las reglas de A y B son la misma vista desde dos lados: la madera se mueve; la piedra no. → [`03_proponer/sintesis.md`](03_proponer/sintesis.md)
 - **Decisión**: **no cerrar todavía**. La elección entre B2 y AB depende de lo que el cálculo no mide: E6 (¿el collar se lee como unión?) y E10 (¿las juntas molestan en el uso?). Además hacen falta E7 (originalidad) y las decisiones del autor sobre el mármol, el nombre (O6) y la frase del concepto.
 - **Siguiente acción**: construir las dos maquetas 1:1 (el nodo collar/llave y tres tablas de 600 mm) y revisar los compendios 2017-2018.
+
+### 26-10-2026 · 10 · Reunir de nuevo: precedentes (E7) → modificar el argumento
+- **Pedido del autor**: mirar a los ganadores de Porada y de concursos afines para mejorar las dos propuestas.
+- **Hallazgo**: Porada ya celebra «l'incontro tra legno e marmo» (*Oswood*, *Osmose*). El jurado premia el macizo trabajado, los arquetipos, los componentes con individualidad, la intercambiabilidad y el material de acento en la unión. → [`01_reunir/precedentes.md`](01_reunir/precedentes.md)
+- **Decisión**: **modificar el argumento**. Lo que distingue a A es que la piedra trabaja como unión, no la combinación de materiales. A B se le agrega **B3**, una tabla de servicio intercambiable con mármol asentado, y la **familia** banco-consola-mesa. Quedan dos síntesis posibles (AB y B3), que conviene no sumar en la misma mesa.
+- **Herramienta**: el autor pide **Blender en la nube** (Geometry Nodes, materiales procedurales) y descarta Rhino. El prerregistro de E6a y E10a (lectura visual con renders) se fija antes de renderizar.
