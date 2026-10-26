@@ -66,4 +66,4 @@ Las imágenes están en [`../01_reunir/referencias_visuales/`](../01_reunir/refe
 | F10 Viollet-le-Duc, *goussets* | técnica | el *roulement des pieds* se resuelve **con ensamble** | — | — | control del ensayo E3: el peso no traba |
 | F11-F13 FPL, Kessler | técnica | datos con página | — | — | hacen falsables los ensayos |
 
-Lo que el borrador atribuía a Galen Johnson (la veta como tiempo) **no se usa hasta tener la cita** (F15).
+Lo que el borrador atribuía a Galen Johnson (la veta como tiempo) **ya tiene página** (F15, pp. 63-64, de segunda mano). Johnson aporta además «pensar como el agua» (p. 70): la madera sin cola, que respira.

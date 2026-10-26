@@ -148,9 +148,15 @@ Frampton (1995: 5), citado en el artículo, toma la distinción de Gottfried Sem
 - Se toman de él: la cita de Frampton (1995: 5), la glosa «*chhaxwa* nombra el punto exacto donde la masa y el armazón se tocan», el *manuaje* (Cárcamo Pino), el **Cuadro 1** (apoyo, vano, masa, límite) como método de disección, la condición de Fuão (juntar figuras lejanas «con la condición de que haya una referencia explícita») y la advertencia de Hall contra proyectar el mundo propio sobre el pasado.
 - ⚠️ La glosa de *chhaxwa* hay que revisarla a la luz de F01.
 
-### F15 · Galen A. Johnson, *Forest and Philosophy* ⬜
-- Viene de la tesis *Contenida*, que no está en este repositorio. Según el borrador, Johnson trata la veta y los anillos como registro del tiempo.
-- **Si se confirma**, respalda un criterio de acabado: mostrar la testa (los anillos) donde la madera atraviesa la unión. **Hasta tener la cita con página, no se usa.**
+### F15 · Galen A. Johnson, «Forest and Philosophy: Toward an Aesthetics of Wood» (2007) 🔶
+- *Environmental Philosophy* 4 (1-2): 59-75. Johnson es filósofo y ebanista.
+- **De segunda mano, con página**: las citas se cotejaron con el PDF en otro proyecto del autor, *Contenida* (libro de trabajo, octubre de 2026, cap. 2.6; repositorio Altiplano, `tipografia/09_las_manos_no_tienen_lengua.md`). La traducción es del autor. El PDF no está en este repositorio y aquí no se volvió a cotejar.
+- Lo que sirve a la mesa:
+  - **«Pensar como el agua»** (p. 70): los paneles se dejan flotar, sin cola, porque la madera respira con la humedad. Es la regla de B dicha por un ebanista: las tablas sueltas, sin cola, que muestran la estación (E2b, K3).
+  - **Los anillos cuentan la vida del árbol** (pp. 63-64): un corte del tronco «puede leerse como la historia de la vida del árbol». Respalda un criterio de acabado: **mostrar la testa** donde la madera atraviesa la piedra (la espiga que asoma por el collar).
+  - **La superficie como «membrana táctil»**, «pariente cercana de la piel» (p. 62): un argumento para el acabado al aceite, que se toca, frente al barniz.
+  - **Los shakers no firmaban** sus muebles (p. 72). Se anota solo como coincidencia con el anonimato que exige el concurso.
+- **Límite**: sirve como orientación de acabado y como argumento, no como dato técnico.
 
 ### F16 · Frampton, *Studies in Tectonic Culture* (1995) 🔶
 - Citado a través del artículo. Tiene derechos vigentes, así que no se captura.

@@ -30,7 +30,7 @@ La propuesta recibida el 26-10-2026 plantea dos combinaciones: **nogal andino + 
 1. **Filtro Porada**: se mantiene. Es K1 (la madera protagonista) y K8 (identidad, catálogo).
 2. **Filtro mecánico**: **hay que reformularlo**. Su versión propuesta («la piedra como lastre o estabilizador, sin holguras») contradice tres ensayos: E3 retiró «la piedra estabiliza», E4 y E11 retiraron «el peso traba» y E2 muestra que las holguras **son necesarias** (sin ellas, la madera hinchada abre la piedra). Versión que sí sostienen los ensayos:
    > **La piedra trabaja solo a compresión, asentada o apretada por la madera, nunca pegada ni a flexión; las holguras se calculan y se dejan (E2, E4). La madera resiste la flexión y admite mecanizado y ebanistería de precisión.**
-3. **Filtro poético** (tiempo biológico frente a tiempo geológico): se mantiene como orientación. Atribuirlo a Galen Johnson **requiere la cita con página** (F15, pendiente). Ojo: las maderas templadas, como el nogal canaleta, muestran anillos claros; muchas tropicales no. El morado sí los tiene.
+3. **Filtro poético** (tiempo biológico frente a tiempo geológico): se mantiene como orientación. Johnson lo sostiene con página (F15: los anillos como historia del árbol, pp. 63-64; de segunda mano). Ojo: las maderas templadas, como el nogal canaleta, muestran anillos claros; muchas tropicales no. El morado sí los tiene.
 
 ## 3. Candidatos frente a los filtros
 

@@ -63,4 +63,4 @@ Los números ordenan carpetas, no el tiempo.
 3. **La frase del concepto** (candidatas en la [bitácora](bitacora.md), entradas 6 y 9) y **el nombre** (O6: usar una palabra aymara como nombre de producto).
 4. **La piedra**: de catálogo (Nero Sahara Noir) o **granito de Comanche** apomazado. Para Comanche hacen falta una muestra, su color y su ficha (SERGEOMIN; EN 1926, EN 12372). El bando la admite («preferibilmente», art. 1); lo que se puede consultar a los organizadores es si pesa en el criterio de identidad Porada. E6a, con las dos piedras ([renders](05_consolidar/renders/)).
 5. **Revisar Bertonio 2011, p. 330**, y corregir el artículo si corresponde (O1).
-6. **Confirmar la cita de Galen Johnson** (F15), que viene de la tesis *Contenida*.
+6. **Cotejar de primera mano la cita de Galen Johnson** (F15): hoy tiene página, pero viene del cotejo hecho en *Contenida*.

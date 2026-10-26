@@ -147,6 +147,17 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
 - **Contraste**: coincide con la cuenta a mano anunciada (200-500 N). Es la tercera vez que el peso de la piedra no alcanza para trabar (E3, E4, E11). La causa es la misma en las tres: la gravedad de unos kilos es pequeña frente al balanceo de una persona apoyada en la mesa.
 - **Decisión**: **descartar** la «síntesis operativa». El nudo vigente sigue siendo el de AB: la madera atraviesa la piedra, una llave de fresno la aprieta y la piedra trabaja a compresión. Si se quisiera una cuña, la tiene que empujar una mano (la llave), no el peso: es lo que ya hace AB.
 
+## E12 · ¿Las piezas de la propuesta final se cruzan donde no hay ensamble? · *prerregistro*
+- **Origen**: al pasar AB a planos de construcción (consolidar). Mirando las coordenadas de `versiones.ab()`, la clavija y la cuña de las **dos tablas centrales** caen dentro del montante: el montante mide 260 mm de ancho (y = ±130) y esas clavijas están en y = ±84, asomando 40 mm bajo el cabezal (z = 610-650), justo donde está el montante. El modelo de prismas no lo detecta, porque no compara piezas entre sí. Los renders tampoco lo muestran, porque el árbol de Blender dibuja las clavijas en su volumen exterior.
+- **Nota de honestidad**: la interferencia **se vio antes** de escribir este control. El control se programa para comprobarla y para revisar el resto de la mesa, no para descubrirla.
+- **Pregunta**: además de esa, ¿hay otras piezas que se intersectan sin ser un ensamble previsto?
+- **Tipo**: cálculo geométrico (intersección de prismas en el instrumento).
+- **Prerregistro**:
+  - Cuentan como **ensambles previstos** (se permite que se crucen): espiga y montante, espiga y collar, llave y espiga, clavija y tabla, clavija y cabezal, cuña y clavija, cuña y cabezal, lengüeta y tabla. **Cualquier otro cruce** de más de 0,1 mm en los tres ejes es un **error de dibujo** y obliga a **modificar el detalle** antes de la lámina 2.
+  - Si el arreglo cambia una pieza que entra en E8, E9 o E2b, esos ensayos **se repiten** con la geometría nueva.
+  - **K5 por grupos**: si el caballete (pie, montante y cabezal) se encola en una sola pieza, se mide **el caballete armado**, no sus partes, con el mismo umbral de 25 kg.
+- **Qué no demuestra**: que el ensamble se pueda fabricar o montar en ese orden. Eso queda para la secuencia de montaje (lámina 2) y para la maqueta.
+
 ## E7 · Originalidad · *hecho* ([precedentes](../01_reunir/precedentes.md))
 - **Resultado**:
   - 2026 es la primera edición del Porada Award dedicada a la mesa de comedor; en 2017 fueron mesas pequeñas. Ningún ganador usó caballetes, tablas sueltas ni uniones de piedra.
