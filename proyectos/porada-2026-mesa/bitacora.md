@@ -82,4 +82,5 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
   - **Proponer** el granito de Comanche apomazado como piedra candidata del collar de AB, pendiente de muestra y ficha.
   - **Descartar** la opción 2 en su forma propuesta.
 - **Herramienta**: se agrega una piedra ígnea gris mate genérica al árbol de Blender (no es el granito de Comanche: no hay muestra) y se renderizan el nodo y la vista general de AB con ella, para que E6a compare las dos piedras.
+- **Observación no prerregistrada** (los renders `nodo_AB_ignea` y `general_AB_ignea`): de cerca, la piedra mate se lee como **masa**, sin la veta que en el Nero Sahara llama la atención por sí misma. A distancia general, las dos piedras son una mancha oscura del mismo tamaño: **el problema de visibilidad del collar no lo cambia la piedra, lo cambia su tamaño**. E6a dirá si «masa» se entiende como «lo que traba».
 - **Siguiente acción**: el autor elige; si va con Comanche, conseguir una muestra y su ficha (SERGEOMIN; EN 1926, EN 12372) y hacer E6a con las dos piedras.
