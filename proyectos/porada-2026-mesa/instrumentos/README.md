@@ -1,6 +1,6 @@
 # Instrumento paramétrico de la mesa
 
-Un instrumento para seguir pensando: describe cada versión como un conjunto de piezas, la mide contra los criterios K1-K5 con los ensayos E1-E4 (y E8, E9 y E2b para la propuesta B), y dibuja las láminas. **Python 3.10 o superior, sin dependencias.**
+Un instrumento para seguir pensando: describe cada versión como un conjunto de piezas, la mide contra los criterios K1-K5 con los ensayos E1-E4 (y E8, E9 y E2b para la propuesta B; E11 para la cuña por gravedad), y dibuja las láminas. **Python 3.10 o superior, sin dependencias.**
 
 ```bash
 cd proyectos/porada-2026-mesa/instrumentos
@@ -21,7 +21,7 @@ Escribe:
 | `mesa/materiales.py` | Nogal, fresno y mármol con su fuente (FPL 2010, Kessler 1919). Factor de diseño 1/3 |
 | `mesa/geometria.py` | Pieza (prisma recto con material y función del Cuadro 1) y Mesa (masa, centro de gravedad, volúmenes) |
 | `mesa/versiones.py` | Cada versión como función. `configurar()` cambia la geometría común |
-| `mesa/calculos.py` | E1-E4, E8, E9, E2b, criterios K1-K5 y supuestos comunes (P, H, humedad, umbrales) |
+| `mesa/calculos.py` | E1-E4, E8, E9, E2b, E11, criterios K1-K5 y supuestos comunes (P, H, humedad, umbrales) |
 | `mesa/dibujo.py` | Láminas SVG: alzado y planta 1:10, sección, detalle de la unión 1:2,5, comparativas 1:20 |
 | `mesa/modelo3d.py` | Exporta las candidatas vigentes a OBJ + MTL (`../05_consolidar/modelos/`): base de masas para D5, Blender o Rhino |
 | `mesa/__main__.py` | Rondas, lecturas y salida de resultados |
@@ -39,6 +39,7 @@ Escribe:
 - **E8, flecha de una tabla** (B): tabla biapoyada bajo P en el centro o, con apoyo central, viga continua de dos vanos (Δ = 0,015 P l³/EI) más lo que cede el travesaño bajo el puntal. Con lengüetas sueltas se **supone** que la carga se reparte entre tres tablas.
 - **E9, vuelco de una tabla suelta** (B): balancín sobre la arista exterior del cabezal.
 - **E2b, juntas entre tablas** (B): cada tabla, clavijada en su eje, crece igual hacia ambos lados. Cada junta cambia b · C · ΔCH.
+- **E11, cuña por gravedad**: una piedra de peso W baja por un asiento con flancos a α de la vertical. Normal N = W / (2 (sen α + μ cos α)); empuje horizontal sobre cada flanco H = N (cos α − μ sen α). Si el asiento es de madera de ancho a, su cambio a · C · ΔCH hace subir o bajar la piedra a · C · ΔCH / (2 tan α).
 - **Resistencias**: medias de probeta limpia (FPL, tabla 5-3a) divididas por 3. Para el mármol, MOR de 7 MPa: el extremo bajo del rango, **a confirmar con la ficha del mármol elegido** (EN 12372).
 
 Para pasar a la producción hará falta un cálculo con la norma de mobiliario (EN 12521 / EN 1730) y probetas reales. Ese paso queda en [`../05_consolidar/entregables.md`](../05_consolidar/entregables.md).

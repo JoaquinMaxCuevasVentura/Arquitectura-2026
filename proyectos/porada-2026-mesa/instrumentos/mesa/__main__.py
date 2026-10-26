@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 
 from . import versiones
-from .calculos import CH, H_REF, LIM_PIEDRA, P_REF, ensayar
+from .calculos import CH, H_REF, LIM_PIEDRA, P_REF, e11_cuna_gravedad, ensayar
 from .dibujo import lamina, lamina_comparativa
 from .modelo3d import exportar_obj
 
@@ -219,10 +219,33 @@ def correr(ronda):
     return res
 
 
+def informe_e11():
+    r = e11_cuna_gravedad()
+    lin = ["# E11 · Piedra en cuña que tensa el caballete por su peso", "",
+           f"Generado por `python3 -m mesa`. Cuña de {r['angulo_grados']:.0f}° respecto de la vertical; demanda de E4: "
+           f"T = {r['T_b_N']:.0f} N (modelo b) / {r['T_a_N']:.0f} N (modelo a). Prerregistro en `../ensayos.md`.", "",
+           "| Piedra (kg) | μ = 0 | μ = 0,2 | μ = 0,4 | μ = 0,5 |", "|---|---|---|---|---|"]
+    for m in sorted({f["masa_kg"] for f in r["filas"]}):
+        celdas = [f"{f['empuje_N']:.0f} N" for f in r["filas"] if f["masa_kg"] == m]
+        lin.append(f"| {m:.1f} | " + " | ".join(celdas) + " |")
+    lin += ["", "**Masa de piedra necesaria** para llegar a T (modelo b): "
+            + ", ".join(f"μ = {mu:.1f}: {kg:.0f} kg" for mu, kg in r["masa_necesaria_kg"].items()) + ".", "",
+            f"**(a)** Empuje máximo con 29,4 kg: {r['empuje_max_29kg_N']:.0f} N frente a {r['T_b_N']:.0f} N → "
+            f"{'cumple' if r['cumple_a'] else 'NO cumple'}.",
+            f"**(b)** Con un asiento de madera de 150 mm, su ancho cambia {r['cambio_ancho_asiento_mm']:.1f} mm entre 4 y 13 %; "
+            f"la cuña lo convierte en {r['recorrido_vertical_mm']:.1f} mm de recorrido vertical de la piedra → "
+            f"{'cumple' if r['cumple_b'] else 'NO cumple'} (límite 2 mm)."]
+    (RESULTADOS / "e11.md").write_text("\n".join(lin) + "\n", encoding="utf-8")
+    return r
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--ronda", type=int, choices=tuple(RONDAS))
     args = ap.parse_args()
+    r11 = informe_e11()
+    print(f"E11: empuje máx. {r11['empuje_max_29kg_N']:.0f} N frente a T {r11['T_b_N']:.0f} N; "
+          f"recorrido {r11['recorrido_vertical_mm']:.1f} mm")
     for ronda in ([args.ronda] if args.ronda else list(RONDAS)):
         res = correr(ronda)
         print(f"ronda {ronda}: " + ", ".join(

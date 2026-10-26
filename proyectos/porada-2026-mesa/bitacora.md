@@ -68,3 +68,18 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
 - **Siguiente acción**: el autor hace E6a y E10a con 5 personas; después vienen E6 y E10 físicos.
 - **Renders listos** (10 tomas, Cycles a 48 muestras, ~2 min cada una en CPU) → [`05_consolidar/renders/`](05_consolidar/renders/). El primer material de nogal se descartó porque de cerca se leía como chapa ondulada; se cambió por fibra fina antes de la tanda final.
 - **Observación no prerregistrada** (se anota como tal, no como resultado de un ensayo): a la distancia de la vista general, **el collar de AB casi no se ve**: AB y B2 se parecen mucho. En B3, el mármol de la tabla de servicio sí se lee a esa distancia. Si la piedra tiene que ser *el punto fijo* de la mesa, en AB solo lo es de cerca. **Pregunta para E6a**: ¿alcanza con que la unión se lea de cerca, o el collar tiene que crecer?
+
+### 26-10-2026 · 12 · Reunir y contrastar: materiales bolivianos → modificar el filtro, descartar el nudo por gravedad (E11)
+- **Pedido del autor**: evaluar una dirección material boliviana con un triple filtro (Porada, mecánico, poético). Opción 1: nogal andino (*Juglans neotropica*) + andesita de Comanche. Opción 2: morado + travertino. Incluye una «síntesis operativa» del nudo: la piedra baja por gravedad, abre dos tirantes y bloquea las patas.
+- **Contraste con fuentes** → [`01_reunir/materiales_bolivianos.md`](01_reunir/materiales_bolivianos.md):
+  - El nogal de los Yungas es *J. boliviana*, no *J. neotropica*; esta última está **En Peligro** (UICN). *J. boliviana* se describió primero como *J. nigra* var. *boliviana*: es pariente del noce canaletta de Porada.
+  - La ley departamental de La Paz (2012) llama a la piedra de Comanche **granito**, no andesita. La andesita de Tiwanaku se atribuye al cerro Khapia.
+  - El morado es sensibilizante, pesa 1,5 veces lo que el nogal y crece lento; el travertino ya está en el catálogo de Porada.
+- **E11** (prerregistrado en `924e6a0` antes de calcular): la cuña empuja como máximo 538 N y el balanceo pide 1023 N; además la piedra se mueve 6,9 mm entre estaciones → **descartar** la síntesis operativa.
+- **Decisión**:
+  - **Modificar el filtro mecánico**: «la piedra trabaja solo a compresión, asentada o apretada por la madera, nunca pegada ni a flexión; las holguras se calculan y se dejan».
+  - **Conservar** el nogal canaleta para producir; lo andino entra como vínculo botánico verificado, no como material.
+  - **Proponer** el granito de Comanche apomazado como piedra candidata del collar de AB, pendiente de muestra y ficha.
+  - **Descartar** la opción 2 en su forma propuesta.
+- **Herramienta**: se agrega una piedra ígnea gris mate genérica al árbol de Blender (no es el granito de Comanche: no hay muestra) y se renderizan el nodo y la vista general de AB con ella, para que E6a compare las dos piedras.
+- **Siguiente acción**: el autor elige; si va con Comanche, conseguir una muestra y su ficha (SERGEOMIN; EN 1926, EN 12372) y hacer E6a con las dos piedras.

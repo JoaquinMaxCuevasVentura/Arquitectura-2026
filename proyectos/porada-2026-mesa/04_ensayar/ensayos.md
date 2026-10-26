@@ -141,6 +141,12 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
   - (b) Si la piedra se desplaza **más de 2 mm** entre estaciones, el asiento en cuña sobre madera no es compatible con «sin holguras»: la piedra se mueve a la vista.
 - **Qué no demuestra**: el crujido, el comportamiento del fieltro en el tiempo (fluencia) y la rigidez real de los tirantes.
 
+### Resultado de E11 ([resultados](resultados/e11.md))
+- **(a)** Con 29,4 kg de piedra, la cuña empuja como máximo **538 N** sin rozamiento, 193 N con μ = 0,4 y 163 N con μ = 0,5 (fieltro). El balanceo pide **1023 N** (modelo b). Para llegar harían falta **56 kg** de piedra sin rozamiento y **156-185 kg** con fieltro → **✗**.
+- **(b)** Un asiento de madera de 150 mm cambia 3,7 mm de ancho entre 4 y 13 %. La cuña de 15° lo convierte en **6,9 mm** de recorrido vertical de la piedra → **✗** (límite 2 mm). La piedra sube y baja a la vista con la estación: es lo contrario de «sin holguras».
+- **Contraste**: coincide con la cuenta a mano anunciada (200-500 N). Es la tercera vez que el peso de la piedra no alcanza para trabar (E3, E4, E11). La causa es la misma en las tres: la gravedad de unos kilos es pequeña frente al balanceo de una persona apoyada en la mesa.
+- **Decisión**: **descartar** la «síntesis operativa». El nudo vigente sigue siendo el de AB: la madera atraviesa la piedra, una llave de fresno la aprieta y la piedra trabaja a compresión. Si se quisiera una cuña, la tiene que empujar una mano (la llave), no el peso: es lo que ya hace AB.
+
 ## E7 · Originalidad · *hecho* ([precedentes](../01_reunir/precedentes.md))
 - **Resultado**:
   - 2026 es la primera edición del Porada Award dedicada a la mesa de comedor; en 2017 fueron mesas pequeñas. Ningún ganador usó caballetes, tablas sueltas ni uniones de piedra.

@@ -4,6 +4,7 @@ Cada función devuelve un dict plano para volcarlo a JSON y a la tabla de result
 Los modelos son deliberadamente simples: sirven para comparar versiones bajo los mismos supuestos,
 no para dimensionar la pieza final (ver «qué no demuestra» en 04_ensayar/ensayos.md).
 """
+import math
 from math import sqrt
 
 from .materiales import MARMOL, NOGAL
@@ -195,6 +196,33 @@ def e2b_juntas_tablas(mesa, ch=CH, coef=NOGAL.ct):
             "estacional_6_11_mm": b * coef * 5, "ancho_tabla_max_mm": (hi - lo) / (coef * (mx - mn)),
             "junta_nominal_admisible_mm": (lo + b * coef * (mx - fab), hi - b * coef * (fab - mn)),
             "cumple": humeda >= lo and seca <= hi}
+
+
+def e11_cuna_gravedad(masas_kg=(5.0, 18.0, 29.4), angulo=15.0, rozamientos=(0.0, 0.2, 0.4, 0.5),
+                      asiento_mm=150.0, ch=CH, coef=NOGAL.ct, Hh=H_REF):
+    """Piedra asentada en una cuña de ángulo α respecto de la vertical, que empuja dos tirantes por su peso.
+
+    Equilibrio a punto de bajar (el rozamiento se opone): W = 2N(sen α + μ cos α); empuje por lado H = N(cos α − μ sen α).
+    Con μ ≥ cot α la piedra no baja: se queda colgada y el empuje lo da el apriete inicial, no la gravedad.
+    """
+    a = math.radians(angulo)
+    T = _traccion_espiga({"h_trav": 110.0}, Hh)            # misma demanda que E4
+    filas = []
+    for m in masas_kg:
+        W = m * G
+        for mu in rozamientos:
+            N = W / (2 * (math.sin(a) + mu * math.cos(a)))
+            filas.append({"masa_kg": m, "mu": mu, "empuje_N": max(0.0, N * (math.cos(a) - mu * math.sin(a)))})
+    def masa_necesaria(mu, T_obj):
+        return T_obj * 2 * (math.sin(a) + mu * math.cos(a)) / (math.cos(a) - mu * math.sin(a)) / G
+    fab, mn, mx = ch
+    recorrido = asiento_mm * coef * (mx - mn) / (2 * math.tan(a))     # la cuña amplifica el cambio de ancho
+    return {"angulo_grados": angulo, "T_b_N": T["b"], "T_a_N": T["a"], "filas": filas,
+            "masa_necesaria_kg": {mu: masa_necesaria(mu, T["b"]) for mu in rozamientos},
+            "empuje_max_29kg_N": max(f["empuje_N"] for f in filas if f["masa_kg"] == max(masas_kg)),
+            "recorrido_vertical_mm": recorrido, "cambio_ancho_asiento_mm": asiento_mm * coef * (mx - mn),
+            "cumple_a": max(f["empuje_N"] for f in filas if f["masa_kg"] == max(masas_kg)) >= T["b"],
+            "cumple_b": recorrido <= 2.0}
 
 
 def tension_max_piedra(mesa, e1, e4, modelo):

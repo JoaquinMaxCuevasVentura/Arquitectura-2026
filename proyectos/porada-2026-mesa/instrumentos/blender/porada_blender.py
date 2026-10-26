@@ -371,6 +371,31 @@ def material_marmol(nombre, fondo, fondo2, veta, rugosidad=0.14):
     return mat
 
 
+def material_ignea(nombre, base, moteado, rugosidad=0.62):
+    """Roca ígnea de grano fino con acabado apomazado (mate): base gris con moteado de cristales. Aproximación genérica."""
+    mat = bpy.data.materials.new(nombre)
+    nt = mat.node_tree
+    nd, ln = nt.nodes, nt.links
+    bsdf = nd["Principled BSDF"]
+    coord = nd.new("ShaderNodeTexCoord")
+    grano = nd.new("ShaderNodeTexVoronoi")
+    grano.inputs["Scale"].default_value = 900.0
+    ln.new(coord.outputs["Object"], grano.inputs["Vector"])
+    nubes = nd.new("ShaderNodeTexNoise")
+    nubes.inputs["Scale"].default_value, nubes.inputs["Detail"].default_value = 25.0, 4.0
+    ln.new(coord.outputs["Object"], nubes.inputs["Vector"])
+    mezcla = nd.new("ShaderNodeMix")
+    mezcla.data_type = "FLOAT"
+    mezcla.inputs["Factor"].default_value = 0.35
+    ln.new(grano.outputs["Distance"], mezcla.inputs["A"])
+    ln.new(nubes.outputs["Fac"], mezcla.inputs["B"])
+    rampa = _rampa(nd, [(0.25, base), (0.6, tuple(c * 1.25 for c in base)), (0.85, moteado)])
+    ln.new(mezcla.outputs["Result"], rampa.inputs["Fac"])
+    ln.new(rampa.outputs["Color"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Roughness"].default_value = rugosidad
+    return mat
+
+
 def material_liso(nombre, color, rugosidad):
     mat = bpy.data.materials.new(nombre)
     bsdf = mat.node_tree.nodes["Principled BSDF"]
@@ -388,6 +413,8 @@ def materiales():
         "nero": material_marmol("Mármol Nero Sahara Noir", (0.012, 0.012, 0.013), (0.03, 0.028, 0.026), (0.75, 0.72, 0.66)),
         "emperador": material_marmol("Mármol Marrone Emperador Dark", (0.045, 0.026, 0.016), (0.09, 0.055, 0.035),
                                      (0.55, 0.45, 0.33)),
+        # Piedra ígnea boliviana (granito de Comanche o andesita): color y grano por verificar con una muestra.
+        "ignea": material_ignea("Piedra ígnea gris mate (genérica)", (0.045, 0.046, 0.048), (0.16, 0.16, 0.155)),
         "estudio": material_liso("Estudio", (0.62, 0.61, 0.59), 0.85),
     }
 
@@ -422,7 +449,8 @@ def ajustar(ob, mats, params, piedra="nero"):
         getattr(entradas, ids[nombre]).value = valor
 
     for k, v in params.items():
-        poner(nombres[k], v)
+        if k in nombres:
+            poner(nombres[k], v)
     poner("Madera", mats["nogal"])
     poner("Fresno", mats["fresno"])
     poner("Piedra", mats[piedra])
@@ -497,6 +525,9 @@ TOMAS = {
     "junta_4p80": (dict(VERSIONES["B2"], junta=0.0048), (0.25, -0.62, 1.02), (0.0, -0.17, 0.75), 70, (1200, 900)),
     "servicio_B3": ("B3", (0.9, -1.0, 1.25), (0.0, 0.0, 0.74), 55, (1600, 1000)),
     "familia": ("familia", (4.6, -5.6, 2.3), (0.6, 0, 0.35), 42, (1800, 900)),
+    # Variante de material: el mismo collar en piedra ígnea gris mate (propuesta de materiales bolivianos).
+    "nodo_AB_ignea": (dict(VERSIONES["AB"], piedra="ignea"), (XC + 0.42, -0.62, 0.42), (XC + 0.07, 0, 0.30), 60, (1200, 1200)),
+    "general_AB_ignea": (dict(VERSIONES["AB"], piedra="ignea"), (3.1, -3.4, 1.75), (0, 0, 0.42), 45, (1600, 1000)),
 }
 
 
@@ -527,7 +558,8 @@ def renderizar(tomas, mats, principal, familia):
             for i, ob in enumerate(familia.values()):
                 ob.location = (-2.4 + i * 2.4, 0, 0)
         else:
-            ajustar(principal, mats, VERSIONES[version] if isinstance(version, str) else version)
+            params = VERSIONES[version] if isinstance(version, str) else version
+            ajustar(principal, mats, params, params.get("piedra", "nero"))
         camara(loc, objetivo, focal)
         sc.render.resolution_x, sc.render.resolution_y = rx, ry
         sc.render.filepath = str(SALIDA_RENDER / f"{nombre}.png")
