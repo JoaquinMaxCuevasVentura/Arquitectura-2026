@@ -27,7 +27,7 @@ python porada_blender.py --muestras 128 --tomas nodo_AB nodo_B2
 | Extremo a caballete, Ancho del pie | 0,45 m; 0,18 m | E3: corrección común (pie de 180 mm) |
 | Apoyo central | sí | E8: flecha ≤ 2 mm |
 | Collar de piedra | AB: sí | E4: la piedra solo a compresión |
-| Piedra | Nero Sahara Noir (también Marrone Emperador Dark) | E7: los mármoles de las mesas del catálogo |
+| Piedra | Nero Sahara Noir (también Marrone Emperador Dark e ígnea gris mate) | E7: los mármoles de las mesas del catálogo; la ígnea, para comparar con el granito de Comanche (entrada 12 de la bitácora) |
 
 Cada pieza guarda un atributo `veta` (0 = X, 1 = Y, 2 = Z) para que el material oriente la fibra según la pieza: los montantes, verticales; los pies y cabezales, a lo ancho.
 
@@ -38,6 +38,7 @@ Cada pieza guarda un atributo `veta` (0 = X, 1 = Y, 2 = Z) para que el material 
 | `general_B2`, `general_AB`, `general_B3` | comparar las tres candidatas con la misma cámara y la misma luz |
 | `nodo_AB`, `nodo_B2` | **E6a**: misma cámara; collar de piedra frente a solo la llave de fresno |
 | `junta_0p75`, `junta_3p00`, `junta_4p80` | **E10a**: la junta entre tablas húmeda, en fabricación y seca |
+| `nodo_AB_ignea`, `general_AB_ignea` | **E6a con dos piedras**: el collar de AB en piedra ígnea gris mate, con la misma cámara que `nodo_AB` y `general_AB` |
 | `servicio_B3` | la tabla de servicio con mármol asentado |
 | `familia` | banco (2 tablas), consola (3 tablas) y mesa B3 (7 tablas), del mismo sistema |
 
@@ -45,4 +46,4 @@ Cada pieza guarda un atributo `veta` (0 = X, 1 = Y, 2 = Z) para que el material 
 
 - **No es el modelo constructivo**: no lleva espigas, cajas ni holguras. Las uniones se ven en su volumen exterior, que es lo que importa para la lectura visual.
 - **No reemplaza las maquetas** (E6, E10). Ver [`../../04_ensayar/ensayos.md`](../../04_ensayar/ensayos.md).
-- Los mármoles son **aproximaciones procedurales**, no muestras escaneadas.
+- Los mármoles son **aproximaciones procedurales**, no muestras escaneadas. La piedra ígnea es **genérica**: no es el granito de Comanche, del que todavía no hay muestra ni color.
