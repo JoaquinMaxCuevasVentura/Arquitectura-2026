@@ -9,6 +9,13 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 | **V2** Hincada (chhakhua literal) | 138.2 | 57.2 | ✓ 86.1% | ✓ flexión máx. en piedra 1.4 MPa (modelo b) / 2.9 MPa (modelo a) | ✗ | ✗ vuelco en extremo sin piedra 1652 N (1.65 × P) | ✗ más pesada: tablero 59.1 kg · piedra: pie izq 28.6 kg |
 | **V3** Solo madera (control) | 87.6 | 0.0 | ✓ 100.0% | — sin piedra | ✓ | ✗ vuelco en extremo sin piedra 1655 N (1.66 × P) | ✗ más pesada: tablero 59.1 kg |
 
+## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)
+
+- **V0**: 0 cruces previstos (ensambles), **0 fuera de ensamble**.
+- **V1**: 4 cruces previstos (ensambles), **0 fuera de ensamble**.
+- **V2**: 4 cruces previstos (ensambles), **2 fuera de ensamble**: pie izq × montante izq (60 × 260 × 60 mm); pie der × montante der (60 × 260 × 60 mm).
+- **V3**: 4 cruces previstos (ensambles), **0 fuera de ensamble**.
+
 ## E1 · Piedra como viga
 
 - **V0**: luz 1500 mm, sección 160 × 40 mm → σ peso propio 1.12 MPa + σ por P 8.79 MPa = **9.91 MPa** (límite 2.33). ¿Lo salva el mármol más resistente (15/3 = 5 MPa)? **no**. Carga puntual admisible: 138 N.

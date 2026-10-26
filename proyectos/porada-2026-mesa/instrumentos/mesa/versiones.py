@@ -131,8 +131,14 @@ def v4():
 
 # --- Propuesta B: tablas sueltas posadas sobre los caballetes (03_proponer/propuesta_B.md) ---
 
-def _tablas(n, junta, trabadas):
-    """n tablas a lo largo, separadas por juntas; cada una ubicada por una clavija en cada cabezal."""
+CUNA_EN_CABEZAL = (100, 8, 15)        # cuña pasante en el cabezal (F1): largo x, ancho y, alto z
+
+
+def _tablas(n, junta, trabadas, cuna="bajo"):
+    """n tablas a lo largo, separadas por juntas; cada una ubicada por una clavija en cada cabezal.
+
+    cuna="bajo": la clavija asoma 40 mm bajo el cabezal y la cuña la atraviesa ahí (B2, AB, B3).
+    cuna="cabezal": la clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo de x (F1, de E12)."""
     b = (W - (n - 1) * junta) / n
     piezas = []
     for i in range(n):
@@ -140,12 +146,20 @@ def _tablas(n, junta, trabadas):
         piezas.append(Pieza(f"tabla {i + 1}", NOGAL, (-L / 2, L / 2), (y0, y0 + b), (Z_TAB, H), "limite"))
         for s, lado in ((-1, "izq"), (1, "der")):
             yc = y0 + b / 2
-            z0 = Z_CAB - 40 if trabadas else Z_CAB + 10      # trabada: la clavija asoma bajo el cabezal y se acuña
+            if not trabadas:
+                z0 = Z_CAB + 10
+            else:
+                z0 = Z_CAB - 40 if cuna == "bajo" else Z_CAB + 10
             piezas.append(Pieza(f"clavija {i + 1} {lado}", FRESNO, (s * XC - 10, s * XC + 10), (yc - 10, yc + 10),
                                 (z0, H - 10), "union"))
-            if trabadas:
+            if trabadas and cuna == "bajo":
                 piezas.append(Pieza(f"cuña {i + 1} {lado}", FRESNO, (s * XC - 30, s * XC + 30), (yc - 4, yc + 4),
                                     (Z_CAB - 30, Z_CAB - 15), "union"))
+            elif trabadas:
+                lx, ly, lz = CUNA_EN_CABEZAL
+                zc = Z_CAB + 25
+                piezas.append(Pieza(f"cuña {i + 1} {lado}", FRESNO, (s * XC - lx / 2, s * XC + lx / 2),
+                                    (yc - ly / 2, yc + ly / 2), (zc - lz / 2, zc + lz / 2), "union"))
     return piezas, b
 
 
@@ -225,6 +239,31 @@ def b3():
                 "cada tabla se mueve sola; una se cambia por otra según el uso", piezas,
                 _nodo_tablas(n, junta, b, True, True, True),
                 [("mármol asentado en el canal de la tabla central (ancho)", canal[1], "canal")], ronda=5)
+
+
+def f1():
+    """Propuesta final, iteración 1: AB con la cuña pasante en el cabezal (E12) y el caballete encolado."""
+    n, junta = 6, 3.0
+    vuelo = 140
+    collar = (70, 110, 150)
+    agujero = (ESPIGA[0] + 2, ESPIGA[1] + 2)
+    tablas, b = _tablas(n, junta, trabadas=True, cuna="cabezal")
+    piezas = (tablas + _lenguetas(n, junta, b) + _caballetes() + _travesano(vuelo)
+              + _llaves(FRESNO, X_CARA + collar[0]) + _apoyo_central())
+    for s, lado in ((-1, "izq"), (1, "der")):
+        piezas.append(Pieza(f"collar {lado}", MARMOL, tuple(sorted((s * X_CARA, s * (X_CARA + collar[0])))),
+                            (-collar[1] / 2, collar[1] / 2), (TRAV[2] - collar[2] / 2, TRAV[2] + collar[2] / 2),
+                            "union", collar[0] * agujero[0] * agujero[1]))
+    nodo = _nodo_tablas(n, junta, b, True, True, True, vuelo) | {"tipo_union": "collar", "collar": collar,
+                                                                "agujero": agujero}
+    grupos = {f"caballete {lado} (pie, montante y cabezal encolados)": [f"pie {lado}", f"montante {lado}",
+                                                                      f"cabezal {lado}"]
+              for lado in ("izq", "der")}
+    grupos["apoyo central (puntal y cabezal encolados)"] = ["puntal central", "cabezal central"]
+    return Mesa("F1", "Propuesta final", "posar / atravesar / acuñar",
+                "la madera se mueve y se arma; lo único fijo es la piedra donde se traba", piezas, nodo,
+                [("espiga en el agujero del collar (alto, z)", ESPIGA[1], "agujero"),
+                 ("espiga en el agujero del collar (espesor, y)", ESPIGA[0], "agujero")], ronda=6, grupos=grupos)
 
 
 RONDA_1 = (v0, v1, v2, v3)

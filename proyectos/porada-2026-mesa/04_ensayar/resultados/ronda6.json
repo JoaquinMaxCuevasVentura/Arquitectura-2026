@@ -1,0 +1,427 @@
+{
+ "geometria": {
+  "a_extremo_mm": 450,
+  "pie_mm": [
+   180,
+   800,
+   90
+  ]
+ },
+ "resultados": [
+  {
+   "codigo": "AB",
+   "nombre": "Síntesis candidata",
+   "accion": "posar / atravesar / acuñar",
+   "relacion": "la madera se mueve y se arma; la piedra es lo único fijo",
+   "ronda": 6,
+   "masa_total_kg": 106.34621760000002,
+   "masa_piedra_kg": 4.602528000000007,
+   "E1": null,
+   "E2": {
+    "juntas": [
+     {
+      "junta": "espiga en el agujero del collar (alto, z)",
+      "ancho_mm": 90,
+      "holgura_fabricacion_por_lado": 0.6164999999999999,
+      "junta_maxima_por_lado": 1.1097,
+      "cumple": true,
+      "nota": "sin holgura, la madera hinchada abre la piedra"
+     },
+     {
+      "junta": "espiga en el agujero del collar (espesor, y)",
+      "ancho_mm": 45,
+      "holgura_fabricacion_por_lado": 0.30824999999999997,
+      "junta_maxima_por_lado": 0.55485,
+      "cumple": true,
+      "nota": "sin holgura, la madera hinchada abre la piedra"
+     }
+    ],
+    "ancho_tablero_mm": {
+     "extremos_4_13": 24.659999999999997,
+     "estacional_6_11": 13.7
+    },
+    "encolado_a_contraveta": false
+   },
+   "E3": {
+    "con_piedra": {
+     "masa_kg": 106.34621760000002,
+     "vuelco_extremo_N": 2434.2649208640005,
+     "vuelco_borde_N": 4173.025578624,
+     "vuelco_horizontal_N": 556.4034104832001,
+     "desliza_antes_de_volcar": true,
+     "x_eje": 840.0,
+     "peso_N": 1043.256394656,
+     "xg": 0.0
+    },
+    "sin_piedra": {
+     "masa_kg": 101.74368960000001,
+     "vuelco_extremo_N": 2328.913054944,
+     "vuelco_borde_N": 3992.422379904001,
+     "vuelco_horizontal_N": 532.3229839872001,
+     "desliza_antes_de_volcar": true,
+     "x_eje": 840.0,
+     "peso_N": 998.1055949760001,
+     "xg": 0.0
+    },
+    "aporte_piedra": {
+     "vuelco_extremo_N": 0.045236495925149,
+     "vuelco_borde_N": 0.04523649592514856,
+     "vuelco_horizontal_N": 0.04523649592514878
+    },
+    "sin_piedra_ya_resiste_2x": true,
+    "a_max_para_2P_mm": 489.49450612355366,
+    "alargar_pie_para_2P_mm": 0.0,
+    "retirar_frase_estabiliza": true
+   },
+   "E4": {
+    "material_llave": "fresno (Fraxinus americana)",
+    "limite_llave": 34.333333333333336,
+    "modelos": {
+     "a": {
+      "T_N": 2045.4545454545455,
+      "sigma_llave": 16.63236317254174,
+      "cumple_llave": true,
+      "d_min_mm": 19.4884377426391,
+      "d_max_que_cabe_mm": 46.666666666666664,
+      "b_max_que_cabe_mm": 22.5,
+      "cabe": true,
+      "apoyo_llave_MPa": 1.2784090909090908,
+      "corte_cabeza_espiga_MPa": 0.27056277056277056,
+      "peso_llave_sobre_rozamiento": 0.000767053056,
+      "compresion_collar_MPa": 0.16799068211683194,
+      "apoyo_montante_con_collar_MPa": 0.16799068211683194,
+      "apoyo_montante_sin_collar_MPa": 1.2784090909090908
+     },
+     "b": {
+      "T_N": 1022.7272727272727,
+      "sigma_llave": 8.31618158627087,
+      "cumple_llave": true,
+      "d_min_mm": 13.78040648255196,
+      "d_max_que_cabe_mm": 46.666666666666664,
+      "b_max_que_cabe_mm": 22.5,
+      "cabe": true,
+      "apoyo_llave_MPa": 0.6392045454545454,
+      "corte_cabeza_espiga_MPa": 0.13528138528138528,
+      "peso_llave_sobre_rozamiento": 0.001534106112,
+      "compresion_collar_MPa": 0.08399534105841597,
+      "apoyo_montante_con_collar_MPa": 0.08399534105841597,
+      "apoyo_montante_sin_collar_MPa": 0.6392045454545454
+     }
+    }
+   },
+   "E8": {
+    "flecha_tabla_sola_mm": 0.62306499431122,
+    "asiento_apoyo_central_mm": 0.8349066685665432,
+    "reparto_lenguetas": 3,
+    "sigma_travesano": 2.840909090909091,
+    "flecha_total_mm": 1.0425950000036166,
+    "escalon_entre_tablas_mm": 0.0,
+    "sigma_tabla": 3.477791878172589,
+    "limite_tabla": 33.666666666666664,
+    "cumple": true
+   },
+   "E9": {
+    "masa_tabla_kg": 9.70816,
+    "vuelco_tabla_suelta_N": 183.50553459512196,
+    "trabadas": true,
+    "cumple": true
+   },
+   "E2b": {
+    "ancho_tabla_mm": 164.16666666666666,
+    "junta_nominal_mm": 3.0,
+    "junta_humeda_mm": 0.7509166666666669,
+    "junta_seca_mm": 4.799266666666666,
+    "estacional_6_11_mm": 2.249083333333333,
+    "ancho_tabla_max_mm": 182.48175182481754,
+    "junta_nominal_admisible_mm": [
+     2.749083333333333,
+     3.200733333333334
+    ],
+    "cumple": true
+   },
+   "E12": {
+    "previstos": 52,
+    "errores": [
+     {
+      "a": "clavija 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     }
+    ],
+    "cumple": false,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
+   "K": {
+    "K1": {
+     "valor": 0.9897638548012315,
+     "cumple": true,
+     "texto": "madera 99.0% del volumen"
+    },
+    "K2": {
+     "valor": {
+      "a": 0.0,
+      "b": 0.0
+     },
+     "cumple": true,
+     "robusto": true,
+     "texto": "flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a)"
+    },
+    "K3": {
+     "cumple": true,
+     "texto": "junta máx. 1.1 mm/lado · entre tablas 0.8-4.8 mm"
+    },
+    "K4": {
+     "cumple": true,
+     "texto": "vuelco en extremo sin piedra 2329 N (2.33 × P)"
+    },
+    "K5": {
+     "valor": 9.708160000000001,
+     "cumple": true,
+     "piedra_cumple": true,
+     "texto": "más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg"
+    }
+   }
+  },
+  {
+   "codigo": "F1",
+   "nombre": "Propuesta final",
+   "accion": "posar / atravesar / acuñar",
+   "relacion": "la madera se mueve y se arma; lo único fijo es la piedra donde se traba",
+   "ronda": 6,
+   "masa_total_kg": 106.22364480000002,
+   "masa_piedra_kg": 4.602528000000007,
+   "E1": null,
+   "E2": {
+    "juntas": [
+     {
+      "junta": "espiga en el agujero del collar (alto, z)",
+      "ancho_mm": 90,
+      "holgura_fabricacion_por_lado": 0.6164999999999999,
+      "junta_maxima_por_lado": 1.1097,
+      "cumple": true,
+      "nota": "sin holgura, la madera hinchada abre la piedra"
+     },
+     {
+      "junta": "espiga en el agujero del collar (espesor, y)",
+      "ancho_mm": 45,
+      "holgura_fabricacion_por_lado": 0.30824999999999997,
+      "junta_maxima_por_lado": 0.55485,
+      "cumple": true,
+      "nota": "sin holgura, la madera hinchada abre la piedra"
+     }
+    ],
+    "ancho_tablero_mm": {
+     "extremos_4_13": 24.659999999999997,
+     "estacional_6_11": 13.7
+    },
+    "encolado_a_contraveta": false
+   },
+   "E3": {
+    "con_piedra": {
+     "masa_kg": 106.22364480000002,
+     "vuelco_extremo_N": 2431.4592294720005,
+     "vuelco_borde_N": 4168.2158219520015,
+     "vuelco_horizontal_N": 555.7621095936001,
+     "desliza_antes_de_volcar": true,
+     "x_eje": 840.0,
+     "peso_N": 1042.0539554880002,
+     "xg": 0.0
+    },
+    "sin_piedra": {
+     "masa_kg": 101.62111680000001,
+     "vuelco_extremo_N": 2326.107363552,
+     "vuelco_borde_N": 3987.612623232001,
+     "vuelco_horizontal_N": 531.6816830976002,
+     "desliza_antes_de_volcar": true,
+     "x_eje": 840.0,
+     "peso_N": 996.9031558080002,
+     "xg": 0.0
+    },
+    "aporte_piedra": {
+     "vuelco_extremo_N": 0.045291059033116365,
+     "vuelco_borde_N": 0.045291059033116365,
+     "vuelco_horizontal_N": 0.04529105903311614
+    },
+    "sin_piedra_ya_resiste_2x": true,
+    "a_max_para_2P_mm": 489.17332151731415,
+    "alargar_pie_para_2P_mm": 0.0,
+    "retirar_frase_estabiliza": true
+   },
+   "E4": {
+    "material_llave": "fresno (Fraxinus americana)",
+    "limite_llave": 34.333333333333336,
+    "modelos": {
+     "a": {
+      "T_N": 2045.4545454545455,
+      "sigma_llave": 16.63236317254174,
+      "cumple_llave": true,
+      "d_min_mm": 19.4884377426391,
+      "d_max_que_cabe_mm": 46.666666666666664,
+      "b_max_que_cabe_mm": 22.5,
+      "cabe": true,
+      "apoyo_llave_MPa": 1.2784090909090908,
+      "corte_cabeza_espiga_MPa": 0.27056277056277056,
+      "peso_llave_sobre_rozamiento": 0.000767053056,
+      "compresion_collar_MPa": 0.16799068211683194,
+      "apoyo_montante_con_collar_MPa": 0.16799068211683194,
+      "apoyo_montante_sin_collar_MPa": 1.2784090909090908
+     },
+     "b": {
+      "T_N": 1022.7272727272727,
+      "sigma_llave": 8.31618158627087,
+      "cumple_llave": true,
+      "d_min_mm": 13.78040648255196,
+      "d_max_que_cabe_mm": 46.666666666666664,
+      "b_max_que_cabe_mm": 22.5,
+      "cabe": true,
+      "apoyo_llave_MPa": 0.6392045454545454,
+      "corte_cabeza_espiga_MPa": 0.13528138528138528,
+      "peso_llave_sobre_rozamiento": 0.001534106112,
+      "compresion_collar_MPa": 0.08399534105841597,
+      "apoyo_montante_con_collar_MPa": 0.08399534105841597,
+      "apoyo_montante_sin_collar_MPa": 0.6392045454545454
+     }
+    }
+   },
+   "E8": {
+    "flecha_tabla_sola_mm": 0.62306499431122,
+    "asiento_apoyo_central_mm": 0.8349066685665432,
+    "reparto_lenguetas": 3,
+    "sigma_travesano": 2.840909090909091,
+    "flecha_total_mm": 1.0425950000036166,
+    "escalon_entre_tablas_mm": 0.0,
+    "sigma_tabla": 3.477791878172589,
+    "limite_tabla": 33.666666666666664,
+    "cumple": true
+   },
+   "E9": {
+    "masa_tabla_kg": 9.70816,
+    "vuelco_tabla_suelta_N": 183.50553459512196,
+    "trabadas": true,
+    "cumple": true
+   },
+   "E2b": {
+    "ancho_tabla_mm": 164.16666666666666,
+    "junta_nominal_mm": 3.0,
+    "junta_humeda_mm": 0.7509166666666669,
+    "junta_seca_mm": 4.799266666666666,
+    "estacional_6_11_mm": 2.249083333333333,
+    "ancho_tabla_max_mm": 182.48175182481754,
+    "junta_nominal_admisible_mm": [
+     2.749083333333333,
+     3.200733333333334
+    ],
+    "cumple": true
+   },
+   "E12": {
+    "previstos": 64,
+    "errores": [],
+    "cumple": true,
+    "grupos_kg": {
+     "caballete izq (pie, montante y cabezal encolados)": 15.878016000000004,
+     "caballete der (pie, montante y cabezal encolados)": 15.878016000000004,
+     "apoyo central (puntal y cabezal encolados)": 3.603600000000001
+    },
+    "grupos_cumplen": true
+   },
+   "K": {
+    "K1": {
+     "valor": 0.989752630974005,
+     "cumple": true,
+     "texto": "madera 99.0% del volumen"
+    },
+    "K2": {
+     "valor": {
+      "a": 0.0,
+      "b": 0.0
+     },
+     "cumple": true,
+     "robusto": true,
+     "texto": "flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a)"
+    },
+    "K3": {
+     "cumple": true,
+     "texto": "junta máx. 1.1 mm/lado · entre tablas 0.8-4.8 mm"
+    },
+    "K4": {
+     "cumple": true,
+     "texto": "vuelco en extremo sin piedra 2326 N (2.33 × P)"
+    },
+    "K5": {
+     "valor": 9.708160000000001,
+     "cumple": true,
+     "piedra_cumple": true,
+     "texto": "más pesada: tabla 2 9.7 kg · piedra: collar izq 2.3 kg · caballete izq armado 15.9 kg"
+    }
+   }
+  }
+ ]
+}

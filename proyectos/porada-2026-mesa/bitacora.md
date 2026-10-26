@@ -84,3 +84,16 @@ Cada entrada registra qué movimiento se hizo (**reunir · desarmar · proponer 
 - **Herramienta**: se agrega una piedra ígnea gris mate genérica al árbol de Blender (no es el granito de Comanche: no hay muestra) y se renderizan el nodo y la vista general de AB con ella, para que E6a compare las dos piedras.
 - **Observación no prerregistrada** (los renders `nodo_AB_ignea` y `general_AB_ignea`): de cerca, la piedra mate se lee como **masa**, sin la veta que en el Nero Sahara llama la atención por sí misma. A distancia general, las dos piedras son una mancha oscura del mismo tamaño: **el problema de visibilidad del collar no lo cambia la piedra, lo cambia su tamaño**. E6a dirá si «masa» se entiende como «lo que traba».
 - **Siguiente acción**: el autor elige; si va con Comanche, conseguir una muestra y su ficha (SERGEOMIN; EN 1926, EN 12372) y hacer E6a con las dos piedras.
+
+### 26-10-2026 · 13 · Decidir: la propuesta final, iteración 1 (F1) → conservar AB, modificar la cuña (E12)
+- **Pedido del autor**: mantener los materiales ya determinados (nogal canaleta, fresno y Nero Sahara Noir, todos de catálogo) e iterar la propuesta final con todos los entregables, las láminas de referencias, las técnicas y un documento editorial como *Contenida*.
+- **Reunir**: *Contenida* trae la cita de Galen Johnson con página, cotejada en ese proyecto. F15 pasa a 🔶: «pensar como el agua» (p. 70) sostiene la regla de B, y los anillos (pp. 63-64) sostienen dejar la testa a la vista.
+- **Ensayar (E12)**: al pasar AB a planos de construcción, la clavija y la cuña de las tablas centrales caían dentro del montante. Se vio en las coordenadas antes de programar el control, y así se declara en el prerregistro. El control encontró 8 cruces en AB y en B2, y 0 en F1.
+- **Decisión**:
+  - **Conservar** AB como síntesis.
+  - **Modificar** la cuña: ahora atraviesa el cabezal, y quedan 12 cuñas a la vista.
+  - **Descartar** B3 como versión final: suma piedra con otra razón.
+  - **B2** queda como salida prerregistrada si E6 dice «adorno».
+  - → [`05_consolidar/propuesta_final.md`](05_consolidar/propuesta_final.md)
+- **Título y frase provisionales**: «Punto fermo»; «la madera se mueve y se arma; lo único fijo es la piedra donde se traba». Los decide el autor (O6).
+- **Siguiente acción**: planos técnicos de F1, renders finales, entregables del concurso y el libro del proyecto.

@@ -8,6 +8,12 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 | **V0b** Lastre asentado | 107.8 | 14.7 | ✓ 96.5% | ✓ flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a) | ✓ | ✓ vuelco en extremo sin piedra 2131 N (2.13 × P) | ✗ más pesada: tablero 55.8 kg · piedra: piedra embutida 14.7 kg |
 | **V4** Collar | 101.2 | 4.6 | ✓ 98.9% | ✓ flexión máx. en piedra 0.0 MPa (modelo b) / 0.0 MPa (modelo a) | ✓ | ✓ vuelco en extremo sin piedra 2212 N (2.21 × P) | ✗ más pesada: tablero 59.1 kg · piedra: collar izq 2.3 kg |
 
+## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)
+
+- **V3**: 4 cruces previstos (ensambles), **0 fuera de ensamble**.
+- **V0b**: 4 cruces previstos (ensambles), **1 fuera de ensamble**: tablero × piedra embutida (1700 × 160 × 20 mm).
+- **V4**: 6 cruces previstos (ensambles), **0 fuera de ensamble**.
+
 ## E1 · Piedra como viga
 
 No aplica en esta ronda: ninguna versión usa la piedra como viga.

@@ -60,6 +60,12 @@ LECTURA = {
         "B3 · La piedra en una tabla de servicio intercambiable: mármol asentado sin cola, junta de 1,2 mm por lado. 7 tablas de 140 mm para tener tabla central.",
         "      Responde a lo que el jurado premió en Whirl y Odette: componentes con individualidad, intercambiables, personalizables.",
         "→ Dos síntesis compatibles pero excluyentes en el argumento. Las juzgan E6 y E10 y el autor; los renders de Blender sirven como lectura visual previa."],
+    6: ["E12 · En AB (y en B2) la clavija y la cuña de las dos tablas centrales caen dentro del montante: 8 cruces fuera de ensamble.",
+        "      El modelo de prismas no comparaba piezas entre sí; apareció al pasar AB a planos de construcción.",
+        "F1 · La clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo: 0 cruces fuera de ensamble.",
+        "      E8, E9 y E2b no cambian (1,0 mm; trabadas; 0,8-4,8 mm). El caballete encolado pesa 15,9 kg: K5 sigue cumpliendo.",
+        "      Las cuñas asoman por los costados del cabezal: la cuña, verbo común de la mesa, queda a la vista en cada tabla.",
+        "→ F1 es la propuesta final, iteración 1. La cambian E6 (si el collar se lee como adorno: B2 con la misma corrección) y E10."],
 }
 
 
@@ -96,6 +102,10 @@ def notas(r):
         if "sigma_pared_caja" in b:
             a = r["E4"]["modelos"]["a"]
             n.append(f"E4 · paredes de la caja: {b['sigma_pared_caja']:.1f} MPa (b) / {a['sigma_pared_caja']:.1f} MPa (a)")
+    e12 = r["E12"]
+    if e12["errores"] or e12["grupos_kg"]:
+        n.append(f"E12 · {len(e12['errores'])} cruces fuera de ensamble"
+                 + "".join(f" · {g.split(' (')[0]} {m:.1f} kg" for g, m in e12["grupos_kg"].items() if "izq" in g))
     e3 = r["E3"]
     n.append(f"E3 · vuelco en extremo sin/con piedra: {e3['sin_piedra']['vuelco_extremo_N']:.0f} / "
              f"{e3['con_piedra']['vuelco_extremo_N']:.0f} N (aporte {e3['aporte_piedra']['vuelco_extremo_N']:+.0%})")
@@ -134,6 +144,16 @@ def tabla_md(resultados, titulo, geometria):
                        f"{e2b['junta_humeda_mm']:.2f} mm al 13 % y {e2b['junta_seca_mm']:.2f} mm al 4 % "
                        f"(varía {e2b['estacional_6_11_mm']:.1f} mm entre 6 y 11 %); ancho máximo de tabla "
                        f"{e2b['ancho_tabla_max_mm']:.0f} mm → {'✓' if e2b['cumple'] else '✗'}.")
+    lin += ["", "## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)", ""]
+    for r in resultados:
+        e = r["E12"]
+        txt = f"- **{r['codigo']}**: {e['previstos']} cruces previstos (ensambles), **{len(e['errores'])} fuera de ensamble**"
+        if e["errores"]:
+            txt += ": " + "; ".join(f"{x['a']} × {x['b']} ({' × '.join(f'{c:g}' for c in x['cruce_mm'])} mm)"
+                                    for x in e["errores"])
+        if e["grupos_kg"]:
+            txt += ". Piezas encoladas: " + "; ".join(f"{g} {m:.1f} kg" for g, m in e["grupos_kg"].items())
+        lin.append(txt + ".")
     lin += ["", "## E1 · Piedra como viga", ""]
     if not any(r["E1"] for r in resultados):
         lin.append("No aplica en esta ronda: ninguna versión usa la piedra como viga.")
@@ -191,6 +211,8 @@ RONDAS = {
         lambda: (versiones.v4, versiones.b2, versiones.ab, versiones.v3)),
     5: ("Ronda 5 · mejoras desde los precedentes (E7): las dos síntesis posibles", GEOMETRIA_RONDA_2,
         lambda: (versiones.b2, versiones.ab, versiones.b3)),
+    6: ("Ronda 6 · propuesta final, iteración 1: AB corregida por E12", GEOMETRIA_RONDA_2,
+        lambda: (versiones.ab, versiones.f1)),
 }
 
 
@@ -207,7 +229,7 @@ def correr(ronda):
     sufijo = f"r{ronda}"
     for m, r in zip(mesas, res):
         (LAMINAS / f"{m.codigo}_{sufijo}.svg").write_text(lamina(m, r, notas(r)), encoding="utf-8")
-        if ronda >= 4 and m.codigo in ("V4", "B2", "AB", "B3"):         # candidatas vigentes → modelo 3D base
+        if ronda >= 4 and m.codigo in ("V4", "B2", "AB", "B3", "F1"):   # candidatas vigentes → modelo 3D base
             exportar_obj(m, MODELOS)
     (LAMINAS / f"comparativa_{sufijo}.svg").write_text(lamina_comparativa(mesas, res, titulo, LECTURA.get(ronda, ())),
                                                         encoding="utf-8")

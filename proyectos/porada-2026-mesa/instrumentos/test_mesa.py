@@ -2,7 +2,7 @@
 import unittest
 
 from mesa import versiones
-from mesa.calculos import e1_viga_piedra, e2_movimiento, e3_vuelco, e4_union
+from mesa.calculos import e1_viga_piedra, e2_movimiento, e3_vuelco, e4_union, e12_interferencias
 from mesa.materiales import NOGAL
 
 
@@ -42,6 +42,15 @@ class Formulas(unittest.TestCase):
         versiones.configurar(pie_x=180)
         r = e3_vuelco(versiones.v3())
         self.assertAlmostEqual(r["sin_piedra"]["x_eje"], versiones.XC + 90, places=6)
+
+    def test_interferencias(self):
+        # E12: AB tiene la clavija y la cuña de las tablas centrales dentro del montante; F1 no.
+        versiones.configurar(a_extremo=450, pie_x=180)
+        ab, f1 = e12_interferencias(versiones.ab()), e12_interferencias(versiones.f1())
+        self.assertEqual(len(ab["errores"]), 8)
+        self.assertTrue(all("montante" in x["b"] for x in ab["errores"]))
+        self.assertEqual(f1["errores"], [])
+        self.assertTrue(f1["grupos_cumplen"])
 
 
 if __name__ == "__main__":

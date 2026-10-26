@@ -89,6 +89,13 @@
    "E8": null,
    "E9": null,
    "E2b": null,
+   "E12": {
+    "previstos": 4,
+    "errores": [],
+    "cumple": true,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 1.0,
@@ -210,6 +217,23 @@
    "E8": null,
    "E9": null,
    "E2b": null,
+   "E12": {
+    "previstos": 4,
+    "errores": [
+     {
+      "a": "tablero",
+      "b": "piedra embutida",
+      "cruce_mm": [
+       1700.0,
+       160.0,
+       20
+      ]
+     }
+    ],
+    "cumple": false,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 0.9652514732992066,
@@ -345,6 +369,13 @@
    "E8": null,
    "E9": null,
    "E2b": null,
+   "E12": {
+    "previstos": 6,
+    "errores": [],
+    "cumple": true,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 0.9892489068780154,

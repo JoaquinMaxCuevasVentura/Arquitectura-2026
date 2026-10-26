@@ -112,6 +112,13 @@
    "E8": null,
    "E9": null,
    "E2b": null,
+   "E12": {
+    "previstos": 6,
+    "errores": [],
+    "cumple": true,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 0.9892489068780154,
@@ -250,6 +257,86 @@
      3.200733333333334
     ],
     "cumple": true
+   },
+   "E12": {
+    "previstos": 50,
+    "errores": [
+     {
+      "a": "clavija 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     }
+    ],
+    "cumple": false,
+    "grupos_kg": {},
+    "grupos_cumplen": true
    },
    "K": {
     "K1": {
@@ -413,6 +500,86 @@
     ],
     "cumple": true
    },
+   "E12": {
+    "previstos": 52,
+    "errores": [
+     {
+      "a": "clavija 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 3 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 izq",
+      "b": "montante izq",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     },
+     {
+      "a": "clavija 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       20.0,
+       20.0,
+       40
+      ]
+     },
+     {
+      "a": "cuña 4 der",
+      "b": "montante der",
+      "cruce_mm": [
+       60.0,
+       8.0,
+       15
+      ]
+     }
+    ],
+    "cumple": false,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 0.9897638548012315,
@@ -525,6 +692,13 @@
    "E8": null,
    "E9": null,
    "E2b": null,
+   "E12": {
+    "previstos": 4,
+    "errores": [],
+    "cumple": true,
+    "grupos_kg": {},
+    "grupos_cumplen": true
+   },
    "K": {
     "K1": {
      "valor": 1.0,

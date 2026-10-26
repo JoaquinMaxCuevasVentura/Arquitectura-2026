@@ -11,6 +11,11 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 
 - **B1** · E8: flecha bajo P 5.80 mm (tabla sola 5.80; asiento del apoyo central 0.00; reparto por lengüetas ÷1) → ✗; flexión en la tabla 7.2 MPa (límite 33.7). E9: una tabla suelta vuelca con 219 N (sin trabar) → ✗. E2b: tabla de 196 mm, junta 5.0 mm al 8 % → 2.31 mm al 13 % y 7.15 mm al 4 % (varía 2.7 mm entre 6 y 11 %); ancho máximo de tabla 182 mm → ✗.
 
+## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)
+
+- **V3**: 4 cruces previstos (ensambles), **0 fuera de ensamble**.
+- **B1**: 24 cruces previstos (ensambles), **0 fuera de ensamble**.
+
 ## E1 · Piedra como viga
 
 No aplica en esta ronda: ninguna versión usa la piedra como viga.

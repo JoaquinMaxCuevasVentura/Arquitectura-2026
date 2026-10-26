@@ -14,6 +14,13 @@ Generado por `python3 -m mesa` (instrumentos/). Supuestos: P = 1000 N, H = 300 N
 - **B2** · E8: flecha bajo P 1.04 mm (tabla sola 0.62; asiento del apoyo central 0.83; reparto por lengüetas ÷3) → ✓; flexión en la tabla 3.5 MPa (límite 33.7); en el travesaño 2.8 MPa. E9: una tabla suelta vuelca con 184 N (trabada) → ✓. E2b: tabla de 164 mm, junta 3.0 mm al 8 % → 0.75 mm al 13 % y 4.80 mm al 4 % (varía 2.2 mm entre 6 y 11 %); ancho máximo de tabla 182 mm → ✓.
 - **AB** · E8: flecha bajo P 1.04 mm (tabla sola 0.62; asiento del apoyo central 0.83; reparto por lengüetas ÷3) → ✓; flexión en la tabla 3.5 MPa (límite 33.7); en el travesaño 2.8 MPa. E9: una tabla suelta vuelca con 184 N (trabada) → ✓. E2b: tabla de 164 mm, junta 3.0 mm al 8 % → 0.75 mm al 13 % y 4.80 mm al 4 % (varía 2.2 mm entre 6 y 11 %); ancho máximo de tabla 182 mm → ✓.
 
+## E12 · Interferencias (cruces de piezas fuera de los ensambles previstos)
+
+- **V4**: 6 cruces previstos (ensambles), **0 fuera de ensamble**.
+- **B2**: 50 cruces previstos (ensambles), **8 fuera de ensamble**: clavija 3 izq × montante izq (20 × 20 × 40 mm); cuña 3 izq × montante izq (60 × 8 × 15 mm); clavija 3 der × montante der (20 × 20 × 40 mm); cuña 3 der × montante der (60 × 8 × 15 mm); clavija 4 izq × montante izq (20 × 20 × 40 mm); cuña 4 izq × montante izq (60 × 8 × 15 mm); clavija 4 der × montante der (20 × 20 × 40 mm); cuña 4 der × montante der (60 × 8 × 15 mm).
+- **AB**: 52 cruces previstos (ensambles), **8 fuera de ensamble**: clavija 3 izq × montante izq (20 × 20 × 40 mm); cuña 3 izq × montante izq (60 × 8 × 15 mm); clavija 3 der × montante der (20 × 20 × 40 mm); cuña 3 der × montante der (60 × 8 × 15 mm); clavija 4 izq × montante izq (20 × 20 × 40 mm); cuña 4 izq × montante izq (60 × 8 × 15 mm); clavija 4 der × montante der (20 × 20 × 40 mm); cuña 4 der × montante der (60 × 8 × 15 mm).
+- **V3**: 4 cruces previstos (ensambles), **0 fuera de ensamble**.
+
 ## E1 · Piedra como viga
 
 No aplica en esta ronda: ninguna versión usa la piedra como viga.

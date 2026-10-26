@@ -239,7 +239,31 @@ def tension_max_piedra(mesa, e1, e4, modelo):
     return max(valores)
 
 
-def criterios(mesa, e1, e2, e3, e4, e9=None, e2b=None):
+# E12 · ensambles previstos: pares de piezas (primera palabra del nombre) que pueden cruzarse
+ENSAMBLES = {frozenset(par) for par in (("travesaño", "montante"), ("travesaño", "collar"), ("llave", "travesaño"),
+                                        ("clavija", "tabla"), ("clavija", "cabezal"), ("cuña", "clavija"),
+                                        ("cuña", "cabezal"), ("lengüeta", "tabla"))}
+TOLERANCIA_CRUCE = 0.1     # mm: tocarse no es cruzarse
+
+
+def e12_interferencias(mesa):
+    """Pares de piezas cuyos prismas se cruzan más de 0,1 mm en los tres ejes, separados en previstos y errores."""
+    previstos, errores = [], []
+    ps = mesa.piezas
+    for i, a in enumerate(ps):
+        for b in ps[i + 1:]:
+            cruce = [min(a_[1], b_[1]) - max(a_[0], b_[0]) for a_, b_ in ((a.x, b.x), (a.y, b.y), (a.z, b.z))]
+            if min(cruce) <= TOLERANCIA_CRUCE:
+                continue
+            par = frozenset((a.nombre.split()[0], b.nombre.split()[0]))
+            fila = {"a": a.nombre, "b": b.nombre, "cruce_mm": tuple(round(c, 1) for c in cruce)}
+            (previstos if par in ENSAMBLES else errores).append(fila)
+    grupos = {g: mesa.masa_grupo(pref) for g, pref in mesa.grupos.items()}
+    return {"previstos": len(previstos), "errores": errores, "cumple": not errores, "grupos_kg": grupos,
+            "grupos_cumplen": all(m <= PESO_MAX for m in grupos.values())}
+
+
+def criterios(mesa, e1, e2, e3, e4, e9=None, e2b=None, e12=None):
     v_madera, v_piedra = mesa.volumen(False), mesa.volumen(True)
     frac = v_madera / (v_madera + v_piedra)
     pesada = mesa.pieza_mas_pesada()
@@ -262,10 +286,14 @@ def criterios(mesa, e1, e2, e3, e4, e9=None, e2b=None):
                "texto": f"vuelco en extremo sin piedra {e3['sin_piedra']['vuelco_extremo_N']:.0f} N "
                         f"({e3['sin_piedra']['vuelco_extremo_N'] / P_REF:.2f} × P)"
                         + (f" · tabla suelta {e9['vuelco_tabla_suelta_N']:.0f} N" if e9 and not e9["trabadas"] else "")},
-        "K5": {"valor": pesada.masa_kg, "cumple": pesada.masa_kg <= PESO_MAX,
+        "K5": {"valor": pesada.masa_kg,
+               "cumple": pesada.masa_kg <= PESO_MAX and (e12 is None or e12["grupos_cumplen"]),
                "piedra_cumple": piedra_pesada.masa_kg <= PESO_MAX if piedra_pesada else None,
                "texto": f"más pesada: {pesada.nombre} {pesada.masa_kg:.1f} kg"
-                        + (f" · piedra: {piedra_pesada.nombre} {piedra_pesada.masa_kg:.1f} kg" if piedra_pesada else "")},
+                        + (f" · piedra: {piedra_pesada.nombre} {piedra_pesada.masa_kg:.1f} kg" if piedra_pesada else "")
+                        + ("".join(f" · {g.split(' (')[0]} armado {m:.1f} kg" for g, m in e12["grupos_kg"].items()
+                                   if g.startswith("caballete izq"))
+                           if e12 and e12["grupos_kg"] else "")},
     }
 
 
@@ -275,7 +303,8 @@ def ensayar(mesa):
     e3 = e3_vuelco(mesa)
     e4 = e4_union(mesa)
     e8, e9, e2b = e8_flecha_tablas(mesa), e9_vuelco_tabla(mesa), e2b_juntas_tablas(mesa)
+    e12 = e12_interferencias(mesa)
     return {"codigo": mesa.codigo, "nombre": mesa.nombre, "accion": mesa.accion, "relacion": mesa.relacion,
             "ronda": mesa.ronda, "masa_total_kg": mesa.masa(), "masa_piedra_kg": mesa.masa() - mesa.masa(True),
-            "E1": e1, "E2": e2, "E3": e3, "E4": e4, "E8": e8, "E9": e9, "E2b": e2b,
-            "K": criterios(mesa, e1, e2, e3, e4, e9, e2b)}
+            "E1": e1, "E2": e2, "E3": e3, "E4": e4, "E8": e8, "E9": e9, "E2b": e2b, "E12": e12,
+            "K": criterios(mesa, e1, e2, e3, e4, e9, e2b, e12)}

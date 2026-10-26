@@ -80,7 +80,9 @@ Nacen de los resultados de la ronda 1 ([`../04_ensayar/ensayos.md`](../04_ensaya
 | V4 Collar | ◐ candidata de la propuesta A | cumple; la piedra debe justificarse en E6 |
 | B1 Tablas posadas | ✗ descartada | E8 flecha, E9 vuelco de tabla, E2b tabla ancha ([propuesta B](propuesta_B.md)) |
 | B2 Tablas clavijadas | ✓ candidata de la propuesta B | cumple todo lo aplicable, sin piedra |
-| AB Síntesis | ◐ candidata para iterar | cumple K1-K5; depende de E6 y E10 ([síntesis](sintesis.md)) |
+| AB Síntesis | → F1 | cumple K1-K5, pero E12 encontró la clavija y la cuña de las tablas centrales dentro del montante |
+| B3 Tabla de servicio | ◐ registrada, no sigue | cumple K1-K5; suma piedra con otra razón que el collar ([síntesis](sintesis.md)) |
+| **F1 Propuesta final** | ✓ **iteración 1** | AB con la cuña pasante en el cabezal; K1-K5 y E12 sin cruces ([propuesta final](../05_consolidar/propuesta_final.md)) |
 
 ## Lo que no se propuso, y por qué
 

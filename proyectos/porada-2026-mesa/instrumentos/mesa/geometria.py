@@ -40,6 +40,7 @@ class Mesa:
     nodo: dict = field(default_factory=dict)      # datos de la unión para los ensayos
     juntas: list = field(default_factory=list)    # uniones piedra-madera para E2
     ronda: int = 1                                 # 1: versiones iniciales; 2: derivadas de los ensayos
+    grupos: dict = field(default_factory=dict)     # piezas encoladas que se mueven juntas: nombre → prefijos
 
     def masa(self, sin_piedra=False):
         return sum(p.masa_kg for p in self.piezas if not (sin_piedra and p.material.es_piedra))
@@ -57,3 +58,6 @@ class Mesa:
 
     def piezas_de(self, nombre):
         return [p for p in self.piezas if p.nombre.startswith(nombre)]
+
+    def masa_grupo(self, prefijos):
+        return sum(p.masa_kg for p in self.piezas if any(p.nombre.startswith(f) for f in prefijos))

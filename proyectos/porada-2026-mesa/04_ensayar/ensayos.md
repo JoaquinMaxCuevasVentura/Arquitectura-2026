@@ -158,6 +158,13 @@ El prerregistro está en [`../03_proponer/propuesta_B.md`](../03_proponer/propue
   - **K5 por grupos**: si el caballete (pie, montante y cabezal) se encola en una sola pieza, se mide **el caballete armado**, no sus partes, con el mismo umbral de 25 kg.
 - **Qué no demuestra**: que el ensamble se pueda fabricar o montar en ese orden. Eso queda para la secuencia de montaje (lámina 2) y para la maqueta.
 
+### Resultado de E12 ([ronda 6](resultados/ronda6.md); el control corre en todas las rondas)
+- **AB y B2**: hay **8 cruces fuera de ensamble**. Son la clavija y la cuña de las tablas 3 y 4 dentro de cada montante, de 20 × 20 × 40 mm y 60 × 8 × 15 mm. **B3**: 4 del mismo tipo (su tabla central).
+- **F1**: la clavija termina dentro del cabezal y la cuña lo atraviesa a lo largo (100 × 15 × 8 mm). Resultado: **0 cruces fuera de ensamble** y 64 previstos. E8 (1,0 mm), E9 (trabadas) y E2b (0,8-4,8 mm) se repitieron con la geometría nueva y no cambian.
+- **K5 por grupos**: caballete encolado de **15,9 kg**; apoyo central de 3,6 kg. ✓
+- **Límite de la lista prerregistrada**: el control marca además 3 cruces que son asientos de piedra modelados como vacío: V2 (montante en el pie de piedra), V0b (piedra en el canal) y B3 (mármol en la tabla de servicio). Son ensambles que la lista no nombró. Ninguna de esas versiones sigue. Se anota como límite de la lista y la lista no se corrige después de ver el resultado.
+- **Decisión**: **modificar** AB → **F1**, la propuesta final, iteración 1 ([`../05_consolidar/propuesta_final.md`](../05_consolidar/propuesta_final.md)). B2 recibe la misma corrección si vuelve a ser candidata.
+
 ## E7 · Originalidad · *hecho* ([precedentes](../01_reunir/precedentes.md))
 - **Resultado**:
   - 2026 es la primera edición del Porada Award dedicada a la mesa de comedor; en 2017 fueron mesas pequeñas. Ningún ganador usó caballetes, tablas sueltas ni uniones de piedra.
