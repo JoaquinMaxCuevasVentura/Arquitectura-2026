@@ -51,6 +51,34 @@ Mesa de comedor de caballetes (*tréteaux*, F09) para 8 personas. Las medidas so
 
 ---
 
+## Ronda 2: versiones derivadas de los ensayos
+
+Nacen de los resultados de la ronda 1 ([`../04_ensayar/ensayos.md`](../04_ensayar/ensayos.md)). Todas llevan la corrección común de E3: **pie de 180 mm**.
+
+### V0b · Lastre asentado (de E1)
+- **Relación**: «la madera carga la piedra; la piedra se asienta por su peso».
+- **La piedra**: 1700 × 160 × 20, **asentada sin cola** en un canal del tablero macizo. La madera la sostiene de forma continua, así que la piedra no trabaja a flexión.
+- **Qué hace la piedra**: superficie para el calor (ollas) y lastre (+16 % al vuelco). La gravedad sí cumple aquí un papel honesto: la mantiene en su sitio sin pegarla, y por eso la madera puede moverse alrededor.
+- **Estado**: cumple K1-K4. La palabra que nombra su figura es *chakhua* (el montón), no *chhakhua*.
+
+### V4 · Collar (de E4)
+- **Relación**: «la madera atraviesa la piedra; la piedra queda fija y a compresión».
+- **Acción**: **atravesar / acuñar**.
+- **La piedra**: un bloque de 70 × 110 × 150 en cada extremo del travesaño. La espiga pasa por un agujero con 1 mm de holgura, y una **llave de fresno** aprieta el bloque contra el montante.
+- **Fuentes**: *chhakhua*, la piedra fija donde se ata la madera, y el nombre que abarca el conjunto (F01); Tiwanaku, piedra y ensamble (F08); Semper, la piedra a compresión (F07); *cchacuru*, ahora en madera (F03).
+- **Estado**: cumple K1-K4. El control V3 cumple lo mismo sin piedra, así que su justificación queda en manos de E6.
+
+## Estado de las versiones
+
+| Versión | Estado | Por qué |
+|---|---|---|
+| V0 Lastre | ✗ descartada | E1: la piedra no puede ser viga. E5: la palabra no es la de la unión |
+| V1 Llave de piedra | ✗ descartada | E4: la llave de piedra no cabe en la espiga |
+| V2 Hincada | ✗ descartada en esta forma | E2: hay que acuñar, así que ya no es hincar. E4: no es robusta. K5: el pie pesa 28,6 kg |
+| V3 Solo madera | ✓ control vigente | cumple K1-K4 sin piedra |
+| V0b Lastre asentado | ◐ viable, secundaria | cumple, pero su figura es el montón y no la unión |
+| V4 Collar | ◐ candidata de la propuesta A | cumple; la piedra debe justificarse en E6 |
+
 ## Lo que no se propuso, y por qué
 
 - **Atar** (amarre), aunque es la acción literal de *chhakhua*: en un mueble de uso diario la fibra se afloja y obliga a retensar. Queda anotado por si una versión posterior lo resuelve.
