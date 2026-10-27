@@ -10,7 +10,7 @@
 > - **[CAMPO]** marca lo que solo puede escribirse con lo observado. **[VERIFICAR]**, una fuente que no se ha leído entera (`analisis/03`): no se cita textualmente hasta leerla.
 > - Las citas textuales que hay ya están cotejadas.
 > - La hipótesis es una sola. H1 a H5, en `analisis/02`, son sus cinco partes.
-> - Al lado de cada sección va la extensión prevista. El total apunta a unas 5.700 palabras: la sección de teoría admite entre 4.000 y 6.000 (`analisis/01`).
+> - Al lado de cada sección va la extensión prevista. El total apunta a unas 5.900 palabras; hay que recortar después del campo: la sección de teoría admite entre 4.000 y 6.000 (`analisis/01`).
 > - Antes del envío se quitan este recuadro, las marcas y las notas para el autor.
 
 **Otros títulos posibles:** «Dónde duerme el puesto»; «La forma está en la secuencia: montar y guardar un puesto en La Paz».
@@ -45,15 +45,15 @@ Juhani Pallasmaa escribe que «las experiencias arquitectónicas básicas tienen
 
 En español, *guardar* significa dos cosas: meter algo en su sitio y conservarlo. El título usa las dos. El puesto se guarda cada noche en bultos, y lo que se conserva de un día a otro no es el objeto, sino la manera de armarlo.
 
-Este artículo pregunta qué conocimiento arquitectónico se produce en la secuencia de gestos con que se arma y se guarda un puesto de venta, cómo se aprende, y qué hace con ese conocimiento una intervención urbana. Para responder, observa una entrada concreta: [n] ciclos completos de tres puestos de [tipología] en [lugar]. [Respuesta, que se escribe después del campo. La hipótesis es que la forma del puesto está en el orden de sus operaciones más que en su objeto; que ese orden reúne decisiones constructivas aprendidas haciendo; y que una intervención que fija la forma sin leer la secuencia puede conservar el objeto y perder la arquitectura.]
+Este artículo pregunta qué conocimiento arquitectónico se produce en la secuencia de gestos con que se arma y se guarda un puesto de venta, cómo se aprende, y qué hace con ese conocimiento una intervención urbana. Para responder, observa una entrada concreta: [n] ciclos completos de tres puestos de [tipología] en [lugar]. [Respuesta, que se escribe después del campo. La hipótesis es que la forma del puesto está en el orden de sus operaciones más que en su objeto; que ese orden reúne decisiones constructivas aprendidas haciendo; y que una intervención que fija la forma sin leer la secuencia puede conservar el objeto y perder la arquitectura.] [PROPUESTA del 27 de octubre, decide el autor (`analisis/02`, sección 11): «Armar cada día puede ser una imposición; el orden en que se arma, no. Por eso, una intervención que fija la forma sin leer la secuencia puede aliviar el trabajo y, a la vez, perder la arquitectura: las relaciones con la calle que la secuencia arma cada mañana».]
 
 El aporte está en la escala. Los estudios del comercio en vía pública describen su economía, su organización y sus disputas con el Estado, y registran incluso las piezas del puesto, sus medidas y sus bordes. La arquitectura y el urbanismo han dibujado mercados enteros y han mostrado que lo temporal es una forma de durar (Heathcott, 2019; Moatasim, 2019). Se ha descrito menos la operación misma: en qué orden se construye un puesto, qué apoyos toma prestados, cómo se aprende a armarlo, dónde duerme. El artículo propone esa descripción y la usa para leer la intervención.
 
 El texto sigue este orden: los antecedentes (sección 2), las herramientas para mirar una secuencia (3), el método (4), las seis operaciones del puesto (5), cómo se aprende a armarlo (6), qué le hace la intervención (7) y las conclusiones con sus límites (8).
 
-## 2. Lo que se sabe del puesto *(≈ 850 palabras)*
+## 2. Lo que se sabe del puesto *(≈ 1.000 palabras)*
 
-> Nota para el autor: reescrita el 26 de octubre con las fuentes leídas (`analisis/03`, sección 7). Falta leer completo a Moatasim (2019) y revisar las tesis de la UMSA.
+> Nota para el autor: reescrita el 26 de octubre con las fuentes leídas (`analisis/03`, sección 7) y ajustada el 27 con las tesis del MIT (`analisis/06`). Falta leer completo a Moatasim (2019) y revisar las tesis de la UMSA.
 
 **El puesto en los estudios paceños.** El comercio en vía pública de La Paz está bien estudiado, casi siempre desde la economía, el territorio y la norma. Un estudio de 2009 clasificó los puestos en fijos, semifijos y ambulantes, y encontró que la forma más frecuente de ocupar el espacio público es el puesto semifijo, de 1,38 metros lineales en promedio (Pereira Morató *et al.*, 2009: 126). Los semifijos se definen así: «Sólo son movidos para sacarlos de su depósito al lugar de venta y viceversa» (ibid.: 7). La definición registra el traslado, no el montaje. Entre el depósito y la venta no anota nada, y de eso trata este artículo.
 
@@ -68,21 +68,24 @@ El texto sigue este orden: los antecedentes (sección 2), las herramientas para 
 
 En suma, los estudios locales documentan el puesto como economía, territorio y norma. Describen sus piezas, sus medidas y sus disputas, pero no el orden en que se arma ni cómo se aprende ese orden [VERIFICAR en las tesis de la UMSA sobre las calles Tumusla y Comercio: el repositorio no respondió el 26 de octubre].
 
-**El puesto en la arquitectura.** Joseph Heathcott lee los tianguis de Ciudad de México como «temporary and modular architectural products» (Heathcott, 2019: 72), con una cualidad arquitectónica «grounded in a habitual and repetitive practice» (ibid.: 73). Describe su «kit of parts» (toldo, postes de aluminio, mesa, cajas y letreros) y las reglas que lo disponen: el lote estándar mide 1,8 por 1,2 metros, el toldo es obligatorio y los puestos se arman uno junto a otro, «with no spaces in between» (ibid.: 78). Con vistas aéreas dibujadas, clasifica los mercados en cinco tipos (ibid.: 80). Otros trabajos miran a escalas parecidas: las veredas de Ho Chi Minh a lo largo del día (Kim, 2015), los mercados informales del mundo (Mörtenböck y Mooshammer, 2015) y, en la revista chilena *ARQ*, una ciudad entera que se monta y se desmonta, la Kumbh Mela (Mehrotra y Vera, 2015) [VERIFICAR los tres]. Todos ellos trabajan a la escala del mercado o de la ciudad. El orden en que una persona arma su lote no aparece.
+**El puesto en la arquitectura.** Joseph Heathcott lee los tianguis de Ciudad de México como «temporary and modular architectural products» (Heathcott, 2019: 72), con una cualidad arquitectónica «grounded in a habitual and repetitive practice» (ibid.: 73). Describe su «kit of parts» (toldo, postes de aluminio, mesa, cajas y letreros) y las reglas que lo disponen: el lote estándar mide 1,8 por 1,2 metros, el toldo es obligatorio y los puestos se arman uno junto a otro, «with no spaces in between» (ibid.: 78). Con vistas aéreas dibujadas, clasifica los mercados en cinco tipos (ibid.: 80). En la revista chilena *ARQ*, Rahul Mehrotra y Felipe Vera estudiaron una ciudad entera que se monta y se desmonta, la Kumbh Mela (Mehrotra y Vera, 2015 [VERIFICAR]). Y ya en 1983, una tesis del MIT advertía que, por la flexibilidad de los carritos, toldos y carpas del mercado callejero, «it was necessary that certain order develop for their deployment». La misma tesis fotografiaba desde arriba la secuencia de montaje del Campo de' Fiori, en Roma (Bolaños, 1983: 53, 68). Todos estos trabajos miran a la escala del mercado o de la ciudad. El orden en que una persona arma su lote no aparece.
 
 **El antecedente más cercano.** Faiza Moatasim, arquitecta de formación, estudió a los vendedores ambulantes de Islamabad. Según ella, la arquitectura de la informalidad corriente sigue «an aesthetic and materiality of temporariness» y recurre a «design criteria based on the rituals of daily assembly and disassembly» (Moatasim, 2019: 271). Con el concepto de «long-term temporariness» sostiene que la venta ambulante dura porque mantiene, como rutina, la relación entre su temporalidad y su materialidad (ibid.) [VERIFICAR en el artículo completo]. En su libro posterior, según la reseña de Markus Daechsel, muestra que los materiales reutilizables pueden elegirse a propósito: así el puesto parece provisorio y es tolerado durante mucho tiempo (Daechsel, 2024: 196, sobre Moatasim, 2023). De ahí sale una cautela para este artículo. Guardar el puesto cada noche puede ser también una manera de seguir siendo tolerado. La sección 7 vuelve sobre esto.
+
+**Una objeción.** Armar cada día no siempre es una elección. En el centro de Ciudad de México, por lo general, los vendedores preferirían puestos grandes y fijos, «so that they are not required to assemble and dismantle them everyday». Arman y desarman cada día porque la policía no les permite quedarse (Baroni, 2007: 39). El montaje diario puede ser una carga impuesta. El artículo no lo niega: separa el porqué del cómo. Que el puesto se arme cada día puede ser una imposición, pero nadie prescribe el orden en que se arma, y ese orden es lo que aquí se estudia.
 
 **Lo que este artículo añade.** Cada antecedente ya dejó algo establecido:
 
 - Moatasim mostró que el diseño del puesto sale del montaje y el desmontaje diarios, y que esa repetición lo hace durar.
-- Heathcott describió sus piezas y sus reglas.
+- Heathcott describió sus piezas y sus reglas, y Bolaños ya había nombrado, desde arriba, el orden de su despliegue.
 - Los estudios paceños documentaron sus medidas, sus bordes, su herencia y sus ritos.
+- Baroni mostró que el montaje diario puede ser una carga impuesta.
 
 Falta la operación misma: en qué orden se arma un puesto, qué parte de ese orden se repite, cómo se aprende y qué le hace una intervención. Este artículo propone esa descripción, a la escala de las manos y con categorías de arquitectura. [Ajustar después de leer a Moatasim completa: si ella ya describe el orden, la contribución se redefine; `analisis/02`, contraste 1.]
 
 ## 3. Cómo mirar una secuencia *(≈ 700 palabras)*
 
-**La cadena operatoria.** La antropología de las técnicas describe una técnica como una cadena de operaciones: una secuencia ordenada que une gestos, herramientas y materiales. Así distingue los pasos que siempre ocurren de las variantes, y señala los puntos donde quien trabaja elige (Leroi-Gourhan, 1964-1965; Lemonnier, 1992 [VERIFICAR ambos]). El método se pensó para la talla de una piedra o la cocción de una vasija. Aquí se aplica a una construcción que dura una mañana y se deshace una tarde.
+**La cadena operatoria.** La antropología de las técnicas describe una técnica como una cadena de operaciones: una secuencia ordenada que une gestos, herramientas y materiales. Así distingue los pasos que siempre ocurren de las variantes, y señala los puntos donde quien trabaja elige (Leroi-Gourhan, 1964-1965 [VERIFICAR]). El método se pensó para la talla de una piedra o la cocción de una vasija. Aquí se aplica a una construcción que dura una mañana y se deshace una tarde.
 
 **La masa y el armazón.** Kenneth Frampton distingue la masa formada por «apilamiento repetitivo de elementos pesados» del armazón que ensambla «componentes ligeros y lineales» (Frampton, 1995: 5). Un puesto de [tipología] junta las dos cosas cada día. Hay un armazón de palos, cuerdas y toldo que se ata y se tensa, y una masa de cajas y mercancía que se levanta pieza a pieza. [CAMPO: confirmar que la tipología elegida apila; si no, reducir este párrafo.]
 
@@ -171,7 +174,7 @@ Qué va: cuánto espacio sale de cuánto bulto; dónde pasa la noche cada cosa (
 
 > Guía. Quién enseñó a cada persona responsable y qué hacía al principio; qué operaciones se dan a quien ayuda; si hay operaciones que solo hace la persona responsable. **Si no hay evidencia suficiente, esta sección se reduce a un párrafo dentro de la 5 y «cómo se aprende» sale de la pregunta (`analisis/02`, sección 2).** Punto de partida: en La Paz el puesto se hereda, por ejemplo de la madre a la hija (Pereira Morató *et al.*, 2015: 66; Tassi *et al.*, 2013: 135). Falta saber si, con el sitio, se hereda también la manera de armarlo: «¿Arma el puesto como lo armaba quien se lo dejó? ¿Qué cambió?».
 
-## 7. Intervenir una secuencia *(≈ 800 palabras)*
+## 7. Intervenir una secuencia *(≈ 950 palabras)*
 
 La convocatoria pregunta por la intervención en arquitectura y urbanismo. El puesto permite verla a dos escalas.
 
@@ -186,13 +189,13 @@ En La Paz hay ejemplos documentados:
 - En 2006, la reubicación desde El Prado se planteó por rubro, «en casetas cerradas y enumeradas» (ibid.: 61). Los comerciantes respondieron «no a la reubicación, sí a la modernización» (ibid.: 60).
 - En el estudio de 2015, un dirigente lo resume así: «por más que usted le ponga un edificio, el más bonito de acá del país, (la gente) no va a entrar» (cit. en Pereira Morató *et al.*, 2015: 70).
 
-La tendencia que describen Tassi y sus colegas es la contraria a la que esperan esos planes: los comerciantes se alejan «de los mercados cerrados hacia las calles», un fenómeno común en muchas ciudades, «desde La Paz» (Tassi *et al.*, 2013: 207, n. 82). [DOCUMENTAR: la norma municipal vigente y la intervención que afecte al lugar elegido o al caso de contraste.]
+La tendencia que describen Tassi y sus colegas es la contraria a la que esperan esos planes: los comerciantes se alejan «de los mercados cerrados hacia las calles», un fenómeno común en muchas ciudades, «desde La Paz» (Tassi *et al.*, 2013: 207, n. 82). Bogotá muestra por qué. Los vendedores reubicados en centros comerciales calificaron las condiciones ambientales de trabajo mucho mejor que las de la calle (67 % de «good», frente a 15 %). Pero la mitad ganaba más en la calle, y en cuatro de esos centros quedó abandonado, en promedio, el 66 % de los puestos (Donovan, 2002: 96, 100, 105). [DOCUMENTAR: la norma municipal vigente y la intervención que afecte al lugar elegido o al caso de contraste.]
 
-**El cruce entre las dos.** Si la forma del puesto está en su secuencia, una intervención que fija el objeto actúa sobre la secuencia aunque no lo sepa. Puede quitarle operaciones: el apoyo prestado deja de hacer falta cuando hay una estructura fija. Puede moverlas: el guardado pasa a un depósito lejano, o el candado reemplaza al bulto. Y puede añadir operaciones nuevas. Basta una pieza tan pequeña como la tarima para cambiar la altura de la boca (sección 5.4). [CAMPO: lo que muestran el caso de contraste y las conversaciones sobre el antes y el después.] Que eso sea una pérdida o una liberación es una pregunta empírica. Una caseta puede ahorrar una hora de trabajo cada mañana o puede quitar el control sobre el borde, el horario y la cubierta. El artículo no lo decide de antemano (H5).
+**El cruce entre las dos.** Si la forma del puesto está en su secuencia, una intervención que fija el objeto actúa sobre la secuencia aunque no lo sepa. Puede quitarle operaciones: el apoyo prestado deja de hacer falta cuando hay una estructura fija. Puede moverlas: el guardado pasa a un depósito lejano, o el candado reemplaza al bulto. Y puede añadir operaciones nuevas. Basta una pieza tan pequeña como la tarima para cambiar la altura de la boca (sección 5.4). [CAMPO: lo que muestran el caso de contraste y las conversaciones sobre el antes y el después.] Que eso sea una pérdida o una liberación es una pregunta empírica, y puede ser las dos cosas a la vez. Una caseta puede ahorrar una hora de trabajo cada mañana y quitar, al mismo tiempo, el control sobre el borde, el horario y la cubierta, y la cercanía de la clientela. Por eso H5 se registra en dos columnas. En una va lo que la intervención alivia: tiempo, esfuerzo, exposición. En la otra, lo que quita: apoyo prestado, boca, borde, guardado cerca, clientela. El artículo no decide de antemano cuál pesa más.
 
 Hay que sumar una cautela que viene de Islamabad: guardar el puesto cada noche puede ser también una manera de seguir siendo tolerado (Daechsel, 2024: 196). Si quienes arman el puesto dicen que lo guardan sobre todo para no perder el sitio, la secuencia responde tanto a la norma como al saber, y el artículo lo dice (H3).
 
-**Una advertencia sobre el propio registro.** Registrar gestos y tiempos tiene una historia incómoda. Los estudios de movimientos de comienzos del siglo XX registraban el trabajo para estandarizarlo. Frank Gilbreth numeraba, en el dibujo de un andamio, «the correct sequence of courses and tiers» de ladrillos: la que pedía «the fewest, shortest, and most economical motions» (Gilbreth, 1911: 12). Un registro como el de este artículo podría servir para lo mismo: diseñar el puesto «correcto» e imponerlo. La lectura que aquí se propone va en sentido contrario: intervenir el soporte y no el gesto. Moatasim ya mostró que los puestos de Islamabad siguen criterios de diseño propios, nacidos del montaje diario (Moatasim, 2019: 271). Si en La Paz ocurre lo mismo, lo que aquí se proponga tiene que partir de esos criterios, no reemplazarlos. [Solo si los hallazgos lo sostienen, proponer criterios. Por ejemplo: puntos de anclaje en lugar de casetas cerradas; guardado cerca del puesto; cubiertas que una sola persona pueda tensar; alturas de boca que respeten el alcance medido.]
+**Una advertencia sobre el propio registro.** Registrar gestos y tiempos tiene una historia incómoda. Los estudios de movimientos de comienzos del siglo XX registraban el trabajo para estandarizarlo. Frank Gilbreth numeraba, en el dibujo de un andamio, «the correct sequence of courses and tiers» de ladrillos: la que pedía «the fewest, shortest, and most economical motions» (Gilbreth, 1911: 12). Un registro como el de este artículo podría servir para lo mismo: diseñar el puesto «correcto» e imponerlo. Hay otra manera de usarlo. Gabriel Andrade analizó como coreografías los gestos de los obreros que fueron sus maestros, y preguntó: «How high do they have to stretch? Is there a repeated motion that could cause long-term strain?» (Andrade, 2025: 96). Se puede registrar el gesto para cuidar el cuerpo de quien trabaja, no para estandarizarlo. La lectura que aquí se propone va en ese sentido: intervenir el soporte y no el gesto. Tiene un precedente. Para un mercado de pulgas que se armaba cada fin de semana en un estacionamiento de Nueva York, Ariel Krasnow propuso empezar por «no intervention» y seguir con un «Light frame, erected on weekends», con un lugar donde colgar la mercancía y las telas (Krasnow, 1986: 67). Moatasim ya mostró que los puestos de Islamabad siguen criterios de diseño propios, nacidos del montaje diario (Moatasim, 2019: 271). Si en La Paz ocurre lo mismo, lo que aquí se proponga tiene que partir de esos criterios, no reemplazarlos. [Solo si los hallazgos lo sostienen, proponer criterios. Por ejemplo: puntos de anclaje en lugar de casetas cerradas; guardado cerca del puesto; cubiertas que una sola persona pueda tensar; alturas de boca que respeten el alcance medido.]
 
 ## 8. Conclusiones y límites *(≈ 400 palabras)* [CAMPO]
 
@@ -212,13 +215,21 @@ Hay que sumar una cautela que viene de Islamabad: guardar el puesto cada noche p
 
 > Solo las obras citadas en este borrador. Las marcas [E] y [P] siguen el criterio de `analisis/03` y se quitan antes del envío, cuando todas estén verificadas. Ajustar el estilo a las normas de la revista.
 
+Andrade, Gabriel (2025). *Sweating Details: Labor of “Los Constructores del Valle”*. Tesis de maestría (M.Arch.). Cambridge, MA: Massachusetts Institute of Technology. https://hdl.handle.net/1721.1/158839
+
 [E] Ballón Aguirre, Enrique (2006). *Tradición oral peruana*. Lima: Fondo Editorial de la Pontificia Universidad Católica del Perú. (Citado a través de Toro Henao, 2014.)
+
+Baroni, Bruno Nazim (2007). *Spatial Stratification of Street Vendors in Downtown Mexico City*. Tesis de maestría (M.C.P.). Cambridge, MA: Massachusetts Institute of Technology. https://hdl.handle.net/1721.1/39932
+
+Bolaños, Michael Raul (1983). *“The Dance of the Marketplace”*. Tesis de maestría (M.Arch.). Cambridge, MA: Massachusetts Institute of Technology. https://hdl.handle.net/1721.1/71346
 
 Cárcamo Pino, Mauricio Arnoldo (2025a). «Madera, herramientas y manuaje. Notas para una ontología evolutiva del diseñar». *Revista Arteoficio*, 21: 5-12. https://doi.org/10.35588/nn3v3487
 
 Cárcamo Pino, Mauricio Arnoldo (2025b). «Oralitura/literatura y manuaje/lenguaje: una revisión por reescritura». *Revista Chilena de Literatura*, 112: 233-264.
 
 Daechsel, Markus (2024). Reseña de Faiza Moatasim, *Master Plans and Encroachments: The Architecture of Informality in Islamabad* (Filadelfia: University of Pennsylvania Press, 2023). *Critical Pakistan Studies*, 2: 195-197. https://doi.org/10.1017/cps.2024.10
+
+Donovan, Michael G. (2002). *Space Wars in Bogotá: The Recovery of Public Space and Its Impact on Street Vendors*. Tesis de maestría (M.C.P.). Cambridge, MA: Massachusetts Institute of Technology. https://hdl.handle.net/1721.1/16811
 
 Frampton, Kenneth (1995). *Studies in Tectonic Culture: The Poetics of Construction in Nineteenth and Twentieth Century Architecture*. Ed. John Cava. Cambridge, MA: MIT Press.
 
@@ -230,15 +241,13 @@ Heathcott, Joseph (2019). «Architecture, urban form, and assemblage aesthetics 
 
 Ingold, Tim (2013). *Making: Anthropology, Archaeology, Art and Architecture*. Londres: Routledge.
 
-[E] Kim, Annette Miae (2015). *Sidewalk City: Remapping Public Space in Ho Chi Minh City*. Chicago: University of Chicago Press.
+Krasnow, Ariel Rebecca (1986). *From the Flea Market*. Tesis de maestría (M.Arch.). Cambridge, MA: Massachusetts Institute of Technology. https://hdl.handle.net/1721.1/75512
 
 La Prensa (2026, 8 de junio). «La feria más popular de El Alto pasó por días de zozoba [sic] por los bloqueos». *Los Tiempos*. https://www.lostiempos.com/actualidad/economia/20260608/feria-mas-popular-alto-paso-dias-zozoba-bloqueos
 
 [P] Lave, Jean y Wenger, Etienne (1991). *Situated Learning: Legitimate Peripheral Participation*. Cambridge: Cambridge University Press.
 
 [E] Lazar, Sian (2008). *El Alto, Rebel City: Self and Citizenship in Andean Bolivia*. Durham: Duke University Press. (Citada a través de Tassi *et al.*, 2013; cotejar en el original.)
-
-[P] Lemonnier, Pierre (1992). *Elements for an Anthropology of Technology*. Ann Arbor: Museum of Anthropology, University of Michigan.
 
 [P] Leroi-Gourhan, André (1964-1965). *Le geste et la parole*. 2 vols. París: Albin Michel.
 
@@ -251,8 +260,6 @@ La Prensa (2026, 8 de junio). «La feria más popular de El Alto pasó por días
 [E] Moatasim, Faiza (2023). *Master Plans and Encroachments: The Architecture of Informality in Islamabad*. Filadelfia: University of Pennsylvania Press. (Citado a través de Daechsel, 2024.)
 
 Monteys, Xavier y Fuertes, Pere (2001). *Casa collage. Un ensayo sobre la arquitectura de la casa*. Barcelona: Gustavo Gili.
-
-[E] Mörtenböck, Peter y Mooshammer, Helge (eds.), con Teddy Cruz y Fonna Forman (2015). *Informal Market Worlds. Reader: The Architecture of Economic Pressure*. Rotterdam: nai010.
 
 Pallasmaa, Juhani (2014 [2011]). *La imagen corpórea. Imaginación e imaginario en la arquitectura*. Trad. Carles Muro. Barcelona: Gustavo Gili.
 

@@ -76,6 +76,8 @@ Una fila del registro, un verbo. Si hace falta un verbo nuevo, se añade aquí c
 | encadenar | asegurar lo que se queda en la calle | guardado |
 | ch'allar | rociar alcohol u otra bebida sobre el puesto o la mercancía, como ofrenda (añadido el 26 de octubre) | costumbre y rito |
 
+*Opcional:* en la nota de la operación, «↑» si obliga a levantar algo sobre el hombro y «↓» si obliga a agacharse por debajo de la rodilla. Sirve para ver qué podría aliviar una intervención (`analisis/06`).
+
 Poner ruda, retama u otra planta o amuleto se anota con el verbo que corresponda (*colgar*, *apoyar*) y el elemento («ruda»), con la categoría «costumbre y rito». Si una operación no cabe en ninguna categoría, se anota «otra» y se describe en la nota: cuenta para el umbral de H2. «Costumbre y rito» se anota aparte, para decidir si es la séptima categoría (`analisis/02`, sección 10).
 
 ## 6. Mediciones
@@ -96,9 +98,9 @@ Preguntas abiertas, en este orden:
 
 1. ¿Cómo aprendió a armar el puesto? ¿Quién le enseñó? ¿Qué hacía al principio? *(Si el puesto se heredó)* ¿Lo arma como lo armaba quien se lo dejó? ¿Qué cambió?
 2. ¿Qué es lo primero que arma? ¿Por qué eso primero?
-3. ¿Qué cambia cuando llueve, hay viento o hace mucho sol?
+3. ¿Qué cambia cuando llueve, hay viento o hace mucho sol? Si tiene que irse rápido (lluvia, granizo, un conflicto), ¿cuánto tarda en guardar todo? ¿Qué guarda primero?
 4. **¿Dónde duerme el puesto?** ¿Dónde guarda las cosas de noche, y a qué distancia está?
-5. ¿Por qué no deja el puesto armado de noche? *(O, si lo deja, por qué lo deja.)*
+5. ¿Por qué no deja el puesto armado de noche? *(O, si lo deja, por qué lo deja.)* Si pudiera dejarlo armado, ¿lo dejaría? ¿Por qué?
 6. ¿Qué acordó con la tienda de atrás o con los vecinos?
 7. ¿Ha cambiado el puesto desde que empezó? ¿Por qué?
 8. *(Si hubo intervención)* ¿Qué cambió con [la intervención]? ¿Qué hacía antes que ya no hace?
@@ -106,6 +108,8 @@ Preguntas abiertas, en este orden:
 10. ¿Hay algo que se hace siempre, aunque no haga falta? (costumbres, ritos, cuidados) *(Si aparecen la ruda, la retama o la* ch'alla*)* ¿En qué momento del armado se hace?
 
 **El origen de cada razón (para H3).** Al pasar la conversación a la ficha, cada razón se marca según de dónde viene. **P:** propia o aprendida. **V:** acordada con vecinos. **M:** impuesta por el municipio. **A:** impuesta por la asociación.
+
+**El marco y la secuencia.** La pregunta 5 trata del marco: por qué el puesto se arma y se guarda cada día. La pregunta 2 trata de la secuencia: por qué en este orden. Las dos se anotan con su origen. Según la propuesta de `analisis/02`, sección 11, que decide el autor, las razones del marco cuentan para H3 solo si explican una diferencia entre puestos.
 
 ## 8. La devolución
 
@@ -138,3 +142,7 @@ A las dos semanas, llevar la primera lámina impresa a quien arma el puesto. Pre
   - preguntas nuevas sobre la herencia del modo de armar, la noche y el momento del rito (sección 7);
   - códigos del origen de cada razón (sección 7);
   - hoja de información y ficha para imprimir (`campo/imprimibles/`).
+- **27 de octubre de 2026, antes del campo.** Cambios que vienen de `analisis/06` y `analisis/02`, sección 11:
+  - preguntas sobre el guardado de emergencia (pregunta 3) y sobre dejar el puesto armado (pregunta 5);
+  - la distinción entre marco y secuencia (sección 7);
+  - la marca opcional de postura (sección 5).

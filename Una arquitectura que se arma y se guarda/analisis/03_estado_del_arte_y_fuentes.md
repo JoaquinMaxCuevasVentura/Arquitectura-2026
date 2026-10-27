@@ -143,3 +143,35 @@ Se leyeron los capítulos pertinentes de los estudios paceños y alteños de la 
 - El punto 3 queda así: Tassi *et al.* (2013), Pereira Morató *et al.* (2009 y 2015) y Yampara *et al.* (2007). Goldstein (2016) pasa al banco: es Cochabamba, y no se ha leído.
 - El punto 1 suma la reseña de Daechsel (2024), mientras no se lea a Moatasim.
 - El núcleo pasa de unas quince a unas diecisiete obras. Es el techo: lo que entre después reemplaza a algo.
+
+## 8. Actualización del 27 de octubre: tesis del MIT y de RISD
+
+El detalle de cada tesis, con lo que se toma y lo que se deja, está en `06`.
+
+**Pasan a [V]** (leídas en lo pertinente; páginas con el folio impreso). Todas son tesis de maestría del MIT y se pueden descargar desde DSpace@MIT; tienen derechos de autor y no se suben al repositorio.
+
+| Tesis | Grado y dirección | Para qué |
+|---|---|---|
+| Bolaños, Michael Raul (1983). «The dance of the marketplace». https://hdl.handle.net/1721.1/71346 | M.Arch.; Shun Kanda | El orden del despliegue ya nombrado (p. 53); secuencia de montaje del Campo de' Fiori, vista desde arriba (p. 68) |
+| Krasnow, Ariel Rebecca (1986). «From the flea market». https://hdl.handle.net/1721.1/75512 | M.Arch.; Maurice K. Smith | La pregunta de H5 (p. 6); intervención por etapas: «no intervention» y un «Light frame, erected on weekends» (p. 67) |
+| Baroni, Bruno Nazim (2007). «Spatial stratification of street vendors in downtown Mexico City». https://hdl.handle.net/1721.1/39932 | M.C.P.; Diane E. Davis | La objeción: el montaje diario impuesto y la preferencia por puestos fijos (p. 39); el depósito cercano (pp. 32, 38) |
+| Donovan, Michael G. (2002). «Space wars in Bogotá: the recovery of public space and its impact on street vendors». https://hdl.handle.net/1721.1/16811 | M.C.P.; Diane E. Davis | Lo que hacen las reubicaciones: mejores condiciones (p. 96), menos ingreso (p. 100), 66 % de puestos abandonados (p. 105) |
+| Andrade, Gabriel (2025). «Sweating Details: Labor of "Los Constructores del Valle"». https://hdl.handle.net/1721.1/158839 | M.Arch.; Sheila Kennedy | La coreografía de quien construye y su costo en el cuerpo (pp. 50, 96); método dialógico (p. 5) |
+| Sung, Courtney (2011). «Drawing the line: spatial street vendor management in Ho Chi Minh City». https://hdl.handle.net/1721.1/67241 | M.C.P.; Annette Kim | Desarmar rápido (pp. 59-60); la línea pintada (pp. 61, 63); depósitos prestados (p. 58) |
+| Kleinenhammans, Sabrina (2009). «Re-envisioning the Indian city: informality and temporality». https://hdl.handle.net/1721.1/49550 | S.M.; Rahul Mehrotra | Vendedores por grado de movilidad; elementos urbanos usados (pp. 58-59) |
+| Pattamasattayasonthi, Ekachai (2011). «Reinventing flexibility: a hybrid paradigm for Thai markets in Bangkok, Thailand». https://hdl.handle.net/1721.1/62884 | M.Arch.; J. Meejin Yoon | El montaje del mercado callejero depende, sobre todo, de la norma de la calle (p. 31) |
+| Muhonen, Mackenzie (2019). «Low Fidelity». https://hdl.handle.net/1721.1/122477 | M.Arch.; Ana Miljacki | Las láminas: notas gráficas sobre el collage (p. 27) y el índice visible (p. 14) |
+| Kim, Minyoung (2026). «Festival Kit: Reassembling Collective Time». https://hdl.handle.net/1721.1/167851 | M.Arch.; Brandon Clifford | Los ritos de obra como umbrales ligados a un riesgo (pp. 32-35) |
+
+**[E], solo resumen (RISD).** Los PDF de RISD están detrás de una verificación anti-bots que no se forzó:
+
+- Shen, Yuying (2019), «Evolution of a type: street vending as urban strategy in Guangzhou, China»;
+- Singhi, Rini (2022), «Accidental Commensality: Eating, Belonging, and Mazaa on the Streets of Jaipur».
+
+Los enlaces están en `06`.
+
+**Cambia el núcleo** (sección 5).
+
+- **Entran al borrador:** Bolaños (1983), Krasnow (1986), Baroni (2007), Donovan (2002) y Andrade (2025).
+- **Salen del borrador y quedan aquí, en el banco:** Kim (2015), Mörtenböck y Mooshammer (2015) y Lemonnier (1992). Ninguna de las tres se había leído. De la cadena operatoria basta Leroi-Gourhan.
+- **El nuevo techo** es de unas diecinueve obras.

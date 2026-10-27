@@ -40,7 +40,7 @@ h2 {{ font-family: {SERIF}; font-size: 13pt; margin: 4mm 0 1.5mm; }}
 table {{ border-collapse: collapse; width: 100%; }}
 td, th {{ border: 0.6pt solid {TINTA}; padding: 0 1.5mm; vertical-align: top; }}
 th {{ font-size: 8pt; text-align: left; background: #efebe4; padding: 1mm 1.5mm; }}
-.linea {{ border-bottom: 0.6pt solid {TINTA}; height: 5.7mm; }}
+.linea {{ border-bottom: 0.6pt solid {TINTA}; height: 5.3mm; }}
 .caja {{ display: inline-block; width: 3.4mm; height: 3.4mm; border: 0.7pt solid {TINTA}; vertical-align: -0.5mm;
          margin: 0 1mm 0 2.5mm; }}
 .raya {{ display: inline-block; border-bottom: 0.6pt solid {TINTA}; min-width: 18mm; height: 4mm; }}
@@ -189,7 +189,7 @@ def ficha_de_ciclo():
 </table>"""
     leyenda = (f'<div class="leyenda"><b>Verbos</b> (protocolo, sección 5; uno por fila): {" · ".join(VERBOS)}.<br>'
                f'<b>Categorías:</b> {" · ".join(CATEGORIAS)}. &nbsp; <b>F/P:</b> agarre de fuerza o de precisión. '
-               f'&nbsp; <b>Quién:</b> R responsable; A1, A2… quienes ayudan.</div>')
+               f'&nbsp; <b>Quién:</b> R responsable; A1, A2… quienes ayudan. &nbsp; <b>Notas, opcional:</b> ↑ levanta sobre el hombro · ↓ se agacha bajo la rodilla.</div>')
     medidas = [("Planta ocupada armado (m²)", ""), ("Bultos guardados: número, medidas, peso aproximado", ""),
                ("Altura de la cubierta (cm)", ""), ("Altura de la boca, donde se cobra y se entrega (cm)", ""),
                ("Alcance sin moverse (cm)", ""), ("Distancia a la circulación (cm)", ""),
@@ -198,9 +198,9 @@ def ficha_de_ciclo():
         f"<tr><td class='r'>{m}</td><td></td></tr>" for m, _ in medidas) + "</table>"
     preguntas = ["Aprendizaje: ¿quién le enseñó? ¿Qué hacía al principio? Si lo heredó, ¿lo arma como quien se lo dejó?",
                  "Lo primero que arma, y por qué eso primero",
-                 "Lo que cambia con lluvia, viento o mucho sol",
+                 "Lo que cambia con lluvia, viento o mucho sol. Si tiene que irse rápido: cuánto tarda y qué guarda primero",
                  "¿Dónde duerme el puesto? ¿A qué distancia?",
-                 "¿Por qué no lo deja armado de noche?",
+                 "¿Por qué no lo deja armado de noche? Si pudiera, ¿lo dejaría?",
                  "Acuerdos con la tienda de atrás o con los vecinos",
                  "Cambios desde que empezó, y por qué",
                  "Si hubo intervención: ¿qué hacía antes que ya no hace?",

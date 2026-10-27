@@ -29,6 +29,7 @@ En La Paz, muchos puestos de venta se construyen cada mañana y se guardan cada 
 | `campo/registro_de_operaciones.csv` | La tabla de operaciones (vacía): una fila por operación | — |
 | `campo/comparar_ciclos.py` | Compara los ciclos de cada puesto y dice si la secuencia es estable | Si se sostiene la hipótesis H1, o si «secuencia» pasa a «repertorio» |
 | `analisis/05_carcamo_toro_henao_y_donde_leer.md` | Lo que aportan los dos artículos que envió el autor (Cárcamo Pino, 2025b; Toro Henao, 2014), propuestas de estructura y epígrafe con lo que se decidió (sección 4), y dónde leer cada libro del núcleo (Internet Archive y Monoskop) | Qué leer primero |
+| `analisis/06_tesis_mit_y_risd.md` | Tesis del MIT y de RISD sobre puestos, mercados y montaje, desarmadas una por una, con *Low Fidelity* entre ellas. Incluye la objeción de Baroni: armar cada día puede ser una carga impuesta | Si la tesis se mantiene (sí) y cómo se precisa. Contiene dos propuestas que decide el autor |
 | `taxonomia/` | Taxonomía visual: 32 imágenes de dominio público en tres tableros (el árbol, el mapa de fechas y el relato), con su catálogo y su `LEEME.md` | Qué parte del ciclo no muestra el archivo; si las seis categorías alcanzan (H2) |
 | `articulo/borrador_v0.md` | El artículo: título, resúmenes, lugar reservado para el epígrafe y secciones 1-4 y 7 escritas, con los antecedentes (2) reescritos con fuentes leídas. Las secciones 5, 6 y 8 son guías, con datos de partida | — |
 
@@ -42,7 +43,10 @@ Para comparar ciclos: `python3 campo/comparar_ciclos.py` (solo usa la biblioteca
 4. **La estética de las láminas:** la de Servino entra con cinco correcciones (`04`, sección 2). La primera lámina se pone a prueba el 23 de noviembre.
 5. ~~La estructura y el epígrafe.~~ **Decidido el 26 de octubre:** una sola hipótesis, con H1 a H5 como sus partes, y un epígrafe con palabras de una vendedora si aparece una en el campo (`02`, sección 10).
 6. **Una regla nueva del protocolo:** se anota si el depósito es propio, prestado o alquilado, sin montos ni nombres, porque dice dónde duerme el puesto (`campo/protocolo.md`, sección 3). Confirmarla o quitarla.
-7. ***Contenida*:** pasar el enlace a la tipografía. No está en los repositorios de GitHub ni en Drive, y los canales de Are.na que nombran las notas de *Altiplano* ya no aparecen en la cuenta. Queda «en espera» hasta verla (`02`, sección 7).
+7. **Dos propuestas que vienen de las tesis del MIT** (`02`, sección 11). Aceptarlas o no antes del campo:
+   - una nueva redacción de la última frase de la tesis: la intervención «puede aliviar el trabajo y, a la vez, perder la arquitectura»;
+   - una corrección de cómo cuenta para H3 la razón para guardar.
+8. ***Contenida*:** pasar el enlace a la tipografía. No está en los repositorios de GitHub ni en Drive, y los canales de Are.na que nombran las notas de *Altiplano* ya no aparecen en la cuenta. Queda «en espera» hasta verla (`02`, sección 7).
 
 ## Reglas de trabajo
 

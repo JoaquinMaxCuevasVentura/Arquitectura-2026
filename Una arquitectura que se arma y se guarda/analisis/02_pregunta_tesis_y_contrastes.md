@@ -242,3 +242,31 @@ Si el artículo completo de Moatasim ya describe el orden, la contribución se r
 - las tesis de la UMSA, porque el repositorio no respondió hoy (error 503); hay que reintentarlo antes del 2 de noviembre;
 - Mauss, porque ni la edición de Classiques des sciences sociales (error 503) ni la búsqueda dentro del préstamo de Internet Archive (error 403) estuvieron disponibles;
 - la norma municipal vigente.
+
+## 11. Actualización del 27 de octubre: las tesis del MIT y de RISD
+
+El detalle de cada tesis está en `06`.
+
+**Veredicto: la tesis se mantiene.** Ninguna tesis registra el orden de las operaciones de un puesto a la escala de las manos, ni lo compara entre ciclos, ni pregunta cómo se aprende. El contraste 1 (sección 6) se sostiene, con dos antecedentes más que hay que citar:
+
+- Bolaños (1983) ya nombró el orden del despliegue y lo fotografió desde arriba.
+- Andrade (2025) ya analizó como coreografía los gestos de quienes construyen.
+
+**Una objeción nueva, más fuerte que la de Moatasim.** En el centro de Ciudad de México, los vendedores preferirían puestos fijos «so that they are not required to assemble and dismantle them everyday», y es la policía la que impide que se queden (Baroni, 2007: 39). El montaje diario puede ser una carga impuesta. Esto no tumba la hipótesis, que habla del orden y no del hecho de armar. Pero obliga a tres cosas, y **las tres las decide el autor**:
+
+1. **Precisar la última frase de la tesis** (sección 3). Hoy dice que la intervención «puede conservar el objeto y perder la arquitectura». Se propone esta redacción: «Armar cada día puede ser una imposición; el orden en que se arma, no. Por eso, una intervención que fija la forma sin leer la secuencia puede aliviar el trabajo y, a la vez, perder la arquitectura: las relaciones con la calle que la secuencia arma cada mañana». En Bogotá, las reubicaciones mejoraron las condiciones de trabajo, pero la mitad de los reubicados ganaba más en la calle y, en promedio, se abandonó el 66 % de los puestos (Donovan, 2002: 96, 100, 105). Ningún umbral cambia. H5 se registra en dos columnas: lo que la intervención alivia (tiempo, esfuerzo, exposición) y lo que quita (apoyo prestado, boca, borde, guardado cerca, clientela).
+2. **Corregir la regla de la sección 10c.** H3 pregunta por las diferencias entre puestos. Una regla que obliga a todos a guardar cada noche no explica ninguna diferencia. Por eso, la razón para guardar cuenta para H3 solo si explica una diferencia entre puestos; si no, es contexto y va a la sección 7 del borrador. En la conversación se separan dos preguntas: «¿Por qué arma y guarda cada día?» (el marco) y «¿Por qué en este orden?» (la secuencia). Esta corrección se hace antes del campo y se dirá en el artículo.
+3. **Sumar a lo que no se va a afirmar** (sección 3): que armar cada día sea una elección.
+
+**Preguntas nuevas al campo** (`campo/protocolo.md`, sección 7):
+
+- «Si pudiera dejar el puesto armado, ¿lo dejaría? ¿Por qué?» (Baroni).
+- «Si tiene que irse rápido, ¿cuánto tarda en guardar todo? ¿Qué guarda primero?» (Sung, 2011: 59-60; *La Prensa*, 2026).
+- De forma opcional, marcar en la nota de cada operación si obliga a levantar algo sobre el hombro o a agacharse por debajo de la rodilla (Andrade, 2025: 96).
+
+**Lo que confirma lo previsto, sin cambiarlo:**
+
+- H4: los apoyos y depósitos prestados también aparecen en Ahmedabad (Kleinenhammans, 2009: 58-59), en Ciudad de México (Baroni, 2007: 32) y en Ho Chi Minh (Sung, 2011: 58).
+- H3: la norma pesa en la forma del mercado (Pattamasattayasonthi, 2011: 31; Krasnow, 1986: 55).
+- H2: los ritos de obra son operaciones que manejan un riesgo (Kim, 2026: 32).
+- La relación poética del «montaje» suma un precedente del cine: «Film can travel, projecting the passage of time and sequentially expressing architectural space» (Krasnow, 1986: 99). La prueba de la sección 4, lámina contra tabla, no cambia.

@@ -125,3 +125,24 @@ Vienen de la disección tectónica del artículo sobre *Altiplano* (apoyo, vano,
 | **Boca** | Donde se encuentran las manos de quien vende y de quien compra: la altura del mostrador, el alcance | Alcance de las manos (es el «vano» de *Altiplano*) |
 | **Borde** | El límite con la circulación, la tienda de atrás y los vecinos | Relación con la circulación (es el «límite») |
 | **Guardado** | Dónde y cómo duerme el puesto: bultos, depósito, casa, vehículo, cadena | Almacenamiento |
+
+## 4. Actualización del 27 de octubre: dos tesis del MIT para las láminas y la advertencia
+
+El detalle de las dos tesis está en `06`.
+
+### *Low Fidelity* (Muhonen, 2019) [V]
+
+- **Se toma:** las «graphic footnotes as an additional layer of information on top of the reconfigured images» (Muhonen, 2019: 27), y el índice a la vista: «The references, influences, and derivatives of the image carry as much importance as the image itself» (ibid.: 14).
+- **Cambia:** las notas de Muhonen comentan imágenes de imágenes. Aquí, la nota es el sello de tiempo (regla 1 de la sección 3) o la fuente de archivo. El índice es el catálogo de la taxonomía (`taxonomia/catalogo.md`).
+- **Se deja:** el tono del manifiesto, que es indiferente.
+- **Decisión que permite:**
+  - confirmar que el sello no es un adorno, sino una capa de información de la lámina;
+  - nombrar el riesgo de la lámina con las palabras de la tesis: una imagen que «supersedes the value of the building for which it speaks» (ibid.: 12).
+
+  La devolución es la prueba contra ese riesgo. Una lámina que quien arma el puesto no reconoce es de baja fidelidad, por buena que se vea.
+
+### Andrade (2025): la otra cara de la advertencia [V]
+
+- **Se toma:** Andrade analiza la coreografía de los gestos de quienes construyen con vectores, fuerzas y riesgo de lesión, para preguntar «How high do they have to stretch? Is there a repeated motion that could cause long-term strain?» (Andrade, 2025: 96).
+- **Cambia:** se toma la pregunta, no la técnica (visión computacional).
+- **Decisión que permite:** completar la advertencia de la sección 1. Los Gilbreth registraban el gesto para estandarizarlo. Andrade lo registra para cuidar el cuerpo de quien trabaja, en diálogo con esas personas. El registro de este artículo se pone del lado de Andrade, y la sección 7 del borrador lo dice.

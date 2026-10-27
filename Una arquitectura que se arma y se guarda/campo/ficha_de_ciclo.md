@@ -27,7 +27,7 @@ Copiar una ficha por ciclo en `campo/privado/` (no se sube al repositorio). Al t
 | 2 | | | | | | | |
 | 3 | | | | | | | |
 
-Verbos: los del vocabulario de `protocolo.md`, sección 5.
+Verbos: los del vocabulario de `protocolo.md`, sección 5. En «Notas», opcional: «↑» si la operación obliga a levantar algo sobre el hombro; «↓» si obliga a agacharse por debajo de la rodilla.
 
 ## Croquis
 
@@ -55,9 +55,9 @@ Las preguntas son las de `protocolo.md`, sección 7. Al lado de cada razón, su 
 
 1. Aprendizaje (y, si lo heredó, si lo arma como quien se lo dejó):
 2. Lo primero que arma y por qué:
-3. Clima:
+3. Clima; si tiene que irse rápido, cuánto tarda y qué guarda primero:
 4. Dónde duerme el puesto:
-5. Por qué no lo deja armado de noche:
+5. Por qué no lo deja armado de noche; si pudiera, ¿lo dejaría?:
 6. Acuerdos con vecinos:
 7. Cambios en el tiempo:
 8. Intervención:
